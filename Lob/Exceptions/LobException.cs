@@ -3,7 +3,7 @@ using System;
 
 namespace Lob.Exceptions
 {
-    class LobException : Exception
+   public class LobException : Exception
     {
         public LobException(string message, int httpStatusCode) : base(message)
         {
@@ -12,9 +12,9 @@ namespace Lob.Exceptions
 
         public int HttpStatusCode { get; private set; }
 
-        public static LobException Parse(string content)
+        public static LobException Parse(string json)
         {
-            JObject res = JObject.Parse(content);
+            JObject res = JObject.Parse(json);
             return new LobException(
                 message: res["error"]["message"].ToString(),
                 httpStatusCode: res["error"]["status_code"].ToObject<int>()
