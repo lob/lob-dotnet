@@ -28,7 +28,6 @@ namespace Lob.Api.Address
 
         public Task<LobResponse<AddressResource>> GetAsync(string id)
         {
-            Console.WriteLine($"getasync {id}");
             return Client.ExecuteAsync<AddressResource>(
                 HttpMethod.Get,
                 $"{Constants.AddressResourceEndpoint}/{id}"
