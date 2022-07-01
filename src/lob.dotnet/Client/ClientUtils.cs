@@ -51,6 +51,10 @@ namespace lob.dotnet.Client
             {
                 foreach (var item in collection)
                 {
+                    if(collection.Count == 1) {
+                        parameters.Add(name, ParameterToString(item));
+                    }
+                    
                     parameters.Add(name, ParameterToString(item));
                 }
             }
