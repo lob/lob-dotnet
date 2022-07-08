@@ -18,6 +18,7 @@ using System.Linq;
 
 namespace __tests__.Integration {
     [TestFixture]
+    [Parallelizable(scope: ParallelScope.Self)]
     public class LettersApiTests : IDisposable
     {
         private LettersApi validApi;
@@ -32,8 +33,9 @@ namespace __tests__.Integration {
         {
             Configuration config = new Configuration();
             Configuration invalidConfig = new Configuration();
-
-            config.Username = "test_62291d3cc85971719264edb12016561ed19";
+            
+            DotNetEnv.Env.TraversePath().Load();
+            config.Username = System.Environment.GetEnvironmentVariable("LOB_API_TEST_KEY");
             invalidConfig.Username = "fake api key";
 
             validApi = new LettersApi(config);
