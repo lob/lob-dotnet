@@ -54,7 +54,7 @@ namespace lob.dotnet.Client
                     if(collection.Count == 1) {
                         parameters.Add(name, ParameterToString(item));
                     }
-
+                           
                     parameters.Add(name, ParameterToString(item));
                 }
             }
