@@ -172,7 +172,7 @@ namespace __tests__.Integration {
             Assert.NotNull(response.TotalCount);
         }
 
-        /* TODO: fix unpacking dictionaries into query params
+        /* TODO: [DXP-1128] fix unpacking dictionaries into query params
         [Test]
         public void LetterListTestWithDateCreatedParameter() {
             Dictionary<String, String> dateCreated = new Dictionary<String, String>();
