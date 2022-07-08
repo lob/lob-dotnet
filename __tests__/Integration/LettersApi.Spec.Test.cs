@@ -211,7 +211,7 @@ namespace __tests__.Integration {
             Assert.Greater(response.Count, 0);
         }
 
-        /*
+        /* TODO: [DXP-1128]
         [Test]
         public void LetterListTestWithSendDateParameter() {
             Dictionary<String, String> sendDate = new Dictionary<String, String>();
@@ -231,7 +231,7 @@ namespace __tests__.Integration {
             Assert.GreaterOrEqual(response.Count, 0);
         }
 
-        /*
+        /* TODO: [DXP-1129]
         [Test]
         public void LetterListTestWithSortByParameter() {
             SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
