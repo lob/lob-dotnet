@@ -177,7 +177,7 @@ namespace __tests__.Integration {
             Assert.NotNull(response.TotalCount);
         }
 
-        /* TODO: fix unpacking dictionaries into query params
+        /* TODO [DXP-1128]: fix unpacking dictionaries into query params
         [Test]
         public void PostcardListTestWithDateCreatedParameter() {
             Dictionary<String, String> dateCreated = new Dictionary<String, String>();
@@ -200,7 +200,7 @@ namespace __tests__.Integration {
         }
         */
 
-        /* TODO: fix how Lob API wants an array of PostcardSize but the SDK accepts just PostcardSize
+        /* TODO [DXP-1128]: fix how Lob API wants an array of PostcardSize but the SDK accepts just PostcardSize
         [Test]
         public void PostcardListTestWithSizeParameter() {
             PostcardSize size = PostcardSize._4x6;
@@ -218,7 +218,7 @@ namespace __tests__.Integration {
             Assert.Greater(response.Count, 0);
         }
 
-        /*
+        /* TODO: [DXP-1128]
         [Test]
         public void PostcardListTestWithSendDateParameter() {
             Dictionary<String, String> sendDate = new Dictionary<String, String>();
