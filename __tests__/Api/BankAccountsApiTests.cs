@@ -24,6 +24,7 @@ namespace __tests__.Api
     ///  Class for testing BankAccountsApi
     /// </summary>
     [TestFixture]
+    [Parallelizable(scope: ParallelScope.Self)]
     public class BankAccountsApiTests : IDisposable
     {
         private Mock<IBankAccountsApi> bankAccountsApiMock;
