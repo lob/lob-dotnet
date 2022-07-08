@@ -24,6 +24,7 @@ namespace __tests__.Api
     ///  Class for testing AddressesApi
     /// </summary>
     [TestFixture]
+    [Parallelizable(scope: ParallelScope.All)]
     public class AddressesApiTests : IDisposable
     {
         private Mock<IAddressesApi> addressesApiMock;

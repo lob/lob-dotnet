@@ -24,6 +24,7 @@ namespace __tests__.Api
     ///  Class for testing ReverseGeocodeLookupsApi
     /// </summary>
     [TestFixture]
+    [Parallelizable(scope: ParallelScope.All)]
     public class ReverseGeocodeLookupsApiTests : IDisposable
     {
         private Mock<IReverseGeocodeLookupsApi> reverseGeocodeLookupsApiMock;

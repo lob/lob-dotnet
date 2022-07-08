@@ -18,6 +18,7 @@ using System.Linq;
 
 namespace __tests__.Integration {
     [TestFixture]
+    [Parallelizable(scope: ParallelScope.Self)]
     public class ChecksApiTests : IDisposable
     {
         private ChecksApi validApi;
@@ -36,7 +37,8 @@ namespace __tests__.Integration {
             Configuration config = new Configuration();
             Configuration invalidConfig = new Configuration();
 
-            config.Username = "test_62291d3cc85971719264edb12016561ed19";
+            DotNetEnv.Env.TraversePath().Load();
+            config.Username = System.Environment.GetEnvironmentVariable("LOB_API_TEST_KEY");
             invalidConfig.Username = "fake api key";
 
             validApi = new ChecksApi(config);
@@ -202,7 +204,7 @@ namespace __tests__.Integration {
             Assert.NotNull(response.TotalCount);
         }
 
-        /* TODO: fix unpacking dictionaries into query params
+        /* TODO:  [DXP-1028] fix unpacking dictionaries into query params
         [Test]
         public void CheckListTestWithDateCreatedParameter() {
             Dictionary<String, String> dateCreated = new Dictionary<String, String>();
@@ -233,7 +235,7 @@ namespace __tests__.Integration {
             Assert.Greater(response.Count, 0);
         }
 
-        /*
+        /* TODO: [DXP-1028]
         [Test]
         public void CheckListTestWithSendDateParameter() {
             Dictionary<String, String> sendDate = new Dictionary<String, String>();
@@ -253,7 +255,7 @@ namespace __tests__.Integration {
             Assert.GreaterOrEqual(response.Count, 0);
         }
 
-        /*
+        /*TODO: [DXP-1029]
         [Test]
         public void CheckListTestWithSortByParameter() {
             SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);

@@ -18,6 +18,7 @@ using System.Linq;
 
 namespace __tests__.Integration {
     [TestFixture]
+    [Parallelizable(scope: ParallelScope.Children)]
     public class PostcardsApiTests : IDisposable
     {
         private PostcardsApi validApi;

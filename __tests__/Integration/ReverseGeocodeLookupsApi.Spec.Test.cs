@@ -18,6 +18,7 @@ using System.Linq;
 
 namespace __tests__.Integration {
     [TestFixture]
+    [Parallelizable(scope: ParallelScope.Self)]
     public class ReverseGeocodeLookupsApiTests : IDisposable
     {
         private ReverseGeocodeLookupsApi validApi;
