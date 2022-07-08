@@ -24,6 +24,7 @@ namespace __tests__.Api
     ///  Class for testing CardsApi
     /// </summary>
     [TestFixture]
+    [Parallelizable(scope: ParallelScope.Self)]
     public class CardsApiTests : IDisposable
     {
         private Mock<ICardsApi> cardsApiMock;
