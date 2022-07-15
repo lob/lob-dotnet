@@ -199,7 +199,7 @@ namespace __tests__.Integration {
             PostcardList response = validApi.PostcardsList(null, null, null, null, null, metadata, null, null, null, null, null);
             Assert.Greater(response.Count, 0);
         }
-        
+
         [Test]
         public void PostcardListTestWithSizeParameter() {
             List<PostcardSize> sizeArray = new List<PostcardSize>();
