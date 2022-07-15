@@ -180,7 +180,7 @@ namespace __tests__.Api
             string before = null;
             string after = null;
             List<string> include = null;
-            Dictionary<String, String> dateCreated = null;
+            Dictionary<String, DateTime> dateCreated = null;
             Dictionary<String, String> metadata = null;
             AddressList fakeAddress = new AddressList();
             List<Address> data = new List<Address>();

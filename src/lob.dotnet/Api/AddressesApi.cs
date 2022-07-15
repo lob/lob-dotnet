@@ -111,7 +111,7 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AddressList</returns>
-        AddressList AddressesList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
+        AddressList AddressesList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -128,7 +128,7 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AddressList</returns>
-        ApiResponse<AddressList> AddressesListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
+        ApiResponse<AddressList> AddressesListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -229,7 +229,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AddressList</returns>
-        System.Threading.Tasks.Task<AddressList> AddressesListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AddressList> AddressesListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -247,7 +247,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AddressList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AddressList>> AddressesListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<AddressList>> AddressesListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -850,7 +850,7 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AddressList</returns>
-        public AddressList AddressesList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
+        public AddressList AddressesList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
         {
             lob.dotnet.Client.ApiResponse<AddressList> localVarResponse = AddressesListWithHttpInfo(limit, before, after, include, dateCreated, metadata);
             return localVarResponse.Data;
@@ -868,7 +868,7 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AddressList</returns>
-        public lob.dotnet.Client.ApiResponse<AddressList> AddressesListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<AddressList> AddressesListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -914,7 +914,7 @@ namespace lob.dotnet.Api
             }
             if (metadata != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "metadata", metadata));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "metadata", metadata));
             }
 
             localVarRequestOptions.Operation = "AddressesApi.AddressesList";
@@ -954,7 +954,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AddressList</returns>
-        public async System.Threading.Tasks.Task<AddressList> AddressesListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<AddressList> AddressesListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             lob.dotnet.Client.ApiResponse<AddressList> localVarResponse = await AddressesListWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -973,7 +973,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AddressList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<AddressList>> AddressesListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<AddressList>> AddressesListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
