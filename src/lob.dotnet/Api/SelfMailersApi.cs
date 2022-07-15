@@ -984,7 +984,7 @@ namespace lob.dotnet.Api
             }
             if (sortBy != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "sort_by", sortBy.ToJson()));
             }
 
             localVarRequestOptions.Operation = "SelfMailersApi.SelfMailersList";
@@ -1120,7 +1120,7 @@ namespace lob.dotnet.Api
             }
             if (sortBy != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "sort_by", sortBy.ToJson()));
             }
 
             localVarRequestOptions.Operation = "SelfMailersApi.SelfMailersList";

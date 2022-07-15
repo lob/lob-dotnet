@@ -239,7 +239,6 @@ namespace __tests__.Integration {
             Assert.GreaterOrEqual(response.Count, 0);
         }
 
-        /*
         [Test]
         public void PostcardListTestWithSortByParameter() {
             SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
@@ -247,7 +246,6 @@ namespace __tests__.Integration {
             PostcardList response = validApi.PostcardsList(null, null, null, null, null, null, null, null, null, null, sortBy);
             Assert.Greater(response.Count, 0);
         }
-        */
 
         [Test]
         public void PostcardDeleteTest() {

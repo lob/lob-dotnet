@@ -259,14 +259,11 @@ namespace __tests__.Integration {
             Assert.GreaterOrEqual(response.Count, 0);
         }
 
-        /*TODO: [DXP-1029]
         [Test]
         public void CheckListTestWithSortByParameter() {
             SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
-
             CheckList response = validApi.ChecksList(null, null, null, null, null, null, null, null, null, sortBy);
             Assert.Greater(response.Count, 0);
         }
-        */
     }
 }
