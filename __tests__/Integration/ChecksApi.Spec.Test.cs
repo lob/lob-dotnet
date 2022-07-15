@@ -24,7 +24,7 @@ namespace __tests__.Integration {
         private ChecksApi validApi;
         private ChecksApi invalidApi;
         private CheckEditable checkEditable;
-        private string createdId;
+        private List<string> idsToDelete;
 
         private Address address1;
         private Address address2;
@@ -107,6 +107,8 @@ namespace __tests__.Integration {
                 null, // attachment
                 "check 1" // description
             );
+
+            idsToDelete = new List<string>();
         }
 
         public void Dispose()
@@ -114,7 +116,7 @@ namespace __tests__.Integration {
             validBankAccountsApi.BankAccountDelete(bankAccount.Id);
             validAddressesApi.AddressDelete(address1.Id);
             validAddressesApi.AddressDelete(address2.Id);
-            validApi.CheckCancel(createdId);
+            idsToDelete.ForEach(id => validApi.CheckCancel(id));
         }
 
         [Test]
@@ -122,9 +124,8 @@ namespace __tests__.Integration {
             Check response = validApi.CheckCreate(checkEditable);
 
             Assert.NotNull(response.Id);
+            idsToDelete.Add(response.Id);
             Assert.AreEqual(response.Description, checkEditable.Description);
-
-            createdId = response.Id;
         }
 
         [Test]
@@ -151,10 +152,12 @@ namespace __tests__.Integration {
 
         [Test]
         public void CheckRetrieveTest() {
-            Check response = validApi.CheckRetrieve(createdId);
+            Check check = validApi.CheckCreate(checkEditable);
+            idsToDelete.Add(check.Id);
+            Check response = validApi.CheckRetrieve(check.Id);
 
             Assert.NotNull(response.Id);
-            Assert.AreEqual(response.Id, createdId);
+            Assert.AreEqual(response.Id, check.Id);
         }
 
         [Test]
@@ -170,8 +173,10 @@ namespace __tests__.Integration {
 
         [Test]
         public void CheckRetrieveTestBadUsername() {
+            Check check = validApi.CheckCreate(checkEditable);
+            idsToDelete.Add(check.Id);
             try {
-                Check response = invalidApi.CheckRetrieve(createdId);
+                Check response = invalidApi.CheckRetrieve(check.Id);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -215,6 +220,7 @@ namespace __tests__.Integration {
             Console.WriteLine(response);
             Assert.Greater(response.Count, 0);
         }
+        */
 
         [Test]
         public void CheckListTestWithMetadataParameter() {
@@ -222,10 +228,8 @@ namespace __tests__.Integration {
             metadata.Add("name", "Harry");
 
             CheckList response = validApi.ChecksList(null, null, null, null, null, metadata);
-            Console.WriteLine(response);
             Assert.Greater(response.Count, 0);
         }
-        */
 
         [Test]
         public void CheckListTestWithScheduledParameter() {

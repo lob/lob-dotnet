@@ -58,9 +58,6 @@ namespace __tests__.Integration {
             validAddressesApi = new AddressesApi(config);
             address = validAddressesApi.AddressCreate(addressEditable);
 
-            Dictionary<string, string> metadata = new Dictionary<string, string>();
-            metadata.Add("internal_id", "fake internal id");
-
             postcardEditable = new PostcardEditable(
                 address.Id, // to
                 address.Id, // from
@@ -75,7 +72,7 @@ namespace __tests__.Integration {
                 default(string) // billingGroupId
             );
             postcardEditable.Metadata = new Dictionary<string, string>();
-            postcardEditable.Metadata.Add("fake campaign", "fakeid");
+            postcardEditable.Metadata.Add("name", "Harry");
 
             idsToDelete = new List<string>();
         }
@@ -189,17 +186,20 @@ namespace __tests__.Integration {
             Console.WriteLine(response);
             Assert.Greater(response.Count, 0);
         }
+        */
 
         [Test]
         public void PostcardListTestWithMetadataParameter() {
+            Postcard createdPostcard = validApi.PostcardCreate(postcardEditable);
+            idsToDelete.Add(createdPostcard.Id);
+
             Dictionary<String, String> metadata = new Dictionary<String, String>();
             metadata.Add("name", "Harry");
 
             PostcardList response = validApi.PostcardsList(null, null, null, null, null, metadata, null, null, null, null, null);
-            Console.WriteLine(response);
             Assert.Greater(response.Count, 0);
         }
-        */
+
 
         /* TODO [DXP-1128]: fix how Lob API wants an array of PostcardSize but the SDK accepts just PostcardSize
         [Test]
