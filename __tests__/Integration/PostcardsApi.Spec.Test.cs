@@ -200,16 +200,14 @@ namespace __tests__.Integration {
             Assert.Greater(response.Count, 0);
         }
 
-
-        /* TODO [DXP-1128]: fix how Lob API wants an array of PostcardSize but the SDK accepts just PostcardSize
         [Test]
         public void PostcardListTestWithSizeParameter() {
-            PostcardSize size = PostcardSize._4x6;
-            PostcardSize[] sizeArray = {size};
+            List<PostcardSize> sizeArray = new List<PostcardSize>();
+            sizeArray.Add(PostcardSize._4x6);
+
             PostcardList response = validApi.PostcardsList(null, null, null, null, null, null, sizeArray);
             Assert.Greater(response.Count, 0);
         }
-        */
 
         [Test]
         public void PostcardListTestWithScheduledParameter() {
