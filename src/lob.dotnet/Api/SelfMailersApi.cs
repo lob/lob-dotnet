@@ -118,7 +118,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SelfMailerList</returns>
-        SelfMailerList SelfMailersList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), SelfMailerSize? size = default(SelfMailerSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
+        SelfMailerList SelfMailersList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), SelfMailerSize? size = default(SelfMailerSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -140,7 +140,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SelfMailerList</returns>
-        ApiResponse<SelfMailerList> SelfMailersListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), SelfMailerSize? size = default(SelfMailerSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
+        ApiResponse<SelfMailerList> SelfMailersListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), SelfMailerSize? size = default(SelfMailerSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -248,7 +248,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SelfMailerList</returns>
-        System.Threading.Tasks.Task<SelfMailerList> SelfMailersListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), SelfMailerSize? size = default(SelfMailerSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<SelfMailerList> SelfMailersListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), SelfMailerSize? size = default(SelfMailerSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -271,7 +271,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SelfMailerList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SelfMailerList>> SelfMailersListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), SelfMailerSize? size = default(SelfMailerSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<SelfMailerList>> SelfMailersListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), SelfMailerSize? size = default(SelfMailerSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -895,7 +895,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SelfMailerList</returns>
-        public SelfMailerList SelfMailersList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), SelfMailerSize? size = default(SelfMailerSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
+        public SelfMailerList SelfMailersList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), SelfMailerSize? size = default(SelfMailerSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
         {
             lob.dotnet.Client.ApiResponse<SelfMailerList> localVarResponse = SelfMailersListWithHttpInfo(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
             return localVarResponse.Data;
@@ -918,7 +918,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SelfMailerList</returns>
-        public lob.dotnet.Client.ApiResponse<SelfMailerList> SelfMailersListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), SelfMailerSize? size = default(SelfMailerSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<SelfMailerList> SelfMailersListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), SelfMailerSize? size = default(SelfMailerSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -960,7 +960,7 @@ namespace lob.dotnet.Api
             }
             if (dateCreated != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "date_created", dateCreated));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "date_created", dateCreated));
             }
             if (metadata != null)
             {
@@ -976,7 +976,7 @@ namespace lob.dotnet.Api
             }
             if (sendDate != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "send_date", sendDate));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "send_date", sendDate));
             }
             if (mailType != null)
             {
@@ -1029,7 +1029,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SelfMailerList</returns>
-        public async System.Threading.Tasks.Task<SelfMailerList> SelfMailersListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), SelfMailerSize? size = default(SelfMailerSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<SelfMailerList> SelfMailersListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), SelfMailerSize? size = default(SelfMailerSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             lob.dotnet.Client.ApiResponse<SelfMailerList> localVarResponse = await SelfMailersListWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1053,7 +1053,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SelfMailerList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<SelfMailerList>> SelfMailersListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), SelfMailerSize? size = default(SelfMailerSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<SelfMailerList>> SelfMailersListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), SelfMailerSize? size = default(SelfMailerSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1096,7 +1096,7 @@ namespace lob.dotnet.Api
             }
             if (dateCreated != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "date_created", dateCreated));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "date_created", dateCreated));
             }
             if (metadata != null)
             {
@@ -1112,7 +1112,7 @@ namespace lob.dotnet.Api
             }
             if (sendDate != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "send_date", sendDate));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "send_date", sendDate));
             }
             if (mailType != null)
             {

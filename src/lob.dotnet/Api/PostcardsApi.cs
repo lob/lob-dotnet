@@ -961,7 +961,7 @@ namespace lob.dotnet.Api
             }
             if (dateCreated != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "date_created", dateCreated));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "date_created", dateCreated));
             }
             if (metadata != null)
             {
@@ -985,7 +985,7 @@ namespace lob.dotnet.Api
             }
             if (sendDate != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "send_date", sendDate));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "send_date", sendDate));
             }
             if (mailType != null)
             {
@@ -1105,7 +1105,7 @@ namespace lob.dotnet.Api
             }
             if (dateCreated != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "date_created", dateCreated));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "date_created", dateCreated));
             }
             if (metadata != null)
             {
@@ -1121,7 +1121,7 @@ namespace lob.dotnet.Api
             }
             if (sendDate != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "send_date", sendDate));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "send_date", sendDate));
             }
             if (mailType != null)
             {

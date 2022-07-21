@@ -117,7 +117,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CheckList</returns>
-        CheckList ChecksList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
+        CheckList ChecksList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -138,7 +138,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CheckList</returns>
-        ApiResponse<CheckList> ChecksListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
+        ApiResponse<CheckList> ChecksListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -245,7 +245,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CheckList</returns>
-        System.Threading.Tasks.Task<CheckList> ChecksListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CheckList> ChecksListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -267,7 +267,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CheckList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CheckList>> ChecksListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CheckList>> ChecksListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -890,7 +890,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CheckList</returns>
-        public CheckList ChecksList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
+        public CheckList ChecksList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
         {
             lob.dotnet.Client.ApiResponse<CheckList> localVarResponse = ChecksListWithHttpInfo(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy);
             return localVarResponse.Data;
@@ -912,7 +912,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CheckList</returns>
-        public lob.dotnet.Client.ApiResponse<CheckList> ChecksListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<CheckList> ChecksListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -954,7 +954,7 @@ namespace lob.dotnet.Api
             }
             if (dateCreated != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "date_created", dateCreated));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "date_created", dateCreated));
             }
             if (metadata != null)
             {
@@ -966,7 +966,7 @@ namespace lob.dotnet.Api
             }
             if (sendDate != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "send_date", sendDate));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "send_date", sendDate));
             }
             if (mailType != null)
             {
@@ -1018,7 +1018,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CheckList</returns>
-        public async System.Threading.Tasks.Task<CheckList> ChecksListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CheckList> ChecksListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             lob.dotnet.Client.ApiResponse<CheckList> localVarResponse = await ChecksListWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1041,7 +1041,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CheckList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<CheckList>> ChecksListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<CheckList>> ChecksListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1084,7 +1084,7 @@ namespace lob.dotnet.Api
             }
             if (dateCreated != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "date_created", dateCreated));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "date_created", dateCreated));
             }
             if (metadata != null)
             {
@@ -1096,7 +1096,7 @@ namespace lob.dotnet.Api
             }
             if (sendDate != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "send_date", sendDate));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "send_date", sendDate));
             }
             if (mailType != null)
             {
