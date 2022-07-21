@@ -35,10 +35,20 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="IntlVerifications" /> class.
         /// </summary>
-        /// <param name="addresses">addresses.</param>
-        /// <param name="errors">Indicates whether any errors occurred during the verification process..</param>
+        [JsonConstructorAttribute]
+        protected IntlVerifications() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IntlVerifications" /> class.
+        /// </summary>
+        /// <param name="addresses">addresses (required).</param>
+        /// <param name="errors">Indicates whether any errors occurred during the verification process. (required).</param>
         public IntlVerifications(List<IntlVerificationOrError> addresses = default(List<IntlVerificationOrError>), bool errors = default(bool))
         {
+            // to ensure "addresses" is required (not null)
+            if (addresses == null)
+            {
+                throw new ArgumentNullException("addresses is a required property for IntlVerifications and cannot be null");
+            }
             this.Addresses = addresses;
             this.Errors = errors;
         }
@@ -46,14 +56,14 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets Addresses
         /// </summary>
-        [DataMember(Name = "addresses", EmitDefaultValue = false)]
+        [DataMember(Name = "addresses", IsRequired = true, EmitDefaultValue = false)]
         public List<IntlVerificationOrError> Addresses { get; set; }
 
         /// <summary>
         /// Indicates whether any errors occurred during the verification process.
         /// </summary>
         /// <value>Indicates whether any errors occurred during the verification process.</value>
-        [DataMember(Name = "errors", EmitDefaultValue = true)]
+        [DataMember(Name = "errors", IsRequired = true, EmitDefaultValue = true)]
         public bool Errors { get; set; }
 
         /// <summary>

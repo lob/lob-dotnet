@@ -35,12 +35,27 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LocationAnalysis" /> class.
         /// </summary>
-        /// <param name="latitude">A positive or negative decimal indicating the geographic latitude of the address..</param>
-        /// <param name="longitude">A positive or negative decimal indicating the geographic longitude of the address..</param>
-        /// <param name="distance">The distance from the input location to this exact zip code in miles..</param>
+        [JsonConstructorAttribute]
+        protected LocationAnalysis() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LocationAnalysis" /> class.
+        /// </summary>
+        /// <param name="latitude">A positive or negative decimal indicating the geographic latitude of the address. (required).</param>
+        /// <param name="longitude">A positive or negative decimal indicating the geographic longitude of the address. (required).</param>
+        /// <param name="distance">The distance from the input location to this exact zip code in miles. (required).</param>
         public LocationAnalysis(float? latitude = default(float?), float? longitude = default(float?), float distance = default(float))
         {
+            // to ensure "latitude" is required (not null)
+            if (latitude == null)
+            {
+                throw new ArgumentNullException("latitude is a required property for LocationAnalysis and cannot be null");
+            }
             this.Latitude = latitude;
+            // to ensure "longitude" is required (not null)
+            if (longitude == null)
+            {
+                throw new ArgumentNullException("longitude is a required property for LocationAnalysis and cannot be null");
+            }
             this.Longitude = longitude;
             this.Distance = distance;
         }
@@ -49,21 +64,21 @@ namespace lob.dotnet.Model
         /// A positive or negative decimal indicating the geographic latitude of the address.
         /// </summary>
         /// <value>A positive or negative decimal indicating the geographic latitude of the address.</value>
-        [DataMember(Name = "latitude", EmitDefaultValue = true)]
+        [DataMember(Name = "latitude", IsRequired = true, EmitDefaultValue = true)]
         public float? Latitude { get; set; }
 
         /// <summary>
         /// A positive or negative decimal indicating the geographic longitude of the address.
         /// </summary>
         /// <value>A positive or negative decimal indicating the geographic longitude of the address.</value>
-        [DataMember(Name = "longitude", EmitDefaultValue = true)]
+        [DataMember(Name = "longitude", IsRequired = true, EmitDefaultValue = true)]
         public float? Longitude { get; set; }
 
         /// <summary>
         /// The distance from the input location to this exact zip code in miles.
         /// </summary>
         /// <value>The distance from the input location to this exact zip code in miles.</value>
-        [DataMember(Name = "distance", EmitDefaultValue = false)]
+        [DataMember(Name = "distance", IsRequired = true, EmitDefaultValue = false)]
         public float Distance { get; set; }
 
         /// <summary>

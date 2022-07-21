@@ -42,36 +42,43 @@ namespace lob.dotnet.Model
             /// Enum NUMBER_401 for value: 401
             /// </summary>
             NUMBER_401 = 401,
+            
 
             /// <summary>
             /// Enum NUMBER_403 for value: 403
             /// </summary>
             NUMBER_403 = 403,
+            
 
             /// <summary>
             /// Enum NUMBER_404 for value: 404
             /// </summary>
             NUMBER_404 = 404,
+            
 
             /// <summary>
             /// Enum NUMBER_413 for value: 413
             /// </summary>
             NUMBER_413 = 413,
+            
 
             /// <summary>
             /// Enum NUMBER_422 for value: 422
             /// </summary>
             NUMBER_422 = 422,
+            
 
             /// <summary>
             /// Enum NUMBER_429 for value: 429
             /// </summary>
             NUMBER_429 = 429,
+            
 
             /// <summary>
             /// Enum NUMBER_500 for value: 500
             /// </summary>
             NUMBER_500 = 500
+            
 
         }
 

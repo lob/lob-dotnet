@@ -44,6 +44,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "us_autocompletion")]
             UsAutocompletion = 1
+            
 
         }
 

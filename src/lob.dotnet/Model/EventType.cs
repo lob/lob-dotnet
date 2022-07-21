@@ -43,36 +43,42 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "postcards")]
             Postcards = 1,
+            
 
             /// <summary>
             /// Enum SelfMailers for value: self mailers
             /// </summary>
             [EnumMember(Value = "self mailers")]
             SelfMailers = 2,
+            
 
             /// <summary>
             /// Enum Letters for value: letters
             /// </summary>
             [EnumMember(Value = "letters")]
             Letters = 3,
+            
 
             /// <summary>
             /// Enum Checks for value: checks
             /// </summary>
             [EnumMember(Value = "checks")]
             Checks = 4,
+            
 
             /// <summary>
             /// Enum Addresses for value: addresses
             /// </summary>
             [EnumMember(Value = "addresses")]
             Addresses = 5,
+            
 
             /// <summary>
             /// Enum BankAccounts for value: bank accounts
             /// </summary>
             [EnumMember(Value = "bank accounts")]
             BankAccounts = 6
+            
 
         }
 
@@ -80,8 +86,8 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets Resource
         /// </summary>
-        [DataMember(Name = "resource", EmitDefaultValue = false)]
-        public ResourceEnum? Resource { get; set; }
+        [DataMember(Name = "resource", IsRequired = true, EmitDefaultValue = false)]
+        public ResourceEnum Resource { get; set; }
         /// <summary>
         /// Value is resource type.
         /// </summary>
@@ -94,6 +100,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "event_type")]
             EventType = 1
+            
 
         }
 
@@ -102,17 +109,27 @@ namespace lob.dotnet.Model
         /// Value is resource type.
         /// </summary>
         /// <value>Value is resource type.</value>
-        [DataMember(Name = "object", EmitDefaultValue = false)]
-        public ObjectEnum? Object { get; set; }
+        [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = false)]
+        public ObjectEnum Object { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="EventType" /> class.
         /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="enabledForTest">Value is &#x60;true&#x60; if the event type is enabled in both the test and live environments..</param>
-        /// <param name="resource">resource.</param>
-        /// <param name="_object">Value is resource type. (default to ObjectEnum.EventType).</param>
-        public EventType(string id = default(string), bool enabledForTest = default(bool), ResourceEnum? resource = default(ResourceEnum?), ObjectEnum? _object = ObjectEnum.EventType)
+        [JsonConstructorAttribute]
+        protected EventType() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EventType" /> class.
+        /// </summary>
+        /// <param name="id">id (required).</param>
+        /// <param name="enabledForTest">Value is &#x60;true&#x60; if the event type is enabled in both the test and live environments. (required).</param>
+        /// <param name="resource">resource (required).</param>
+        /// <param name="_object">Value is resource type. (required) (default to ObjectEnum.EventType).</param>
+        public EventType(string id = default(string), bool enabledForTest = default(bool), ResourceEnum resource = default(ResourceEnum), ObjectEnum _object = ObjectEnum.EventType)
         {
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for EventType and cannot be null");
+            }
             this.Id = id;
             this.EnabledForTest = enabledForTest;
             this.Resource = resource;
@@ -122,14 +139,14 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
         /// Value is &#x60;true&#x60; if the event type is enabled in both the test and live environments.
         /// </summary>
         /// <value>Value is &#x60;true&#x60; if the event type is enabled in both the test and live environments.</value>
-        [DataMember(Name = "enabled_for_test", EmitDefaultValue = true)]
+        [DataMember(Name = "enabled_for_test", IsRequired = true, EmitDefaultValue = true)]
         public bool EnabledForTest { get; set; }
 
         /// <summary>

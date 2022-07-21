@@ -34,6 +34,7 @@ namespace __tests__.Integration {
             Configuration config = new Configuration();
             Configuration invalidConfig = new Configuration();
 
+            DotNetEnv.Env.TraversePath().Load();
             config.Username = Environment.GetEnvironmentVariable("LOB_API_TEST_KEY");
             invalidConfig.Username = "fake api key";
 

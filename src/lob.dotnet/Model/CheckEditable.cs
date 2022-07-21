@@ -44,6 +44,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "usps_first_class")]
             UspsFirstClass = 1
+            
 
         }
 
@@ -57,10 +58,15 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CheckEditable" /> class.
         /// </summary>
-        /// <param name="from">Required if &#x60;to&#x60; address is international. Must either be an address ID or an inline object with correct address parameters..</param>
-        /// <param name="to">Required if &#x60;to&#x60; address is international. Must either be an address ID or an inline object with correct address parameters..</param>
-        /// <param name="bankAccount">bankAccount.</param>
-        /// <param name="amount">The payment amount to be sent in US dollars..</param>
+        [JsonConstructorAttribute]
+        protected CheckEditable() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CheckEditable" /> class.
+        /// </summary>
+        /// <param name="from">Must either be an address ID or an inline object with correct address parameters. (required).</param>
+        /// <param name="to">Must either be an address ID or an inline object with correct address parameters. (required).</param>
+        /// <param name="bankAccount">bankAccount (required).</param>
+        /// <param name="amount">The payment amount to be sent in US dollars. (required).</param>
         /// <param name="logo">Accepts a remote URL or local file upload to an image to print (in grayscale) in the upper-left corner of your check..</param>
         /// <param name="checkBottom">The artwork to use on the bottom of the check page.  Notes: - HTML merge variables should not include delimiting whitespace. - PDF, PNG, and JPGs must be sized at 8.5\&quot;x11\&quot; at 300 DPI, while supplied HTML will be rendered and trimmed to fit on a 8.5\&quot;x11\&quot; page. - The check bottom will always be printed in black &amp; white. - Must conform to [this template](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/check_bottom_template.pdf).  Need more help? Consult our [HTML examples](#section/HTML-Examples)..</param>
         /// <param name="attachment">A document to include with the check..</param>
@@ -75,8 +81,23 @@ namespace lob.dotnet.Model
         /// <param name="billingGroupId">An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information..</param>
         public CheckEditable(string from = default(string), string to = default(string), string bankAccount = default(string), float amount = default(float), Object logo = default(Object), string checkBottom = default(string), string attachment = default(string), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), MailTypeEnum? mailType = MailTypeEnum.UspsFirstClass, string memo = default(string), int checkNumber = default(int), string message = default(string), string billingGroupId = default(string))
         {
+            // to ensure "from" is required (not null)
+            if (from == null)
+            {
+                throw new ArgumentNullException("from is a required property for CheckEditable and cannot be null");
+            }
             this.From = from;
+            // to ensure "to" is required (not null)
+            if (to == null)
+            {
+                throw new ArgumentNullException("to is a required property for CheckEditable and cannot be null");
+            }
             this.To = to;
+            // to ensure "bankAccount" is required (not null)
+            if (bankAccount == null)
+            {
+                throw new ArgumentNullException("bankAccount is a required property for CheckEditable and cannot be null");
+            }
             this.BankAccount = bankAccount;
             this.Amount = amount;
             this.Logo = logo;
@@ -94,30 +115,30 @@ namespace lob.dotnet.Model
         }
 
         /// <summary>
-        /// Required if &#x60;to&#x60; address is international. Must either be an address ID or an inline object with correct address parameters.
+        /// Must either be an address ID or an inline object with correct address parameters.
         /// </summary>
-        /// <value>Required if &#x60;to&#x60; address is international. Must either be an address ID or an inline object with correct address parameters.</value>
-        [DataMember(Name = "from", EmitDefaultValue = false)]
+        /// <value>Must either be an address ID or an inline object with correct address parameters.</value>
+        [DataMember(Name = "from", IsRequired = true, EmitDefaultValue = false)]
         public string From { get; set; }
 
         /// <summary>
-        /// Required if &#x60;to&#x60; address is international. Must either be an address ID or an inline object with correct address parameters.
+        /// Must either be an address ID or an inline object with correct address parameters.
         /// </summary>
-        /// <value>Required if &#x60;to&#x60; address is international. Must either be an address ID or an inline object with correct address parameters.</value>
-        [DataMember(Name = "to", EmitDefaultValue = false)]
+        /// <value>Must either be an address ID or an inline object with correct address parameters.</value>
+        [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = false)]
         public string To { get; set; }
 
         /// <summary>
         /// Gets or Sets BankAccount
         /// </summary>
-        [DataMember(Name = "bank_account", EmitDefaultValue = true)]
+        [DataMember(Name = "bank_account", IsRequired = true, EmitDefaultValue = true)]
         public string BankAccount { get; set; }
 
         /// <summary>
         /// The payment amount to be sent in US dollars.
         /// </summary>
         /// <value>The payment amount to be sent in US dollars.</value>
-        [DataMember(Name = "amount", EmitDefaultValue = false)]
+        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = false)]
         public float Amount { get; set; }
 
         /// <summary>

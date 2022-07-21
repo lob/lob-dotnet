@@ -28,17 +28,116 @@ namespace __tests__.Api
     {
         private Mock<IChecksApi> ChecksApiMock;
         private CheckList fakeCheckList;
+        private Check fakeCheck;
 
         public ChecksApiTests()
         {
             ChecksApiMock = new Mock<IChecksApi>();
 
-            List<Check> listOfChecks = new List<Check>();
-            Check data1 = new Check();
-            Check data2 = new Check();
+            BankAccount fakeBankAccount = new BankAccount(
+                default(string), // description
+                "fake routing number", // routingNumber
+                "fake account number", // accountNumber
+                default(BankAccount.AccountTypeEnum), // accountType
+                "fake signatory", // signatory
+                default(Dictionary<string, string>), // metadata
+                "bank_fakeId", // id
+                default(string), // signatureUrl
+                default(string), // bankName
+                false, // verified
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                default(bool), // deleted
+                BankAccount.ObjectEnum.BankAccount // _object
+            );
 
-            data1.Id = "check_fakeId1";
-            data2.Id = "check_fakeId2";
+            fakeCheck = new Check(
+              "chk_fakeId", // id
+              new Address(), // to
+              default(Address), // from
+              default(string), // description
+              default(Dictionary<string, string>), // metadata
+              default(Object), // mergeVariables
+              default(DateTime), // sendDate
+              Check.MailTypeEnum.UspsFirstClass, // mailType
+              default(string), // memo
+              default(int), // checkNumber
+              default(string), // message
+              default(float), // amount
+              fakeBankAccount, // bankAccount
+              default(string), // checkBottomTemplateId
+              default(string), // attachmentTemplateId
+              default(string), // checkBottomTemplateVersionId
+              default(string), // attachmentTemplateVersionId
+              "fake url", // url
+              Check.CarrierEnum.USPS, // carrier
+              default(List<Thumbnail>), // thumbnails
+              default(DateTime), // expectedDeliveryDate
+              default(List<TrackingEventNormal>), // trackingEvents
+              Check.ObjectEnum.Check, // _object
+              default(DateTime), // dateCreated
+              default(DateTime), // dateModified
+              default(bool) // deleted
+            );
+
+            List<Check> listOfChecks = new List<Check>();
+            Check data1 = new Check(
+              "chk_fakeId1", // id
+              new Address(), // to
+              default(Address), // from
+              default(string), // description
+              default(Dictionary<string, string>), // metadata
+              default(Object), // mergeVariables
+              default(DateTime), // sendDate
+              Check.MailTypeEnum.UspsFirstClass, // mailType
+              default(string), // memo
+              default(int), // checkNumber
+              default(string), // message
+              default(float), // amount
+              fakeBankAccount, // bankAccount
+              default(string), // checkBottomTemplateId
+              default(string), // attachmentTemplateId
+              default(string), // checkBottomTemplateVersionId
+              default(string), // attachmentTemplateVersionId
+              "fake url", // url
+              Check.CarrierEnum.USPS, // carrier
+              default(List<Thumbnail>), // thumbnails
+              default(DateTime), // expectedDeliveryDate
+              default(List<TrackingEventNormal>), // trackingEvents
+              Check.ObjectEnum.Check, // _object
+              default(DateTime), // dateCreated
+              default(DateTime), // dateModified
+              default(bool) // deleted
+            );
+            Check data2 = new Check(
+              "chk_fakeId2", // id
+              new Address(), // to
+              default(Address), // from
+              default(string), // description
+              default(Dictionary<string, string>), // metadata
+              default(Object), // mergeVariables
+              default(DateTime), // sendDate
+              Check.MailTypeEnum.UspsFirstClass, // mailType
+              default(string), // memo
+              default(int), // checkNumber
+              default(string), // message
+              default(float), // amount
+              fakeBankAccount, // bankAccount
+              default(string), // checkBottomTemplateId
+              default(string), // attachmentTemplateId
+              default(string), // checkBottomTemplateVersionId
+              default(string), // attachmentTemplateVersionId
+              "fake url", // url
+              Check.CarrierEnum.USPS, // carrier
+              default(List<Thumbnail>), // thumbnails
+              default(DateTime), // expectedDeliveryDate
+              default(List<TrackingEventNormal>), // trackingEvents
+              Check.ObjectEnum.Check, // _object
+              default(DateTime), // dateCreated
+              default(DateTime), // dateModified
+              default(bool) // deleted
+            );
+
             listOfChecks.Add(data1);
             listOfChecks.Add(data2);
 
@@ -60,9 +159,6 @@ namespace __tests__.Api
         [Test]
         public void CheckCreateTest()
         {
-            Check fakeCheck = new Check();
-            fakeCheck.Id = "check_fakeId";
-
             CheckEditable checkEditable = new CheckEditable(
                 "adr_fakeId1", // from
                 "adr_fakeId2", // to
@@ -85,7 +181,7 @@ namespace __tests__.Api
             Check response = ChecksApiMock.Object.CheckCreate(checkEditable);
 
             Assert.IsInstanceOf<Check>(response);
-            Assert.AreEqual(response.Id, "check_fakeId");
+            Assert.AreEqual(response.Id, "chk_fakeId");
         }
 
         /// <summary>
@@ -94,7 +190,6 @@ namespace __tests__.Api
         [Test]
         public void CheckCreateTestHandlesException()
         {
-            Check fakeCheck = new Check();
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
@@ -118,7 +213,7 @@ namespace __tests__.Api
         {
             CheckDeletion fakeCheck = new CheckDeletion();
 
-            fakeCheck.Id = "check_fakeId";
+            fakeCheck.Id = "chk_fakeId";
             fakeCheck.Deleted = true;
 
             ChecksApiMock.Setup(x => x.CheckCancel(fakeCheck.Id, It.IsAny<int>())).Returns(fakeCheck);
@@ -157,9 +252,6 @@ namespace __tests__.Api
         [Test]
         public void CheckRetrieveTest()
         {
-            Check fakeCheck = new Check();
-
-            fakeCheck.Id = "check_fakeId";
             ChecksApiMock.Setup(x => x.CheckRetrieve(fakeCheck.Id, It.IsAny<int>())).Returns(fakeCheck);
             Check response = ChecksApiMock.Object.CheckRetrieve(fakeCheck.Id);
 
@@ -177,10 +269,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            ChecksApiMock.Setup(x => x.CheckRetrieve(null, It.IsAny<int>())).Throws(fakeException);
+            ChecksApiMock.Setup(x => x.CheckRetrieve("fakeId", It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = ChecksApiMock.Object.CheckRetrieve(null);
+                var response = ChecksApiMock.Object.CheckRetrieve("fakeId");
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

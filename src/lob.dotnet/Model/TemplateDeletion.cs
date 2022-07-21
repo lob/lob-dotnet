@@ -44,6 +44,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "template_deleted")]
             TemplateDeleted = 1
+            
 
         }
 

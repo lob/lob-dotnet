@@ -35,16 +35,26 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="IntlVerificationsPayload" /> class.
         /// </summary>
-        /// <param name="addresses">addresses.</param>
+        [JsonConstructorAttribute]
+        protected IntlVerificationsPayload() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IntlVerificationsPayload" /> class.
+        /// </summary>
+        /// <param name="addresses">addresses (required).</param>
         public IntlVerificationsPayload(List<MultipleComponentsIntl> addresses = default(List<MultipleComponentsIntl>))
         {
+            // to ensure "addresses" is required (not null)
+            if (addresses == null)
+            {
+                throw new ArgumentNullException("addresses is a required property for IntlVerificationsPayload and cannot be null");
+            }
             this.Addresses = addresses;
         }
 
         /// <summary>
         /// Gets or Sets Addresses
         /// </summary>
-        [DataMember(Name = "addresses", EmitDefaultValue = false)]
+        [DataMember(Name = "addresses", IsRequired = true, EmitDefaultValue = false)]
         public List<MultipleComponentsIntl> Addresses { get; set; }
 
         /// <summary>

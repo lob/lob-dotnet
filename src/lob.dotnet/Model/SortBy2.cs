@@ -43,12 +43,14 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "asc")]
             Asc = 1,
+            
 
             /// <summary>
             /// Enum Desc for value: desc
             /// </summary>
             [EnumMember(Value = "desc")]
             Desc = 2
+            
 
         }
 
@@ -69,12 +71,14 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "asc")]
             Asc = 1,
+            
 
             /// <summary>
             /// Enum Desc for value: desc
             /// </summary>
             [EnumMember(Value = "desc")]
             Desc = 2
+            
 
         }
 

@@ -44,6 +44,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "usps_first_class")]
             UspsFirstClass = 1
+            
 
         }
 
@@ -65,6 +66,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "USPS")]
             USPS = 1
+            
 
         }
 
@@ -72,8 +74,8 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets Carrier
         /// </summary>
-        [DataMember(Name = "carrier", EmitDefaultValue = false)]
-        public CarrierEnum? Carrier { get; set; }
+        [DataMember(Name = "carrier", IsRequired = true, EmitDefaultValue = false)]
+        public CarrierEnum Carrier { get; set; }
         /// <summary>
         /// Defines Object
         /// </summary>
@@ -85,6 +87,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "check")]
             Check = 1
+            
 
         }
 
@@ -92,13 +95,18 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets Object
         /// </summary>
-        [DataMember(Name = "object", EmitDefaultValue = false)]
-        public ObjectEnum? Object { get; set; }
+        [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = false)]
+        public ObjectEnum Object { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Check" /> class.
         /// </summary>
-        /// <param name="id">Unique identifier prefixed with &#x60;chk_&#x60;..</param>
-        /// <param name="to">to.</param>
+        [JsonConstructorAttribute]
+        protected Check() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Check" /> class.
+        /// </summary>
+        /// <param name="id">Unique identifier prefixed with &#x60;chk_&#x60;. (required).</param>
+        /// <param name="to">to (required).</param>
         /// <param name="from">from.</param>
         /// <param name="description">An internal description that identifies this resource. Must be no longer than 255 characters. .</param>
         /// <param name="metadata">Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information..</param>
@@ -108,25 +116,52 @@ namespace lob.dotnet.Model
         /// <param name="memo">Text to include on the memo line of the check..</param>
         /// <param name="checkNumber">An integer that designates the check number. If &#x60;check_number&#x60; is not provided, checks created from a new &#x60;bank_account&#x60; will start at &#x60;10000&#x60; and increment with each check created with the &#x60;bank_account&#x60;. A provided &#x60;check_number&#x60; overrides the defaults. Subsequent checks created with the same &#x60;bank_account&#x60; will increment from the provided check number..</param>
         /// <param name="message">Max of 400 characters to be included at the bottom of the check page..</param>
-        /// <param name="amount">The payment amount to be sent in US dollars..</param>
-        /// <param name="bankAccount">bankAccount.</param>
+        /// <param name="amount">The payment amount to be sent in US dollars. (required).</param>
+        /// <param name="bankAccount">bankAccount (required).</param>
         /// <param name="checkBottomTemplateId">Unique identifier prefixed with &#x60;tmpl_&#x60;. ID of a saved [HTML template](#section/HTML-Templates)..</param>
         /// <param name="attachmentTemplateId">Unique identifier prefixed with &#x60;tmpl_&#x60;. ID of a saved [HTML template](#section/HTML-Templates)..</param>
         /// <param name="checkBottomTemplateVersionId">Unique identifier prefixed with &#x60;vrsn_&#x60;..</param>
         /// <param name="attachmentTemplateVersionId">Unique identifier prefixed with &#x60;vrsn_&#x60;..</param>
-        /// <param name="url">A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated..</param>
-        /// <param name="carrier">carrier (default to CarrierEnum.USPS).</param>
+        /// <param name="url">A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated. (required).</param>
+        /// <param name="carrier">carrier (required) (default to CarrierEnum.USPS).</param>
         /// <param name="thumbnails">thumbnails.</param>
         /// <param name="expectedDeliveryDate">A date in YYYY-MM-DD format of the mailpiece&#39;s expected delivery date based on its &#x60;send_date&#x60;..</param>
         /// <param name="trackingEvents">An array of tracking_event objects ordered by ascending &#x60;time&#x60;. Will not be populated for checks created in test mode..</param>
-        /// <param name="_object">_object (default to ObjectEnum.Check).</param>
-        /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created..</param>
-        /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified..</param>
+        /// <param name="_object">_object (required) (default to ObjectEnum.Check).</param>
+        /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created. (required).</param>
+        /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified. (required).</param>
         /// <param name="deleted">Only returned if the resource has been successfully deleted..</param>
-        public Check(string id = default(string), Address to = default(Address), Address from = default(Address), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), MailTypeEnum? mailType = MailTypeEnum.UspsFirstClass, string memo = default(string), int checkNumber = default(int), string message = default(string), float amount = default(float), BankAccount bankAccount = default(BankAccount), string checkBottomTemplateId = default(string), string attachmentTemplateId = default(string), string checkBottomTemplateVersionId = default(string), string attachmentTemplateVersionId = default(string), string url = default(string), CarrierEnum? carrier = CarrierEnum.USPS, List<Thumbnail> thumbnails = default(List<Thumbnail>), DateTime expectedDeliveryDate = default(DateTime), List<TrackingEventNormal> trackingEvents = default(List<TrackingEventNormal>), ObjectEnum? _object = ObjectEnum.Check, DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool))
+        public Check(string id = default(string), Address to = default(Address), Address from = default(Address), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), MailTypeEnum? mailType = MailTypeEnum.UspsFirstClass, string memo = default(string), int checkNumber = default(int), string message = default(string), float amount = default(float), BankAccount bankAccount = default(BankAccount), string checkBottomTemplateId = default(string), string attachmentTemplateId = default(string), string checkBottomTemplateVersionId = default(string), string attachmentTemplateVersionId = default(string), string url = default(string), CarrierEnum carrier = CarrierEnum.USPS, List<Thumbnail> thumbnails = default(List<Thumbnail>), DateTime expectedDeliveryDate = default(DateTime), List<TrackingEventNormal> trackingEvents = default(List<TrackingEventNormal>), ObjectEnum _object = ObjectEnum.Check, DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool))
         {
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for Check and cannot be null");
+            }
             this.Id = id;
+            // to ensure "to" is required (not null)
+            if (to == null)
+            {
+                throw new ArgumentNullException("to is a required property for Check and cannot be null");
+            }
             this.To = to;
+            this.Amount = amount;
+            // to ensure "bankAccount" is required (not null)
+            if (bankAccount == null)
+            {
+                throw new ArgumentNullException("bankAccount is a required property for Check and cannot be null");
+            }
+            this.BankAccount = bankAccount;
+            // to ensure "url" is required (not null)
+            if (url == null)
+            {
+                throw new ArgumentNullException("url is a required property for Check and cannot be null");
+            }
+            this.Url = url;
+            this.Carrier = carrier;
+            this.Object = _object;
+            this.DateCreated = dateCreated;
+            this.DateModified = dateModified;
             this.From = from;
             this.Description = description;
             this.Metadata = metadata;
@@ -136,20 +171,13 @@ namespace lob.dotnet.Model
             this.Memo = memo;
             this.CheckNumber = checkNumber;
             this.Message = message;
-            this.Amount = amount;
-            this.BankAccount = bankAccount;
             this.CheckBottomTemplateId = checkBottomTemplateId;
             this.AttachmentTemplateId = attachmentTemplateId;
             this.CheckBottomTemplateVersionId = checkBottomTemplateVersionId;
             this.AttachmentTemplateVersionId = attachmentTemplateVersionId;
-            this.Url = url;
-            this.Carrier = carrier;
             this.Thumbnails = thumbnails;
             this.ExpectedDeliveryDate = expectedDeliveryDate;
             this.TrackingEvents = trackingEvents;
-            this.Object = _object;
-            this.DateCreated = dateCreated;
-            this.DateModified = dateModified;
             this.Deleted = deleted;
         }
 
@@ -157,13 +185,13 @@ namespace lob.dotnet.Model
         /// Unique identifier prefixed with &#x60;chk_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;chk_&#x60;.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets To
         /// </summary>
-        [DataMember(Name = "to", EmitDefaultValue = false)]
+        [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = false)]
         public Address To { get; set; }
 
         /// <summary>
@@ -225,13 +253,13 @@ namespace lob.dotnet.Model
         /// The payment amount to be sent in US dollars.
         /// </summary>
         /// <value>The payment amount to be sent in US dollars.</value>
-        [DataMember(Name = "amount", EmitDefaultValue = false)]
+        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = false)]
         public float Amount { get; set; }
 
         /// <summary>
         /// Gets or Sets BankAccount
         /// </summary>
-        [DataMember(Name = "bank_account", EmitDefaultValue = false)]
+        [DataMember(Name = "bank_account", IsRequired = true, EmitDefaultValue = false)]
         public BankAccount BankAccount { get; set; }
 
         /// <summary>
@@ -266,7 +294,7 @@ namespace lob.dotnet.Model
         /// A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.
         /// </summary>
         /// <value>A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.</value>
-        [DataMember(Name = "url", EmitDefaultValue = false)]
+        [DataMember(Name = "url", IsRequired = true, EmitDefaultValue = false)]
         public string Url { get; set; }
 
         /// <summary>
@@ -294,14 +322,14 @@ namespace lob.dotnet.Model
         /// A timestamp in ISO 8601 format of the date the resource was created.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was created.</value>
-        [DataMember(Name = "date_created", EmitDefaultValue = false)]
+        [DataMember(Name = "date_created", IsRequired = true, EmitDefaultValue = false)]
         public DateTime DateCreated { get; set; }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was last modified.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was last modified.</value>
-        [DataMember(Name = "date_modified", EmitDefaultValue = false)]
+        [DataMember(Name = "date_modified", IsRequired = true, EmitDefaultValue = false)]
         public DateTime DateModified { get; set; }
 
         /// <summary>

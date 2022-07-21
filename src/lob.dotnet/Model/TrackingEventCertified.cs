@@ -44,6 +44,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "certified")]
             Certified = 1
+            
 
         }
 
@@ -52,8 +53,8 @@ namespace lob.dotnet.Model
         /// a Certified letter tracking event
         /// </summary>
         /// <value>a Certified letter tracking event</value>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
-        public TypeEnum? Type { get; set; }
+        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = false)]
+        public TypeEnum Type { get; set; }
         /// <summary>
         /// Name of tracking event for Certified letters. Letters sent with USPS Certified Mail are fully tracked by USPS, therefore their tracking events have an additional details object with more detailed information about the tracking event. Some certified tracking event names have multiple meanings, noted in the list here. See the description of the details object for the full set of combined certified tracking event name meanings.    * &#x60;Mailed&#x60; - Package has been accepted into the carrier network for delivery.    * &#x60;In Transit&#x60; - Maps to four distinct stages of transit.    * &#x60;In Local Area&#x60; - Package is at a location near the end destination.    * &#x60;Processed for Delivery&#x60; - Maps to two distinct stages of delivery.    * &#x60;Pickup Available&#x60; - Package is available for pickup at carrier location.    * &#x60;Delivered&#x60; - Package has been delivered.    * &#x60;Re-Routed&#x60; - Package has been forwarded.    * &#x60;Returned to Sender&#x60; - Package is to be returned to sender.    * &#x60;Issue&#x60; - Maps to (at least) 15 possible issues, some of which are actionable. 
         /// </summary>
@@ -66,54 +67,63 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "Mailed")]
             Mailed = 1,
+            
 
             /// <summary>
             /// Enum InTransit for value: In Transit
             /// </summary>
             [EnumMember(Value = "In Transit")]
             InTransit = 2,
+            
 
             /// <summary>
             /// Enum InLocalArea for value: In Local Area
             /// </summary>
             [EnumMember(Value = "In Local Area")]
             InLocalArea = 3,
+            
 
             /// <summary>
             /// Enum ProcessedForDelivery for value: Processed for Delivery
             /// </summary>
             [EnumMember(Value = "Processed for Delivery")]
             ProcessedForDelivery = 4,
+            
 
             /// <summary>
             /// Enum PickupAvailable for value: Pickup Available
             /// </summary>
             [EnumMember(Value = "Pickup Available")]
             PickupAvailable = 5,
+            
 
             /// <summary>
             /// Enum Delivered for value: Delivered
             /// </summary>
             [EnumMember(Value = "Delivered")]
             Delivered = 6,
+            
 
             /// <summary>
             /// Enum ReRouted for value: Re-Routed
             /// </summary>
             [EnumMember(Value = "Re-Routed")]
             ReRouted = 7,
+            
 
             /// <summary>
             /// Enum ReturnedToSender for value: Returned to Sender
             /// </summary>
             [EnumMember(Value = "Returned to Sender")]
             ReturnedToSender = 8,
+            
 
             /// <summary>
             /// Enum Issue for value: Issue
             /// </summary>
             [EnumMember(Value = "Issue")]
             Issue = 9
+            
 
         }
 
@@ -122,8 +132,8 @@ namespace lob.dotnet.Model
         /// Name of tracking event for Certified letters. Letters sent with USPS Certified Mail are fully tracked by USPS, therefore their tracking events have an additional details object with more detailed information about the tracking event. Some certified tracking event names have multiple meanings, noted in the list here. See the description of the details object for the full set of combined certified tracking event name meanings.    * &#x60;Mailed&#x60; - Package has been accepted into the carrier network for delivery.    * &#x60;In Transit&#x60; - Maps to four distinct stages of transit.    * &#x60;In Local Area&#x60; - Package is at a location near the end destination.    * &#x60;Processed for Delivery&#x60; - Maps to two distinct stages of delivery.    * &#x60;Pickup Available&#x60; - Package is available for pickup at carrier location.    * &#x60;Delivered&#x60; - Package has been delivered.    * &#x60;Re-Routed&#x60; - Package has been forwarded.    * &#x60;Returned to Sender&#x60; - Package is to be returned to sender.    * &#x60;Issue&#x60; - Maps to (at least) 15 possible issues, some of which are actionable. 
         /// </summary>
         /// <value>Name of tracking event for Certified letters. Letters sent with USPS Certified Mail are fully tracked by USPS, therefore their tracking events have an additional details object with more detailed information about the tracking event. Some certified tracking event names have multiple meanings, noted in the list here. See the description of the details object for the full set of combined certified tracking event name meanings.    * &#x60;Mailed&#x60; - Package has been accepted into the carrier network for delivery.    * &#x60;In Transit&#x60; - Maps to four distinct stages of transit.    * &#x60;In Local Area&#x60; - Package is at a location near the end destination.    * &#x60;Processed for Delivery&#x60; - Maps to two distinct stages of delivery.    * &#x60;Pickup Available&#x60; - Package is available for pickup at carrier location.    * &#x60;Delivered&#x60; - Package has been delivered.    * &#x60;Re-Routed&#x60; - Package has been forwarded.    * &#x60;Returned to Sender&#x60; - Package is to be returned to sender.    * &#x60;Issue&#x60; - Maps to (at least) 15 possible issues, some of which are actionable. </value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public NameEnum? Name { get; set; }
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
+        public NameEnum Name { get; set; }
         /// <summary>
         /// Defines Object
         /// </summary>
@@ -135,6 +145,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "tracking_event")]
             TrackingEvent = 1
+            
 
         }
 
@@ -142,31 +153,41 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets Object
         /// </summary>
-        [DataMember(Name = "object", EmitDefaultValue = false)]
-        public ObjectEnum? Object { get; set; }
+        [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = false)]
+        public ObjectEnum Object { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TrackingEventCertified" /> class.
         /// </summary>
-        /// <param name="type">a Certified letter tracking event.</param>
-        /// <param name="name">Name of tracking event for Certified letters. Letters sent with USPS Certified Mail are fully tracked by USPS, therefore their tracking events have an additional details object with more detailed information about the tracking event. Some certified tracking event names have multiple meanings, noted in the list here. See the description of the details object for the full set of combined certified tracking event name meanings.    * &#x60;Mailed&#x60; - Package has been accepted into the carrier network for delivery.    * &#x60;In Transit&#x60; - Maps to four distinct stages of transit.    * &#x60;In Local Area&#x60; - Package is at a location near the end destination.    * &#x60;Processed for Delivery&#x60; - Maps to two distinct stages of delivery.    * &#x60;Pickup Available&#x60; - Package is available for pickup at carrier location.    * &#x60;Delivered&#x60; - Package has been delivered.    * &#x60;Re-Routed&#x60; - Package has been forwarded.    * &#x60;Returned to Sender&#x60; - Package is to be returned to sender.    * &#x60;Issue&#x60; - Maps to (at least) 15 possible issues, some of which are actionable. .</param>
+        [JsonConstructorAttribute]
+        protected TrackingEventCertified() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TrackingEventCertified" /> class.
+        /// </summary>
+        /// <param name="type">a Certified letter tracking event (required).</param>
+        /// <param name="name">Name of tracking event for Certified letters. Letters sent with USPS Certified Mail are fully tracked by USPS, therefore their tracking events have an additional details object with more detailed information about the tracking event. Some certified tracking event names have multiple meanings, noted in the list here. See the description of the details object for the full set of combined certified tracking event name meanings.    * &#x60;Mailed&#x60; - Package has been accepted into the carrier network for delivery.    * &#x60;In Transit&#x60; - Maps to four distinct stages of transit.    * &#x60;In Local Area&#x60; - Package is at a location near the end destination.    * &#x60;Processed for Delivery&#x60; - Maps to two distinct stages of delivery.    * &#x60;Pickup Available&#x60; - Package is available for pickup at carrier location.    * &#x60;Delivered&#x60; - Package has been delivered.    * &#x60;Re-Routed&#x60; - Package has been forwarded.    * &#x60;Returned to Sender&#x60; - Package is to be returned to sender.    * &#x60;Issue&#x60; - Maps to (at least) 15 possible issues, some of which are actionable.  (required).</param>
         /// <param name="details">details.</param>
         /// <param name="location">The zip code in which the event occurred if it exists, otherwise will be the name of a Regional Distribution Center if it exists, otherwise will be null. .</param>
-        /// <param name="id">Unique identifier prefixed with &#x60;evnt_&#x60;..</param>
+        /// <param name="id">Unique identifier prefixed with &#x60;evnt_&#x60;. (required).</param>
         /// <param name="time">A timestamp in ISO 8601 format of the date USPS registered the event..</param>
-        /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created..</param>
-        /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified..</param>
-        /// <param name="_object">_object (default to ObjectEnum.TrackingEvent).</param>
-        public TrackingEventCertified(TypeEnum? type = default(TypeEnum?), NameEnum? name = default(NameEnum?), TrackingEventDetails details = default(TrackingEventDetails), string location = default(string), string id = default(string), DateTime time = default(DateTime), DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), ObjectEnum? _object = ObjectEnum.TrackingEvent)
+        /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created. (required).</param>
+        /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified. (required).</param>
+        /// <param name="_object">_object (required) (default to ObjectEnum.TrackingEvent).</param>
+        public TrackingEventCertified(TypeEnum type = default(TypeEnum), NameEnum name = default(NameEnum), TrackingEventDetails details = default(TrackingEventDetails), string location = default(string), string id = default(string), DateTime time = default(DateTime), DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), ObjectEnum _object = ObjectEnum.TrackingEvent)
         {
             this.Type = type;
             this.Name = name;
-            this.Details = details;
-            this.Location = location;
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for TrackingEventCertified and cannot be null");
+            }
             this.Id = id;
-            this.Time = time;
             this.DateCreated = dateCreated;
             this.DateModified = dateModified;
             this.Object = _object;
+            this.Details = details;
+            this.Location = location;
+            this.Time = time;
         }
 
         /// <summary>
@@ -186,7 +207,7 @@ namespace lob.dotnet.Model
         /// Unique identifier prefixed with &#x60;evnt_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;evnt_&#x60;.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
@@ -200,14 +221,14 @@ namespace lob.dotnet.Model
         /// A timestamp in ISO 8601 format of the date the resource was created.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was created.</value>
-        [DataMember(Name = "date_created", EmitDefaultValue = false)]
+        [DataMember(Name = "date_created", IsRequired = true, EmitDefaultValue = false)]
         public DateTime DateCreated { get; set; }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was last modified.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was last modified.</value>
-        [DataMember(Name = "date_modified", EmitDefaultValue = false)]
+        [DataMember(Name = "date_modified", IsRequired = true, EmitDefaultValue = false)]
         public DateTime DateModified { get; set; }
 
         /// <summary>

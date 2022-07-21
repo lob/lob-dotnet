@@ -35,13 +35,23 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UsAutocompletionsWritable" /> class.
         /// </summary>
-        /// <param name="addressPrefix">Only accepts numbers and street names in an alphanumeric format. .</param>
+        [JsonConstructorAttribute]
+        protected UsAutocompletionsWritable() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UsAutocompletionsWritable" /> class.
+        /// </summary>
+        /// <param name="addressPrefix">Only accepts numbers and street names in an alphanumeric format.  (required).</param>
         /// <param name="city">An optional city input used to filter suggestions. Case insensitive and does not match partial abbreviations. .</param>
         /// <param name="state">An optional state input used to filter suggestions. Case insensitive and does not match partial abbreviations. .</param>
         /// <param name="zipCode">An optional ZIP Code input used to filter suggestions. Matches partial entries. .</param>
         /// <param name="geoIpSort">If &#x60;true&#x60;, sort suggestions by proximity to the IP set in the &#x60;X-Forwarded-For&#x60; header. .</param>
         public UsAutocompletionsWritable(string addressPrefix = default(string), string city = default(string), string state = default(string), string zipCode = default(string), bool geoIpSort = default(bool))
         {
+            // to ensure "addressPrefix" is required (not null)
+            if (addressPrefix == null)
+            {
+                throw new ArgumentNullException("addressPrefix is a required property for UsAutocompletionsWritable and cannot be null");
+            }
             this.AddressPrefix = addressPrefix;
             this.City = city;
             this.State = state;
@@ -53,7 +63,7 @@ namespace lob.dotnet.Model
         /// Only accepts numbers and street names in an alphanumeric format. 
         /// </summary>
         /// <value>Only accepts numbers and street names in an alphanumeric format. </value>
-        [DataMember(Name = "address_prefix", EmitDefaultValue = false)]
+        [DataMember(Name = "address_prefix", IsRequired = true, EmitDefaultValue = false)]
         public string AddressPrefix { get; set; }
 
         /// <summary>

@@ -1,7 +1,7 @@
 /*
  * Lob
  *
- * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?
+ * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)? 
  *
  * The version of the OpenAPI document: 1.3.0
  * Contact: lob-openapi@lob.com
@@ -665,8 +665,8 @@ namespace lob.dotnet.Api
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json",
-                "application/x-www-form-urlencoded",
+                "application/json", 
+                "application/x-www-form-urlencoded", 
                 "multipart/form-data"
             };
 
@@ -1084,11 +1084,11 @@ namespace lob.dotnet.Api
             }
             if (dateCreated != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "date_created", dateCreated));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "date_created", dateCreated));
             }
             if (metadata != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "metadata", metadata));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "metadata", metadata));
             }
             if (scheduled != null)
             {
@@ -1096,7 +1096,7 @@ namespace lob.dotnet.Api
             }
             if (sendDate != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "send_date", sendDate));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "send_date", sendDate));
             }
             if (mailType != null)
             {
@@ -1104,7 +1104,7 @@ namespace lob.dotnet.Api
             }
             if (sortBy != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "sort_by", sortBy.ToJson()));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
             }
 
             localVarRequestOptions.Operation = "ChecksApi.ChecksList";

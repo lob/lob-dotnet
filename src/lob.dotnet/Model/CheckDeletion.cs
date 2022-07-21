@@ -44,6 +44,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "check_deleted")]
             CheckDeleted = 1
+            
 
         }
 

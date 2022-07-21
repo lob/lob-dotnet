@@ -73,7 +73,7 @@ namespace __tests__.Integration {
                 LetterEditable.AddressPlacementEnum.TopFirstPage, // addressPlacement
                 default(Object), // returnEnvelope
                 null, // perforatedPage
-                default(LetterCustomEnvelope), // customEnvelope
+                default(LetterEditableCustomEnvelope), // customEnvelope
                 address.Id, // to
                 address.Id, // from
                 "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf", // file

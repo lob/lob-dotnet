@@ -1,7 +1,7 @@
 /*
  * Lob
  *
- * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)? 
+ * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?
  *
  * The version of the OpenAPI document: 1.3.0
  * Contact: lob-openapi@lob.com
@@ -516,6 +516,16 @@ namespace lob.dotnet.Client
             else if (typeof(T).Name == "Byte[]") // for byte response
             {
                 response.Data = (T)(object)response.RawBytes;
+            }
+            else if (response.Data == null && response.Content != null && !response.Content.Contains("error")) {
+                try
+                {
+                    response.Data = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(response.Content);
+                }
+                catch (Exception ex)
+                {
+                    throw ex.InnerException != null ? ex.InnerException : ex;
+                }
             }
 
             InterceptResponse(req, response);

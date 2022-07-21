@@ -35,25 +35,40 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="IntlAutocompletionsWritable" /> class.
         /// </summary>
-        /// <param name="addressPrefix">Only accepts numbers and street names in an alphanumeric format. .</param>
+        [JsonConstructorAttribute]
+        protected IntlAutocompletionsWritable() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IntlAutocompletionsWritable" /> class.
+        /// </summary>
+        /// <param name="addressPrefix">Only accepts numbers and street names in an alphanumeric format.  (required).</param>
         /// <param name="city">An optional city input used to filter suggestions. Case insensitive and does not match partial abbreviations. .</param>
         /// <param name="state">An optional state input used to filter suggestions. Case insensitive and does not match partial abbreviations. .</param>
         /// <param name="zipCode">An optional Zip Code input used to filter suggestions. Matches partial entries. .</param>
-        /// <param name="country">country.</param>
+        /// <param name="country">country (required).</param>
         public IntlAutocompletionsWritable(string addressPrefix = default(string), string city = default(string), string state = default(string), string zipCode = default(string), CountryExtended country = default(CountryExtended))
         {
+            // to ensure "addressPrefix" is required (not null)
+            if (addressPrefix == null)
+            {
+                throw new ArgumentNullException("addressPrefix is a required property for IntlAutocompletionsWritable and cannot be null");
+            }
             this.AddressPrefix = addressPrefix;
+            // to ensure "country" is required (not null)
+            if (country == null)
+            {
+                throw new ArgumentNullException("country is a required property for IntlAutocompletionsWritable and cannot be null");
+            }
+            this.Country = country;
             this.City = city;
             this.State = state;
             this.ZipCode = zipCode;
-            this.Country = country;
         }
 
         /// <summary>
         /// Only accepts numbers and street names in an alphanumeric format. 
         /// </summary>
         /// <value>Only accepts numbers and street names in an alphanumeric format. </value>
-        [DataMember(Name = "address_prefix", EmitDefaultValue = false)]
+        [DataMember(Name = "address_prefix", IsRequired = true, EmitDefaultValue = false)]
         public string AddressPrefix { get; set; }
 
         /// <summary>
@@ -80,7 +95,7 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets Country
         /// </summary>
-        [DataMember(Name = "country", EmitDefaultValue = false)]
+        [DataMember(Name = "country", IsRequired = true, EmitDefaultValue = false)]
         public CountryExtended Country { get; set; }
 
         /// <summary>

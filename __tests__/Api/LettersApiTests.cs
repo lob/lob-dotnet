@@ -29,17 +29,101 @@ namespace __tests__.Api
     {
         private Mock<ILettersApi> LettersApiMock;
         private LetterList fakeLetterList;
+        private Letter fakeLetter;
 
         public LettersApiTests()
         {
             LettersApiMock = new Mock<ILettersApi>();
+            fakeLetter = new Letter(
+              new Address(), // to
+              new Address(), // from
+              Letter.CarrierEnum.USPS, // carrier
+              default(List<Thumbnail>), // thumbnails
+              default(DateTime), // expectedDeliveryDate
+              default(DateTime), // dateCreated
+              default(DateTime), // dateModified
+              default(bool), // deleted
+              "ltr_fakeId", // id
+              default(string), // templateId
+              default(string), // templateVersionId
+              Letter.ObjectEnum.Letter, // _object
+              default(string), // description
+              default(Dictionary<string, string>), // metadata
+              default(Object), // mergeVariables
+              default(DateTime), // sendDate
+              default(string), // extraService
+              default(string), // trackingNumber
+              default(List<TrackingEventNormal>), // trackingEvents
+              default(string), // returnAddress
+              default(MailType), // mailType
+              default(bool), // color
+              true, // doubleSided
+              Letter.AddressPlacementEnum.TopFirstPage, // addressPlacement
+              default(ReturnEnvelope), // returnEnvelope
+              null, // perforatedPage
+              default(LetterCustomEnvelope) // customEnvelope
+            );
 
             List<Letter> listOfLetters = new List<Letter>();
-            Letter data1 = new Letter();
-            Letter data2 = new Letter();
+            Letter data1 = new Letter(
+              new Address(), // to
+              new Address(), // from
+              Letter.CarrierEnum.USPS, // carrier
+              default(List<Thumbnail>), // thumbnails
+              default(DateTime), // expectedDeliveryDate
+              default(DateTime), // dateCreated
+              default(DateTime), // dateModified
+              default(bool), // deleted
+              "ltr_fakeId1", // id
+              default(string), // templateId
+              default(string), // templateVersionId
+              Letter.ObjectEnum.Letter, // _object
+              default(string), // description
+              default(Dictionary<string, string>), // metadata
+              default(Object), // mergeVariables
+              default(DateTime), // sendDate
+              default(string), // extraService
+              default(string), // trackingNumber
+              default(List<TrackingEventNormal>), // trackingEvents
+              default(string), // returnAddress
+              default(MailType), // mailType
+              default(bool), // color
+              true, // doubleSided
+              Letter.AddressPlacementEnum.TopFirstPage, // addressPlacement
+              default(ReturnEnvelope), // returnEnvelope
+              null, // perforatedPage
+              default(LetterCustomEnvelope) // customEnvelope
+            );
+            Letter data2 = new Letter(
+              new Address(), // to
+              new Address(), // from
+              Letter.CarrierEnum.USPS, // carrier
+              default(List<Thumbnail>), // thumbnails
+              default(DateTime), // expectedDeliveryDate
+              default(DateTime), // dateCreated
+              default(DateTime), // dateModified
+              default(bool), // deleted
+              "ltr_fakeId2", // id
+              default(string), // templateId
+              default(string), // templateVersionId
+              Letter.ObjectEnum.Letter, // _object
+              default(string), // description
+              default(Dictionary<string, string>), // metadata
+              default(Object), // mergeVariables
+              default(DateTime), // sendDate
+              default(string), // extraService
+              default(string), // trackingNumber
+              default(List<TrackingEventNormal>), // trackingEvents
+              default(string), // returnAddress
+              default(MailType), // mailType
+              default(bool), // color
+              true, // doubleSided
+              Letter.AddressPlacementEnum.TopFirstPage, // addressPlacement
+              default(ReturnEnvelope), // returnEnvelope
+              null, // perforatedPage
+              default(LetterCustomEnvelope) // customEnvelope
+            );
 
-            data1.Id = "ltr_fakeId1";
-            data2.Id = "ltr_fakeId2";
             listOfLetters.Add(data1);
             listOfLetters.Add(data2);
 
@@ -61,9 +145,6 @@ namespace __tests__.Api
         [Test]
         public void LetterCreateTest()
         {
-            Letter fakeLetter = new Letter();
-            fakeLetter.Id = "ltr_fakeId";
-
             LetterEditable letterEditable = new LetterEditable(
                 null, // description
                 null, // metadata
@@ -95,7 +176,6 @@ namespace __tests__.Api
         [Test]
         public void LetterCreateTestHandlesException()
         {
-            Letter fakeLetter = new Letter();
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
@@ -158,9 +238,6 @@ namespace __tests__.Api
         [Test]
         public void LetterRetrieveTest()
         {
-            Letter fakeLetter = new Letter();
-
-            fakeLetter.Id = "ltr_fakeId";
             LettersApiMock.Setup(x => x.LetterRetrieve(fakeLetter.Id, It.IsAny<int>())).Returns(fakeLetter);
             Letter response = LettersApiMock.Object.LetterRetrieve(fakeLetter.Id);
 
@@ -178,10 +255,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            LettersApiMock.Setup(x => x.LetterRetrieve(null, It.IsAny<int>())).Throws(fakeException);
+            LettersApiMock.Setup(x => x.LetterRetrieve("ltr_fakeId", It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = LettersApiMock.Object.LetterRetrieve(null);
+                var response = LettersApiMock.Object.LetterRetrieve("ltr_fakeId");
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

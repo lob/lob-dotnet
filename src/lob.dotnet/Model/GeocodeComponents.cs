@@ -35,11 +35,26 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GeocodeComponents" /> class.
         /// </summary>
-        /// <param name="zipCode">The 5-digit ZIP code.</param>
-        /// <param name="zipCodePlus4">zipCodePlus4.</param>
+        [JsonConstructorAttribute]
+        protected GeocodeComponents() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GeocodeComponents" /> class.
+        /// </summary>
+        /// <param name="zipCode">The 5-digit ZIP code (required).</param>
+        /// <param name="zipCodePlus4">zipCodePlus4 (required).</param>
         public GeocodeComponents(string zipCode = default(string), string zipCodePlus4 = default(string))
         {
+            // to ensure "zipCode" is required (not null)
+            if (zipCode == null)
+            {
+                throw new ArgumentNullException("zipCode is a required property for GeocodeComponents and cannot be null");
+            }
             this.ZipCode = zipCode;
+            // to ensure "zipCodePlus4" is required (not null)
+            if (zipCodePlus4 == null)
+            {
+                throw new ArgumentNullException("zipCodePlus4 is a required property for GeocodeComponents and cannot be null");
+            }
             this.ZipCodePlus4 = zipCodePlus4;
         }
 
@@ -47,13 +62,13 @@ namespace lob.dotnet.Model
         /// The 5-digit ZIP code
         /// </summary>
         /// <value>The 5-digit ZIP code</value>
-        [DataMember(Name = "zip_code", EmitDefaultValue = false)]
+        [DataMember(Name = "zip_code", IsRequired = true, EmitDefaultValue = false)]
         public string ZipCode { get; set; }
 
         /// <summary>
         /// Gets or Sets ZipCodePlus4
         /// </summary>
-        [DataMember(Name = "zip_code_plus_4", EmitDefaultValue = false)]
+        [DataMember(Name = "zip_code_plus_4", IsRequired = true, EmitDefaultValue = false)]
         public string ZipCodePlus4 { get; set; }
 
         /// <summary>

@@ -43,6 +43,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "us_zip_lookup")]
             UsZipLookup = 1
+            
 
         }
 
@@ -50,23 +51,43 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets Object
         /// </summary>
-        [DataMember(Name = "object", EmitDefaultValue = false)]
-        public ObjectEnum? Object { get; set; }
+        [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = false)]
+        public ObjectEnum Object { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Zip" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        protected Zip() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="Zip" /> class.
         /// </summary>
         /// <param name="zipCode">A 5-digit ZIP code..</param>
-        /// <param name="id">Unique identifier prefixed with &#x60;us_zip_&#x60;..</param>
-        /// <param name="cities">An array of city objects containing valid cities for the &#x60;zip_code&#x60;. Multiple cities will be returned if more than one city is associated with the input ZIP code. .</param>
-        /// <param name="zipCodeType">zipCodeType.</param>
-        /// <param name="_object">_object (default to ObjectEnum.UsZipLookup).</param>
-        public Zip(string zipCode = default(string), string id = default(string), List<ZipLookupCity> cities = default(List<ZipLookupCity>), ZipCodeType zipCodeType = default(ZipCodeType), ObjectEnum? _object = ObjectEnum.UsZipLookup)
+        /// <param name="id">Unique identifier prefixed with &#x60;us_zip_&#x60;. (required).</param>
+        /// <param name="cities">An array of city objects containing valid cities for the &#x60;zip_code&#x60;. Multiple cities will be returned if more than one city is associated with the input ZIP code.  (required).</param>
+        /// <param name="zipCodeType">zipCodeType (required).</param>
+        /// <param name="_object">_object (required) (default to ObjectEnum.UsZipLookup).</param>
+        public Zip(string zipCode = default(string), string id = default(string), List<ZipLookupCity> cities = default(List<ZipLookupCity>), ZipCodeType zipCodeType = default(ZipCodeType), ObjectEnum _object = ObjectEnum.UsZipLookup)
         {
-            this.ZipCode = zipCode;
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for Zip and cannot be null");
+            }
             this.Id = id;
+            // to ensure "cities" is required (not null)
+            if (cities == null)
+            {
+                throw new ArgumentNullException("cities is a required property for Zip and cannot be null");
+            }
             this.Cities = cities;
+            // to ensure "zipCodeType" is required (not null)
+            if (zipCodeType == null)
+            {
+                throw new ArgumentNullException("zipCodeType is a required property for Zip and cannot be null");
+            }
             this.ZipCodeType = zipCodeType;
             this.Object = _object;
+            this.ZipCode = zipCode;
         }
 
         /// <summary>
@@ -80,20 +101,20 @@ namespace lob.dotnet.Model
         /// Unique identifier prefixed with &#x60;us_zip_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;us_zip_&#x60;.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
         /// An array of city objects containing valid cities for the &#x60;zip_code&#x60;. Multiple cities will be returned if more than one city is associated with the input ZIP code. 
         /// </summary>
         /// <value>An array of city objects containing valid cities for the &#x60;zip_code&#x60;. Multiple cities will be returned if more than one city is associated with the input ZIP code. </value>
-        [DataMember(Name = "cities", EmitDefaultValue = false)]
+        [DataMember(Name = "cities", IsRequired = true, EmitDefaultValue = false)]
         public List<ZipLookupCity> Cities { get; set; }
 
         /// <summary>
         /// Gets or Sets ZipCodeType
         /// </summary>
-        [DataMember(Name = "zip_code_type", EmitDefaultValue = false)]
+        [DataMember(Name = "zip_code_type", IsRequired = true, EmitDefaultValue = false)]
         public ZipCodeType ZipCodeType { get; set; }
 
         /// <summary>

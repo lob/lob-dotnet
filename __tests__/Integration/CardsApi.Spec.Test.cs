@@ -43,7 +43,7 @@ namespace __tests__.Integration {
                 "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf", // front
                 "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf", // back
                 CardEditable.SizeEnum._2125x3375, // size
-                "Test card"
+                "C# integration test card"
             );
 
             cardUpdatable = new CardUpdatable(

@@ -29,17 +29,77 @@ namespace __tests__.Api
     {
         private Mock<ICardsApi> cardsApiMock;
         private CardList fakeCardList;
+        private Card fakeCard;
 
         public CardsApiTests()
         {
             cardsApiMock = new Mock<ICardsApi>();
+            fakeCard = new Card(
+                "card_fakeId", // id
+                "fake url", // url
+                false, // autoReorder
+                null, // reorderQuantity
+                "fake raw url", // rawUrl
+                "fake front original url", // frontOriginalUrl
+                "fake back original url", // backOriginalUrl
+                new List<Thumbnail>(), // thumbnails
+                0, // availableQuantity
+                0, // pendingQuantity
+                default(Card.StatusEnum), // status
+                Card.OrientationEnum.Horizontal, // orientation
+                0, // thresholdAmount
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                default(bool), // deleted
+                Card.ObjectEnum.Card, // _object
+                default(string), // description
+                Card.SizeEnum._2125x3375 // size
+            );
 
             List<Card> listOfCards = new List<Card>();
-            Card data1 = new Card();
-            Card data2 = new Card();
+            Card data1 = new Card(
+                "card_fakeId1", // id
+                "fake url", // url
+                false, // autoReorder
+                null, // reorderQuantity
+                "fake raw url", // rawUrl
+                "fake front original url", // frontOriginalUrl
+                "fake back original url", // backOriginalUrl
+                new List<Thumbnail>(), // thumbnails
+                0, // availableQuantity
+                0, // pendingQuantity
+                default(Card.StatusEnum), // status
+                Card.OrientationEnum.Horizontal, // orientation
+                0, // thresholdAmount
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                default(bool), // deleted
+                Card.ObjectEnum.Card, // _object
+                default(string), // description
+                Card.SizeEnum._2125x3375 // size
+            );
+            Card data2 = new Card(
+                "card_fakeId2", // id
+                "fake url", // url
+                false, // autoReorder
+                null, // reorderQuantity
+                "fake raw url", // rawUrl
+                "fake front original url", // frontOriginalUrl
+                "fake back original url", // backOriginalUrl
+                new List<Thumbnail>(), // thumbnails
+                0, // availableQuantity
+                0, // pendingQuantity
+                default(Card.StatusEnum), // status
+                Card.OrientationEnum.Horizontal, // orientation
+                0, // thresholdAmount
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                default(bool), // deleted
+                Card.ObjectEnum.Card, // _object
+                default(string), // description
+                Card.SizeEnum._2125x3375 // size
+            );
 
-            data1.Id = "card_fakeId1";
-            data2.Id = "card_fakeId2";
             listOfCards.Add(data1);
             listOfCards.Add(data2);
 
@@ -61,9 +121,6 @@ namespace __tests__.Api
         [Test]
         public void CardCreateTest()
         {
-            Card fakeCard = new Card();
-            fakeCard.Id = "card_fakeId";
-
             CardEditable cardEditable = new CardEditable(
                 "fake front", // front
                 "fake back", // back
@@ -84,7 +141,6 @@ namespace __tests__.Api
         [Test]
         public void CardCreateTestHandlesException()
         {
-            Card fakeCard = new Card();
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
@@ -147,9 +203,6 @@ namespace __tests__.Api
         [Test]
         public void CardRetrieveTest()
         {
-            Card fakeCard = new Card();
-
-            fakeCard.Id = "card_fakeId";
             cardsApiMock.Setup(x => x.CardRetrieve(fakeCard.Id, It.IsAny<int>())).Returns(fakeCard);
             Card response = cardsApiMock.Object.CardRetrieve(fakeCard.Id);
 
@@ -167,10 +220,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            cardsApiMock.Setup(x => x.CardRetrieve(null, It.IsAny<int>())).Throws(fakeException);
+            cardsApiMock.Setup(x => x.CardRetrieve("fakeId", It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = cardsApiMock.Object.CardRetrieve(null);
+                var response = cardsApiMock.Object.CardRetrieve("fakeId");
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -262,22 +315,6 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test CardListWithSortByParam
-        /// </summary>
-        [Test]
-        public void CardListTestWithSortByParam()
-        {
-            SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Desc);
-
-            cardsApiMock.Setup(x => x.CardsList(null, null, null, sortBy, It.IsAny<int>())).Returns(fakeCardList);
-
-            var response = cardsApiMock.Object.CardsList(null, null, null, sortBy);
-
-            Assert.IsInstanceOf<CardList>(response);
-            Assert.AreEqual(response.Count, fakeCardList.Count);
-        }
-
-        /// <summary>
         /// Test CardUpdate
         /// </summary>
         [Test]
@@ -288,9 +325,6 @@ namespace __tests__.Api
                 true,
                 10000
             );
-
-            Card fakeCard = new Card();
-            fakeCard.Id = "card_fakeId";
 
             cardsApiMock.Setup(x => x.CardUpdate(fakeCard.Id, cardUpdatable, It.IsAny<int>())).Returns(fakeCard);
 

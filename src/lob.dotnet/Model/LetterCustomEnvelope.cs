@@ -43,6 +43,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "envelope")]
             Envelope = 1
+            
 
         }
 

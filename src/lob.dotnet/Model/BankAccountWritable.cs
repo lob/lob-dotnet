@@ -35,19 +35,44 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="BankAccountWritable" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected BankAccountWritable() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BankAccountWritable" /> class.
+        /// </summary>
         /// <param name="description">An internal description that identifies this resource. Must be no longer than 255 characters. .</param>
-        /// <param name="routingNumber">Must be a [valid US routing number](https://www.frbservices.org/index.html)..</param>
-        /// <param name="accountNumber">accountNumber.</param>
-        /// <param name="accountType">accountType.</param>
-        /// <param name="signatory">The signatory associated with your account. This name will be printed on checks created with this bank account. If you prefer to use a custom signature image on your checks instead, please create your bank account from the [Dashboard](https://dashboard.lob.com/#/login)..</param>
+        /// <param name="routingNumber">Must be a [valid US routing number](https://www.frbservices.org/index.html). (required).</param>
+        /// <param name="accountNumber">accountNumber (required).</param>
+        /// <param name="accountType">accountType (required).</param>
+        /// <param name="signatory">The signatory associated with your account. This name will be printed on checks created with this bank account. If you prefer to use a custom signature image on your checks instead, please create your bank account from the [Dashboard](https://dashboard.lob.com/#/login). (required).</param>
         /// <param name="metadata">Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information..</param>
         public BankAccountWritable(string description = default(string), string routingNumber = default(string), string accountNumber = default(string), BankTypeEnum accountType = default(BankTypeEnum), string signatory = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>))
         {
-            this.Description = description;
+            // to ensure "routingNumber" is required (not null)
+            if (routingNumber == null)
+            {
+                throw new ArgumentNullException("routingNumber is a required property for BankAccountWritable and cannot be null");
+            }
             this.RoutingNumber = routingNumber;
+            // to ensure "accountNumber" is required (not null)
+            if (accountNumber == null)
+            {
+                throw new ArgumentNullException("accountNumber is a required property for BankAccountWritable and cannot be null");
+            }
             this.AccountNumber = accountNumber;
+            // to ensure "accountType" is required (not null)
+            if (accountType == null)
+            {
+                throw new ArgumentNullException("accountType is a required property for BankAccountWritable and cannot be null");
+            }
             this.AccountType = accountType;
+            // to ensure "signatory" is required (not null)
+            if (signatory == null)
+            {
+                throw new ArgumentNullException("signatory is a required property for BankAccountWritable and cannot be null");
+            }
             this.Signatory = signatory;
+            this.Description = description;
             this.Metadata = metadata;
         }
 
@@ -62,26 +87,26 @@ namespace lob.dotnet.Model
         /// Must be a [valid US routing number](https://www.frbservices.org/index.html).
         /// </summary>
         /// <value>Must be a [valid US routing number](https://www.frbservices.org/index.html).</value>
-        [DataMember(Name = "routing_number", EmitDefaultValue = false)]
+        [DataMember(Name = "routing_number", IsRequired = true, EmitDefaultValue = false)]
         public string RoutingNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets AccountNumber
         /// </summary>
-        [DataMember(Name = "account_number", EmitDefaultValue = false)]
+        [DataMember(Name = "account_number", IsRequired = true, EmitDefaultValue = false)]
         public string AccountNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets AccountType
         /// </summary>
-        [DataMember(Name = "account_type", EmitDefaultValue = false)]
+        [DataMember(Name = "account_type", IsRequired = true, EmitDefaultValue = false)]
         public BankTypeEnum AccountType { get; set; }
 
         /// <summary>
         /// The signatory associated with your account. This name will be printed on checks created with this bank account. If you prefer to use a custom signature image on your checks instead, please create your bank account from the [Dashboard](https://dashboard.lob.com/#/login).
         /// </summary>
         /// <value>The signatory associated with your account. This name will be printed on checks created with this bank account. If you prefer to use a custom signature image on your checks instead, please create your bank account from the [Dashboard](https://dashboard.lob.com/#/login).</value>
-        [DataMember(Name = "signatory", EmitDefaultValue = false)]
+        [DataMember(Name = "signatory", IsRequired = true, EmitDefaultValue = false)]
         public string Signatory { get; set; }
 
         /// <summary>

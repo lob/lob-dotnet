@@ -44,12 +44,14 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "company")]
             Company = 1,
+            
 
             /// <summary>
             /// Enum Individual for value: individual
             /// </summary>
             [EnumMember(Value = "individual")]
             Individual = 2
+            
 
         }
 
@@ -58,8 +60,8 @@ namespace lob.dotnet.Model
         /// The type of entity that holds the account.
         /// </summary>
         /// <value>The type of entity that holds the account.</value>
-        [DataMember(Name = "account_type", EmitDefaultValue = false)]
-        public AccountTypeEnum? AccountType { get; set; }
+        [DataMember(Name = "account_type", IsRequired = true, EmitDefaultValue = false)]
+        public AccountTypeEnum AccountType { get; set; }
         /// <summary>
         /// Defines Object
         /// </summary>
@@ -71,6 +73,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "bank_account")]
             BankAccount = 1
+            
 
         }
 
@@ -78,41 +81,66 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets Object
         /// </summary>
-        [DataMember(Name = "object", EmitDefaultValue = false)]
-        public ObjectEnum? Object { get; set; }
+        [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = false)]
+        public ObjectEnum Object { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BankAccount" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        protected BankAccount() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="BankAccount" /> class.
         /// </summary>
         /// <param name="description">An internal description that identifies this resource. Must be no longer than 255 characters. .</param>
-        /// <param name="routingNumber">Must be a [valid US routing number](https://www.frbservices.org/index.html)..</param>
-        /// <param name="accountNumber">accountNumber.</param>
-        /// <param name="accountType">The type of entity that holds the account..</param>
-        /// <param name="signatory">The signatory associated with your account. This name will be printed on checks created with this bank account. If you prefer to use a custom signature image on your checks instead, please create your bank account from the [Dashboard](https://dashboard.lob.com/#/login)..</param>
+        /// <param name="routingNumber">Must be a [valid US routing number](https://www.frbservices.org/index.html). (required).</param>
+        /// <param name="accountNumber">accountNumber (required).</param>
+        /// <param name="accountType">The type of entity that holds the account. (required).</param>
+        /// <param name="signatory">The signatory associated with your account. This name will be printed on checks created with this bank account. If you prefer to use a custom signature image on your checks instead, please create your bank account from the [Dashboard](https://dashboard.lob.com/#/login). (required).</param>
         /// <param name="metadata">Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information..</param>
-        /// <param name="id">Unique identifier prefixed with &#x60;bank_&#x60;..</param>
+        /// <param name="id">Unique identifier prefixed with &#x60;bank_&#x60;. (required).</param>
         /// <param name="signatureUrl">A signed link to the signature image. will be generated..</param>
         /// <param name="bankName">The name of the bank based on the provided routing number, e.g. &#x60;JPMORGAN CHASE BANK&#x60;..</param>
         /// <param name="verified">A bank account must be verified before a check can be created. (default to false).</param>
-        /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created..</param>
-        /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified..</param>
+        /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created. (required).</param>
+        /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified. (required).</param>
         /// <param name="deleted">Only returned if the resource has been successfully deleted..</param>
-        /// <param name="_object">_object (default to ObjectEnum.BankAccount).</param>
-        public BankAccount(string description = default(string), string routingNumber = default(string), string accountNumber = default(string), AccountTypeEnum? accountType = default(AccountTypeEnum?), string signatory = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), string id = default(string), string signatureUrl = default(string), string bankName = default(string), bool verified = false, DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), ObjectEnum? _object = ObjectEnum.BankAccount)
+        /// <param name="_object">_object (required) (default to ObjectEnum.BankAccount).</param>
+        public BankAccount(string description = default(string), string routingNumber = default(string), string accountNumber = default(string), AccountTypeEnum accountType = default(AccountTypeEnum), string signatory = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), string id = default(string), string signatureUrl = default(string), string bankName = default(string), bool verified = false, DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), ObjectEnum _object = ObjectEnum.BankAccount)
         {
-            this.Description = description;
+            // to ensure "routingNumber" is required (not null)
+            if (routingNumber == null)
+            {
+                throw new ArgumentNullException("routingNumber is a required property for BankAccount and cannot be null");
+            }
             this.RoutingNumber = routingNumber;
+            // to ensure "accountNumber" is required (not null)
+            if (accountNumber == null)
+            {
+                throw new ArgumentNullException("accountNumber is a required property for BankAccount and cannot be null");
+            }
             this.AccountNumber = accountNumber;
             this.AccountType = accountType;
+            // to ensure "signatory" is required (not null)
+            if (signatory == null)
+            {
+                throw new ArgumentNullException("signatory is a required property for BankAccount and cannot be null");
+            }
             this.Signatory = signatory;
-            this.Metadata = metadata;
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for BankAccount and cannot be null");
+            }
             this.Id = id;
+            this.DateCreated = dateCreated;
+            this.DateModified = dateModified;
+            this.Object = _object;
+            this.Description = description;
+            this.Metadata = metadata;
             this.SignatureUrl = signatureUrl;
             this.BankName = bankName;
             this.Verified = verified;
-            this.DateCreated = dateCreated;
-            this.DateModified = dateModified;
             this.Deleted = deleted;
-            this.Object = _object;
         }
 
         /// <summary>
@@ -126,20 +154,20 @@ namespace lob.dotnet.Model
         /// Must be a [valid US routing number](https://www.frbservices.org/index.html).
         /// </summary>
         /// <value>Must be a [valid US routing number](https://www.frbservices.org/index.html).</value>
-        [DataMember(Name = "routing_number", EmitDefaultValue = false)]
+        [DataMember(Name = "routing_number", IsRequired = true, EmitDefaultValue = false)]
         public string RoutingNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets AccountNumber
         /// </summary>
-        [DataMember(Name = "account_number", EmitDefaultValue = false)]
+        [DataMember(Name = "account_number", IsRequired = true, EmitDefaultValue = false)]
         public string AccountNumber { get; set; }
 
         /// <summary>
         /// The signatory associated with your account. This name will be printed on checks created with this bank account. If you prefer to use a custom signature image on your checks instead, please create your bank account from the [Dashboard](https://dashboard.lob.com/#/login).
         /// </summary>
         /// <value>The signatory associated with your account. This name will be printed on checks created with this bank account. If you prefer to use a custom signature image on your checks instead, please create your bank account from the [Dashboard](https://dashboard.lob.com/#/login).</value>
-        [DataMember(Name = "signatory", EmitDefaultValue = false)]
+        [DataMember(Name = "signatory", IsRequired = true, EmitDefaultValue = false)]
         public string Signatory { get; set; }
 
         /// <summary>
@@ -153,7 +181,7 @@ namespace lob.dotnet.Model
         /// Unique identifier prefixed with &#x60;bank_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;bank_&#x60;.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
@@ -181,14 +209,14 @@ namespace lob.dotnet.Model
         /// A timestamp in ISO 8601 format of the date the resource was created.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was created.</value>
-        [DataMember(Name = "date_created", EmitDefaultValue = false)]
+        [DataMember(Name = "date_created", IsRequired = true, EmitDefaultValue = false)]
         public DateTime DateCreated { get; set; }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was last modified.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was last modified.</value>
-        [DataMember(Name = "date_modified", EmitDefaultValue = false)]
+        [DataMember(Name = "date_modified", IsRequired = true, EmitDefaultValue = false)]
         public DateTime DateModified { get; set; }
 
         /// <summary>

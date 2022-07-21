@@ -35,16 +35,41 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ZipLookupCity" /> class.
         /// </summary>
-        /// <param name="city">city.</param>
-        /// <param name="state">The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. .</param>
-        /// <param name="county">County name of the address city..</param>
-        /// <param name="countyFips">A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies &#x60;components[county]&#x60;. It consists of a 2-digit state code and a 3-digit county code. .</param>
-        /// <param name="preferred">Indicates whether or not the city is the [USPS default city](https://en.wikipedia.org/wiki/ZIP_Code#ZIP_Codes_and_previous_zoning_lines) (preferred city) of a ZIP code. There is only one preferred city per ZIP code, which will always be in position 0 in the array of cities. .</param>
+        [JsonConstructorAttribute]
+        protected ZipLookupCity() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ZipLookupCity" /> class.
+        /// </summary>
+        /// <param name="city">city (required).</param>
+        /// <param name="state">The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state.  (required).</param>
+        /// <param name="county">County name of the address city. (required).</param>
+        /// <param name="countyFips">A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies &#x60;components[county]&#x60;. It consists of a 2-digit state code and a 3-digit county code.  (required).</param>
+        /// <param name="preferred">Indicates whether or not the city is the [USPS default city](https://en.wikipedia.org/wiki/ZIP_Code#ZIP_Codes_and_previous_zoning_lines) (preferred city) of a ZIP code. There is only one preferred city per ZIP code, which will always be in position 0 in the array of cities.  (required).</param>
         public ZipLookupCity(string city = default(string), string state = default(string), string county = default(string), string countyFips = default(string), bool preferred = default(bool))
         {
+            // to ensure "city" is required (not null)
+            if (city == null)
+            {
+                throw new ArgumentNullException("city is a required property for ZipLookupCity and cannot be null");
+            }
             this.City = city;
+            // to ensure "state" is required (not null)
+            if (state == null)
+            {
+                throw new ArgumentNullException("state is a required property for ZipLookupCity and cannot be null");
+            }
             this.State = state;
+            // to ensure "county" is required (not null)
+            if (county == null)
+            {
+                throw new ArgumentNullException("county is a required property for ZipLookupCity and cannot be null");
+            }
             this.County = county;
+            // to ensure "countyFips" is required (not null)
+            if (countyFips == null)
+            {
+                throw new ArgumentNullException("countyFips is a required property for ZipLookupCity and cannot be null");
+            }
             this.CountyFips = countyFips;
             this.Preferred = preferred;
         }
@@ -52,35 +77,35 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets City
         /// </summary>
-        [DataMember(Name = "city", EmitDefaultValue = false)]
+        [DataMember(Name = "city", IsRequired = true, EmitDefaultValue = false)]
         public string City { get; set; }
 
         /// <summary>
         /// The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. 
         /// </summary>
         /// <value>The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. </value>
-        [DataMember(Name = "state", EmitDefaultValue = false)]
+        [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = false)]
         public string State { get; set; }
 
         /// <summary>
         /// County name of the address city.
         /// </summary>
         /// <value>County name of the address city.</value>
-        [DataMember(Name = "county", EmitDefaultValue = false)]
+        [DataMember(Name = "county", IsRequired = true, EmitDefaultValue = false)]
         public string County { get; set; }
 
         /// <summary>
         /// A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies &#x60;components[county]&#x60;. It consists of a 2-digit state code and a 3-digit county code. 
         /// </summary>
         /// <value>A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies &#x60;components[county]&#x60;. It consists of a 2-digit state code and a 3-digit county code. </value>
-        [DataMember(Name = "county_fips", EmitDefaultValue = false)]
+        [DataMember(Name = "county_fips", IsRequired = true, EmitDefaultValue = false)]
         public string CountyFips { get; set; }
 
         /// <summary>
         /// Indicates whether or not the city is the [USPS default city](https://en.wikipedia.org/wiki/ZIP_Code#ZIP_Codes_and_previous_zoning_lines) (preferred city) of a ZIP code. There is only one preferred city per ZIP code, which will always be in position 0 in the array of cities. 
         /// </summary>
         /// <value>Indicates whether or not the city is the [USPS default city](https://en.wikipedia.org/wiki/ZIP_Code#ZIP_Codes_and_previous_zoning_lines) (preferred city) of a ZIP code. There is only one preferred city per ZIP code, which will always be in position 0 in the array of cities. </value>
-        [DataMember(Name = "preferred", EmitDefaultValue = true)]
+        [DataMember(Name = "preferred", IsRequired = true, EmitDefaultValue = true)]
         public bool Preferred { get; set; }
 
         /// <summary>
@@ -204,13 +229,6 @@ namespace lob.dotnet.Model
             if (this.State != null && this.State.Length > 2)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for State, length must be less than 2.", new [] { "State" });
-            }
-
-            // CountyFips (string) pattern
-            Regex regexCountyFips = new Regex(@"\\d{5}", RegexOptions.CultureInvariant);
-            if (false == regexCountyFips.Match(this.CountyFips).Success)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CountyFips, must match a pattern of " + regexCountyFips, new [] { "CountyFips" });
             }
 
             yield break;

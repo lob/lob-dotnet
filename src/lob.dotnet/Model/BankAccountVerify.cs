@@ -35,9 +35,19 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="BankAccountVerify" /> class.
         /// </summary>
-        /// <param name="amounts">In live mode, an array containing the two micro deposits (in cents) placed in the bank account. In test mode, no micro deposits will be placed, so any two integers between &#x60;1&#x60; and &#x60;100&#x60; will work..</param>
+        [JsonConstructorAttribute]
+        protected BankAccountVerify() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BankAccountVerify" /> class.
+        /// </summary>
+        /// <param name="amounts">In live mode, an array containing the two micro deposits (in cents) placed in the bank account. In test mode, no micro deposits will be placed, so any two integers between &#x60;1&#x60; and &#x60;100&#x60; will work. (required).</param>
         public BankAccountVerify(List<int> amounts = default(List<int>))
         {
+            // to ensure "amounts" is required (not null)
+            if (amounts == null)
+            {
+                throw new ArgumentNullException("amounts is a required property for BankAccountVerify and cannot be null");
+            }
             this.Amounts = amounts;
         }
 
@@ -45,7 +55,7 @@ namespace lob.dotnet.Model
         /// In live mode, an array containing the two micro deposits (in cents) placed in the bank account. In test mode, no micro deposits will be placed, so any two integers between &#x60;1&#x60; and &#x60;100&#x60; will work.
         /// </summary>
         /// <value>In live mode, an array containing the two micro deposits (in cents) placed in the bank account. In test mode, no micro deposits will be placed, so any two integers between &#x60;1&#x60; and &#x60;100&#x60; will work.</value>
-        [DataMember(Name = "amounts", EmitDefaultValue = false)]
+        [DataMember(Name = "amounts", IsRequired = true, EmitDefaultValue = false)]
         public List<int> Amounts { get; set; }
 
         /// <summary>
