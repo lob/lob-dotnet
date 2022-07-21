@@ -209,18 +209,15 @@ namespace __tests__.Integration {
             Assert.NotNull(response.TotalCount);
         }
 
-        /* TODO:  [DXP-1028] fix unpacking dictionaries into query params
         [Test]
         public void CheckListTestWithDateCreatedParameter() {
-            Dictionary<String, String> dateCreated = new Dictionary<String, String>();
-            dateCreated.Add("gt", "2020-01-01");
-            dateCreated.Add("lt", "2020-01-31T12");
+            Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
+            DateTime lastMonth = DateTime.Today.AddMonths(-1);
+            dateCreated.Add("lt", lastMonth);
 
             CheckList response = validApi.ChecksList(null, null, null, null, dateCreated);
-            Console.WriteLine(response);
             Assert.Greater(response.Count, 0);
         }
-        */
 
         [Test]
         public void CheckListTestWithMetadataParameter() {
@@ -239,17 +236,15 @@ namespace __tests__.Integration {
             Assert.Greater(response.Count, 0);
         }
 
-        /* TODO: [DXP-1028]
         [Test]
         public void CheckListTestWithSendDateParameter() {
             Dictionary<String, String> sendDate = new Dictionary<String, String>();
-            sendDate.Add("gt", "2020-01-01");
-            sendDate.Add("lt", "2020-01-31T12");
+            DateTime lastMonth = DateTime.Today.AddMonths(-1);
+            sendDate.Add("lt", lastMonth.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 
             CheckList response = validApi.ChecksList(null, null, null, null, null, null, null, sendDate);
             Assert.Greater(response.Count, 0);
         }
-        */
 
         [Test]
         public void CheckListTestWithMailTypeParameter() {

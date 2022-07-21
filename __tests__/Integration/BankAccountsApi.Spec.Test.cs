@@ -186,18 +186,15 @@ namespace __tests__.Integration {
             Assert.NotNull(response.TotalCount);
         }
 
-        /* TODO: fix unpacking dictionaries into query params
         [Test]
         public void BankAccountListTestWithDateCreatedParameter() {
-            Dictionary<String, String> dateCreated = new Dictionary<String, String>();
-            dateCreated.Add("gt", "2020-01-01");
-            dateCreated.Add("lt", "2020-01-31T12");
+            Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
+            DateTime lastMonth = DateTime.Today.AddMonths(-1);
+            dateCreated.Add("lt", lastMonth);
 
             BankAccountList response = validApi.BankAccountsList(null, null, null, null, dateCreated, null);
-            Console.WriteLine(response);
             Assert.Greater(response.Count, 0);
         }
-        */
 
         [Test]
         public void BankAccountListTestWithMetadataParameter() {

@@ -291,9 +291,9 @@ namespace __tests__.Api
         [Test]
         public void PostcardListTestWithDateCreatedParam()
         {
-            Dictionary<String, String> dateCreated = new Dictionary<String, String>();
-            dateCreated.Add("gt", "2020-01-01");
-            dateCreated.Add("lt", "2020-01-31T12");
+            Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
+            DateTime lastMonth = DateTime.Today.AddMonths(-1);
+            dateCreated.Add("lt", lastMonth);
 
             PostcardsApiMock.Setup(x => x.PostcardsList(null, null, null, null, dateCreated, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
 

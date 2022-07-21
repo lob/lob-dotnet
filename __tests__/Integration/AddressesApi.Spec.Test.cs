@@ -1,7 +1,7 @@
 /*
  * Lob
  *
- * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)? 
+ * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?
  *
  * The version of the OpenAPI document: 1.3.0
  * Contact: lob-openapi@lob.com
@@ -122,6 +122,16 @@ namespace __tests__.Integration {
             includeList.Add("total_es");
             AddressList response = validApi.AddressesList(null, null, null, includeList, null, null);
 
+            Assert.Greater(response.Count, 0);
+        }
+
+        [Test]
+        public void AddressListTestWithDateCreatedParameter() {
+            Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
+            DateTime lastMonth = DateTime.Today.AddMonths(-1);
+            dateCreated.Add("lt", lastMonth);
+
+            AddressList response = validApi.AddressesList(null, null, null, null, dateCreated, null);
             Assert.Greater(response.Count, 0);
         }
     }
