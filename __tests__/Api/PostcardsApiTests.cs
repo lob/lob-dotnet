@@ -291,9 +291,9 @@ namespace __tests__.Api
         [Test]
         public void PostcardListTestWithDateCreatedParam()
         {
-            Dictionary<String, String> dateCreated = new Dictionary<String, String>();
-            dateCreated.Add("gt", "2020-01-01");
-            dateCreated.Add("lt", "2020-01-31T12");
+            Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
+            dateCreated.Add("gt", DateTime.Now);
+            dateCreated.Add("lt", DateTime.Now);
 
             PostcardsApiMock.Setup(x => x.PostcardsList(null, null, null, null, dateCreated, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
 
@@ -326,7 +326,7 @@ namespace __tests__.Api
         [Test]
         public void PostcardListTestWithSizeParam()
         {
-            PostcardSize size = PostcardSize._4x6;
+            List<PostcardSize> size = new List<PostcardSize>{PostcardSize._4x6};
 
             PostcardsApiMock.Setup(x => x.PostcardsList(null, null, null, null, null, null, size, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
 

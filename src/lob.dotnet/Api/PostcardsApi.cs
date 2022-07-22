@@ -16,6 +16,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using lob.dotnet.Client;
+using System.Runtime.Serialization;
 using lob.dotnet.Model;
 
 namespace lob.dotnet.Api
@@ -118,7 +119,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PostcardList</returns>
-        PostcardList PostcardsList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), PostcardSize? size = default(PostcardSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
+        PostcardList PostcardsList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -140,7 +141,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PostcardList</returns>
-        ApiResponse<PostcardList> PostcardsListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), PostcardSize? size = default(PostcardSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
+        ApiResponse<PostcardList> PostcardsListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -248,7 +249,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PostcardList</returns>
-        System.Threading.Tasks.Task<PostcardList> PostcardsListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), PostcardSize? size = default(PostcardSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PostcardList> PostcardsListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -271,7 +272,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PostcardList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PostcardList>> PostcardsListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), PostcardSize? size = default(PostcardSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PostcardList>> PostcardsListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -895,7 +896,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PostcardList</returns>
-        public PostcardList PostcardsList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), PostcardSize? size = default(PostcardSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
+        public PostcardList PostcardsList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
         {
             lob.dotnet.Client.ApiResponse<PostcardList> localVarResponse = PostcardsListWithHttpInfo(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
             return localVarResponse.Data;
@@ -918,7 +919,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PostcardList</returns>
-        public lob.dotnet.Client.ApiResponse<PostcardList> PostcardsListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), PostcardSize? size = default(PostcardSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<PostcardList> PostcardsListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -968,7 +969,15 @@ namespace lob.dotnet.Api
             }
             if (size != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "size", size));
+                List<string> sizeArray = new List<string>();
+                var enumType = typeof (PostcardSize);
+
+                foreach (var elem in size) {
+                    var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(elem.ToString()).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
+                    sizeArray.Add(enumMemberAttribute.Value);
+                }
+
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("multi", "size", sizeArray));
             }
             if (scheduled != null)
             {
@@ -1029,7 +1038,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PostcardList</returns>
-        public async System.Threading.Tasks.Task<PostcardList> PostcardsListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), PostcardSize? size = default(PostcardSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PostcardList> PostcardsListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             lob.dotnet.Client.ApiResponse<PostcardList> localVarResponse = await PostcardsListWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1053,7 +1062,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PostcardList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<PostcardList>> PostcardsListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), PostcardSize? size = default(PostcardSize?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<PostcardList>> PostcardsListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1104,7 +1113,7 @@ namespace lob.dotnet.Api
             }
             if (size != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "size", size));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("multi", "size", size));
             }
             if (scheduled != null)
             {
