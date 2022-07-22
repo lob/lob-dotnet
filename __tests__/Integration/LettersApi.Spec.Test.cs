@@ -24,7 +24,7 @@ namespace __tests__.Integration {
         private LettersApi validApi;
         private LettersApi invalidApi;
         private LetterEditable letterEditable;
-        private string createdId;
+        private List<string> idsToDelete;
 
         private Address address;
         private AddressesApi validAddressesApi;
@@ -33,7 +33,7 @@ namespace __tests__.Integration {
         {
             Configuration config = new Configuration();
             Configuration invalidConfig = new Configuration();
-            
+
             DotNetEnv.Env.TraversePath().Load();
             config.Username = System.Environment.GetEnvironmentVariable("LOB_API_TEST_KEY");
             invalidConfig.Username = "fake api key";
@@ -60,7 +60,7 @@ namespace __tests__.Integration {
             address = validAddressesApi.AddressCreate(addressEditable);
 
             Dictionary<string, string> metadata = new Dictionary<string, string>();
-            metadata.Add("internal_id", "fake internal id");
+            metadata.Add("name", "Harry");
 
             letterEditable = new LetterEditable(
                 null, // description
@@ -79,12 +79,14 @@ namespace __tests__.Integration {
                 "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf", // file
                 LetterEditable.ExtraServiceEnum.Certified // extraService
             );
+
+            idsToDelete = new List<string>();
         }
 
         public void Dispose()
         {
             validAddressesApi.AddressDelete(address.Id);
-            validApi.LetterCancel(createdId);
+            idsToDelete.ForEach(id => validApi.LetterCancel(id));
         }
 
         [Test]
@@ -92,9 +94,8 @@ namespace __tests__.Integration {
             Letter response = validApi.LetterCreate(letterEditable);
 
             Assert.NotNull(response.Id);
+            idsToDelete.Add(response.Id);
             Assert.AreEqual(response.Metadata, letterEditable.Metadata);
-
-            createdId = response.Id;
         }
 
         [Test]
@@ -121,10 +122,12 @@ namespace __tests__.Integration {
 
         [Test]
         public void LetterRetrieveTest() {
-            Letter response = validApi.LetterRetrieve(createdId);
+            Letter letter = validApi.LetterCreate(letterEditable);
+            idsToDelete.Add(letter.Id);
+            Letter response = validApi.LetterRetrieve(letter.Id);
 
             Assert.NotNull(response.Id);
-            Assert.AreEqual(response.Id, createdId);
+            Assert.AreEqual(response.Id, letter.Id);
         }
 
         [Test]
@@ -140,8 +143,10 @@ namespace __tests__.Integration {
 
         [Test]
         public void LetterRetrieveTestBadUsername() {
+            Letter letter = validApi.LetterCreate(letterEditable);
+            idsToDelete.Add(letter.Id);
             try {
-                Letter response = invalidApi.LetterRetrieve(createdId);
+                Letter response = invalidApi.LetterRetrieve(letter.Id);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -185,17 +190,19 @@ namespace __tests__.Integration {
             Console.WriteLine(response);
             Assert.Greater(response.Count, 0);
         }
+        */
 
         [Test]
         public void LetterListTestWithMetadataParameter() {
+            Letter letter = validApi.LetterCreate(letterEditable);
+            idsToDelete.Add(letter.Id);
+
             Dictionary<String, String> metadata = new Dictionary<String, String>();
             metadata.Add("name", "Harry");
 
             LetterList response = validApi.LettersList(null, null, null, null, null, metadata);
-            Console.WriteLine(response);
             Assert.Greater(response.Count, 0);
         }
-        */
 
         [Test]
         public void LetterListTestWithColorParameter() {
@@ -233,7 +240,6 @@ namespace __tests__.Integration {
             Assert.GreaterOrEqual(response.Count, 0);
         }
 
-        /* TODO: [DXP-1129]
         [Test]
         public void LetterListTestWithSortByParameter() {
             SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
@@ -241,6 +247,5 @@ namespace __tests__.Integration {
             LetterList response = validApi.LettersList(null, null, null, null, null, null, null, null, null, null, sortBy);
             Assert.Greater(response.Count, 0);
         }
-        */
     }
 }

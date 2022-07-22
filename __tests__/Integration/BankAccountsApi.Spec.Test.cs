@@ -25,7 +25,7 @@ namespace __tests__.Integration {
         private BankAccountsApi invalidApi;
         private BankAccountWritable bankAccountWritable;
         private BankAccountVerify verification;
-        private string createdId;
+        private List<string> idsToDelete;
 
         public BankAccountsApiTests()
         {
@@ -53,11 +53,13 @@ namespace __tests__.Integration {
             amounts.Add(35);
 
             verification = new BankAccountVerify(amounts);
+
+            idsToDelete = new List<string>();
         }
 
         public void Dispose()
         {
-            validApi.BankAccountDelete(createdId);
+            idsToDelete.ForEach(id => validApi.BankAccountDelete(id));
         }
 
         [Test]
@@ -65,9 +67,8 @@ namespace __tests__.Integration {
             BankAccount response = validApi.BankAccountCreate(bankAccountWritable);
 
             Assert.NotNull(response.Id);
+            idsToDelete.Add(response.Id);
             Assert.AreEqual(response.RoutingNumber, bankAccountWritable.RoutingNumber);
-
-            createdId = response.Id;
         }
 
         [Test]
@@ -94,10 +95,12 @@ namespace __tests__.Integration {
 
         [Test]
         public void BankAccountVerifyTest() {
-            BankAccount response = validApi.BankAccountVerify(createdId, verification);
+            BankAccount bankAccount = validApi.BankAccountCreate(bankAccountWritable);
+            idsToDelete.Add(bankAccount.Id);
+            BankAccount response = validApi.BankAccountVerify(bankAccount.Id, verification);
 
             Assert.NotNull(response);
-            Assert.AreEqual(response.Id, createdId);
+            Assert.AreEqual(response.Id, bankAccount.Id);
             Assert.True(response.Verified);
         }
 
@@ -114,8 +117,10 @@ namespace __tests__.Integration {
 
         [Test]
         public void BankAccountVerifyTestBadUsername() {
+            BankAccount bankAccount = validApi.BankAccountCreate(bankAccountWritable);
+            idsToDelete.Add(bankAccount.Id);
             try {
-                BankAccount response = invalidApi.BankAccountVerify(createdId, verification);
+                BankAccount response = invalidApi.BankAccountVerify(bankAccount.Id, verification);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -125,10 +130,12 @@ namespace __tests__.Integration {
 
         [Test]
         public void BankAccountRetrieveTest() {
-            BankAccount response = validApi.BankAccountRetrieve(createdId);
+            BankAccount bankAccount = validApi.BankAccountCreate(bankAccountWritable);
+            idsToDelete.Add(bankAccount.Id);
+            BankAccount response = validApi.BankAccountRetrieve(bankAccount.Id);
 
             Assert.NotNull(response.Id);
-            Assert.AreEqual(response.Id, createdId);
+            Assert.AreEqual(response.Id, bankAccount.Id);
         }
 
         [Test]
@@ -144,8 +151,10 @@ namespace __tests__.Integration {
 
         [Test]
         public void BankAccountRetrieveTestBadUsername() {
+            BankAccount bankAccount = validApi.BankAccountCreate(bankAccountWritable);
+            idsToDelete.Add(bankAccount.Id);
             try {
-                BankAccount response = invalidApi.BankAccountRetrieve(createdId);
+                BankAccount response = invalidApi.BankAccountRetrieve(bankAccount.Id);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -189,6 +198,7 @@ namespace __tests__.Integration {
             Console.WriteLine(response);
             Assert.Greater(response.Count, 0);
         }
+        */
 
         [Test]
         public void BankAccountListTestWithMetadataParameter() {
@@ -196,9 +206,7 @@ namespace __tests__.Integration {
             metadata.Add("name", "Harry");
 
             BankAccountList response = validApi.BankAccountsList(null, null, null, null, null, metadata);
-            Console.WriteLine(response);
             Assert.Greater(response.Count, 0);
         }
-        */
     }
 }

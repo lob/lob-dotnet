@@ -25,7 +25,7 @@ namespace __tests__.Integration {
         private CardsApi invalidApi;
         private CardEditable cardEditable;
         private CardUpdatable cardUpdatable;
-        private string createdId;
+        private List<string> idsToDelete;
 
         public CardsApiTests()
         {
@@ -49,11 +49,13 @@ namespace __tests__.Integration {
             cardUpdatable = new CardUpdatable(
                 "Updated card"
             );
+
+            idsToDelete = new List<string>();
         }
 
         public void Dispose()
         {
-            validApi.CardDelete(createdId);
+            idsToDelete.ForEach(id => validApi.CardDelete(id));
         }
 
         [Test]
@@ -61,9 +63,8 @@ namespace __tests__.Integration {
             Card response = validApi.CardCreate(cardEditable);
 
             Assert.NotNull(response.Id);
+            idsToDelete.Add(response.Id);
             Assert.AreEqual(response.Description, cardEditable.Description);
-
-            createdId = response.Id;
         }
 
         [Test]
@@ -90,10 +91,13 @@ namespace __tests__.Integration {
 
         [Test]
         public void CardRetrieveTest() {
-            Card response = validApi.CardRetrieve(createdId);
+            Card card = validApi.CardCreate(cardEditable);
+            idsToDelete.Add(card.Id);
+
+            Card response = validApi.CardRetrieve(card.Id);
 
             Assert.NotNull(response.Id);
-            Assert.AreEqual(response.Id, createdId);
+            Assert.AreEqual(response.Id, card.Id);
         }
 
         [Test]
@@ -109,8 +113,11 @@ namespace __tests__.Integration {
 
         [Test]
         public void CardRetrieveTestBadUsername() {
+            Card card = validApi.CardCreate(cardEditable);
+            idsToDelete.Add(card.Id);
+
             try {
-                Card response = invalidApi.CardRetrieve(createdId);
+                Card response = invalidApi.CardRetrieve(card.Id);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -133,20 +140,23 @@ namespace __tests__.Integration {
             Assert.AreEqual(response.Count, 2);
         }
 
-        // [Test]
-        // public void CardListTestWithSortByParameter() {
-        //     SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Desc);
-
-        //     CardList response = validApi.CardsList(null, null, null, sortBy);
-        //     Assert.Greater(response.Count, 0);
-        // }
+        [Test]
+        [Ignore("Ignore until API fixed or docs updated")]
+        public void CardListTestWithSortByParameter() {
+            SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
+            CardList response = validApi.CardsList(null, null, null, sortBy);
+            Assert.Greater(response.Count, 0);
+        }
 
         [Test]
         public void CardUpdateTest() {
-            Card response = validApi.CardUpdate(createdId, cardUpdatable);
+            Card card = validApi.CardCreate(cardEditable);
+            idsToDelete.Add(card.Id);
+
+            Card response = validApi.CardUpdate(card.Id, cardUpdatable);
 
             Assert.NotNull(response);
-            Assert.AreEqual(response.Id, createdId);
+            Assert.AreEqual(response.Id, card.Id);
             Assert.AreEqual(response.Description, cardUpdatable.Description);
         }
 
@@ -163,8 +173,11 @@ namespace __tests__.Integration {
 
         [Test]
         public void CardUpdateTestBadUsername() {
+            Card card = validApi.CardCreate(cardEditable);
+            idsToDelete.Add(card.Id);
+
             try {
-                Card response = invalidApi.CardUpdate(createdId, cardUpdatable);
+                Card response = invalidApi.CardUpdate(card.Id, cardUpdatable);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
