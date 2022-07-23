@@ -44,9 +44,13 @@ namespace __tests__.Api
         /// </summary>
         [Test]
         public void LookupTest200() {
-            Zip fakeZipObject = new Zip();
-            fakeZipObject.Id = "us_zip_fakeId";
-            fakeZipObject.Cities = new List<ZipLookupCity>();
+            Zip fakeZipObject = new Zip(
+                default(string), // zipCode
+                "us_zip_fakeId", // id
+                new List<ZipLookupCity>(), // cities
+                default(ZipCodeType), // zipCodeType
+                Zip.ObjectEnum.UsZipLookup // _object
+            );
 
             ZipEditable zipEditable = new ZipEditable("94107");
             zipLookupsApiMock.Setup(x => x.ZipLookup(zipEditable, It.IsAny<int>())).Returns(fakeZipObject);

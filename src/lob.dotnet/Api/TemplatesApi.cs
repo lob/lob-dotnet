@@ -16,6 +16,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using lob.dotnet.Client;
+using System.Runtime.Serialization;
 using lob.dotnet.Model;
 
 namespace lob.dotnet.Api

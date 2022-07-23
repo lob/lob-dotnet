@@ -29,17 +29,61 @@ namespace __tests__.Api
     {
         private Mock<ITemplatesApi> templatesApiMock;
         private TemplateList fakeTemplateList;
+        private Template fakeTemplate;
 
         public TemplatesApiTests()
         {
             templatesApiMock = new Mock<ITemplatesApi>();
 
-            List<Template> listOfTemplates = new List<Template>();
-            Template data1 = new Template();
-            Template data2 = new Template();
+            TemplateVersion fakeTemplateVersion = new TemplateVersion(
+                "vrsn_fakeId", // id
+                default(string), // description
+                "fake html", // html
+                default(EngineHtml), // engine
+                default(bool), // suggestJsonEditor
+                default(Object), // mergeVariables
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                default(bool), // deleted
+                TemplateVersion.ObjectEnum.Version // _object
+            );
 
-            data1.Id = "tmpl_fakeId1";
-            data2.Id = "tmpl_fakeId2";
+            fakeTemplate = new Template(
+                default(string), // description
+                "tmpl_fakeId", // id
+                new List<TemplateVersion>(), // versions
+                fakeTemplateVersion, // publishedVersion
+                Template.ObjectEnum.Template, // _object
+                default(Dictionary<string, string>), // metadata
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                default(bool) // deleted
+            );
+
+            List<Template> listOfTemplates = new List<Template>();
+            Template data1 = new Template(
+                default(string), // description
+                "tmpl_fakeId1", // id
+                new List<TemplateVersion>(), // versions
+                fakeTemplateVersion, // publishedVersion
+                Template.ObjectEnum.Template, // _object
+                default(Dictionary<string, string>), // metadata
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                default(bool) // deleted
+            );
+            Template data2 = new Template(
+                default(string), // description
+                "tmpl_fakeId2", // id
+                new List<TemplateVersion>(), // versions
+                fakeTemplateVersion, // publishedVersion
+                Template.ObjectEnum.Template, // _object
+                default(Dictionary<string, string>), // metadata
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                default(bool) // deleted
+            );
+
             listOfTemplates.Add(data1);
             listOfTemplates.Add(data2);
 
@@ -61,9 +105,6 @@ namespace __tests__.Api
         [Test]
         public void CreateTemplateTest()
         {
-            Template fakeTemplate = new Template();
-            fakeTemplate.Id = "tmpl_fakeId";
-
             TemplateWritable templateWritable = new TemplateWritable(
                 "C# unit test description", // description
                 "<html>Updated HTML</html>", // html
@@ -84,7 +125,6 @@ namespace __tests__.Api
         [Test]
         public void CreateTemplateTestHandlesException()
         {
-            Template fakeTemplate = new Template();
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
@@ -147,9 +187,6 @@ namespace __tests__.Api
         [Test]
         public void TemplateRetrieveTest()
         {
-            Template fakeTemplate = new Template();
-
-            fakeTemplate.Id = "tmpl_fakeId";
             templatesApiMock.Setup(x => x.TemplateRetrieve(fakeTemplate.Id, It.IsAny<int>())).Returns(fakeTemplate);
             Template response = templatesApiMock.Object.TemplateRetrieve(fakeTemplate.Id);
 
@@ -284,9 +321,9 @@ namespace __tests__.Api
         [Test]
         public void TemplateListTestWithDateCreatedParam()
         {
-            Dictionary<String, String> dateCreated = new Dictionary<String, String>();
-            dateCreated.Add("gt", "2020-01-01");
-            dateCreated.Add("lt", "2020-01-31T12");
+            Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
+            dateCreated.Add("gt", DateTime.Now);
+            dateCreated.Add("lt", DateTime.Now);
 
             templatesApiMock.Setup(x => x.TemplatesList(null, null, null, null, dateCreated, null, It.IsAny<int>())).Returns(fakeTemplateList);
 
@@ -320,9 +357,6 @@ namespace __tests__.Api
         public void TemplateUpdateTest()
         {
             TemplateUpdate templateUpdate = new TemplateUpdate("C# unit test template update description", "vrsn_fakeId");
-
-            Template fakeTemplate = new Template();
-            fakeTemplate.Id = "tmpl_fakeId";
 
             templatesApiMock.Setup(x => x.TemplateUpdate(fakeTemplate.Id, templateUpdate, It.IsAny<int>())).Returns(fakeTemplate);
 

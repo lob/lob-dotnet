@@ -16,6 +16,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using lob.dotnet.Client;
+using System.Runtime.Serialization;
 using lob.dotnet.Model;
 
 namespace lob.dotnet.Api
@@ -968,7 +969,15 @@ namespace lob.dotnet.Api
             }
             if (size != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("multi", "size", size));
+                List<string> sizeArray = new List<string>();
+                var enumType = typeof (SelfMailerSize);
+
+                foreach (var elem in size) {
+                    var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(elem.ToString()).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
+                    sizeArray.Add(enumMemberAttribute.Value);
+                }
+
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("multi", "size", sizeArray));
             }
             if (scheduled != null)
             {

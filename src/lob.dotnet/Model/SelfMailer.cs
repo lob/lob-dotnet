@@ -64,8 +64,8 @@ namespace lob.dotnet.Model
         /// Initializes a new instance of the <see cref="SelfMailer" /> class.
         /// </summary>
         /// <param name="id">Unique identifier prefixed with &#x60;sfm_&#x60;. (required).</param>
-        /// <param name="to">Must either be an address ID or an inline object with correct address parameters..</param>
-        /// <param name="from">Must either be an address ID or an inline object with correct address parameters..</param>
+        /// <param name="to">to.</param>
+        /// <param name="from">from.</param>
         /// <param name="size">size.</param>
         /// <param name="description">An internal description that identifies this resource. Must be no longer than 255 characters. .</param>
         /// <param name="metadata">Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information..</param>
@@ -79,7 +79,7 @@ namespace lob.dotnet.Model
         /// <param name="_object">Value is resource type. (default to ObjectEnum.SelfMailer).</param>
         /// <param name="trackingEvents">An array of certified tracking events ordered by ascending &#x60;time&#x60;. Not populated in test mode..</param>
         /// <param name="url">A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated. (required).</param>
-        public SelfMailer(string id = default(string), string to = default(string), string from = default(string), SelfMailerSize size = default(SelfMailerSize), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string outsideTemplateId = default(string), string insideTemplateId = default(string), string outsideTemplateVersionId = default(string), string insideTemplateVersionId = default(string), ObjectEnum? _object = ObjectEnum.SelfMailer, List<TrackingEventCertified> trackingEvents = default(List<TrackingEventCertified>), string url = default(string))
+        public SelfMailer(string id = default(string), Address to = default(Address), AddressDomesticExpanded from = default(AddressDomesticExpanded), SelfMailerSize size = default(SelfMailerSize), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string outsideTemplateId = default(string), string insideTemplateId = default(string), string outsideTemplateVersionId = default(string), string insideTemplateVersionId = default(string), ObjectEnum? _object = ObjectEnum.SelfMailer, List<TrackingEventCertified> trackingEvents = default(List<TrackingEventCertified>), string url = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -117,18 +117,16 @@ namespace lob.dotnet.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Must either be an address ID or an inline object with correct address parameters.
+        /// Gets or Sets To
         /// </summary>
-        /// <value>Must either be an address ID or an inline object with correct address parameters.</value>
         [DataMember(Name = "to", EmitDefaultValue = false)]
-        public string To { get; set; }
+        public Address To { get; set; }
 
         /// <summary>
-        /// Must either be an address ID or an inline object with correct address parameters.
+        /// Gets or Sets From
         /// </summary>
-        /// <value>Must either be an address ID or an inline object with correct address parameters.</value>
         [DataMember(Name = "from", EmitDefaultValue = false)]
-        public string From { get; set; }
+        public AddressDomesticExpanded From { get; set; }
 
         /// <summary>
         /// Gets or Sets Size

@@ -331,7 +331,14 @@ namespace lob.dotnet.Model
             /// Enum GeneralDelivery for value: general_delivery
             /// </summary>
             [EnumMember(Value = "general_delivery")]
-            GeneralDelivery = 5
+            GeneralDelivery = 5,
+            
+
+            /// <summary>
+            /// Enum Empty for value: 
+            /// </summary>
+            [EnumMember(Value = "")]
+            Empty = 6
             
 
         }

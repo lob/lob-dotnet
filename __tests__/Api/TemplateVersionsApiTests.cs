@@ -29,17 +29,50 @@ namespace __tests__.Api
     {
         private Mock<ITemplateVersionsApi> templateVersionsApiMock;
         private TemplateVersionList fakeTemplateVersionList;
+        private TemplateVersion fakeTemplateVersion;
 
         public TemplateVersionsApiTests()
         {
             templateVersionsApiMock = new Mock<ITemplateVersionsApi>();
+            fakeTemplateVersion = new TemplateVersion(
+                "vrsn_fakeId", // id
+                default(string), // description
+                "fake html", // html
+                default(EngineHtml), // engine
+                default(bool), // suggestJsonEditor
+                default(Object), // mergeVariables
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                default(bool), // deleted
+                TemplateVersion.ObjectEnum.Version // _object
+            );
 
             List<TemplateVersion> listOfTemplateVersions = new List<TemplateVersion>();
-            TemplateVersion data1 = new TemplateVersion();
-            TemplateVersion data2 = new TemplateVersion();
+            TemplateVersion data1 = new TemplateVersion(
+                "vrsn_fakeId1", // id
+                default(string), // description
+                "fake html", // html
+                default(EngineHtml), // engine
+                default(bool), // suggestJsonEditor
+                default(Object), // mergeVariables
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                default(bool), // deleted
+                TemplateVersion.ObjectEnum.Version // _object
+            );
+            TemplateVersion data2 = new TemplateVersion(
+                "vrsn_fakeId2", // id
+                default(string), // description
+                "fake html", // html
+                default(EngineHtml), // engine
+                default(bool), // suggestJsonEditor
+                default(Object), // mergeVariables
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                default(bool), // deleted
+                TemplateVersion.ObjectEnum.Version // _object
+            );
 
-            data1.Id = "vrsn_fakeId1";
-            data2.Id = "vrsn_fakeId2";
             listOfTemplateVersions.Add(data1);
             listOfTemplateVersions.Add(data2);
 
@@ -61,9 +94,6 @@ namespace __tests__.Api
         [Test]
         public void CreateTemplateVersionTest()
         {
-            TemplateVersion fakeTemplateVersion = new TemplateVersion();
-            fakeTemplateVersion.Id = "vrsn_fakeId";
-
             TemplateVersionWritable templateVersionWritable = new TemplateVersionWritable(
                 "C# templateVersions unit test description", // description
                 "<html>Template Versions HTML</html>", // html
@@ -83,7 +113,6 @@ namespace __tests__.Api
         [Test]
         public void CreateTemplateVersionTestHandlesException()
         {
-            TemplateVersion fakeTemplateVersion = new TemplateVersion();
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
@@ -146,9 +175,6 @@ namespace __tests__.Api
         [Test]
         public void TemplateVersionRetrieveTest()
         {
-            TemplateVersion fakeTemplateVersion = new TemplateVersion();
-
-            fakeTemplateVersion.Id = "vrsn_fakeId";
             templateVersionsApiMock.Setup(x => x.TemplateVersionRetrieve("tmpl_fakeId", fakeTemplateVersion.Id, It.IsAny<int>())).Returns(fakeTemplateVersion);
             TemplateVersion response = templateVersionsApiMock.Object.TemplateVersionRetrieve("tmpl_fakeId", fakeTemplateVersion.Id);
 
@@ -283,9 +309,9 @@ namespace __tests__.Api
         [Test]
         public void TemplateVersionListTestWithDateCreatedParam()
         {
-            Dictionary<String, String> dateCreated = new Dictionary<String, String>();
-            dateCreated.Add("gt", "2020-01-01");
-            dateCreated.Add("lt", "2020-01-31T12");
+            Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
+            dateCreated.Add("gt", DateTime.Now);
+            dateCreated.Add("lt", DateTime.Now);
 
             templateVersionsApiMock.Setup(x => x.TemplateVersionsList("tmpl_fakeId", null, null, null, null, dateCreated, It.IsAny<int>())).Returns(fakeTemplateVersionList);
 
@@ -302,9 +328,6 @@ namespace __tests__.Api
         public void TemplateVersionUpdateTest()
         {
             TemplateVersionUpdatable templateVersionUpdate = new TemplateVersionUpdatable("C# unit test templateVersion update description");
-
-            TemplateVersion fakeTemplateVersion = new TemplateVersion();
-            fakeTemplateVersion.Id = "vrsn_fakeId";
 
             templateVersionsApiMock.Setup(x => x.TemplateVersionUpdate("tmpl_fakeId", fakeTemplateVersion.Id, templateVersionUpdate, It.IsAny<int>())).Returns(fakeTemplateVersion);
 
