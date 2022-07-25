@@ -30,4 +30,4 @@ jobs:
         run: dotnet test --no-restore --verbosity normal
         env:
           LOB_API_TEST_KEY: ${{ secrets.LOB_API_TEST_KEY }}
-          LOB_API_LIVE_KEY: ${{ secrets.LOB_LIVE_API_KEY }}
+          LOB_API_LIVE_KEY: ${{ secrets.LOB_API_LIVE_KEY }}
