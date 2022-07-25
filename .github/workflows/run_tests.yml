@@ -15,6 +15,9 @@ jobs:
         dotnet-version: ['3.1.x']
 
     steps:
+      - uses: actions/checkout@v3
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v2
         with:
@@ -22,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build --no-restore
       - name: Test
         run: dotnet test --no-restore --verbosity normal
         env:
