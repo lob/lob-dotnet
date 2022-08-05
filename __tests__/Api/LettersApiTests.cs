@@ -59,7 +59,7 @@ namespace __tests__.Api
               default(bool), // color
               true, // doubleSided
               Letter.AddressPlacementEnum.TopFirstPage, // addressPlacement
-              default(ReturnEnvelope), // returnEnvelope
+              default(bool), // returnEnvelope
               null, // perforatedPage
               default(LetterCustomEnvelope) // customEnvelope
             );
@@ -90,7 +90,7 @@ namespace __tests__.Api
               default(bool), // color
               true, // doubleSided
               Letter.AddressPlacementEnum.TopFirstPage, // addressPlacement
-              default(ReturnEnvelope), // returnEnvelope
+              default(bool), // returnEnvelope
               null, // perforatedPage
               default(LetterCustomEnvelope) // customEnvelope
             );
@@ -119,7 +119,7 @@ namespace __tests__.Api
               default(bool), // color
               true, // doubleSided
               Letter.AddressPlacementEnum.TopFirstPage, // addressPlacement
-              default(ReturnEnvelope), // returnEnvelope
+              default(bool), // returnEnvelope
               null, // perforatedPage
               default(LetterCustomEnvelope) // customEnvelope
             );
@@ -154,7 +154,7 @@ namespace __tests__.Api
                 default(bool), // color
                 true, // doubleSided
                 LetterEditable.AddressPlacementEnum.TopFirstPage, // addressPlacement
-                null, // returnEnvelope
+                default(bool), // returnEnvelope
                 null, // perforatedPage
                 null, // customEnvelope
                 "adr_fakeId", // to

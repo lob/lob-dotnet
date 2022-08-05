@@ -150,10 +150,10 @@ namespace lob.dotnet.Model
         /// <param name="color">Set this key to &#x60;true&#x60; if you would like to print in color. Set to &#x60;false&#x60; if you would like to print in black and white..</param>
         /// <param name="doubleSided">Set this attribute to &#x60;true&#x60; for double sided printing, or &#x60;false&#x60; for for single sided printing. Defaults to &#x60;true&#x60;. (default to true).</param>
         /// <param name="addressPlacement">Specifies the location of the address information that will show through the double-window envelope. To see how this will impact your letter design, view our letter template.   * &#x60;top_first_page&#x60; - (default) print address information at the top of your provided first page   * &#x60;insert_blank_page&#x60; - insert a blank address page at the beginning of your file (you will be charged for the extra page)   * &#x60;bottom_first_page_center&#x60; - **(deprecation planned within a few months)** print address information at the bottom center of your provided first page   * &#x60;bottom_first_page&#x60; - print address information at the bottom of your provided first page  (default to AddressPlacementEnum.TopFirstPage).</param>
-        /// <param name="returnEnvelope">returnEnvelope.</param>
+        /// <param name="returnEnvelope">returnEnvelope (required).</param>
         /// <param name="perforatedPage">Required if &#x60;return_envelope&#x60; is &#x60;true&#x60;. The number of the page that should be perforated for use with the return envelope. Must be greater than or equal to &#x60;1&#x60;. The blank page added by &#x60;address_placement&#x3D;insert_blank_page&#x60; will be ignored when considering the perforated page number. To see how perforation will impact your letter design, view our [perforation guide](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_perf_template.pdf)..</param>
         /// <param name="customEnvelope">customEnvelope.</param>
-        public Letter(Address to = default(Address), Address from = default(Address), CarrierEnum? carrier = CarrierEnum.USPS, List<Thumbnail> thumbnails = default(List<Thumbnail>), DateTime expectedDeliveryDate = default(DateTime), DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), string id = default(string), string templateId = default(string), string templateVersionId = default(string), ObjectEnum _object = ObjectEnum.Letter, string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string extraService = default(string), string trackingNumber = default(string), List<TrackingEventNormal> trackingEvents = default(List<TrackingEventNormal>), string returnAddress = default(string), MailType mailType = default(MailType), bool color = default(bool), bool doubleSided = true, AddressPlacementEnum? addressPlacement = AddressPlacementEnum.TopFirstPage, ReturnEnvelope returnEnvelope = default(ReturnEnvelope), int? perforatedPage = default(int?), LetterCustomEnvelope customEnvelope = default(LetterCustomEnvelope))
+        public Letter(Address to = default(Address), Address from = default(Address), CarrierEnum? carrier = CarrierEnum.USPS, List<Thumbnail> thumbnails = default(List<Thumbnail>), DateTime expectedDeliveryDate = default(DateTime), DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), string id = default(string), string templateId = default(string), string templateVersionId = default(string), ObjectEnum _object = ObjectEnum.Letter, string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string extraService = default(string), string trackingNumber = default(string), List<TrackingEventNormal> trackingEvents = default(List<TrackingEventNormal>), string returnAddress = default(string), MailType mailType = default(MailType), bool color = default(bool), bool doubleSided = true, AddressPlacementEnum? addressPlacement = AddressPlacementEnum.TopFirstPage, bool returnEnvelope = default(bool), int? perforatedPage = default(int?), LetterCustomEnvelope customEnvelope = default(LetterCustomEnvelope))
         {
             // to ensure "to" is required (not null)
             if (to == null)
@@ -176,6 +176,7 @@ namespace lob.dotnet.Model
             }
             this.Id = id;
             this.Object = _object;
+            this.ReturnEnvelope = returnEnvelope;
             this.Carrier = carrier;
             this.Thumbnails = thumbnails;
             this.ExpectedDeliveryDate = expectedDeliveryDate;
@@ -194,7 +195,6 @@ namespace lob.dotnet.Model
             this.Color = color;
             this.DoubleSided = doubleSided;
             this.AddressPlacement = addressPlacement;
-            this.ReturnEnvelope = returnEnvelope;
             this.PerforatedPage = perforatedPage;
             this.CustomEnvelope = customEnvelope;
         }
@@ -346,8 +346,8 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets ReturnEnvelope
         /// </summary>
-        [DataMember(Name = "return_envelope", EmitDefaultValue = false)]
-        public ReturnEnvelope ReturnEnvelope { get; set; }
+        [DataMember(Name = "return_envelope", IsRequired = true, EmitDefaultValue = true)]
+        public bool ReturnEnvelope { get; set; }
 
         /// <summary>
         /// Required if &#x60;return_envelope&#x60; is &#x60;true&#x60;. The number of the page that should be perforated for use with the return envelope. Must be greater than or equal to &#x60;1&#x60;. The blank page added by &#x60;address_placement&#x3D;insert_blank_page&#x60; will be ignored when considering the perforated page number. To see how perforation will impact your letter design, view our [perforation guide](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_perf_template.pdf).
@@ -551,8 +551,7 @@ namespace lob.dotnet.Model
                 ) && 
                 (
                     this.ReturnEnvelope == input.ReturnEnvelope ||
-                    (this.ReturnEnvelope != null &&
-                    this.ReturnEnvelope.Equals(input.ReturnEnvelope))
+                    this.ReturnEnvelope.Equals(input.ReturnEnvelope)
                 ) && 
                 (
                     this.PerforatedPage == input.PerforatedPage ||
@@ -653,10 +652,7 @@ namespace lob.dotnet.Model
                 hashCode = (hashCode * 59) + this.Color.GetHashCode();
                 hashCode = (hashCode * 59) + this.DoubleSided.GetHashCode();
                 hashCode = (hashCode * 59) + this.AddressPlacement.GetHashCode();
-                if (this.ReturnEnvelope != null)
-                {
-                    hashCode = (hashCode * 59) + this.ReturnEnvelope.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.ReturnEnvelope.GetHashCode();
                 if (this.PerforatedPage != null)
                 {
                     hashCode = (hashCode * 59) + this.PerforatedPage.GetHashCode();

@@ -79,7 +79,7 @@ namespace lob.dotnet.Model
         /// <param name="checkNumber">An integer that designates the check number..</param>
         /// <param name="message">Max of 400 characters to be included at the bottom of the check page..</param>
         /// <param name="billingGroupId">An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information..</param>
-        public CheckEditable(string from = default(string), string to = default(string), string bankAccount = default(string), float amount = default(float), Object logo = default(Object), string checkBottom = default(string), string attachment = default(string), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), MailTypeEnum? mailType = MailTypeEnum.UspsFirstClass, string memo = default(string), int checkNumber = default(int), string message = default(string), string billingGroupId = default(string))
+        public CheckEditable(string from = default(string), string to = default(string), string bankAccount = default(string), float amount = default(float), string logo = default(string), string checkBottom = default(string), string attachment = default(string), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), MailTypeEnum? mailType = MailTypeEnum.UspsFirstClass, string memo = default(string), int checkNumber = default(int), string message = default(string), string billingGroupId = default(string))
         {
             // to ensure "from" is required (not null)
             if (from == null)
@@ -145,8 +145,8 @@ namespace lob.dotnet.Model
         /// Accepts a remote URL or local file upload to an image to print (in grayscale) in the upper-left corner of your check.
         /// </summary>
         /// <value>Accepts a remote URL or local file upload to an image to print (in grayscale) in the upper-left corner of your check.</value>
-        [DataMember(Name = "logo", EmitDefaultValue = true)]
-        public Object Logo { get; set; }
+        [DataMember(Name = "logo", EmitDefaultValue = false)]
+        public string Logo { get; set; }
 
         /// <summary>
         /// The artwork to use on the bottom of the check page.  Notes: - HTML merge variables should not include delimiting whitespace. - PDF, PNG, and JPGs must be sized at 8.5\&quot;x11\&quot; at 300 DPI, while supplied HTML will be rendered and trimmed to fit on a 8.5\&quot;x11\&quot; page. - The check bottom will always be printed in black &amp; white. - Must conform to [this template](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/check_bottom_template.pdf).  Need more help? Consult our [HTML examples](#section/HTML-Examples).

@@ -102,7 +102,7 @@ namespace lob.dotnet.Test.Api
             //int? limit = null;
             //int? offset = null;
             //List<string> include = null;
-            //Dictionary<string, string> dateCreated = null;
+            //Dictionary<string, DateTime> dateCreated = null;
             //Dictionary<string, string> dateModified = null;
             //SortBy5 sortBy = null;
             //var response = instance.BillingGroupsList(limit, offset, include, dateCreated, dateModified, sortBy);

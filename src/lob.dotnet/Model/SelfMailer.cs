@@ -64,7 +64,7 @@ namespace lob.dotnet.Model
         /// Initializes a new instance of the <see cref="SelfMailer" /> class.
         /// </summary>
         /// <param name="id">Unique identifier prefixed with &#x60;sfm_&#x60;. (required).</param>
-        /// <param name="to">to.</param>
+        /// <param name="to">to (required).</param>
         /// <param name="from">from.</param>
         /// <param name="size">size.</param>
         /// <param name="description">An internal description that identifies this resource. Must be no longer than 255 characters. .</param>
@@ -87,13 +87,18 @@ namespace lob.dotnet.Model
                 throw new ArgumentNullException("id is a required property for SelfMailer and cannot be null");
             }
             this.Id = id;
+            // to ensure "to" is required (not null)
+            if (to == null)
+            {
+                throw new ArgumentNullException("to is a required property for SelfMailer and cannot be null");
+            }
+            this.To = to;
             // to ensure "url" is required (not null)
             if (url == null)
             {
                 throw new ArgumentNullException("url is a required property for SelfMailer and cannot be null");
             }
             this.Url = url;
-            this.To = to;
             this.From = from;
             this.Size = size;
             this.Description = description;
@@ -119,7 +124,7 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets To
         /// </summary>
-        [DataMember(Name = "to", EmitDefaultValue = false)]
+        [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = false)]
         public Address To { get; set; }
 
         /// <summary>

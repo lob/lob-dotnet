@@ -58,8 +58,8 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public StatusEnum Status { get; set; }
+        [DataMember(Name = "status", EmitDefaultValue = false)]
+        public StatusEnum? Status { get; set; }
         /// <summary>
         /// The orientation of the card.
         /// </summary>
@@ -88,8 +88,8 @@ namespace lob.dotnet.Model
         /// The orientation of the card.
         /// </summary>
         /// <value>The orientation of the card.</value>
-        [DataMember(Name = "orientation", IsRequired = true, EmitDefaultValue = false)]
-        public OrientationEnum Orientation { get; set; }
+        [DataMember(Name = "orientation", EmitDefaultValue = false)]
+        public OrientationEnum? Orientation { get; set; }
         /// <summary>
         /// object
         /// </summary>
@@ -141,8 +141,8 @@ namespace lob.dotnet.Model
         /// The size of the card
         /// </summary>
         /// <value>The size of the card</value>
-        [DataMember(Name = "size", EmitDefaultValue = false)]
-        public SizeEnum? Size { get; set; }
+        [DataMember(Name = "size", IsRequired = true, EmitDefaultValue = false)]
+        public SizeEnum Size { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Card" /> class.
         /// </summary>
@@ -155,22 +155,22 @@ namespace lob.dotnet.Model
         /// <param name="url">The signed link for the card. (required).</param>
         /// <param name="autoReorder">True if the cards should be auto-reordered. (required) (default to false).</param>
         /// <param name="reorderQuantity">The number of cards to be reordered. Only present when auto_reorder is True..</param>
-        /// <param name="rawUrl">The raw URL of the card. (required).</param>
-        /// <param name="frontOriginalUrl">The original URL of the front template. (required).</param>
-        /// <param name="backOriginalUrl">The original URL of the back template. (required).</param>
+        /// <param name="rawUrl">The raw URL of the card..</param>
+        /// <param name="frontOriginalUrl">The original URL of the front template..</param>
+        /// <param name="backOriginalUrl">The original URL of the back template..</param>
         /// <param name="thumbnails">thumbnails (required).</param>
         /// <param name="availableQuantity">The available quantity of cards. (required) (default to 0).</param>
         /// <param name="pendingQuantity">The pending quantity of cards. (required) (default to 0).</param>
-        /// <param name="status">status (required).</param>
-        /// <param name="orientation">The orientation of the card. (required) (default to OrientationEnum.Horizontal).</param>
+        /// <param name="status">status.</param>
+        /// <param name="orientation">The orientation of the card. (default to OrientationEnum.Horizontal).</param>
         /// <param name="thresholdAmount">The threshold amount of the card (default to 0).</param>
         /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created. (required).</param>
         /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified. (required).</param>
         /// <param name="deleted">Only returned if the resource has been successfully deleted..</param>
         /// <param name="_object">object (required) (default to ObjectEnum.Card).</param>
         /// <param name="description">Description of the card..</param>
-        /// <param name="size">The size of the card (default to SizeEnum._2125x3375).</param>
-        public Card(string id = default(string), string url = default(string), bool autoReorder = false, int? reorderQuantity = default(int?), string rawUrl = default(string), string frontOriginalUrl = default(string), string backOriginalUrl = default(string), List<Thumbnail> thumbnails = default(List<Thumbnail>), int availableQuantity = 0, int pendingQuantity = 0, StatusEnum status = default(StatusEnum), OrientationEnum orientation = OrientationEnum.Horizontal, int thresholdAmount = 0, DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), ObjectEnum _object = ObjectEnum.Card, string description = default(string), SizeEnum? size = SizeEnum._2125x3375)
+        /// <param name="size">The size of the card (required) (default to SizeEnum._2125x3375).</param>
+        public Card(string id = default(string), string url = default(string), bool autoReorder = false, int? reorderQuantity = default(int?), string rawUrl = default(string), string frontOriginalUrl = default(string), string backOriginalUrl = default(string), List<Thumbnail> thumbnails = default(List<Thumbnail>), int availableQuantity = 0, int pendingQuantity = 0, StatusEnum? status = default(StatusEnum?), OrientationEnum? orientation = OrientationEnum.Horizontal, int thresholdAmount = 0, DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), ObjectEnum _object = ObjectEnum.Card, string description = default(string), SizeEnum size = SizeEnum._2125x3375)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -185,24 +185,6 @@ namespace lob.dotnet.Model
             }
             this.Url = url;
             this.AutoReorder = autoReorder;
-            // to ensure "rawUrl" is required (not null)
-            if (rawUrl == null)
-            {
-                throw new ArgumentNullException("rawUrl is a required property for Card and cannot be null");
-            }
-            this.RawUrl = rawUrl;
-            // to ensure "frontOriginalUrl" is required (not null)
-            if (frontOriginalUrl == null)
-            {
-                throw new ArgumentNullException("frontOriginalUrl is a required property for Card and cannot be null");
-            }
-            this.FrontOriginalUrl = frontOriginalUrl;
-            // to ensure "backOriginalUrl" is required (not null)
-            if (backOriginalUrl == null)
-            {
-                throw new ArgumentNullException("backOriginalUrl is a required property for Card and cannot be null");
-            }
-            this.BackOriginalUrl = backOriginalUrl;
             // to ensure "thumbnails" is required (not null)
             if (thumbnails == null)
             {
@@ -211,16 +193,19 @@ namespace lob.dotnet.Model
             this.Thumbnails = thumbnails;
             this.AvailableQuantity = availableQuantity;
             this.PendingQuantity = pendingQuantity;
-            this.Status = status;
-            this.Orientation = orientation;
             this.DateCreated = dateCreated;
             this.DateModified = dateModified;
             this.Object = _object;
+            this.Size = size;
             this.ReorderQuantity = reorderQuantity;
+            this.RawUrl = rawUrl;
+            this.FrontOriginalUrl = frontOriginalUrl;
+            this.BackOriginalUrl = backOriginalUrl;
+            this.Status = status;
+            this.Orientation = orientation;
             this.ThresholdAmount = thresholdAmount;
             this.Deleted = deleted;
             this.Description = description;
-            this.Size = size;
         }
 
         /// <summary>
@@ -255,21 +240,21 @@ namespace lob.dotnet.Model
         /// The raw URL of the card.
         /// </summary>
         /// <value>The raw URL of the card.</value>
-        [DataMember(Name = "raw_url", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "raw_url", EmitDefaultValue = false)]
         public string RawUrl { get; set; }
 
         /// <summary>
         /// The original URL of the front template.
         /// </summary>
         /// <value>The original URL of the front template.</value>
-        [DataMember(Name = "front_original_url", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "front_original_url", EmitDefaultValue = false)]
         public string FrontOriginalUrl { get; set; }
 
         /// <summary>
         /// The original URL of the back template.
         /// </summary>
         /// <value>The original URL of the back template.</value>
-        [DataMember(Name = "back_original_url", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "back_original_url", EmitDefaultValue = false)]
         public string BackOriginalUrl { get; set; }
 
         /// <summary>

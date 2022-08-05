@@ -120,7 +120,7 @@ namespace lob.dotnet.Test.Api
             //string before = null;
             //string after = null;
             //List<string> include = null;
-            //Dictionary<string, string> dateCreated = null;
+            //Dictionary<string, DateTime> dateCreated = null;
             //var response = instance.TemplateVersionsList(tmplId, limit, before, after, include, dateCreated);
             //Assert.IsType<TemplateVersionList>(response);
         }

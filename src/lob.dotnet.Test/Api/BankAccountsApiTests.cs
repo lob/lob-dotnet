@@ -115,7 +115,7 @@ namespace lob.dotnet.Test.Api
             //string before = null;
             //string after = null;
             //List<string> include = null;
-            //Dictionary<string, string> dateCreated = null;
+            //Dictionary<string, DateTime> dateCreated = null;
             //Dictionary<string, string> metadata = null;
             //var response = instance.BankAccountsList(limit, before, after, include, dateCreated, metadata);
             //Assert.IsType<BankAccountList>(response);

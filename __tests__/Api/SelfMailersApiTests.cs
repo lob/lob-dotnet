@@ -36,7 +36,7 @@ namespace __tests__.Api
             SelfMailersApiMock = new Mock<ISelfMailersApi>();
             fakeSelfMailer = new SelfMailer(
                 "sfm_fakeId", // id
-                default(Address), // to
+                new Address(), // to
                 default(AddressDomesticExpanded), // from
                 default(SelfMailerSize), // size
                 default(string), // description
@@ -56,7 +56,7 @@ namespace __tests__.Api
             List<SelfMailer> listOfSelfMailers = new List<SelfMailer>();
             SelfMailer data1 = new SelfMailer(
                 "sfm_fakeId1", // id
-                default(Address), // to
+                new Address(), // to
                 default(AddressDomesticExpanded), // from
                 default(SelfMailerSize), // size
                 default(string), // description
@@ -74,7 +74,7 @@ namespace __tests__.Api
             );
             SelfMailer data2 = new SelfMailer(
                 "sfm_fakeId2", // id
-                default(Address), // to
+                new Address(), // to
                 default(AddressDomesticExpanded), // from
                 default(SelfMailerSize), // size
                 default(string), // description

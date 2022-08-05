@@ -71,7 +71,7 @@ namespace __tests__.Integration {
                 true, // color
                 true, // doubleSided
                 LetterEditable.AddressPlacementEnum.TopFirstPage, // addressPlacement
-                default(Object), // returnEnvelope
+                default(bool), // returnEnvelope
                 null, // perforatedPage
                 default(LetterEditableCustomEnvelope), // customEnvelope
                 address.Id, // to
