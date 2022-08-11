@@ -35,7 +35,12 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CardOrderEditable" /> class.
         /// </summary>
-        /// <param name="quantity">quantity.</param>
+        [JsonConstructorAttribute]
+        protected CardOrderEditable() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CardOrderEditable" /> class.
+        /// </summary>
+        /// <param name="quantity">quantity (required).</param>
         public CardOrderEditable(int quantity = default(int))
         {
             this.Quantity = quantity;
@@ -44,7 +49,7 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets Quantity
         /// </summary>
-        [DataMember(Name = "quantity", EmitDefaultValue = false)]
+        [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = false)]
         public int Quantity { get; set; }
 
         /// <summary>

@@ -44,6 +44,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "self_mailer_deleted")]
             SelfMailerDeleted = 1
+            
 
         }
 

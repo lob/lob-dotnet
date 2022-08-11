@@ -29,17 +29,86 @@ namespace __tests__.Api
     {
         private Mock<IPostcardsApi> PostcardsApiMock;
         private PostcardList fakePostcardList;
+        private Postcard fakePostcard;
 
         public PostcardsApiTests()
         {
             PostcardsApiMock = new Mock<IPostcardsApi>();
 
             List<Postcard> listOfPostcards = new List<Postcard>();
-            Postcard data1 = new Postcard();
-            Postcard data2 = new Postcard();
+            fakePostcard = new Postcard(
+                "psc_fakeId",
+                default(Address),
+                default(AddressDomesticExpanded),
+                Postcard.CarrierEnum.USPS,
+                default(List<Thumbnail>),
+                default(PostcardSize),
+                default(DateTime),
+                default(DateTime),
+                default(DateTime),
+                default(bool),
+                default(string),
+                default(string),
+                default(string),
+                default(string),
+                default(List<TrackingEventNormal>),
+                Postcard.ObjectEnum.Postcard,
+                "fake url",
+                default(string),
+                default(Dictionary<string, string>),
+                default(MailType),
+                default(Object),
+                default(DateTime)
+            );
+            Postcard data1 = new Postcard(
+                "psc_fakeId1",
+                default(Address),
+                default(AddressDomesticExpanded),
+                Postcard.CarrierEnum.USPS,
+                default(List<Thumbnail>),
+                default(PostcardSize),
+                default(DateTime),
+                default(DateTime),
+                default(DateTime),
+                default(bool),
+                default(string),
+                default(string),
+                default(string),
+                default(string),
+                default(List<TrackingEventNormal>),
+                Postcard.ObjectEnum.Postcard,
+                "fake url",
+                default(string),
+                default(Dictionary<string, string>),
+                default(MailType),
+                default(Object),
+                default(DateTime)
+            );
+            Postcard data2 = new Postcard(
+                "psc_fakeId2",
+                default(Address),
+                default(AddressDomesticExpanded),
+                Postcard.CarrierEnum.USPS,
+                default(List<Thumbnail>),
+                default(PostcardSize),
+                default(DateTime),
+                default(DateTime),
+                default(DateTime),
+                default(bool),
+                default(string),
+                default(string),
+                default(string),
+                default(string),
+                default(List<TrackingEventNormal>),
+                Postcard.ObjectEnum.Postcard,
+                "fake url",
+                default(string),
+                default(Dictionary<string, string>),
+                default(MailType),
+                default(Object),
+                default(DateTime)
+            );
 
-            data1.Id = "psc_fakeId1";
-            data2.Id = "psc_fakeId2";
             listOfPostcards.Add(data1);
             listOfPostcards.Add(data2);
 
@@ -61,9 +130,6 @@ namespace __tests__.Api
         [Test]
         public void PostcardCreateTest()
         {
-            Postcard fakePostcard = new Postcard();
-            fakePostcard.Id = "psc_fakeId";
-
             PostcardEditable postcardEditable = new PostcardEditable(
                 "adr_fakeId", // to
                 "adr_fakeId", // from
@@ -80,9 +146,8 @@ namespace __tests__.Api
 
             PostcardsApiMock.Setup(x => x.PostcardCreate(postcardEditable, null, It.IsAny<int>())).Returns(fakePostcard);
             Postcard response = PostcardsApiMock.Object.PostcardCreate(postcardEditable);
-
             Assert.IsInstanceOf<Postcard>(response);
-            Assert.AreEqual(response.Id, "psc_fakeId");
+            Assert.AreEqual(response.Id, fakePostcard.Id);
         }
 
         /// <summary>
@@ -91,7 +156,6 @@ namespace __tests__.Api
         [Test]
         public void PostcardCreateTestHandlesException()
         {
-            Postcard fakePostcard = new Postcard();
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
@@ -154,9 +218,6 @@ namespace __tests__.Api
         [Test]
         public void PostcardRetrieveTest()
         {
-            Postcard fakePostcard = new Postcard();
-
-            fakePostcard.Id = "psc_fakeId";
             PostcardsApiMock.Setup(x => x.PostcardRetrieve(fakePostcard.Id, It.IsAny<int>())).Returns(fakePostcard);
             Postcard response = PostcardsApiMock.Object.PostcardRetrieve(fakePostcard.Id);
 
@@ -174,10 +235,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            PostcardsApiMock.Setup(x => x.PostcardRetrieve(null, It.IsAny<int>())).Throws(fakeException);
+            PostcardsApiMock.Setup(x => x.PostcardRetrieve("psc_fakeId", It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = PostcardsApiMock.Object.PostcardRetrieve(null);
+                var response = PostcardsApiMock.Object.PostcardRetrieve("psc_fakeId");
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

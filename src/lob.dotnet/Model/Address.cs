@@ -43,6 +43,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "address")]
             Address = 1
+            
 
         }
 

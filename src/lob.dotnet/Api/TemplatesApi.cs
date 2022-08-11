@@ -1,7 +1,7 @@
 /*
  * Lob
  *
- * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?
+ * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)? 
  *
  * The version of the OpenAPI document: 1.3.0
  * Contact: lob-openapi@lob.com
@@ -16,6 +16,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using lob.dotnet.Client;
+using System.Runtime.Serialization;
 using lob.dotnet.Model;
 
 namespace lob.dotnet.Api
@@ -136,7 +137,7 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateList</returns>
-        TemplateList TemplatesList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
+        TemplateList TemplatesList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -153,7 +154,7 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateList</returns>
-        ApiResponse<TemplateList> TemplatesListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
+        ApiResponse<TemplateList> TemplatesListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -281,7 +282,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateList</returns>
-        System.Threading.Tasks.Task<TemplateList> TemplatesListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TemplateList> TemplatesListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -299,7 +300,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TemplateList>> TemplatesListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TemplateList>> TemplatesListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -533,8 +534,8 @@ namespace lob.dotnet.Api
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json",
-                "application/x-www-form-urlencoded",
+                "application/json", 
+                "application/x-www-form-urlencoded", 
                 "multipart/form-data"
             };
 
@@ -1024,8 +1025,8 @@ namespace lob.dotnet.Api
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json",
-                "application/x-www-form-urlencoded",
+                "application/json", 
+                "application/x-www-form-urlencoded", 
                 "multipart/form-data"
             };
 
@@ -1086,7 +1087,7 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateList</returns>
-        public TemplateList TemplatesList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
+        public TemplateList TemplatesList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
         {
             lob.dotnet.Client.ApiResponse<TemplateList> localVarResponse = TemplatesListWithHttpInfo(limit, before, after, include, dateCreated, metadata);
             return localVarResponse.Data;
@@ -1104,7 +1105,7 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateList</returns>
-        public lob.dotnet.Client.ApiResponse<TemplateList> TemplatesListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<TemplateList> TemplatesListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -1146,7 +1147,7 @@ namespace lob.dotnet.Api
             }
             if (dateCreated != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "date_created", dateCreated));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "date_created", dateCreated));
             }
             if (metadata != null)
             {
@@ -1190,7 +1191,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateList</returns>
-        public async System.Threading.Tasks.Task<TemplateList> TemplatesListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TemplateList> TemplatesListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             lob.dotnet.Client.ApiResponse<TemplateList> localVarResponse = await TemplatesListWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1209,7 +1210,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateList>> TemplatesListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateList>> TemplatesListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1256,7 +1257,7 @@ namespace lob.dotnet.Api
             }
             if (metadata != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "metadata", metadata));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "metadata", metadata));
             }
 
             localVarRequestOptions.Operation = "TemplatesApi.TemplatesList";

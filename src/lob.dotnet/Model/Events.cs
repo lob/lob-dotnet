@@ -44,6 +44,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "event")]
             Event = 1
+            
 
         }
 
@@ -52,22 +53,47 @@ namespace lob.dotnet.Model
         /// Value is resource type.
         /// </summary>
         /// <value>Value is resource type.</value>
-        [DataMember(Name = "object", EmitDefaultValue = false)]
-        public ObjectEnum? Object { get; set; }
+        [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = false)]
+        public ObjectEnum Object { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Events" /> class.
         /// </summary>
-        /// <param name="id">Unique identifier prefixed with &#x60;evt_&#x60;..</param>
-        /// <param name="body">The body of the associated resource as they were at the time of the event, i.e. the [postcard object](#operation/postcard_retrieve), [the letter object](#operation/letter_retrieve), [the check object](#operation/check_retrieve), [the address object](#operation/address_retrieve), or [the bank account object](#operation/bank_account_retrieve). For &#x60;.deleted&#x60; events, the body matches the response for the corresponding delete endpoint for that resource (e.g. the [postcard delete response](#operation/postcard_delete))..</param>
-        /// <param name="referenceId">Unique identifier of the related resource for the event..</param>
-        /// <param name="eventType">eventType.</param>
-        /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created..</param>
-        /// <param name="_object">Value is resource type. (default to ObjectEnum.Event).</param>
-        public Events(string id = default(string), Object body = default(Object), string referenceId = default(string), EventType eventType = default(EventType), DateTime dateCreated = default(DateTime), ObjectEnum? _object = ObjectEnum.Event)
+        [JsonConstructorAttribute]
+        protected Events() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Events" /> class.
+        /// </summary>
+        /// <param name="id">Unique identifier prefixed with &#x60;evt_&#x60;. (required).</param>
+        /// <param name="body">The body of the associated resource as they were at the time of the event, i.e. the [postcard object](https://docs.lob.com/#tag/Postcards/operation/postcard_retrieve), [the letter object](https://docs.lob.com/#tag/Letters/operation/letter_retrieve), [the check object](https://docs.lob.com/#tag/Checks/operation/check_retrieve), [the address object](https://docs.lob.com/#tag/Addresses/operation/address_retrieve), or [the bank account object](https://docs.lob.com/#tag/Bank-Accounts/operation/bank_account_retrieve). For &#x60;.deleted&#x60; events, the body matches the response for the corresponding delete endpoint for that resource (e.g. the [postcard cancel response](https://docs.lob.com/#tag/Postcards/operation/postcard_delete)). (required).</param>
+        /// <param name="referenceId">Unique identifier of the related resource for the event. (required).</param>
+        /// <param name="eventType">eventType (required).</param>
+        /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created. (required).</param>
+        /// <param name="_object">Value is resource type. (required) (default to ObjectEnum.Event).</param>
+        public Events(string id = default(string), Object body = default(Object), string referenceId = default(string), EventType eventType = default(EventType), DateTime dateCreated = default(DateTime), ObjectEnum _object = ObjectEnum.Event)
         {
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for Events and cannot be null");
+            }
             this.Id = id;
+            // to ensure "body" is required (not null)
+            if (body == null)
+            {
+                throw new ArgumentNullException("body is a required property for Events and cannot be null");
+            }
             this.Body = body;
+            // to ensure "referenceId" is required (not null)
+            if (referenceId == null)
+            {
+                throw new ArgumentNullException("referenceId is a required property for Events and cannot be null");
+            }
             this.ReferenceId = referenceId;
+            // to ensure "eventType" is required (not null)
+            if (eventType == null)
+            {
+                throw new ArgumentNullException("eventType is a required property for Events and cannot be null");
+            }
             this.EventType = eventType;
             this.DateCreated = dateCreated;
             this.Object = _object;
@@ -77,34 +103,34 @@ namespace lob.dotnet.Model
         /// Unique identifier prefixed with &#x60;evt_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;evt_&#x60;.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
-        /// The body of the associated resource as they were at the time of the event, i.e. the [postcard object](#operation/postcard_retrieve), [the letter object](#operation/letter_retrieve), [the check object](#operation/check_retrieve), [the address object](#operation/address_retrieve), or [the bank account object](#operation/bank_account_retrieve). For &#x60;.deleted&#x60; events, the body matches the response for the corresponding delete endpoint for that resource (e.g. the [postcard delete response](#operation/postcard_delete)).
+        /// The body of the associated resource as they were at the time of the event, i.e. the [postcard object](https://docs.lob.com/#tag/Postcards/operation/postcard_retrieve), [the letter object](https://docs.lob.com/#tag/Letters/operation/letter_retrieve), [the check object](https://docs.lob.com/#tag/Checks/operation/check_retrieve), [the address object](https://docs.lob.com/#tag/Addresses/operation/address_retrieve), or [the bank account object](https://docs.lob.com/#tag/Bank-Accounts/operation/bank_account_retrieve). For &#x60;.deleted&#x60; events, the body matches the response for the corresponding delete endpoint for that resource (e.g. the [postcard cancel response](https://docs.lob.com/#tag/Postcards/operation/postcard_delete)).
         /// </summary>
-        /// <value>The body of the associated resource as they were at the time of the event, i.e. the [postcard object](#operation/postcard_retrieve), [the letter object](#operation/letter_retrieve), [the check object](#operation/check_retrieve), [the address object](#operation/address_retrieve), or [the bank account object](#operation/bank_account_retrieve). For &#x60;.deleted&#x60; events, the body matches the response for the corresponding delete endpoint for that resource (e.g. the [postcard delete response](#operation/postcard_delete)).</value>
-        [DataMember(Name = "body", EmitDefaultValue = false)]
+        /// <value>The body of the associated resource as they were at the time of the event, i.e. the [postcard object](https://docs.lob.com/#tag/Postcards/operation/postcard_retrieve), [the letter object](https://docs.lob.com/#tag/Letters/operation/letter_retrieve), [the check object](https://docs.lob.com/#tag/Checks/operation/check_retrieve), [the address object](https://docs.lob.com/#tag/Addresses/operation/address_retrieve), or [the bank account object](https://docs.lob.com/#tag/Bank-Accounts/operation/bank_account_retrieve). For &#x60;.deleted&#x60; events, the body matches the response for the corresponding delete endpoint for that resource (e.g. the [postcard cancel response](https://docs.lob.com/#tag/Postcards/operation/postcard_delete)).</value>
+        [DataMember(Name = "body", IsRequired = true, EmitDefaultValue = false)]
         public Object Body { get; set; }
 
         /// <summary>
         /// Unique identifier of the related resource for the event.
         /// </summary>
         /// <value>Unique identifier of the related resource for the event.</value>
-        [DataMember(Name = "reference_id", EmitDefaultValue = false)]
+        [DataMember(Name = "reference_id", IsRequired = true, EmitDefaultValue = false)]
         public string ReferenceId { get; set; }
 
         /// <summary>
         /// Gets or Sets EventType
         /// </summary>
-        [DataMember(Name = "event_type", EmitDefaultValue = false)]
+        [DataMember(Name = "event_type", IsRequired = true, EmitDefaultValue = false)]
         public EventType EventType { get; set; }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was created.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was created.</value>
-        [DataMember(Name = "date_created", EmitDefaultValue = false)]
+        [DataMember(Name = "date_created", IsRequired = true, EmitDefaultValue = false)]
         public DateTime DateCreated { get; set; }
 
         /// <summary>

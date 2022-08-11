@@ -44,30 +44,35 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "pending")]
             Pending = 1,
+            
 
             /// <summary>
             /// Enum Printing for value: printing
             /// </summary>
             [EnumMember(Value = "printing")]
             Printing = 2,
+            
 
             /// <summary>
             /// Enum Available for value: available
             /// </summary>
             [EnumMember(Value = "available")]
             Available = 3,
+            
 
             /// <summary>
             /// Enum Cancelled for value: cancelled
             /// </summary>
             [EnumMember(Value = "cancelled")]
             Cancelled = 4,
+            
 
             /// <summary>
             /// Enum Depleted for value: depleted
             /// </summary>
             [EnumMember(Value = "depleted")]
             Depleted = 5
+            
 
         }
 
@@ -81,6 +86,11 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CardOrder" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected CardOrder() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CardOrder" /> class.
+        /// </summary>
         /// <param name="id">Unique identifier prefixed with &#x60;co_&#x60;..</param>
         /// <param name="cardId">Unique identifier prefixed with &#x60;card_&#x60;..</param>
         /// <param name="status">The status of the card order..</param>
@@ -90,12 +100,20 @@ namespace lob.dotnet.Model
         /// <param name="cancelledReason">The reason for cancellation..</param>
         /// <param name="availabilityDate">A timestamp in ISO 8601 format of the date the resource was created..</param>
         /// <param name="expectedAvailabilityDate">The fixed deadline for the cards to be printed..</param>
-        /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created..</param>
-        /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified..</param>
+        /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created. (required).</param>
+        /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified. (required).</param>
         /// <param name="deleted">Only returned if the resource has been successfully deleted..</param>
-        /// <param name="_object">Value is type of resource..</param>
+        /// <param name="_object">Value is type of resource. (required).</param>
         public CardOrder(string id = default(string), string cardId = default(string), StatusEnum? status = default(StatusEnum?), decimal inventory = 0M, decimal quantityOrdered = 0M, decimal unitPrice = 0M, string cancelledReason = default(string), DateTime availabilityDate = default(DateTime), DateTime expectedAvailabilityDate = default(DateTime), DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), string _object = default(string))
         {
+            this.DateCreated = dateCreated;
+            this.DateModified = dateModified;
+            // to ensure "_object" is required (not null)
+            if (_object == null)
+            {
+                throw new ArgumentNullException("_object is a required property for CardOrder and cannot be null");
+            }
+            this.Object = _object;
             this.Id = id;
             this.CardId = cardId;
             this.Status = status;
@@ -105,10 +123,7 @@ namespace lob.dotnet.Model
             this.CancelledReason = cancelledReason;
             this.AvailabilityDate = availabilityDate;
             this.ExpectedAvailabilityDate = expectedAvailabilityDate;
-            this.DateCreated = dateCreated;
-            this.DateModified = dateModified;
             this.Deleted = deleted;
-            this.Object = _object;
         }
 
         /// <summary>
@@ -171,14 +186,14 @@ namespace lob.dotnet.Model
         /// A timestamp in ISO 8601 format of the date the resource was created.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was created.</value>
-        [DataMember(Name = "date_created", EmitDefaultValue = false)]
+        [DataMember(Name = "date_created", IsRequired = true, EmitDefaultValue = false)]
         public DateTime DateCreated { get; set; }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was last modified.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was last modified.</value>
-        [DataMember(Name = "date_modified", EmitDefaultValue = false)]
+        [DataMember(Name = "date_modified", IsRequired = true, EmitDefaultValue = false)]
         public DateTime DateModified { get; set; }
 
         /// <summary>
@@ -192,7 +207,7 @@ namespace lob.dotnet.Model
         /// Value is type of resource.
         /// </summary>
         /// <value>Value is type of resource.</value>
-        [DataMember(Name = "object", EmitDefaultValue = false)]
+        [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = false)]
         public string Object { get; set; }
 
         /// <summary>

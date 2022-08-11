@@ -29,14 +29,37 @@ namespace __tests__.Api
     {
         private Mock<IBillingGroupsApi> billingGroupsApiMock;
         private BillingGroupList fakeBillingGroupList;
+        private BillingGroup fakeBillingGroup;
 
         public BillingGroupsApiTests()
         {
             billingGroupsApiMock = new Mock<IBillingGroupsApi>();
+            fakeBillingGroup = new BillingGroup(
+                default(string), // description
+                "fake name", // name
+                "bg_fakeId", // id
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                BillingGroup.ObjectEnum.BillingGroup // _object
+            );
 
             List<BillingGroup> listOfBillingGroups = new List<BillingGroup>();
-            BillingGroup data1 = new BillingGroup();
-            BillingGroup data2 = new BillingGroup();
+            BillingGroup data1 = new BillingGroup(
+                default(string), // description
+                "fake name", // name
+                "bg_fakeId1", // id
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                BillingGroup.ObjectEnum.BillingGroup // _object
+            );
+            BillingGroup data2 = new BillingGroup(
+                default(string), // description
+                "fake name", // name
+                "bg_fakeId2", // id
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                BillingGroup.ObjectEnum.BillingGroup // _object
+            );
 
             data1.Id = "bg_fakeId1";
             data2.Id = "bg_fakeId2";
@@ -61,9 +84,6 @@ namespace __tests__.Api
         [Test]
         public void BillingGroupCreateTest()
         {
-            BillingGroup fakeBillingGroup = new BillingGroup();
-            fakeBillingGroup.Id = "bg_fakeId";
-
             BillingGroupEditable billingGroupEditable = new BillingGroupEditable(
                 "fake billing group description",
                 "fake billing group name"
@@ -82,7 +102,6 @@ namespace __tests__.Api
         [Test]
         public void BillingGroupCreateTestHandlesException()
         {
-            BillingGroup fakeBillingGroup = new BillingGroup();
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
@@ -104,9 +123,6 @@ namespace __tests__.Api
         [Test]
         public void BillingGroupRetrieveTest()
         {
-            BillingGroup fakeBillingGroup = new BillingGroup();
-
-            fakeBillingGroup.Id = "bg_fakeId";
             billingGroupsApiMock.Setup(x => x.BillingGroupRetrieve(fakeBillingGroup.Id, It.IsAny<int>())).Returns(fakeBillingGroup);
             BillingGroup response = billingGroupsApiMock.Object.BillingGroupRetrieve(fakeBillingGroup.Id);
 
@@ -124,10 +140,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            billingGroupsApiMock.Setup(x => x.BillingGroupRetrieve(null, It.IsAny<int>())).Throws(fakeException);
+            billingGroupsApiMock.Setup(x => x.BillingGroupRetrieve("bg_fakeId", It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = billingGroupsApiMock.Object.BillingGroupRetrieve(null);
+                var response = billingGroupsApiMock.Object.BillingGroupRetrieve("bg_fakeId");
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -225,9 +241,9 @@ namespace __tests__.Api
         [Test]
         public void BillingGroupListTestWithDateCreatedParam()
         {
-            Dictionary<string, string> dateCreated = new Dictionary<string, string>();
-            dateCreated.Add("gt", "2020-01-01");
-            dateCreated.Add("lt", "2020-01-31T12");
+            Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
+            DateTime lastMonth = DateTime.Today.AddMonths(-1);
+            dateCreated.Add("lt", lastMonth);
 
             billingGroupsApiMock.Setup(x => x.BillingGroupsList(null, null, null, dateCreated, null, null, It.IsAny<int>())).Returns(fakeBillingGroupList);
 
@@ -281,9 +297,6 @@ namespace __tests__.Api
                 "billing group updated",
                 "billing group updated"
             );
-
-            BillingGroup fakeBillingGroup = new BillingGroup();
-            fakeBillingGroup.Id = "bg_fakeId";
 
             billingGroupsApiMock.Setup(x => x.BillingGroupUpdate(fakeBillingGroup.Id, updatedBillingGroupEditable, It.IsAny<int>())).Returns(fakeBillingGroup);
 

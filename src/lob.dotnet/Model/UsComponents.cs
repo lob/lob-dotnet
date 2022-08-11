@@ -44,54 +44,63 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "N")]
             N = 1,
+            
 
             /// <summary>
             /// Enum S for value: S
             /// </summary>
             [EnumMember(Value = "S")]
             S = 2,
+            
 
             /// <summary>
             /// Enum E for value: E
             /// </summary>
             [EnumMember(Value = "E")]
             E = 3,
+            
 
             /// <summary>
             /// Enum W for value: W
             /// </summary>
             [EnumMember(Value = "W")]
             W = 4,
+            
 
             /// <summary>
             /// Enum NE for value: NE
             /// </summary>
             [EnumMember(Value = "NE")]
             NE = 5,
+            
 
             /// <summary>
             /// Enum SW for value: SW
             /// </summary>
             [EnumMember(Value = "SW")]
             SW = 6,
+            
 
             /// <summary>
             /// Enum SE for value: SE
             /// </summary>
             [EnumMember(Value = "SE")]
             SE = 7,
+            
 
             /// <summary>
             /// Enum NW for value: NW
             /// </summary>
             [EnumMember(Value = "NW")]
             NW = 8,
+            
 
             /// <summary>
             /// Enum Empty for value: 
             /// </summary>
             [EnumMember(Value = "")]
             Empty = 9
+            
 
         }
 
@@ -100,8 +109,8 @@ namespace lob.dotnet.Model
         /// Geographic direction preceding a street name (&#x60;N&#x60;, &#x60;S&#x60;, &#x60;E&#x60;, &#x60;W&#x60;, &#x60;NE&#x60;, &#x60;SW&#x60;, &#x60;SE&#x60;, &#x60;NW&#x60;). 
         /// </summary>
         /// <value>Geographic direction preceding a street name (&#x60;N&#x60;, &#x60;S&#x60;, &#x60;E&#x60;, &#x60;W&#x60;, &#x60;NE&#x60;, &#x60;SW&#x60;, &#x60;SE&#x60;, &#x60;NW&#x60;). </value>
-        [DataMember(Name = "street_predirection", EmitDefaultValue = false)]
-        public StreetPredirectionEnum? StreetPredirection { get; set; }
+        [DataMember(Name = "street_predirection", IsRequired = true, EmitDefaultValue = false)]
+        public StreetPredirectionEnum StreetPredirection { get; set; }
         /// <summary>
         /// Geographic direction following a street name (&#x60;N&#x60;, &#x60;S&#x60;, &#x60;E&#x60;, &#x60;W&#x60;, &#x60;NE&#x60;, &#x60;SW&#x60;, &#x60;SE&#x60;, &#x60;NW&#x60;). 
         /// </summary>
@@ -114,54 +123,63 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "N")]
             N = 1,
+            
 
             /// <summary>
             /// Enum S for value: S
             /// </summary>
             [EnumMember(Value = "S")]
             S = 2,
+            
 
             /// <summary>
             /// Enum E for value: E
             /// </summary>
             [EnumMember(Value = "E")]
             E = 3,
+            
 
             /// <summary>
             /// Enum W for value: W
             /// </summary>
             [EnumMember(Value = "W")]
             W = 4,
+            
 
             /// <summary>
             /// Enum NE for value: NE
             /// </summary>
             [EnumMember(Value = "NE")]
             NE = 5,
+            
 
             /// <summary>
             /// Enum SW for value: SW
             /// </summary>
             [EnumMember(Value = "SW")]
             SW = 6,
+            
 
             /// <summary>
             /// Enum SE for value: SE
             /// </summary>
             [EnumMember(Value = "SE")]
             SE = 7,
+            
 
             /// <summary>
             /// Enum NW for value: NW
             /// </summary>
             [EnumMember(Value = "NW")]
             NW = 8,
+            
 
             /// <summary>
             /// Enum Empty for value: 
             /// </summary>
             [EnumMember(Value = "")]
             Empty = 9
+            
 
         }
 
@@ -170,8 +188,8 @@ namespace lob.dotnet.Model
         /// Geographic direction following a street name (&#x60;N&#x60;, &#x60;S&#x60;, &#x60;E&#x60;, &#x60;W&#x60;, &#x60;NE&#x60;, &#x60;SW&#x60;, &#x60;SE&#x60;, &#x60;NW&#x60;). 
         /// </summary>
         /// <value>Geographic direction following a street name (&#x60;N&#x60;, &#x60;S&#x60;, &#x60;E&#x60;, &#x60;W&#x60;, &#x60;NE&#x60;, &#x60;SW&#x60;, &#x60;SE&#x60;, &#x60;NW&#x60;). </value>
-        [DataMember(Name = "street_postdirection", EmitDefaultValue = false)]
-        public StreetPostdirectionEnum? StreetPostdirection { get; set; }
+        [DataMember(Name = "street_postdirection", IsRequired = true, EmitDefaultValue = false)]
+        public StreetPostdirectionEnum StreetPostdirection { get; set; }
         /// <summary>
         /// Uses USPS&#39;s [Residential Delivery Indicator (RDI)](https://www.usps.com/nationalpremieraccounts/rdi.htm) to identify whether an address is classified as residential or business. Possible values are: * &#x60;residential&#x60; –– The address is residential or a PO Box. * &#x60;commercial&#x60; –– The address is commercial. * &#x60;&#39;&#39;&#x60; –– Not enough information provided to be determined. 
         /// </summary>
@@ -184,18 +202,21 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "residential")]
             Residential = 1,
+            
 
             /// <summary>
             /// Enum Commercial for value: commercial
             /// </summary>
             [EnumMember(Value = "commercial")]
             Commercial = 2,
+            
 
             /// <summary>
             /// Enum Empty for value: 
             /// </summary>
             [EnumMember(Value = "")]
             Empty = 3
+            
 
         }
 
@@ -204,8 +225,8 @@ namespace lob.dotnet.Model
         /// Uses USPS&#39;s [Residential Delivery Indicator (RDI)](https://www.usps.com/nationalpremieraccounts/rdi.htm) to identify whether an address is classified as residential or business. Possible values are: * &#x60;residential&#x60; –– The address is residential or a PO Box. * &#x60;commercial&#x60; –– The address is commercial. * &#x60;&#39;&#39;&#x60; –– Not enough information provided to be determined. 
         /// </summary>
         /// <value>Uses USPS&#39;s [Residential Delivery Indicator (RDI)](https://www.usps.com/nationalpremieraccounts/rdi.htm) to identify whether an address is classified as residential or business. Possible values are: * &#x60;residential&#x60; –– The address is residential or a PO Box. * &#x60;commercial&#x60; –– The address is commercial. * &#x60;&#39;&#39;&#x60; –– Not enough information provided to be determined. </value>
-        [DataMember(Name = "address_type", EmitDefaultValue = false)]
-        public AddressTypeEnum? AddressType { get; set; }
+        [DataMember(Name = "address_type", IsRequired = true, EmitDefaultValue = false)]
+        public AddressTypeEnum AddressType { get; set; }
         /// <summary>
         /// A description of the type of address. Populated if a DPV match is made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;Y&#x60;, &#x60;S&#x60;, or &#x60;D&#x60;). For more detailed information about each record type, see [US Verification Details](#tag/US-Verification-Types). 
         /// </summary>
@@ -218,42 +239,49 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "street")]
             Street = 1,
+            
 
             /// <summary>
             /// Enum Highrise for value: highrise
             /// </summary>
             [EnumMember(Value = "highrise")]
             Highrise = 2,
+            
 
             /// <summary>
             /// Enum Firm for value: firm
             /// </summary>
             [EnumMember(Value = "firm")]
             Firm = 3,
+            
 
             /// <summary>
             /// Enum PoBox for value: po_box
             /// </summary>
             [EnumMember(Value = "po_box")]
             PoBox = 4,
+            
 
             /// <summary>
             /// Enum RuralRoute for value: rural_route
             /// </summary>
             [EnumMember(Value = "rural_route")]
             RuralRoute = 5,
+            
 
             /// <summary>
             /// Enum GeneralDelivery for value: general_delivery
             /// </summary>
             [EnumMember(Value = "general_delivery")]
             GeneralDelivery = 6,
+            
 
             /// <summary>
             /// Enum Empty for value: 
             /// </summary>
             [EnumMember(Value = "")]
             Empty = 7
+            
 
         }
 
@@ -262,8 +290,8 @@ namespace lob.dotnet.Model
         /// A description of the type of address. Populated if a DPV match is made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;Y&#x60;, &#x60;S&#x60;, or &#x60;D&#x60;). For more detailed information about each record type, see [US Verification Details](#tag/US-Verification-Types). 
         /// </summary>
         /// <value>A description of the type of address. Populated if a DPV match is made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;Y&#x60;, &#x60;S&#x60;, or &#x60;D&#x60;). For more detailed information about each record type, see [US Verification Details](#tag/US-Verification-Types). </value>
-        [DataMember(Name = "record_type", EmitDefaultValue = false)]
-        public RecordTypeEnum? RecordType { get; set; }
+        [DataMember(Name = "record_type", IsRequired = true, EmitDefaultValue = false)]
+        public RecordTypeEnum RecordType { get; set; }
         /// <summary>
         /// The type of &#x60;components[carrier_route]&#x60;. For more detailed information about each carrier route type, see [US Verification Details](#tag/US-Verification-Types). 
         /// </summary>
@@ -276,30 +304,42 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "city_delivery")]
             CityDelivery = 1,
+            
 
             /// <summary>
             /// Enum RuralRoute for value: rural_route
             /// </summary>
             [EnumMember(Value = "rural_route")]
             RuralRoute = 2,
+            
 
             /// <summary>
             /// Enum HighwayContract for value: highway_contract
             /// </summary>
             [EnumMember(Value = "highway_contract")]
             HighwayContract = 3,
+            
 
             /// <summary>
             /// Enum PoBox for value: po_box
             /// </summary>
             [EnumMember(Value = "po_box")]
             PoBox = 4,
+            
 
             /// <summary>
             /// Enum GeneralDelivery for value: general_delivery
             /// </summary>
             [EnumMember(Value = "general_delivery")]
-            GeneralDelivery = 5
+            GeneralDelivery = 5,
+            
+
+            /// <summary>
+            /// Enum Empty for value: 
+            /// </summary>
+            [EnumMember(Value = "")]
+            Empty = 6
+            
 
         }
 
@@ -308,61 +348,156 @@ namespace lob.dotnet.Model
         /// The type of &#x60;components[carrier_route]&#x60;. For more detailed information about each carrier route type, see [US Verification Details](#tag/US-Verification-Types). 
         /// </summary>
         /// <value>The type of &#x60;components[carrier_route]&#x60;. For more detailed information about each carrier route type, see [US Verification Details](#tag/US-Verification-Types). </value>
-        [DataMember(Name = "carrier_route_type", EmitDefaultValue = false)]
-        public CarrierRouteTypeEnum? CarrierRouteType { get; set; }
+        [DataMember(Name = "carrier_route_type", IsRequired = true, EmitDefaultValue = false)]
+        public CarrierRouteTypeEnum CarrierRouteType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="UsComponents" /> class.
         /// </summary>
-        /// <param name="primaryNumber">The numeric or alphanumeric part of an address preceding the street name. Often the house, building, or PO Box number..</param>
-        /// <param name="streetPredirection">Geographic direction preceding a street name (&#x60;N&#x60;, &#x60;S&#x60;, &#x60;E&#x60;, &#x60;W&#x60;, &#x60;NE&#x60;, &#x60;SW&#x60;, &#x60;SE&#x60;, &#x60;NW&#x60;). .</param>
-        /// <param name="streetName">The name of the street..</param>
-        /// <param name="streetSuffix">The standard USPS abbreviation for the street suffix (&#x60;ST&#x60;, &#x60;AVE&#x60;, &#x60;BLVD&#x60;, etc). .</param>
-        /// <param name="streetPostdirection">Geographic direction following a street name (&#x60;N&#x60;, &#x60;S&#x60;, &#x60;E&#x60;, &#x60;W&#x60;, &#x60;NE&#x60;, &#x60;SW&#x60;, &#x60;SE&#x60;, &#x60;NW&#x60;). .</param>
-        /// <param name="secondaryDesignator">The standard USPS abbreviation describing the &#x60;components[secondary_number]&#x60; (&#x60;STE&#x60;, &#x60;APT&#x60;, &#x60;BLDG&#x60;, etc). .</param>
-        /// <param name="secondaryNumber">Number of the apartment/unit/etc. .</param>
-        /// <param name="pmbDesignator">Designator of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox. .</param>
-        /// <param name="pmbNumber">Number of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox. .</param>
-        /// <param name="extraSecondaryDesignator">An extra (often unnecessary) secondary designator provided with the input address. .</param>
-        /// <param name="extraSecondaryNumber">An extra (often unnecessary) secondary number provided with the input address. .</param>
-        /// <param name="city">city.</param>
-        /// <param name="state">The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. .</param>
-        /// <param name="zipCode">The 5-digit ZIP code.</param>
-        /// <param name="zipCodePlus4">zipCodePlus4.</param>
-        /// <param name="zipCodeType">zipCodeType.</param>
-        /// <param name="deliveryPointBarcode">A 12-digit identifier that uniquely identifies a delivery point (location where mail can be sent and received). It consists of the 5-digit ZIP code (&#x60;zip_code&#x60;), 4-digit ZIP+4 add-on (&#x60;zip_code_plus_4&#x60;), 2-digit delivery point, and 1-digit delivery point check digit. .</param>
-        /// <param name="addressType">Uses USPS&#39;s [Residential Delivery Indicator (RDI)](https://www.usps.com/nationalpremieraccounts/rdi.htm) to identify whether an address is classified as residential or business. Possible values are: * &#x60;residential&#x60; –– The address is residential or a PO Box. * &#x60;commercial&#x60; –– The address is commercial. * &#x60;&#39;&#39;&#x60; –– Not enough information provided to be determined. .</param>
-        /// <param name="recordType">A description of the type of address. Populated if a DPV match is made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;Y&#x60;, &#x60;S&#x60;, or &#x60;D&#x60;). For more detailed information about each record type, see [US Verification Details](#tag/US-Verification-Types). .</param>
-        /// <param name="defaultBuildingAddress">Designates whether or not the address is the default address for a building containing multiple delivery points. .</param>
-        /// <param name="county">County name of the address city..</param>
-        /// <param name="countyFips">A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies &#x60;components[county]&#x60;. It consists of a 2-digit state code and a 3-digit county code. .</param>
-        /// <param name="carrierRoute">A 4-character code assigned to a mail delivery route within a ZIP code. .</param>
-        /// <param name="carrierRouteType">The type of &#x60;components[carrier_route]&#x60;. For more detailed information about each carrier route type, see [US Verification Details](#tag/US-Verification-Types). .</param>
+        [JsonConstructorAttribute]
+        protected UsComponents() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UsComponents" /> class.
+        /// </summary>
+        /// <param name="primaryNumber">The numeric or alphanumeric part of an address preceding the street name. Often the house, building, or PO Box number. (required).</param>
+        /// <param name="streetPredirection">Geographic direction preceding a street name (&#x60;N&#x60;, &#x60;S&#x60;, &#x60;E&#x60;, &#x60;W&#x60;, &#x60;NE&#x60;, &#x60;SW&#x60;, &#x60;SE&#x60;, &#x60;NW&#x60;).  (required).</param>
+        /// <param name="streetName">The name of the street. (required).</param>
+        /// <param name="streetSuffix">The standard USPS abbreviation for the street suffix (&#x60;ST&#x60;, &#x60;AVE&#x60;, &#x60;BLVD&#x60;, etc).  (required).</param>
+        /// <param name="streetPostdirection">Geographic direction following a street name (&#x60;N&#x60;, &#x60;S&#x60;, &#x60;E&#x60;, &#x60;W&#x60;, &#x60;NE&#x60;, &#x60;SW&#x60;, &#x60;SE&#x60;, &#x60;NW&#x60;).  (required).</param>
+        /// <param name="secondaryDesignator">The standard USPS abbreviation describing the &#x60;components[secondary_number]&#x60; (&#x60;STE&#x60;, &#x60;APT&#x60;, &#x60;BLDG&#x60;, etc).  (required).</param>
+        /// <param name="secondaryNumber">Number of the apartment/unit/etc.  (required).</param>
+        /// <param name="pmbDesignator">Designator of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox.  (required).</param>
+        /// <param name="pmbNumber">Number of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox.  (required).</param>
+        /// <param name="extraSecondaryDesignator">An extra (often unnecessary) secondary designator provided with the input address.  (required).</param>
+        /// <param name="extraSecondaryNumber">An extra (often unnecessary) secondary number provided with the input address.  (required).</param>
+        /// <param name="city">city (required).</param>
+        /// <param name="state">The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state.  (required).</param>
+        /// <param name="zipCode">The 5-digit ZIP code (required).</param>
+        /// <param name="zipCodePlus4">zipCodePlus4 (required).</param>
+        /// <param name="zipCodeType">zipCodeType (required).</param>
+        /// <param name="deliveryPointBarcode">A 12-digit identifier that uniquely identifies a delivery point (location where mail can be sent and received). It consists of the 5-digit ZIP code (&#x60;zip_code&#x60;), 4-digit ZIP+4 add-on (&#x60;zip_code_plus_4&#x60;), 2-digit delivery point, and 1-digit delivery point check digit.  (required).</param>
+        /// <param name="addressType">Uses USPS&#39;s [Residential Delivery Indicator (RDI)](https://www.usps.com/nationalpremieraccounts/rdi.htm) to identify whether an address is classified as residential or business. Possible values are: * &#x60;residential&#x60; –– The address is residential or a PO Box. * &#x60;commercial&#x60; –– The address is commercial. * &#x60;&#39;&#39;&#x60; –– Not enough information provided to be determined.  (required).</param>
+        /// <param name="recordType">A description of the type of address. Populated if a DPV match is made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;Y&#x60;, &#x60;S&#x60;, or &#x60;D&#x60;). For more detailed information about each record type, see [US Verification Details](#tag/US-Verification-Types).  (required).</param>
+        /// <param name="defaultBuildingAddress">Designates whether or not the address is the default address for a building containing multiple delivery points.  (required).</param>
+        /// <param name="county">County name of the address city. (required).</param>
+        /// <param name="countyFips">A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies &#x60;components[county]&#x60;. It consists of a 2-digit state code and a 3-digit county code.  (required).</param>
+        /// <param name="carrierRoute">A 4-character code assigned to a mail delivery route within a ZIP code.  (required).</param>
+        /// <param name="carrierRouteType">The type of &#x60;components[carrier_route]&#x60;. For more detailed information about each carrier route type, see [US Verification Details](#tag/US-Verification-Types).  (required).</param>
         /// <param name="latitude">A positive or negative decimal indicating the geographic latitude of the address, specifying the north-to-south position of a location. This should be used with &#x60;longitude&#x60; to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is &#x60;AA&#x60;, &#x60;AE&#x60;, or &#x60;AP&#x60;). .</param>
         /// <param name="longitude">A positive or negative decimal indicating the geographic longitude of the address, specifying the north-to-south position of a location. This should be used with &#x60;latitude&#x60; to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is &#x60;AA&#x60;, &#x60;AE&#x60;, or &#x60;AP&#x60;). .</param>
-        public UsComponents(string primaryNumber = default(string), StreetPredirectionEnum? streetPredirection = default(StreetPredirectionEnum?), string streetName = default(string), string streetSuffix = default(string), StreetPostdirectionEnum? streetPostdirection = default(StreetPostdirectionEnum?), string secondaryDesignator = default(string), string secondaryNumber = default(string), string pmbDesignator = default(string), string pmbNumber = default(string), string extraSecondaryDesignator = default(string), string extraSecondaryNumber = default(string), string city = default(string), string state = default(string), string zipCode = default(string), string zipCodePlus4 = default(string), ZipCodeType zipCodeType = default(ZipCodeType), string deliveryPointBarcode = default(string), AddressTypeEnum? addressType = default(AddressTypeEnum?), RecordTypeEnum? recordType = default(RecordTypeEnum?), bool defaultBuildingAddress = default(bool), string county = default(string), string countyFips = default(string), string carrierRoute = default(string), CarrierRouteTypeEnum? carrierRouteType = default(CarrierRouteTypeEnum?), float? latitude = default(float?), float? longitude = default(float?))
+        public UsComponents(string primaryNumber = default(string), StreetPredirectionEnum streetPredirection = default(StreetPredirectionEnum), string streetName = default(string), string streetSuffix = default(string), StreetPostdirectionEnum streetPostdirection = default(StreetPostdirectionEnum), string secondaryDesignator = default(string), string secondaryNumber = default(string), string pmbDesignator = default(string), string pmbNumber = default(string), string extraSecondaryDesignator = default(string), string extraSecondaryNumber = default(string), string city = default(string), string state = default(string), string zipCode = default(string), string zipCodePlus4 = default(string), ZipCodeType zipCodeType = default(ZipCodeType), string deliveryPointBarcode = default(string), AddressTypeEnum addressType = default(AddressTypeEnum), RecordTypeEnum recordType = default(RecordTypeEnum), bool defaultBuildingAddress = default(bool), string county = default(string), string countyFips = default(string), string carrierRoute = default(string), CarrierRouteTypeEnum carrierRouteType = default(CarrierRouteTypeEnum), float? latitude = default(float?), float? longitude = default(float?))
         {
+            // to ensure "primaryNumber" is required (not null)
+            if (primaryNumber == null)
+            {
+                throw new ArgumentNullException("primaryNumber is a required property for UsComponents and cannot be null");
+            }
             this.PrimaryNumber = primaryNumber;
             this.StreetPredirection = streetPredirection;
+            // to ensure "streetName" is required (not null)
+            if (streetName == null)
+            {
+                throw new ArgumentNullException("streetName is a required property for UsComponents and cannot be null");
+            }
             this.StreetName = streetName;
+            // to ensure "streetSuffix" is required (not null)
+            if (streetSuffix == null)
+            {
+                throw new ArgumentNullException("streetSuffix is a required property for UsComponents and cannot be null");
+            }
             this.StreetSuffix = streetSuffix;
             this.StreetPostdirection = streetPostdirection;
+            // to ensure "secondaryDesignator" is required (not null)
+            if (secondaryDesignator == null)
+            {
+                throw new ArgumentNullException("secondaryDesignator is a required property for UsComponents and cannot be null");
+            }
             this.SecondaryDesignator = secondaryDesignator;
+            // to ensure "secondaryNumber" is required (not null)
+            if (secondaryNumber == null)
+            {
+                throw new ArgumentNullException("secondaryNumber is a required property for UsComponents and cannot be null");
+            }
             this.SecondaryNumber = secondaryNumber;
+            // to ensure "pmbDesignator" is required (not null)
+            if (pmbDesignator == null)
+            {
+                throw new ArgumentNullException("pmbDesignator is a required property for UsComponents and cannot be null");
+            }
             this.PmbDesignator = pmbDesignator;
+            // to ensure "pmbNumber" is required (not null)
+            if (pmbNumber == null)
+            {
+                throw new ArgumentNullException("pmbNumber is a required property for UsComponents and cannot be null");
+            }
             this.PmbNumber = pmbNumber;
+            // to ensure "extraSecondaryDesignator" is required (not null)
+            if (extraSecondaryDesignator == null)
+            {
+                throw new ArgumentNullException("extraSecondaryDesignator is a required property for UsComponents and cannot be null");
+            }
             this.ExtraSecondaryDesignator = extraSecondaryDesignator;
+            // to ensure "extraSecondaryNumber" is required (not null)
+            if (extraSecondaryNumber == null)
+            {
+                throw new ArgumentNullException("extraSecondaryNumber is a required property for UsComponents and cannot be null");
+            }
             this.ExtraSecondaryNumber = extraSecondaryNumber;
+            // to ensure "city" is required (not null)
+            if (city == null)
+            {
+                throw new ArgumentNullException("city is a required property for UsComponents and cannot be null");
+            }
             this.City = city;
+            // to ensure "state" is required (not null)
+            if (state == null)
+            {
+                throw new ArgumentNullException("state is a required property for UsComponents and cannot be null");
+            }
             this.State = state;
+            // to ensure "zipCode" is required (not null)
+            if (zipCode == null)
+            {
+                throw new ArgumentNullException("zipCode is a required property for UsComponents and cannot be null");
+            }
             this.ZipCode = zipCode;
+            // to ensure "zipCodePlus4" is required (not null)
+            if (zipCodePlus4 == null)
+            {
+                throw new ArgumentNullException("zipCodePlus4 is a required property for UsComponents and cannot be null");
+            }
             this.ZipCodePlus4 = zipCodePlus4;
+            // to ensure "zipCodeType" is required (not null)
+            if (zipCodeType == null)
+            {
+                throw new ArgumentNullException("zipCodeType is a required property for UsComponents and cannot be null");
+            }
             this.ZipCodeType = zipCodeType;
+            // to ensure "deliveryPointBarcode" is required (not null)
+            if (deliveryPointBarcode == null)
+            {
+                throw new ArgumentNullException("deliveryPointBarcode is a required property for UsComponents and cannot be null");
+            }
             this.DeliveryPointBarcode = deliveryPointBarcode;
             this.AddressType = addressType;
             this.RecordType = recordType;
             this.DefaultBuildingAddress = defaultBuildingAddress;
+            // to ensure "county" is required (not null)
+            if (county == null)
+            {
+                throw new ArgumentNullException("county is a required property for UsComponents and cannot be null");
+            }
             this.County = county;
+            // to ensure "countyFips" is required (not null)
+            if (countyFips == null)
+            {
+                throw new ArgumentNullException("countyFips is a required property for UsComponents and cannot be null");
+            }
             this.CountyFips = countyFips;
+            // to ensure "carrierRoute" is required (not null)
+            if (carrierRoute == null)
+            {
+                throw new ArgumentNullException("carrierRoute is a required property for UsComponents and cannot be null");
+            }
             this.CarrierRoute = carrierRoute;
             this.CarrierRouteType = carrierRouteType;
             this.Latitude = latitude;
@@ -373,130 +508,130 @@ namespace lob.dotnet.Model
         /// The numeric or alphanumeric part of an address preceding the street name. Often the house, building, or PO Box number.
         /// </summary>
         /// <value>The numeric or alphanumeric part of an address preceding the street name. Often the house, building, or PO Box number.</value>
-        [DataMember(Name = "primary_number", EmitDefaultValue = false)]
+        [DataMember(Name = "primary_number", IsRequired = true, EmitDefaultValue = false)]
         public string PrimaryNumber { get; set; }
 
         /// <summary>
         /// The name of the street.
         /// </summary>
         /// <value>The name of the street.</value>
-        [DataMember(Name = "street_name", EmitDefaultValue = false)]
+        [DataMember(Name = "street_name", IsRequired = true, EmitDefaultValue = false)]
         public string StreetName { get; set; }
 
         /// <summary>
         /// The standard USPS abbreviation for the street suffix (&#x60;ST&#x60;, &#x60;AVE&#x60;, &#x60;BLVD&#x60;, etc). 
         /// </summary>
         /// <value>The standard USPS abbreviation for the street suffix (&#x60;ST&#x60;, &#x60;AVE&#x60;, &#x60;BLVD&#x60;, etc). </value>
-        [DataMember(Name = "street_suffix", EmitDefaultValue = false)]
+        [DataMember(Name = "street_suffix", IsRequired = true, EmitDefaultValue = false)]
         public string StreetSuffix { get; set; }
 
         /// <summary>
         /// The standard USPS abbreviation describing the &#x60;components[secondary_number]&#x60; (&#x60;STE&#x60;, &#x60;APT&#x60;, &#x60;BLDG&#x60;, etc). 
         /// </summary>
         /// <value>The standard USPS abbreviation describing the &#x60;components[secondary_number]&#x60; (&#x60;STE&#x60;, &#x60;APT&#x60;, &#x60;BLDG&#x60;, etc). </value>
-        [DataMember(Name = "secondary_designator", EmitDefaultValue = false)]
+        [DataMember(Name = "secondary_designator", IsRequired = true, EmitDefaultValue = false)]
         public string SecondaryDesignator { get; set; }
 
         /// <summary>
         /// Number of the apartment/unit/etc. 
         /// </summary>
         /// <value>Number of the apartment/unit/etc. </value>
-        [DataMember(Name = "secondary_number", EmitDefaultValue = false)]
+        [DataMember(Name = "secondary_number", IsRequired = true, EmitDefaultValue = false)]
         public string SecondaryNumber { get; set; }
 
         /// <summary>
         /// Designator of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox. 
         /// </summary>
         /// <value>Designator of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox. </value>
-        [DataMember(Name = "pmb_designator", EmitDefaultValue = false)]
+        [DataMember(Name = "pmb_designator", IsRequired = true, EmitDefaultValue = false)]
         public string PmbDesignator { get; set; }
 
         /// <summary>
         /// Number of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox. 
         /// </summary>
         /// <value>Number of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox. </value>
-        [DataMember(Name = "pmb_number", EmitDefaultValue = false)]
+        [DataMember(Name = "pmb_number", IsRequired = true, EmitDefaultValue = false)]
         public string PmbNumber { get; set; }
 
         /// <summary>
         /// An extra (often unnecessary) secondary designator provided with the input address. 
         /// </summary>
         /// <value>An extra (often unnecessary) secondary designator provided with the input address. </value>
-        [DataMember(Name = "extra_secondary_designator", EmitDefaultValue = false)]
+        [DataMember(Name = "extra_secondary_designator", IsRequired = true, EmitDefaultValue = false)]
         public string ExtraSecondaryDesignator { get; set; }
 
         /// <summary>
         /// An extra (often unnecessary) secondary number provided with the input address. 
         /// </summary>
         /// <value>An extra (often unnecessary) secondary number provided with the input address. </value>
-        [DataMember(Name = "extra_secondary_number", EmitDefaultValue = false)]
+        [DataMember(Name = "extra_secondary_number", IsRequired = true, EmitDefaultValue = false)]
         public string ExtraSecondaryNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets City
         /// </summary>
-        [DataMember(Name = "city", EmitDefaultValue = false)]
+        [DataMember(Name = "city", IsRequired = true, EmitDefaultValue = false)]
         public string City { get; set; }
 
         /// <summary>
         /// The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. 
         /// </summary>
         /// <value>The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. </value>
-        [DataMember(Name = "state", EmitDefaultValue = false)]
+        [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = false)]
         public string State { get; set; }
 
         /// <summary>
         /// The 5-digit ZIP code
         /// </summary>
         /// <value>The 5-digit ZIP code</value>
-        [DataMember(Name = "zip_code", EmitDefaultValue = false)]
+        [DataMember(Name = "zip_code", IsRequired = true, EmitDefaultValue = false)]
         public string ZipCode { get; set; }
 
         /// <summary>
         /// Gets or Sets ZipCodePlus4
         /// </summary>
-        [DataMember(Name = "zip_code_plus_4", EmitDefaultValue = false)]
+        [DataMember(Name = "zip_code_plus_4", IsRequired = true, EmitDefaultValue = false)]
         public string ZipCodePlus4 { get; set; }
 
         /// <summary>
         /// Gets or Sets ZipCodeType
         /// </summary>
-        [DataMember(Name = "zip_code_type", EmitDefaultValue = false)]
+        [DataMember(Name = "zip_code_type", IsRequired = true, EmitDefaultValue = false)]
         public ZipCodeType ZipCodeType { get; set; }
 
         /// <summary>
         /// A 12-digit identifier that uniquely identifies a delivery point (location where mail can be sent and received). It consists of the 5-digit ZIP code (&#x60;zip_code&#x60;), 4-digit ZIP+4 add-on (&#x60;zip_code_plus_4&#x60;), 2-digit delivery point, and 1-digit delivery point check digit. 
         /// </summary>
         /// <value>A 12-digit identifier that uniquely identifies a delivery point (location where mail can be sent and received). It consists of the 5-digit ZIP code (&#x60;zip_code&#x60;), 4-digit ZIP+4 add-on (&#x60;zip_code_plus_4&#x60;), 2-digit delivery point, and 1-digit delivery point check digit. </value>
-        [DataMember(Name = "delivery_point_barcode", EmitDefaultValue = false)]
+        [DataMember(Name = "delivery_point_barcode", IsRequired = true, EmitDefaultValue = false)]
         public string DeliveryPointBarcode { get; set; }
 
         /// <summary>
         /// Designates whether or not the address is the default address for a building containing multiple delivery points. 
         /// </summary>
         /// <value>Designates whether or not the address is the default address for a building containing multiple delivery points. </value>
-        [DataMember(Name = "default_building_address", EmitDefaultValue = true)]
+        [DataMember(Name = "default_building_address", IsRequired = true, EmitDefaultValue = true)]
         public bool DefaultBuildingAddress { get; set; }
 
         /// <summary>
         /// County name of the address city.
         /// </summary>
         /// <value>County name of the address city.</value>
-        [DataMember(Name = "county", EmitDefaultValue = false)]
+        [DataMember(Name = "county", IsRequired = true, EmitDefaultValue = false)]
         public string County { get; set; }
 
         /// <summary>
         /// A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies &#x60;components[county]&#x60;. It consists of a 2-digit state code and a 3-digit county code. 
         /// </summary>
         /// <value>A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies &#x60;components[county]&#x60;. It consists of a 2-digit state code and a 3-digit county code. </value>
-        [DataMember(Name = "county_fips", EmitDefaultValue = false)]
+        [DataMember(Name = "county_fips", IsRequired = true, EmitDefaultValue = false)]
         public string CountyFips { get; set; }
 
         /// <summary>
         /// A 4-character code assigned to a mail delivery route within a ZIP code. 
         /// </summary>
         /// <value>A 4-character code assigned to a mail delivery route within a ZIP code. </value>
-        [DataMember(Name = "carrier_route", EmitDefaultValue = false)]
+        [DataMember(Name = "carrier_route", IsRequired = true, EmitDefaultValue = false)]
         public string CarrierRoute { get; set; }
 
         /// <summary>
@@ -838,13 +973,6 @@ namespace lob.dotnet.Model
             if (false == regexZipCodePlus4.Match(this.ZipCodePlus4).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ZipCodePlus4, must match a pattern of " + regexZipCodePlus4, new [] { "ZipCodePlus4" });
-            }
-
-            // CountyFips (string) pattern
-            Regex regexCountyFips = new Regex(@"\\d{5}", RegexOptions.CultureInvariant);
-            if (false == regexCountyFips.Match(this.CountyFips).Success)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CountyFips, must match a pattern of " + regexCountyFips, new [] { "CountyFips" });
             }
 
             yield break;

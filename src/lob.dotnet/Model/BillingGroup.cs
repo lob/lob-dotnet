@@ -44,6 +44,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "billing_group")]
             BillingGroup = 1
+            
 
         }
 
@@ -52,25 +53,40 @@ namespace lob.dotnet.Model
         /// Value is resource type.
         /// </summary>
         /// <value>Value is resource type.</value>
-        [DataMember(Name = "object", EmitDefaultValue = false)]
-        public ObjectEnum? Object { get; set; }
+        [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = false)]
+        public ObjectEnum Object { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BillingGroup" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        protected BillingGroup() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="BillingGroup" /> class.
         /// </summary>
         /// <param name="description">Description of the billing group..</param>
-        /// <param name="name">Name of the billing group..</param>
-        /// <param name="id">Unique identifier prefixed with &#x60;bg_&#x60;..</param>
-        /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created..</param>
-        /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified..</param>
-        /// <param name="_object">Value is resource type. (default to ObjectEnum.BillingGroup).</param>
-        public BillingGroup(string description = default(string), string name = default(string), string id = default(string), DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), ObjectEnum? _object = ObjectEnum.BillingGroup)
+        /// <param name="name">Name of the billing group. (required).</param>
+        /// <param name="id">Unique identifier prefixed with &#x60;bg_&#x60;. (required).</param>
+        /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created. (required).</param>
+        /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified. (required).</param>
+        /// <param name="_object">Value is resource type. (required) (default to ObjectEnum.BillingGroup).</param>
+        public BillingGroup(string description = default(string), string name = default(string), string id = default(string), DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), ObjectEnum _object = ObjectEnum.BillingGroup)
         {
-            this.Description = description;
+            // to ensure "name" is required (not null)
+            if (name == null)
+            {
+                throw new ArgumentNullException("name is a required property for BillingGroup and cannot be null");
+            }
             this.Name = name;
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for BillingGroup and cannot be null");
+            }
             this.Id = id;
             this.DateCreated = dateCreated;
             this.DateModified = dateModified;
             this.Object = _object;
+            this.Description = description;
         }
 
         /// <summary>
@@ -84,28 +100,28 @@ namespace lob.dotnet.Model
         /// Name of the billing group.
         /// </summary>
         /// <value>Name of the billing group.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;bg_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;bg_&#x60;.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was created.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was created.</value>
-        [DataMember(Name = "date_created", EmitDefaultValue = false)]
+        [DataMember(Name = "date_created", IsRequired = true, EmitDefaultValue = false)]
         public DateTime DateCreated { get; set; }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was last modified.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was last modified.</value>
-        [DataMember(Name = "date_modified", EmitDefaultValue = false)]
+        [DataMember(Name = "date_modified", IsRequired = true, EmitDefaultValue = false)]
         public DateTime DateModified { get; set; }
 
         /// <summary>

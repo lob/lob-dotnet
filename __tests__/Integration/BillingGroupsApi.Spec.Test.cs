@@ -183,12 +183,11 @@ namespace __tests__.Integration {
             // Assert.NotNull(response.TotalCount);
         }
 
-        /* TODO: fix unpacking dictionaries into query params
         [Test]
         public void BillingGroupListTestWithDateCreatedParameter() {
-            Dictionary<String, String> dateCreated = new Dictionary<String, String>();
-            dateCreated.Add("gt", "2020-01-01");
-            dateCreated.Add("lt", "2020-01-31T12");
+            Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
+            DateTime lastMonth = DateTime.Today.AddMonths(-1);
+            dateCreated.Add("lt", lastMonth);
 
             BillingGroupList response = validApi.BillingGroupsList(null, null, null, dateCreated, null, null);
             Assert.Greater(response.Count, 0);
@@ -197,13 +196,12 @@ namespace __tests__.Integration {
         [Test]
         public void BillingGroupListTestWithDateModifiedParameter() {
             Dictionary<String, String> dateModified = new Dictionary<String, String>();
-            dateModified.Add("gt", "2020-01-01");
-            dateModified.Add("lt", "2020-01-31T12");
+            DateTime lastMonth = DateTime.Today.AddMonths(-1);
+            dateModified.Add("lt", lastMonth.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 
             BillingGroupList response = validApi.BillingGroupsList(null, null, null, null, dateModified, null);
             Assert.Greater(response.Count, 0);
         }
-        */
 
         [Test]
         [Ignore("Ignore until API fixed or docs updated")]

@@ -44,6 +44,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "us_reverse_geocode_lookup")]
             UsReverseGeocodeLookup = 1
+            
 
         }
 

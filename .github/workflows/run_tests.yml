@@ -1,4 +1,4 @@
-name: .NET
+name: Run Tests
 
 on:
   pull_request:
@@ -30,3 +30,4 @@ jobs:
         env:
           LOB_API_TEST_KEY: ${{ secrets.LOB_API_TEST_KEY }}
           LOB_API_LIVE_KEY: ${{ secrets.LOB_API_LIVE_KEY }}
+

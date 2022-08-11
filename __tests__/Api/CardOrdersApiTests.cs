@@ -28,10 +28,50 @@ namespace __tests__.Api
     public class CardOrdersApiTests : IDisposable
     {
         private Mock<ICardOrdersApi> cardOrdersApiMock;
+        private CardOrder fakeCardOrder;
+        private Card fakeCard;
 
         public CardOrdersApiTests()
         {
             cardOrdersApiMock = new Mock<ICardOrdersApi>();
+            string fakeCardId = "card_fakeId";
+            fakeCardOrder = new CardOrder(
+                "co_fakeId", // id
+                fakeCardId, // cardId
+                null, // status
+                0M, // inventory
+                0M, // quantityOrdered
+                0M, // unitPrice
+                default(string), // cancelledReason
+                default(DateTime), // availabilityDate
+                default(DateTime), // expectedAvailabilityDate
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                default(bool), // deleted
+                "card_order" // _object
+            );
+
+            fakeCard = new Card(
+                fakeCardId, // id
+                "fake url", // url
+                false, // autoReorder
+                null, // reorderQuantity
+                "fake raw url", // rawUrl
+                "fake front original url", // frontOriginalUrl
+                "fake back original url", // backOriginalUrl
+                new List<Thumbnail>(), // thumbnails
+                0, // availableQuantity
+                0, // pendingQuantity
+                default(Card.StatusEnum), // status
+                Card.OrientationEnum.Horizontal, // orientation
+                0, // thresholdAmount
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                default(bool), // deleted
+                Card.ObjectEnum.Card, // _object
+                default(string), // description
+                Card.SizeEnum._2125x3375 // size
+            );
         }
 
         public void Dispose()
@@ -45,16 +85,13 @@ namespace __tests__.Api
         [Test]
         public void CardOrderCreateTest()
         {
-            CardOrder fakeCardOrder = new CardOrder();
-            fakeCardOrder.Id = "co_fakeId";
-
             CardOrderEditable cardOrderEditable = new CardOrderEditable(10000);
 
             cardOrdersApiMock.Setup(x => x.CardOrderCreate("card_fakeId", cardOrderEditable, It.IsAny<int>())).Returns(fakeCardOrder);
             CardOrder response = cardOrdersApiMock.Object.CardOrderCreate("card_fakeId", cardOrderEditable);
 
             Assert.IsInstanceOf<CardOrder>(response);
-            Assert.AreEqual(response.Id, "co_fakeId");
+            Assert.AreEqual(response.Id, fakeCardOrder.Id);
         }
 
         /// <summary>
@@ -63,7 +100,6 @@ namespace __tests__.Api
         [Test]
         public void CardOrderCreateTestHandlesException()
         {
-            CardOrder fakeCardOrder = new CardOrder();
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
@@ -85,12 +121,6 @@ namespace __tests__.Api
         [Test]
         public void CardOrdersRetrieveTest()
         {
-            Card fakeCard = new Card();
-            fakeCard.Id = "card_fakeId";
-
-            CardOrder fakeCardOrder = new CardOrder();
-            fakeCardOrder.CardId = fakeCard.Id;
-
             CardOrderList fakeCardOrderList = new CardOrderList();
             List<CardOrder> cardOrders = new List<CardOrder>();
             cardOrders.Add(fakeCardOrder);
@@ -119,10 +149,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            cardOrdersApiMock.Setup(x => x.CardOrdersRetrieve(null, null, null, It.IsAny<int>())).Throws(fakeException);
+            cardOrdersApiMock.Setup(x => x.CardOrdersRetrieve("fakeId", null, null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = cardOrdersApiMock.Object.CardOrdersRetrieve(null);
+                var response = cardOrdersApiMock.Object.CardOrdersRetrieve("fakeId");
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

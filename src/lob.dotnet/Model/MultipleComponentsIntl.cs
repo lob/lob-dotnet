@@ -35,22 +35,37 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MultipleComponentsIntl" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected MultipleComponentsIntl() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MultipleComponentsIntl" /> class.
+        /// </summary>
         /// <param name="recipient">The intended recipient, typically a person&#39;s or firm&#39;s name..</param>
-        /// <param name="primaryLine">The primary delivery line (usually the street address) of the address. .</param>
+        /// <param name="primaryLine">The primary delivery line (usually the street address) of the address.  (required).</param>
         /// <param name="secondaryLine">The secondary delivery line of the address. This field is typically empty but may contain information if &#x60;primary_line&#x60; is too long. .</param>
         /// <param name="city">city.</param>
         /// <param name="state">The name of the state..</param>
         /// <param name="postalCode">The postal code..</param>
-        /// <param name="country">country.</param>
+        /// <param name="country">country (required).</param>
         public MultipleComponentsIntl(string recipient = default(string), string primaryLine = default(string), string secondaryLine = default(string), string city = default(string), string state = default(string), string postalCode = default(string), CountryExtended country = default(CountryExtended))
         {
-            this.Recipient = recipient;
+            // to ensure "primaryLine" is required (not null)
+            if (primaryLine == null)
+            {
+                throw new ArgumentNullException("primaryLine is a required property for MultipleComponentsIntl and cannot be null");
+            }
             this.PrimaryLine = primaryLine;
+            // to ensure "country" is required (not null)
+            if (country == null)
+            {
+                throw new ArgumentNullException("country is a required property for MultipleComponentsIntl and cannot be null");
+            }
+            this.Country = country;
+            this.Recipient = recipient;
             this.SecondaryLine = secondaryLine;
             this.City = city;
             this.State = state;
             this.PostalCode = postalCode;
-            this.Country = country;
         }
 
         /// <summary>
@@ -64,7 +79,7 @@ namespace lob.dotnet.Model
         /// The primary delivery line (usually the street address) of the address. 
         /// </summary>
         /// <value>The primary delivery line (usually the street address) of the address. </value>
-        [DataMember(Name = "primary_line", EmitDefaultValue = false)]
+        [DataMember(Name = "primary_line", IsRequired = true, EmitDefaultValue = false)]
         public string PrimaryLine { get; set; }
 
         /// <summary>
@@ -97,7 +112,7 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets Country
         /// </summary>
-        [DataMember(Name = "country", EmitDefaultValue = false)]
+        [DataMember(Name = "country", IsRequired = true, EmitDefaultValue = false)]
         public CountryExtended Country { get; set; }
 
         /// <summary>

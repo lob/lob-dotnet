@@ -1,7 +1,7 @@
 /*
  * Lob
  *
- * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?
+ * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)? 
  *
  * The version of the OpenAPI document: 1.3.0
  * Contact: lob-openapi@lob.com
@@ -16,6 +16,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using lob.dotnet.Client;
+using System.Runtime.Serialization;
 using lob.dotnet.Model;
 
 namespace lob.dotnet.Api
@@ -113,7 +114,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BillingGroupList</returns>
-        BillingGroupList BillingGroupsList(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
+        BillingGroupList BillingGroupsList(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -130,7 +131,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BillingGroupList</returns>
-        ApiResponse<BillingGroupList> BillingGroupsListWithHttpInfo(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
+        ApiResponse<BillingGroupList> BillingGroupsListWithHttpInfo(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -233,7 +234,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BillingGroupList</returns>
-        System.Threading.Tasks.Task<BillingGroupList> BillingGroupsListAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BillingGroupList> BillingGroupsListAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -251,7 +252,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BillingGroupList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BillingGroupList>> BillingGroupsListWithHttpInfoAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BillingGroupList>> BillingGroupsListWithHttpInfoAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -485,8 +486,8 @@ namespace lob.dotnet.Api
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json",
-                "application/x-www-form-urlencoded",
+                "application/json", 
+                "application/x-www-form-urlencoded", 
                 "multipart/form-data"
             };
 
@@ -820,8 +821,8 @@ namespace lob.dotnet.Api
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json",
-                "application/x-www-form-urlencoded",
+                "application/json", 
+                "application/x-www-form-urlencoded", 
                 "multipart/form-data"
             };
 
@@ -882,7 +883,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BillingGroupList</returns>
-        public BillingGroupList BillingGroupsList(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
+        public BillingGroupList BillingGroupsList(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
         {
             lob.dotnet.Client.ApiResponse<BillingGroupList> localVarResponse = BillingGroupsListWithHttpInfo(limit, offset, include, dateCreated, dateModified, sortBy);
             return localVarResponse.Data;
@@ -900,7 +901,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BillingGroupList</returns>
-        public lob.dotnet.Client.ApiResponse<BillingGroupList> BillingGroupsListWithHttpInfo(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<BillingGroupList> BillingGroupsListWithHttpInfo(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -938,11 +939,11 @@ namespace lob.dotnet.Api
             }
             if (dateCreated != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "date_created", dateCreated));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "date_created", dateCreated));
             }
             if (dateModified != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "date_modified", dateModified));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "date_modified", dateModified));
             }
             if (sortBy != null)
             {
@@ -986,7 +987,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BillingGroupList</returns>
-        public async System.Threading.Tasks.Task<BillingGroupList> BillingGroupsListAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BillingGroupList> BillingGroupsListAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             lob.dotnet.Client.ApiResponse<BillingGroupList> localVarResponse = await BillingGroupsListWithHttpInfoAsync(limit, offset, include, dateCreated, dateModified, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1005,7 +1006,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BillingGroupList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BillingGroupList>> BillingGroupsListWithHttpInfoAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BillingGroupList>> BillingGroupsListWithHttpInfoAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1052,7 +1053,7 @@ namespace lob.dotnet.Api
             }
             if (sortBy != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "sort_by", sortBy.ToJson()));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
             }
 
             localVarRequestOptions.Operation = "BillingGroupsApi.BillingGroupsList";

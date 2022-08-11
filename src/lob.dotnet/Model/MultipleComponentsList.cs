@@ -35,16 +35,26 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MultipleComponentsList" /> class.
         /// </summary>
-        /// <param name="addresses">addresses.</param>
+        [JsonConstructorAttribute]
+        protected MultipleComponentsList() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MultipleComponentsList" /> class.
+        /// </summary>
+        /// <param name="addresses">addresses (required).</param>
         public MultipleComponentsList(List<MultipleComponents> addresses = default(List<MultipleComponents>))
         {
+            // to ensure "addresses" is required (not null)
+            if (addresses == null)
+            {
+                throw new ArgumentNullException("addresses is a required property for MultipleComponentsList and cannot be null");
+            }
             this.Addresses = addresses;
         }
 
         /// <summary>
         /// Gets or Sets Addresses
         /// </summary>
-        [DataMember(Name = "addresses", EmitDefaultValue = false)]
+        [DataMember(Name = "addresses", IsRequired = true, EmitDefaultValue = false)]
         public List<MultipleComponents> Addresses { get; set; }
 
         /// <summary>

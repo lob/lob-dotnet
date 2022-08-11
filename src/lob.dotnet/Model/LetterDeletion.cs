@@ -44,6 +44,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "letter_deleted")]
             LetterDeleted = 1
+            
 
         }
 

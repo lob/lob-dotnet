@@ -44,6 +44,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "us_autocompletion")]
             UsAutocompletion = 1
+            
 
         }
 
@@ -57,16 +58,41 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Suggestions" /> class.
         /// </summary>
-        /// <param name="primaryLine">The primary delivery line (usually the street address) of the address. Combination of the following applicable &#x60;components&#x60; (primary number &amp; secondary information may be missing or inaccurate): * &#x60;primary_number&#x60; * &#x60;street_predirection&#x60; * &#x60;street_name&#x60; * &#x60;street_suffix&#x60; * &#x60;street_postdirection&#x60; * &#x60;secondary_designator&#x60; * &#x60;secondary_number&#x60; * &#x60;pmb_designator&#x60; * &#x60;pmb_number&#x60; .</param>
-        /// <param name="city">city.</param>
-        /// <param name="state">The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. .</param>
-        /// <param name="zipCode">A 5-digit zip code. Left empty if a test key is used..</param>
+        [JsonConstructorAttribute]
+        protected Suggestions() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Suggestions" /> class.
+        /// </summary>
+        /// <param name="primaryLine">The primary delivery line (usually the street address) of the address. Combination of the following applicable &#x60;components&#x60; (primary number &amp; secondary information may be missing or inaccurate): * &#x60;primary_number&#x60; * &#x60;street_predirection&#x60; * &#x60;street_name&#x60; * &#x60;street_suffix&#x60; * &#x60;street_postdirection&#x60; * &#x60;secondary_designator&#x60; * &#x60;secondary_number&#x60; * &#x60;pmb_designator&#x60; * &#x60;pmb_number&#x60;  (required).</param>
+        /// <param name="city">city (required).</param>
+        /// <param name="state">The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state.  (required).</param>
+        /// <param name="zipCode">A 5-digit zip code. Left empty if a test key is used. (required).</param>
         /// <param name="_object">Value is resource type. (default to ObjectEnum.UsAutocompletion).</param>
         public Suggestions(string primaryLine = default(string), string city = default(string), string state = default(string), string zipCode = default(string), ObjectEnum? _object = ObjectEnum.UsAutocompletion)
         {
+            // to ensure "primaryLine" is required (not null)
+            if (primaryLine == null)
+            {
+                throw new ArgumentNullException("primaryLine is a required property for Suggestions and cannot be null");
+            }
             this.PrimaryLine = primaryLine;
+            // to ensure "city" is required (not null)
+            if (city == null)
+            {
+                throw new ArgumentNullException("city is a required property for Suggestions and cannot be null");
+            }
             this.City = city;
+            // to ensure "state" is required (not null)
+            if (state == null)
+            {
+                throw new ArgumentNullException("state is a required property for Suggestions and cannot be null");
+            }
             this.State = state;
+            // to ensure "zipCode" is required (not null)
+            if (zipCode == null)
+            {
+                throw new ArgumentNullException("zipCode is a required property for Suggestions and cannot be null");
+            }
             this.ZipCode = zipCode;
             this.Object = _object;
         }
@@ -75,27 +101,27 @@ namespace lob.dotnet.Model
         /// The primary delivery line (usually the street address) of the address. Combination of the following applicable &#x60;components&#x60; (primary number &amp; secondary information may be missing or inaccurate): * &#x60;primary_number&#x60; * &#x60;street_predirection&#x60; * &#x60;street_name&#x60; * &#x60;street_suffix&#x60; * &#x60;street_postdirection&#x60; * &#x60;secondary_designator&#x60; * &#x60;secondary_number&#x60; * &#x60;pmb_designator&#x60; * &#x60;pmb_number&#x60; 
         /// </summary>
         /// <value>The primary delivery line (usually the street address) of the address. Combination of the following applicable &#x60;components&#x60; (primary number &amp; secondary information may be missing or inaccurate): * &#x60;primary_number&#x60; * &#x60;street_predirection&#x60; * &#x60;street_name&#x60; * &#x60;street_suffix&#x60; * &#x60;street_postdirection&#x60; * &#x60;secondary_designator&#x60; * &#x60;secondary_number&#x60; * &#x60;pmb_designator&#x60; * &#x60;pmb_number&#x60; </value>
-        [DataMember(Name = "primary_line", EmitDefaultValue = false)]
+        [DataMember(Name = "primary_line", IsRequired = true, EmitDefaultValue = false)]
         public string PrimaryLine { get; set; }
 
         /// <summary>
         /// Gets or Sets City
         /// </summary>
-        [DataMember(Name = "city", EmitDefaultValue = false)]
+        [DataMember(Name = "city", IsRequired = true, EmitDefaultValue = false)]
         public string City { get; set; }
 
         /// <summary>
         /// The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. 
         /// </summary>
         /// <value>The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. </value>
-        [DataMember(Name = "state", EmitDefaultValue = false)]
+        [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = false)]
         public string State { get; set; }
 
         /// <summary>
         /// A 5-digit zip code. Left empty if a test key is used.
         /// </summary>
         /// <value>A 5-digit zip code. Left empty if a test key is used.</value>
-        [DataMember(Name = "zip_code", EmitDefaultValue = false)]
+        [DataMember(Name = "zip_code", IsRequired = true, EmitDefaultValue = false)]
         public string ZipCode { get; set; }
 
         /// <summary>

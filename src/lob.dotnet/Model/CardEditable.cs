@@ -44,12 +44,14 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "3.375x2.125")]
             _3375x2125 = 1,
+            
 
             /// <summary>
             /// Enum _2125x3375 for value: 2.125x3.375
             /// </summary>
             [EnumMember(Value = "2.125x3.375")]
             _2125x3375 = 2
+            
 
         }
 
@@ -63,12 +65,22 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CardEditable" /> class.
         /// </summary>
-        /// <param name="front">A PDF template for the front of the card.</param>
+        [JsonConstructorAttribute]
+        protected CardEditable() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CardEditable" /> class.
+        /// </summary>
+        /// <param name="front">A PDF template for the front of the card (required).</param>
         /// <param name="back">A PDF template for the back of the card (default to &quot;https://s3.us-west-2.amazonaws.com/public.lob.com/assets/card_blank_horizontal.pdf&quot;).</param>
         /// <param name="size">The size of the card (default to SizeEnum._2125x3375).</param>
         /// <param name="description">Description of the card..</param>
         public CardEditable(string front = default(string), string back = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/card_blank_horizontal.pdf", SizeEnum? size = SizeEnum._2125x3375, string description = default(string))
         {
+            // to ensure "front" is required (not null)
+            if (front == null)
+            {
+                throw new ArgumentNullException("front is a required property for CardEditable and cannot be null");
+            }
             this.Front = front;
             // use default value if no "back" provided
             this.Back = back ?? "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/card_blank_horizontal.pdf";
@@ -80,7 +92,7 @@ namespace lob.dotnet.Model
         /// A PDF template for the front of the card
         /// </summary>
         /// <value>A PDF template for the front of the card</value>
-        [DataMember(Name = "front", EmitDefaultValue = false)]
+        [DataMember(Name = "front", IsRequired = true, EmitDefaultValue = false)]
         public string Front { get; set; }
 
         /// <summary>

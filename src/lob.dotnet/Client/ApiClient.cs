@@ -517,6 +517,16 @@ namespace lob.dotnet.Client
             {
                 response.Data = (T)(object)response.RawBytes;
             }
+            else if (response.Data == null && response.Content != null && response.StatusCode == HttpStatusCode.OK) {
+                try
+                {
+                    response.Data = existingDeserializer.Deserialize<T>(response);
+                }
+                catch (Exception ex)
+                {
+                    throw ex.InnerException != null ? ex.InnerException : ex;
+                }
+            }
 
             InterceptResponse(req, response);
 

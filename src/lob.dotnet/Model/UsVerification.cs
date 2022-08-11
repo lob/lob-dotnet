@@ -44,30 +44,35 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "deliverable")]
             Deliverable = 1,
+            
 
             /// <summary>
             /// Enum DeliverableUnnecessaryUnit for value: deliverable_unnecessary_unit
             /// </summary>
             [EnumMember(Value = "deliverable_unnecessary_unit")]
             DeliverableUnnecessaryUnit = 2,
+            
 
             /// <summary>
             /// Enum DeliverableIncorrectUnit for value: deliverable_incorrect_unit
             /// </summary>
             [EnumMember(Value = "deliverable_incorrect_unit")]
             DeliverableIncorrectUnit = 3,
+            
 
             /// <summary>
             /// Enum DeliverableMissingUnit for value: deliverable_missing_unit
             /// </summary>
             [EnumMember(Value = "deliverable_missing_unit")]
             DeliverableMissingUnit = 4,
+            
 
             /// <summary>
             /// Enum Undeliverable for value: undeliverable
             /// </summary>
             [EnumMember(Value = "undeliverable")]
             Undeliverable = 5
+            
 
         }
 
@@ -89,6 +94,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "us_verification")]
             UsVerification = 1
+            
 
         }
 

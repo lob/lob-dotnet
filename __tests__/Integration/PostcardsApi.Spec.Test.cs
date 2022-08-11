@@ -34,6 +34,7 @@ namespace __tests__.Integration {
             Configuration config = new Configuration();
             Configuration invalidConfig = new Configuration();
 
+            DotNetEnv.Env.TraversePath().Load();
             config.Username = Environment.GetEnvironmentVariable("LOB_API_TEST_KEY");
             invalidConfig.Username = "fake api key";
 
@@ -175,18 +176,15 @@ namespace __tests__.Integration {
             Assert.NotNull(response.TotalCount);
         }
 
-        /* TODO [DXP-1128]: fix unpacking dictionaries into query params
         [Test]
         public void PostcardListTestWithDateCreatedParameter() {
-            Dictionary<String, String> dateCreated = new Dictionary<String, String>();
-            dateCreated.Add("gt", "2020-01-01");
-            dateCreated.Add("lt", "2020-01-31T12");
+            Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
+            DateTime lastMonth = DateTime.Today.AddMonths(-1);
+            dateCreated.Add("lt", lastMonth);
 
             PostcardList response = validApi.PostcardsList(null, null, null, null, dateCreated, null, null, null, null, null, null);
-            Console.WriteLine(response);
             Assert.Greater(response.Count, 0);
         }
-        */
 
         [Test]
         public void PostcardListTestWithMetadataParameter() {
@@ -199,7 +197,7 @@ namespace __tests__.Integration {
             PostcardList response = validApi.PostcardsList(null, null, null, null, null, metadata, null, null, null, null, null);
             Assert.Greater(response.Count, 0);
         }
-        
+
         [Test]
         public void PostcardListTestWithSizeParameter() {
             List<PostcardSize> sizeArray = new List<PostcardSize>();
@@ -217,17 +215,15 @@ namespace __tests__.Integration {
             Assert.Greater(response.Count, 0);
         }
 
-        /* TODO: [DXP-1128]
         [Test]
         public void PostcardListTestWithSendDateParameter() {
             Dictionary<String, String> sendDate = new Dictionary<String, String>();
-            sendDate.Add("gt", "2020-01-01");
-            sendDate.Add("lt", "2020-01-31T12");
+            DateTime lastMonth = DateTime.Today.AddMonths(-1);
+            sendDate.Add("lt", lastMonth.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 
             PostcardList response = validApi.PostcardsList(null, null, null, null, null, null, null, null, sendDate);
             Assert.Greater(response.Count, 0);
         }
-        */
 
         [Test]
         public void PostcardListTestWithMailTypeParameter() {

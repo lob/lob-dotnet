@@ -44,30 +44,35 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "SUBBUILDING")]
             SUBBUILDING = 1,
+            
 
             /// <summary>
             /// Enum HOUSENUMBERBUILDING for value: HOUSENUMBER/BUILDING
             /// </summary>
             [EnumMember(Value = "HOUSENUMBER/BUILDING")]
             HOUSENUMBERBUILDING = 2,
+            
 
             /// <summary>
             /// Enum STREET for value: STREET
             /// </summary>
             [EnumMember(Value = "STREET")]
             STREET = 3,
+            
 
             /// <summary>
             /// Enum LOCALITY for value: LOCALITY
             /// </summary>
             [EnumMember(Value = "LOCALITY")]
             LOCALITY = 4,
+            
 
             /// <summary>
             /// Enum SPARSE for value: SPARSE
             /// </summary>
             [EnumMember(Value = "SPARSE")]
             SPARSE = 5
+            
 
         }
 
@@ -90,24 +95,28 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "deliverable")]
             Deliverable = 1,
+            
 
             /// <summary>
             /// Enum DeliverableMissingInfo for value: deliverable_missing_info
             /// </summary>
             [EnumMember(Value = "deliverable_missing_info")]
             DeliverableMissingInfo = 2,
+            
 
             /// <summary>
             /// Enum Undeliverable for value: undeliverable
             /// </summary>
             [EnumMember(Value = "undeliverable")]
             Undeliverable = 3,
+            
 
             /// <summary>
             /// Enum NoMatch for value: no_match
             /// </summary>
             [EnumMember(Value = "no_match")]
             NoMatch = 4
+            
 
         }
 
@@ -130,72 +139,84 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "LV4")]
             LV4 = 1,
+            
 
             /// <summary>
             /// Enum LV3 for value: LV3
             /// </summary>
             [EnumMember(Value = "LV3")]
             LV3 = 2,
+            
 
             /// <summary>
             /// Enum LV2 for value: LV2
             /// </summary>
             [EnumMember(Value = "LV2")]
             LV2 = 3,
+            
 
             /// <summary>
             /// Enum LV1 for value: LV1
             /// </summary>
             [EnumMember(Value = "LV1")]
             LV1 = 4,
+            
 
             /// <summary>
             /// Enum LF4 for value: LF4
             /// </summary>
             [EnumMember(Value = "LF4")]
             LF4 = 5,
+            
 
             /// <summary>
             /// Enum LF3 for value: LF3
             /// </summary>
             [EnumMember(Value = "LF3")]
             LF3 = 6,
+            
 
             /// <summary>
             /// Enum LF2 for value: LF2
             /// </summary>
             [EnumMember(Value = "LF2")]
             LF2 = 7,
+            
 
             /// <summary>
             /// Enum LF1 for value: LF1
             /// </summary>
             [EnumMember(Value = "LF1")]
             LF1 = 8,
+            
 
             /// <summary>
             /// Enum LM4 for value: LM4
             /// </summary>
             [EnumMember(Value = "LM4")]
             LM4 = 9,
+            
 
             /// <summary>
             /// Enum LM3 for value: LM3
             /// </summary>
             [EnumMember(Value = "LM3")]
             LM3 = 10,
+            
 
             /// <summary>
             /// Enum LM2 for value: LM2
             /// </summary>
             [EnumMember(Value = "LM2")]
             LM2 = 11,
+            
 
             /// <summary>
             /// Enum LU1 for value: LU1
             /// </summary>
             [EnumMember(Value = "LU1")]
             LU1 = 12
+            
 
         }
 
@@ -218,6 +239,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "intl_verification")]
             IntlVerification = 1
+            
 
         }
 

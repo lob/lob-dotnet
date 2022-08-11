@@ -29,17 +29,68 @@ namespace __tests__.Api
     {
         private Mock<ISelfMailersApi> SelfMailersApiMock;
         private SelfMailerList fakeSelfMailerList;
+        private SelfMailer fakeSelfMailer;
 
         public SelfMailersApiTests()
         {
             SelfMailersApiMock = new Mock<ISelfMailersApi>();
+            fakeSelfMailer = new SelfMailer(
+                "sfm_fakeId", // id
+                new Address(), // to
+                default(AddressDomesticExpanded), // from
+                default(SelfMailerSize), // size
+                default(string), // description
+                default(Dictionary<string, string>), // metadata
+                default(MailType), // mailType
+                default(Object), // mergeVariables
+                default(DateTime), // sendDate
+                default(string), // outsideTemplateId
+                default(string), // insideTemplateId
+                default(string), // outsideTemplateVersionId
+                default(string), // insideTemplateVersionId
+                SelfMailer.ObjectEnum.SelfMailer, // _object
+                default(List<TrackingEventCertified>), // trackingEvents
+                "fake url" // url
+            );
 
             List<SelfMailer> listOfSelfMailers = new List<SelfMailer>();
-            SelfMailer data1 = new SelfMailer();
-            SelfMailer data2 = new SelfMailer();
+            SelfMailer data1 = new SelfMailer(
+                "sfm_fakeId1", // id
+                new Address(), // to
+                default(AddressDomesticExpanded), // from
+                default(SelfMailerSize), // size
+                default(string), // description
+                default(Dictionary<string, string>), // metadata
+                default(MailType), // mailType
+                default(Object), // mergeVariables
+                default(DateTime), // sendDate
+                default(string), // outsideTemplateId
+                default(string), // insideTemplateId
+                default(string), // outsideTemplateVersionId
+                default(string), // insideTemplateVersionId
+                SelfMailer.ObjectEnum.SelfMailer, // _object
+                default(List<TrackingEventCertified>), // trackingEvents
+                "fake url" // url
+            );
+            SelfMailer data2 = new SelfMailer(
+                "sfm_fakeId2", // id
+                new Address(), // to
+                default(AddressDomesticExpanded), // from
+                default(SelfMailerSize), // size
+                default(string), // description
+                default(Dictionary<string, string>), // metadata
+                default(MailType), // mailType
+                default(Object), // mergeVariables
+                default(DateTime), // sendDate
+                default(string), // outsideTemplateId
+                default(string), // insideTemplateId
+                default(string), // outsideTemplateVersionId
+                default(string), // insideTemplateVersionId
+                SelfMailer.ObjectEnum.SelfMailer, // _object
+                default(List<TrackingEventCertified>), // trackingEvents
+                "fake url" // url
+            );
 
-            data1.Id = "sfm_fakeId1";
-            data2.Id = "sfm_fakeId2";
             listOfSelfMailers.Add(data1);
             listOfSelfMailers.Add(data2);
 
@@ -61,9 +112,6 @@ namespace __tests__.Api
         [Test]
         public void SelfMailerCreateTest()
         {
-            SelfMailer fakeSelfMailer = new SelfMailer();
-            fakeSelfMailer.Id = "sfm_fakeId";
-
             SelfMailerEditable selfMailerEditable = new SelfMailerEditable(
                 "adr_fakeId", // to
                 "adr_fakeId", // from
@@ -91,7 +139,6 @@ namespace __tests__.Api
         [Test]
         public void SelfMailerCreateTestHandlesException()
         {
-            SelfMailer fakeSelfMailer = new SelfMailer();
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
@@ -154,9 +201,6 @@ namespace __tests__.Api
         [Test]
         public void SelfMailerRetrieveTest()
         {
-            SelfMailer fakeSelfMailer = new SelfMailer();
-
-            fakeSelfMailer.Id = "sfm_fakeId";
             SelfMailersApiMock.Setup(x => x.SelfMailerRetrieve(fakeSelfMailer.Id, It.IsAny<int>())).Returns(fakeSelfMailer);
             SelfMailer response = SelfMailersApiMock.Object.SelfMailerRetrieve(fakeSelfMailer.Id);
 
@@ -291,9 +335,9 @@ namespace __tests__.Api
         [Test]
         public void SelfMailerListTestWithDateCreatedParam()
         {
-            Dictionary<String, String> dateCreated = new Dictionary<String, String>();
-            dateCreated.Add("gt", "2020-01-01");
-            dateCreated.Add("lt", "2020-01-31T12");
+            Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
+            dateCreated.Add("gt", DateTime.Now);
+            dateCreated.Add("lt", DateTime.Now);
 
             SelfMailersApiMock.Setup(x => x.SelfMailersList(null, null, null, null, dateCreated, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
 
@@ -326,7 +370,7 @@ namespace __tests__.Api
         [Test]
         public void SelfMailerListTestWithSizeParam()
         {
-            SelfMailerSize size = SelfMailerSize._6x18Bifold;
+            List<SelfMailerSize> size = new List<SelfMailerSize>{SelfMailerSize._6x18Bifold};
 
             SelfMailersApiMock.Setup(x => x.SelfMailersList(null, null, null, null, null, null, size, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
 

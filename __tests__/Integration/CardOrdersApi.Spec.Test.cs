@@ -26,7 +26,6 @@ namespace __tests__.Integration {
         private CardsApi validCardApi;
         private CardOrderEditable cardOrderEditable;
         private Card card;
-        private string createdId;
 
         public CardOrdersApiTests()
         {
@@ -48,7 +47,7 @@ namespace __tests__.Integration {
                 "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf", // front
                 "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf", // back
                 CardEditable.SizeEnum._2125x3375, // size
-                "Test card" // description
+                "C# integration test card in cardOrders" // description
             );
             card = validCardApi.CardCreate(cardEditable);
         }
@@ -64,8 +63,6 @@ namespace __tests__.Integration {
 
             Assert.NotNull(response.Id);
             Assert.AreEqual(response.QuantityOrdered, cardOrderEditable.Quantity);
-
-            createdId = response.Id;
         }
 
         [Test]

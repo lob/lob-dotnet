@@ -44,6 +44,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "template")]
             Template = 1
+            
 
         }
 
@@ -57,10 +58,15 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Template" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected Template() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Template" /> class.
+        /// </summary>
         /// <param name="description">An internal description that identifies this resource. Must be no longer than 255 characters. .</param>
-        /// <param name="id">Unique identifier prefixed with &#x60;tmpl_&#x60;. ID of a saved [HTML template](#section/HTML-Templates)..</param>
-        /// <param name="versions">An array of all non-deleted [version objects](#tag/Template-Versions) associated with the template..</param>
-        /// <param name="publishedVersion">publishedVersion.</param>
+        /// <param name="id">Unique identifier prefixed with &#x60;tmpl_&#x60;. ID of a saved [HTML template](#section/HTML-Templates). (required).</param>
+        /// <param name="versions">An array of all non-deleted [version objects](#tag/Template-Versions) associated with the template. (required).</param>
+        /// <param name="publishedVersion">publishedVersion (required).</param>
         /// <param name="_object">Value is resource type. (default to ObjectEnum.Template).</param>
         /// <param name="metadata">Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information..</param>
         /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created..</param>
@@ -68,10 +74,25 @@ namespace lob.dotnet.Model
         /// <param name="deleted">Only returned if the resource has been successfully deleted..</param>
         public Template(string description = default(string), string id = default(string), List<TemplateVersion> versions = default(List<TemplateVersion>), TemplateVersion publishedVersion = default(TemplateVersion), ObjectEnum? _object = ObjectEnum.Template, Dictionary<string, string> metadata = default(Dictionary<string, string>), DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool))
         {
-            this.Description = description;
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for Template and cannot be null");
+            }
             this.Id = id;
+            // to ensure "versions" is required (not null)
+            if (versions == null)
+            {
+                throw new ArgumentNullException("versions is a required property for Template and cannot be null");
+            }
             this.Versions = versions;
+            // to ensure "publishedVersion" is required (not null)
+            if (publishedVersion == null)
+            {
+                throw new ArgumentNullException("publishedVersion is a required property for Template and cannot be null");
+            }
             this.PublishedVersion = publishedVersion;
+            this.Description = description;
             this.Object = _object;
             this.Metadata = metadata;
             this.DateCreated = dateCreated;
@@ -90,20 +111,20 @@ namespace lob.dotnet.Model
         /// Unique identifier prefixed with &#x60;tmpl_&#x60;. ID of a saved [HTML template](#section/HTML-Templates).
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;tmpl_&#x60;. ID of a saved [HTML template](#section/HTML-Templates).</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
         /// An array of all non-deleted [version objects](#tag/Template-Versions) associated with the template.
         /// </summary>
         /// <value>An array of all non-deleted [version objects](#tag/Template-Versions) associated with the template.</value>
-        [DataMember(Name = "versions", EmitDefaultValue = false)]
+        [DataMember(Name = "versions", IsRequired = true, EmitDefaultValue = false)]
         public List<TemplateVersion> Versions { get; set; }
 
         /// <summary>
         /// Gets or Sets PublishedVersion
         /// </summary>
-        [DataMember(Name = "published_version", EmitDefaultValue = false)]
+        [DataMember(Name = "published_version", IsRequired = true, EmitDefaultValue = false)]
         public TemplateVersion PublishedVersion { get; set; }
 
         /// <summary>

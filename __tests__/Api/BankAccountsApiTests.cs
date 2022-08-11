@@ -29,17 +29,63 @@ namespace __tests__.Api
     {
         private Mock<IBankAccountsApi> bankAccountsApiMock;
         private BankAccountList fakeBankAccountList;
+        private BankAccount fakeBankAccount;
 
         public BankAccountsApiTests()
         {
             bankAccountsApiMock = new Mock<IBankAccountsApi>();
 
-            List<BankAccount> listOfBankAccounts = new List<BankAccount>();
-            BankAccount data1 = new BankAccount();
-            BankAccount data2 = new BankAccount();
+            fakeBankAccount = new BankAccount(
+                default(string), // description
+                "fake routing number", // routingNumber
+                "fake account number", // accountNumber
+                default(BankAccount.AccountTypeEnum), // accountType
+                "fake signatory", // signatory
+                default(Dictionary<string, string>), // metadata
+                "bank_fakeId", // id
+                default(string), // signatureUrl
+                default(string), // bankName
+                false, // verified
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                default(bool), // deleted
+                BankAccount.ObjectEnum.BankAccount // _object
+            );
 
-            data1.Id = "bank_fakeId1";
-            data2.Id = "bank_fakeId2";
+            List<BankAccount> listOfBankAccounts = new List<BankAccount>();
+            BankAccount data1 = new BankAccount(
+                default(string), // description
+                "fake routing number", // routingNumber
+                "fake account number", // accountNumber
+                default(BankAccount.AccountTypeEnum), // accountType
+                "fake signatory", // signatory
+                default(Dictionary<string, string>), // metadata
+                "bank_fakeId1", // id
+                default(string), // signatureUrl
+                default(string), // bankName
+                false, // verified
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                default(bool), // deleted
+                BankAccount.ObjectEnum.BankAccount // _object
+            );
+            BankAccount data2 = new BankAccount(
+                default(string), // description
+                "fake routing number", // routingNumber
+                "fake account number", // accountNumber
+                default(BankAccount.AccountTypeEnum), // accountType
+                "fake signatory", // signatory
+                default(Dictionary<string, string>), // metadata
+                "bank_fakeId2", // id
+                default(string), // signatureUrl
+                default(string), // bankName
+                false, // verified
+                default(DateTime), // dateCreated
+                default(DateTime), // dateModified
+                default(bool), // deleted
+                BankAccount.ObjectEnum.BankAccount // _object
+            );
+
             listOfBankAccounts.Add(data1);
             listOfBankAccounts.Add(data2);
 
@@ -61,9 +107,6 @@ namespace __tests__.Api
         [Test]
         public void BankAccountCreateTest()
         {
-            BankAccount fakeBankAccount = new BankAccount();
-            fakeBankAccount.Id = "bank_fakeId";
-
             BankAccountWritable bankAccountWritable = new BankAccountWritable(
                 null,
                 "123456789",
@@ -77,7 +120,7 @@ namespace __tests__.Api
             BankAccount response = bankAccountsApiMock.Object.BankAccountCreate(bankAccountWritable);
 
             Assert.IsInstanceOf<BankAccount>(response);
-            Assert.AreEqual(response.Id, "bank_fakeId");
+            Assert.AreEqual(response.Id, fakeBankAccount.Id);
         }
 
         /// <summary>
@@ -86,7 +129,6 @@ namespace __tests__.Api
         [Test]
         public void BankAccountCreateTestHandlesException()
         {
-            BankAccount fakeBankAccount = new BankAccount();
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
@@ -149,8 +191,6 @@ namespace __tests__.Api
         [Test]
         public void BankAccountRetrieveTest()
         {
-            BankAccount fakeBankAccount = new BankAccount();
-
             fakeBankAccount.Id = "bank_fakeId";
             bankAccountsApiMock.Setup(x => x.BankAccountRetrieve(fakeBankAccount.Id, It.IsAny<int>())).Returns(fakeBankAccount);
             BankAccount response = bankAccountsApiMock.Object.BankAccountRetrieve(fakeBankAccount.Id);
@@ -169,10 +209,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            bankAccountsApiMock.Setup(x => x.BankAccountRetrieve(null, It.IsAny<int>())).Throws(fakeException);
+            bankAccountsApiMock.Setup(x => x.BankAccountRetrieve("bank_fakeId", It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = bankAccountsApiMock.Object.BankAccountRetrieve(null);
+                var response = bankAccountsApiMock.Object.BankAccountRetrieve("bank_fakeId");
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -286,9 +326,9 @@ namespace __tests__.Api
         [Test]
         public void BankAccountListTestWithDateCreatedParam()
         {
-            Dictionary<String, String> dateCreated = new Dictionary<String, String>();
-            dateCreated.Add("gt", "2020-01-01");
-            dateCreated.Add("lt", "2020-01-31T12");
+            Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
+            DateTime lastMonth = DateTime.Today.AddMonths(-1);
+            dateCreated.Add("lt", lastMonth);
 
             bankAccountsApiMock.Setup(x => x.BankAccountsList(null, null, null, null, dateCreated, null, It.IsAny<int>())).Returns(fakeBankAccountList);
 
@@ -327,9 +367,6 @@ namespace __tests__.Api
 
             BankAccountVerify bankAccountVerify = new BankAccountVerify(amounts);
 
-            BankAccount fakeBankAccount = new BankAccount();
-            fakeBankAccount.Id = "bank_fakeId";
-
             bankAccountsApiMock.Setup(x => x.BankAccountVerify(fakeBankAccount.Id, bankAccountVerify, It.IsAny<int>())).Returns(fakeBankAccount);
 
             BankAccount response = bankAccountsApiMock.Object.BankAccountVerify(fakeBankAccount.Id, bankAccountVerify);
@@ -348,10 +385,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            bankAccountsApiMock.Setup(x => x.BankAccountVerify(null, null, It.IsAny<int>())).Throws(fakeException);
+            bankAccountsApiMock.Setup(x => x.BankAccountVerify("bank_fakeId", null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = bankAccountsApiMock.Object.BankAccountVerify(null, null);
+                var response = bankAccountsApiMock.Object.BankAccountVerify("bank_fakeId", null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

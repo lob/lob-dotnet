@@ -43,6 +43,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "USPS")]
             USPS = 1
+            
 
         }
 
@@ -63,6 +64,7 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "postcard")]
             Postcard = 1
+            
 
         }
 
@@ -75,7 +77,12 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Postcard" /> class.
         /// </summary>
-        /// <param name="id">Unique identifier prefixed with &#x60;psc_&#x60;..</param>
+        [JsonConstructorAttribute]
+        protected Postcard() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Postcard" /> class.
+        /// </summary>
+        /// <param name="id">Unique identifier prefixed with &#x60;psc_&#x60;. (required).</param>
         /// <param name="to">to.</param>
         /// <param name="from">from.</param>
         /// <param name="carrier">carrier (default to CarrierEnum.USPS).</param>
@@ -91,7 +98,7 @@ namespace lob.dotnet.Model
         /// <param name="backTemplateVersionId">The unique ID of the specific version of the HTML template used for the back of the postcard..</param>
         /// <param name="trackingEvents">An array of tracking_event objects ordered by ascending &#x60;time&#x60;. Will not be populated for postcards created in test mode..</param>
         /// <param name="_object">_object (default to ObjectEnum.Postcard).</param>
-        /// <param name="url">A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated..</param>
+        /// <param name="url">A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated. (required).</param>
         /// <param name="description">An internal description that identifies this resource. Must be no longer than 255 characters. .</param>
         /// <param name="metadata">Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information..</param>
         /// <param name="mailType">mailType.</param>
@@ -99,7 +106,18 @@ namespace lob.dotnet.Model
         /// <param name="sendDate">A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the &#x60;send_date&#x60; has passed, the mailpiece can be canceled. If a date in the format &#x60;2017-11-01&#x60; is passed, it will evaluate to midnight UTC of that date (&#x60;2017-11-01T00:00:00.000Z&#x60;). If a datetime is passed, that exact time will be used. A &#x60;send_date&#x60; passed with no time zone will default to UTC, while a &#x60;send_date&#x60; passed with a time zone will be converted to UTC..</param>
         public Postcard(string id = default(string), Address to = default(Address), AddressDomesticExpanded from = default(AddressDomesticExpanded), CarrierEnum? carrier = CarrierEnum.USPS, List<Thumbnail> thumbnails = default(List<Thumbnail>), PostcardSize size = default(PostcardSize), DateTime expectedDeliveryDate = default(DateTime), DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), string frontTemplateId = default(string), string backTemplateId = default(string), string frontTemplateVersionId = default(string), string backTemplateVersionId = default(string), List<TrackingEventNormal> trackingEvents = default(List<TrackingEventNormal>), ObjectEnum? _object = ObjectEnum.Postcard, string url = default(string), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime))
         {
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for Postcard and cannot be null");
+            }
             this.Id = id;
+            // to ensure "url" is required (not null)
+            if (url == null)
+            {
+                throw new ArgumentNullException("url is a required property for Postcard and cannot be null");
+            }
+            this.Url = url;
             this.To = to;
             this.From = from;
             this.Carrier = carrier;
@@ -115,7 +133,6 @@ namespace lob.dotnet.Model
             this.BackTemplateVersionId = backTemplateVersionId;
             this.TrackingEvents = trackingEvents;
             this.Object = _object;
-            this.Url = url;
             this.Description = description;
             this.Metadata = metadata;
             this.MailType = mailType;
@@ -127,7 +144,7 @@ namespace lob.dotnet.Model
         /// Unique identifier prefixed with &#x60;psc_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;psc_&#x60;.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
@@ -222,7 +239,7 @@ namespace lob.dotnet.Model
         /// A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.
         /// </summary>
         /// <value>A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.</value>
-        [DataMember(Name = "url", EmitDefaultValue = false)]
+        [DataMember(Name = "url", IsRequired = true, EmitDefaultValue = false)]
         public string Url { get; set; }
 
         /// <summary>

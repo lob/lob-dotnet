@@ -1,7 +1,7 @@
 /*
  * Lob
  *
- * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)? 
+ * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?
  *
  * The version of the OpenAPI document: 1.3.0
  * Contact: lob-openapi@lob.com
@@ -159,10 +159,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            addressesApiMock.Setup(x => x.AddressRetrieve(null, It.IsAny<int>())).Throws(fakeException);
+            addressesApiMock.Setup(x => x.AddressRetrieve("adr_fakeId", It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = addressesApiMock.Object.AddressRetrieve(null);
+                var response = addressesApiMock.Object.AddressRetrieve("adr_fakeId");
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -217,7 +217,7 @@ namespace __tests__.Api
 
             try {
                 var response = addressesApiMock.Object.AddressesList(null);
-            } 
+            }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
                 Assert.AreEqual(e.Message, fakeException.Message);

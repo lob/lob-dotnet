@@ -71,9 +71,9 @@ namespace __tests__.Integration {
                 true, // color
                 true, // doubleSided
                 LetterEditable.AddressPlacementEnum.TopFirstPage, // addressPlacement
-                default(Object), // returnEnvelope
+                default(bool), // returnEnvelope
                 null, // perforatedPage
-                default(LetterCustomEnvelope), // customEnvelope
+                default(LetterEditableCustomEnvelope), // customEnvelope
                 address.Id, // to
                 address.Id, // from
                 "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf", // file
@@ -179,18 +179,15 @@ namespace __tests__.Integration {
             Assert.NotNull(response.TotalCount);
         }
 
-        /* TODO: [DXP-1128] fix unpacking dictionaries into query params
         [Test]
         public void LetterListTestWithDateCreatedParameter() {
-            Dictionary<String, String> dateCreated = new Dictionary<String, String>();
-            dateCreated.Add("gt", "2020-01-01");
-            dateCreated.Add("lt", "2020-01-31T12");
+            Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
+            DateTime lastMonth = DateTime.Today.AddMonths(-1);
+            dateCreated.Add("lt", lastMonth);
 
             LetterList response = validApi.LettersList(null, null, null, null, dateCreated);
-            Console.WriteLine(response);
             Assert.Greater(response.Count, 0);
         }
-        */
 
         [Test]
         public void LetterListTestWithMetadataParameter() {
@@ -220,17 +217,15 @@ namespace __tests__.Integration {
             Assert.Greater(response.Count, 0);
         }
 
-        /* TODO: [DXP-1128]
         [Test]
         public void LetterListTestWithSendDateParameter() {
             Dictionary<String, String> sendDate = new Dictionary<String, String>();
-            sendDate.Add("gt", "2020-01-01");
-            sendDate.Add("lt", "2020-01-31T12");
+            DateTime lastMonth = DateTime.Today.AddMonths(-1);
+            sendDate.Add("lt", lastMonth.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 
             LetterList response = validApi.LettersList(null, null, null, null, null, null, null, null, sendDate);
             Assert.Greater(response.Count, 0);
         }
-        */
 
         [Test]
         public void LetterListTestWithMailTypeParameter() {

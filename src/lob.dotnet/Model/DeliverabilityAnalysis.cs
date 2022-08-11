@@ -44,30 +44,35 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "Y")]
             Y = 1,
+            
 
             /// <summary>
             /// Enum S for value: S
             /// </summary>
             [EnumMember(Value = "S")]
             S = 2,
+            
 
             /// <summary>
             /// Enum D for value: D
             /// </summary>
             [EnumMember(Value = "D")]
             D = 3,
+            
 
             /// <summary>
             /// Enum N for value: N
             /// </summary>
             [EnumMember(Value = "N")]
             N = 4,
+            
 
             /// <summary>
             /// Enum Empty for value: 
             /// </summary>
             [EnumMember(Value = "")]
             Empty = 5
+            
 
         }
 
@@ -76,8 +81,8 @@ namespace lob.dotnet.Model
         /// Result of Delivery Point Validation (DPV), which determines whether or not the address is deliverable by the USPS. Possible values are: * &#x60;Y&#x60; –– The address is deliverable by the USPS. * &#x60;S&#x60; –– The address is deliverable by removing the provided secondary unit designator. This information may be incorrect or unnecessary. * &#x60;D&#x60; –– The address is deliverable to the building&#39;s default address but is missing a secondary unit designator and/or number.   There is a chance the mail will not reach the intended recipient. * &#x60;N&#x60; –– The address is not deliverable according to the USPS, but parts of the address are valid (such as the street and ZIP code). * &#x60;&#39;&#39;&#x60; –– This address is not deliverable. No matching street could be found within the city or ZIP code. 
         /// </summary>
         /// <value>Result of Delivery Point Validation (DPV), which determines whether or not the address is deliverable by the USPS. Possible values are: * &#x60;Y&#x60; –– The address is deliverable by the USPS. * &#x60;S&#x60; –– The address is deliverable by removing the provided secondary unit designator. This information may be incorrect or unnecessary. * &#x60;D&#x60; –– The address is deliverable to the building&#39;s default address but is missing a secondary unit designator and/or number.   There is a chance the mail will not reach the intended recipient. * &#x60;N&#x60; –– The address is not deliverable according to the USPS, but parts of the address are valid (such as the street and ZIP code). * &#x60;&#39;&#39;&#x60; –– This address is not deliverable. No matching street could be found within the city or ZIP code. </value>
-        [DataMember(Name = "dpv_confirmation", EmitDefaultValue = false)]
-        public DpvConfirmationEnum? DpvConfirmation { get; set; }
+        [DataMember(Name = "dpv_confirmation", IsRequired = true, EmitDefaultValue = false)]
+        public DpvConfirmationEnum DpvConfirmation { get; set; }
         /// <summary>
         /// indicates whether or not the address is [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency). Possible values are: * &#x60;Y&#x60; –– Address is CMRA-authorized. * &#x60;N&#x60; –– Address is not CMRA-authorized. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
         /// </summary>
@@ -90,18 +95,21 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "Y")]
             Y = 1,
+            
 
             /// <summary>
             /// Enum N for value: N
             /// </summary>
             [EnumMember(Value = "N")]
             N = 2,
+            
 
             /// <summary>
             /// Enum Empty for value: 
             /// </summary>
             [EnumMember(Value = "")]
             Empty = 3
+            
 
         }
 
@@ -110,8 +118,8 @@ namespace lob.dotnet.Model
         /// indicates whether or not the address is [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency). Possible values are: * &#x60;Y&#x60; –– Address is CMRA-authorized. * &#x60;N&#x60; –– Address is not CMRA-authorized. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
         /// </summary>
         /// <value>indicates whether or not the address is [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency). Possible values are: * &#x60;Y&#x60; –– Address is CMRA-authorized. * &#x60;N&#x60; –– Address is not CMRA-authorized. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). </value>
-        [DataMember(Name = "dpv_cmra", EmitDefaultValue = false)]
-        public DpvCmraEnum? DpvCmra { get; set; }
+        [DataMember(Name = "dpv_cmra", IsRequired = true, EmitDefaultValue = false)]
+        public DpvCmraEnum DpvCmra { get; set; }
         /// <summary>
         /// indicates that an address was once deliverable, but has become vacant and is no longer receiving deliveries. Possible values are: * &#x60;Y&#x60; –– Address is vacant. * &#x60;N&#x60; –– Address is not vacant. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
         /// </summary>
@@ -124,18 +132,21 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "Y")]
             Y = 1,
+            
 
             /// <summary>
             /// Enum N for value: N
             /// </summary>
             [EnumMember(Value = "N")]
             N = 2,
+            
 
             /// <summary>
             /// Enum Empty for value: 
             /// </summary>
             [EnumMember(Value = "")]
             Empty = 3
+            
 
         }
 
@@ -144,8 +155,8 @@ namespace lob.dotnet.Model
         /// indicates that an address was once deliverable, but has become vacant and is no longer receiving deliveries. Possible values are: * &#x60;Y&#x60; –– Address is vacant. * &#x60;N&#x60; –– Address is not vacant. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
         /// </summary>
         /// <value>indicates that an address was once deliverable, but has become vacant and is no longer receiving deliveries. Possible values are: * &#x60;Y&#x60; –– Address is vacant. * &#x60;N&#x60; –– Address is not vacant. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). </value>
-        [DataMember(Name = "dpv_vacant", EmitDefaultValue = false)]
-        public DpvVacantEnum? DpvVacant { get; set; }
+        [DataMember(Name = "dpv_vacant", IsRequired = true, EmitDefaultValue = false)]
+        public DpvVacantEnum DpvVacant { get; set; }
         /// <summary>
         /// Corresponds to the USPS field &#x60;dpv_no_stat&#x60;. Indicates that an address has been vacated in the recent past, and is no longer receiving deliveries. If it&#39;s been unoccupied for 90+ days, or temporarily vacant, this will be flagged. Possible values are: * &#x60;Y&#x60; –– Address is active. * &#x60;N&#x60; –– Address is not active. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
         /// </summary>
@@ -158,18 +169,21 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "Y")]
             Y = 1,
+            
 
             /// <summary>
             /// Enum N for value: N
             /// </summary>
             [EnumMember(Value = "N")]
             N = 2,
+            
 
             /// <summary>
             /// Enum Empty for value: 
             /// </summary>
             [EnumMember(Value = "")]
             Empty = 3
+            
 
         }
 
@@ -178,8 +192,8 @@ namespace lob.dotnet.Model
         /// Corresponds to the USPS field &#x60;dpv_no_stat&#x60;. Indicates that an address has been vacated in the recent past, and is no longer receiving deliveries. If it&#39;s been unoccupied for 90+ days, or temporarily vacant, this will be flagged. Possible values are: * &#x60;Y&#x60; –– Address is active. * &#x60;N&#x60; –– Address is not active. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
         /// </summary>
         /// <value>Corresponds to the USPS field &#x60;dpv_no_stat&#x60;. Indicates that an address has been vacated in the recent past, and is no longer receiving deliveries. If it&#39;s been unoccupied for 90+ days, or temporarily vacant, this will be flagged. Possible values are: * &#x60;Y&#x60; –– Address is active. * &#x60;N&#x60; –– Address is not active. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). </value>
-        [DataMember(Name = "dpv_active", EmitDefaultValue = false)]
-        public DpvActiveEnum? DpvActive { get; set; }
+        [DataMember(Name = "dpv_active", IsRequired = true, EmitDefaultValue = false)]
+        public DpvActiveEnum DpvActive { get; set; }
         /// <summary>
         /// indicates whether this address has been converted by [LACS&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality/lacslink). LACS&lt;sup&gt;Link&lt;/sup&gt; corrects outdated addresses into their modern counterparts. Possible values are: * &#x60;Y&#x60; –– New address produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;N&#x60; –– New address could not be produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
         /// </summary>
@@ -192,18 +206,21 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "Y")]
             Y = 1,
+            
 
             /// <summary>
             /// Enum N for value: N
             /// </summary>
             [EnumMember(Value = "N")]
             N = 2,
+            
 
             /// <summary>
             /// Enum Empty for value: 
             /// </summary>
             [EnumMember(Value = "")]
             Empty = 3
+            
 
         }
 
@@ -212,8 +229,8 @@ namespace lob.dotnet.Model
         /// indicates whether this address has been converted by [LACS&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality/lacslink). LACS&lt;sup&gt;Link&lt;/sup&gt; corrects outdated addresses into their modern counterparts. Possible values are: * &#x60;Y&#x60; –– New address produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;N&#x60; –– New address could not be produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
         /// </summary>
         /// <value>indicates whether this address has been converted by [LACS&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality/lacslink). LACS&lt;sup&gt;Link&lt;/sup&gt; corrects outdated addresses into their modern counterparts. Possible values are: * &#x60;Y&#x60; –– New address produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;N&#x60; –– New address could not be produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). </value>
-        [DataMember(Name = "lacs_indicator", EmitDefaultValue = false)]
-        public LacsIndicatorEnum? LacsIndicator { get; set; }
+        [DataMember(Name = "lacs_indicator", IsRequired = true, EmitDefaultValue = false)]
+        public LacsIndicatorEnum LacsIndicator { get; set; }
         /// <summary>
         /// A return code that indicates whether the address was matched and corrected by [Suite&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality-solutions/suitelink). Suite&lt;sup&gt;Link&lt;/sup&gt; attempts to provide secondary information to business addresses. Possible values are: * &#x60;A&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match was found and secondary information was added. * &#x60;00&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match could not be found and no secondary information was added. * &#x60;&#39;&#39;&#x60; –– Suite&lt;sup&gt;Link&lt;/sup&gt; lookup was not attempted. 
         /// </summary>
@@ -226,18 +243,21 @@ namespace lob.dotnet.Model
             /// </summary>
             [EnumMember(Value = "A")]
             A = 1,
+            
 
             /// <summary>
             /// Enum _00 for value: 00
             /// </summary>
             [EnumMember(Value = "00")]
             _00 = 2,
+            
 
             /// <summary>
             /// Enum Empty for value: 
             /// </summary>
             [EnumMember(Value = "")]
             Empty = 3
+            
 
         }
 
@@ -246,29 +266,44 @@ namespace lob.dotnet.Model
         /// A return code that indicates whether the address was matched and corrected by [Suite&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality-solutions/suitelink). Suite&lt;sup&gt;Link&lt;/sup&gt; attempts to provide secondary information to business addresses. Possible values are: * &#x60;A&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match was found and secondary information was added. * &#x60;00&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match could not be found and no secondary information was added. * &#x60;&#39;&#39;&#x60; –– Suite&lt;sup&gt;Link&lt;/sup&gt; lookup was not attempted. 
         /// </summary>
         /// <value>A return code that indicates whether the address was matched and corrected by [Suite&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality-solutions/suitelink). Suite&lt;sup&gt;Link&lt;/sup&gt; attempts to provide secondary information to business addresses. Possible values are: * &#x60;A&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match was found and secondary information was added. * &#x60;00&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match could not be found and no secondary information was added. * &#x60;&#39;&#39;&#x60; –– Suite&lt;sup&gt;Link&lt;/sup&gt; lookup was not attempted. </value>
-        [DataMember(Name = "suite_return_code", EmitDefaultValue = false)]
-        public SuiteReturnCodeEnum? SuiteReturnCode { get; set; }
+        [DataMember(Name = "suite_return_code", IsRequired = true, EmitDefaultValue = false)]
+        public SuiteReturnCodeEnum SuiteReturnCode { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="DeliverabilityAnalysis" /> class.
         /// </summary>
-        /// <param name="dpvConfirmation">Result of Delivery Point Validation (DPV), which determines whether or not the address is deliverable by the USPS. Possible values are: * &#x60;Y&#x60; –– The address is deliverable by the USPS. * &#x60;S&#x60; –– The address is deliverable by removing the provided secondary unit designator. This information may be incorrect or unnecessary. * &#x60;D&#x60; –– The address is deliverable to the building&#39;s default address but is missing a secondary unit designator and/or number.   There is a chance the mail will not reach the intended recipient. * &#x60;N&#x60; –– The address is not deliverable according to the USPS, but parts of the address are valid (such as the street and ZIP code). * &#x60;&#39;&#39;&#x60; –– This address is not deliverable. No matching street could be found within the city or ZIP code. .</param>
-        /// <param name="dpvCmra">indicates whether or not the address is [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency). Possible values are: * &#x60;Y&#x60; –– Address is CMRA-authorized. * &#x60;N&#x60; –– Address is not CMRA-authorized. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). .</param>
-        /// <param name="dpvVacant">indicates that an address was once deliverable, but has become vacant and is no longer receiving deliveries. Possible values are: * &#x60;Y&#x60; –– Address is vacant. * &#x60;N&#x60; –– Address is not vacant. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). .</param>
-        /// <param name="dpvActive">Corresponds to the USPS field &#x60;dpv_no_stat&#x60;. Indicates that an address has been vacated in the recent past, and is no longer receiving deliveries. If it&#39;s been unoccupied for 90+ days, or temporarily vacant, this will be flagged. Possible values are: * &#x60;Y&#x60; –– Address is active. * &#x60;N&#x60; –– Address is not active. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). .</param>
-        /// <param name="dpvFootnotes">An array of 2-character strings that gives more insight into how &#x60;deliverability_analysis[dpv_confirmation]&#x60; was determined. Will always include at least 1 string, and can include up to 3. For details, see [US Verification Details](#tag/US-Verification-Types). .</param>
-        /// <param name="ewsMatch">indicates whether or not an address has been flagged in the [Early Warning System](https://docs.informatica.com/data-engineering/data-engineering-quality/10-4-0/address-validator-port-reference/postal-carrier-certification-data-ports/early-warning-system-return-code.html), meaning the address is under development and not yet ready to receive mail. However, it should become available in a few months. .</param>
-        /// <param name="lacsIndicator">indicates whether this address has been converted by [LACS&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality/lacslink). LACS&lt;sup&gt;Link&lt;/sup&gt; corrects outdated addresses into their modern counterparts. Possible values are: * &#x60;Y&#x60; –– New address produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;N&#x60; –– New address could not be produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). .</param>
-        /// <param name="lacsReturnCode">A code indicating how &#x60;deliverability_analysis[lacs_indicator]&#x60; was determined. Possible values are: * &#x60;A&#x60; — A new address was produced because a match was found in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;92&#x60; — A LACS&lt;sup&gt;Link&lt;/sup&gt; record was matched after dropping secondary information. * &#x60;14&#x60; — A match was found in LACS&lt;sup&gt;Link&lt;/sup&gt;, but could not be converted to a deliverable address. * &#x60;00&#x60; — A match was not found in LACS&lt;sup&gt;Link&lt;/sup&gt;, and no new address was produced. * &#x60;&#39;&#39;&#x60; — LACS&lt;sup&gt;Link&lt;/sup&gt; was not attempted. .</param>
-        /// <param name="suiteReturnCode">A return code that indicates whether the address was matched and corrected by [Suite&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality-solutions/suitelink). Suite&lt;sup&gt;Link&lt;/sup&gt; attempts to provide secondary information to business addresses. Possible values are: * &#x60;A&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match was found and secondary information was added. * &#x60;00&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match could not be found and no secondary information was added. * &#x60;&#39;&#39;&#x60; –– Suite&lt;sup&gt;Link&lt;/sup&gt; lookup was not attempted. .</param>
-        public DeliverabilityAnalysis(DpvConfirmationEnum? dpvConfirmation = default(DpvConfirmationEnum?), DpvCmraEnum? dpvCmra = default(DpvCmraEnum?), DpvVacantEnum? dpvVacant = default(DpvVacantEnum?), DpvActiveEnum? dpvActive = default(DpvActiveEnum?), List<DpvFootnote> dpvFootnotes = default(List<DpvFootnote>), bool ewsMatch = default(bool), LacsIndicatorEnum? lacsIndicator = default(LacsIndicatorEnum?), string lacsReturnCode = default(string), SuiteReturnCodeEnum? suiteReturnCode = default(SuiteReturnCodeEnum?))
+        [JsonConstructorAttribute]
+        protected DeliverabilityAnalysis() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DeliverabilityAnalysis" /> class.
+        /// </summary>
+        /// <param name="dpvConfirmation">Result of Delivery Point Validation (DPV), which determines whether or not the address is deliverable by the USPS. Possible values are: * &#x60;Y&#x60; –– The address is deliverable by the USPS. * &#x60;S&#x60; –– The address is deliverable by removing the provided secondary unit designator. This information may be incorrect or unnecessary. * &#x60;D&#x60; –– The address is deliverable to the building&#39;s default address but is missing a secondary unit designator and/or number.   There is a chance the mail will not reach the intended recipient. * &#x60;N&#x60; –– The address is not deliverable according to the USPS, but parts of the address are valid (such as the street and ZIP code). * &#x60;&#39;&#39;&#x60; –– This address is not deliverable. No matching street could be found within the city or ZIP code.  (required).</param>
+        /// <param name="dpvCmra">indicates whether or not the address is [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency). Possible values are: * &#x60;Y&#x60; –– Address is CMRA-authorized. * &#x60;N&#x60; –– Address is not CMRA-authorized. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  (required).</param>
+        /// <param name="dpvVacant">indicates that an address was once deliverable, but has become vacant and is no longer receiving deliveries. Possible values are: * &#x60;Y&#x60; –– Address is vacant. * &#x60;N&#x60; –– Address is not vacant. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  (required).</param>
+        /// <param name="dpvActive">Corresponds to the USPS field &#x60;dpv_no_stat&#x60;. Indicates that an address has been vacated in the recent past, and is no longer receiving deliveries. If it&#39;s been unoccupied for 90+ days, or temporarily vacant, this will be flagged. Possible values are: * &#x60;Y&#x60; –– Address is active. * &#x60;N&#x60; –– Address is not active. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  (required).</param>
+        /// <param name="dpvFootnotes">An array of 2-character strings that gives more insight into how &#x60;deliverability_analysis[dpv_confirmation]&#x60; was determined. Will always include at least 1 string, and can include up to 3. For details, see [US Verification Details](#tag/US-Verification-Types).  (required).</param>
+        /// <param name="ewsMatch">indicates whether or not an address has been flagged in the [Early Warning System](https://docs.informatica.com/data-engineering/data-engineering-quality/10-4-0/address-validator-port-reference/postal-carrier-certification-data-ports/early-warning-system-return-code.html), meaning the address is under development and not yet ready to receive mail. However, it should become available in a few months.  (required).</param>
+        /// <param name="lacsIndicator">indicates whether this address has been converted by [LACS&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality/lacslink). LACS&lt;sup&gt;Link&lt;/sup&gt; corrects outdated addresses into their modern counterparts. Possible values are: * &#x60;Y&#x60; –– New address produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;N&#x60; –– New address could not be produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  (required).</param>
+        /// <param name="lacsReturnCode">A code indicating how &#x60;deliverability_analysis[lacs_indicator]&#x60; was determined. Possible values are: * &#x60;A&#x60; — A new address was produced because a match was found in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;92&#x60; — A LACS&lt;sup&gt;Link&lt;/sup&gt; record was matched after dropping secondary information. * &#x60;14&#x60; — A match was found in LACS&lt;sup&gt;Link&lt;/sup&gt;, but could not be converted to a deliverable address. * &#x60;00&#x60; — A match was not found in LACS&lt;sup&gt;Link&lt;/sup&gt;, and no new address was produced. * &#x60;&#39;&#39;&#x60; — LACS&lt;sup&gt;Link&lt;/sup&gt; was not attempted.  (required).</param>
+        /// <param name="suiteReturnCode">A return code that indicates whether the address was matched and corrected by [Suite&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality-solutions/suitelink). Suite&lt;sup&gt;Link&lt;/sup&gt; attempts to provide secondary information to business addresses. Possible values are: * &#x60;A&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match was found and secondary information was added. * &#x60;00&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match could not be found and no secondary information was added. * &#x60;&#39;&#39;&#x60; –– Suite&lt;sup&gt;Link&lt;/sup&gt; lookup was not attempted.  (required).</param>
+        public DeliverabilityAnalysis(DpvConfirmationEnum dpvConfirmation = default(DpvConfirmationEnum), DpvCmraEnum dpvCmra = default(DpvCmraEnum), DpvVacantEnum dpvVacant = default(DpvVacantEnum), DpvActiveEnum dpvActive = default(DpvActiveEnum), List<DpvFootnote> dpvFootnotes = default(List<DpvFootnote>), bool ewsMatch = default(bool), LacsIndicatorEnum lacsIndicator = default(LacsIndicatorEnum), string lacsReturnCode = default(string), SuiteReturnCodeEnum suiteReturnCode = default(SuiteReturnCodeEnum))
         {
             this.DpvConfirmation = dpvConfirmation;
             this.DpvCmra = dpvCmra;
             this.DpvVacant = dpvVacant;
             this.DpvActive = dpvActive;
+            // to ensure "dpvFootnotes" is required (not null)
+            if (dpvFootnotes == null)
+            {
+                throw new ArgumentNullException("dpvFootnotes is a required property for DeliverabilityAnalysis and cannot be null");
+            }
             this.DpvFootnotes = dpvFootnotes;
             this.EwsMatch = ewsMatch;
             this.LacsIndicator = lacsIndicator;
+            // to ensure "lacsReturnCode" is required (not null)
+            if (lacsReturnCode == null)
+            {
+                throw new ArgumentNullException("lacsReturnCode is a required property for DeliverabilityAnalysis and cannot be null");
+            }
             this.LacsReturnCode = lacsReturnCode;
             this.SuiteReturnCode = suiteReturnCode;
         }
@@ -277,21 +312,21 @@ namespace lob.dotnet.Model
         /// An array of 2-character strings that gives more insight into how &#x60;deliverability_analysis[dpv_confirmation]&#x60; was determined. Will always include at least 1 string, and can include up to 3. For details, see [US Verification Details](#tag/US-Verification-Types). 
         /// </summary>
         /// <value>An array of 2-character strings that gives more insight into how &#x60;deliverability_analysis[dpv_confirmation]&#x60; was determined. Will always include at least 1 string, and can include up to 3. For details, see [US Verification Details](#tag/US-Verification-Types). </value>
-        [DataMember(Name = "dpv_footnotes", EmitDefaultValue = false)]
+        [DataMember(Name = "dpv_footnotes", IsRequired = true, EmitDefaultValue = false)]
         public List<DpvFootnote> DpvFootnotes { get; set; }
 
         /// <summary>
         /// indicates whether or not an address has been flagged in the [Early Warning System](https://docs.informatica.com/data-engineering/data-engineering-quality/10-4-0/address-validator-port-reference/postal-carrier-certification-data-ports/early-warning-system-return-code.html), meaning the address is under development and not yet ready to receive mail. However, it should become available in a few months. 
         /// </summary>
         /// <value>indicates whether or not an address has been flagged in the [Early Warning System](https://docs.informatica.com/data-engineering/data-engineering-quality/10-4-0/address-validator-port-reference/postal-carrier-certification-data-ports/early-warning-system-return-code.html), meaning the address is under development and not yet ready to receive mail. However, it should become available in a few months. </value>
-        [DataMember(Name = "ews_match", EmitDefaultValue = true)]
+        [DataMember(Name = "ews_match", IsRequired = true, EmitDefaultValue = true)]
         public bool EwsMatch { get; set; }
 
         /// <summary>
         /// A code indicating how &#x60;deliverability_analysis[lacs_indicator]&#x60; was determined. Possible values are: * &#x60;A&#x60; — A new address was produced because a match was found in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;92&#x60; — A LACS&lt;sup&gt;Link&lt;/sup&gt; record was matched after dropping secondary information. * &#x60;14&#x60; — A match was found in LACS&lt;sup&gt;Link&lt;/sup&gt;, but could not be converted to a deliverable address. * &#x60;00&#x60; — A match was not found in LACS&lt;sup&gt;Link&lt;/sup&gt;, and no new address was produced. * &#x60;&#39;&#39;&#x60; — LACS&lt;sup&gt;Link&lt;/sup&gt; was not attempted. 
         /// </summary>
         /// <value>A code indicating how &#x60;deliverability_analysis[lacs_indicator]&#x60; was determined. Possible values are: * &#x60;A&#x60; — A new address was produced because a match was found in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;92&#x60; — A LACS&lt;sup&gt;Link&lt;/sup&gt; record was matched after dropping secondary information. * &#x60;14&#x60; — A match was found in LACS&lt;sup&gt;Link&lt;/sup&gt;, but could not be converted to a deliverable address. * &#x60;00&#x60; — A match was not found in LACS&lt;sup&gt;Link&lt;/sup&gt;, and no new address was produced. * &#x60;&#39;&#39;&#x60; — LACS&lt;sup&gt;Link&lt;/sup&gt; was not attempted. </value>
-        [DataMember(Name = "lacs_return_code", EmitDefaultValue = false)]
+        [DataMember(Name = "lacs_return_code", IsRequired = true, EmitDefaultValue = false)]
         public string LacsReturnCode { get; set; }
 
         /// <summary>

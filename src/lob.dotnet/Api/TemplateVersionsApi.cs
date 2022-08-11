@@ -16,6 +16,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using lob.dotnet.Client;
+using System.Runtime.Serialization;
 using lob.dotnet.Model;
 
 namespace lob.dotnet.Api
@@ -144,7 +145,7 @@ namespace lob.dotnet.Api
         /// <param name="dateCreated">Filter by date created. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateVersionList</returns>
-        TemplateVersionList TemplateVersionsList(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), int operationIndex = 0);
+        TemplateVersionList TemplateVersionsList(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -161,7 +162,7 @@ namespace lob.dotnet.Api
         /// <param name="dateCreated">Filter by date created. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateVersionList</returns>
-        ApiResponse<TemplateVersionList> TemplateVersionsListWithHttpInfo(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), int operationIndex = 0);
+        ApiResponse<TemplateVersionList> TemplateVersionsListWithHttpInfo(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -297,7 +298,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateVersionList</returns>
-        System.Threading.Tasks.Task<TemplateVersionList> TemplateVersionsListAsync(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TemplateVersionList> TemplateVersionsListAsync(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -315,7 +316,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateVersionList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TemplateVersionList>> TemplateVersionsListWithHttpInfoAsync(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TemplateVersionList>> TemplateVersionsListWithHttpInfoAsync(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -1174,7 +1175,7 @@ namespace lob.dotnet.Api
         /// <param name="dateCreated">Filter by date created. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateVersionList</returns>
-        public TemplateVersionList TemplateVersionsList(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), int operationIndex = 0)
+        public TemplateVersionList TemplateVersionsList(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0)
         {
             lob.dotnet.Client.ApiResponse<TemplateVersionList> localVarResponse = TemplateVersionsListWithHttpInfo(tmplId, limit, before, after, include, dateCreated);
             return localVarResponse.Data;
@@ -1192,7 +1193,7 @@ namespace lob.dotnet.Api
         /// <param name="dateCreated">Filter by date created. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateVersionList</returns>
-        public lob.dotnet.Client.ApiResponse<TemplateVersionList> TemplateVersionsListWithHttpInfo(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<TemplateVersionList> TemplateVersionsListWithHttpInfo(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0)
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
@@ -1241,7 +1242,7 @@ namespace lob.dotnet.Api
             }
             if (dateCreated != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "date_created", dateCreated));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "date_created", dateCreated));
             }
 
             localVarRequestOptions.Operation = "TemplateVersionsApi.TemplateVersionsList";
@@ -1281,7 +1282,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateVersionList</returns>
-        public async System.Threading.Tasks.Task<TemplateVersionList> TemplateVersionsListAsync(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TemplateVersionList> TemplateVersionsListAsync(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             lob.dotnet.Client.ApiResponse<TemplateVersionList> localVarResponse = await TemplateVersionsListWithHttpInfoAsync(tmplId, limit, before, after, include, dateCreated, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1300,7 +1301,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateVersionList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateVersionList>> TemplateVersionsListWithHttpInfoAsync(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, string> dateCreated = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateVersionList>> TemplateVersionsListWithHttpInfoAsync(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)

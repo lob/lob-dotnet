@@ -35,12 +35,22 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="BillingGroupEditable" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected BillingGroupEditable() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BillingGroupEditable" /> class.
+        /// </summary>
         /// <param name="description">Description of the billing group..</param>
-        /// <param name="name">Name of the billing group..</param>
+        /// <param name="name">Name of the billing group. (required).</param>
         public BillingGroupEditable(string description = default(string), string name = default(string))
         {
-            this.Description = description;
+            // to ensure "name" is required (not null)
+            if (name == null)
+            {
+                throw new ArgumentNullException("name is a required property for BillingGroupEditable and cannot be null");
+            }
             this.Name = name;
+            this.Description = description;
         }
 
         /// <summary>
@@ -54,7 +64,7 @@ namespace lob.dotnet.Model
         /// Name of the billing group.
         /// </summary>
         /// <value>Name of the billing group.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
