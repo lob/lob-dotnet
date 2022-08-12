@@ -51,14 +51,69 @@ namespace lob.dotnet.Model
         /// <param name="inside">The artwork to use as the inside of your self mailer.  (required).</param>
         /// <param name="outside">The artwork to use as the outside of your self mailer.  (required).</param>
         /// <param name="billingGroupId">An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information..</param>
-        public SelfMailerEditable(string to = default(string), string from = default(string), SelfMailerSize size = default(SelfMailerSize), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string inside = default(string), string outside = default(string), string billingGroupId = default(string))
+        public interface ToInterface {}
+
+        public class stringTo : ToInterface {
+            private string To;
+
+            public stringTo(string To) {
+                this.To = To;
+            }
+
+            public string get() {
+                return To;
+            }
+        }
+        public class AddressEditableTo : ToInterface {
+            private AddressEditable To;
+
+            public AddressEditableTo(AddressEditable To) {
+                this.To = To;
+            }
+
+            public string get() {
+                return To.ToJson();
+            }
+        }
+        public interface FromInterface {}
+
+        public class stringFrom : FromInterface {
+            private string From;
+
+            public stringFrom(string From) {
+                this.From = From;
+            }
+
+            public string get() {
+                return From;
+            }
+        }
+        public class AddressEditableFrom : FromInterface {
+            private AddressEditable From;
+
+            public AddressEditableFrom(AddressEditable From) {
+                this.From = From;
+            }
+
+            public string get() {
+                return From.ToJson();
+            }
+        }
+        public SelfMailerEditable(ToInterface to = default(ToInterface), FromInterface from = default(FromInterface), SelfMailerSize size = default(SelfMailerSize), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string inside = default(string), string outside = default(string), string billingGroupId = default(string))
         {
             // to ensure "to" is required (not null)
             if (to == null)
             {
                 throw new ArgumentNullException("to is a required property for SelfMailerEditable and cannot be null");
             }
-            this.To = to;
+            else if (to.GetType() == typeof(stringTo)) {
+                stringTo blah = (stringTo)to;
+                this.To = blah.get();
+            }
+            else if (to.GetType() == typeof(AddressEditableTo)) {
+                AddressEditableTo blah = (AddressEditableTo)to;
+                this.To = blah.get();
+            }
             // to ensure "inside" is required (not null)
             if (inside == null)
             {
@@ -71,7 +126,14 @@ namespace lob.dotnet.Model
                 throw new ArgumentNullException("outside is a required property for SelfMailerEditable and cannot be null");
             }
             this.Outside = outside;
-            this.From = from;
+            if (from.GetType() == typeof(stringFrom)) {
+                stringFrom blah = (stringFrom)from;
+                this.From = blah.get();
+            }
+            if (from.GetType() == typeof(AddressEditableFrom)) {
+                AddressEditableFrom blah = (AddressEditableFrom)from;
+                this.From = blah.get();
+            }
             this.Size = size;
             this.Description = description;
             this.Metadata = metadata;
@@ -185,7 +247,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>

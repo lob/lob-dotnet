@@ -59,8 +59,8 @@ namespace __tests__.Integration {
             address = validAddressesApi.AddressCreate(addressEditable);
 
             selfMailerEditable = new SelfMailerEditable(
-                address.Id, // to
-                address.Id, // from
+                new SelfMailerEditable.stringTo(address.Id), // to
+                new SelfMailerEditable.stringFrom(address.Id), // from
                 default(SelfMailerSize), // size
                 "C# integration test selfMailer", // description
                 default(Dictionary<string, string>), // metadata

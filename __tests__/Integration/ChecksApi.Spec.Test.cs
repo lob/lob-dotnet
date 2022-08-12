@@ -98,8 +98,8 @@ namespace __tests__.Integration {
             address2 = validAddressesApi.AddressCreate(addressEditable2);
 
             checkEditable = new CheckEditable(
-                address1.Id, // from
-                address2.Id, // to
+                new CheckEditable.stringFrom(address1.Id), // from
+                new CheckEditable.stringTo(address2.Id), // to
                 bankAccount.Id, // bankAccount
                 100, // amount
                 null, // logo

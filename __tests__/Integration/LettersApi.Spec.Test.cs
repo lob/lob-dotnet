@@ -71,11 +71,11 @@ namespace __tests__.Integration {
                 true, // color
                 true, // doubleSided
                 LetterEditable.AddressPlacementEnum.TopFirstPage, // addressPlacement
-                default(bool), // returnEnvelope
+                new LetterEditable.boolReturnEnvelope(false), // returnEnvelope
                 null, // perforatedPage
                 default(LetterEditableCustomEnvelope), // customEnvelope
-                address.Id, // to
-                address.Id, // from
+                new LetterEditable.AddressEditableTo(addressEditable), // to
+                new LetterEditable.stringFrom(address.Id), // from
                 "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf", // file
                 LetterEditable.ExtraServiceEnum.Certified // extraService
             );

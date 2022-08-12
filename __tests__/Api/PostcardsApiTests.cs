@@ -131,8 +131,8 @@ namespace __tests__.Api
         public void PostcardCreateTest()
         {
             PostcardEditable postcardEditable = new PostcardEditable(
-                "adr_fakeId", // to
-                "adr_fakeId", // from
+                new PostcardEditable.stringTo("adr_fakeId"), // to
+                new PostcardEditable.stringFrom("adr_fakeId"), // from
                 default(PostcardSize), // size
                 "C# unit test postcard", // description
                 default(Dictionary<string, string>), // metadata

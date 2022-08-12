@@ -60,8 +60,8 @@ namespace __tests__.Integration {
             address = validAddressesApi.AddressCreate(addressEditable);
 
             postcardEditable = new PostcardEditable(
-                address.Id, // to
-                address.Id, // from
+                new PostcardEditable.stringTo(address.Id), // to
+                new PostcardEditable.stringFrom(address.Id), // from
                 default(PostcardSize), // size
                 "C# integration test postcard", // description
                 default(Dictionary<string, string>), // metadata

@@ -36,8 +36,8 @@ namespace __tests__.Api
             SelfMailersApiMock = new Mock<ISelfMailersApi>();
             fakeSelfMailer = new SelfMailer(
                 "sfm_fakeId", // id
-                new Address(), // to
-                default(AddressDomesticExpanded), // from
+                new SelfMailer.AddressTo(new Address()), // to
+                new SelfMailer.AddressDomesticExpandedFrom(new AddressDomesticExpanded()), // from
                 default(SelfMailerSize), // size
                 default(string), // description
                 default(Dictionary<string, string>), // metadata
@@ -56,8 +56,8 @@ namespace __tests__.Api
             List<SelfMailer> listOfSelfMailers = new List<SelfMailer>();
             SelfMailer data1 = new SelfMailer(
                 "sfm_fakeId1", // id
-                new Address(), // to
-                default(AddressDomesticExpanded), // from
+                new SelfMailer.AddressTo(new Address()), // to
+                new SelfMailer.AddressDomesticExpandedFrom(new AddressDomesticExpanded()), // from
                 default(SelfMailerSize), // size
                 default(string), // description
                 default(Dictionary<string, string>), // metadata
@@ -74,8 +74,8 @@ namespace __tests__.Api
             );
             SelfMailer data2 = new SelfMailer(
                 "sfm_fakeId2", // id
-                new Address(), // to
-                default(AddressDomesticExpanded), // from
+                new SelfMailer.AddressTo(new Address()), // to
+                new SelfMailer.AddressDomesticExpandedFrom(new AddressDomesticExpanded()), // from
                 default(SelfMailerSize), // size
                 default(string), // description
                 default(Dictionary<string, string>), // metadata
@@ -113,8 +113,8 @@ namespace __tests__.Api
         public void SelfMailerCreateTest()
         {
             SelfMailerEditable selfMailerEditable = new SelfMailerEditable(
-                "adr_fakeId", // to
-                "adr_fakeId", // from
+                new SelfMailerEditable.stringTo("adr_fakeId"), // to
+                new SelfMailerEditable.stringFrom("adr_fakeId"), // from
                 default(SelfMailerSize), // size
                 "C# unit test selfMailer", // description
                 default(Dictionary<string, string>), // metadata

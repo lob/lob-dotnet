@@ -54,12 +54,12 @@ namespace __tests__.Api
               default(string), // extraService
               default(string), // trackingNumber
               default(List<TrackingEventNormal>), // trackingEvents
-              default(string), // returnAddress
+              new Letter.stringReturnAddress("adr_fakeId"), // returnAddress
               default(MailType), // mailType
               default(bool), // color
               true, // doubleSided
               Letter.AddressPlacementEnum.TopFirstPage, // addressPlacement
-              default(bool), // returnEnvelope
+              new Letter.boolReturnEnvelope(false), // returnEnvelope
               null, // perforatedPage
               default(LetterCustomEnvelope) // customEnvelope
             );
@@ -85,12 +85,12 @@ namespace __tests__.Api
               default(string), // extraService
               default(string), // trackingNumber
               default(List<TrackingEventNormal>), // trackingEvents
-              default(string), // returnAddress
+              new Letter.stringReturnAddress("adr_fakeId"), // returnAddress
               default(MailType), // mailType
               default(bool), // color
               true, // doubleSided
               Letter.AddressPlacementEnum.TopFirstPage, // addressPlacement
-              default(bool), // returnEnvelope
+              new Letter.boolReturnEnvelope(false), // returnEnvelope
               null, // perforatedPage
               default(LetterCustomEnvelope) // customEnvelope
             );
@@ -114,12 +114,12 @@ namespace __tests__.Api
               default(string), // extraService
               default(string), // trackingNumber
               default(List<TrackingEventNormal>), // trackingEvents
-              default(string), // returnAddress
+              new Letter.stringReturnAddress("adr_fakeId"), // returnAddress
               default(MailType), // mailType
               default(bool), // color
               true, // doubleSided
               Letter.AddressPlacementEnum.TopFirstPage, // addressPlacement
-              default(bool), // returnEnvelope
+              new Letter.boolReturnEnvelope(false), // returnEnvelope
               null, // perforatedPage
               default(LetterCustomEnvelope) // customEnvelope
             );
@@ -154,11 +154,11 @@ namespace __tests__.Api
                 default(bool), // color
                 true, // doubleSided
                 LetterEditable.AddressPlacementEnum.TopFirstPage, // addressPlacement
-                default(bool), // returnEnvelope
+                null, // returnEnvelope
                 null, // perforatedPage
                 null, // customEnvelope
-                "adr_fakeId", // to
-                "adr_fakeId", // from
+                new LetterEditable.stringTo("adr_fakeId"), // to
+                new LetterEditable.stringFrom("adr_fakeId"), // from
                 "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf", // file
                 null // extraService
             );

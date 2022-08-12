@@ -160,8 +160,8 @@ namespace __tests__.Api
         public void CheckCreateTest()
         {
             CheckEditable checkEditable = new CheckEditable(
-                "adr_fakeId1", // from
-                "adr_fakeId2", // to
+                new CheckEditable.stringFrom("adr_fakeId1"), // from
+                new CheckEditable.stringTo("adr_fakeId2"), // to
                 "bank_fakeId", // bankAccount
                 100, // amount
                 null, // logo

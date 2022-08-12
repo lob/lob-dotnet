@@ -79,7 +79,55 @@ namespace lob.dotnet.Model
         /// <param name="_object">Value is resource type. (default to ObjectEnum.SelfMailer).</param>
         /// <param name="trackingEvents">An array of certified tracking events ordered by ascending &#x60;time&#x60;. Not populated in test mode..</param>
         /// <param name="url">A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated. (required).</param>
-        public SelfMailer(string id = default(string), Address to = default(Address), AddressDomesticExpanded from = default(AddressDomesticExpanded), SelfMailerSize size = default(SelfMailerSize), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string outsideTemplateId = default(string), string insideTemplateId = default(string), string outsideTemplateVersionId = default(string), string insideTemplateVersionId = default(string), ObjectEnum? _object = ObjectEnum.SelfMailer, List<TrackingEventCertified> trackingEvents = default(List<TrackingEventCertified>), string url = default(string))
+        public interface ToInterface {}
+
+        public class stringTo : ToInterface {
+            private string To;
+
+            public stringTo(string To) {
+                this.To = To;
+            }
+
+            public string get() {
+                return To;
+            }
+        }
+        public class AddressTo : ToInterface {
+            private Address To;
+
+            public AddressTo(Address To) {
+                this.To = To;
+            }
+
+            public string get() {
+                return To.ToJson();
+            }
+        }
+        public interface FromInterface {}
+
+        public class stringFrom : FromInterface {
+            private string From;
+
+            public stringFrom(string From) {
+                this.From = From;
+            }
+
+            public string get() {
+                return From;
+            }
+        }
+        public class AddressDomesticExpandedFrom : FromInterface {
+            private AddressDomesticExpanded From;
+
+            public AddressDomesticExpandedFrom(AddressDomesticExpanded From) {
+                this.From = From;
+            }
+
+            public string get() {
+                return From.ToJson();
+            }
+        }
+        public SelfMailer(string id = default(string), ToInterface to = default(ToInterface), FromInterface from = default(FromInterface), SelfMailerSize size = default(SelfMailerSize), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string outsideTemplateId = default(string), string insideTemplateId = default(string), string outsideTemplateVersionId = default(string), string insideTemplateVersionId = default(string), ObjectEnum? _object = ObjectEnum.SelfMailer, List<TrackingEventCertified> trackingEvents = default(List<TrackingEventCertified>), string url = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -92,14 +140,28 @@ namespace lob.dotnet.Model
             {
                 throw new ArgumentNullException("to is a required property for SelfMailer and cannot be null");
             }
-            this.To = to;
+            else if (to.GetType() == typeof(stringTo)) {
+                stringTo blah = (stringTo)to;
+                this.To = blah.get();
+            }
+            else if (to.GetType() == typeof(AddressTo)) {
+                AddressTo blah = (AddressTo)to;
+                this.To = blah.get();
+            }
             // to ensure "url" is required (not null)
             if (url == null)
             {
                 throw new ArgumentNullException("url is a required property for SelfMailer and cannot be null");
             }
             this.Url = url;
-            this.From = from;
+            if (from.GetType() == typeof(stringFrom)) {
+                stringFrom blah = (stringFrom)from;
+                this.From = blah.get();
+            }
+            if (from.GetType() == typeof(AddressDomesticExpandedFrom)) {
+                AddressDomesticExpandedFrom blah = (AddressDomesticExpandedFrom)from;
+                this.From = blah.get();
+            }
             this.Size = size;
             this.Description = description;
             this.Metadata = metadata;
@@ -125,13 +187,13 @@ namespace lob.dotnet.Model
         /// Gets or Sets To
         /// </summary>
         [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = false)]
-        public Address To { get; set; }
+        public string To { get; set; }
 
         /// <summary>
         /// Gets or Sets From
         /// </summary>
         [DataMember(Name = "from", EmitDefaultValue = false)]
-        public AddressDomesticExpanded From { get; set; }
+        public string From { get; set; }
 
         /// <summary>
         /// Gets or Sets Size
@@ -249,7 +311,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>

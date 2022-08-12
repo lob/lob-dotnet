@@ -79,20 +79,82 @@ namespace lob.dotnet.Model
         /// <param name="checkNumber">An integer that designates the check number..</param>
         /// <param name="message">Max of 400 characters to be included at the bottom of the check page..</param>
         /// <param name="billingGroupId">An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information..</param>
-        public CheckEditable(string from = default(string), string to = default(string), string bankAccount = default(string), float amount = default(float), string logo = default(string), string checkBottom = default(string), string attachment = default(string), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), MailTypeEnum? mailType = MailTypeEnum.UspsFirstClass, string memo = default(string), int checkNumber = default(int), string message = default(string), string billingGroupId = default(string))
+        public interface FromInterface {}
+
+        public class stringFrom : FromInterface {
+            private string From;
+
+            public stringFrom(string From) {
+                this.From = From;
+            }
+
+            public string get() {
+                return From;
+            }
+        }
+        public class AddressDomesticFrom : FromInterface {
+            private AddressDomestic From;
+
+            public AddressDomesticFrom(AddressDomestic From) {
+                this.From = From;
+            }
+
+            public string get() {
+                return From.ToJson();
+            }
+        }
+        public interface ToInterface {}
+
+        public class stringTo : ToInterface {
+            private string To;
+
+            public stringTo(string To) {
+                this.To = To;
+            }
+
+            public string get() {
+                return To;
+            }
+        }
+        public class AddressDomesticTo : ToInterface {
+            private AddressDomestic To;
+
+            public AddressDomesticTo(AddressDomestic To) {
+                this.To = To;
+            }
+
+            public string get() {
+                return To.ToJson();
+            }
+        }
+        public CheckEditable(FromInterface from = default(FromInterface), ToInterface to = default(ToInterface), string bankAccount = default(string), float amount = default(float), string logo = default(string), string checkBottom = default(string), string attachment = default(string), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), MailTypeEnum? mailType = MailTypeEnum.UspsFirstClass, string memo = default(string), int checkNumber = default(int), string message = default(string), string billingGroupId = default(string))
         {
             // to ensure "from" is required (not null)
             if (from == null)
             {
                 throw new ArgumentNullException("from is a required property for CheckEditable and cannot be null");
             }
-            this.From = from;
+            else if (from.GetType() == typeof(stringFrom)) {
+                stringFrom blah = (stringFrom)from;
+                this.From = blah.get();
+            }
+            else if (from.GetType() == typeof(AddressDomesticFrom)) {
+                AddressDomesticFrom blah = (AddressDomesticFrom)from;
+                this.From = blah.get();
+            }
             // to ensure "to" is required (not null)
             if (to == null)
             {
                 throw new ArgumentNullException("to is a required property for CheckEditable and cannot be null");
             }
-            this.To = to;
+            else if (to.GetType() == typeof(stringTo)) {
+                stringTo blah = (stringTo)to;
+                this.To = blah.get();
+            }
+            else if (to.GetType() == typeof(AddressDomesticTo)) {
+                AddressDomesticTo blah = (AddressDomesticTo)to;
+                this.To = blah.get();
+            }
             // to ensure "bankAccount" is required (not null)
             if (bankAccount == null)
             {
@@ -252,7 +314,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>

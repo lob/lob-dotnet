@@ -136,7 +136,7 @@ namespace lob.dotnet.Model
         /// <param name="color">Set this key to &#x60;true&#x60; if you would like to print in color. Set to &#x60;false&#x60; if you would like to print in black and white. (required).</param>
         /// <param name="doubleSided">Set this attribute to &#x60;true&#x60; for double sided printing, or &#x60;false&#x60; for for single sided printing. Defaults to &#x60;true&#x60;. (default to true).</param>
         /// <param name="addressPlacement">Specifies the location of the address information that will show through the double-window envelope. To see how this will impact your letter design, view our letter template.   * &#x60;top_first_page&#x60; - (default) print address information at the top of your provided first page   * &#x60;insert_blank_page&#x60; - insert a blank address page at the beginning of your file (you will be charged for the extra page)   * &#x60;bottom_first_page_center&#x60; - **(deprecation planned within a few months)** print address information at the bottom center of your provided first page   * &#x60;bottom_first_page&#x60; - print address information at the bottom of your provided first page  (default to AddressPlacementEnum.TopFirstPage).</param>
-        /// <param name="returnEnvelope">indicates if a return envelope is requested for the letter. The value corresponding to this field is by default a boolean. But if the account is signed up for custom return envelopes, the value is of type string and is &#x60;no_9_single_window&#x60; for a standard return envelope and a custom &#x60;return_envelope_id&#x60; for non-standard return envelopes.  To include a return envelope with your letter, set to &#x60;true&#x60; and specify the &#x60;perforated_page&#x60;. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred. (default to false).</param>
+        /// <param name="returnEnvelope">indicates if a return envelope is requested for the letter. The value corresponding to this field is by default a boolean. But if the account is signed up for custom return envelopes, the value is of type string and is &#x60;no_9_single_window&#x60; for a standard return envelope and a custom &#x60;return_envelope_id&#x60; for non-standard return envelopes.  To include a return envelope with your letter, set to &#x60;true&#x60; and specify the &#x60;perforated_page&#x60;. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred..</param>
         /// <param name="perforatedPage">Required if &#x60;return_envelope&#x60; is &#x60;true&#x60;. The number of the page that should be perforated for use with the return envelope. Must be greater than or equal to &#x60;1&#x60;. The blank page added by &#x60;address_placement&#x3D;insert_blank_page&#x60; will be ignored when considering the perforated page number. To see how perforation will impact your letter design, view our [perforation guide](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_perf_template.pdf)..</param>
         /// <param name="customEnvelope">customEnvelope.</param>
         /// <param name="to">Must either be an address ID or an inline object with correct address parameters. (required).</param>
@@ -145,7 +145,79 @@ namespace lob.dotnet.Model
         /// <param name="extraService">Add an extra service to your letter:   * &#x60;certified&#x60; - track and confirm delivery for domestic destinations. An extra sheet (1 PDF page single-sided or 2 PDF pages double-sided) is added to the beginning of your letter for address and barcode information. See here for templates: [#10 envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_template.pdf) and [flat envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_flat_template.pdf) (used for letters over 6 pages single-sided or 12 pages double-sided). You will not be charged for this extra sheet.   * &#x60;certified_return_receipt&#x60; - request an electronic copy of the recipient&#39;s signature to prove delivery of your certified letter   * &#x60;registered&#x60; - provides tracking and confirmation for international addresses .</param>
         /// <param name="cards">A single-element array containing an existing card id in a string format. See [cards](#tag/Cards) for more information..</param>
         /// <param name="billingGroupId">An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information..</param>
-        public LetterEditable(string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), bool color = default(bool), bool doubleSided = true, AddressPlacementEnum? addressPlacement = AddressPlacementEnum.TopFirstPage, bool returnEnvelope = false, int? perforatedPage = default(int?), LetterEditableCustomEnvelope customEnvelope = default(LetterEditableCustomEnvelope), string to = default(string), string from = default(string), string file = default(string), ExtraServiceEnum? extraService = default(ExtraServiceEnum?), List<string> cards = default(List<string>), string billingGroupId = default(string))
+        public interface ReturnEnvelopeInterface {}
+
+        public class stringReturnEnvelope : ReturnEnvelopeInterface {
+            private string ReturnEnvelope;
+
+            public stringReturnEnvelope(string ReturnEnvelope) {
+                this.ReturnEnvelope = ReturnEnvelope;
+            }
+
+            public string get() {
+                return ReturnEnvelope;
+            }
+        }
+        public class boolReturnEnvelope : ReturnEnvelopeInterface {
+            private bool ReturnEnvelope;
+
+            public boolReturnEnvelope(bool ReturnEnvelope) {
+                this.ReturnEnvelope = ReturnEnvelope;
+            }
+
+            public string get() {
+                return ReturnEnvelope.ToString();
+            }
+        }
+        public interface ToInterface {}
+
+        public class stringTo : ToInterface {
+            private string To;
+
+            public stringTo(string To) {
+                this.To = To;
+            }
+
+            public string get() {
+                return To;
+            }
+        }
+        public class AddressEditableTo : ToInterface {
+            private AddressEditable To;
+
+            public AddressEditableTo(AddressEditable To) {
+                this.To = To;
+            }
+
+            public string get() {
+                return To.ToJson();
+            }
+        }
+        public interface FromInterface {}
+
+        public class stringFrom : FromInterface {
+            private string From;
+
+            public stringFrom(string From) {
+                this.From = From;
+            }
+
+            public string get() {
+                return From;
+            }
+        }
+        public class AddressEditableFrom : FromInterface {
+            private AddressEditable From;
+
+            public AddressEditableFrom(AddressEditable From) {
+                this.From = From;
+            }
+
+            public string get() {
+                return From.ToJson();
+            }
+        }
+        public LetterEditable(string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), bool color = default(bool), bool doubleSided = true, AddressPlacementEnum? addressPlacement = AddressPlacementEnum.TopFirstPage, ReturnEnvelopeInterface returnEnvelope = default(ReturnEnvelopeInterface), int? perforatedPage = default(int?), LetterEditableCustomEnvelope customEnvelope = default(LetterEditableCustomEnvelope), ToInterface to = default(ToInterface), FromInterface from = default(FromInterface), string file = default(string), ExtraServiceEnum? extraService = default(ExtraServiceEnum?), List<string> cards = default(List<string>), string billingGroupId = default(string))
         {
             this.Color = color;
             // to ensure "to" is required (not null)
@@ -153,13 +225,27 @@ namespace lob.dotnet.Model
             {
                 throw new ArgumentNullException("to is a required property for LetterEditable and cannot be null");
             }
-            this.To = to;
+            else if (to.GetType() == typeof(stringTo)) {
+                stringTo blah = (stringTo)to;
+                this.To = blah.get();
+            }
+            else if (to.GetType() == typeof(AddressEditableTo)) {
+                AddressEditableTo blah = (AddressEditableTo)to;
+                this.To = blah.get();
+            }
             // to ensure "from" is required (not null)
             if (from == null)
             {
                 throw new ArgumentNullException("from is a required property for LetterEditable and cannot be null");
             }
-            this.From = from;
+            else if (from.GetType() == typeof(stringFrom)) {
+                stringFrom blah = (stringFrom)from;
+                this.From = blah.get();
+            }
+            else if (from.GetType() == typeof(AddressEditableFrom)) {
+                AddressEditableFrom blah = (AddressEditableFrom)from;
+                this.From = blah.get();
+            }
             // to ensure "file" is required (not null)
             if (file == null)
             {
@@ -173,7 +259,18 @@ namespace lob.dotnet.Model
             this.SendDate = sendDate;
             this.DoubleSided = doubleSided;
             this.AddressPlacement = addressPlacement;
-            this.ReturnEnvelope = returnEnvelope;
+            // use default value if no "returnEnvelope" provided
+            if (returnEnvelope == null) {
+                this.ReturnEnvelope = "false";
+            }
+            else if (returnEnvelope.GetType() == typeof(stringReturnEnvelope)) {
+                stringReturnEnvelope blah = (stringReturnEnvelope)returnEnvelope;
+                this.ReturnEnvelope = blah.get();
+            }
+            else if (returnEnvelope.GetType() == typeof(boolReturnEnvelope)) {
+                boolReturnEnvelope blah = (boolReturnEnvelope)returnEnvelope;
+                this.ReturnEnvelope = blah.get();
+            }
             this.PerforatedPage = perforatedPage;
             this.CustomEnvelope = customEnvelope;
             this.ExtraService = extraService;
@@ -234,7 +331,7 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>indicates if a return envelope is requested for the letter. The value corresponding to this field is by default a boolean. But if the account is signed up for custom return envelopes, the value is of type string and is &#x60;no_9_single_window&#x60; for a standard return envelope and a custom &#x60;return_envelope_id&#x60; for non-standard return envelopes.  To include a return envelope with your letter, set to &#x60;true&#x60; and specify the &#x60;perforated_page&#x60;. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred.</value>
         [DataMember(Name = "return_envelope", EmitDefaultValue = true)]
-        public bool ReturnEnvelope { get; set; }
+        public string ReturnEnvelope { get; set; }
 
         /// <summary>
         /// Required if &#x60;return_envelope&#x60; is &#x60;true&#x60;. The number of the page that should be perforated for use with the return envelope. Must be greater than or equal to &#x60;1&#x60;. The blank page added by &#x60;address_placement&#x3D;insert_blank_page&#x60; will be ignored when considering the perforated page number. To see how perforation will impact your letter design, view our [perforation guide](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_perf_template.pdf).
@@ -319,7 +416,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -384,7 +481,8 @@ namespace lob.dotnet.Model
                 ) && 
                 (
                     this.ReturnEnvelope == input.ReturnEnvelope ||
-                    this.ReturnEnvelope.Equals(input.ReturnEnvelope)
+                    (this.ReturnEnvelope != null &&
+                    this.ReturnEnvelope.Equals(input.ReturnEnvelope))
                 ) && 
                 (
                     this.PerforatedPage == input.PerforatedPage ||
@@ -460,7 +558,10 @@ namespace lob.dotnet.Model
                 hashCode = (hashCode * 59) + this.Color.GetHashCode();
                 hashCode = (hashCode * 59) + this.DoubleSided.GetHashCode();
                 hashCode = (hashCode * 59) + this.AddressPlacement.GetHashCode();
-                hashCode = (hashCode * 59) + this.ReturnEnvelope.GetHashCode();
+                if (this.ReturnEnvelope != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReturnEnvelope.GetHashCode();
+                }
                 if (this.PerforatedPage != null)
                 {
                     hashCode = (hashCode * 59) + this.PerforatedPage.GetHashCode();
