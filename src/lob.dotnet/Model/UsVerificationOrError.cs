@@ -80,7 +80,13 @@ namespace lob.dotnet.Model
         /// Gets or Sets Deliverability
         /// </summary>
         [DataMember(Name = "deliverability", EmitDefaultValue = false)]
-        public DeliverabilityEnum? Deliverability { get; set; }
+        private DeliverabilityEnum? deliverability;
+        public DeliverabilityEnum? getDeliverability() {
+            return deliverability;
+        }
+        public void setDeliverability(DeliverabilityEnum value) {
+            deliverability = value;
+        }
         /// <summary>
         /// Defines Object
         /// </summary>
@@ -101,7 +107,13 @@ namespace lob.dotnet.Model
         /// Gets or Sets Object
         /// </summary>
         [DataMember(Name = "object", EmitDefaultValue = false)]
-        public ObjectEnum? Object { get; set; }
+        private ObjectEnum? _object;
+        public ObjectEnum? getObject() {
+            return _object;
+        }
+        public void setObject(ObjectEnum value) {
+            _object = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="UsVerificationOrError" /> class.
         /// </summary>
@@ -117,86 +129,131 @@ namespace lob.dotnet.Model
         /// <param name="lobConfidenceScore">lobConfidenceScore.</param>
         /// <param name="_object">_object (default to ObjectEnum.UsVerification).</param>
         /// <param name="error">error.</param>
-        public UsVerificationOrError(string id = default(string), string recipient = default(string), string primaryLine = default(string), string secondaryLine = default(string), string urbanization = default(string), string lastLine = default(string), DeliverabilityEnum? deliverability = default(DeliverabilityEnum?), UsComponents components = default(UsComponents), DeliverabilityAnalysis deliverabilityAnalysis = default(DeliverabilityAnalysis), LobConfidenceScore lobConfidenceScore = default(LobConfidenceScore), ObjectEnum? _object = ObjectEnum.UsVerification, BulkError error = default(BulkError))
-        {
-            this.Id = id;
-            this.Recipient = recipient;
-            this.PrimaryLine = primaryLine;
-            this.SecondaryLine = secondaryLine;
-            this.Urbanization = urbanization;
-            this.LastLine = lastLine;
-            this.Deliverability = deliverability;
-            this.Components = components;
-            this.DeliverabilityAnalysis = deliverabilityAnalysis;
-            this.LobConfidenceScore = lobConfidenceScore;
-            this.Object = _object;
-            this.Error = error;
-        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;us_ver_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;us_ver_&#x60;.</value>
         [DataMember(Name = "id", EmitDefaultValue = false)]
-        public string Id { get; set; }
+        private string id;
+        public string getId() {
+            return id;
+        }
+        public void setId(string value) {
+            id = value;
+        }
 
         /// <summary>
         /// The intended recipient, typically a person&#39;s or firm&#39;s name.
         /// </summary>
         /// <value>The intended recipient, typically a person&#39;s or firm&#39;s name.</value>
         [DataMember(Name = "recipient", EmitDefaultValue = true)]
-        public string Recipient { get; set; }
+        private string recipient;
+        public string getRecipient() {
+            return recipient;
+        }
+        public void setRecipient(string value) {
+            recipient = value;
+        }
 
         /// <summary>
         /// The primary delivery line (usually the street address) of the address. Combination of the following applicable &#x60;components&#x60;: * &#x60;primary_number&#x60; * &#x60;street_predirection&#x60; * &#x60;street_name&#x60; * &#x60;street_suffix&#x60; * &#x60;street_postdirection&#x60; * &#x60;secondary_designator&#x60; * &#x60;secondary_number&#x60; * &#x60;pmb_designator&#x60; * &#x60;pmb_number&#x60; 
         /// </summary>
         /// <value>The primary delivery line (usually the street address) of the address. Combination of the following applicable &#x60;components&#x60;: * &#x60;primary_number&#x60; * &#x60;street_predirection&#x60; * &#x60;street_name&#x60; * &#x60;street_suffix&#x60; * &#x60;street_postdirection&#x60; * &#x60;secondary_designator&#x60; * &#x60;secondary_number&#x60; * &#x60;pmb_designator&#x60; * &#x60;pmb_number&#x60; </value>
         [DataMember(Name = "primary_line", EmitDefaultValue = false)]
-        public string PrimaryLine { get; set; }
+        private string primaryLine;
+        public string getPrimaryLine() {
+            return primaryLine;
+        }
+        public void setPrimaryLine(string value) {
+            primaryLine = value;
+        }
 
         /// <summary>
         /// The secondary delivery line of the address. This field is typically empty but may contain information if &#x60;primary_line&#x60; is too long. 
         /// </summary>
         /// <value>The secondary delivery line of the address. This field is typically empty but may contain information if &#x60;primary_line&#x60; is too long. </value>
         [DataMember(Name = "secondary_line", EmitDefaultValue = false)]
-        public string SecondaryLine { get; set; }
+        private string secondaryLine;
+        public string getSecondaryLine() {
+            return secondaryLine;
+        }
+        public void setSecondaryLine(string value) {
+            secondaryLine = value;
+        }
 
         /// <summary>
         /// Only present for addresses in Puerto Rico. An urbanization refers to an area, sector, or development within a city. See [USPS documentation](https://pe.usps.com/text/pub28/28api_008.htm#:~:text&#x3D;I51.,-4%20Urbanizations&amp;text&#x3D;In%20Puerto%20Rico%2C%20identical%20street,placed%20before%20the%20urbanization%20name.) for clarification. 
         /// </summary>
         /// <value>Only present for addresses in Puerto Rico. An urbanization refers to an area, sector, or development within a city. See [USPS documentation](https://pe.usps.com/text/pub28/28api_008.htm#:~:text&#x3D;I51.,-4%20Urbanizations&amp;text&#x3D;In%20Puerto%20Rico%2C%20identical%20street,placed%20before%20the%20urbanization%20name.) for clarification. </value>
         [DataMember(Name = "urbanization", EmitDefaultValue = false)]
-        public string Urbanization { get; set; }
+        private string urbanization;
+        public string getUrbanization() {
+            return urbanization;
+        }
+        public void setUrbanization(string value) {
+            urbanization = value;
+        }
 
         /// <summary>
         /// Gets or Sets LastLine
         /// </summary>
         [DataMember(Name = "last_line", EmitDefaultValue = false)]
-        public string LastLine { get; set; }
+        private string lastLine;
+        public string getLastLine() {
+            return lastLine;
+        }
+        public void setLastLine(string value) {
+            lastLine = value;
+        }
 
         /// <summary>
         /// Gets or Sets Components
         /// </summary>
         [DataMember(Name = "components", EmitDefaultValue = false)]
-        public UsComponents Components { get; set; }
+        private UsComponents components;
+        public UsComponents getComponents() {
+            return components;
+        }
+        public void setComponents(UsComponents value) {
+            components = value;
+        }
 
         /// <summary>
         /// Gets or Sets DeliverabilityAnalysis
         /// </summary>
         [DataMember(Name = "deliverability_analysis", EmitDefaultValue = false)]
-        public DeliverabilityAnalysis DeliverabilityAnalysis { get; set; }
+        private DeliverabilityAnalysis deliverabilityAnalysis;
+        public DeliverabilityAnalysis getDeliverabilityAnalysis() {
+            return deliverabilityAnalysis;
+        }
+        public void setDeliverabilityAnalysis(DeliverabilityAnalysis value) {
+            deliverabilityAnalysis = value;
+        }
 
         /// <summary>
         /// Gets or Sets LobConfidenceScore
         /// </summary>
         [DataMember(Name = "lob_confidence_score", EmitDefaultValue = false)]
-        public LobConfidenceScore LobConfidenceScore { get; set; }
+        private LobConfidenceScore lobConfidenceScore;
+        public LobConfidenceScore getLobConfidenceScore() {
+            return lobConfidenceScore;
+        }
+        public void setLobConfidenceScore(LobConfidenceScore value) {
+            lobConfidenceScore = value;
+        }
 
         /// <summary>
         /// Gets or Sets Error
         /// </summary>
         [DataMember(Name = "error", EmitDefaultValue = false)]
-        public BulkError Error { get; set; }
+        private BulkError error;
+        public BulkError getError() {
+            return error;
+        }
+        public void setError(BulkError value) {
+            error = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -206,18 +263,18 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UsVerificationOrError {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Recipient: ").Append(Recipient).Append("\n");
-            sb.Append("  PrimaryLine: ").Append(PrimaryLine).Append("\n");
-            sb.Append("  SecondaryLine: ").Append(SecondaryLine).Append("\n");
-            sb.Append("  Urbanization: ").Append(Urbanization).Append("\n");
-            sb.Append("  LastLine: ").Append(LastLine).Append("\n");
-            sb.Append("  Deliverability: ").Append(Deliverability).Append("\n");
-            sb.Append("  Components: ").Append(Components).Append("\n");
-            sb.Append("  DeliverabilityAnalysis: ").Append(DeliverabilityAnalysis).Append("\n");
-            sb.Append("  LobConfidenceScore: ").Append(LobConfidenceScore).Append("\n");
-            sb.Append("  Object: ").Append(Object).Append("\n");
-            sb.Append("  Error: ").Append(Error).Append("\n");
+            sb.Append("  id: ").Append(id).Append("\n");
+            sb.Append("  recipient: ").Append(recipient).Append("\n");
+            sb.Append("  primaryLine: ").Append(primaryLine).Append("\n");
+            sb.Append("  secondaryLine: ").Append(secondaryLine).Append("\n");
+            sb.Append("  urbanization: ").Append(urbanization).Append("\n");
+            sb.Append("  lastLine: ").Append(lastLine).Append("\n");
+            sb.Append("  deliverability: ").Append(deliverability).Append("\n");
+            sb.Append("  components: ").Append(components).Append("\n");
+            sb.Append("  deliverabilityAnalysis: ").Append(deliverabilityAnalysis).Append("\n");
+            sb.Append("  lobConfidenceScore: ").Append(lobConfidenceScore).Append("\n");
+            sb.Append("  _object: ").Append(_object).Append("\n");
+            sb.Append("  error: ").Append(error).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -228,7 +285,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -254,62 +311,62 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.id == input.getId() ||
+                    (this.id != null &&
+                    this.id.Equals(input.getId()))
                 ) && 
                 (
-                    this.Recipient == input.Recipient ||
-                    (this.Recipient != null &&
-                    this.Recipient.Equals(input.Recipient))
+                    this.recipient == input.getRecipient() ||
+                    (this.recipient != null &&
+                    this.recipient.Equals(input.getRecipient()))
                 ) && 
                 (
-                    this.PrimaryLine == input.PrimaryLine ||
-                    (this.PrimaryLine != null &&
-                    this.PrimaryLine.Equals(input.PrimaryLine))
+                    this.primaryLine == input.getPrimaryLine() ||
+                    (this.primaryLine != null &&
+                    this.primaryLine.Equals(input.getPrimaryLine()))
                 ) && 
                 (
-                    this.SecondaryLine == input.SecondaryLine ||
-                    (this.SecondaryLine != null &&
-                    this.SecondaryLine.Equals(input.SecondaryLine))
+                    this.secondaryLine == input.getSecondaryLine() ||
+                    (this.secondaryLine != null &&
+                    this.secondaryLine.Equals(input.getSecondaryLine()))
                 ) && 
                 (
-                    this.Urbanization == input.Urbanization ||
-                    (this.Urbanization != null &&
-                    this.Urbanization.Equals(input.Urbanization))
+                    this.urbanization == input.getUrbanization() ||
+                    (this.urbanization != null &&
+                    this.urbanization.Equals(input.getUrbanization()))
                 ) && 
                 (
-                    this.LastLine == input.LastLine ||
-                    (this.LastLine != null &&
-                    this.LastLine.Equals(input.LastLine))
+                    this.lastLine == input.getLastLine() ||
+                    (this.lastLine != null &&
+                    this.lastLine.Equals(input.getLastLine()))
                 ) && 
                 (
-                    this.Deliverability == input.Deliverability ||
-                    this.Deliverability.Equals(input.Deliverability)
+                    this.deliverability == input.getDeliverability() ||
+                    this.deliverability.Equals(input.getDeliverability())
                 ) && 
                 (
-                    this.Components == input.Components ||
-                    (this.Components != null &&
-                    this.Components.Equals(input.Components))
+                    this.components == input.getComponents() ||
+                    (this.components != null &&
+                    this.components.Equals(input.getComponents()))
                 ) && 
                 (
-                    this.DeliverabilityAnalysis == input.DeliverabilityAnalysis ||
-                    (this.DeliverabilityAnalysis != null &&
-                    this.DeliverabilityAnalysis.Equals(input.DeliverabilityAnalysis))
+                    this.deliverabilityAnalysis == input.getDeliverabilityAnalysis() ||
+                    (this.deliverabilityAnalysis != null &&
+                    this.deliverabilityAnalysis.Equals(input.getDeliverabilityAnalysis()))
                 ) && 
                 (
-                    this.LobConfidenceScore == input.LobConfidenceScore ||
-                    (this.LobConfidenceScore != null &&
-                    this.LobConfidenceScore.Equals(input.LobConfidenceScore))
+                    this.lobConfidenceScore == input.getLobConfidenceScore() ||
+                    (this.lobConfidenceScore != null &&
+                    this.lobConfidenceScore.Equals(input.getLobConfidenceScore()))
                 ) && 
                 (
-                    this.Object == input.Object ||
-                    this.Object.Equals(input.Object)
+                    this._object == input.getObject() ||
+                    this._object.Equals(input.getObject())
                 ) && 
                 (
-                    this.Error == input.Error ||
-                    (this.Error != null &&
-                    this.Error.Equals(input.Error))
+                    this.error == input.getError() ||
+                    (this.error != null &&
+                    this.error.Equals(input.getError()))
                 );
         }
 
@@ -322,47 +379,47 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                if (this.id != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.id.GetHashCode();
                 }
-                if (this.Recipient != null)
+                if (this.recipient != null)
                 {
-                    hashCode = (hashCode * 59) + this.Recipient.GetHashCode();
+                    hashCode = (hashCode * 59) + this.recipient.GetHashCode();
                 }
-                if (this.PrimaryLine != null)
+                if (this.primaryLine != null)
                 {
-                    hashCode = (hashCode * 59) + this.PrimaryLine.GetHashCode();
+                    hashCode = (hashCode * 59) + this.primaryLine.GetHashCode();
                 }
-                if (this.SecondaryLine != null)
+                if (this.secondaryLine != null)
                 {
-                    hashCode = (hashCode * 59) + this.SecondaryLine.GetHashCode();
+                    hashCode = (hashCode * 59) + this.secondaryLine.GetHashCode();
                 }
-                if (this.Urbanization != null)
+                if (this.urbanization != null)
                 {
-                    hashCode = (hashCode * 59) + this.Urbanization.GetHashCode();
+                    hashCode = (hashCode * 59) + this.urbanization.GetHashCode();
                 }
-                if (this.LastLine != null)
+                if (this.lastLine != null)
                 {
-                    hashCode = (hashCode * 59) + this.LastLine.GetHashCode();
+                    hashCode = (hashCode * 59) + this.lastLine.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Deliverability.GetHashCode();
-                if (this.Components != null)
+                hashCode = (hashCode * 59) + this.deliverability.GetHashCode();
+                if (this.components != null)
                 {
-                    hashCode = (hashCode * 59) + this.Components.GetHashCode();
+                    hashCode = (hashCode * 59) + this.components.GetHashCode();
                 }
-                if (this.DeliverabilityAnalysis != null)
+                if (this.deliverabilityAnalysis != null)
                 {
-                    hashCode = (hashCode * 59) + this.DeliverabilityAnalysis.GetHashCode();
+                    hashCode = (hashCode * 59) + this.deliverabilityAnalysis.GetHashCode();
                 }
-                if (this.LobConfidenceScore != null)
+                if (this.lobConfidenceScore != null)
                 {
-                    hashCode = (hashCode * 59) + this.LobConfidenceScore.GetHashCode();
+                    hashCode = (hashCode * 59) + this.lobConfidenceScore.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Object.GetHashCode();
-                if (this.Error != null)
+                hashCode = (hashCode * 59) + this._object.GetHashCode();
+                if (this.error != null)
                 {
-                    hashCode = (hashCode * 59) + this.Error.GetHashCode();
+                    hashCode = (hashCode * 59) + this.error.GetHashCode();
                 }
                 return hashCode;
             }
@@ -375,35 +432,35 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Id (string) pattern
-            Regex regexId = new Regex(@"^us_ver_[a-zA-Z0-9_]+$", RegexOptions.CultureInvariant);
-            if (false == regexId.Match(this.Id).Success)
+            // id (string) pattern
+            Regex regexid = new Regex(@"^us_ver_[a-zA-Z0-9_]+$", RegexOptions.CultureInvariant);
+            if (false == regexid.Match(this.id).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for id, must match a pattern of " + regexid, new [] { "id" });
             }
 
-            // Recipient (string) maxLength
-            if (this.Recipient != null && this.Recipient.Length > 500)
+            // recipient (string) maxLength
+            if (this.recipient != null && this.recipient.Length > 500)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Recipient, length must be less than 500.", new [] { "Recipient" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for recipient, length must be less than 500.", new [] { "recipient" });
             }
 
-            // PrimaryLine (string) maxLength
-            if (this.PrimaryLine != null && this.PrimaryLine.Length > 500)
+            // primaryLine (string) maxLength
+            if (this.primaryLine != null && this.primaryLine.Length > 500)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PrimaryLine, length must be less than 500.", new [] { "PrimaryLine" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for primaryLine, length must be less than 500.", new [] { "primaryLine" });
             }
 
-            // SecondaryLine (string) maxLength
-            if (this.SecondaryLine != null && this.SecondaryLine.Length > 500)
+            // secondaryLine (string) maxLength
+            if (this.secondaryLine != null && this.secondaryLine.Length > 500)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SecondaryLine, length must be less than 500.", new [] { "SecondaryLine" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for secondaryLine, length must be less than 500.", new [] { "secondaryLine" });
             }
 
-            // Urbanization (string) maxLength
-            if (this.Urbanization != null && this.Urbanization.Length > 500)
+            // urbanization (string) maxLength
+            if (this.urbanization != null && this.urbanization.Length > 500)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Urbanization, length must be less than 500.", new [] { "Urbanization" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for urbanization, length must be less than 500.", new [] { "urbanization" });
             }
 
             yield break;

@@ -24,6 +24,7 @@ namespace __tests__.Integration {
         private AddressesApi validApi;
         private AddressesApi invalidApi;
         private List<string> createdIds = new List<string>();
+        private AddressEditable addressEditable;
 
         public AddressesApiTests()
         {
@@ -36,6 +37,15 @@ namespace __tests__.Integration {
 
             validApi = new AddressesApi(config);
             invalidApi = new AddressesApi(invlaidConfig);
+
+            addressEditable = new AddressEditable();
+            addressEditable.setAddressLine1("1313 CEMETERY LN");
+            addressEditable.setAddressCity("WESTFIELD");
+            addressEditable.setAddressState("NJ");
+            addressEditable.setAddressZip("07091");
+            addressEditable.setAddressCountry(CountryExtended.US);
+            addressEditable.setDescription("test description");
+            addressEditable.setName("Thing T. Addams");
         }
 
         public void Dispose()
@@ -47,13 +57,12 @@ namespace __tests__.Integration {
 
         [Test]
         public void AddressCreateTest() {
-            AddressEditable addressEditable = new AddressEditable("1313 CEMETERY LN", null, "WESTFIELD", "NJ", "07091", CountryExtended.US, "test description", "Thing T. Addams");
             Address response = validApi.AddressCreate(addressEditable);
 
-            Assert.NotNull(response.Id);
-            Assert.AreEqual(response.AddressLine1, addressEditable.AddressLine1);
+            Assert.NotNull(response.getId());
+            Assert.AreEqual(response.getAddressLine1(), addressEditable.getAddressLine1());
 
-            createdIds.Add(response.Id);
+            createdIds.Add(response.getId());
         }
 
         [Test]
@@ -70,7 +79,6 @@ namespace __tests__.Integration {
         [Test]
         public void AddressCreateTestBadUsername() {
             try {
-                AddressEditable addressEditable = new AddressEditable("1313 CEMETERY LN", null, "WESTFIELD", "NJ", "07091", CountryExtended.US, "test description", "Thing T. Addams");
                 Address response = invalidApi.AddressCreate(addressEditable);
             }
             catch (Exception e) {
@@ -83,8 +91,8 @@ namespace __tests__.Integration {
         public void AddressRetrieveTest() {
             Address response = validApi.AddressRetrieve(createdIds.FirstOrDefault());
 
-            Assert.NotNull(response.Id);
-            Assert.AreEqual(response.Id, createdIds.FirstOrDefault());
+            Assert.NotNull(response.getId());
+            Assert.AreEqual(response.getId(), createdIds.FirstOrDefault());
         }
 
         [Test]
@@ -109,11 +117,11 @@ namespace __tests__.Integration {
             }
         }
 
-                [Test]
+        [Test]
         public void AddressListTest() {
             AddressList response = validApi.AddressesList(null, null, null, null, null, null);
 
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -122,7 +130,7 @@ namespace __tests__.Integration {
             includeList.Add("total_es");
             AddressList response = validApi.AddressesList(null, null, null, includeList, null, null);
 
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -132,7 +140,7 @@ namespace __tests__.Integration {
             dateCreated.Add("lt", lastMonth);
 
             AddressList response = validApi.AddressesList(null, null, null, null, dateCreated, null);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
     }
 }

@@ -38,33 +38,45 @@ namespace lob.dotnet.Model
         /// <param name="description">Description of the card..</param>
         /// <param name="autoReorder">Allows for auto reordering.</param>
         /// <param name="reorderQuantity">The quantity of items to be reordered (only required when auto_reorder is true)..</param>
-        public CardUpdatable(string description = default(string), bool autoReorder = default(bool), decimal reorderQuantity = default(decimal))
-        {
-            this.Description = description;
-            this.AutoReorder = autoReorder;
-            this.ReorderQuantity = reorderQuantity;
-        }
 
         /// <summary>
         /// Description of the card.
         /// </summary>
         /// <value>Description of the card.</value>
         [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
+        private string description;
+        public string getDescription() {
+            return description;
+        }
+        public void setDescription(string value) {
+            description = value;
+        }
 
         /// <summary>
         /// Allows for auto reordering
         /// </summary>
         /// <value>Allows for auto reordering</value>
         [DataMember(Name = "auto_reorder", EmitDefaultValue = true)]
-        public bool AutoReorder { get; set; }
+        private bool autoReorder;
+        public bool getAutoReorder() {
+            return autoReorder;
+        }
+        public void setAutoReorder(bool value) {
+            autoReorder = value;
+        }
 
         /// <summary>
         /// The quantity of items to be reordered (only required when auto_reorder is true).
         /// </summary>
         /// <value>The quantity of items to be reordered (only required when auto_reorder is true).</value>
         [DataMember(Name = "reorder_quantity", EmitDefaultValue = false)]
-        public decimal ReorderQuantity { get; set; }
+        private decimal reorderQuantity;
+        public decimal getReorderQuantity() {
+            return reorderQuantity;
+        }
+        public void setReorderQuantity(decimal value) {
+            reorderQuantity = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -74,9 +86,9 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CardUpdatable {\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  AutoReorder: ").Append(AutoReorder).Append("\n");
-            sb.Append("  ReorderQuantity: ").Append(ReorderQuantity).Append("\n");
+            sb.Append("  description: ").Append(description).Append("\n");
+            sb.Append("  autoReorder: ").Append(autoReorder).Append("\n");
+            sb.Append("  reorderQuantity: ").Append(reorderQuantity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -87,7 +99,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -113,17 +125,17 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.description == input.getDescription() ||
+                    (this.description != null &&
+                    this.description.Equals(input.getDescription()))
                 ) && 
                 (
-                    this.AutoReorder == input.AutoReorder ||
-                    this.AutoReorder.Equals(input.AutoReorder)
+                    this.autoReorder == input.getAutoReorder() ||
+                    this.autoReorder.Equals(input.getAutoReorder())
                 ) && 
                 (
-                    this.ReorderQuantity == input.ReorderQuantity ||
-                    this.ReorderQuantity.Equals(input.ReorderQuantity)
+                    this.reorderQuantity == input.getReorderQuantity() ||
+                    this.reorderQuantity.Equals(input.getReorderQuantity())
                 );
         }
 
@@ -136,12 +148,12 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Description != null)
+                if (this.description != null)
                 {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                    hashCode = (hashCode * 59) + this.description.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AutoReorder.GetHashCode();
-                hashCode = (hashCode * 59) + this.ReorderQuantity.GetHashCode();
+                hashCode = (hashCode * 59) + this.autoReorder.GetHashCode();
+                hashCode = (hashCode * 59) + this.reorderQuantity.GetHashCode();
                 return hashCode;
             }
         }
@@ -153,22 +165,22 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Description (string) maxLength
-            if (this.Description != null && this.Description.Length > 255)
+            // description (string) maxLength
+            if (this.description != null && this.description.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 255.", new [] { "Description" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for description, length must be less than 255.", new [] { "description" });
             }
 
-            // ReorderQuantity (decimal) maximum
-            if (this.ReorderQuantity > (decimal)10000000)
+            // reorderQuantity (decimal) maximum
+            if (this.reorderQuantity > (decimal)10000000)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ReorderQuantity, must be a value less than or equal to 10000000.", new [] { "ReorderQuantity" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for reorderQuantity, must be a value less than or equal to 10000000.", new [] { "reorderQuantity" });
             }
 
-            // ReorderQuantity (decimal) minimum
-            if (this.ReorderQuantity < (decimal)10000)
+            // reorderQuantity (decimal) minimum
+            if (this.reorderQuantity < (decimal)10000)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ReorderQuantity, must be a value greater than or equal to 10000.", new [] { "ReorderQuantity" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for reorderQuantity, must be a value greater than or equal to 10000.", new [] { "reorderQuantity" });
             }
 
             yield break;

@@ -52,48 +52,50 @@ namespace lob.dotnet.Model
         /// Gets or Sets Object
         /// </summary>
         [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = false)]
-        public ObjectEnum Object { get; set; }
+        private ObjectEnum _object;
+        public ObjectEnum getObject() {
+            return _object;
+        }
+        public void setObject(ObjectEnum value) {
+            _object = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="LetterEditableCustomEnvelope" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected LetterEditableCustomEnvelope() { }
+        public LetterEditableCustomEnvelope() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="LetterEditableCustomEnvelope" /> class.
         /// </summary>
         /// <param name="id">The unique identifier of the custom envelope used. (required).</param>
         /// <param name="url">The url of the envelope asset used. (required).</param>
         /// <param name="_object">_object (required) (default to ObjectEnum.Envelope).</param>
-        public LetterEditableCustomEnvelope(string id = default(string), string url = default(string), ObjectEnum _object = ObjectEnum.Envelope)
-        {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for LetterEditableCustomEnvelope and cannot be null");
-            }
-            this.Id = id;
-            // to ensure "url" is required (not null)
-            if (url == null)
-            {
-                throw new ArgumentNullException("url is a required property for LetterEditableCustomEnvelope and cannot be null");
-            }
-            this.Url = url;
-            this.Object = _object;
-        }
 
         /// <summary>
         /// The unique identifier of the custom envelope used.
         /// </summary>
         /// <value>The unique identifier of the custom envelope used.</value>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
-        public string Id { get; set; }
+        private string id;
+        public string getId() {
+            return id;
+        }
+        public void setId(string value) {
+            id = value;
+        }
 
         /// <summary>
         /// The url of the envelope asset used.
         /// </summary>
         /// <value>The url of the envelope asset used.</value>
         [DataMember(Name = "url", IsRequired = true, EmitDefaultValue = false)]
-        public string Url { get; set; }
+        private string url;
+        public string getUrl() {
+            return url;
+        }
+        public void setUrl(string value) {
+            url = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -103,9 +105,9 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class LetterEditableCustomEnvelope {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
-            sb.Append("  Object: ").Append(Object).Append("\n");
+            sb.Append("  id: ").Append(id).Append("\n");
+            sb.Append("  url: ").Append(url).Append("\n");
+            sb.Append("  _object: ").Append(_object).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -116,7 +118,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -142,18 +144,18 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.id == input.getId() ||
+                    (this.id != null &&
+                    this.id.Equals(input.getId()))
                 ) && 
                 (
-                    this.Url == input.Url ||
-                    (this.Url != null &&
-                    this.Url.Equals(input.Url))
+                    this.url == input.getUrl() ||
+                    (this.url != null &&
+                    this.url.Equals(input.getUrl()))
                 ) && 
                 (
-                    this.Object == input.Object ||
-                    this.Object.Equals(input.Object)
+                    this._object == input.getObject() ||
+                    this._object.Equals(input.getObject())
                 );
         }
 
@@ -166,15 +168,15 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                if (this.id != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.id.GetHashCode();
                 }
-                if (this.Url != null)
+                if (this.url != null)
                 {
-                    hashCode = (hashCode * 59) + this.Url.GetHashCode();
+                    hashCode = (hashCode * 59) + this.url.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Object.GetHashCode();
+                hashCode = (hashCode * 59) + this._object.GetHashCode();
                 return hashCode;
             }
         }
@@ -186,10 +188,10 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Id (string) maxLength
-            if (this.Id != null && this.Id.Length > 40)
+            // id (string) maxLength
+            if (this.id != null && this.id.Length > 40)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, length must be less than 40.", new [] { "Id" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for id, length must be less than 40.", new [] { "id" });
             }
 
             yield break;

@@ -34,118 +34,114 @@ namespace __tests__.Api
         {
             ChecksApiMock = new Mock<IChecksApi>();
 
-            BankAccount fakeBankAccount = new BankAccount(
-                default(string), // description
-                "fake routing number", // routingNumber
-                "fake account number", // accountNumber
-                default(BankAccount.AccountTypeEnum), // accountType
-                "fake signatory", // signatory
-                default(Dictionary<string, string>), // metadata
-                "bank_fakeId", // id
-                default(string), // signatureUrl
-                default(string), // bankName
-                false, // verified
-                default(DateTime), // dateCreated
-                default(DateTime), // dateModified
-                default(bool), // deleted
-                BankAccount.ObjectEnum.BankAccount // _object
-            );
+            BankAccount fakeBankAccount = new BankAccount();
+            fakeBankAccount.setDescription(default(string));
+            fakeBankAccount.setRoutingNumber("fake routing number");
+            fakeBankAccount.setAccountNumber("fake account number");
+            fakeBankAccount.setAccountType(default(BankAccount.AccountTypeEnum));
+            fakeBankAccount.setSignatory("fake signatory");
+            fakeBankAccount.setMetadata(default(Dictionary<string, string>));
+            fakeBankAccount.setId("bank_fakeId");
+            fakeBankAccount.setSignatureUrl(default(string));
+            fakeBankAccount.setBankName(default(string));
+            fakeBankAccount.setVerified(false);
+            fakeBankAccount.setDateCreated(default(DateTime));
+            fakeBankAccount.setDateModified(default(DateTime));
+            fakeBankAccount.setDeleted(default(bool));
+            fakeBankAccount.setObject(BankAccount.ObjectEnum.BankAccount);
 
-            fakeCheck = new Check(
-              "chk_fakeId", // id
-              new Address(), // to
-              default(Address), // from
-              default(string), // description
-              default(Dictionary<string, string>), // metadata
-              default(Object), // mergeVariables
-              default(DateTime), // sendDate
-              Check.MailTypeEnum.UspsFirstClass, // mailType
-              default(string), // memo
-              default(int), // checkNumber
-              default(string), // message
-              default(float), // amount
-              fakeBankAccount, // bankAccount
-              default(string), // checkBottomTemplateId
-              default(string), // attachmentTemplateId
-              default(string), // checkBottomTemplateVersionId
-              default(string), // attachmentTemplateVersionId
-              "fake url", // url
-              Check.CarrierEnum.USPS, // carrier
-              default(List<Thumbnail>), // thumbnails
-              default(DateTime), // expectedDeliveryDate
-              default(List<TrackingEventNormal>), // trackingEvents
-              Check.ObjectEnum.Check, // _object
-              default(DateTime), // dateCreated
-              default(DateTime), // dateModified
-              default(bool) // deleted
-            );
+            fakeCheck = new Check();
+            fakeCheck.setId("chk_fakeId");
+            fakeCheck.setTo(new Address());
+            fakeCheck.setFrom(default(Address));
+            fakeCheck.setDescription(default(string));
+            fakeCheck.setMetadata(default(Dictionary<string, string>));
+            fakeCheck.setMergeVariables(default(Object));
+            fakeCheck.setSendDate(default(DateTime));
+            fakeCheck.setMailType(Check.MailTypeEnum.UspsFirstClass);
+            fakeCheck.setMemo(default(string));
+            fakeCheck.setCheckNumber(default(int));
+            fakeCheck.setMessage(default(string));
+            fakeCheck.setAmount(default(float));
+            fakeCheck.setBankAccount(fakeBankAccount);
+            fakeCheck.setCheckBottomTemplateId(default(string));
+            fakeCheck.setAttachmentTemplateId(default(string));
+            fakeCheck.setCheckBottomTemplateVersionId(default(string));
+            fakeCheck.setAttachmentTemplateVersionId(default(string));
+            fakeCheck.setUrl("fake url");
+            fakeCheck.setCarrier(Check.CarrierEnum.USPS);
+            fakeCheck.setThumbnails(default(List<Thumbnail>));
+            fakeCheck.setExpectedDeliveryDate(default(DateTime));
+            fakeCheck.setTrackingEvents(default(List<TrackingEventNormal>));
+            fakeCheck.setObject(Check.ObjectEnum.Check);
+            fakeCheck.setDateCreated(default(DateTime));
+            fakeCheck.setDateModified(default(DateTime));
+            fakeCheck.setDeleted(default(bool));
 
             List<Check> listOfChecks = new List<Check>();
-            Check data1 = new Check(
-              "chk_fakeId1", // id
-              new Address(), // to
-              default(Address), // from
-              default(string), // description
-              default(Dictionary<string, string>), // metadata
-              default(Object), // mergeVariables
-              default(DateTime), // sendDate
-              Check.MailTypeEnum.UspsFirstClass, // mailType
-              default(string), // memo
-              default(int), // checkNumber
-              default(string), // message
-              default(float), // amount
-              fakeBankAccount, // bankAccount
-              default(string), // checkBottomTemplateId
-              default(string), // attachmentTemplateId
-              default(string), // checkBottomTemplateVersionId
-              default(string), // attachmentTemplateVersionId
-              "fake url", // url
-              Check.CarrierEnum.USPS, // carrier
-              default(List<Thumbnail>), // thumbnails
-              default(DateTime), // expectedDeliveryDate
-              default(List<TrackingEventNormal>), // trackingEvents
-              Check.ObjectEnum.Check, // _object
-              default(DateTime), // dateCreated
-              default(DateTime), // dateModified
-              default(bool) // deleted
-            );
-            Check data2 = new Check(
-              "chk_fakeId2", // id
-              new Address(), // to
-              default(Address), // from
-              default(string), // description
-              default(Dictionary<string, string>), // metadata
-              default(Object), // mergeVariables
-              default(DateTime), // sendDate
-              Check.MailTypeEnum.UspsFirstClass, // mailType
-              default(string), // memo
-              default(int), // checkNumber
-              default(string), // message
-              default(float), // amount
-              fakeBankAccount, // bankAccount
-              default(string), // checkBottomTemplateId
-              default(string), // attachmentTemplateId
-              default(string), // checkBottomTemplateVersionId
-              default(string), // attachmentTemplateVersionId
-              "fake url", // url
-              Check.CarrierEnum.USPS, // carrier
-              default(List<Thumbnail>), // thumbnails
-              default(DateTime), // expectedDeliveryDate
-              default(List<TrackingEventNormal>), // trackingEvents
-              Check.ObjectEnum.Check, // _object
-              default(DateTime), // dateCreated
-              default(DateTime), // dateModified
-              default(bool) // deleted
-            );
+            Check data1 = new Check();
+            data1.setId("chk_fakeId1");
+            data1.setTo(new Address());
+            data1.setFrom(default(Address));
+            data1.setDescription(default(string));
+            data1.setMetadata(default(Dictionary<string, string>));
+            data1.setMergeVariables(default(Object));
+            data1.setSendDate(default(DateTime));
+            data1.setMailType(Check.MailTypeEnum.UspsFirstClass);
+            data1.setMemo(default(string));
+            data1.setCheckNumber(default(int));
+            data1.setMessage(default(string));
+            data1.setAmount(default(float));
+            data1.setBankAccount(fakeBankAccount);
+            data1.setCheckBottomTemplateId(default(string));
+            data1.setAttachmentTemplateId(default(string));
+            data1.setCheckBottomTemplateVersionId(default(string));
+            data1.setAttachmentTemplateVersionId(default(string));
+            data1.setUrl("fake url");
+            data1.setCarrier(Check.CarrierEnum.USPS);
+            data1.setThumbnails(default(List<Thumbnail>));
+            data1.setExpectedDeliveryDate(default(DateTime));
+            data1.setTrackingEvents(default(List<TrackingEventNormal>));
+            data1.setObject(Check.ObjectEnum.Check);
+            data1.setDateCreated(default(DateTime));
+            data1.setDateModified(default(DateTime));
+            data1.setDeleted(default(bool));
+            Check data2 = new Check();
+            data2.setId("chk_fakeId2");
+            data2.setTo(new Address());
+            data2.setFrom(default(Address));
+            data2.setDescription(default(string));
+            data2.setMetadata(default(Dictionary<string, string>));
+            data2.setMergeVariables(default(Object));
+            data2.setSendDate(default(DateTime));
+            data2.setMailType(Check.MailTypeEnum.UspsFirstClass);
+            data2.setMemo(default(string));
+            data2.setCheckNumber(default(int));
+            data2.setMessage(default(string));
+            data2.setAmount(default(float));
+            data2.setBankAccount(fakeBankAccount);
+            data2.setCheckBottomTemplateId(default(string));
+            data2.setAttachmentTemplateId(default(string));
+            data2.setCheckBottomTemplateVersionId(default(string));
+            data2.setAttachmentTemplateVersionId(default(string));
+            data2.setUrl("fake url");
+            data2.setCarrier(Check.CarrierEnum.USPS);
+            data2.setThumbnails(default(List<Thumbnail>));
+            data2.setExpectedDeliveryDate(default(DateTime));
+            data2.setTrackingEvents(default(List<TrackingEventNormal>));
+            data2.setObject(Check.ObjectEnum.Check);
+            data2.setDateCreated(default(DateTime));
+            data2.setDateModified(default(DateTime));
+            data2.setDeleted(default(bool));
 
             listOfChecks.Add(data1);
             listOfChecks.Add(data2);
 
             fakeCheckList = new CheckList();
 
-            fakeCheckList.Data = listOfChecks;
-            fakeCheckList.Object = "list";
-            fakeCheckList.Count = listOfChecks.Count;
+            fakeCheckList.setData(listOfChecks);
+            fakeCheckList.setObject("list");
+            fakeCheckList.setCount(listOfChecks.Count);
         }
 
         public void Dispose()
@@ -159,29 +155,21 @@ namespace __tests__.Api
         [Test]
         public void CheckCreateTest()
         {
-            CheckEditable checkEditable = new CheckEditable(
-                "adr_fakeId1", // from
-                "adr_fakeId2", // to
-                "bank_fakeId", // bankAccount
-                100, // amount
-                null, // logo
-                null, // checkBottom
-                null, // attachment
-                null, // description
-                null, // metadata
-                null, // mergeVariables
-                default(DateTime), // sendDate
-                default(int), // mailType
-                null, // memo
-                default(int), // checkNumber
-                "fake message" // message
-            );
+            CheckEditable checkEditable = new CheckEditable();
+            checkEditable.setFrom("adr_fakeId1");
+            checkEditable.setTo("adr_fakeId2");
+            checkEditable.setBankAccount("bank_fakeId");
+            checkEditable.setAmount(100);
+            checkEditable.setSendDate(default(DateTime));
+            checkEditable.setMailType(default(int));
+            checkEditable.setCheckNumber(default(int));
+            checkEditable.setMessage("fake message");
 
             ChecksApiMock.Setup(x => x.CheckCreate(checkEditable, null, It.IsAny<int>())).Returns(fakeCheck);
             Check response = ChecksApiMock.Object.CheckCreate(checkEditable);
 
             Assert.IsInstanceOf<Check>(response);
-            Assert.AreEqual(response.Id, "chk_fakeId");
+            Assert.AreEqual(response.getId(), "chk_fakeId");
         }
 
         /// <summary>
@@ -213,16 +201,16 @@ namespace __tests__.Api
         {
             CheckDeletion fakeCheck = new CheckDeletion();
 
-            fakeCheck.Id = "chk_fakeId";
-            fakeCheck.Deleted = true;
+            fakeCheck.setId("chk_fakeId");
+            fakeCheck.setDeleted(true);
 
-            ChecksApiMock.Setup(x => x.CheckCancel(fakeCheck.Id, It.IsAny<int>())).Returns(fakeCheck);
+            ChecksApiMock.Setup(x => x.CheckCancel(fakeCheck.getId(), It.IsAny<int>())).Returns(fakeCheck);
 
-            var response = ChecksApiMock.Object.CheckCancel(fakeCheck.Id);
+            var response = ChecksApiMock.Object.CheckCancel(fakeCheck.getId());
 
             Assert.IsInstanceOf<CheckDeletion>(response);
-            Assert.AreEqual(response.Deleted, fakeCheck.Deleted);
-            Assert.AreEqual(response.Id, fakeCheck.Id);
+            Assert.AreEqual(response.getDeleted(), fakeCheck.getDeleted());
+            Assert.AreEqual(response.getId(), fakeCheck.getId());
         }
 
         /// <summary>
@@ -252,11 +240,11 @@ namespace __tests__.Api
         [Test]
         public void CheckRetrieveTest()
         {
-            ChecksApiMock.Setup(x => x.CheckRetrieve(fakeCheck.Id, It.IsAny<int>())).Returns(fakeCheck);
-            Check response = ChecksApiMock.Object.CheckRetrieve(fakeCheck.Id);
+            ChecksApiMock.Setup(x => x.CheckRetrieve(fakeCheck.getId(), It.IsAny<int>())).Returns(fakeCheck);
+            Check response = ChecksApiMock.Object.CheckRetrieve(fakeCheck.getId());
 
             Assert.IsInstanceOf<Check>(response);
-            Assert.AreEqual(response.Id, fakeCheck.Id);
+            Assert.AreEqual(response.getId(), fakeCheck.getId());
         }
 
         /// <summary>
@@ -291,7 +279,7 @@ namespace __tests__.Api
             var response = ChecksApiMock.Object.ChecksList(null, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
-            Assert.AreEqual(response.Count, fakeCheckList.Count);
+            Assert.AreEqual(response.getCount(), fakeCheckList.getCount());
         }
 
         /// <summary>
@@ -328,7 +316,7 @@ namespace __tests__.Api
             var response = ChecksApiMock.Object.ChecksList(limit, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
-            Assert.AreEqual(response.Count, fakeCheckList.Count);
+            Assert.AreEqual(response.getCount(), fakeCheckList.getCount());
         }
 
         /// <summary>
@@ -344,7 +332,7 @@ namespace __tests__.Api
             var response = ChecksApiMock.Object.ChecksList(null, before, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
-            Assert.AreEqual(response.Count, fakeCheckList.Count);
+            Assert.AreEqual(response.getCount(), fakeCheckList.getCount());
         }
 
         /// <summary>
@@ -360,7 +348,7 @@ namespace __tests__.Api
             var response = ChecksApiMock.Object.ChecksList(null, null, after, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
-            Assert.AreEqual(response.Count, fakeCheckList.Count);
+            Assert.AreEqual(response.getCount(), fakeCheckList.getCount());
         }
 
         /// <summary>
@@ -377,7 +365,7 @@ namespace __tests__.Api
             var response = ChecksApiMock.Object.ChecksList(null, null, null, include, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
-            Assert.AreEqual(response.Count, fakeCheckList.Count);
+            Assert.AreEqual(response.getCount(), fakeCheckList.getCount());
         }
 
         /// <summary>
@@ -395,7 +383,7 @@ namespace __tests__.Api
             var response = ChecksApiMock.Object.ChecksList(null, null, null, null, dateCreated, null, null, null, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
-            Assert.AreEqual(response.Count, fakeCheckList.Count);
+            Assert.AreEqual(response.getCount(), fakeCheckList.getCount());
         }
 
         /// <summary>
@@ -412,7 +400,7 @@ namespace __tests__.Api
             var response = ChecksApiMock.Object.ChecksList(null, null, null, null, null, metadata, null, null, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
-            Assert.AreEqual(response.Count, fakeCheckList.Count);
+            Assert.AreEqual(response.getCount(), fakeCheckList.getCount());
         }
 
         /// <summary>
@@ -428,7 +416,7 @@ namespace __tests__.Api
             var response = ChecksApiMock.Object.ChecksList(null, null, null, null, null, null, scheduled, null, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
-            Assert.AreEqual(response.Count, fakeCheckList.Count);
+            Assert.AreEqual(response.getCount(), fakeCheckList.getCount());
         }
 
         /// <summary>
@@ -446,7 +434,7 @@ namespace __tests__.Api
             var response = ChecksApiMock.Object.ChecksList(null, null, null, null, null, null, null, sendDate, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
-            Assert.AreEqual(response.Count, fakeCheckList.Count);
+            Assert.AreEqual(response.getCount(), fakeCheckList.getCount());
         }
 
         /// <summary>
@@ -462,7 +450,7 @@ namespace __tests__.Api
             var response = ChecksApiMock.Object.ChecksList(null, null, null, null, null, null, null, null, mailType, null);
 
             Assert.IsInstanceOf<CheckList>(response);
-            Assert.AreEqual(response.Count, fakeCheckList.Count);
+            Assert.AreEqual(response.getCount(), fakeCheckList.getCount());
         }
 
         /// <summary>
@@ -471,14 +459,15 @@ namespace __tests__.Api
         [Test]
         public void CheckListTestWithSortByParam()
         {
-            SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
+            SortBy5 sortBy = new SortBy5();
+            sortBy.setSendDate(SortBy5.SendDateEnum.Asc);
 
             ChecksApiMock.Setup(x => x.ChecksList(null, null, null, null, null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakeCheckList);
 
             var response = ChecksApiMock.Object.ChecksList(null, null, null, null, null, null, null, null, null, sortBy);
 
             Assert.IsInstanceOf<CheckList>(response);
-            Assert.AreEqual(response.Count, fakeCheckList.Count);
+            Assert.AreEqual(response.getCount(), fakeCheckList.getCount());
         }
     }
 }

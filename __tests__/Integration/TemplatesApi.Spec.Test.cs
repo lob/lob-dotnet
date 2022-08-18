@@ -38,14 +38,14 @@ namespace __tests__.Integration {
             validApi = new TemplatesApi(config);
             invalidApi = new TemplatesApi(invalidConfig);
 
-            templateWritable = new TemplateWritable(
-                "C# integration test description", // description
-                "<html>Template to be updated with {{name}}</html>", // html
-                new Dictionary<string, string>(), // metadata
-                EngineHtml.Legacy // engine
-            );
+            Dictionary<string, string> metadata = new Dictionary<string, string>();
+            metadata.Add("name", "Harry");
 
-            templateWritable.Metadata.Add("name", "Harry");
+            templateWritable = new TemplateWritable();
+            templateWritable.setDescription("C# integration test description");
+            templateWritable.setHtml("<html>Template to be updated with {{name}}</html>");
+            templateWritable.setMetadata(metadata);
+            templateWritable.setEngine(EngineHtml.Legacy);
 
             idsToDelete = new List<string>();
         }
@@ -59,9 +59,9 @@ namespace __tests__.Integration {
         public void CreateTemplateTest() {
             Template response = validApi.CreateTemplate(templateWritable);
 
-            Assert.NotNull(response.Id);
-            idsToDelete.Add(response.Id);
-            Assert.AreEqual(response.Description, templateWritable.Description);
+            Assert.NotNull(response.getId());
+            idsToDelete.Add(response.getId());
+            Assert.AreEqual(response.getDescription(), templateWritable.getDescription());
         }
 
         [Test]
@@ -89,13 +89,15 @@ namespace __tests__.Integration {
         [Test]
         public void TemplateUpdateTest() {
             Template ogTemplate = validApi.CreateTemplate(templateWritable);
-            idsToDelete.Add(ogTemplate.Id);
+            idsToDelete.Add(ogTemplate.getId());
 
-            TemplateUpdate updatedTmpl = new TemplateUpdate("C# integration test Updated template description", ogTemplate.PublishedVersion.Id);
-            Template response = validApi.TemplateUpdate(ogTemplate.Id, updatedTmpl);
+            TemplateUpdate updatedTmpl = new TemplateUpdate();
+            updatedTmpl.setDescription("C# integration test Updated template description");
+            updatedTmpl.setPublishedVersion(ogTemplate.getPublishedVersion().getId());
+            Template response = validApi.TemplateUpdate(ogTemplate.getId(), updatedTmpl);
 
             Assert.NotNull(response);
-            Assert.AreEqual(updatedTmpl.Description, response.Description);
+            Assert.AreEqual(updatedTmpl.getDescription(), response.getDescription());
         }
 
         [Test]
@@ -112,12 +114,14 @@ namespace __tests__.Integration {
         [Test]
         public void TemplateUpdateTestBadUsername() {
             Template ogTemplate = validApi.CreateTemplate(templateWritable);
-            idsToDelete.Add(ogTemplate.Id);
+            idsToDelete.Add(ogTemplate.getId());
 
-            TemplateUpdate updatedTmpl = new TemplateUpdate("C# integration test Updated template description", ogTemplate.PublishedVersion.Id);
+            TemplateUpdate updatedTmpl = new TemplateUpdate();
+            updatedTmpl.setDescription("C# integration test Updated template description");
+            updatedTmpl.setPublishedVersion(ogTemplate.getPublishedVersion().getId());
 
             try {
-                Template response = invalidApi.TemplateUpdate(ogTemplate.Id, updatedTmpl);
+                Template response = invalidApi.TemplateUpdate(ogTemplate.getId(), updatedTmpl);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -128,12 +132,12 @@ namespace __tests__.Integration {
         [Test]
         public void TemplateRetrieveTest() {
             Template template = validApi.CreateTemplate(templateWritable);
-            idsToDelete.Add(template.Id);
+            idsToDelete.Add(template.getId());
 
-            Template response = validApi.TemplateRetrieve(template.Id);
+            Template response = validApi.TemplateRetrieve(template.getId());
 
-            Assert.NotNull(response.Id);
-            Assert.AreEqual(response.Id, template.Id);
+            Assert.NotNull(response.getId());
+            Assert.AreEqual(response.getId(), template.getId());
         }
 
         [Test]
@@ -150,10 +154,10 @@ namespace __tests__.Integration {
         [Test]
         public void TemplateRetrieveTestBadUsername() {
             Template template = validApi.CreateTemplate(templateWritable);
-            idsToDelete.Add(template.Id);
+            idsToDelete.Add(template.getId());
 
             try {
-                Template response = invalidApi.TemplateRetrieve(template.Id);
+                Template response = invalidApi.TemplateRetrieve(template.getId());
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -165,7 +169,7 @@ namespace __tests__.Integration {
         public void TemplateListTest() {
             TemplateList response = validApi.TemplatesList(null, null, null, null, null, null);
 
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -173,7 +177,7 @@ namespace __tests__.Integration {
             int limit = 2;
             TemplateList response = validApi.TemplatesList(limit, null, null, null, null, null);
 
-            Assert.AreEqual(response.Count, 2);
+            Assert.AreEqual(response.getCount(), 2);
         }
 
         [Test]
@@ -182,31 +186,24 @@ namespace __tests__.Integration {
             includeList.Add("total_count");
 
             TemplateList response = validApi.TemplatesList(null, null, null, includeList, null, null);
-            Assert.Greater(response.Count, 0);
-            Assert.NotNull(response.TotalCount);
+            Assert.Greater(response.getCount(), 0);
+            Assert.NotNull(response.getTotalCount());
         }
 
-        /* TODO: fix unpacking dictionaries into query params
         [Test]
         public void TemplateListTestWithDateCreatedParameter() {
-            Dictionary<String, String> dateCreated = new Dictionary<String, String>();
-            dateCreated.Add("gt", "2020-01-01");
-            dateCreated.Add("lt", "2020-01-31T12");
-
+            Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
+            DateTime lastMonth = DateTime.Today.AddMonths(-1);
+            dateCreated.Add("lt", lastMonth);
             TemplateList response = validApi.TemplatesList(null, null, null, null, dateCreated, null);
-            Console.WriteLine(response);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
-
         [Test]
         public void TemplateListTestWithMetadataParameter() {
             Dictionary<String, String> metadata = new Dictionary<String, String>();
             metadata.Add("name", "Harry");
-
             TemplateList response = validApi.TemplatesList(null, null, null, null, null, metadata);
-            Console.WriteLine(response);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
-        */
     }
 }

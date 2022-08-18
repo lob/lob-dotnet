@@ -35,65 +35,62 @@ namespace __tests__.Api
         {
             bankAccountsApiMock = new Mock<IBankAccountsApi>();
 
-            fakeBankAccount = new BankAccount(
-                default(string), // description
-                "fake routing number", // routingNumber
-                "fake account number", // accountNumber
-                default(BankAccount.AccountTypeEnum), // accountType
-                "fake signatory", // signatory
-                default(Dictionary<string, string>), // metadata
-                "bank_fakeId", // id
-                default(string), // signatureUrl
-                default(string), // bankName
-                false, // verified
-                default(DateTime), // dateCreated
-                default(DateTime), // dateModified
-                default(bool), // deleted
-                BankAccount.ObjectEnum.BankAccount // _object
-            );
+            fakeBankAccount = new BankAccount();
+            fakeBankAccount.setDescription(default(string));
+            fakeBankAccount.setRoutingNumber("fake routing number");
+            fakeBankAccount.setAccountNumber("fake account number");
+            fakeBankAccount.setAccountType(default(BankAccount.AccountTypeEnum));
+            fakeBankAccount.setSignatory("fake signatory");
+            fakeBankAccount.setMetadata(default(Dictionary<string, string>));
+            fakeBankAccount.setId("bank_fakeId");
+            fakeBankAccount.setSignatureUrl(default(string));
+            fakeBankAccount.setBankName(default(string));
+            fakeBankAccount.setVerified(false);
+            fakeBankAccount.setDateCreated(default(DateTime));
+            fakeBankAccount.setDateModified(default(DateTime));
+            fakeBankAccount.setDeleted(default(bool));
+            fakeBankAccount.setObject(BankAccount.ObjectEnum.BankAccount);
 
             List<BankAccount> listOfBankAccounts = new List<BankAccount>();
-            BankAccount data1 = new BankAccount(
-                default(string), // description
-                "fake routing number", // routingNumber
-                "fake account number", // accountNumber
-                default(BankAccount.AccountTypeEnum), // accountType
-                "fake signatory", // signatory
-                default(Dictionary<string, string>), // metadata
-                "bank_fakeId1", // id
-                default(string), // signatureUrl
-                default(string), // bankName
-                false, // verified
-                default(DateTime), // dateCreated
-                default(DateTime), // dateModified
-                default(bool), // deleted
-                BankAccount.ObjectEnum.BankAccount // _object
-            );
-            BankAccount data2 = new BankAccount(
-                default(string), // description
-                "fake routing number", // routingNumber
-                "fake account number", // accountNumber
-                default(BankAccount.AccountTypeEnum), // accountType
-                "fake signatory", // signatory
-                default(Dictionary<string, string>), // metadata
-                "bank_fakeId2", // id
-                default(string), // signatureUrl
-                default(string), // bankName
-                false, // verified
-                default(DateTime), // dateCreated
-                default(DateTime), // dateModified
-                default(bool), // deleted
-                BankAccount.ObjectEnum.BankAccount // _object
-            );
+            BankAccount data1 = new BankAccount();
+            data1.setDescription(default(string));
+            data1.setRoutingNumber("fake routing number");
+            data1.setAccountNumber("fake account number");
+            data1.setAccountType(default(BankAccount.AccountTypeEnum));
+            data1.setSignatory("fake signatory");
+            data1.setMetadata(default(Dictionary<string, string>));
+            data1.setId("bank_fakeId1");
+            data1.setSignatureUrl(default(string));
+            data1.setBankName(default(string));
+            data1.setVerified(false);
+            data1.setDateCreated(default(DateTime));
+            data1.setDateModified(default(DateTime));
+            data1.setDeleted(default(bool));
+            data1.setObject(BankAccount.ObjectEnum.BankAccount);
+            BankAccount data2 = new BankAccount();
+            data2.setDescription(default(string));
+            data2.setRoutingNumber("fake routing number");
+            data2.setAccountNumber("fake account number");
+            data2.setAccountType(default(BankAccount.AccountTypeEnum));
+            data2.setSignatory("fake signatory");
+            data2.setMetadata(default(Dictionary<string, string>));
+            data2.setId("bank_fakeId2");
+            data2.setSignatureUrl(default(string));
+            data2.setBankName(default(string));
+            data2.setVerified(false);
+            data2.setDateCreated(default(DateTime));
+            data2.setDateModified(default(DateTime));
+            data2.setDeleted(default(bool));
+            data2.setObject(BankAccount.ObjectEnum.BankAccount);
 
             listOfBankAccounts.Add(data1);
             listOfBankAccounts.Add(data2);
 
             fakeBankAccountList = new BankAccountList();
 
-            fakeBankAccountList.Data = listOfBankAccounts;
-            fakeBankAccountList.Object = "list";
-            fakeBankAccountList.Count = listOfBankAccounts.Count;
+            fakeBankAccountList.setData(listOfBankAccounts);
+            fakeBankAccountList.setObject("list");
+            fakeBankAccountList.setCount(listOfBankAccounts.Count);
         }
 
         public void Dispose()
@@ -107,20 +104,17 @@ namespace __tests__.Api
         [Test]
         public void BankAccountCreateTest()
         {
-            BankAccountWritable bankAccountWritable = new BankAccountWritable(
-                null,
-                "123456789",
-                "fake account",
-                BankTypeEnum.Individual,
-                "fake signatory",
-                null
-            );
+            BankAccountWritable bankAccountWritable = new BankAccountWritable();
+            bankAccountWritable.setRoutingNumber("123456789");
+            bankAccountWritable.setAccountNumber("fake account");
+            bankAccountWritable.setAccountType(BankTypeEnum.Individual);
+            bankAccountWritable.setSignatory("fake signatory");
 
             bankAccountsApiMock.Setup(x => x.BankAccountCreate(bankAccountWritable, It.IsAny<int>())).Returns(fakeBankAccount);
             BankAccount response = bankAccountsApiMock.Object.BankAccountCreate(bankAccountWritable);
 
             Assert.IsInstanceOf<BankAccount>(response);
-            Assert.AreEqual(response.Id, fakeBankAccount.Id);
+            Assert.AreEqual(response.getId(), fakeBankAccount.getId());
         }
 
         /// <summary>
@@ -152,16 +146,16 @@ namespace __tests__.Api
         {
             BankAccountDeletion fakeBankAccount = new BankAccountDeletion();
 
-            fakeBankAccount.Id = "bank_fakeId";
-            fakeBankAccount.Deleted = true;
+            fakeBankAccount.setId("bank_fakeId");
+            fakeBankAccount.setDeleted(true);
 
-            bankAccountsApiMock.Setup(x => x.BankAccountDelete(fakeBankAccount.Id, It.IsAny<int>())).Returns(fakeBankAccount);
+            bankAccountsApiMock.Setup(x => x.BankAccountDelete(fakeBankAccount.getId(), It.IsAny<int>())).Returns(fakeBankAccount);
 
-            var response = bankAccountsApiMock.Object.BankAccountDelete(fakeBankAccount.Id);
+            var response = bankAccountsApiMock.Object.BankAccountDelete(fakeBankAccount.getId());
 
             Assert.IsInstanceOf<BankAccountDeletion>(response);
-            Assert.AreEqual(response.Deleted, fakeBankAccount.Deleted);
-            Assert.AreEqual(response.Id, fakeBankAccount.Id);
+            Assert.AreEqual(response.getDeleted(), fakeBankAccount.getDeleted());
+            Assert.AreEqual(response.getId(), fakeBankAccount.getId());
         }
 
         /// <summary>
@@ -191,12 +185,12 @@ namespace __tests__.Api
         [Test]
         public void BankAccountRetrieveTest()
         {
-            fakeBankAccount.Id = "bank_fakeId";
-            bankAccountsApiMock.Setup(x => x.BankAccountRetrieve(fakeBankAccount.Id, It.IsAny<int>())).Returns(fakeBankAccount);
-            BankAccount response = bankAccountsApiMock.Object.BankAccountRetrieve(fakeBankAccount.Id);
+            fakeBankAccount.setId("bank_fakeId");
+            bankAccountsApiMock.Setup(x => x.BankAccountRetrieve(fakeBankAccount.getId(), It.IsAny<int>())).Returns(fakeBankAccount);
+            BankAccount response = bankAccountsApiMock.Object.BankAccountRetrieve(fakeBankAccount.getId());
 
             Assert.IsInstanceOf<BankAccount>(response);
-            Assert.AreEqual(response.Id, fakeBankAccount.Id);
+            Assert.AreEqual(response.getId(), fakeBankAccount.getId());
         }
 
         /// <summary>
@@ -231,7 +225,7 @@ namespace __tests__.Api
             var response = bankAccountsApiMock.Object.BankAccountsList(null, null, null, null, null, null);
 
             Assert.IsInstanceOf<BankAccountList>(response);
-            Assert.AreEqual(response.Count, fakeBankAccountList.Count);
+            Assert.AreEqual(response.getCount(), fakeBankAccountList.getCount());
         }
 
         /// <summary>
@@ -268,7 +262,7 @@ namespace __tests__.Api
             var response = bankAccountsApiMock.Object.BankAccountsList(limit, null, null, null, null, null);
 
             Assert.IsInstanceOf<BankAccountList>(response);
-            Assert.AreEqual(response.Count, fakeBankAccountList.Count);
+            Assert.AreEqual(response.getCount(), fakeBankAccountList.getCount());
         }
 
         /// <summary>
@@ -284,7 +278,7 @@ namespace __tests__.Api
             var response = bankAccountsApiMock.Object.BankAccountsList(null, before, null, null, null, null);
 
             Assert.IsInstanceOf<BankAccountList>(response);
-            Assert.AreEqual(response.Count, fakeBankAccountList.Count);
+            Assert.AreEqual(response.getCount(), fakeBankAccountList.getCount());
         }
 
         /// <summary>
@@ -300,7 +294,7 @@ namespace __tests__.Api
             var response = bankAccountsApiMock.Object.BankAccountsList(null, null, after, null, null, null);
 
             Assert.IsInstanceOf<BankAccountList>(response);
-            Assert.AreEqual(response.Count, fakeBankAccountList.Count);
+            Assert.AreEqual(response.getCount(), fakeBankAccountList.getCount());
         }
 
         /// <summary>
@@ -317,7 +311,7 @@ namespace __tests__.Api
             var response = bankAccountsApiMock.Object.BankAccountsList(null, null, null, include, null, null);
 
             Assert.IsInstanceOf<BankAccountList>(response);
-            Assert.AreEqual(response.Count, fakeBankAccountList.Count);
+            Assert.AreEqual(response.getCount(), fakeBankAccountList.getCount());
         }
 
         /// <summary>
@@ -335,7 +329,7 @@ namespace __tests__.Api
             var response = bankAccountsApiMock.Object.BankAccountsList(null, null, null, null, dateCreated, null);
 
             Assert.IsInstanceOf<BankAccountList>(response);
-            Assert.AreEqual(response.Count, fakeBankAccountList.Count);
+            Assert.AreEqual(response.getCount(), fakeBankAccountList.getCount());
         }
 
         /// <summary>
@@ -352,7 +346,7 @@ namespace __tests__.Api
             var response = bankAccountsApiMock.Object.BankAccountsList(null, null, null, null, null, metadata);
 
             Assert.IsInstanceOf<BankAccountList>(response);
-            Assert.AreEqual(response.Count, fakeBankAccountList.Count);
+            Assert.AreEqual(response.getCount(), fakeBankAccountList.getCount());
         }
 
         /// <summary>
@@ -365,14 +359,15 @@ namespace __tests__.Api
             amounts.Add(1);
             amounts.Add(2);
 
-            BankAccountVerify bankAccountVerify = new BankAccountVerify(amounts);
+            BankAccountVerify bankAccountVerify = new BankAccountVerify();
+            bankAccountVerify.setAmounts(amounts);
 
-            bankAccountsApiMock.Setup(x => x.BankAccountVerify(fakeBankAccount.Id, bankAccountVerify, It.IsAny<int>())).Returns(fakeBankAccount);
+            bankAccountsApiMock.Setup(x => x.BankAccountVerify(fakeBankAccount.getId(), bankAccountVerify, It.IsAny<int>())).Returns(fakeBankAccount);
 
-            BankAccount response = bankAccountsApiMock.Object.BankAccountVerify(fakeBankAccount.Id, bankAccountVerify);
+            BankAccount response = bankAccountsApiMock.Object.BankAccountVerify(fakeBankAccount.getId(), bankAccountVerify);
 
             Assert.IsInstanceOf<BankAccount>(response);
-            Assert.AreEqual(response.Id, fakeBankAccount.Id);
+            Assert.AreEqual(response.getId(), fakeBankAccount.getId());
         }
 
         /// <summary>

@@ -59,7 +59,13 @@ namespace lob.dotnet.Model
         /// Gets or Sets Status
         /// </summary>
         [DataMember(Name = "status", EmitDefaultValue = false)]
-        public StatusEnum? Status { get; set; }
+        private StatusEnum? status;
+        public StatusEnum? getStatus() {
+            return status;
+        }
+        public void setStatus(StatusEnum value) {
+            status = value;
+        }
         /// <summary>
         /// The orientation of the card.
         /// </summary>
@@ -89,7 +95,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>The orientation of the card.</value>
         [DataMember(Name = "orientation", EmitDefaultValue = false)]
-        public OrientationEnum? Orientation { get; set; }
+        private OrientationEnum? orientation;
+        public OrientationEnum? getOrientation() {
+            return orientation;
+        }
+        public void setOrientation(OrientationEnum value) {
+            orientation = value;
+        }
         /// <summary>
         /// object
         /// </summary>
@@ -112,7 +124,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>object</value>
         [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = false)]
-        public ObjectEnum Object { get; set; }
+        private ObjectEnum _object;
+        public ObjectEnum getObject() {
+            return _object;
+        }
+        public void setObject(ObjectEnum value) {
+            _object = value;
+        }
         /// <summary>
         /// The size of the card
         /// </summary>
@@ -142,12 +160,18 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>The size of the card</value>
         [DataMember(Name = "size", IsRequired = true, EmitDefaultValue = false)]
-        public SizeEnum Size { get; set; }
+        private SizeEnum size;
+        public SizeEnum getSize() {
+            return size;
+        }
+        public void setSize(SizeEnum value) {
+            size = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="Card" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Card() { }
+        public Card() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="Card" /> class.
         /// </summary>
@@ -170,147 +194,200 @@ namespace lob.dotnet.Model
         /// <param name="_object">object (required) (default to ObjectEnum.Card).</param>
         /// <param name="description">Description of the card..</param>
         /// <param name="size">The size of the card (required) (default to SizeEnum._2125x3375).</param>
-        public Card(string id = default(string), string url = default(string), bool autoReorder = false, int? reorderQuantity = default(int?), string rawUrl = default(string), string frontOriginalUrl = default(string), string backOriginalUrl = default(string), List<Thumbnail> thumbnails = default(List<Thumbnail>), int availableQuantity = 0, int pendingQuantity = 0, StatusEnum? status = default(StatusEnum?), OrientationEnum? orientation = OrientationEnum.Horizontal, int thresholdAmount = 0, DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), ObjectEnum _object = ObjectEnum.Card, string description = default(string), SizeEnum size = SizeEnum._2125x3375)
-        {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for Card and cannot be null");
-            }
-            this.Id = id;
-            // to ensure "url" is required (not null)
-            if (url == null)
-            {
-                throw new ArgumentNullException("url is a required property for Card and cannot be null");
-            }
-            this.Url = url;
-            this.AutoReorder = autoReorder;
-            // to ensure "thumbnails" is required (not null)
-            if (thumbnails == null)
-            {
-                throw new ArgumentNullException("thumbnails is a required property for Card and cannot be null");
-            }
-            this.Thumbnails = thumbnails;
-            this.AvailableQuantity = availableQuantity;
-            this.PendingQuantity = pendingQuantity;
-            this.DateCreated = dateCreated;
-            this.DateModified = dateModified;
-            this.Object = _object;
-            this.Size = size;
-            this.ReorderQuantity = reorderQuantity;
-            this.RawUrl = rawUrl;
-            this.FrontOriginalUrl = frontOriginalUrl;
-            this.BackOriginalUrl = backOriginalUrl;
-            this.Status = status;
-            this.Orientation = orientation;
-            this.ThresholdAmount = thresholdAmount;
-            this.Deleted = deleted;
-            this.Description = description;
-        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;card_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;card_&#x60;.</value>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
-        public string Id { get; set; }
+        private string id;
+        public string getId() {
+            return id;
+        }
+        public void setId(string value) {
+            id = value;
+        }
 
         /// <summary>
         /// The signed link for the card.
         /// </summary>
         /// <value>The signed link for the card.</value>
         [DataMember(Name = "url", IsRequired = true, EmitDefaultValue = false)]
-        public string Url { get; set; }
+        private string url;
+        public string getUrl() {
+            return url;
+        }
+        public void setUrl(string value) {
+            url = value;
+        }
 
         /// <summary>
         /// True if the cards should be auto-reordered.
         /// </summary>
         /// <value>True if the cards should be auto-reordered.</value>
         [DataMember(Name = "auto_reorder", IsRequired = true, EmitDefaultValue = true)]
-        public bool AutoReorder { get; set; }
+        private bool autoReorder;
+        public bool getAutoReorder() {
+            return autoReorder;
+        }
+        public void setAutoReorder(bool value) {
+            autoReorder = value;
+        }
 
         /// <summary>
         /// The number of cards to be reordered. Only present when auto_reorder is True.
         /// </summary>
         /// <value>The number of cards to be reordered. Only present when auto_reorder is True.</value>
         [DataMember(Name = "reorder_quantity", EmitDefaultValue = true)]
-        public int? ReorderQuantity { get; set; }
+        private int? reorderQuantity;
+        public int? getReorderQuantity() {
+            return reorderQuantity;
+        }
+        public void setReorderQuantity(int? value) {
+            reorderQuantity = value;
+        }
 
         /// <summary>
         /// The raw URL of the card.
         /// </summary>
         /// <value>The raw URL of the card.</value>
         [DataMember(Name = "raw_url", EmitDefaultValue = false)]
-        public string RawUrl { get; set; }
+        private string rawUrl;
+        public string getRawUrl() {
+            return rawUrl;
+        }
+        public void setRawUrl(string value) {
+            rawUrl = value;
+        }
 
         /// <summary>
         /// The original URL of the front template.
         /// </summary>
         /// <value>The original URL of the front template.</value>
         [DataMember(Name = "front_original_url", EmitDefaultValue = false)]
-        public string FrontOriginalUrl { get; set; }
+        private string frontOriginalUrl;
+        public string getFrontOriginalUrl() {
+            return frontOriginalUrl;
+        }
+        public void setFrontOriginalUrl(string value) {
+            frontOriginalUrl = value;
+        }
 
         /// <summary>
         /// The original URL of the back template.
         /// </summary>
         /// <value>The original URL of the back template.</value>
         [DataMember(Name = "back_original_url", EmitDefaultValue = false)]
-        public string BackOriginalUrl { get; set; }
+        private string backOriginalUrl;
+        public string getBackOriginalUrl() {
+            return backOriginalUrl;
+        }
+        public void setBackOriginalUrl(string value) {
+            backOriginalUrl = value;
+        }
 
         /// <summary>
         /// Gets or Sets Thumbnails
         /// </summary>
         [DataMember(Name = "thumbnails", IsRequired = true, EmitDefaultValue = false)]
-        public List<Thumbnail> Thumbnails { get; set; }
+        private List<Thumbnail> thumbnails;
+        public List<Thumbnail> getThumbnails() {
+            return thumbnails;
+        }
+        public void setThumbnails(List<Thumbnail> value) {
+            thumbnails = value;
+        }
 
         /// <summary>
         /// The available quantity of cards.
         /// </summary>
         /// <value>The available quantity of cards.</value>
         [DataMember(Name = "available_quantity", IsRequired = true, EmitDefaultValue = false)]
-        public int AvailableQuantity { get; set; }
+        private int availableQuantity;
+        public int getAvailableQuantity() {
+            return availableQuantity;
+        }
+        public void setAvailableQuantity(int value) {
+            availableQuantity = value;
+        }
 
         /// <summary>
         /// The pending quantity of cards.
         /// </summary>
         /// <value>The pending quantity of cards.</value>
         [DataMember(Name = "pending_quantity", IsRequired = true, EmitDefaultValue = false)]
-        public int PendingQuantity { get; set; }
+        private int pendingQuantity;
+        public int getPendingQuantity() {
+            return pendingQuantity;
+        }
+        public void setPendingQuantity(int value) {
+            pendingQuantity = value;
+        }
 
         /// <summary>
         /// The threshold amount of the card
         /// </summary>
         /// <value>The threshold amount of the card</value>
         [DataMember(Name = "threshold_amount", EmitDefaultValue = false)]
-        public int ThresholdAmount { get; set; }
+        private int thresholdAmount;
+        public int getThresholdAmount() {
+            return thresholdAmount;
+        }
+        public void setThresholdAmount(int value) {
+            thresholdAmount = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was created.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was created.</value>
         [DataMember(Name = "date_created", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime DateCreated { get; set; }
+        private DateTime dateCreated;
+        public DateTime getDateCreated() {
+            return dateCreated;
+        }
+        public void setDateCreated(DateTime value) {
+            dateCreated = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was last modified.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was last modified.</value>
         [DataMember(Name = "date_modified", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime DateModified { get; set; }
+        private DateTime dateModified;
+        public DateTime getDateModified() {
+            return dateModified;
+        }
+        public void setDateModified(DateTime value) {
+            dateModified = value;
+        }
 
         /// <summary>
         /// Only returned if the resource has been successfully deleted.
         /// </summary>
         /// <value>Only returned if the resource has been successfully deleted.</value>
         [DataMember(Name = "deleted", EmitDefaultValue = true)]
-        public bool Deleted { get; set; }
+        private bool deleted;
+        public bool getDeleted() {
+            return deleted;
+        }
+        public void setDeleted(bool value) {
+            deleted = value;
+        }
 
         /// <summary>
         /// Description of the card.
         /// </summary>
         /// <value>Description of the card.</value>
         [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
+        private string description;
+        public string getDescription() {
+            return description;
+        }
+        public void setDescription(string value) {
+            description = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -320,25 +397,25 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Card {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
-            sb.Append("  AutoReorder: ").Append(AutoReorder).Append("\n");
-            sb.Append("  ReorderQuantity: ").Append(ReorderQuantity).Append("\n");
-            sb.Append("  RawUrl: ").Append(RawUrl).Append("\n");
-            sb.Append("  FrontOriginalUrl: ").Append(FrontOriginalUrl).Append("\n");
-            sb.Append("  BackOriginalUrl: ").Append(BackOriginalUrl).Append("\n");
-            sb.Append("  Thumbnails: ").Append(Thumbnails).Append("\n");
-            sb.Append("  AvailableQuantity: ").Append(AvailableQuantity).Append("\n");
-            sb.Append("  PendingQuantity: ").Append(PendingQuantity).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Orientation: ").Append(Orientation).Append("\n");
-            sb.Append("  ThresholdAmount: ").Append(ThresholdAmount).Append("\n");
-            sb.Append("  DateCreated: ").Append(DateCreated).Append("\n");
-            sb.Append("  DateModified: ").Append(DateModified).Append("\n");
-            sb.Append("  Deleted: ").Append(Deleted).Append("\n");
-            sb.Append("  Object: ").Append(Object).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Size: ").Append(Size).Append("\n");
+            sb.Append("  id: ").Append(id).Append("\n");
+            sb.Append("  url: ").Append(url).Append("\n");
+            sb.Append("  autoReorder: ").Append(autoReorder).Append("\n");
+            sb.Append("  reorderQuantity: ").Append(reorderQuantity).Append("\n");
+            sb.Append("  rawUrl: ").Append(rawUrl).Append("\n");
+            sb.Append("  frontOriginalUrl: ").Append(frontOriginalUrl).Append("\n");
+            sb.Append("  backOriginalUrl: ").Append(backOriginalUrl).Append("\n");
+            sb.Append("  thumbnails: ").Append(thumbnails).Append("\n");
+            sb.Append("  availableQuantity: ").Append(availableQuantity).Append("\n");
+            sb.Append("  pendingQuantity: ").Append(pendingQuantity).Append("\n");
+            sb.Append("  status: ").Append(status).Append("\n");
+            sb.Append("  orientation: ").Append(orientation).Append("\n");
+            sb.Append("  thresholdAmount: ").Append(thresholdAmount).Append("\n");
+            sb.Append("  dateCreated: ").Append(dateCreated).Append("\n");
+            sb.Append("  dateModified: ").Append(dateModified).Append("\n");
+            sb.Append("  deleted: ").Append(deleted).Append("\n");
+            sb.Append("  _object: ").Append(_object).Append("\n");
+            sb.Append("  description: ").Append(description).Append("\n");
+            sb.Append("  size: ").Append(size).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -349,7 +426,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -375,91 +452,91 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.id == input.getId() ||
+                    (this.id != null &&
+                    this.id.Equals(input.getId()))
                 ) && 
                 (
-                    this.Url == input.Url ||
-                    (this.Url != null &&
-                    this.Url.Equals(input.Url))
+                    this.url == input.getUrl() ||
+                    (this.url != null &&
+                    this.url.Equals(input.getUrl()))
                 ) && 
                 (
-                    this.AutoReorder == input.AutoReorder ||
-                    this.AutoReorder.Equals(input.AutoReorder)
+                    this.autoReorder == input.getAutoReorder() ||
+                    this.autoReorder.Equals(input.getAutoReorder())
                 ) && 
                 (
-                    this.ReorderQuantity == input.ReorderQuantity ||
-                    (this.ReorderQuantity != null &&
-                    this.ReorderQuantity.Equals(input.ReorderQuantity))
+                    this.reorderQuantity == input.getReorderQuantity() ||
+                    (this.reorderQuantity != null &&
+                    this.reorderQuantity.Equals(input.getReorderQuantity()))
                 ) && 
                 (
-                    this.RawUrl == input.RawUrl ||
-                    (this.RawUrl != null &&
-                    this.RawUrl.Equals(input.RawUrl))
+                    this.rawUrl == input.getRawUrl() ||
+                    (this.rawUrl != null &&
+                    this.rawUrl.Equals(input.getRawUrl()))
                 ) && 
                 (
-                    this.FrontOriginalUrl == input.FrontOriginalUrl ||
-                    (this.FrontOriginalUrl != null &&
-                    this.FrontOriginalUrl.Equals(input.FrontOriginalUrl))
+                    this.frontOriginalUrl == input.getFrontOriginalUrl() ||
+                    (this.frontOriginalUrl != null &&
+                    this.frontOriginalUrl.Equals(input.getFrontOriginalUrl()))
                 ) && 
                 (
-                    this.BackOriginalUrl == input.BackOriginalUrl ||
-                    (this.BackOriginalUrl != null &&
-                    this.BackOriginalUrl.Equals(input.BackOriginalUrl))
+                    this.backOriginalUrl == input.getBackOriginalUrl() ||
+                    (this.backOriginalUrl != null &&
+                    this.backOriginalUrl.Equals(input.getBackOriginalUrl()))
                 ) && 
                 (
-                    this.Thumbnails == input.Thumbnails ||
-                    this.Thumbnails != null &&
-                    input.Thumbnails != null &&
-                    this.Thumbnails.SequenceEqual(input.Thumbnails)
+                    this.thumbnails == input.getThumbnails() ||
+                    this.thumbnails != null &&
+                    input.getThumbnails() != null &&
+                    this.thumbnails.SequenceEqual(input.getThumbnails())
                 ) && 
                 (
-                    this.AvailableQuantity == input.AvailableQuantity ||
-                    this.AvailableQuantity.Equals(input.AvailableQuantity)
+                    this.availableQuantity == input.getAvailableQuantity() ||
+                    this.availableQuantity.Equals(input.getAvailableQuantity())
                 ) && 
                 (
-                    this.PendingQuantity == input.PendingQuantity ||
-                    this.PendingQuantity.Equals(input.PendingQuantity)
+                    this.pendingQuantity == input.getPendingQuantity() ||
+                    this.pendingQuantity.Equals(input.getPendingQuantity())
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    this.Status.Equals(input.Status)
+                    this.status == input.getStatus() ||
+                    this.status.Equals(input.getStatus())
                 ) && 
                 (
-                    this.Orientation == input.Orientation ||
-                    this.Orientation.Equals(input.Orientation)
+                    this.orientation == input.getOrientation() ||
+                    this.orientation.Equals(input.getOrientation())
                 ) && 
                 (
-                    this.ThresholdAmount == input.ThresholdAmount ||
-                    this.ThresholdAmount.Equals(input.ThresholdAmount)
+                    this.thresholdAmount == input.getThresholdAmount() ||
+                    this.thresholdAmount.Equals(input.getThresholdAmount())
                 ) && 
                 (
-                    this.DateCreated == input.DateCreated ||
-                    (this.DateCreated != null &&
-                    this.DateCreated.Equals(input.DateCreated))
+                    this.dateCreated == input.getDateCreated() ||
+                    (this.dateCreated != null &&
+                    this.dateCreated.Equals(input.getDateCreated()))
                 ) && 
                 (
-                    this.DateModified == input.DateModified ||
-                    (this.DateModified != null &&
-                    this.DateModified.Equals(input.DateModified))
+                    this.dateModified == input.getDateModified() ||
+                    (this.dateModified != null &&
+                    this.dateModified.Equals(input.getDateModified()))
                 ) && 
                 (
-                    this.Deleted == input.Deleted ||
-                    this.Deleted.Equals(input.Deleted)
+                    this.deleted == input.getDeleted() ||
+                    this.deleted.Equals(input.getDeleted())
                 ) && 
                 (
-                    this.Object == input.Object ||
-                    this.Object.Equals(input.Object)
+                    this._object == input.getObject() ||
+                    this._object.Equals(input.getObject())
                 ) && 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.description == input.getDescription() ||
+                    (this.description != null &&
+                    this.description.Equals(input.getDescription()))
                 ) && 
                 (
-                    this.Size == input.Size ||
-                    this.Size.Equals(input.Size)
+                    this.size == input.getSize() ||
+                    this.size.Equals(input.getSize())
                 );
         }
 
@@ -472,55 +549,55 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                if (this.id != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.id.GetHashCode();
                 }
-                if (this.Url != null)
+                if (this.url != null)
                 {
-                    hashCode = (hashCode * 59) + this.Url.GetHashCode();
+                    hashCode = (hashCode * 59) + this.url.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AutoReorder.GetHashCode();
-                if (this.ReorderQuantity != null)
+                hashCode = (hashCode * 59) + this.autoReorder.GetHashCode();
+                if (this.reorderQuantity != null)
                 {
-                    hashCode = (hashCode * 59) + this.ReorderQuantity.GetHashCode();
+                    hashCode = (hashCode * 59) + this.reorderQuantity.GetHashCode();
                 }
-                if (this.RawUrl != null)
+                if (this.rawUrl != null)
                 {
-                    hashCode = (hashCode * 59) + this.RawUrl.GetHashCode();
+                    hashCode = (hashCode * 59) + this.rawUrl.GetHashCode();
                 }
-                if (this.FrontOriginalUrl != null)
+                if (this.frontOriginalUrl != null)
                 {
-                    hashCode = (hashCode * 59) + this.FrontOriginalUrl.GetHashCode();
+                    hashCode = (hashCode * 59) + this.frontOriginalUrl.GetHashCode();
                 }
-                if (this.BackOriginalUrl != null)
+                if (this.backOriginalUrl != null)
                 {
-                    hashCode = (hashCode * 59) + this.BackOriginalUrl.GetHashCode();
+                    hashCode = (hashCode * 59) + this.backOriginalUrl.GetHashCode();
                 }
-                if (this.Thumbnails != null)
+                if (this.thumbnails != null)
                 {
-                    hashCode = (hashCode * 59) + this.Thumbnails.GetHashCode();
+                    hashCode = (hashCode * 59) + this.thumbnails.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AvailableQuantity.GetHashCode();
-                hashCode = (hashCode * 59) + this.PendingQuantity.GetHashCode();
-                hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                hashCode = (hashCode * 59) + this.Orientation.GetHashCode();
-                hashCode = (hashCode * 59) + this.ThresholdAmount.GetHashCode();
-                if (this.DateCreated != null)
+                hashCode = (hashCode * 59) + this.availableQuantity.GetHashCode();
+                hashCode = (hashCode * 59) + this.pendingQuantity.GetHashCode();
+                hashCode = (hashCode * 59) + this.status.GetHashCode();
+                hashCode = (hashCode * 59) + this.orientation.GetHashCode();
+                hashCode = (hashCode * 59) + this.thresholdAmount.GetHashCode();
+                if (this.dateCreated != null)
                 {
-                    hashCode = (hashCode * 59) + this.DateCreated.GetHashCode();
+                    hashCode = (hashCode * 59) + this.dateCreated.GetHashCode();
                 }
-                if (this.DateModified != null)
+                if (this.dateModified != null)
                 {
-                    hashCode = (hashCode * 59) + this.DateModified.GetHashCode();
+                    hashCode = (hashCode * 59) + this.dateModified.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Deleted.GetHashCode();
-                hashCode = (hashCode * 59) + this.Object.GetHashCode();
-                if (this.Description != null)
+                hashCode = (hashCode * 59) + this.deleted.GetHashCode();
+                hashCode = (hashCode * 59) + this._object.GetHashCode();
+                if (this.description != null)
                 {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                    hashCode = (hashCode * 59) + this.description.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Size.GetHashCode();
+                hashCode = (hashCode * 59) + this.size.GetHashCode();
                 return hashCode;
             }
         }
@@ -532,65 +609,65 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Id (string) pattern
-            Regex regexId = new Regex(@"^card_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexId.Match(this.Id).Success)
+            // id (string) pattern
+            Regex regexid = new Regex(@"^card_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regexid.Match(this.id).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for id, must match a pattern of " + regexid, new [] { "id" });
             }
 
-            // Url (string) maxLength
-            if (this.Url != null && this.Url.Length > 2083)
+            // url (string) maxLength
+            if (this.url != null && this.url.Length > 2083)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Url, length must be less than 2083.", new [] { "Url" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for url, length must be less than 2083.", new [] { "url" });
             }
 
-            // Url (string) minLength
-            if (this.Url != null && this.Url.Length < 1)
+            // url (string) minLength
+            if (this.url != null && this.url.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Url, length must be greater than 1.", new [] { "Url" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for url, length must be greater than 1.", new [] { "url" });
             }
 
-            // RawUrl (string) maxLength
-            if (this.RawUrl != null && this.RawUrl.Length > 2083)
+            // rawUrl (string) maxLength
+            if (this.rawUrl != null && this.rawUrl.Length > 2083)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RawUrl, length must be less than 2083.", new [] { "RawUrl" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for rawUrl, length must be less than 2083.", new [] { "rawUrl" });
             }
 
-            // RawUrl (string) minLength
-            if (this.RawUrl != null && this.RawUrl.Length < 1)
+            // rawUrl (string) minLength
+            if (this.rawUrl != null && this.rawUrl.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RawUrl, length must be greater than 1.", new [] { "RawUrl" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for rawUrl, length must be greater than 1.", new [] { "rawUrl" });
             }
 
-            // FrontOriginalUrl (string) maxLength
-            if (this.FrontOriginalUrl != null && this.FrontOriginalUrl.Length > 2083)
+            // frontOriginalUrl (string) maxLength
+            if (this.frontOriginalUrl != null && this.frontOriginalUrl.Length > 2083)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FrontOriginalUrl, length must be less than 2083.", new [] { "FrontOriginalUrl" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for frontOriginalUrl, length must be less than 2083.", new [] { "frontOriginalUrl" });
             }
 
-            // FrontOriginalUrl (string) minLength
-            if (this.FrontOriginalUrl != null && this.FrontOriginalUrl.Length < 1)
+            // frontOriginalUrl (string) minLength
+            if (this.frontOriginalUrl != null && this.frontOriginalUrl.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FrontOriginalUrl, length must be greater than 1.", new [] { "FrontOriginalUrl" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for frontOriginalUrl, length must be greater than 1.", new [] { "frontOriginalUrl" });
             }
 
-            // BackOriginalUrl (string) maxLength
-            if (this.BackOriginalUrl != null && this.BackOriginalUrl.Length > 2083)
+            // backOriginalUrl (string) maxLength
+            if (this.backOriginalUrl != null && this.backOriginalUrl.Length > 2083)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for BackOriginalUrl, length must be less than 2083.", new [] { "BackOriginalUrl" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for backOriginalUrl, length must be less than 2083.", new [] { "backOriginalUrl" });
             }
 
-            // BackOriginalUrl (string) minLength
-            if (this.BackOriginalUrl != null && this.BackOriginalUrl.Length < 1)
+            // backOriginalUrl (string) minLength
+            if (this.backOriginalUrl != null && this.backOriginalUrl.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for BackOriginalUrl, length must be greater than 1.", new [] { "BackOriginalUrl" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for backOriginalUrl, length must be greater than 1.", new [] { "backOriginalUrl" });
             }
 
-            // Description (string) maxLength
-            if (this.Description != null && this.Description.Length > 255)
+            // description (string) maxLength
+            if (this.description != null && this.description.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 255.", new [] { "Description" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for description, length must be less than 255.", new [] { "description" });
             }
 
             yield break;

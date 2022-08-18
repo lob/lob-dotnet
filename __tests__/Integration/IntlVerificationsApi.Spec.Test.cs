@@ -40,53 +40,36 @@ namespace __tests__.Integration {
             validApi = new IntlVerificationsApi(config);
             invalidApi = new IntlVerificationsApi(invalidConfig);
 
-            intlVerificationWritable = new IntlVerificationWritable(
-                null, // recipient
-                "10 DOWNING ST", // primaryLine
-                null, // secondaryLine
-                "LONDON", // city
-                null, // state
-                "SW1A 2AA", // postalCode
-                CountryExtended.GB, // country
-                null // address
-            );
+            intlVerificationWritable = new IntlVerificationWritable();
+            intlVerificationWritable.setPrimaryLine("10 DOWNING ST");
+            intlVerificationWritable.setCity("LONDON");
+            intlVerificationWritable.setPostalCode("SW1A 2AA");
+            intlVerificationWritable.setCountry(CountryExtended.GB);
 
-            undeliverableIntlVerificationWritable = new IntlVerificationWritable(
-                null, // recipient
-                "1 CEMETERY ST", // primaryLine
-                null, // secondaryLine
-                "POTATOFIELD", // city
-                null, // state
-                "EC3N 40R", // postalCode
-                CountryExtended.GB, // country
-                null // address
-            );
+            undeliverableIntlVerificationWritable = new IntlVerificationWritable();
+            undeliverableIntlVerificationWritable.setPrimaryLine("1 CEMETERY ST");
+            undeliverableIntlVerificationWritable.setCity("POTATOFIELD");
+            undeliverableIntlVerificationWritable.setPostalCode("EC3N 40R");
+            undeliverableIntlVerificationWritable.setCountry(CountryExtended.GB);
 
-            MultipleComponentsIntl address1 = new MultipleComponentsIntl(
-                null, // recipient
-                "10 DOWNING ST", // primaryLine
-                null, // secondaryLine
-                "LONDON", // city
-                null, // state
-                "SW1A 2AA", // postalCode
-                CountryExtended.GB // country
-            );
+            MultipleComponentsIntl address1 = new MultipleComponentsIntl();
+            address1.setPrimaryLine("10 DOWNING ST");
+            address1.setCity("LONDON");
+            address1.setPostalCode("SW1A 2AA");
+            address1.setCountry(CountryExtended.GB);
 
-            MultipleComponentsIntl address2 = new MultipleComponentsIntl(
-                null, // recipient
-                "1 FAKE POTATO LANE", // primaryLine
-                null, // secondaryLine
-                "LONDON", // city
-                null, // state
-                "ZC4Z 46Z", // postalCode
-                CountryExtended.GB // country
-            );
+            MultipleComponentsIntl address2 = new MultipleComponentsIntl();
+            address2.setPrimaryLine("1 FAKE POTATO LANE");
+            address2.setCity("LONDON");
+            address2.setPostalCode("ZC4Z 46Z");
+            address2.setCountry(CountryExtended.GB);
 
             addresses = new List<MultipleComponentsIntl>();
             addresses.Add(address1);
             addresses.Add(address2);
 
-            addressList = new IntlVerificationsPayload(addresses);
+            addressList = new IntlVerificationsPayload();
+            addressList.setAddresses(addresses);
         }
 
         public void Dispose() {}
@@ -94,19 +77,19 @@ namespace __tests__.Integration {
         [Test]
         public void IntlVerificationVerifySingleTest() {
             IntlVerification response = validApi.IntlVerification(intlVerificationWritable);
-            Assert.AreEqual(IntlVerification.DeliverabilityEnum.Deliverable, response.Deliverability);
+            Assert.AreEqual(IntlVerification.DeliverabilityEnum.Deliverable, response.getDeliverability());
         }
 
         [Test]
         public void IntlVerificationVerifySingleTestWithXLangOutput() {
             IntlVerification response = validApi.IntlVerification(intlVerificationWritable, "match");
-            Assert.AreEqual(IntlVerification.DeliverabilityEnum.Deliverable, response.Deliverability);
+            Assert.AreEqual(IntlVerification.DeliverabilityEnum.Deliverable, response.getDeliverability());
         }
 
         [Test]
         public void IntlVerificationVerifySingleUndeliverableTest() {
             IntlVerification response = validApi.IntlVerification(undeliverableIntlVerificationWritable);
-            Assert.AreEqual(IntlVerification.DeliverabilityEnum.Undeliverable, response.Deliverability);
+            Assert.AreEqual(IntlVerification.DeliverabilityEnum.Undeliverable, response.getDeliverability());
         }
 
         [Test]
@@ -133,8 +116,8 @@ namespace __tests__.Integration {
         public void IntlVerificationVerifyBulkTest() {
             IntlVerifications response = validApi.BulkIntlVerifications(addressList);
             Assert.NotNull(response);
-            Assert.AreEqual(IntlVerificationOrError.DeliverabilityEnum.Deliverable, response.Addresses[0].Deliverability);
-            Assert.AreEqual(IntlVerificationOrError.DeliverabilityEnum.Undeliverable, response.Addresses[1].Deliverability);
+            Assert.AreEqual(IntlVerificationOrError.DeliverabilityEnum.Deliverable, response.getAddresses()[0].getDeliverability());
+            Assert.AreEqual(IntlVerificationOrError.DeliverabilityEnum.Undeliverable, response.getAddresses()[1].getDeliverability());
         }
 
         [Test]

@@ -41,57 +41,84 @@ namespace lob.dotnet.Model
         /// <param name="previousUrl">url of previous page of items in list..</param>
         /// <param name="count">number of resources in a set.</param>
         /// <param name="totalCount">indicates the total number of records. Provided when the request specifies an \&quot;include\&quot; query parameter.</param>
-        public PostcardList(List<Postcard> data = default(List<Postcard>), string _object = default(string), string nextUrl = default(string), string previousUrl = default(string), int count = default(int), int totalCount = default(int))
-        {
-            this.Data = data;
-            this.Object = _object;
-            this.NextUrl = nextUrl;
-            this.PreviousUrl = previousUrl;
-            this.Count = count;
-            this.TotalCount = totalCount;
-        }
 
         /// <summary>
         /// list of postcards
         /// </summary>
         /// <value>list of postcards</value>
         [DataMember(Name = "data", EmitDefaultValue = false)]
-        public List<Postcard> Data { get; set; }
+        private List<Postcard> data;
+        public List<Postcard> getData() {
+            return data;
+        }
+        public void setData(List<Postcard> value) {
+            data = value;
+        }
 
         /// <summary>
         /// Value is type of resource.
         /// </summary>
         /// <value>Value is type of resource.</value>
         [DataMember(Name = "object", EmitDefaultValue = false)]
-        public string Object { get; set; }
+        private string _object;
+        public string getObject() {
+            return _object;
+        }
+        public void setObject(string value) {
+            _object = value;
+        }
 
         /// <summary>
         /// url of next page of items in list.
         /// </summary>
         /// <value>url of next page of items in list.</value>
         [DataMember(Name = "next_url", EmitDefaultValue = true)]
-        public string NextUrl { get; set; }
+        private string nextUrl;
+        public string getNextUrl() {
+            return nextUrl;
+        }
+        public void setNextUrl(string value) {
+            nextUrl = value;
+        }
 
         /// <summary>
         /// url of previous page of items in list.
         /// </summary>
         /// <value>url of previous page of items in list.</value>
         [DataMember(Name = "previous_url", EmitDefaultValue = true)]
-        public string PreviousUrl { get; set; }
+        private string previousUrl;
+        public string getPreviousUrl() {
+            return previousUrl;
+        }
+        public void setPreviousUrl(string value) {
+            previousUrl = value;
+        }
 
         /// <summary>
         /// number of resources in a set
         /// </summary>
         /// <value>number of resources in a set</value>
         [DataMember(Name = "count", EmitDefaultValue = false)]
-        public int Count { get; set; }
+        private int count;
+        public int getCount() {
+            return count;
+        }
+        public void setCount(int value) {
+            count = value;
+        }
 
         /// <summary>
         /// indicates the total number of records. Provided when the request specifies an \&quot;include\&quot; query parameter
         /// </summary>
         /// <value>indicates the total number of records. Provided when the request specifies an \&quot;include\&quot; query parameter</value>
         [DataMember(Name = "total_count", EmitDefaultValue = false)]
-        public int TotalCount { get; set; }
+        private int totalCount;
+        public int getTotalCount() {
+            return totalCount;
+        }
+        public void setTotalCount(int value) {
+            totalCount = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -101,12 +128,12 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class PostcardList {\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
-            sb.Append("  Object: ").Append(Object).Append("\n");
-            sb.Append("  NextUrl: ").Append(NextUrl).Append("\n");
-            sb.Append("  PreviousUrl: ").Append(PreviousUrl).Append("\n");
-            sb.Append("  Count: ").Append(Count).Append("\n");
-            sb.Append("  TotalCount: ").Append(TotalCount).Append("\n");
+            sb.Append("  data: ").Append(data).Append("\n");
+            sb.Append("  _object: ").Append(_object).Append("\n");
+            sb.Append("  nextUrl: ").Append(nextUrl).Append("\n");
+            sb.Append("  previousUrl: ").Append(previousUrl).Append("\n");
+            sb.Append("  count: ").Append(count).Append("\n");
+            sb.Append("  totalCount: ").Append(totalCount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -117,7 +144,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -143,33 +170,33 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Data == input.Data ||
-                    this.Data != null &&
-                    input.Data != null &&
-                    this.Data.SequenceEqual(input.Data)
+                    this.data == input.getData() ||
+                    this.data != null &&
+                    input.getData() != null &&
+                    this.data.SequenceEqual(input.getData())
                 ) && 
                 (
-                    this.Object == input.Object ||
-                    (this.Object != null &&
-                    this.Object.Equals(input.Object))
+                    this._object == input.getObject() ||
+                    (this._object != null &&
+                    this._object.Equals(input.getObject()))
                 ) && 
                 (
-                    this.NextUrl == input.NextUrl ||
-                    (this.NextUrl != null &&
-                    this.NextUrl.Equals(input.NextUrl))
+                    this.nextUrl == input.getNextUrl() ||
+                    (this.nextUrl != null &&
+                    this.nextUrl.Equals(input.getNextUrl()))
                 ) && 
                 (
-                    this.PreviousUrl == input.PreviousUrl ||
-                    (this.PreviousUrl != null &&
-                    this.PreviousUrl.Equals(input.PreviousUrl))
+                    this.previousUrl == input.getPreviousUrl() ||
+                    (this.previousUrl != null &&
+                    this.previousUrl.Equals(input.getPreviousUrl()))
                 ) && 
                 (
-                    this.Count == input.Count ||
-                    this.Count.Equals(input.Count)
+                    this.count == input.getCount() ||
+                    this.count.Equals(input.getCount())
                 ) && 
                 (
-                    this.TotalCount == input.TotalCount ||
-                    this.TotalCount.Equals(input.TotalCount)
+                    this.totalCount == input.getTotalCount() ||
+                    this.totalCount.Equals(input.getTotalCount())
                 );
         }
 
@@ -182,24 +209,24 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Data != null)
+                if (this.data != null)
                 {
-                    hashCode = (hashCode * 59) + this.Data.GetHashCode();
+                    hashCode = (hashCode * 59) + this.data.GetHashCode();
                 }
-                if (this.Object != null)
+                if (this._object != null)
                 {
-                    hashCode = (hashCode * 59) + this.Object.GetHashCode();
+                    hashCode = (hashCode * 59) + this._object.GetHashCode();
                 }
-                if (this.NextUrl != null)
+                if (this.nextUrl != null)
                 {
-                    hashCode = (hashCode * 59) + this.NextUrl.GetHashCode();
+                    hashCode = (hashCode * 59) + this.nextUrl.GetHashCode();
                 }
-                if (this.PreviousUrl != null)
+                if (this.previousUrl != null)
                 {
-                    hashCode = (hashCode * 59) + this.PreviousUrl.GetHashCode();
+                    hashCode = (hashCode * 59) + this.previousUrl.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Count.GetHashCode();
-                hashCode = (hashCode * 59) + this.TotalCount.GetHashCode();
+                hashCode = (hashCode * 59) + this.count.GetHashCode();
+                hashCode = (hashCode * 59) + this.totalCount.GetHashCode();
                 return hashCode;
             }
         }

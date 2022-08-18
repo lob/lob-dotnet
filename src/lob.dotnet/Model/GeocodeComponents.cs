@@ -36,40 +36,37 @@ namespace lob.dotnet.Model
         /// Initializes a new instance of the <see cref="GeocodeComponents" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GeocodeComponents() { }
+        public GeocodeComponents() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="GeocodeComponents" /> class.
         /// </summary>
         /// <param name="zipCode">The 5-digit ZIP code (required).</param>
         /// <param name="zipCodePlus4">zipCodePlus4 (required).</param>
-        public GeocodeComponents(string zipCode = default(string), string zipCodePlus4 = default(string))
-        {
-            // to ensure "zipCode" is required (not null)
-            if (zipCode == null)
-            {
-                throw new ArgumentNullException("zipCode is a required property for GeocodeComponents and cannot be null");
-            }
-            this.ZipCode = zipCode;
-            // to ensure "zipCodePlus4" is required (not null)
-            if (zipCodePlus4 == null)
-            {
-                throw new ArgumentNullException("zipCodePlus4 is a required property for GeocodeComponents and cannot be null");
-            }
-            this.ZipCodePlus4 = zipCodePlus4;
-        }
 
         /// <summary>
         /// The 5-digit ZIP code
         /// </summary>
         /// <value>The 5-digit ZIP code</value>
         [DataMember(Name = "zip_code", IsRequired = true, EmitDefaultValue = false)]
-        public string ZipCode { get; set; }
+        private string zipCode;
+        public string getZipCode() {
+            return zipCode;
+        }
+        public void setZipCode(string value) {
+            zipCode = value;
+        }
 
         /// <summary>
         /// Gets or Sets ZipCodePlus4
         /// </summary>
         [DataMember(Name = "zip_code_plus_4", IsRequired = true, EmitDefaultValue = false)]
-        public string ZipCodePlus4 { get; set; }
+        private string zipCodePlus4;
+        public string getZipCodePlus4() {
+            return zipCodePlus4;
+        }
+        public void setZipCodePlus4(string value) {
+            zipCodePlus4 = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,8 +76,8 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GeocodeComponents {\n");
-            sb.Append("  ZipCode: ").Append(ZipCode).Append("\n");
-            sb.Append("  ZipCodePlus4: ").Append(ZipCodePlus4).Append("\n");
+            sb.Append("  zipCode: ").Append(zipCode).Append("\n");
+            sb.Append("  zipCodePlus4: ").Append(zipCodePlus4).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -91,7 +88,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -117,14 +114,14 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.ZipCode == input.ZipCode ||
-                    (this.ZipCode != null &&
-                    this.ZipCode.Equals(input.ZipCode))
+                    this.zipCode == input.getZipCode() ||
+                    (this.zipCode != null &&
+                    this.zipCode.Equals(input.getZipCode()))
                 ) && 
                 (
-                    this.ZipCodePlus4 == input.ZipCodePlus4 ||
-                    (this.ZipCodePlus4 != null &&
-                    this.ZipCodePlus4.Equals(input.ZipCodePlus4))
+                    this.zipCodePlus4 == input.getZipCodePlus4() ||
+                    (this.zipCodePlus4 != null &&
+                    this.zipCodePlus4.Equals(input.getZipCodePlus4()))
                 );
         }
 
@@ -137,13 +134,13 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ZipCode != null)
+                if (this.zipCode != null)
                 {
-                    hashCode = (hashCode * 59) + this.ZipCode.GetHashCode();
+                    hashCode = (hashCode * 59) + this.zipCode.GetHashCode();
                 }
-                if (this.ZipCodePlus4 != null)
+                if (this.zipCodePlus4 != null)
                 {
-                    hashCode = (hashCode * 59) + this.ZipCodePlus4.GetHashCode();
+                    hashCode = (hashCode * 59) + this.zipCodePlus4.GetHashCode();
                 }
                 return hashCode;
             }
@@ -156,18 +153,18 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // ZipCode (string) pattern
-            Regex regexZipCode = new Regex(@"^\\d{5}$", RegexOptions.CultureInvariant);
-            if (false == regexZipCode.Match(this.ZipCode).Success)
+            // zipCode (string) pattern
+            Regex regexzipCode = new Regex(@"^\\d{5}$", RegexOptions.CultureInvariant);
+            if (false == regexzipCode.Match(this.zipCode).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ZipCode, must match a pattern of " + regexZipCode, new [] { "ZipCode" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for zipCode, must match a pattern of " + regexzipCode, new [] { "zipCode" });
             }
 
-            // ZipCodePlus4 (string) pattern
-            Regex regexZipCodePlus4 = new Regex(@"^\\d{4}$", RegexOptions.CultureInvariant);
-            if (false == regexZipCodePlus4.Match(this.ZipCodePlus4).Success)
+            // zipCodePlus4 (string) pattern
+            Regex regexzipCodePlus4 = new Regex(@"^\\d{4}$", RegexOptions.CultureInvariant);
+            if (false == regexzipCodePlus4.Match(this.zipCodePlus4).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ZipCodePlus4, must match a pattern of " + regexZipCodePlus4, new [] { "ZipCodePlus4" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for zipCodePlus4, must match a pattern of " + regexzipCodePlus4, new [] { "zipCodePlus4" });
             }
 
             yield break;

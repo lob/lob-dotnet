@@ -54,12 +54,18 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Value is resource type.</value>
         [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = false)]
-        public ObjectEnum Object { get; set; }
+        private ObjectEnum _object;
+        public ObjectEnum getObject() {
+            return _object;
+        }
+        public void setObject(ObjectEnum value) {
+            _object = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="Events" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Events() { }
+        public Events() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="Events" /> class.
         /// </summary>
@@ -69,69 +75,70 @@ namespace lob.dotnet.Model
         /// <param name="eventType">eventType (required).</param>
         /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created. (required).</param>
         /// <param name="_object">Value is resource type. (required) (default to ObjectEnum.Event).</param>
-        public Events(string id = default(string), Object body = default(Object), string referenceId = default(string), EventType eventType = default(EventType), DateTime dateCreated = default(DateTime), ObjectEnum _object = ObjectEnum.Event)
-        {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for Events and cannot be null");
-            }
-            this.Id = id;
-            // to ensure "body" is required (not null)
-            if (body == null)
-            {
-                throw new ArgumentNullException("body is a required property for Events and cannot be null");
-            }
-            this.Body = body;
-            // to ensure "referenceId" is required (not null)
-            if (referenceId == null)
-            {
-                throw new ArgumentNullException("referenceId is a required property for Events and cannot be null");
-            }
-            this.ReferenceId = referenceId;
-            // to ensure "eventType" is required (not null)
-            if (eventType == null)
-            {
-                throw new ArgumentNullException("eventType is a required property for Events and cannot be null");
-            }
-            this.EventType = eventType;
-            this.DateCreated = dateCreated;
-            this.Object = _object;
-        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;evt_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;evt_&#x60;.</value>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
-        public string Id { get; set; }
+        private string id;
+        public string getId() {
+            return id;
+        }
+        public void setId(string value) {
+            id = value;
+        }
 
         /// <summary>
         /// The body of the associated resource as they were at the time of the event, i.e. the [postcard object](https://docs.lob.com/#tag/Postcards/operation/postcard_retrieve), [the letter object](https://docs.lob.com/#tag/Letters/operation/letter_retrieve), [the check object](https://docs.lob.com/#tag/Checks/operation/check_retrieve), [the address object](https://docs.lob.com/#tag/Addresses/operation/address_retrieve), or [the bank account object](https://docs.lob.com/#tag/Bank-Accounts/operation/bank_account_retrieve). For &#x60;.deleted&#x60; events, the body matches the response for the corresponding delete endpoint for that resource (e.g. the [postcard cancel response](https://docs.lob.com/#tag/Postcards/operation/postcard_delete)).
         /// </summary>
         /// <value>The body of the associated resource as they were at the time of the event, i.e. the [postcard object](https://docs.lob.com/#tag/Postcards/operation/postcard_retrieve), [the letter object](https://docs.lob.com/#tag/Letters/operation/letter_retrieve), [the check object](https://docs.lob.com/#tag/Checks/operation/check_retrieve), [the address object](https://docs.lob.com/#tag/Addresses/operation/address_retrieve), or [the bank account object](https://docs.lob.com/#tag/Bank-Accounts/operation/bank_account_retrieve). For &#x60;.deleted&#x60; events, the body matches the response for the corresponding delete endpoint for that resource (e.g. the [postcard cancel response](https://docs.lob.com/#tag/Postcards/operation/postcard_delete)).</value>
         [DataMember(Name = "body", IsRequired = true, EmitDefaultValue = false)]
-        public Object Body { get; set; }
+        private Object body;
+        public Object getBody() {
+            return body;
+        }
+        public void setBody(Object value) {
+            body = value;
+        }
 
         /// <summary>
         /// Unique identifier of the related resource for the event.
         /// </summary>
         /// <value>Unique identifier of the related resource for the event.</value>
         [DataMember(Name = "reference_id", IsRequired = true, EmitDefaultValue = false)]
-        public string ReferenceId { get; set; }
+        private string referenceId;
+        public string getReferenceId() {
+            return referenceId;
+        }
+        public void setReferenceId(string value) {
+            referenceId = value;
+        }
 
         /// <summary>
         /// Gets or Sets EventType
         /// </summary>
         [DataMember(Name = "event_type", IsRequired = true, EmitDefaultValue = false)]
-        public EventType EventType { get; set; }
+        private EventType eventType;
+        public EventType getEventType() {
+            return eventType;
+        }
+        public void setEventType(EventType value) {
+            eventType = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was created.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was created.</value>
         [DataMember(Name = "date_created", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime DateCreated { get; set; }
+        private DateTime dateCreated;
+        public DateTime getDateCreated() {
+            return dateCreated;
+        }
+        public void setDateCreated(DateTime value) {
+            dateCreated = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -141,12 +148,12 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Events {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Body: ").Append(Body).Append("\n");
-            sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
-            sb.Append("  EventType: ").Append(EventType).Append("\n");
-            sb.Append("  DateCreated: ").Append(DateCreated).Append("\n");
-            sb.Append("  Object: ").Append(Object).Append("\n");
+            sb.Append("  id: ").Append(id).Append("\n");
+            sb.Append("  body: ").Append(body).Append("\n");
+            sb.Append("  referenceId: ").Append(referenceId).Append("\n");
+            sb.Append("  eventType: ").Append(eventType).Append("\n");
+            sb.Append("  dateCreated: ").Append(dateCreated).Append("\n");
+            sb.Append("  _object: ").Append(_object).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -157,7 +164,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -183,33 +190,33 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.id == input.getId() ||
+                    (this.id != null &&
+                    this.id.Equals(input.getId()))
                 ) && 
                 (
-                    this.Body == input.Body ||
-                    (this.Body != null &&
-                    this.Body.Equals(input.Body))
+                    this.body == input.getBody() ||
+                    (this.body != null &&
+                    this.body.Equals(input.getBody()))
                 ) && 
                 (
-                    this.ReferenceId == input.ReferenceId ||
-                    (this.ReferenceId != null &&
-                    this.ReferenceId.Equals(input.ReferenceId))
+                    this.referenceId == input.getReferenceId() ||
+                    (this.referenceId != null &&
+                    this.referenceId.Equals(input.getReferenceId()))
                 ) && 
                 (
-                    this.EventType == input.EventType ||
-                    (this.EventType != null &&
-                    this.EventType.Equals(input.EventType))
+                    this.eventType == input.getEventType() ||
+                    (this.eventType != null &&
+                    this.eventType.Equals(input.getEventType()))
                 ) && 
                 (
-                    this.DateCreated == input.DateCreated ||
-                    (this.DateCreated != null &&
-                    this.DateCreated.Equals(input.DateCreated))
+                    this.dateCreated == input.getDateCreated() ||
+                    (this.dateCreated != null &&
+                    this.dateCreated.Equals(input.getDateCreated()))
                 ) && 
                 (
-                    this.Object == input.Object ||
-                    this.Object.Equals(input.Object)
+                    this._object == input.getObject() ||
+                    this._object.Equals(input.getObject())
                 );
         }
 
@@ -222,27 +229,27 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                if (this.id != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.id.GetHashCode();
                 }
-                if (this.Body != null)
+                if (this.body != null)
                 {
-                    hashCode = (hashCode * 59) + this.Body.GetHashCode();
+                    hashCode = (hashCode * 59) + this.body.GetHashCode();
                 }
-                if (this.ReferenceId != null)
+                if (this.referenceId != null)
                 {
-                    hashCode = (hashCode * 59) + this.ReferenceId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.referenceId.GetHashCode();
                 }
-                if (this.EventType != null)
+                if (this.eventType != null)
                 {
-                    hashCode = (hashCode * 59) + this.EventType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.eventType.GetHashCode();
                 }
-                if (this.DateCreated != null)
+                if (this.dateCreated != null)
                 {
-                    hashCode = (hashCode * 59) + this.DateCreated.GetHashCode();
+                    hashCode = (hashCode * 59) + this.dateCreated.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Object.GetHashCode();
+                hashCode = (hashCode * 59) + this._object.GetHashCode();
                 return hashCode;
             }
         }
@@ -254,11 +261,11 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Id (string) pattern
-            Regex regexId = new Regex(@"^evt_[a-zA-Z0-9_]+$", RegexOptions.CultureInvariant);
-            if (false == regexId.Match(this.Id).Success)
+            // id (string) pattern
+            Regex regexid = new Regex(@"^evt_[a-zA-Z0-9_]+$", RegexOptions.CultureInvariant);
+            if (false == regexid.Match(this.id).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for id, must match a pattern of " + regexid, new [] { "id" });
             }
 
             yield break;

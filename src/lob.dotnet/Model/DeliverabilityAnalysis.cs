@@ -82,7 +82,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Result of Delivery Point Validation (DPV), which determines whether or not the address is deliverable by the USPS. Possible values are: * &#x60;Y&#x60; –– The address is deliverable by the USPS. * &#x60;S&#x60; –– The address is deliverable by removing the provided secondary unit designator. This information may be incorrect or unnecessary. * &#x60;D&#x60; –– The address is deliverable to the building&#39;s default address but is missing a secondary unit designator and/or number.   There is a chance the mail will not reach the intended recipient. * &#x60;N&#x60; –– The address is not deliverable according to the USPS, but parts of the address are valid (such as the street and ZIP code). * &#x60;&#39;&#39;&#x60; –– This address is not deliverable. No matching street could be found within the city or ZIP code. </value>
         [DataMember(Name = "dpv_confirmation", IsRequired = true, EmitDefaultValue = false)]
-        public DpvConfirmationEnum DpvConfirmation { get; set; }
+        private DpvConfirmationEnum dpvConfirmation;
+        public DpvConfirmationEnum getDpvConfirmation() {
+            return dpvConfirmation;
+        }
+        public void setDpvConfirmation(DpvConfirmationEnum value) {
+            dpvConfirmation = value;
+        }
         /// <summary>
         /// indicates whether or not the address is [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency). Possible values are: * &#x60;Y&#x60; –– Address is CMRA-authorized. * &#x60;N&#x60; –– Address is not CMRA-authorized. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
         /// </summary>
@@ -119,7 +125,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>indicates whether or not the address is [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency). Possible values are: * &#x60;Y&#x60; –– Address is CMRA-authorized. * &#x60;N&#x60; –– Address is not CMRA-authorized. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). </value>
         [DataMember(Name = "dpv_cmra", IsRequired = true, EmitDefaultValue = false)]
-        public DpvCmraEnum DpvCmra { get; set; }
+        private DpvCmraEnum dpvCmra;
+        public DpvCmraEnum getDpvCmra() {
+            return dpvCmra;
+        }
+        public void setDpvCmra(DpvCmraEnum value) {
+            dpvCmra = value;
+        }
         /// <summary>
         /// indicates that an address was once deliverable, but has become vacant and is no longer receiving deliveries. Possible values are: * &#x60;Y&#x60; –– Address is vacant. * &#x60;N&#x60; –– Address is not vacant. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
         /// </summary>
@@ -156,7 +168,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>indicates that an address was once deliverable, but has become vacant and is no longer receiving deliveries. Possible values are: * &#x60;Y&#x60; –– Address is vacant. * &#x60;N&#x60; –– Address is not vacant. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). </value>
         [DataMember(Name = "dpv_vacant", IsRequired = true, EmitDefaultValue = false)]
-        public DpvVacantEnum DpvVacant { get; set; }
+        private DpvVacantEnum dpvVacant;
+        public DpvVacantEnum getDpvVacant() {
+            return dpvVacant;
+        }
+        public void setDpvVacant(DpvVacantEnum value) {
+            dpvVacant = value;
+        }
         /// <summary>
         /// Corresponds to the USPS field &#x60;dpv_no_stat&#x60;. Indicates that an address has been vacated in the recent past, and is no longer receiving deliveries. If it&#39;s been unoccupied for 90+ days, or temporarily vacant, this will be flagged. Possible values are: * &#x60;Y&#x60; –– Address is active. * &#x60;N&#x60; –– Address is not active. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
         /// </summary>
@@ -193,7 +211,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Corresponds to the USPS field &#x60;dpv_no_stat&#x60;. Indicates that an address has been vacated in the recent past, and is no longer receiving deliveries. If it&#39;s been unoccupied for 90+ days, or temporarily vacant, this will be flagged. Possible values are: * &#x60;Y&#x60; –– Address is active. * &#x60;N&#x60; –– Address is not active. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). </value>
         [DataMember(Name = "dpv_active", IsRequired = true, EmitDefaultValue = false)]
-        public DpvActiveEnum DpvActive { get; set; }
+        private DpvActiveEnum dpvActive;
+        public DpvActiveEnum getDpvActive() {
+            return dpvActive;
+        }
+        public void setDpvActive(DpvActiveEnum value) {
+            dpvActive = value;
+        }
         /// <summary>
         /// indicates whether this address has been converted by [LACS&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality/lacslink). LACS&lt;sup&gt;Link&lt;/sup&gt; corrects outdated addresses into their modern counterparts. Possible values are: * &#x60;Y&#x60; –– New address produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;N&#x60; –– New address could not be produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
         /// </summary>
@@ -230,7 +254,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>indicates whether this address has been converted by [LACS&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality/lacslink). LACS&lt;sup&gt;Link&lt;/sup&gt; corrects outdated addresses into their modern counterparts. Possible values are: * &#x60;Y&#x60; –– New address produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;N&#x60; –– New address could not be produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). </value>
         [DataMember(Name = "lacs_indicator", IsRequired = true, EmitDefaultValue = false)]
-        public LacsIndicatorEnum LacsIndicator { get; set; }
+        private LacsIndicatorEnum lacsIndicator;
+        public LacsIndicatorEnum getLacsIndicator() {
+            return lacsIndicator;
+        }
+        public void setLacsIndicator(LacsIndicatorEnum value) {
+            lacsIndicator = value;
+        }
         /// <summary>
         /// A return code that indicates whether the address was matched and corrected by [Suite&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality-solutions/suitelink). Suite&lt;sup&gt;Link&lt;/sup&gt; attempts to provide secondary information to business addresses. Possible values are: * &#x60;A&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match was found and secondary information was added. * &#x60;00&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match could not be found and no secondary information was added. * &#x60;&#39;&#39;&#x60; –– Suite&lt;sup&gt;Link&lt;/sup&gt; lookup was not attempted. 
         /// </summary>
@@ -267,12 +297,18 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>A return code that indicates whether the address was matched and corrected by [Suite&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality-solutions/suitelink). Suite&lt;sup&gt;Link&lt;/sup&gt; attempts to provide secondary information to business addresses. Possible values are: * &#x60;A&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match was found and secondary information was added. * &#x60;00&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match could not be found and no secondary information was added. * &#x60;&#39;&#39;&#x60; –– Suite&lt;sup&gt;Link&lt;/sup&gt; lookup was not attempted. </value>
         [DataMember(Name = "suite_return_code", IsRequired = true, EmitDefaultValue = false)]
-        public SuiteReturnCodeEnum SuiteReturnCode { get; set; }
+        private SuiteReturnCodeEnum suiteReturnCode;
+        public SuiteReturnCodeEnum getSuiteReturnCode() {
+            return suiteReturnCode;
+        }
+        public void setSuiteReturnCode(SuiteReturnCodeEnum value) {
+            suiteReturnCode = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="DeliverabilityAnalysis" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected DeliverabilityAnalysis() { }
+        public DeliverabilityAnalysis() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="DeliverabilityAnalysis" /> class.
         /// </summary>
@@ -285,49 +321,45 @@ namespace lob.dotnet.Model
         /// <param name="lacsIndicator">indicates whether this address has been converted by [LACS&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality/lacslink). LACS&lt;sup&gt;Link&lt;/sup&gt; corrects outdated addresses into their modern counterparts. Possible values are: * &#x60;Y&#x60; –– New address produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;N&#x60; –– New address could not be produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  (required).</param>
         /// <param name="lacsReturnCode">A code indicating how &#x60;deliverability_analysis[lacs_indicator]&#x60; was determined. Possible values are: * &#x60;A&#x60; — A new address was produced because a match was found in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;92&#x60; — A LACS&lt;sup&gt;Link&lt;/sup&gt; record was matched after dropping secondary information. * &#x60;14&#x60; — A match was found in LACS&lt;sup&gt;Link&lt;/sup&gt;, but could not be converted to a deliverable address. * &#x60;00&#x60; — A match was not found in LACS&lt;sup&gt;Link&lt;/sup&gt;, and no new address was produced. * &#x60;&#39;&#39;&#x60; — LACS&lt;sup&gt;Link&lt;/sup&gt; was not attempted.  (required).</param>
         /// <param name="suiteReturnCode">A return code that indicates whether the address was matched and corrected by [Suite&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality-solutions/suitelink). Suite&lt;sup&gt;Link&lt;/sup&gt; attempts to provide secondary information to business addresses. Possible values are: * &#x60;A&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match was found and secondary information was added. * &#x60;00&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match could not be found and no secondary information was added. * &#x60;&#39;&#39;&#x60; –– Suite&lt;sup&gt;Link&lt;/sup&gt; lookup was not attempted.  (required).</param>
-        public DeliverabilityAnalysis(DpvConfirmationEnum dpvConfirmation = default(DpvConfirmationEnum), DpvCmraEnum dpvCmra = default(DpvCmraEnum), DpvVacantEnum dpvVacant = default(DpvVacantEnum), DpvActiveEnum dpvActive = default(DpvActiveEnum), List<DpvFootnote> dpvFootnotes = default(List<DpvFootnote>), bool ewsMatch = default(bool), LacsIndicatorEnum lacsIndicator = default(LacsIndicatorEnum), string lacsReturnCode = default(string), SuiteReturnCodeEnum suiteReturnCode = default(SuiteReturnCodeEnum))
-        {
-            this.DpvConfirmation = dpvConfirmation;
-            this.DpvCmra = dpvCmra;
-            this.DpvVacant = dpvVacant;
-            this.DpvActive = dpvActive;
-            // to ensure "dpvFootnotes" is required (not null)
-            if (dpvFootnotes == null)
-            {
-                throw new ArgumentNullException("dpvFootnotes is a required property for DeliverabilityAnalysis and cannot be null");
-            }
-            this.DpvFootnotes = dpvFootnotes;
-            this.EwsMatch = ewsMatch;
-            this.LacsIndicator = lacsIndicator;
-            // to ensure "lacsReturnCode" is required (not null)
-            if (lacsReturnCode == null)
-            {
-                throw new ArgumentNullException("lacsReturnCode is a required property for DeliverabilityAnalysis and cannot be null");
-            }
-            this.LacsReturnCode = lacsReturnCode;
-            this.SuiteReturnCode = suiteReturnCode;
-        }
 
         /// <summary>
         /// An array of 2-character strings that gives more insight into how &#x60;deliverability_analysis[dpv_confirmation]&#x60; was determined. Will always include at least 1 string, and can include up to 3. For details, see [US Verification Details](#tag/US-Verification-Types). 
         /// </summary>
         /// <value>An array of 2-character strings that gives more insight into how &#x60;deliverability_analysis[dpv_confirmation]&#x60; was determined. Will always include at least 1 string, and can include up to 3. For details, see [US Verification Details](#tag/US-Verification-Types). </value>
         [DataMember(Name = "dpv_footnotes", IsRequired = true, EmitDefaultValue = false)]
-        public List<DpvFootnote> DpvFootnotes { get; set; }
+        private List<DpvFootnote> dpvFootnotes;
+        public List<DpvFootnote> getDpvFootnotes() {
+            return dpvFootnotes;
+        }
+        public void setDpvFootnotes(List<DpvFootnote> value) {
+            dpvFootnotes = value;
+        }
 
         /// <summary>
         /// indicates whether or not an address has been flagged in the [Early Warning System](https://docs.informatica.com/data-engineering/data-engineering-quality/10-4-0/address-validator-port-reference/postal-carrier-certification-data-ports/early-warning-system-return-code.html), meaning the address is under development and not yet ready to receive mail. However, it should become available in a few months. 
         /// </summary>
         /// <value>indicates whether or not an address has been flagged in the [Early Warning System](https://docs.informatica.com/data-engineering/data-engineering-quality/10-4-0/address-validator-port-reference/postal-carrier-certification-data-ports/early-warning-system-return-code.html), meaning the address is under development and not yet ready to receive mail. However, it should become available in a few months. </value>
         [DataMember(Name = "ews_match", IsRequired = true, EmitDefaultValue = true)]
-        public bool EwsMatch { get; set; }
+        private bool ewsMatch;
+        public bool getEwsMatch() {
+            return ewsMatch;
+        }
+        public void setEwsMatch(bool value) {
+            ewsMatch = value;
+        }
 
         /// <summary>
         /// A code indicating how &#x60;deliverability_analysis[lacs_indicator]&#x60; was determined. Possible values are: * &#x60;A&#x60; — A new address was produced because a match was found in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;92&#x60; — A LACS&lt;sup&gt;Link&lt;/sup&gt; record was matched after dropping secondary information. * &#x60;14&#x60; — A match was found in LACS&lt;sup&gt;Link&lt;/sup&gt;, but could not be converted to a deliverable address. * &#x60;00&#x60; — A match was not found in LACS&lt;sup&gt;Link&lt;/sup&gt;, and no new address was produced. * &#x60;&#39;&#39;&#x60; — LACS&lt;sup&gt;Link&lt;/sup&gt; was not attempted. 
         /// </summary>
         /// <value>A code indicating how &#x60;deliverability_analysis[lacs_indicator]&#x60; was determined. Possible values are: * &#x60;A&#x60; — A new address was produced because a match was found in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;92&#x60; — A LACS&lt;sup&gt;Link&lt;/sup&gt; record was matched after dropping secondary information. * &#x60;14&#x60; — A match was found in LACS&lt;sup&gt;Link&lt;/sup&gt;, but could not be converted to a deliverable address. * &#x60;00&#x60; — A match was not found in LACS&lt;sup&gt;Link&lt;/sup&gt;, and no new address was produced. * &#x60;&#39;&#39;&#x60; — LACS&lt;sup&gt;Link&lt;/sup&gt; was not attempted. </value>
         [DataMember(Name = "lacs_return_code", IsRequired = true, EmitDefaultValue = false)]
-        public string LacsReturnCode { get; set; }
+        private string lacsReturnCode;
+        public string getLacsReturnCode() {
+            return lacsReturnCode;
+        }
+        public void setLacsReturnCode(string value) {
+            lacsReturnCode = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -337,15 +369,15 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DeliverabilityAnalysis {\n");
-            sb.Append("  DpvConfirmation: ").Append(DpvConfirmation).Append("\n");
-            sb.Append("  DpvCmra: ").Append(DpvCmra).Append("\n");
-            sb.Append("  DpvVacant: ").Append(DpvVacant).Append("\n");
-            sb.Append("  DpvActive: ").Append(DpvActive).Append("\n");
-            sb.Append("  DpvFootnotes: ").Append(DpvFootnotes).Append("\n");
-            sb.Append("  EwsMatch: ").Append(EwsMatch).Append("\n");
-            sb.Append("  LacsIndicator: ").Append(LacsIndicator).Append("\n");
-            sb.Append("  LacsReturnCode: ").Append(LacsReturnCode).Append("\n");
-            sb.Append("  SuiteReturnCode: ").Append(SuiteReturnCode).Append("\n");
+            sb.Append("  dpvConfirmation: ").Append(dpvConfirmation).Append("\n");
+            sb.Append("  dpvCmra: ").Append(dpvCmra).Append("\n");
+            sb.Append("  dpvVacant: ").Append(dpvVacant).Append("\n");
+            sb.Append("  dpvActive: ").Append(dpvActive).Append("\n");
+            sb.Append("  dpvFootnotes: ").Append(dpvFootnotes).Append("\n");
+            sb.Append("  ewsMatch: ").Append(ewsMatch).Append("\n");
+            sb.Append("  lacsIndicator: ").Append(lacsIndicator).Append("\n");
+            sb.Append("  lacsReturnCode: ").Append(lacsReturnCode).Append("\n");
+            sb.Append("  suiteReturnCode: ").Append(suiteReturnCode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -356,7 +388,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -382,43 +414,43 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.DpvConfirmation == input.DpvConfirmation ||
-                    this.DpvConfirmation.Equals(input.DpvConfirmation)
+                    this.dpvConfirmation == input.getDpvConfirmation() ||
+                    this.dpvConfirmation.Equals(input.getDpvConfirmation())
                 ) && 
                 (
-                    this.DpvCmra == input.DpvCmra ||
-                    this.DpvCmra.Equals(input.DpvCmra)
+                    this.dpvCmra == input.getDpvCmra() ||
+                    this.dpvCmra.Equals(input.getDpvCmra())
                 ) && 
                 (
-                    this.DpvVacant == input.DpvVacant ||
-                    this.DpvVacant.Equals(input.DpvVacant)
+                    this.dpvVacant == input.getDpvVacant() ||
+                    this.dpvVacant.Equals(input.getDpvVacant())
                 ) && 
                 (
-                    this.DpvActive == input.DpvActive ||
-                    this.DpvActive.Equals(input.DpvActive)
+                    this.dpvActive == input.getDpvActive() ||
+                    this.dpvActive.Equals(input.getDpvActive())
                 ) && 
                 (
-                    this.DpvFootnotes == input.DpvFootnotes ||
-                    this.DpvFootnotes != null &&
-                    input.DpvFootnotes != null &&
-                    this.DpvFootnotes.SequenceEqual(input.DpvFootnotes)
+                    this.dpvFootnotes == input.getDpvFootnotes() ||
+                    this.dpvFootnotes != null &&
+                    input.getDpvFootnotes() != null &&
+                    this.dpvFootnotes.SequenceEqual(input.getDpvFootnotes())
                 ) && 
                 (
-                    this.EwsMatch == input.EwsMatch ||
-                    this.EwsMatch.Equals(input.EwsMatch)
+                    this.ewsMatch == input.getEwsMatch() ||
+                    this.ewsMatch.Equals(input.getEwsMatch())
                 ) && 
                 (
-                    this.LacsIndicator == input.LacsIndicator ||
-                    this.LacsIndicator.Equals(input.LacsIndicator)
+                    this.lacsIndicator == input.getLacsIndicator() ||
+                    this.lacsIndicator.Equals(input.getLacsIndicator())
                 ) && 
                 (
-                    this.LacsReturnCode == input.LacsReturnCode ||
-                    (this.LacsReturnCode != null &&
-                    this.LacsReturnCode.Equals(input.LacsReturnCode))
+                    this.lacsReturnCode == input.getLacsReturnCode() ||
+                    (this.lacsReturnCode != null &&
+                    this.lacsReturnCode.Equals(input.getLacsReturnCode()))
                 ) && 
                 (
-                    this.SuiteReturnCode == input.SuiteReturnCode ||
-                    this.SuiteReturnCode.Equals(input.SuiteReturnCode)
+                    this.suiteReturnCode == input.getSuiteReturnCode() ||
+                    this.suiteReturnCode.Equals(input.getSuiteReturnCode())
                 );
         }
 
@@ -431,21 +463,21 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.DpvConfirmation.GetHashCode();
-                hashCode = (hashCode * 59) + this.DpvCmra.GetHashCode();
-                hashCode = (hashCode * 59) + this.DpvVacant.GetHashCode();
-                hashCode = (hashCode * 59) + this.DpvActive.GetHashCode();
-                if (this.DpvFootnotes != null)
+                hashCode = (hashCode * 59) + this.dpvConfirmation.GetHashCode();
+                hashCode = (hashCode * 59) + this.dpvCmra.GetHashCode();
+                hashCode = (hashCode * 59) + this.dpvVacant.GetHashCode();
+                hashCode = (hashCode * 59) + this.dpvActive.GetHashCode();
+                if (this.dpvFootnotes != null)
                 {
-                    hashCode = (hashCode * 59) + this.DpvFootnotes.GetHashCode();
+                    hashCode = (hashCode * 59) + this.dpvFootnotes.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.EwsMatch.GetHashCode();
-                hashCode = (hashCode * 59) + this.LacsIndicator.GetHashCode();
-                if (this.LacsReturnCode != null)
+                hashCode = (hashCode * 59) + this.ewsMatch.GetHashCode();
+                hashCode = (hashCode * 59) + this.lacsIndicator.GetHashCode();
+                if (this.lacsReturnCode != null)
                 {
-                    hashCode = (hashCode * 59) + this.LacsReturnCode.GetHashCode();
+                    hashCode = (hashCode * 59) + this.lacsReturnCode.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.SuiteReturnCode.GetHashCode();
+                hashCode = (hashCode * 59) + this.suiteReturnCode.GetHashCode();
                 return hashCode;
             }
         }

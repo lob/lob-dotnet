@@ -36,17 +36,19 @@ namespace lob.dotnet.Model
         /// Initializes a new instance of the <see cref="ZipEditable" /> class.
         /// </summary>
         /// <param name="zipCode">A 5-digit ZIP code..</param>
-        public ZipEditable(string zipCode = default(string))
-        {
-            this.ZipCode = zipCode;
-        }
 
         /// <summary>
         /// A 5-digit ZIP code.
         /// </summary>
         /// <value>A 5-digit ZIP code.</value>
         [DataMember(Name = "zip_code", EmitDefaultValue = false)]
-        public string ZipCode { get; set; }
+        private string zipCode;
+        public string getZipCode() {
+            return zipCode;
+        }
+        public void setZipCode(string value) {
+            zipCode = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -56,7 +58,7 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ZipEditable {\n");
-            sb.Append("  ZipCode: ").Append(ZipCode).Append("\n");
+            sb.Append("  zipCode: ").Append(zipCode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -67,7 +69,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -93,9 +95,9 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.ZipCode == input.ZipCode ||
-                    (this.ZipCode != null &&
-                    this.ZipCode.Equals(input.ZipCode))
+                    this.zipCode == input.getZipCode() ||
+                    (this.zipCode != null &&
+                    this.zipCode.Equals(input.getZipCode()))
                 );
         }
 
@@ -108,9 +110,9 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ZipCode != null)
+                if (this.zipCode != null)
                 {
-                    hashCode = (hashCode * 59) + this.ZipCode.GetHashCode();
+                    hashCode = (hashCode * 59) + this.zipCode.GetHashCode();
                 }
                 return hashCode;
             }
@@ -123,11 +125,11 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // ZipCode (string) pattern
-            Regex regexZipCode = new Regex(@"^\\d{5}$", RegexOptions.CultureInvariant);
-            if (false == regexZipCode.Match(this.ZipCode).Success)
+            // zipCode (string) pattern
+            Regex regexzipCode = new Regex(@"^\\d{5}$", RegexOptions.CultureInvariant);
+            if (false == regexzipCode.Match(this.zipCode).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ZipCode, must match a pattern of " + regexZipCode, new [] { "ZipCode" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for zipCode, must match a pattern of " + regexzipCode, new [] { "zipCode" });
             }
 
             yield break;

@@ -61,12 +61,18 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>The size of the card</value>
         [DataMember(Name = "size", EmitDefaultValue = false)]
-        public SizeEnum? Size { get; set; }
+        private SizeEnum? size;
+        public SizeEnum? getSize() {
+            return size;
+        }
+        public void setSize(SizeEnum value) {
+            size = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="CardEditable" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected CardEditable() { }
+        public CardEditable() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="CardEditable" /> class.
         /// </summary>
@@ -74,40 +80,45 @@ namespace lob.dotnet.Model
         /// <param name="back">A PDF template for the back of the card (default to &quot;https://s3.us-west-2.amazonaws.com/public.lob.com/assets/card_blank_horizontal.pdf&quot;).</param>
         /// <param name="size">The size of the card (default to SizeEnum._2125x3375).</param>
         /// <param name="description">Description of the card..</param>
-        public CardEditable(string front = default(string), string back = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/card_blank_horizontal.pdf", SizeEnum? size = SizeEnum._2125x3375, string description = default(string))
-        {
-            // to ensure "front" is required (not null)
-            if (front == null)
-            {
-                throw new ArgumentNullException("front is a required property for CardEditable and cannot be null");
-            }
-            this.Front = front;
-            // use default value if no "back" provided
-            this.Back = back ?? "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/card_blank_horizontal.pdf";
-            this.Size = size;
-            this.Description = description;
-        }
 
         /// <summary>
         /// A PDF template for the front of the card
         /// </summary>
         /// <value>A PDF template for the front of the card</value>
         [DataMember(Name = "front", IsRequired = true, EmitDefaultValue = false)]
-        public string Front { get; set; }
+        private string front;
+        public string getFront() {
+            return front;
+        }
+        public void setFront(string value) {
+            front = value;
+        }
 
         /// <summary>
         /// A PDF template for the back of the card
         /// </summary>
         /// <value>A PDF template for the back of the card</value>
         [DataMember(Name = "back", EmitDefaultValue = false)]
-        public string Back { get; set; }
+        private string back;
+        public string getBack() {
+            return back;
+        }
+        public void setBack(string value) {
+            back = value;
+        }
 
         /// <summary>
         /// Description of the card.
         /// </summary>
         /// <value>Description of the card.</value>
         [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
+        private string description;
+        public string getDescription() {
+            return description;
+        }
+        public void setDescription(string value) {
+            description = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -117,10 +128,10 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CardEditable {\n");
-            sb.Append("  Front: ").Append(Front).Append("\n");
-            sb.Append("  Back: ").Append(Back).Append("\n");
-            sb.Append("  Size: ").Append(Size).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  front: ").Append(front).Append("\n");
+            sb.Append("  back: ").Append(back).Append("\n");
+            sb.Append("  size: ").Append(size).Append("\n");
+            sb.Append("  description: ").Append(description).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -131,7 +142,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -157,23 +168,23 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Front == input.Front ||
-                    (this.Front != null &&
-                    this.Front.Equals(input.Front))
+                    this.front == input.getFront() ||
+                    (this.front != null &&
+                    this.front.Equals(input.getFront()))
                 ) && 
                 (
-                    this.Back == input.Back ||
-                    (this.Back != null &&
-                    this.Back.Equals(input.Back))
+                    this.back == input.getBack() ||
+                    (this.back != null &&
+                    this.back.Equals(input.getBack()))
                 ) && 
                 (
-                    this.Size == input.Size ||
-                    this.Size.Equals(input.Size)
+                    this.size == input.getSize() ||
+                    this.size.Equals(input.getSize())
                 ) && 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.description == input.getDescription() ||
+                    (this.description != null &&
+                    this.description.Equals(input.getDescription()))
                 );
         }
 
@@ -186,18 +197,18 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Front != null)
+                if (this.front != null)
                 {
-                    hashCode = (hashCode * 59) + this.Front.GetHashCode();
+                    hashCode = (hashCode * 59) + this.front.GetHashCode();
                 }
-                if (this.Back != null)
+                if (this.back != null)
                 {
-                    hashCode = (hashCode * 59) + this.Back.GetHashCode();
+                    hashCode = (hashCode * 59) + this.back.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Size.GetHashCode();
-                if (this.Description != null)
+                hashCode = (hashCode * 59) + this.size.GetHashCode();
+                if (this.description != null)
                 {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                    hashCode = (hashCode * 59) + this.description.GetHashCode();
                 }
                 return hashCode;
             }
@@ -210,10 +221,10 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Description (string) maxLength
-            if (this.Description != null && this.Description.Length > 255)
+            // description (string) maxLength
+            if (this.description != null && this.description.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 255.", new [] { "Description" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for description, length must be less than 255.", new [] { "description" });
             }
 
             yield break;

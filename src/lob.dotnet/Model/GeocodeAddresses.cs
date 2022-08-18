@@ -37,23 +37,30 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <param name="components">components.</param>
         /// <param name="locationAnalysis">locationAnalysis.</param>
-        public GeocodeAddresses(GeocodeComponents components = default(GeocodeComponents), LocationAnalysis locationAnalysis = default(LocationAnalysis))
-        {
-            this.Components = components;
-            this.LocationAnalysis = locationAnalysis;
-        }
 
         /// <summary>
         /// Gets or Sets Components
         /// </summary>
         [DataMember(Name = "components", EmitDefaultValue = false)]
-        public GeocodeComponents Components { get; set; }
+        private GeocodeComponents components;
+        public GeocodeComponents getComponents() {
+            return components;
+        }
+        public void setComponents(GeocodeComponents value) {
+            components = value;
+        }
 
         /// <summary>
         /// Gets or Sets LocationAnalysis
         /// </summary>
         [DataMember(Name = "location_analysis", EmitDefaultValue = false)]
-        public LocationAnalysis LocationAnalysis { get; set; }
+        private LocationAnalysis locationAnalysis;
+        public LocationAnalysis getLocationAnalysis() {
+            return locationAnalysis;
+        }
+        public void setLocationAnalysis(LocationAnalysis value) {
+            locationAnalysis = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,8 +70,8 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GeocodeAddresses {\n");
-            sb.Append("  Components: ").Append(Components).Append("\n");
-            sb.Append("  LocationAnalysis: ").Append(LocationAnalysis).Append("\n");
+            sb.Append("  components: ").Append(components).Append("\n");
+            sb.Append("  locationAnalysis: ").Append(locationAnalysis).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -75,7 +82,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -101,14 +108,14 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Components == input.Components ||
-                    (this.Components != null &&
-                    this.Components.Equals(input.Components))
+                    this.components == input.getComponents() ||
+                    (this.components != null &&
+                    this.components.Equals(input.getComponents()))
                 ) && 
                 (
-                    this.LocationAnalysis == input.LocationAnalysis ||
-                    (this.LocationAnalysis != null &&
-                    this.LocationAnalysis.Equals(input.LocationAnalysis))
+                    this.locationAnalysis == input.getLocationAnalysis() ||
+                    (this.locationAnalysis != null &&
+                    this.locationAnalysis.Equals(input.getLocationAnalysis()))
                 );
         }
 
@@ -121,13 +128,13 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Components != null)
+                if (this.components != null)
                 {
-                    hashCode = (hashCode * 59) + this.Components.GetHashCode();
+                    hashCode = (hashCode * 59) + this.components.GetHashCode();
                 }
-                if (this.LocationAnalysis != null)
+                if (this.locationAnalysis != null)
                 {
-                    hashCode = (hashCode * 59) + this.LocationAnalysis.GetHashCode();
+                    hashCode = (hashCode * 59) + this.locationAnalysis.GetHashCode();
                 }
                 return hashCode;
             }

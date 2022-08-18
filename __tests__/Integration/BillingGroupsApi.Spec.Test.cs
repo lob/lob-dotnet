@@ -38,15 +38,13 @@ namespace __tests__.Integration {
             validApi = new BillingGroupsApi(config);
             invalidApi = new BillingGroupsApi(invalidConfig);
 
-            billingGroupEditable = new BillingGroupEditable(
-                "Test Billing Group Created", // description
-                "TestBillingGroup1" // name
-            );
+            billingGroupEditable = new BillingGroupEditable();
+            billingGroupEditable.setDescription("Test Billing Group Created");
+            billingGroupEditable.setName("TestBillingGroup1");
 
-            updatedBillingGroupEditable = new BillingGroupEditable(
-              "updated billing group",
-              "UpdatedBGName"
-            );
+            updatedBillingGroupEditable = new BillingGroupEditable();
+            updatedBillingGroupEditable.setDescription("updated billing group");
+            updatedBillingGroupEditable.setName("UpdatedBGName");
         }
 
         public void Dispose()
@@ -58,8 +56,8 @@ namespace __tests__.Integration {
         public void BillingGroupCreateTest() {
             BillingGroup response = validApi.BillingGroupCreate(billingGroupEditable);
 
-            Assert.NotNull(response.Id);
-            Assert.AreEqual(response.Description, billingGroupEditable.Description);
+            Assert.NotNull(response.getId());
+            Assert.AreEqual(response.getDescription(), billingGroupEditable.getDescription());
         }
 
         [Test]
@@ -87,11 +85,11 @@ namespace __tests__.Integration {
         [Test]
         public void BillingGroupUpdateTest() {
             BillingGroup bg = validApi.BillingGroupCreate(billingGroupEditable);
-            BillingGroup response = validApi.BillingGroupUpdate(bg.Id, updatedBillingGroupEditable);
+            BillingGroup response = validApi.BillingGroupUpdate(bg.getId(), updatedBillingGroupEditable);
 
             Assert.NotNull(response);
-            Assert.AreEqual(response.Id, bg.Id);
-            Assert.AreEqual(response.Description, updatedBillingGroupEditable.Description);
+            Assert.AreEqual(response.getId(), bg.getId());
+            Assert.AreEqual(response.getDescription(), updatedBillingGroupEditable.getDescription());
         }
 
         [Test]
@@ -109,7 +107,7 @@ namespace __tests__.Integration {
         public void BillingGroupUpdateTestBadUsername() {
             BillingGroup bg = validApi.BillingGroupCreate(billingGroupEditable);
             try {
-                BillingGroup response = invalidApi.BillingGroupUpdate(bg.Id, updatedBillingGroupEditable);
+                BillingGroup response = invalidApi.BillingGroupUpdate(bg.getId(), updatedBillingGroupEditable);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -120,10 +118,10 @@ namespace __tests__.Integration {
         [Test]
         public void BillingGroupRetrieveTest() {
             BillingGroup bg = validApi.BillingGroupCreate(billingGroupEditable);
-            BillingGroup response = validApi.BillingGroupRetrieve(bg.Id);
+            BillingGroup response = validApi.BillingGroupRetrieve(bg.getId());
 
-            Assert.NotNull(response.Id);
-            Assert.AreEqual(response.Id, bg.Id);
+            Assert.NotNull(response.getId());
+            Assert.AreEqual(response.getId(), bg.getId());
         }
 
         [Test]
@@ -141,7 +139,7 @@ namespace __tests__.Integration {
         public void BillingGroupRetrieveTestBadUsername() {
             BillingGroup bg = validApi.BillingGroupCreate(billingGroupEditable);
             try {
-                BillingGroup response = invalidApi.BillingGroupRetrieve(bg.Id);
+                BillingGroup response = invalidApi.BillingGroupRetrieve(bg.getId());
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -153,7 +151,7 @@ namespace __tests__.Integration {
         public void BillingGroupListTest() {
             BillingGroupList response = validApi.BillingGroupsList(null, null, null, null, null, null);
 
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -161,7 +159,7 @@ namespace __tests__.Integration {
             int limit = 2;
             BillingGroupList response = validApi.BillingGroupsList(limit, null, null, null, null, null);
 
-            Assert.AreEqual(response.Count, 2);
+            Assert.AreEqual(response.getCount(), 2);
         }
 
         [Test]
@@ -170,7 +168,7 @@ namespace __tests__.Integration {
 
             BillingGroupList response = validApi.BillingGroupsList(null, offset, null, null, null, null);
 
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -179,8 +177,8 @@ namespace __tests__.Integration {
             includeList.Add("total_count");
 
             BillingGroupList response = validApi.BillingGroupsList(null, null, includeList, null, null, null);
-            Assert.Greater(response.Count, 0);
-            // Assert.NotNull(response.TotalCount);
+            Assert.Greater(response.getCount(), 0);
+            // Assert.NotNull(response.getTotalCount());
         }
 
         [Test]
@@ -190,7 +188,7 @@ namespace __tests__.Integration {
             dateCreated.Add("lt", lastMonth);
 
             BillingGroupList response = validApi.BillingGroupsList(null, null, null, dateCreated, null, null);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -200,15 +198,16 @@ namespace __tests__.Integration {
             dateModified.Add("lt", lastMonth.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 
             BillingGroupList response = validApi.BillingGroupsList(null, null, null, null, dateModified, null);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
         [Ignore("Ignore until API fixed or docs updated")]
         public void BillingGroupListTestWithSortByParameter() {
-            SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
+            SortBy5 sortBy = new SortBy5();
+            sortBy.setSendDate(SortBy5.SendDateEnum.Asc);
             BillingGroupList response = validApi.BillingGroupsList(null, null, null, null, null, sortBy);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
     }
 }

@@ -75,34 +75,36 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>indicates the likelihood that the address is a valid, mail-receiving address. Possible values are:   - &#x60;high&#x60; — Over 70% of mailpieces Lob has sent to this address were delivered successfully and recent mailings were also successful.   - &#x60;medium&#x60; — Between 40% and 70% of mailpieces Lob has sent to this address were delivered successfully.   - &#x60;low&#x60; — Less than 40% of mailpieces Lob has sent to this address were delivered successfully and recent mailings weren&#39;t successful.   - &#x60;\&quot;\&quot;&#x60; — No tracking data exists for this address or lob deliverability was unable to find a corresponding level of mail success. </value>
         [DataMember(Name = "level", IsRequired = true, EmitDefaultValue = false)]
-        public LevelEnum Level { get; set; }
+        private LevelEnum level;
+        public LevelEnum getLevel() {
+            return level;
+        }
+        public void setLevel(LevelEnum value) {
+            level = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="LobConfidenceScore" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected LobConfidenceScore() { }
+        public LobConfidenceScore() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="LobConfidenceScore" /> class.
         /// </summary>
         /// <param name="score">A numerical score between 0 and 100 that represents the percentage of mailpieces Lob has sent to this addresses that have been delivered successfully over the past 2 years. Will be &#x60;null&#x60; if no tracking data exists for this address.  (required).</param>
         /// <param name="level">indicates the likelihood that the address is a valid, mail-receiving address. Possible values are:   - &#x60;high&#x60; — Over 70% of mailpieces Lob has sent to this address were delivered successfully and recent mailings were also successful.   - &#x60;medium&#x60; — Between 40% and 70% of mailpieces Lob has sent to this address were delivered successfully.   - &#x60;low&#x60; — Less than 40% of mailpieces Lob has sent to this address were delivered successfully and recent mailings weren&#39;t successful.   - &#x60;\&quot;\&quot;&#x60; — No tracking data exists for this address or lob deliverability was unable to find a corresponding level of mail success.  (required).</param>
-        public LobConfidenceScore(float? score = default(float?), LevelEnum level = default(LevelEnum))
-        {
-            // to ensure "score" is required (not null)
-            if (score == null)
-            {
-                throw new ArgumentNullException("score is a required property for LobConfidenceScore and cannot be null");
-            }
-            this.Score = score;
-            this.Level = level;
-        }
 
         /// <summary>
         /// A numerical score between 0 and 100 that represents the percentage of mailpieces Lob has sent to this addresses that have been delivered successfully over the past 2 years. Will be &#x60;null&#x60; if no tracking data exists for this address. 
         /// </summary>
         /// <value>A numerical score between 0 and 100 that represents the percentage of mailpieces Lob has sent to this addresses that have been delivered successfully over the past 2 years. Will be &#x60;null&#x60; if no tracking data exists for this address. </value>
         [DataMember(Name = "score", IsRequired = true, EmitDefaultValue = true)]
-        public float? Score { get; set; }
+        private float? score;
+        public float? getScore() {
+            return score;
+        }
+        public void setScore(float? value) {
+            score = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -112,8 +114,8 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class LobConfidenceScore {\n");
-            sb.Append("  Score: ").Append(Score).Append("\n");
-            sb.Append("  Level: ").Append(Level).Append("\n");
+            sb.Append("  score: ").Append(score).Append("\n");
+            sb.Append("  level: ").Append(level).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -124,7 +126,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -150,13 +152,13 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Score == input.Score ||
-                    (this.Score != null &&
-                    this.Score.Equals(input.Score))
+                    this.score == input.getScore() ||
+                    (this.score != null &&
+                    this.score.Equals(input.getScore()))
                 ) && 
                 (
-                    this.Level == input.Level ||
-                    this.Level.Equals(input.Level)
+                    this.level == input.getLevel() ||
+                    this.level.Equals(input.getLevel())
                 );
         }
 
@@ -169,11 +171,11 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Score != null)
+                if (this.score != null)
                 {
-                    hashCode = (hashCode * 59) + this.Score.GetHashCode();
+                    hashCode = (hashCode * 59) + this.score.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Level.GetHashCode();
+                hashCode = (hashCode * 59) + this.level.GetHashCode();
                 return hashCode;
             }
         }
@@ -185,16 +187,16 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Score (float?) maximum
-            if (this.Score > (float?)100)
+            // score (float?) maximum
+            if (this.score > (float?)100)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Score, must be a value less than or equal to 100.", new [] { "Score" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for score, must be a value less than or equal to 100.", new [] { "score" });
             }
 
-            // Score (float?) minimum
-            if (this.Score < (float?)0)
+            // score (float?) minimum
+            if (this.score < (float?)0)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Score, must be a value greater than or equal to 0.", new [] { "Score" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for score, must be a value greater than or equal to 0.", new [] { "score" });
             }
 
             yield break;

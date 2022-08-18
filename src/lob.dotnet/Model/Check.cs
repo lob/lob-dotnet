@@ -54,7 +54,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Checks must be sent &#x60;usps_first_class&#x60;</value>
         [DataMember(Name = "mail_type", EmitDefaultValue = false)]
-        public MailTypeEnum? MailType { get; set; }
+        private MailTypeEnum? mailType;
+        public MailTypeEnum? getMailType() {
+            return mailType;
+        }
+        public void setMailType(MailTypeEnum value) {
+            mailType = value;
+        }
         /// <summary>
         /// Defines Carrier
         /// </summary>
@@ -75,7 +81,13 @@ namespace lob.dotnet.Model
         /// Gets or Sets Carrier
         /// </summary>
         [DataMember(Name = "carrier", IsRequired = true, EmitDefaultValue = false)]
-        public CarrierEnum Carrier { get; set; }
+        private CarrierEnum carrier;
+        public CarrierEnum getCarrier() {
+            return carrier;
+        }
+        public void setCarrier(CarrierEnum value) {
+            carrier = value;
+        }
         /// <summary>
         /// Defines Object
         /// </summary>
@@ -96,12 +108,18 @@ namespace lob.dotnet.Model
         /// Gets or Sets Object
         /// </summary>
         [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = false)]
-        public ObjectEnum Object { get; set; }
+        private ObjectEnum _object;
+        public ObjectEnum getObject() {
+            return _object;
+        }
+        public void setObject(ObjectEnum value) {
+            _object = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="Check" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Check() { }
+        public Check() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="Check" /> class.
         /// </summary>
@@ -131,177 +149,236 @@ namespace lob.dotnet.Model
         /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created. (required).</param>
         /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified. (required).</param>
         /// <param name="deleted">Only returned if the resource has been successfully deleted..</param>
-        public Check(string id = default(string), Address to = default(Address), Address from = default(Address), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), MailTypeEnum? mailType = MailTypeEnum.UspsFirstClass, string memo = default(string), int checkNumber = default(int), string message = default(string), float amount = default(float), BankAccount bankAccount = default(BankAccount), string checkBottomTemplateId = default(string), string attachmentTemplateId = default(string), string checkBottomTemplateVersionId = default(string), string attachmentTemplateVersionId = default(string), string url = default(string), CarrierEnum carrier = CarrierEnum.USPS, List<Thumbnail> thumbnails = default(List<Thumbnail>), DateTime expectedDeliveryDate = default(DateTime), List<TrackingEventNormal> trackingEvents = default(List<TrackingEventNormal>), ObjectEnum _object = ObjectEnum.Check, DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool))
-        {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for Check and cannot be null");
-            }
-            this.Id = id;
-            // to ensure "to" is required (not null)
-            if (to == null)
-            {
-                throw new ArgumentNullException("to is a required property for Check and cannot be null");
-            }
-            this.To = to;
-            this.Amount = amount;
-            // to ensure "bankAccount" is required (not null)
-            if (bankAccount == null)
-            {
-                throw new ArgumentNullException("bankAccount is a required property for Check and cannot be null");
-            }
-            this.BankAccount = bankAccount;
-            // to ensure "url" is required (not null)
-            if (url == null)
-            {
-                throw new ArgumentNullException("url is a required property for Check and cannot be null");
-            }
-            this.Url = url;
-            this.Carrier = carrier;
-            this.Object = _object;
-            this.DateCreated = dateCreated;
-            this.DateModified = dateModified;
-            this.From = from;
-            this.Description = description;
-            this.Metadata = metadata;
-            this.MergeVariables = mergeVariables;
-            this.SendDate = sendDate;
-            this.MailType = mailType;
-            this.Memo = memo;
-            this.CheckNumber = checkNumber;
-            this.Message = message;
-            this.CheckBottomTemplateId = checkBottomTemplateId;
-            this.AttachmentTemplateId = attachmentTemplateId;
-            this.CheckBottomTemplateVersionId = checkBottomTemplateVersionId;
-            this.AttachmentTemplateVersionId = attachmentTemplateVersionId;
-            this.Thumbnails = thumbnails;
-            this.ExpectedDeliveryDate = expectedDeliveryDate;
-            this.TrackingEvents = trackingEvents;
-            this.Deleted = deleted;
-        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;chk_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;chk_&#x60;.</value>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
-        public string Id { get; set; }
+        private string id;
+        public string getId() {
+            return id;
+        }
+        public void setId(string value) {
+            id = value;
+        }
 
         /// <summary>
         /// Gets or Sets To
         /// </summary>
         [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = false)]
-        public Address To { get; set; }
+        private Address to;
+        public Address getTo() {
+            return to;
+        }
+        public void setTo(Address value) {
+            to = value;
+        }
 
         /// <summary>
         /// Gets or Sets From
         /// </summary>
         [DataMember(Name = "from", EmitDefaultValue = false)]
-        public Address From { get; set; }
+        private Address from;
+        public Address getFrom() {
+            return from;
+        }
+        public void setFrom(Address value) {
+            from = value;
+        }
 
         /// <summary>
         /// An internal description that identifies this resource. Must be no longer than 255 characters. 
         /// </summary>
         /// <value>An internal description that identifies this resource. Must be no longer than 255 characters. </value>
         [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
+        private string description;
+        public string getDescription() {
+            return description;
+        }
+        public void setDescription(string value) {
+            description = value;
+        }
 
         /// <summary>
         /// Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information.
         /// </summary>
         /// <value>Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information.</value>
         [DataMember(Name = "metadata", EmitDefaultValue = false)]
-        public Dictionary<string, string> Metadata { get; set; }
+        private Dictionary<string, string> metadata;
+        public Dictionary<string, string> getMetadata() {
+            return metadata;
+        }
+        public void setMetadata(Dictionary<string, string> value) {
+            metadata = value;
+        }
 
         /// <summary>
         /// You can input a merge variable payload object to your template to render dynamic content. For example, if you have a template like: &#x60;{{variable_name}}&#x60;, pass in &#x60;{\&quot;variable_name\&quot;: \&quot;Harry\&quot;}&#x60; to render &#x60;Harry&#x60;. &#x60;merge_variables&#x60; must be an object. Any type of value is accepted as long as the object is valid JSON; you can use &#x60;strings&#x60;, &#x60;numbers&#x60;, &#x60;booleans&#x60;, &#x60;arrays&#x60;, &#x60;objects&#x60;, or &#x60;null&#x60;. The max length of the object is 25,000 characters. If you call &#x60;JSON.stringify&#x60; on your object, it can be no longer than 25,000 characters. Your variable names cannot contain any whitespace or any of the following special characters: &#x60;!&#x60;, &#x60;\&quot;&#x60;, &#x60;#&#x60;, &#x60;%&#x60;, &#x60;&amp;&#x60;, &#x60;&#39;&#x60;, &#x60;(&#x60;, &#x60;)&#x60;, &#x60;*&#x60;, &#x60;+&#x60;, &#x60;,&#x60;, &#x60;/&#x60;, &#x60;;&#x60;, &#x60;&lt;&#x60;, &#x60;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;@&#x60;, &#x60;[&#x60;, &#x60;\\&#x60;, &#x60;]&#x60;, &#x60;^&#x60;, &#x60;&#x60; &#x60; &#x60;&#x60;, &#x60;{&#x60;, &#x60;|&#x60;, &#x60;}&#x60;, &#x60;~&#x60;. More instructions can be found in [our guide to using html and merge variables](https://lob.com/resources/guides/general/using-html-and-merge-variables). Depending on your [Merge Variable strictness](https://dashboard.lob.com/#/settings/account) setting, if you define variables in your HTML but do not pass them here, you will either receive an error or the variable will render as an empty string.
         /// </summary>
         /// <value>You can input a merge variable payload object to your template to render dynamic content. For example, if you have a template like: &#x60;{{variable_name}}&#x60;, pass in &#x60;{\&quot;variable_name\&quot;: \&quot;Harry\&quot;}&#x60; to render &#x60;Harry&#x60;. &#x60;merge_variables&#x60; must be an object. Any type of value is accepted as long as the object is valid JSON; you can use &#x60;strings&#x60;, &#x60;numbers&#x60;, &#x60;booleans&#x60;, &#x60;arrays&#x60;, &#x60;objects&#x60;, or &#x60;null&#x60;. The max length of the object is 25,000 characters. If you call &#x60;JSON.stringify&#x60; on your object, it can be no longer than 25,000 characters. Your variable names cannot contain any whitespace or any of the following special characters: &#x60;!&#x60;, &#x60;\&quot;&#x60;, &#x60;#&#x60;, &#x60;%&#x60;, &#x60;&amp;&#x60;, &#x60;&#39;&#x60;, &#x60;(&#x60;, &#x60;)&#x60;, &#x60;*&#x60;, &#x60;+&#x60;, &#x60;,&#x60;, &#x60;/&#x60;, &#x60;;&#x60;, &#x60;&lt;&#x60;, &#x60;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;@&#x60;, &#x60;[&#x60;, &#x60;\\&#x60;, &#x60;]&#x60;, &#x60;^&#x60;, &#x60;&#x60; &#x60; &#x60;&#x60;, &#x60;{&#x60;, &#x60;|&#x60;, &#x60;}&#x60;, &#x60;~&#x60;. More instructions can be found in [our guide to using html and merge variables](https://lob.com/resources/guides/general/using-html-and-merge-variables). Depending on your [Merge Variable strictness](https://dashboard.lob.com/#/settings/account) setting, if you define variables in your HTML but do not pass them here, you will either receive an error or the variable will render as an empty string.</value>
         [DataMember(Name = "merge_variables", EmitDefaultValue = true)]
-        public Object MergeVariables { get; set; }
+        private Object mergeVariables;
+        public Object getMergeVariables() {
+            return mergeVariables;
+        }
+        public void setMergeVariables(Object value) {
+            mergeVariables = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the &#x60;send_date&#x60; has passed, the mailpiece can be canceled. If a date in the format &#x60;2017-11-01&#x60; is passed, it will evaluate to midnight UTC of that date (&#x60;2017-11-01T00:00:00.000Z&#x60;). If a datetime is passed, that exact time will be used. A &#x60;send_date&#x60; passed with no time zone will default to UTC, while a &#x60;send_date&#x60; passed with a time zone will be converted to UTC.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the &#x60;send_date&#x60; has passed, the mailpiece can be canceled. If a date in the format &#x60;2017-11-01&#x60; is passed, it will evaluate to midnight UTC of that date (&#x60;2017-11-01T00:00:00.000Z&#x60;). If a datetime is passed, that exact time will be used. A &#x60;send_date&#x60; passed with no time zone will default to UTC, while a &#x60;send_date&#x60; passed with a time zone will be converted to UTC.</value>
         [DataMember(Name = "send_date", EmitDefaultValue = false)]
-        public DateTime SendDate { get; set; }
+        private DateTime sendDate;
+        public DateTime getSendDate() {
+            return sendDate;
+        }
+        public void setSendDate(DateTime value) {
+            sendDate = value;
+        }
 
         /// <summary>
         /// Text to include on the memo line of the check.
         /// </summary>
         /// <value>Text to include on the memo line of the check.</value>
         [DataMember(Name = "memo", EmitDefaultValue = true)]
-        public string Memo { get; set; }
+        private string memo;
+        public string getMemo() {
+            return memo;
+        }
+        public void setMemo(string value) {
+            memo = value;
+        }
 
         /// <summary>
         /// An integer that designates the check number. If &#x60;check_number&#x60; is not provided, checks created from a new &#x60;bank_account&#x60; will start at &#x60;10000&#x60; and increment with each check created with the &#x60;bank_account&#x60;. A provided &#x60;check_number&#x60; overrides the defaults. Subsequent checks created with the same &#x60;bank_account&#x60; will increment from the provided check number.
         /// </summary>
         /// <value>An integer that designates the check number. If &#x60;check_number&#x60; is not provided, checks created from a new &#x60;bank_account&#x60; will start at &#x60;10000&#x60; and increment with each check created with the &#x60;bank_account&#x60;. A provided &#x60;check_number&#x60; overrides the defaults. Subsequent checks created with the same &#x60;bank_account&#x60; will increment from the provided check number.</value>
         [DataMember(Name = "check_number", EmitDefaultValue = false)]
-        public int CheckNumber { get; set; }
+        private int checkNumber;
+        public int getCheckNumber() {
+            return checkNumber;
+        }
+        public void setCheckNumber(int value) {
+            checkNumber = value;
+        }
 
         /// <summary>
         /// Max of 400 characters to be included at the bottom of the check page.
         /// </summary>
         /// <value>Max of 400 characters to be included at the bottom of the check page.</value>
         [DataMember(Name = "message", EmitDefaultValue = false)]
-        public string Message { get; set; }
+        private string message;
+        public string getMessage() {
+            return message;
+        }
+        public void setMessage(string value) {
+            message = value;
+        }
 
         /// <summary>
         /// The payment amount to be sent in US dollars.
         /// </summary>
         /// <value>The payment amount to be sent in US dollars.</value>
         [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = false)]
-        public float Amount { get; set; }
+        private float amount;
+        public float getAmount() {
+            return amount;
+        }
+        public void setAmount(float value) {
+            amount = value;
+        }
 
         /// <summary>
         /// Gets or Sets BankAccount
         /// </summary>
         [DataMember(Name = "bank_account", IsRequired = true, EmitDefaultValue = false)]
-        public BankAccount BankAccount { get; set; }
+        private BankAccount bankAccount;
+        public BankAccount getBankAccount() {
+            return bankAccount;
+        }
+        public void setBankAccount(BankAccount value) {
+            bankAccount = value;
+        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;tmpl_&#x60;. ID of a saved [HTML template](#section/HTML-Templates).
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;tmpl_&#x60;. ID of a saved [HTML template](#section/HTML-Templates).</value>
         [DataMember(Name = "check_bottom_template_id", EmitDefaultValue = false)]
-        public string CheckBottomTemplateId { get; set; }
+        private string checkBottomTemplateId;
+        public string getCheckBottomTemplateId() {
+            return checkBottomTemplateId;
+        }
+        public void setCheckBottomTemplateId(string value) {
+            checkBottomTemplateId = value;
+        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;tmpl_&#x60;. ID of a saved [HTML template](#section/HTML-Templates).
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;tmpl_&#x60;. ID of a saved [HTML template](#section/HTML-Templates).</value>
         [DataMember(Name = "attachment_template_id", EmitDefaultValue = false)]
-        public string AttachmentTemplateId { get; set; }
+        private string attachmentTemplateId;
+        public string getAttachmentTemplateId() {
+            return attachmentTemplateId;
+        }
+        public void setAttachmentTemplateId(string value) {
+            attachmentTemplateId = value;
+        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;vrsn_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;vrsn_&#x60;.</value>
         [DataMember(Name = "check_bottom_template_version_id", EmitDefaultValue = false)]
-        public string CheckBottomTemplateVersionId { get; set; }
+        private string checkBottomTemplateVersionId;
+        public string getCheckBottomTemplateVersionId() {
+            return checkBottomTemplateVersionId;
+        }
+        public void setCheckBottomTemplateVersionId(string value) {
+            checkBottomTemplateVersionId = value;
+        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;vrsn_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;vrsn_&#x60;.</value>
         [DataMember(Name = "attachment_template_version_id", EmitDefaultValue = false)]
-        public string AttachmentTemplateVersionId { get; set; }
+        private string attachmentTemplateVersionId;
+        public string getAttachmentTemplateVersionId() {
+            return attachmentTemplateVersionId;
+        }
+        public void setAttachmentTemplateVersionId(string value) {
+            attachmentTemplateVersionId = value;
+        }
 
         /// <summary>
         /// A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.
         /// </summary>
         /// <value>A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.</value>
         [DataMember(Name = "url", IsRequired = true, EmitDefaultValue = false)]
-        public string Url { get; set; }
+        private string url;
+        public string getUrl() {
+            return url;
+        }
+        public void setUrl(string value) {
+            url = value;
+        }
 
         /// <summary>
         /// Gets or Sets Thumbnails
         /// </summary>
         [DataMember(Name = "thumbnails", EmitDefaultValue = false)]
-        public List<Thumbnail> Thumbnails { get; set; }
+        private List<Thumbnail> thumbnails;
+        public List<Thumbnail> getThumbnails() {
+            return thumbnails;
+        }
+        public void setThumbnails(List<Thumbnail> value) {
+            thumbnails = value;
+        }
 
         /// <summary>
         /// A date in YYYY-MM-DD format of the mailpiece&#39;s expected delivery date based on its &#x60;send_date&#x60;.
@@ -309,35 +386,65 @@ namespace lob.dotnet.Model
         /// <value>A date in YYYY-MM-DD format of the mailpiece&#39;s expected delivery date based on its &#x60;send_date&#x60;.</value>
         [DataMember(Name = "expected_delivery_date", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime ExpectedDeliveryDate { get; set; }
+        private DateTime expectedDeliveryDate;
+        public DateTime getExpectedDeliveryDate() {
+            return expectedDeliveryDate;
+        }
+        public void setExpectedDeliveryDate(DateTime value) {
+            expectedDeliveryDate = value;
+        }
 
         /// <summary>
         /// An array of tracking_event objects ordered by ascending &#x60;time&#x60;. Will not be populated for checks created in test mode.
         /// </summary>
         /// <value>An array of tracking_event objects ordered by ascending &#x60;time&#x60;. Will not be populated for checks created in test mode.</value>
         [DataMember(Name = "tracking_events", EmitDefaultValue = true)]
-        public List<TrackingEventNormal> TrackingEvents { get; set; }
+        private List<TrackingEventNormal> trackingEvents;
+        public List<TrackingEventNormal> getTrackingEvents() {
+            return trackingEvents;
+        }
+        public void setTrackingEvents(List<TrackingEventNormal> value) {
+            trackingEvents = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was created.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was created.</value>
         [DataMember(Name = "date_created", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime DateCreated { get; set; }
+        private DateTime dateCreated;
+        public DateTime getDateCreated() {
+            return dateCreated;
+        }
+        public void setDateCreated(DateTime value) {
+            dateCreated = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was last modified.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was last modified.</value>
         [DataMember(Name = "date_modified", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime DateModified { get; set; }
+        private DateTime dateModified;
+        public DateTime getDateModified() {
+            return dateModified;
+        }
+        public void setDateModified(DateTime value) {
+            dateModified = value;
+        }
 
         /// <summary>
         /// Only returned if the resource has been successfully deleted.
         /// </summary>
         /// <value>Only returned if the resource has been successfully deleted.</value>
         [DataMember(Name = "deleted", EmitDefaultValue = true)]
-        public bool Deleted { get; set; }
+        private bool deleted;
+        public bool getDeleted() {
+            return deleted;
+        }
+        public void setDeleted(bool value) {
+            deleted = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -347,32 +454,32 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Check {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  To: ").Append(To).Append("\n");
-            sb.Append("  From: ").Append(From).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
-            sb.Append("  MergeVariables: ").Append(MergeVariables).Append("\n");
-            sb.Append("  SendDate: ").Append(SendDate).Append("\n");
-            sb.Append("  MailType: ").Append(MailType).Append("\n");
-            sb.Append("  Memo: ").Append(Memo).Append("\n");
-            sb.Append("  CheckNumber: ").Append(CheckNumber).Append("\n");
-            sb.Append("  Message: ").Append(Message).Append("\n");
-            sb.Append("  Amount: ").Append(Amount).Append("\n");
-            sb.Append("  BankAccount: ").Append(BankAccount).Append("\n");
-            sb.Append("  CheckBottomTemplateId: ").Append(CheckBottomTemplateId).Append("\n");
-            sb.Append("  AttachmentTemplateId: ").Append(AttachmentTemplateId).Append("\n");
-            sb.Append("  CheckBottomTemplateVersionId: ").Append(CheckBottomTemplateVersionId).Append("\n");
-            sb.Append("  AttachmentTemplateVersionId: ").Append(AttachmentTemplateVersionId).Append("\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
-            sb.Append("  Carrier: ").Append(Carrier).Append("\n");
-            sb.Append("  Thumbnails: ").Append(Thumbnails).Append("\n");
-            sb.Append("  ExpectedDeliveryDate: ").Append(ExpectedDeliveryDate).Append("\n");
-            sb.Append("  TrackingEvents: ").Append(TrackingEvents).Append("\n");
-            sb.Append("  Object: ").Append(Object).Append("\n");
-            sb.Append("  DateCreated: ").Append(DateCreated).Append("\n");
-            sb.Append("  DateModified: ").Append(DateModified).Append("\n");
-            sb.Append("  Deleted: ").Append(Deleted).Append("\n");
+            sb.Append("  id: ").Append(id).Append("\n");
+            sb.Append("  to: ").Append(to).Append("\n");
+            sb.Append("  from: ").Append(from).Append("\n");
+            sb.Append("  description: ").Append(description).Append("\n");
+            sb.Append("  metadata: ").Append(metadata).Append("\n");
+            sb.Append("  mergeVariables: ").Append(mergeVariables).Append("\n");
+            sb.Append("  sendDate: ").Append(sendDate).Append("\n");
+            sb.Append("  mailType: ").Append(mailType).Append("\n");
+            sb.Append("  memo: ").Append(memo).Append("\n");
+            sb.Append("  checkNumber: ").Append(checkNumber).Append("\n");
+            sb.Append("  message: ").Append(message).Append("\n");
+            sb.Append("  amount: ").Append(amount).Append("\n");
+            sb.Append("  bankAccount: ").Append(bankAccount).Append("\n");
+            sb.Append("  checkBottomTemplateId: ").Append(checkBottomTemplateId).Append("\n");
+            sb.Append("  attachmentTemplateId: ").Append(attachmentTemplateId).Append("\n");
+            sb.Append("  checkBottomTemplateVersionId: ").Append(checkBottomTemplateVersionId).Append("\n");
+            sb.Append("  attachmentTemplateVersionId: ").Append(attachmentTemplateVersionId).Append("\n");
+            sb.Append("  url: ").Append(url).Append("\n");
+            sb.Append("  carrier: ").Append(carrier).Append("\n");
+            sb.Append("  thumbnails: ").Append(thumbnails).Append("\n");
+            sb.Append("  expectedDeliveryDate: ").Append(expectedDeliveryDate).Append("\n");
+            sb.Append("  trackingEvents: ").Append(trackingEvents).Append("\n");
+            sb.Append("  _object: ").Append(_object).Append("\n");
+            sb.Append("  dateCreated: ").Append(dateCreated).Append("\n");
+            sb.Append("  dateModified: ").Append(dateModified).Append("\n");
+            sb.Append("  deleted: ").Append(deleted).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -383,7 +490,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -409,131 +516,131 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.id == input.getId() ||
+                    (this.id != null &&
+                    this.id.Equals(input.getId()))
                 ) && 
                 (
-                    this.To == input.To ||
-                    (this.To != null &&
-                    this.To.Equals(input.To))
+                    this.to == input.getTo() ||
+                    (this.to != null &&
+                    this.to.Equals(input.getTo()))
                 ) && 
                 (
-                    this.From == input.From ||
-                    (this.From != null &&
-                    this.From.Equals(input.From))
+                    this.from == input.getFrom() ||
+                    (this.from != null &&
+                    this.from.Equals(input.getFrom()))
                 ) && 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.description == input.getDescription() ||
+                    (this.description != null &&
+                    this.description.Equals(input.getDescription()))
                 ) && 
                 (
-                    this.Metadata == input.Metadata ||
-                    this.Metadata != null &&
-                    input.Metadata != null &&
-                    this.Metadata.SequenceEqual(input.Metadata)
+                    this.metadata == input.getMetadata() ||
+                    this.metadata != null &&
+                    input.getMetadata() != null &&
+                    this.metadata.SequenceEqual(input.getMetadata())
                 ) && 
                 (
-                    this.MergeVariables == input.MergeVariables ||
-                    (this.MergeVariables != null &&
-                    this.MergeVariables.Equals(input.MergeVariables))
+                    this.mergeVariables == input.getMergeVariables() ||
+                    (this.mergeVariables != null &&
+                    this.mergeVariables.Equals(input.getMergeVariables()))
                 ) && 
                 (
-                    this.SendDate == input.SendDate ||
-                    (this.SendDate != null &&
-                    this.SendDate.Equals(input.SendDate))
+                    this.sendDate == input.getSendDate() ||
+                    (this.sendDate != null &&
+                    this.sendDate.Equals(input.getSendDate()))
                 ) && 
                 (
-                    this.MailType == input.MailType ||
-                    this.MailType.Equals(input.MailType)
+                    this.mailType == input.getMailType() ||
+                    this.mailType.Equals(input.getMailType())
                 ) && 
                 (
-                    this.Memo == input.Memo ||
-                    (this.Memo != null &&
-                    this.Memo.Equals(input.Memo))
+                    this.memo == input.getMemo() ||
+                    (this.memo != null &&
+                    this.memo.Equals(input.getMemo()))
                 ) && 
                 (
-                    this.CheckNumber == input.CheckNumber ||
-                    this.CheckNumber.Equals(input.CheckNumber)
+                    this.checkNumber == input.getCheckNumber() ||
+                    this.checkNumber.Equals(input.getCheckNumber())
                 ) && 
                 (
-                    this.Message == input.Message ||
-                    (this.Message != null &&
-                    this.Message.Equals(input.Message))
+                    this.message == input.getMessage() ||
+                    (this.message != null &&
+                    this.message.Equals(input.getMessage()))
                 ) && 
                 (
-                    this.Amount == input.Amount ||
-                    this.Amount.Equals(input.Amount)
+                    this.amount == input.getAmount() ||
+                    this.amount.Equals(input.getAmount())
                 ) && 
                 (
-                    this.BankAccount == input.BankAccount ||
-                    (this.BankAccount != null &&
-                    this.BankAccount.Equals(input.BankAccount))
+                    this.bankAccount == input.getBankAccount() ||
+                    (this.bankAccount != null &&
+                    this.bankAccount.Equals(input.getBankAccount()))
                 ) && 
                 (
-                    this.CheckBottomTemplateId == input.CheckBottomTemplateId ||
-                    (this.CheckBottomTemplateId != null &&
-                    this.CheckBottomTemplateId.Equals(input.CheckBottomTemplateId))
+                    this.checkBottomTemplateId == input.getCheckBottomTemplateId() ||
+                    (this.checkBottomTemplateId != null &&
+                    this.checkBottomTemplateId.Equals(input.getCheckBottomTemplateId()))
                 ) && 
                 (
-                    this.AttachmentTemplateId == input.AttachmentTemplateId ||
-                    (this.AttachmentTemplateId != null &&
-                    this.AttachmentTemplateId.Equals(input.AttachmentTemplateId))
+                    this.attachmentTemplateId == input.getAttachmentTemplateId() ||
+                    (this.attachmentTemplateId != null &&
+                    this.attachmentTemplateId.Equals(input.getAttachmentTemplateId()))
                 ) && 
                 (
-                    this.CheckBottomTemplateVersionId == input.CheckBottomTemplateVersionId ||
-                    (this.CheckBottomTemplateVersionId != null &&
-                    this.CheckBottomTemplateVersionId.Equals(input.CheckBottomTemplateVersionId))
+                    this.checkBottomTemplateVersionId == input.getCheckBottomTemplateVersionId() ||
+                    (this.checkBottomTemplateVersionId != null &&
+                    this.checkBottomTemplateVersionId.Equals(input.getCheckBottomTemplateVersionId()))
                 ) && 
                 (
-                    this.AttachmentTemplateVersionId == input.AttachmentTemplateVersionId ||
-                    (this.AttachmentTemplateVersionId != null &&
-                    this.AttachmentTemplateVersionId.Equals(input.AttachmentTemplateVersionId))
+                    this.attachmentTemplateVersionId == input.getAttachmentTemplateVersionId() ||
+                    (this.attachmentTemplateVersionId != null &&
+                    this.attachmentTemplateVersionId.Equals(input.getAttachmentTemplateVersionId()))
                 ) && 
                 (
-                    this.Url == input.Url ||
-                    (this.Url != null &&
-                    this.Url.Equals(input.Url))
+                    this.url == input.getUrl() ||
+                    (this.url != null &&
+                    this.url.Equals(input.getUrl()))
                 ) && 
                 (
-                    this.Carrier == input.Carrier ||
-                    this.Carrier.Equals(input.Carrier)
+                    this.carrier == input.getCarrier() ||
+                    this.carrier.Equals(input.getCarrier())
                 ) && 
                 (
-                    this.Thumbnails == input.Thumbnails ||
-                    this.Thumbnails != null &&
-                    input.Thumbnails != null &&
-                    this.Thumbnails.SequenceEqual(input.Thumbnails)
+                    this.thumbnails == input.getThumbnails() ||
+                    this.thumbnails != null &&
+                    input.getThumbnails() != null &&
+                    this.thumbnails.SequenceEqual(input.getThumbnails())
                 ) && 
                 (
-                    this.ExpectedDeliveryDate == input.ExpectedDeliveryDate ||
-                    (this.ExpectedDeliveryDate != null &&
-                    this.ExpectedDeliveryDate.Equals(input.ExpectedDeliveryDate))
+                    this.expectedDeliveryDate == input.getExpectedDeliveryDate() ||
+                    (this.expectedDeliveryDate != null &&
+                    this.expectedDeliveryDate.Equals(input.getExpectedDeliveryDate()))
                 ) && 
                 (
-                    this.TrackingEvents == input.TrackingEvents ||
-                    this.TrackingEvents != null &&
-                    input.TrackingEvents != null &&
-                    this.TrackingEvents.SequenceEqual(input.TrackingEvents)
+                    this.trackingEvents == input.getTrackingEvents() ||
+                    this.trackingEvents != null &&
+                    input.getTrackingEvents() != null &&
+                    this.trackingEvents.SequenceEqual(input.getTrackingEvents())
                 ) && 
                 (
-                    this.Object == input.Object ||
-                    this.Object.Equals(input.Object)
+                    this._object == input.getObject() ||
+                    this._object.Equals(input.getObject())
                 ) && 
                 (
-                    this.DateCreated == input.DateCreated ||
-                    (this.DateCreated != null &&
-                    this.DateCreated.Equals(input.DateCreated))
+                    this.dateCreated == input.getDateCreated() ||
+                    (this.dateCreated != null &&
+                    this.dateCreated.Equals(input.getDateCreated()))
                 ) && 
                 (
-                    this.DateModified == input.DateModified ||
-                    (this.DateModified != null &&
-                    this.DateModified.Equals(input.DateModified))
+                    this.dateModified == input.getDateModified() ||
+                    (this.dateModified != null &&
+                    this.dateModified.Equals(input.getDateModified()))
                 ) && 
                 (
-                    this.Deleted == input.Deleted ||
-                    this.Deleted.Equals(input.Deleted)
+                    this.deleted == input.getDeleted() ||
+                    this.deleted.Equals(input.getDeleted())
                 );
         }
 
@@ -546,92 +653,92 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                if (this.id != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.id.GetHashCode();
                 }
-                if (this.To != null)
+                if (this.to != null)
                 {
-                    hashCode = (hashCode * 59) + this.To.GetHashCode();
+                    hashCode = (hashCode * 59) + this.to.GetHashCode();
                 }
-                if (this.From != null)
+                if (this.from != null)
                 {
-                    hashCode = (hashCode * 59) + this.From.GetHashCode();
+                    hashCode = (hashCode * 59) + this.from.GetHashCode();
                 }
-                if (this.Description != null)
+                if (this.description != null)
                 {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                    hashCode = (hashCode * 59) + this.description.GetHashCode();
                 }
-                if (this.Metadata != null)
+                if (this.metadata != null)
                 {
-                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                    hashCode = (hashCode * 59) + this.metadata.GetHashCode();
                 }
-                if (this.MergeVariables != null)
+                if (this.mergeVariables != null)
                 {
-                    hashCode = (hashCode * 59) + this.MergeVariables.GetHashCode();
+                    hashCode = (hashCode * 59) + this.mergeVariables.GetHashCode();
                 }
-                if (this.SendDate != null)
+                if (this.sendDate != null)
                 {
-                    hashCode = (hashCode * 59) + this.SendDate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.sendDate.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.MailType.GetHashCode();
-                if (this.Memo != null)
+                hashCode = (hashCode * 59) + this.mailType.GetHashCode();
+                if (this.memo != null)
                 {
-                    hashCode = (hashCode * 59) + this.Memo.GetHashCode();
+                    hashCode = (hashCode * 59) + this.memo.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.CheckNumber.GetHashCode();
-                if (this.Message != null)
+                hashCode = (hashCode * 59) + this.checkNumber.GetHashCode();
+                if (this.message != null)
                 {
-                    hashCode = (hashCode * 59) + this.Message.GetHashCode();
+                    hashCode = (hashCode * 59) + this.message.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Amount.GetHashCode();
-                if (this.BankAccount != null)
+                hashCode = (hashCode * 59) + this.amount.GetHashCode();
+                if (this.bankAccount != null)
                 {
-                    hashCode = (hashCode * 59) + this.BankAccount.GetHashCode();
+                    hashCode = (hashCode * 59) + this.bankAccount.GetHashCode();
                 }
-                if (this.CheckBottomTemplateId != null)
+                if (this.checkBottomTemplateId != null)
                 {
-                    hashCode = (hashCode * 59) + this.CheckBottomTemplateId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.checkBottomTemplateId.GetHashCode();
                 }
-                if (this.AttachmentTemplateId != null)
+                if (this.attachmentTemplateId != null)
                 {
-                    hashCode = (hashCode * 59) + this.AttachmentTemplateId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.attachmentTemplateId.GetHashCode();
                 }
-                if (this.CheckBottomTemplateVersionId != null)
+                if (this.checkBottomTemplateVersionId != null)
                 {
-                    hashCode = (hashCode * 59) + this.CheckBottomTemplateVersionId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.checkBottomTemplateVersionId.GetHashCode();
                 }
-                if (this.AttachmentTemplateVersionId != null)
+                if (this.attachmentTemplateVersionId != null)
                 {
-                    hashCode = (hashCode * 59) + this.AttachmentTemplateVersionId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.attachmentTemplateVersionId.GetHashCode();
                 }
-                if (this.Url != null)
+                if (this.url != null)
                 {
-                    hashCode = (hashCode * 59) + this.Url.GetHashCode();
+                    hashCode = (hashCode * 59) + this.url.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Carrier.GetHashCode();
-                if (this.Thumbnails != null)
+                hashCode = (hashCode * 59) + this.carrier.GetHashCode();
+                if (this.thumbnails != null)
                 {
-                    hashCode = (hashCode * 59) + this.Thumbnails.GetHashCode();
+                    hashCode = (hashCode * 59) + this.thumbnails.GetHashCode();
                 }
-                if (this.ExpectedDeliveryDate != null)
+                if (this.expectedDeliveryDate != null)
                 {
-                    hashCode = (hashCode * 59) + this.ExpectedDeliveryDate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.expectedDeliveryDate.GetHashCode();
                 }
-                if (this.TrackingEvents != null)
+                if (this.trackingEvents != null)
                 {
-                    hashCode = (hashCode * 59) + this.TrackingEvents.GetHashCode();
+                    hashCode = (hashCode * 59) + this.trackingEvents.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Object.GetHashCode();
-                if (this.DateCreated != null)
+                hashCode = (hashCode * 59) + this._object.GetHashCode();
+                if (this.dateCreated != null)
                 {
-                    hashCode = (hashCode * 59) + this.DateCreated.GetHashCode();
+                    hashCode = (hashCode * 59) + this.dateCreated.GetHashCode();
                 }
-                if (this.DateModified != null)
+                if (this.dateModified != null)
                 {
-                    hashCode = (hashCode * 59) + this.DateModified.GetHashCode();
+                    hashCode = (hashCode * 59) + this.dateModified.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Deleted.GetHashCode();
+                hashCode = (hashCode * 59) + this.deleted.GetHashCode();
                 return hashCode;
             }
         }
@@ -643,82 +750,82 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Id (string) pattern
-            Regex regexId = new Regex(@"^chk_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexId.Match(this.Id).Success)
+            // id (string) pattern
+            Regex regexid = new Regex(@"^chk_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regexid.Match(this.id).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for id, must match a pattern of " + regexid, new [] { "id" });
             }
 
-            // Description (string) maxLength
-            if (this.Description != null && this.Description.Length > 255)
+            // description (string) maxLength
+            if (this.description != null && this.description.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 255.", new [] { "Description" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for description, length must be less than 255.", new [] { "description" });
             }
 
-            // Memo (string) maxLength
-            if (this.Memo != null && this.Memo.Length > 40)
+            // memo (string) maxLength
+            if (this.memo != null && this.memo.Length > 40)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Memo, length must be less than 40.", new [] { "Memo" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for memo, length must be less than 40.", new [] { "memo" });
             }
 
-            // CheckNumber (int) maximum
-            if (this.CheckNumber > (int)500000000)
+            // checkNumber (int) maximum
+            if (this.checkNumber > (int)500000000)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CheckNumber, must be a value less than or equal to 500000000.", new [] { "CheckNumber" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for checkNumber, must be a value less than or equal to 500000000.", new [] { "checkNumber" });
             }
 
-            // CheckNumber (int) minimum
-            if (this.CheckNumber < (int)1)
+            // checkNumber (int) minimum
+            if (this.checkNumber < (int)1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CheckNumber, must be a value greater than or equal to 1.", new [] { "CheckNumber" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for checkNumber, must be a value greater than or equal to 1.", new [] { "checkNumber" });
             }
 
-            // Message (string) maxLength
-            if (this.Message != null && this.Message.Length > 400)
+            // message (string) maxLength
+            if (this.message != null && this.message.Length > 400)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Message, length must be less than 400.", new [] { "Message" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for message, length must be less than 400.", new [] { "message" });
             }
 
-            // Amount (float) maximum
-            if (this.Amount > (float)999999.99)
+            // amount (float) maximum
+            if (this.amount > (float)999999.99)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Amount, must be a value less than or equal to 999999.99.", new [] { "Amount" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for amount, must be a value less than or equal to 999999.99.", new [] { "amount" });
             }
 
-            // CheckBottomTemplateId (string) pattern
-            Regex regexCheckBottomTemplateId = new Regex(@"^tmpl_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexCheckBottomTemplateId.Match(this.CheckBottomTemplateId).Success)
+            // checkBottomTemplateId (string) pattern
+            Regex regexcheckBottomTemplateId = new Regex(@"^tmpl_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regexcheckBottomTemplateId.Match(this.checkBottomTemplateId).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CheckBottomTemplateId, must match a pattern of " + regexCheckBottomTemplateId, new [] { "CheckBottomTemplateId" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for checkBottomTemplateId, must match a pattern of " + regexcheckBottomTemplateId, new [] { "checkBottomTemplateId" });
             }
 
-            // AttachmentTemplateId (string) pattern
-            Regex regexAttachmentTemplateId = new Regex(@"^tmpl_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexAttachmentTemplateId.Match(this.AttachmentTemplateId).Success)
+            // attachmentTemplateId (string) pattern
+            Regex regexattachmentTemplateId = new Regex(@"^tmpl_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regexattachmentTemplateId.Match(this.attachmentTemplateId).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AttachmentTemplateId, must match a pattern of " + regexAttachmentTemplateId, new [] { "AttachmentTemplateId" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for attachmentTemplateId, must match a pattern of " + regexattachmentTemplateId, new [] { "attachmentTemplateId" });
             }
 
-            // CheckBottomTemplateVersionId (string) pattern
-            Regex regexCheckBottomTemplateVersionId = new Regex(@"^vrsn_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexCheckBottomTemplateVersionId.Match(this.CheckBottomTemplateVersionId).Success)
+            // checkBottomTemplateVersionId (string) pattern
+            Regex regexcheckBottomTemplateVersionId = new Regex(@"^vrsn_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regexcheckBottomTemplateVersionId.Match(this.checkBottomTemplateVersionId).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CheckBottomTemplateVersionId, must match a pattern of " + regexCheckBottomTemplateVersionId, new [] { "CheckBottomTemplateVersionId" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for checkBottomTemplateVersionId, must match a pattern of " + regexcheckBottomTemplateVersionId, new [] { "checkBottomTemplateVersionId" });
             }
 
-            // AttachmentTemplateVersionId (string) pattern
-            Regex regexAttachmentTemplateVersionId = new Regex(@"^vrsn_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexAttachmentTemplateVersionId.Match(this.AttachmentTemplateVersionId).Success)
+            // attachmentTemplateVersionId (string) pattern
+            Regex regexattachmentTemplateVersionId = new Regex(@"^vrsn_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regexattachmentTemplateVersionId.Match(this.attachmentTemplateVersionId).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AttachmentTemplateVersionId, must match a pattern of " + regexAttachmentTemplateVersionId, new [] { "AttachmentTemplateVersionId" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for attachmentTemplateVersionId, must match a pattern of " + regexattachmentTemplateVersionId, new [] { "attachmentTemplateVersionId" });
             }
 
-            // Url (string) pattern
-            Regex regexUrl = new Regex(@"^https:\/\/(lob-assets|lob-assets-staging)\\.com\/(letters|postcards|bank-accounts|checks|self-mailers|cards)\/[a-z]{3,4}_[a-z0-9]{15,16}(\\.pdf|_thumb_[a-z]+_[0-9]+\\.png)\\?(version=[a-z0-9-]*&)?expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexUrl.Match(this.Url).Success)
+            // url (string) pattern
+            Regex regexurl = new Regex(@"^https:\/\/(lob-assets|lob-assets-staging)\\.com\/(letters|postcards|bank-accounts|checks|self-mailers|cards)\/[a-z]{3,4}_[a-z0-9]{15,16}(\\.pdf|_thumb_[a-z]+_[0-9]+\\.png)\\?(version=[a-z0-9-]*&)?expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+$", RegexOptions.CultureInvariant);
+            if (false == regexurl.Match(this.url).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Url, must match a pattern of " + regexUrl, new [] { "Url" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for url, must match a pattern of " + regexurl, new [] { "url" });
             }
 
             yield break;

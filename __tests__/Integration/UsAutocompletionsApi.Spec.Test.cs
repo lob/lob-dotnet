@@ -37,13 +37,12 @@ namespace __tests__.Integration {
             validApi = new UsAutocompletionsApi(config);
             invalidApi = new UsAutocompletionsApi(invalidConfig);
 
-            usAutocompletionWritable = new UsAutocompletionsWritable(
-                "1313", // addressPrefix
-                "WESTFIELD", // city
-                "NJ", // state
-                "07090", // zipCode
-                false // geoIpSort
-            );
+            usAutocompletionWritable = new UsAutocompletionsWritable();
+            usAutocompletionWritable.setAddressPrefix("1313");
+            usAutocompletionWritable.setCity("WESTFIELD");
+            usAutocompletionWritable.setState("NJ");
+            usAutocompletionWritable.setZipCode("07090");
+            usAutocompletionWritable.setGeoIpSort(false);
         }
 
         public void Dispose() {}
@@ -51,8 +50,8 @@ namespace __tests__.Integration {
         [Test]
         public void UsAutocompletionTest() {
             UsAutocompletions response = validApi.UsAutocompletion(usAutocompletionWritable);
-            Assert.NotNull(response.Suggestions);
-            Assert.GreaterOrEqual(response.Suggestions.Count, 0);
+            Assert.NotNull(response.getSuggestions());
+            Assert.GreaterOrEqual(response.getSuggestions().Count, 0);
         }
 
         [Test]

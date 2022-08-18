@@ -36,87 +36,85 @@ namespace __tests__.Api
             PostcardsApiMock = new Mock<IPostcardsApi>();
 
             List<Postcard> listOfPostcards = new List<Postcard>();
-            fakePostcard = new Postcard(
-                "psc_fakeId",
-                default(Address),
-                default(AddressDomesticExpanded),
-                Postcard.CarrierEnum.USPS,
-                default(List<Thumbnail>),
-                default(PostcardSize),
-                default(DateTime),
-                default(DateTime),
-                default(DateTime),
-                default(bool),
-                default(string),
-                default(string),
-                default(string),
-                default(string),
-                default(List<TrackingEventNormal>),
-                Postcard.ObjectEnum.Postcard,
-                "fake url",
-                default(string),
-                default(Dictionary<string, string>),
-                default(MailType),
-                default(Object),
-                default(DateTime)
-            );
-            Postcard data1 = new Postcard(
-                "psc_fakeId1",
-                default(Address),
-                default(AddressDomesticExpanded),
-                Postcard.CarrierEnum.USPS,
-                default(List<Thumbnail>),
-                default(PostcardSize),
-                default(DateTime),
-                default(DateTime),
-                default(DateTime),
-                default(bool),
-                default(string),
-                default(string),
-                default(string),
-                default(string),
-                default(List<TrackingEventNormal>),
-                Postcard.ObjectEnum.Postcard,
-                "fake url",
-                default(string),
-                default(Dictionary<string, string>),
-                default(MailType),
-                default(Object),
-                default(DateTime)
-            );
-            Postcard data2 = new Postcard(
-                "psc_fakeId2",
-                default(Address),
-                default(AddressDomesticExpanded),
-                Postcard.CarrierEnum.USPS,
-                default(List<Thumbnail>),
-                default(PostcardSize),
-                default(DateTime),
-                default(DateTime),
-                default(DateTime),
-                default(bool),
-                default(string),
-                default(string),
-                default(string),
-                default(string),
-                default(List<TrackingEventNormal>),
-                Postcard.ObjectEnum.Postcard,
-                "fake url",
-                default(string),
-                default(Dictionary<string, string>),
-                default(MailType),
-                default(Object),
-                default(DateTime)
-            );
+            fakePostcard = new Postcard();
+            fakePostcard.setId("psc_fakeId");
+            fakePostcard.setTo(default(Address));
+            fakePostcard.setFrom(default(AddressDomesticExpanded));
+            fakePostcard.setCarrier(Postcard.CarrierEnum.USPS);
+            fakePostcard.setThumbnails(default(List<Thumbnail>));
+            fakePostcard.setSize(default(PostcardSize));
+            fakePostcard.setExpectedDeliveryDate(default(DateTime));
+            fakePostcard.setDateCreated(default(DateTime));
+            fakePostcard.setDateModified(default(DateTime));
+            fakePostcard.setDeleted(default(bool));
+            fakePostcard.setFrontTemplateId(default(string));
+            fakePostcard.setBackTemplateId(default(string));
+            fakePostcard.setFrontTemplateVersionId(default(string));
+            fakePostcard.setBackTemplateVersionId(default(string));
+            fakePostcard.setTrackingEvents(default(List<TrackingEventNormal>));
+            fakePostcard.setObject(Postcard.ObjectEnum.Postcard);
+            fakePostcard.setUrl("fake url");
+            fakePostcard.setDescription(default(string));
+            fakePostcard.setMetadata(default(Dictionary<string, string>));
+            fakePostcard.setMailType(default(MailType));
+            fakePostcard.setMergeVariables(default(Object));
+            fakePostcard.setSendDate(default(DateTime));
+
+            Postcard data1 = new Postcard();
+            data1.setId("psc_fakeId1");
+            data1.setTo(default(Address));
+            data1.setFrom(default(AddressDomesticExpanded));
+            data1.setCarrier(Postcard.CarrierEnum.USPS);
+            data1.setThumbnails(default(List<Thumbnail>));
+            data1.setSize(default(PostcardSize));
+            data1.setExpectedDeliveryDate(default(DateTime));
+            data1.setDateCreated(default(DateTime));
+            data1.setDateModified(default(DateTime));
+            data1.setDeleted(default(bool));
+            data1.setFrontTemplateId(default(string));
+            data1.setBackTemplateId(default(string));
+            data1.setFrontTemplateVersionId(default(string));
+            data1.setBackTemplateVersionId(default(string));
+            data1.setTrackingEvents(default(List<TrackingEventNormal>));
+            data1.setObject(Postcard.ObjectEnum.Postcard);
+            data1.setUrl("fake url");
+            data1.setDescription(default(string));
+            data1.setMetadata(default(Dictionary<string, string>));
+            data1.setMailType(default(MailType));
+            data1.setMergeVariables(default(Object));
+            data1.setSendDate(default(DateTime));
+            Postcard data2 = new Postcard();
+            data2.setId("psc_fakeId2");
+            data2.setTo(default(Address));
+            data2.setFrom(default(AddressDomesticExpanded));
+            data2.setCarrier(Postcard.CarrierEnum.USPS);
+            data2.setThumbnails(default(List<Thumbnail>));
+            data2.setSize(default(PostcardSize));
+            data2.setExpectedDeliveryDate(default(DateTime));
+            data2.setDateCreated(default(DateTime));
+            data2.setDateModified(default(DateTime));
+            data2.setDeleted(default(bool));
+            data2.setFrontTemplateId(default(string));
+            data2.setBackTemplateId(default(string));
+            data2.setFrontTemplateVersionId(default(string));
+            data2.setBackTemplateVersionId(default(string));
+            data2.setTrackingEvents(default(List<TrackingEventNormal>));
+            data2.setObject(Postcard.ObjectEnum.Postcard);
+            data2.setUrl("fake url");
+            data2.setDescription(default(string));
+            data2.setMetadata(default(Dictionary<string, string>));
+            data2.setMailType(default(MailType));
+            data2.setMergeVariables(default(Object));
+            data2.setSendDate(default(DateTime));
 
             listOfPostcards.Add(data1);
             listOfPostcards.Add(data2);
 
             fakePostcardList = new PostcardList();
 
-            fakePostcardList.Data = listOfPostcards;
-            fakePostcardList.Object = "list";
-            fakePostcardList.Count = listOfPostcards.Count;
+            fakePostcardList.setData(listOfPostcards);
+            fakePostcardList.setObject("list");
+            fakePostcardList.setCount(listOfPostcards.Count);
         }
 
         public void Dispose()
@@ -130,24 +128,23 @@ namespace __tests__.Api
         [Test]
         public void PostcardCreateTest()
         {
-            PostcardEditable postcardEditable = new PostcardEditable(
-                "adr_fakeId", // to
-                "adr_fakeId", // from
-                default(PostcardSize), // size
-                "C# unit test postcard", // description
-                default(Dictionary<string, string>), // metadata
-                default(MailType), // mailType
-                default(Object), // mergeVariables
-                default(DateTime), // sendDate
-                "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf", // front
-                "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf", // back
-                default(string) // billingGroupId
-            );
+            PostcardEditable postcardEditable = new PostcardEditable();
+            postcardEditable.setTo("adr_fakeId");
+            postcardEditable.setFrom("adr_fakeId");
+            postcardEditable.setSize(default(PostcardSize));
+            postcardEditable.setDescription("C# unit test postcard");
+            postcardEditable.setMetadata(default(Dictionary<string, string>));
+            postcardEditable.setMailType(default(MailType));
+            postcardEditable.setMergeVariables(default(Object));
+            postcardEditable.setSendDate(default(DateTime));
+            postcardEditable.setFront("https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf");
+            postcardEditable.setBack("https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf");
+            postcardEditable.setBillingGroupId(default(string));
 
             PostcardsApiMock.Setup(x => x.PostcardCreate(postcardEditable, null, It.IsAny<int>())).Returns(fakePostcard);
             Postcard response = PostcardsApiMock.Object.PostcardCreate(postcardEditable);
             Assert.IsInstanceOf<Postcard>(response);
-            Assert.AreEqual(response.Id, fakePostcard.Id);
+            Assert.AreEqual(response.getId(), fakePostcard.getId());
         }
 
         /// <summary>
@@ -179,16 +176,16 @@ namespace __tests__.Api
         {
             PostcardDeletion fakePostcard = new PostcardDeletion();
 
-            fakePostcard.Id = "psc_fakeId";
-            fakePostcard.Deleted = true;
+            fakePostcard.setId("psc_fakeId");
+            fakePostcard.setDeleted(true);
 
-            PostcardsApiMock.Setup(x => x.PostcardDelete(fakePostcard.Id, It.IsAny<int>())).Returns(fakePostcard);
+            PostcardsApiMock.Setup(x => x.PostcardDelete(fakePostcard.getId(), It.IsAny<int>())).Returns(fakePostcard);
 
-            var response = PostcardsApiMock.Object.PostcardDelete(fakePostcard.Id);
+            var response = PostcardsApiMock.Object.PostcardDelete(fakePostcard.getId());
 
             Assert.IsInstanceOf<PostcardDeletion>(response);
-            Assert.AreEqual(response.Deleted, fakePostcard.Deleted);
-            Assert.AreEqual(response.Id, fakePostcard.Id);
+            Assert.AreEqual(response.getDeleted(), fakePostcard.getDeleted());
+            Assert.AreEqual(response.getId(), fakePostcard.getId());
         }
 
         /// <summary>
@@ -218,11 +215,11 @@ namespace __tests__.Api
         [Test]
         public void PostcardRetrieveTest()
         {
-            PostcardsApiMock.Setup(x => x.PostcardRetrieve(fakePostcard.Id, It.IsAny<int>())).Returns(fakePostcard);
-            Postcard response = PostcardsApiMock.Object.PostcardRetrieve(fakePostcard.Id);
+            PostcardsApiMock.Setup(x => x.PostcardRetrieve(fakePostcard.getId(), It.IsAny<int>())).Returns(fakePostcard);
+            Postcard response = PostcardsApiMock.Object.PostcardRetrieve(fakePostcard.getId());
 
             Assert.IsInstanceOf<Postcard>(response);
-            Assert.AreEqual(response.Id, fakePostcard.Id);
+            Assert.AreEqual(response.getId(), fakePostcard.getId());
         }
 
         /// <summary>
@@ -257,7 +254,7 @@ namespace __tests__.Api
             var response = PostcardsApiMock.Object.PostcardsList(null, null, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
-            Assert.AreEqual(response.Count, fakePostcardList.Count);
+            Assert.AreEqual(response.getCount(), fakePostcardList.getCount());
         }
 
         /// <summary>
@@ -294,7 +291,7 @@ namespace __tests__.Api
             var response = PostcardsApiMock.Object.PostcardsList(limit, null, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
-            Assert.AreEqual(response.Count, fakePostcardList.Count);
+            Assert.AreEqual(response.getCount(), fakePostcardList.getCount());
         }
 
         /// <summary>
@@ -310,7 +307,7 @@ namespace __tests__.Api
             var response = PostcardsApiMock.Object.PostcardsList(null, before, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
-            Assert.AreEqual(response.Count, fakePostcardList.Count);
+            Assert.AreEqual(response.getCount(), fakePostcardList.getCount());
         }
 
         /// <summary>
@@ -326,7 +323,7 @@ namespace __tests__.Api
             var response = PostcardsApiMock.Object.PostcardsList(null, null, after, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
-            Assert.AreEqual(response.Count, fakePostcardList.Count);
+            Assert.AreEqual(response.getCount(), fakePostcardList.getCount());
         }
 
         /// <summary>
@@ -343,7 +340,7 @@ namespace __tests__.Api
             var response = PostcardsApiMock.Object.PostcardsList(null, null, null, include, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
-            Assert.AreEqual(response.Count, fakePostcardList.Count);
+            Assert.AreEqual(response.getCount(), fakePostcardList.getCount());
         }
 
         /// <summary>
@@ -361,7 +358,7 @@ namespace __tests__.Api
             var response = PostcardsApiMock.Object.PostcardsList(null, null, null, null, dateCreated, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
-            Assert.AreEqual(response.Count, fakePostcardList.Count);
+            Assert.AreEqual(response.getCount(), fakePostcardList.getCount());
         }
 
         /// <summary>
@@ -378,7 +375,7 @@ namespace __tests__.Api
             var response = PostcardsApiMock.Object.PostcardsList(null, null, null, null, null, metadata, null, null, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
-            Assert.AreEqual(response.Count, fakePostcardList.Count);
+            Assert.AreEqual(response.getCount(), fakePostcardList.getCount());
         }
 
         /// <summary>
@@ -394,7 +391,7 @@ namespace __tests__.Api
             var response = PostcardsApiMock.Object.PostcardsList(null, null, null, null, null, null, size, null, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
-            Assert.AreEqual(response.Count, fakePostcardList.Count);
+            Assert.AreEqual(response.getCount(), fakePostcardList.getCount());
         }
 
         /// <summary>
@@ -410,7 +407,7 @@ namespace __tests__.Api
             var response = PostcardsApiMock.Object.PostcardsList(null, null, null, null, null, null, null, scheduled, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
-            Assert.AreEqual(response.Count, fakePostcardList.Count);
+            Assert.AreEqual(response.getCount(), fakePostcardList.getCount());
         }
 
         /// <summary>
@@ -428,7 +425,7 @@ namespace __tests__.Api
             var response = PostcardsApiMock.Object.PostcardsList(null, null, null, null, null, null, null, null, sendDate, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
-            Assert.AreEqual(response.Count, fakePostcardList.Count);
+            Assert.AreEqual(response.getCount(), fakePostcardList.getCount());
         }
 
         /// <summary>
@@ -444,7 +441,7 @@ namespace __tests__.Api
             var response = PostcardsApiMock.Object.PostcardsList(null, null, null, null, null, null, null, null, null, mailType, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
-            Assert.AreEqual(response.Count, fakePostcardList.Count);
+            Assert.AreEqual(response.getCount(), fakePostcardList.getCount());
         }
 
         /// <summary>
@@ -453,14 +450,15 @@ namespace __tests__.Api
         [Test]
         public void PostcardListTestWithSortByParam()
         {
-            SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
+            SortBy5 sortBy = new SortBy5();
+            sortBy.setSendDate(SortBy5.SendDateEnum.Asc);
 
             PostcardsApiMock.Setup(x => x.PostcardsList(null, null, null, null, null, null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakePostcardList);
 
             var response = PostcardsApiMock.Object.PostcardsList(null, null, null, null, null, null, null, null, null, null, sortBy);
 
             Assert.IsInstanceOf<PostcardList>(response);
-            Assert.AreEqual(response.Count, fakePostcardList.Count);
+            Assert.AreEqual(response.getCount(), fakePostcardList.getCount());
         }
     }
 }

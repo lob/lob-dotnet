@@ -42,42 +42,27 @@ namespace __tests__.Integration {
             liveValidApi = new UsVerificationsApi(liveConfig);
             invalidApi = new UsVerificationsApi(invalidConfig);
 
-            usVerificationWritable = new UsVerificationsWritable(
-                null, // address
-                null, // recipient
-                "deliverable", // primaryLine
-                null, // secondaryLine
-                null, // urbanization
-                "WESTFIELD", // city
-                "NJ", // state
-                "11111" // zipCode
-            );
+            usVerificationWritable = new UsVerificationsWritable();
+            usVerificationWritable.setPrimaryLine("deliverable");
+            usVerificationWritable.setCity("WESTFIELD");
+            usVerificationWritable.setState("NJ");
+            usVerificationWritable.setZipCode("11111");
 
-            MultipleComponents address1 = new MultipleComponents(
-              null, // recipient
-              "1313 CEMETERY LANE", // primaryLine
-              null, // secondaryLine
-              null, // urbanization
-              "WESTFIELD", // city
-              "NJ", // state
-              null // zipCode
-            );
+            MultipleComponents address1 = new MultipleComponents();
+            address1.setPrimaryLine("1313 CEMETERY LANE");
+            address1.setCity("WESTFIELD");
+            address1.setState("NJ");
 
-            MultipleComponents address2 = new MultipleComponents(
-              null, // recipient
-              "1212 CEMETERY LANE", // primaryLine
-              null, // secondaryLine
-              null, // urbanization
-              "WESTFIELD", // city
-              null, // state
-              null // zipCode
-            );
+            MultipleComponents address2 = new MultipleComponents();
+            address2.setPrimaryLine("1212 CEMETERY LANE");
+            address2.setCity("WESTFIELD");
 
             List<MultipleComponents> addresses = new List<MultipleComponents>();
             addresses.Add(address1);
             addresses.Add(address2);
 
-            addressList = new MultipleComponentsList(addresses);
+            addressList = new MultipleComponentsList();
+            addressList.setAddresses(addresses);
         }
 
         public void Dispose() {}
@@ -85,19 +70,25 @@ namespace __tests__.Integration {
         [Test]
         public void UsVerificationVerifySingleMultiLineUSAddressTest() {
             UsVerification response = testValidApi.UsVerification(usVerificationWritable);
-            Assert.NotNull(response.Deliverability);
+            Assert.NotNull(response.getDeliverability());
         }
 
         [Test]
         public void UsVerificationVerifySingleOneLineUSAddressTest() {
-            UsVerification response = testValidApi.UsVerification(new UsVerificationsWritable("1515 CEMETERY LN WESTFIELD NJ 07000"));
-            Assert.NotNull(response.Deliverability);
+            UsVerificationsWritable usVerWritable = new UsVerificationsWritable();
+            usVerWritable.setAddress("1515 CEMETERY LN WESTFIELD NJ 07000");
+
+            UsVerification response = testValidApi.UsVerification(usVerWritable);
+            Assert.NotNull(response.getDeliverability());
         }
 
         [Test]
         public void UsVerificationVerifySingleTestWithCase() {
-            UsVerification response = testValidApi.UsVerification(new UsVerificationsWritable("1515 CEMETERY LN WESTFIELD NJ 07000"), "proper");
-            Assert.NotNull(response.Deliverability);
+            UsVerificationsWritable usVerWritable = new UsVerificationsWritable();
+            usVerWritable.setAddress("1515 CEMETERY LN WESTFIELD NJ 07000");
+
+            UsVerification response = testValidApi.UsVerification(usVerWritable, "proper");
+            Assert.NotNull(response.getDeliverability());
         }
 
         [Test]
@@ -126,11 +117,11 @@ namespace __tests__.Integration {
             Assert.NotNull(response);
 
             int numErrors = 0;
-            foreach(var elem in response.Addresses) {
-                if (elem.Error == null) numErrors++;
+            foreach(var elem in response.getAddresses()) {
+                if (elem.getError() == null) numErrors++;
             }
             Assert.AreEqual(numErrors, 1);
-            Assert.AreEqual(response.Addresses.Count - numErrors, 1);
+            Assert.AreEqual(response.getAddresses().Count - numErrors, 1);
         }
 
         [Test]
@@ -139,11 +130,11 @@ namespace __tests__.Integration {
             Assert.NotNull(response);
 
             int numErrors = 0;
-            foreach(var elem in response.Addresses) {
-                if (elem.Error == null) numErrors++;
+            foreach(var elem in response.getAddresses()) {
+                if (elem.getError() == null) numErrors++;
             }
             Assert.AreEqual(numErrors, 1);
-            Assert.AreEqual(response.Addresses.Count - numErrors, 1);
+            Assert.AreEqual(response.getAddresses().Count - numErrors, 1);
         }
 
         [Test]

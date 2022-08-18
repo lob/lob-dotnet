@@ -38,33 +38,45 @@ namespace lob.dotnet.Model
         /// <param name="small">A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated..</param>
         /// <param name="medium">A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated..</param>
         /// <param name="large">A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated..</param>
-        public Thumbnail(string small = default(string), string medium = default(string), string large = default(string))
-        {
-            this.Small = small;
-            this.Medium = medium;
-            this.Large = large;
-        }
 
         /// <summary>
         /// A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.
         /// </summary>
         /// <value>A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.</value>
         [DataMember(Name = "small", EmitDefaultValue = false)]
-        public string Small { get; set; }
+        private string small;
+        public string getSmall() {
+            return small;
+        }
+        public void setSmall(string value) {
+            small = value;
+        }
 
         /// <summary>
         /// A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.
         /// </summary>
         /// <value>A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.</value>
         [DataMember(Name = "medium", EmitDefaultValue = false)]
-        public string Medium { get; set; }
+        private string medium;
+        public string getMedium() {
+            return medium;
+        }
+        public void setMedium(string value) {
+            medium = value;
+        }
 
         /// <summary>
         /// A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.
         /// </summary>
         /// <value>A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.</value>
         [DataMember(Name = "large", EmitDefaultValue = false)]
-        public string Large { get; set; }
+        private string large;
+        public string getLarge() {
+            return large;
+        }
+        public void setLarge(string value) {
+            large = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -74,9 +86,9 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Thumbnail {\n");
-            sb.Append("  Small: ").Append(Small).Append("\n");
-            sb.Append("  Medium: ").Append(Medium).Append("\n");
-            sb.Append("  Large: ").Append(Large).Append("\n");
+            sb.Append("  small: ").Append(small).Append("\n");
+            sb.Append("  medium: ").Append(medium).Append("\n");
+            sb.Append("  large: ").Append(large).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -87,7 +99,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -113,19 +125,19 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Small == input.Small ||
-                    (this.Small != null &&
-                    this.Small.Equals(input.Small))
+                    this.small == input.getSmall() ||
+                    (this.small != null &&
+                    this.small.Equals(input.getSmall()))
                 ) && 
                 (
-                    this.Medium == input.Medium ||
-                    (this.Medium != null &&
-                    this.Medium.Equals(input.Medium))
+                    this.medium == input.getMedium() ||
+                    (this.medium != null &&
+                    this.medium.Equals(input.getMedium()))
                 ) && 
                 (
-                    this.Large == input.Large ||
-                    (this.Large != null &&
-                    this.Large.Equals(input.Large))
+                    this.large == input.getLarge() ||
+                    (this.large != null &&
+                    this.large.Equals(input.getLarge()))
                 );
         }
 
@@ -138,17 +150,17 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Small != null)
+                if (this.small != null)
                 {
-                    hashCode = (hashCode * 59) + this.Small.GetHashCode();
+                    hashCode = (hashCode * 59) + this.small.GetHashCode();
                 }
-                if (this.Medium != null)
+                if (this.medium != null)
                 {
-                    hashCode = (hashCode * 59) + this.Medium.GetHashCode();
+                    hashCode = (hashCode * 59) + this.medium.GetHashCode();
                 }
-                if (this.Large != null)
+                if (this.large != null)
                 {
-                    hashCode = (hashCode * 59) + this.Large.GetHashCode();
+                    hashCode = (hashCode * 59) + this.large.GetHashCode();
                 }
                 return hashCode;
             }
@@ -161,25 +173,25 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Small (string) pattern
-            Regex regexSmall = new Regex(@"^https:\/\/(lob-assets|lob-assets-staging)\\.com\/(letters|postcards|bank-accounts|checks|self-mailers|cards)\/[a-z]{3,4}_[a-z0-9]{15,16}(\\.pdf|_thumb_[a-z]+_[0-9]+\\.png)\\?(version=[a-z0-9-]*&)?expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexSmall.Match(this.Small).Success)
+            // small (string) pattern
+            Regex regexsmall = new Regex(@"^https:\/\/(lob-assets|lob-assets-staging)\\.com\/(letters|postcards|bank-accounts|checks|self-mailers|cards)\/[a-z]{3,4}_[a-z0-9]{15,16}(\\.pdf|_thumb_[a-z]+_[0-9]+\\.png)\\?(version=[a-z0-9-]*&)?expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+$", RegexOptions.CultureInvariant);
+            if (false == regexsmall.Match(this.small).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Small, must match a pattern of " + regexSmall, new [] { "Small" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for small, must match a pattern of " + regexsmall, new [] { "small" });
             }
 
-            // Medium (string) pattern
-            Regex regexMedium = new Regex(@"^https:\/\/(lob-assets|lob-assets-staging)\\.com\/(letters|postcards|bank-accounts|checks|self-mailers|cards)\/[a-z]{3,4}_[a-z0-9]{15,16}(\\.pdf|_thumb_[a-z]+_[0-9]+\\.png)\\?(version=[a-z0-9-]*&)?expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexMedium.Match(this.Medium).Success)
+            // medium (string) pattern
+            Regex regexmedium = new Regex(@"^https:\/\/(lob-assets|lob-assets-staging)\\.com\/(letters|postcards|bank-accounts|checks|self-mailers|cards)\/[a-z]{3,4}_[a-z0-9]{15,16}(\\.pdf|_thumb_[a-z]+_[0-9]+\\.png)\\?(version=[a-z0-9-]*&)?expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+$", RegexOptions.CultureInvariant);
+            if (false == regexmedium.Match(this.medium).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Medium, must match a pattern of " + regexMedium, new [] { "Medium" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for medium, must match a pattern of " + regexmedium, new [] { "medium" });
             }
 
-            // Large (string) pattern
-            Regex regexLarge = new Regex(@"^https:\/\/(lob-assets|lob-assets-staging)\\.com\/(letters|postcards|bank-accounts|checks|self-mailers|cards)\/[a-z]{3,4}_[a-z0-9]{15,16}(\\.pdf|_thumb_[a-z]+_[0-9]+\\.png)\\?(version=[a-z0-9-]*&)?expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexLarge.Match(this.Large).Success)
+            // large (string) pattern
+            Regex regexlarge = new Regex(@"^https:\/\/(lob-assets|lob-assets-staging)\\.com\/(letters|postcards|bank-accounts|checks|self-mailers|cards)\/[a-z]{3,4}_[a-z0-9]{15,16}(\\.pdf|_thumb_[a-z]+_[0-9]+\\.png)\\?(version=[a-z0-9-]*&)?expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+$", RegexOptions.CultureInvariant);
+            if (false == regexlarge.Match(this.large).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Large, must match a pattern of " + regexLarge, new [] { "Large" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for large, must match a pattern of " + regexlarge, new [] { "large" });
             }
 
             yield break;

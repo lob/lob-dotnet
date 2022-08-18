@@ -40,46 +40,41 @@ namespace __tests__.Integration {
             validApi = new SelfMailersApi(config);
             invalidApi = new SelfMailersApi(invalidConfig);
 
-            AddressEditable addressEditable = new AddressEditable(
-                "1313 CEMETERY LN", // addressLine1
-                null, // addressLine2
-                "WESTFIELD", // addressCity
-                "NJ", // addressState
-                "07000", // addressZip
-                CountryExtended.US, // addressCountry
-                "test description", // description
-                "Thing T. Thing", // name
-                null, // company
-                null, // phone
-                null, // email
-                null // metadata
-            );
+            AddressEditable addressEditable = new AddressEditable();
+            addressEditable.setAddressLine1("1313 CEMETERY LN");
+            addressEditable.setAddressCity("WESTFIELD");
+            addressEditable.setAddressState("NJ");
+            addressEditable.setAddressZip("07000");
+            addressEditable.setAddressCountry(CountryExtended.US);
+            addressEditable.setDescription("test description");
+            addressEditable.setName("Thing T. Thing");
 
             validAddressesApi = new AddressesApi(config);
             address = validAddressesApi.AddressCreate(addressEditable);
 
-            selfMailerEditable = new SelfMailerEditable(
-                address.Id, // to
-                address.Id, // from
-                default(SelfMailerSize), // size
-                "C# integration test selfMailer", // description
-                default(Dictionary<string, string>), // metadata
-                default(MailType), // mailType
-                default(Object), // mergeVariables
-                default(DateTime), // sendDate
-                "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf", // front
-                "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf", // back
-                default(string) // billingGroupId
-            );
-            selfMailerEditable.Metadata = new Dictionary<string, string>();
-            selfMailerEditable.Metadata.Add("fake campaign", "fakeid");
+            selfMailerEditable = new SelfMailerEditable();
+            selfMailerEditable.setTo(address.getId());
+            selfMailerEditable.setFrom(address.getId());
+            selfMailerEditable.setSize(default(SelfMailerSize));
+            selfMailerEditable.setDescription("C# integration test selfMailer");
+            selfMailerEditable.setMetadata(default(Dictionary<string, string>));
+            selfMailerEditable.setMailType(default(MailType));
+            selfMailerEditable.setMergeVariables(default(Object));
+            selfMailerEditable.setSendDate(default(DateTime));
+            selfMailerEditable.setInside("https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf");
+            selfMailerEditable.setOutside("https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf");
+            selfMailerEditable.setBillingGroupId(default(string));
+
+            Dictionary<string, string> metadata = new Dictionary<string, string>();
+            metadata.Add("fake campaign", "fakeid");
+            selfMailerEditable.setMetadata(metadata);
 
             idsToDelete = new List<string>();
         }
 
         public void Dispose()
         {
-            validAddressesApi.AddressDelete(address.Id);
+            validAddressesApi.AddressDelete(address.getId());
             idsToDelete.ForEach(id => validApi.SelfMailerDelete(id));
         }
 
@@ -87,9 +82,9 @@ namespace __tests__.Integration {
         public void SelfMailerCreateTest() {
             SelfMailer response = validApi.SelfMailerCreate(selfMailerEditable);
 
-            Assert.NotNull(response.Id);
-            Assert.AreEqual(response.Metadata, selfMailerEditable.Metadata);
-            idsToDelete.Add(response.Id);
+            Assert.NotNull(response.getId());
+            Assert.AreEqual(response.getMetadata(), selfMailerEditable.getMetadata());
+            idsToDelete.Add(response.getId());
         }
 
         [Test]
@@ -117,12 +112,12 @@ namespace __tests__.Integration {
         [Test]
         public void SelfMailerRetrieveTest() {
             SelfMailer createdSelfMailer = validApi.SelfMailerCreate(selfMailerEditable);
-            idsToDelete.Add(createdSelfMailer.Id);
+            idsToDelete.Add(createdSelfMailer.getId());
 
-            SelfMailer retrievedSelfMailer = validApi.SelfMailerRetrieve(createdSelfMailer.Id);
+            SelfMailer retrievedSelfMailer = validApi.SelfMailerRetrieve(createdSelfMailer.getId());
 
-            Assert.NotNull(retrievedSelfMailer.Id);
-            Assert.AreEqual(retrievedSelfMailer.Id, createdSelfMailer.Id);
+            Assert.NotNull(retrievedSelfMailer.getId());
+            Assert.AreEqual(retrievedSelfMailer.getId(), createdSelfMailer.getId());
         }
 
         [Test]
@@ -139,10 +134,10 @@ namespace __tests__.Integration {
         [Test]
         public void SelfMailerRetrieveTestBadUsername() {
             SelfMailer createdSelfMailer = validApi.SelfMailerCreate(selfMailerEditable);
-            idsToDelete.Add(createdSelfMailer.Id);
+            idsToDelete.Add(createdSelfMailer.getId());
 
             try {
-                SelfMailer response = invalidApi.SelfMailerRetrieve(createdSelfMailer.Id);
+                SelfMailer response = invalidApi.SelfMailerRetrieve(createdSelfMailer.getId());
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -153,7 +148,7 @@ namespace __tests__.Integration {
         [Test]
         public void SelfMailerListTest() {
             SelfMailerList response = validApi.SelfMailersList(2, null, null, null, null, null, null, null, null, null, null);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -161,7 +156,7 @@ namespace __tests__.Integration {
             int limit = 2;
             SelfMailerList response = validApi.SelfMailersList(limit, null, null, null, null, null, null, null, null, null, null);
 
-            Assert.AreEqual(response.Count, 2);
+            Assert.AreEqual(response.getCount(), 2);
         }
 
         [Test]
@@ -170,8 +165,8 @@ namespace __tests__.Integration {
             includeList.Add("total_count");
 
             SelfMailerList response = validApi.SelfMailersList(null, null, null, includeList, null, null, null, null, null, null, null);
-            Assert.Greater(response.Count, 0);
-            Assert.NotNull(response.TotalCount);
+            Assert.Greater(response.getCount(), 0);
+            Assert.NotNull(response.getTotalCount());
         }
 
         [Test]
@@ -181,7 +176,7 @@ namespace __tests__.Integration {
             dateCreated.Add("lt", lastMonth);
 
             SelfMailerList response = validApi.SelfMailersList(null, null, null, null, dateCreated, null, null, null, null, null, null);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -190,7 +185,7 @@ namespace __tests__.Integration {
             metadata.Add("name", "Harry");
 
             SelfMailerList response = validApi.SelfMailersList(null, null, null, null, null, metadata, null, null, null, null, null);
-            Assert.GreaterOrEqual(response.Count, 0);
+            Assert.GreaterOrEqual(response.getCount(), 0);
         }
 
         [Test]
@@ -199,7 +194,7 @@ namespace __tests__.Integration {
             sizeArray.Add(SelfMailerSize._6x18Bifold);
 
             SelfMailerList response = validApi.SelfMailersList(null, null, null, null, null, null, sizeArray);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -207,7 +202,7 @@ namespace __tests__.Integration {
             Boolean scheduled = true;
 
             SelfMailerList response = validApi.SelfMailersList(null, null, null, null, null, null, null, scheduled);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -217,7 +212,7 @@ namespace __tests__.Integration {
             sendDate.Add("lt", lastMonth.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 
             SelfMailerList response = validApi.SelfMailersList(null, null, null, null, null, null, null, null, sendDate);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -225,23 +220,24 @@ namespace __tests__.Integration {
             MailType mailType = MailType.FirstClass;
 
             SelfMailerList response = validApi.SelfMailersList(null, null, null, null, null, null, null, null, null, mailType);
-            Assert.GreaterOrEqual(response.Count, 0);
+            Assert.GreaterOrEqual(response.getCount(), 0);
         }
 
         [Test]
         public void SelfMailerListTestWithSortByParameter() {
-            SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
+            SortBy5 sortBy = new SortBy5();
+            sortBy.setSendDate(SortBy5.SendDateEnum.Asc);
 
             SelfMailerList response = validApi.SelfMailersList(null, null, null, null, null, null, null, null, null, null, sortBy);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
         public void SelfMailerDeleteTest() {
             SelfMailer createdSelfMailer = validApi.SelfMailerCreate(selfMailerEditable);
 
-            SelfMailerDeletion deletedSelfMailer = validApi.SelfMailerDelete(createdSelfMailer.Id);
-            Assert.True(deletedSelfMailer.Deleted);
+            SelfMailerDeletion deletedSelfMailer = validApi.SelfMailerDelete(createdSelfMailer.getId());
+            Assert.True(deletedSelfMailer.getDeleted());
         }
 
         [Test]
@@ -258,10 +254,10 @@ namespace __tests__.Integration {
         [Test]
         public void SelfMailerDeleteTestBadUsername() {
             SelfMailer createdSelfMailer = validApi.SelfMailerCreate(selfMailerEditable);
-            idsToDelete.Add(createdSelfMailer.Id);
+            idsToDelete.Add(createdSelfMailer.getId());
 
             try {
-                SelfMailerDeletion deletedSelfMailer = invalidApi.SelfMailerDelete(createdSelfMailer.Id);
+                SelfMailerDeletion deletedSelfMailer = invalidApi.SelfMailerDelete(createdSelfMailer.getId());
             } catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
                 Assert.That(e.Message, Does.Contain("Your API key is not valid"));

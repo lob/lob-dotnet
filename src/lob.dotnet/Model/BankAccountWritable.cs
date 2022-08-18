@@ -36,7 +36,7 @@ namespace lob.dotnet.Model
         /// Initializes a new instance of the <see cref="BankAccountWritable" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected BankAccountWritable() { }
+        public BankAccountWritable() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="BankAccountWritable" /> class.
         /// </summary>
@@ -46,75 +46,82 @@ namespace lob.dotnet.Model
         /// <param name="accountType">accountType (required).</param>
         /// <param name="signatory">The signatory associated with your account. This name will be printed on checks created with this bank account. If you prefer to use a custom signature image on your checks instead, please create your bank account from the [Dashboard](https://dashboard.lob.com/#/login). (required).</param>
         /// <param name="metadata">Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information..</param>
-        public BankAccountWritable(string description = default(string), string routingNumber = default(string), string accountNumber = default(string), BankTypeEnum accountType = default(BankTypeEnum), string signatory = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>))
-        {
-            // to ensure "routingNumber" is required (not null)
-            if (routingNumber == null)
-            {
-                throw new ArgumentNullException("routingNumber is a required property for BankAccountWritable and cannot be null");
-            }
-            this.RoutingNumber = routingNumber;
-            // to ensure "accountNumber" is required (not null)
-            if (accountNumber == null)
-            {
-                throw new ArgumentNullException("accountNumber is a required property for BankAccountWritable and cannot be null");
-            }
-            this.AccountNumber = accountNumber;
-            // to ensure "accountType" is required (not null)
-            if (accountType == null)
-            {
-                throw new ArgumentNullException("accountType is a required property for BankAccountWritable and cannot be null");
-            }
-            this.AccountType = accountType;
-            // to ensure "signatory" is required (not null)
-            if (signatory == null)
-            {
-                throw new ArgumentNullException("signatory is a required property for BankAccountWritable and cannot be null");
-            }
-            this.Signatory = signatory;
-            this.Description = description;
-            this.Metadata = metadata;
-        }
 
         /// <summary>
         /// An internal description that identifies this resource. Must be no longer than 255 characters. 
         /// </summary>
         /// <value>An internal description that identifies this resource. Must be no longer than 255 characters. </value>
         [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
+        private string description;
+        public string getDescription() {
+            return description;
+        }
+        public void setDescription(string value) {
+            description = value;
+        }
 
         /// <summary>
         /// Must be a [valid US routing number](https://www.frbservices.org/index.html).
         /// </summary>
         /// <value>Must be a [valid US routing number](https://www.frbservices.org/index.html).</value>
         [DataMember(Name = "routing_number", IsRequired = true, EmitDefaultValue = false)]
-        public string RoutingNumber { get; set; }
+        private string routingNumber;
+        public string getRoutingNumber() {
+            return routingNumber;
+        }
+        public void setRoutingNumber(string value) {
+            routingNumber = value;
+        }
 
         /// <summary>
         /// Gets or Sets AccountNumber
         /// </summary>
         [DataMember(Name = "account_number", IsRequired = true, EmitDefaultValue = false)]
-        public string AccountNumber { get; set; }
+        private string accountNumber;
+        public string getAccountNumber() {
+            return accountNumber;
+        }
+        public void setAccountNumber(string value) {
+            accountNumber = value;
+        }
 
         /// <summary>
         /// Gets or Sets AccountType
         /// </summary>
         [DataMember(Name = "account_type", IsRequired = true, EmitDefaultValue = false)]
-        public BankTypeEnum AccountType { get; set; }
+        private BankTypeEnum accountType;
+        public BankTypeEnum getAccountType() {
+            return accountType;
+        }
+        public void setAccountType(BankTypeEnum value) {
+            accountType = value;
+        }
 
         /// <summary>
         /// The signatory associated with your account. This name will be printed on checks created with this bank account. If you prefer to use a custom signature image on your checks instead, please create your bank account from the [Dashboard](https://dashboard.lob.com/#/login).
         /// </summary>
         /// <value>The signatory associated with your account. This name will be printed on checks created with this bank account. If you prefer to use a custom signature image on your checks instead, please create your bank account from the [Dashboard](https://dashboard.lob.com/#/login).</value>
         [DataMember(Name = "signatory", IsRequired = true, EmitDefaultValue = false)]
-        public string Signatory { get; set; }
+        private string signatory;
+        public string getSignatory() {
+            return signatory;
+        }
+        public void setSignatory(string value) {
+            signatory = value;
+        }
 
         /// <summary>
         /// Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information.
         /// </summary>
         /// <value>Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information.</value>
         [DataMember(Name = "metadata", EmitDefaultValue = false)]
-        public Dictionary<string, string> Metadata { get; set; }
+        private Dictionary<string, string> metadata;
+        public Dictionary<string, string> getMetadata() {
+            return metadata;
+        }
+        public void setMetadata(Dictionary<string, string> value) {
+            metadata = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -124,12 +131,12 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class BankAccountWritable {\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  RoutingNumber: ").Append(RoutingNumber).Append("\n");
-            sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
-            sb.Append("  AccountType: ").Append(AccountType).Append("\n");
-            sb.Append("  Signatory: ").Append(Signatory).Append("\n");
-            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
+            sb.Append("  description: ").Append(description).Append("\n");
+            sb.Append("  routingNumber: ").Append(routingNumber).Append("\n");
+            sb.Append("  accountNumber: ").Append(accountNumber).Append("\n");
+            sb.Append("  accountType: ").Append(accountType).Append("\n");
+            sb.Append("  signatory: ").Append(signatory).Append("\n");
+            sb.Append("  metadata: ").Append(metadata).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -140,7 +147,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -166,35 +173,35 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.description == input.getDescription() ||
+                    (this.description != null &&
+                    this.description.Equals(input.getDescription()))
                 ) && 
                 (
-                    this.RoutingNumber == input.RoutingNumber ||
-                    (this.RoutingNumber != null &&
-                    this.RoutingNumber.Equals(input.RoutingNumber))
+                    this.routingNumber == input.getRoutingNumber() ||
+                    (this.routingNumber != null &&
+                    this.routingNumber.Equals(input.getRoutingNumber()))
                 ) && 
                 (
-                    this.AccountNumber == input.AccountNumber ||
-                    (this.AccountNumber != null &&
-                    this.AccountNumber.Equals(input.AccountNumber))
+                    this.accountNumber == input.getAccountNumber() ||
+                    (this.accountNumber != null &&
+                    this.accountNumber.Equals(input.getAccountNumber()))
                 ) && 
                 (
-                    this.AccountType == input.AccountType ||
-                    (this.AccountType != null &&
-                    this.AccountType.Equals(input.AccountType))
+                    this.accountType == input.getAccountType() ||
+                    (this.accountType != null &&
+                    this.accountType.Equals(input.getAccountType()))
                 ) && 
                 (
-                    this.Signatory == input.Signatory ||
-                    (this.Signatory != null &&
-                    this.Signatory.Equals(input.Signatory))
+                    this.signatory == input.getSignatory() ||
+                    (this.signatory != null &&
+                    this.signatory.Equals(input.getSignatory()))
                 ) && 
                 (
-                    this.Metadata == input.Metadata ||
-                    this.Metadata != null &&
-                    input.Metadata != null &&
-                    this.Metadata.SequenceEqual(input.Metadata)
+                    this.metadata == input.getMetadata() ||
+                    this.metadata != null &&
+                    input.getMetadata() != null &&
+                    this.metadata.SequenceEqual(input.getMetadata())
                 );
         }
 
@@ -207,29 +214,29 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Description != null)
+                if (this.description != null)
                 {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                    hashCode = (hashCode * 59) + this.description.GetHashCode();
                 }
-                if (this.RoutingNumber != null)
+                if (this.routingNumber != null)
                 {
-                    hashCode = (hashCode * 59) + this.RoutingNumber.GetHashCode();
+                    hashCode = (hashCode * 59) + this.routingNumber.GetHashCode();
                 }
-                if (this.AccountNumber != null)
+                if (this.accountNumber != null)
                 {
-                    hashCode = (hashCode * 59) + this.AccountNumber.GetHashCode();
+                    hashCode = (hashCode * 59) + this.accountNumber.GetHashCode();
                 }
-                if (this.AccountType != null)
+                if (this.accountType != null)
                 {
-                    hashCode = (hashCode * 59) + this.AccountType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.accountType.GetHashCode();
                 }
-                if (this.Signatory != null)
+                if (this.signatory != null)
                 {
-                    hashCode = (hashCode * 59) + this.Signatory.GetHashCode();
+                    hashCode = (hashCode * 59) + this.signatory.GetHashCode();
                 }
-                if (this.Metadata != null)
+                if (this.metadata != null)
                 {
-                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                    hashCode = (hashCode * 59) + this.metadata.GetHashCode();
                 }
                 return hashCode;
             }
@@ -242,34 +249,34 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Description (string) maxLength
-            if (this.Description != null && this.Description.Length > 255)
+            // description (string) maxLength
+            if (this.description != null && this.description.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 255.", new [] { "Description" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for description, length must be less than 255.", new [] { "description" });
             }
 
-            // RoutingNumber (string) maxLength
-            if (this.RoutingNumber != null && this.RoutingNumber.Length > 9)
+            // routingNumber (string) maxLength
+            if (this.routingNumber != null && this.routingNumber.Length > 9)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RoutingNumber, length must be less than 9.", new [] { "RoutingNumber" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for routingNumber, length must be less than 9.", new [] { "routingNumber" });
             }
 
-            // RoutingNumber (string) minLength
-            if (this.RoutingNumber != null && this.RoutingNumber.Length < 9)
+            // routingNumber (string) minLength
+            if (this.routingNumber != null && this.routingNumber.Length < 9)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RoutingNumber, length must be greater than 9.", new [] { "RoutingNumber" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for routingNumber, length must be greater than 9.", new [] { "routingNumber" });
             }
 
-            // AccountNumber (string) maxLength
-            if (this.AccountNumber != null && this.AccountNumber.Length > 17)
+            // accountNumber (string) maxLength
+            if (this.accountNumber != null && this.accountNumber.Length > 17)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AccountNumber, length must be less than 17.", new [] { "AccountNumber" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for accountNumber, length must be less than 17.", new [] { "accountNumber" });
             }
 
-            // Signatory (string) maxLength
-            if (this.Signatory != null && this.Signatory.Length > 30)
+            // signatory (string) maxLength
+            if (this.signatory != null && this.signatory.Length > 30)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Signatory, length must be less than 30.", new [] { "Signatory" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for signatory, length must be less than 30.", new [] { "signatory" });
             }
 
             yield break;

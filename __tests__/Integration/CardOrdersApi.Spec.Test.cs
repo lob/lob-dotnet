@@ -41,28 +41,28 @@ namespace __tests__.Integration {
 
             validCardApi = new CardsApi(config);
 
-            cardOrderEditable = new CardOrderEditable(10000);
+            cardOrderEditable = new CardOrderEditable();
+            cardOrderEditable.setQuantity(10000);
 
-            CardEditable cardEditable = new CardEditable(
-                "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf", // front
-                "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf", // back
-                CardEditable.SizeEnum._2125x3375, // size
-                "C# integration test card in cardOrders" // description
-            );
+            CardEditable cardEditable = new CardEditable();
+            cardEditable.setFront("https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf");
+            cardEditable.setBack("https://s3-us-west-2.amazonaws.com/public.lob.com/assets/card_horizontal.pdf");
+            cardEditable.setSize(CardEditable.SizeEnum._2125x3375);
+            cardEditable.setDescription("C# integration test card in cardOrders");
             card = validCardApi.CardCreate(cardEditable);
         }
 
         public void Dispose()
         {
-            validCardApi.CardDelete(card.Id);
+            validCardApi.CardDelete(card.getId());
         }
 
         [Test]
         public void CardOrderCreateTest() {
-            CardOrder response = validApi.CardOrderCreate(card.Id, cardOrderEditable);
+            CardOrder response = validApi.CardOrderCreate(card.getId(), cardOrderEditable);
 
-            Assert.NotNull(response.Id);
-            Assert.AreEqual(response.QuantityOrdered, cardOrderEditable.Quantity);
+            Assert.NotNull(response.getId());
+            Assert.AreEqual(response.getQuantityOrdered(), cardOrderEditable.getQuantity());
         }
 
         [Test]
@@ -79,7 +79,7 @@ namespace __tests__.Integration {
         [Test]
         public void CardOrderCreateTestBadUsername() {
             try {
-                CardOrder response = invalidApi.CardOrderCreate(card.Id, cardOrderEditable);
+                CardOrder response = invalidApi.CardOrderCreate(card.getId(), cardOrderEditable);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -89,11 +89,11 @@ namespace __tests__.Integration {
 
         [Test]
         public void CardOrdersRetrieveTest() {
-            CardOrderList response = validApi.CardOrdersRetrieve(card.Id);
+            CardOrderList response = validApi.CardOrdersRetrieve(card.getId());
 
             Boolean retrievedCardOrder = false;
-            foreach(var cardOrder in response.Data) {
-                if (cardOrder.CardId == card.Id)
+            foreach(var cardOrder in response.getData()) {
+                if (cardOrder.getCardId() == card.getId())
                     retrievedCardOrder = true;
             }
             Assert.True(retrievedCardOrder);
@@ -113,7 +113,7 @@ namespace __tests__.Integration {
         [Test]
         public void CardOrdersRetrieveTestBadUsername() {
             try {
-                CardOrderList response = invalidApi.CardOrdersRetrieve(card.Id);
+                CardOrderList response = invalidApi.CardOrdersRetrieve(card.getId());
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

@@ -36,41 +36,38 @@ namespace lob.dotnet.Model
         /// Initializes a new instance of the <see cref="Location" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Location() { }
+        public Location() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="Location" /> class.
         /// </summary>
         /// <param name="latitude">A positive or negative decimal indicating the geographic latitude of the address, specifying the north-to-south position of a location. This should be input with &#x60;longitude&#x60; to pinpoint locations on a map.  (required).</param>
         /// <param name="longitude">A positive or negative decimal indicating the geographic longitude of the address, specifying the north-to-south position of a location. This should be input with &#x60;latitude&#x60; to pinpoint locations on a map.  (required).</param>
-        public Location(float? latitude = default(float?), float? longitude = default(float?))
-        {
-            // to ensure "latitude" is required (not null)
-            if (latitude == null)
-            {
-                throw new ArgumentNullException("latitude is a required property for Location and cannot be null");
-            }
-            this.Latitude = latitude;
-            // to ensure "longitude" is required (not null)
-            if (longitude == null)
-            {
-                throw new ArgumentNullException("longitude is a required property for Location and cannot be null");
-            }
-            this.Longitude = longitude;
-        }
 
         /// <summary>
         /// A positive or negative decimal indicating the geographic latitude of the address, specifying the north-to-south position of a location. This should be input with &#x60;longitude&#x60; to pinpoint locations on a map. 
         /// </summary>
         /// <value>A positive or negative decimal indicating the geographic latitude of the address, specifying the north-to-south position of a location. This should be input with &#x60;longitude&#x60; to pinpoint locations on a map. </value>
         [DataMember(Name = "latitude", IsRequired = true, EmitDefaultValue = true)]
-        public float? Latitude { get; set; }
+        private float? latitude;
+        public float? getLatitude() {
+            return latitude;
+        }
+        public void setLatitude(float? value) {
+            latitude = value;
+        }
 
         /// <summary>
         /// A positive or negative decimal indicating the geographic longitude of the address, specifying the north-to-south position of a location. This should be input with &#x60;latitude&#x60; to pinpoint locations on a map. 
         /// </summary>
         /// <value>A positive or negative decimal indicating the geographic longitude of the address, specifying the north-to-south position of a location. This should be input with &#x60;latitude&#x60; to pinpoint locations on a map. </value>
         [DataMember(Name = "longitude", IsRequired = true, EmitDefaultValue = true)]
-        public float? Longitude { get; set; }
+        private float? longitude;
+        public float? getLongitude() {
+            return longitude;
+        }
+        public void setLongitude(float? value) {
+            longitude = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,8 +77,8 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Location {\n");
-            sb.Append("  Latitude: ").Append(Latitude).Append("\n");
-            sb.Append("  Longitude: ").Append(Longitude).Append("\n");
+            sb.Append("  latitude: ").Append(latitude).Append("\n");
+            sb.Append("  longitude: ").Append(longitude).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -92,7 +89,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -118,14 +115,14 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Latitude == input.Latitude ||
-                    (this.Latitude != null &&
-                    this.Latitude.Equals(input.Latitude))
+                    this.latitude == input.getLatitude() ||
+                    (this.latitude != null &&
+                    this.latitude.Equals(input.getLatitude()))
                 ) && 
                 (
-                    this.Longitude == input.Longitude ||
-                    (this.Longitude != null &&
-                    this.Longitude.Equals(input.Longitude))
+                    this.longitude == input.getLongitude() ||
+                    (this.longitude != null &&
+                    this.longitude.Equals(input.getLongitude()))
                 );
         }
 
@@ -138,13 +135,13 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Latitude != null)
+                if (this.latitude != null)
                 {
-                    hashCode = (hashCode * 59) + this.Latitude.GetHashCode();
+                    hashCode = (hashCode * 59) + this.latitude.GetHashCode();
                 }
-                if (this.Longitude != null)
+                if (this.longitude != null)
                 {
-                    hashCode = (hashCode * 59) + this.Longitude.GetHashCode();
+                    hashCode = (hashCode * 59) + this.longitude.GetHashCode();
                 }
                 return hashCode;
             }
@@ -157,28 +154,28 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Latitude (float?) maximum
-            if (this.Latitude > (float?)90)
+            // latitude (float?) maximum
+            if (this.latitude > (float?)90)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Latitude, must be a value less than or equal to 90.", new [] { "Latitude" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for latitude, must be a value less than or equal to 90.", new [] { "latitude" });
             }
 
-            // Latitude (float?) minimum
-            if (this.Latitude < (float?)-90)
+            // latitude (float?) minimum
+            if (this.latitude < (float?)-90)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Latitude, must be a value greater than or equal to -90.", new [] { "Latitude" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for latitude, must be a value greater than or equal to -90.", new [] { "latitude" });
             }
 
-            // Longitude (float?) maximum
-            if (this.Longitude > (float?)180)
+            // longitude (float?) maximum
+            if (this.longitude > (float?)180)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Longitude, must be a value less than or equal to 180.", new [] { "Longitude" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for longitude, must be a value less than or equal to 180.", new [] { "longitude" });
             }
 
-            // Longitude (float?) minimum
-            if (this.Longitude < (float?)-180)
+            // longitude (float?) minimum
+            if (this.longitude < (float?)-180)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Longitude, must be a value greater than or equal to -180.", new [] { "Longitude" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for longitude, must be a value greater than or equal to -180.", new [] { "longitude" });
             }
 
             yield break;

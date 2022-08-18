@@ -43,72 +43,109 @@ namespace lob.dotnet.Model
         /// <param name="city">city.</param>
         /// <param name="state">The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2:US) two letter code or subdivision name for the state. &#x60;city&#x60; and &#x60;state&#x60; are required if no &#x60;zip_code&#x60; is passed..</param>
         /// <param name="zipCode">Required if &#x60;city&#x60; and &#x60;state&#x60; are not passed in. If included, must be formatted as a US ZIP or ZIP+4 (e.g. &#x60;94107&#x60;, &#x60;941072282&#x60;, &#x60;94107-2282&#x60;)..</param>
-        public UsVerificationsWritable(string address = default(string), string recipient = default(string), string primaryLine = default(string), string secondaryLine = default(string), string urbanization = default(string), string city = default(string), string state = default(string), string zipCode = default(string))
-        {
-            this.Address = address;
-            this.Recipient = recipient;
-            this.PrimaryLine = primaryLine;
-            this.SecondaryLine = secondaryLine;
-            this.Urbanization = urbanization;
-            this.City = city;
-            this.State = state;
-            this.ZipCode = zipCode;
-        }
 
         /// <summary>
         /// The entire address in one string (e.g., \&quot;210 King Street 94107\&quot;). _Does not support a recipient and will error when other payload parameters are provided._ 
         /// </summary>
         /// <value>The entire address in one string (e.g., \&quot;210 King Street 94107\&quot;). _Does not support a recipient and will error when other payload parameters are provided._ </value>
         [DataMember(Name = "address", EmitDefaultValue = false)]
-        public string Address { get; set; }
+        private string address;
+        public string getAddress() {
+            return address;
+        }
+        public void setAddress(string value) {
+            address = value;
+        }
 
         /// <summary>
         /// The intended recipient, typically a person&#39;s or firm&#39;s name.
         /// </summary>
         /// <value>The intended recipient, typically a person&#39;s or firm&#39;s name.</value>
         [DataMember(Name = "recipient", EmitDefaultValue = true)]
-        public string Recipient { get; set; }
+        private string recipient;
+        public string getRecipient() {
+            return recipient;
+        }
+        public void setRecipient(string value) {
+            recipient = value;
+        }
 
         /// <summary>
         /// The primary delivery line (usually the street address) of the address. Combination of the following applicable &#x60;components&#x60;: * &#x60;primary_number&#x60; * &#x60;street_predirection&#x60; * &#x60;street_name&#x60; * &#x60;street_suffix&#x60; * &#x60;street_postdirection&#x60; * &#x60;secondary_designator&#x60; * &#x60;secondary_number&#x60; * &#x60;pmb_designator&#x60; * &#x60;pmb_number&#x60; 
         /// </summary>
         /// <value>The primary delivery line (usually the street address) of the address. Combination of the following applicable &#x60;components&#x60;: * &#x60;primary_number&#x60; * &#x60;street_predirection&#x60; * &#x60;street_name&#x60; * &#x60;street_suffix&#x60; * &#x60;street_postdirection&#x60; * &#x60;secondary_designator&#x60; * &#x60;secondary_number&#x60; * &#x60;pmb_designator&#x60; * &#x60;pmb_number&#x60; </value>
         [DataMember(Name = "primary_line", EmitDefaultValue = false)]
-        public string PrimaryLine { get; set; }
+        private string primaryLine;
+        public string getPrimaryLine() {
+            return primaryLine;
+        }
+        public void setPrimaryLine(string value) {
+            primaryLine = value;
+        }
 
         /// <summary>
         /// The secondary delivery line of the address. This field is typically empty but may contain information if &#x60;primary_line&#x60; is too long. 
         /// </summary>
         /// <value>The secondary delivery line of the address. This field is typically empty but may contain information if &#x60;primary_line&#x60; is too long. </value>
         [DataMember(Name = "secondary_line", EmitDefaultValue = false)]
-        public string SecondaryLine { get; set; }
+        private string secondaryLine;
+        public string getSecondaryLine() {
+            return secondaryLine;
+        }
+        public void setSecondaryLine(string value) {
+            secondaryLine = value;
+        }
 
         /// <summary>
         /// Only present for addresses in Puerto Rico. An urbanization refers to an area, sector, or development within a city. See [USPS documentation](https://pe.usps.com/text/pub28/28api_008.htm#:~:text&#x3D;I51.,-4%20Urbanizations&amp;text&#x3D;In%20Puerto%20Rico%2C%20identical%20street,placed%20before%20the%20urbanization%20name.) for clarification. 
         /// </summary>
         /// <value>Only present for addresses in Puerto Rico. An urbanization refers to an area, sector, or development within a city. See [USPS documentation](https://pe.usps.com/text/pub28/28api_008.htm#:~:text&#x3D;I51.,-4%20Urbanizations&amp;text&#x3D;In%20Puerto%20Rico%2C%20identical%20street,placed%20before%20the%20urbanization%20name.) for clarification. </value>
         [DataMember(Name = "urbanization", EmitDefaultValue = false)]
-        public string Urbanization { get; set; }
+        private string urbanization;
+        public string getUrbanization() {
+            return urbanization;
+        }
+        public void setUrbanization(string value) {
+            urbanization = value;
+        }
 
         /// <summary>
         /// Gets or Sets City
         /// </summary>
         [DataMember(Name = "city", EmitDefaultValue = false)]
-        public string City { get; set; }
+        private string city;
+        public string getCity() {
+            return city;
+        }
+        public void setCity(string value) {
+            city = value;
+        }
 
         /// <summary>
         /// The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2:US) two letter code or subdivision name for the state. &#x60;city&#x60; and &#x60;state&#x60; are required if no &#x60;zip_code&#x60; is passed.
         /// </summary>
         /// <value>The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2:US) two letter code or subdivision name for the state. &#x60;city&#x60; and &#x60;state&#x60; are required if no &#x60;zip_code&#x60; is passed.</value>
         [DataMember(Name = "state", EmitDefaultValue = false)]
-        public string State { get; set; }
+        private string state;
+        public string getState() {
+            return state;
+        }
+        public void setState(string value) {
+            state = value;
+        }
 
         /// <summary>
         /// Required if &#x60;city&#x60; and &#x60;state&#x60; are not passed in. If included, must be formatted as a US ZIP or ZIP+4 (e.g. &#x60;94107&#x60;, &#x60;941072282&#x60;, &#x60;94107-2282&#x60;).
         /// </summary>
         /// <value>Required if &#x60;city&#x60; and &#x60;state&#x60; are not passed in. If included, must be formatted as a US ZIP or ZIP+4 (e.g. &#x60;94107&#x60;, &#x60;941072282&#x60;, &#x60;94107-2282&#x60;).</value>
         [DataMember(Name = "zip_code", EmitDefaultValue = false)]
-        public string ZipCode { get; set; }
+        private string zipCode;
+        public string getZipCode() {
+            return zipCode;
+        }
+        public void setZipCode(string value) {
+            zipCode = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -118,14 +155,14 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UsVerificationsWritable {\n");
-            sb.Append("  Address: ").Append(Address).Append("\n");
-            sb.Append("  Recipient: ").Append(Recipient).Append("\n");
-            sb.Append("  PrimaryLine: ").Append(PrimaryLine).Append("\n");
-            sb.Append("  SecondaryLine: ").Append(SecondaryLine).Append("\n");
-            sb.Append("  Urbanization: ").Append(Urbanization).Append("\n");
-            sb.Append("  City: ").Append(City).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  ZipCode: ").Append(ZipCode).Append("\n");
+            sb.Append("  address: ").Append(address).Append("\n");
+            sb.Append("  recipient: ").Append(recipient).Append("\n");
+            sb.Append("  primaryLine: ").Append(primaryLine).Append("\n");
+            sb.Append("  secondaryLine: ").Append(secondaryLine).Append("\n");
+            sb.Append("  urbanization: ").Append(urbanization).Append("\n");
+            sb.Append("  city: ").Append(city).Append("\n");
+            sb.Append("  state: ").Append(state).Append("\n");
+            sb.Append("  zipCode: ").Append(zipCode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -136,7 +173,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -162,44 +199,44 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Address == input.Address ||
-                    (this.Address != null &&
-                    this.Address.Equals(input.Address))
+                    this.address == input.getAddress() ||
+                    (this.address != null &&
+                    this.address.Equals(input.getAddress()))
                 ) && 
                 (
-                    this.Recipient == input.Recipient ||
-                    (this.Recipient != null &&
-                    this.Recipient.Equals(input.Recipient))
+                    this.recipient == input.getRecipient() ||
+                    (this.recipient != null &&
+                    this.recipient.Equals(input.getRecipient()))
                 ) && 
                 (
-                    this.PrimaryLine == input.PrimaryLine ||
-                    (this.PrimaryLine != null &&
-                    this.PrimaryLine.Equals(input.PrimaryLine))
+                    this.primaryLine == input.getPrimaryLine() ||
+                    (this.primaryLine != null &&
+                    this.primaryLine.Equals(input.getPrimaryLine()))
                 ) && 
                 (
-                    this.SecondaryLine == input.SecondaryLine ||
-                    (this.SecondaryLine != null &&
-                    this.SecondaryLine.Equals(input.SecondaryLine))
+                    this.secondaryLine == input.getSecondaryLine() ||
+                    (this.secondaryLine != null &&
+                    this.secondaryLine.Equals(input.getSecondaryLine()))
                 ) && 
                 (
-                    this.Urbanization == input.Urbanization ||
-                    (this.Urbanization != null &&
-                    this.Urbanization.Equals(input.Urbanization))
+                    this.urbanization == input.getUrbanization() ||
+                    (this.urbanization != null &&
+                    this.urbanization.Equals(input.getUrbanization()))
                 ) && 
                 (
-                    this.City == input.City ||
-                    (this.City != null &&
-                    this.City.Equals(input.City))
+                    this.city == input.getCity() ||
+                    (this.city != null &&
+                    this.city.Equals(input.getCity()))
                 ) && 
                 (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
+                    this.state == input.getState() ||
+                    (this.state != null &&
+                    this.state.Equals(input.getState()))
                 ) && 
                 (
-                    this.ZipCode == input.ZipCode ||
-                    (this.ZipCode != null &&
-                    this.ZipCode.Equals(input.ZipCode))
+                    this.zipCode == input.getZipCode() ||
+                    (this.zipCode != null &&
+                    this.zipCode.Equals(input.getZipCode()))
                 );
         }
 
@@ -212,37 +249,37 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Address != null)
+                if (this.address != null)
                 {
-                    hashCode = (hashCode * 59) + this.Address.GetHashCode();
+                    hashCode = (hashCode * 59) + this.address.GetHashCode();
                 }
-                if (this.Recipient != null)
+                if (this.recipient != null)
                 {
-                    hashCode = (hashCode * 59) + this.Recipient.GetHashCode();
+                    hashCode = (hashCode * 59) + this.recipient.GetHashCode();
                 }
-                if (this.PrimaryLine != null)
+                if (this.primaryLine != null)
                 {
-                    hashCode = (hashCode * 59) + this.PrimaryLine.GetHashCode();
+                    hashCode = (hashCode * 59) + this.primaryLine.GetHashCode();
                 }
-                if (this.SecondaryLine != null)
+                if (this.secondaryLine != null)
                 {
-                    hashCode = (hashCode * 59) + this.SecondaryLine.GetHashCode();
+                    hashCode = (hashCode * 59) + this.secondaryLine.GetHashCode();
                 }
-                if (this.Urbanization != null)
+                if (this.urbanization != null)
                 {
-                    hashCode = (hashCode * 59) + this.Urbanization.GetHashCode();
+                    hashCode = (hashCode * 59) + this.urbanization.GetHashCode();
                 }
-                if (this.City != null)
+                if (this.city != null)
                 {
-                    hashCode = (hashCode * 59) + this.City.GetHashCode();
+                    hashCode = (hashCode * 59) + this.city.GetHashCode();
                 }
-                if (this.State != null)
+                if (this.state != null)
                 {
-                    hashCode = (hashCode * 59) + this.State.GetHashCode();
+                    hashCode = (hashCode * 59) + this.state.GetHashCode();
                 }
-                if (this.ZipCode != null)
+                if (this.zipCode != null)
                 {
-                    hashCode = (hashCode * 59) + this.ZipCode.GetHashCode();
+                    hashCode = (hashCode * 59) + this.zipCode.GetHashCode();
                 }
                 return hashCode;
             }
@@ -255,53 +292,53 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Address (string) maxLength
-            if (this.Address != null && this.Address.Length > 500)
+            // address (string) maxLength
+            if (this.address != null && this.address.Length > 500)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Address, length must be less than 500.", new [] { "Address" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for address, length must be less than 500.", new [] { "address" });
             }
 
-            // Recipient (string) maxLength
-            if (this.Recipient != null && this.Recipient.Length > 500)
+            // recipient (string) maxLength
+            if (this.recipient != null && this.recipient.Length > 500)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Recipient, length must be less than 500.", new [] { "Recipient" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for recipient, length must be less than 500.", new [] { "recipient" });
             }
 
-            // PrimaryLine (string) maxLength
-            if (this.PrimaryLine != null && this.PrimaryLine.Length > 500)
+            // primaryLine (string) maxLength
+            if (this.primaryLine != null && this.primaryLine.Length > 500)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PrimaryLine, length must be less than 500.", new [] { "PrimaryLine" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for primaryLine, length must be less than 500.", new [] { "primaryLine" });
             }
 
-            // SecondaryLine (string) maxLength
-            if (this.SecondaryLine != null && this.SecondaryLine.Length > 500)
+            // secondaryLine (string) maxLength
+            if (this.secondaryLine != null && this.secondaryLine.Length > 500)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SecondaryLine, length must be less than 500.", new [] { "SecondaryLine" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for secondaryLine, length must be less than 500.", new [] { "secondaryLine" });
             }
 
-            // Urbanization (string) maxLength
-            if (this.Urbanization != null && this.Urbanization.Length > 500)
+            // urbanization (string) maxLength
+            if (this.urbanization != null && this.urbanization.Length > 500)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Urbanization, length must be less than 500.", new [] { "Urbanization" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for urbanization, length must be less than 500.", new [] { "urbanization" });
             }
 
-            // City (string) maxLength
-            if (this.City != null && this.City.Length > 200)
+            // city (string) maxLength
+            if (this.city != null && this.city.Length > 200)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for City, length must be less than 200.", new [] { "City" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for city, length must be less than 200.", new [] { "city" });
             }
 
-            // State (string) maxLength
-            if (this.State != null && this.State.Length > 50)
+            // state (string) maxLength
+            if (this.state != null && this.state.Length > 50)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for State, length must be less than 50.", new [] { "State" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for state, length must be less than 50.", new [] { "state" });
             }
 
-            // ZipCode (string) pattern
-            Regex regexZipCode = new Regex(@"^\\d{5}((-)?\\d{4})?$", RegexOptions.CultureInvariant);
-            if (false == regexZipCode.Match(this.ZipCode).Success)
+            // zipCode (string) pattern
+            Regex regexzipCode = new Regex(@"^\\d{5}((-)?\\d{4})?$", RegexOptions.CultureInvariant);
+            if (false == regexzipCode.Match(this.zipCode).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ZipCode, must match a pattern of " + regexZipCode, new [] { "ZipCode" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for zipCode, must match a pattern of " + regexzipCode, new [] { "zipCode" });
             }
 
             yield break;

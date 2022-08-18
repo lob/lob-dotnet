@@ -39,40 +39,57 @@ namespace lob.dotnet.Model
         /// <param name="alias">A quick reference name for the Return Envelope.</param>
         /// <param name="url">The url of the  return envelope.</param>
         /// <param name="_object">_object.</param>
-        public ReturnEnvelope(string id = default(string), string alias = default(string), string url = default(string), string _object = default(string))
-        {
-            this.Id = id;
-            this.Alias = alias;
-            this.Url = url;
-            this.Object = _object;
-        }
 
         /// <summary>
         /// The unique ID of the Return Envelope
         /// </summary>
         /// <value>The unique ID of the Return Envelope</value>
         [DataMember(Name = "id", EmitDefaultValue = false)]
-        public string Id { get; set; }
+        private string id;
+        public string getId() {
+            return id;
+        }
+        public void setId(string value) {
+            id = value;
+        }
 
         /// <summary>
         /// A quick reference name for the Return Envelope
         /// </summary>
         /// <value>A quick reference name for the Return Envelope</value>
         [DataMember(Name = "alias", EmitDefaultValue = false)]
-        public string Alias { get; set; }
+        private string alias;
+        public string getAlias() {
+            return alias;
+        }
+        public void setAlias(string value) {
+            alias = value;
+        }
 
         /// <summary>
         /// The url of the  return envelope
         /// </summary>
         /// <value>The url of the  return envelope</value>
         [DataMember(Name = "url", EmitDefaultValue = false)]
-        public string Url { get; set; }
+        private string url;
+        public string getUrl() {
+            return url;
+        }
+        public void setUrl(string value) {
+            url = value;
+        }
 
         /// <summary>
         /// Gets or Sets Object
         /// </summary>
         [DataMember(Name = "object", EmitDefaultValue = false)]
-        public string Object { get; set; }
+        private string _object;
+        public string getObject() {
+            return _object;
+        }
+        public void setObject(string value) {
+            _object = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -82,10 +99,10 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ReturnEnvelope {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Alias: ").Append(Alias).Append("\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
-            sb.Append("  Object: ").Append(Object).Append("\n");
+            sb.Append("  id: ").Append(id).Append("\n");
+            sb.Append("  alias: ").Append(alias).Append("\n");
+            sb.Append("  url: ").Append(url).Append("\n");
+            sb.Append("  _object: ").Append(_object).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -96,7 +113,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -122,24 +139,24 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.id == input.getId() ||
+                    (this.id != null &&
+                    this.id.Equals(input.getId()))
                 ) && 
                 (
-                    this.Alias == input.Alias ||
-                    (this.Alias != null &&
-                    this.Alias.Equals(input.Alias))
+                    this.alias == input.getAlias() ||
+                    (this.alias != null &&
+                    this.alias.Equals(input.getAlias()))
                 ) && 
                 (
-                    this.Url == input.Url ||
-                    (this.Url != null &&
-                    this.Url.Equals(input.Url))
+                    this.url == input.getUrl() ||
+                    (this.url != null &&
+                    this.url.Equals(input.getUrl()))
                 ) && 
                 (
-                    this.Object == input.Object ||
-                    (this.Object != null &&
-                    this.Object.Equals(input.Object))
+                    this._object == input.getObject() ||
+                    (this._object != null &&
+                    this._object.Equals(input.getObject()))
                 );
         }
 
@@ -152,21 +169,21 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                if (this.id != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.id.GetHashCode();
                 }
-                if (this.Alias != null)
+                if (this.alias != null)
                 {
-                    hashCode = (hashCode * 59) + this.Alias.GetHashCode();
+                    hashCode = (hashCode * 59) + this.alias.GetHashCode();
                 }
-                if (this.Url != null)
+                if (this.url != null)
                 {
-                    hashCode = (hashCode * 59) + this.Url.GetHashCode();
+                    hashCode = (hashCode * 59) + this.url.GetHashCode();
                 }
-                if (this.Object != null)
+                if (this._object != null)
                 {
-                    hashCode = (hashCode * 59) + this.Object.GetHashCode();
+                    hashCode = (hashCode * 59) + this._object.GetHashCode();
                 }
                 return hashCode;
             }

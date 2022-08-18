@@ -52,7 +52,13 @@ namespace lob.dotnet.Model
         /// Gets or Sets Carrier
         /// </summary>
         [DataMember(Name = "carrier", EmitDefaultValue = false)]
-        public CarrierEnum? Carrier { get; set; }
+        private CarrierEnum? carrier;
+        public CarrierEnum? getCarrier() {
+            return carrier;
+        }
+        public void setCarrier(CarrierEnum value) {
+            carrier = value;
+        }
         /// <summary>
         /// Defines Object
         /// </summary>
@@ -73,11 +79,17 @@ namespace lob.dotnet.Model
         /// Gets or Sets Object
         /// </summary>
         [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = false)]
-        public ObjectEnum Object { get; set; }
+        private ObjectEnum _object;
+        public ObjectEnum getObject() {
+            return _object;
+        }
+        public void setObject(ObjectEnum value) {
+            _object = value;
+        }
         /// <summary>
-        /// Specifies the location of the address information that will show through the double-window envelope. To see how this will impact your letter design, view our letter template.   * &#x60;top_first_page&#x60; - (default) print address information at the top of your provided first page   * &#x60;insert_blank_page&#x60; - insert a blank address page at the beginning of your file (you will be charged for the extra page)   * &#x60;bottom_first_page_center&#x60; - **(deprecation planned within a few months)** print address information at the bottom center of your provided first page   * &#x60;bottom_first_page&#x60; - print address information at the bottom of your provided first page 
+        /// Specifies the location of the address information that will show through the double-window envelope. 
         /// </summary>
-        /// <value>Specifies the location of the address information that will show through the double-window envelope. To see how this will impact your letter design, view our letter template.   * &#x60;top_first_page&#x60; - (default) print address information at the top of your provided first page   * &#x60;insert_blank_page&#x60; - insert a blank address page at the beginning of your file (you will be charged for the extra page)   * &#x60;bottom_first_page_center&#x60; - **(deprecation planned within a few months)** print address information at the bottom center of your provided first page   * &#x60;bottom_first_page&#x60; - print address information at the bottom of your provided first page </value>
+        /// <value>Specifies the location of the address information that will show through the double-window envelope. </value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum AddressPlacementEnum
         {
@@ -113,16 +125,22 @@ namespace lob.dotnet.Model
 
 
         /// <summary>
-        /// Specifies the location of the address information that will show through the double-window envelope. To see how this will impact your letter design, view our letter template.   * &#x60;top_first_page&#x60; - (default) print address information at the top of your provided first page   * &#x60;insert_blank_page&#x60; - insert a blank address page at the beginning of your file (you will be charged for the extra page)   * &#x60;bottom_first_page_center&#x60; - **(deprecation planned within a few months)** print address information at the bottom center of your provided first page   * &#x60;bottom_first_page&#x60; - print address information at the bottom of your provided first page 
+        /// Specifies the location of the address information that will show through the double-window envelope. 
         /// </summary>
-        /// <value>Specifies the location of the address information that will show through the double-window envelope. To see how this will impact your letter design, view our letter template.   * &#x60;top_first_page&#x60; - (default) print address information at the top of your provided first page   * &#x60;insert_blank_page&#x60; - insert a blank address page at the beginning of your file (you will be charged for the extra page)   * &#x60;bottom_first_page_center&#x60; - **(deprecation planned within a few months)** print address information at the bottom center of your provided first page   * &#x60;bottom_first_page&#x60; - print address information at the bottom of your provided first page </value>
+        /// <value>Specifies the location of the address information that will show through the double-window envelope. </value>
         [DataMember(Name = "address_placement", EmitDefaultValue = false)]
-        public AddressPlacementEnum? AddressPlacement { get; set; }
+        private AddressPlacementEnum? addressPlacement;
+        public AddressPlacementEnum? getAddressPlacement() {
+            return addressPlacement;
+        }
+        public void setAddressPlacement(AddressPlacementEnum value) {
+            addressPlacement = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="Letter" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Letter() { }
+        public Letter() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="Letter" /> class.
         /// </summary>
@@ -142,80 +160,53 @@ namespace lob.dotnet.Model
         /// <param name="metadata">Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information..</param>
         /// <param name="mergeVariables">You can input a merge variable payload object to your template to render dynamic content. For example, if you have a template like: &#x60;{{variable_name}}&#x60;, pass in &#x60;{\&quot;variable_name\&quot;: \&quot;Harry\&quot;}&#x60; to render &#x60;Harry&#x60;. &#x60;merge_variables&#x60; must be an object. Any type of value is accepted as long as the object is valid JSON; you can use &#x60;strings&#x60;, &#x60;numbers&#x60;, &#x60;booleans&#x60;, &#x60;arrays&#x60;, &#x60;objects&#x60;, or &#x60;null&#x60;. The max length of the object is 25,000 characters. If you call &#x60;JSON.stringify&#x60; on your object, it can be no longer than 25,000 characters. Your variable names cannot contain any whitespace or any of the following special characters: &#x60;!&#x60;, &#x60;\&quot;&#x60;, &#x60;#&#x60;, &#x60;%&#x60;, &#x60;&amp;&#x60;, &#x60;&#39;&#x60;, &#x60;(&#x60;, &#x60;)&#x60;, &#x60;*&#x60;, &#x60;+&#x60;, &#x60;,&#x60;, &#x60;/&#x60;, &#x60;;&#x60;, &#x60;&lt;&#x60;, &#x60;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;@&#x60;, &#x60;[&#x60;, &#x60;\\&#x60;, &#x60;]&#x60;, &#x60;^&#x60;, &#x60;&#x60; &#x60; &#x60;&#x60;, &#x60;{&#x60;, &#x60;|&#x60;, &#x60;}&#x60;, &#x60;~&#x60;. More instructions can be found in [our guide to using html and merge variables](https://lob.com/resources/guides/general/using-html-and-merge-variables). Depending on your [Merge Variable strictness](https://dashboard.lob.com/#/settings/account) setting, if you define variables in your HTML but do not pass them here, you will either receive an error or the variable will render as an empty string..</param>
         /// <param name="sendDate">A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the &#x60;send_date&#x60; has passed, the mailpiece can be canceled. If a date in the format &#x60;2017-11-01&#x60; is passed, it will evaluate to midnight UTC of that date (&#x60;2017-11-01T00:00:00.000Z&#x60;). If a datetime is passed, that exact time will be used. A &#x60;send_date&#x60; passed with no time zone will default to UTC, while a &#x60;send_date&#x60; passed with a time zone will be converted to UTC..</param>
-        /// <param name="extraService">Add an extra service to your letter. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred.   * registered - provides tracking and confirmation for international addresses   * &#x60;certified&#x60; - track and confirm delivery for domestic destinations. An extra sheet (1 PDF page single-sided or 2 PDF pages double-sided) is added to the beginning of your letter for address and barcode information. See here for templates: [#10 envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_template.pdf) and [flat envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_flat_template.pdf) (used for letters over 6 pages single-sided or 12 pages double-sided). You will not be charged for this extra sheet.   * &#x60;certified_return_receipt&#x60; - request an electronic copy of the recipient&#39;s signature to prove delivery of your certified letter .</param>
+        /// <param name="extraService">Add an extra service to your letter. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred..</param>
         /// <param name="trackingNumber">The tracking number, if applicable, will appear here when it becomes available. Dummy tracking numbers are not created in test mode..</param>
         /// <param name="trackingEvents">Tracking events are not populated for registered or regular (no extra service) letters..</param>
         /// <param name="returnAddress">Specifies the address the return envelope will be sent back to. This is an optional argument that is available if an account is signed up for the return envelope tracking beta, and has &#x60;return_envelope&#x60;, and &#x60;perforated_page&#x60; fields populated in the API request..</param>
         /// <param name="mailType">mailType.</param>
         /// <param name="color">Set this key to &#x60;true&#x60; if you would like to print in color. Set to &#x60;false&#x60; if you would like to print in black and white..</param>
         /// <param name="doubleSided">Set this attribute to &#x60;true&#x60; for double sided printing, or &#x60;false&#x60; for for single sided printing. Defaults to &#x60;true&#x60;. (default to true).</param>
-        /// <param name="addressPlacement">Specifies the location of the address information that will show through the double-window envelope. To see how this will impact your letter design, view our letter template.   * &#x60;top_first_page&#x60; - (default) print address information at the top of your provided first page   * &#x60;insert_blank_page&#x60; - insert a blank address page at the beginning of your file (you will be charged for the extra page)   * &#x60;bottom_first_page_center&#x60; - **(deprecation planned within a few months)** print address information at the bottom center of your provided first page   * &#x60;bottom_first_page&#x60; - print address information at the bottom of your provided first page  (default to AddressPlacementEnum.TopFirstPage).</param>
+        /// <param name="addressPlacement">Specifies the location of the address information that will show through the double-window envelope.  (default to AddressPlacementEnum.TopFirstPage).</param>
         /// <param name="returnEnvelope">returnEnvelope (required).</param>
         /// <param name="perforatedPage">Required if &#x60;return_envelope&#x60; is &#x60;true&#x60;. The number of the page that should be perforated for use with the return envelope. Must be greater than or equal to &#x60;1&#x60;. The blank page added by &#x60;address_placement&#x3D;insert_blank_page&#x60; will be ignored when considering the perforated page number. To see how perforation will impact your letter design, view our [perforation guide](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_perf_template.pdf)..</param>
         /// <param name="customEnvelope">customEnvelope.</param>
-        public Letter(Address to = default(Address), Address from = default(Address), CarrierEnum? carrier = CarrierEnum.USPS, List<Thumbnail> thumbnails = default(List<Thumbnail>), DateTime expectedDeliveryDate = default(DateTime), DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), string id = default(string), string templateId = default(string), string templateVersionId = default(string), ObjectEnum _object = ObjectEnum.Letter, string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string extraService = default(string), string trackingNumber = default(string), List<TrackingEventNormal> trackingEvents = default(List<TrackingEventNormal>), string returnAddress = default(string), MailType mailType = default(MailType), bool color = default(bool), bool doubleSided = true, AddressPlacementEnum? addressPlacement = AddressPlacementEnum.TopFirstPage, bool returnEnvelope = default(bool), int? perforatedPage = default(int?), LetterCustomEnvelope customEnvelope = default(LetterCustomEnvelope))
-        {
-            // to ensure "to" is required (not null)
-            if (to == null)
-            {
-                throw new ArgumentNullException("to is a required property for Letter and cannot be null");
-            }
-            this.To = to;
-            // to ensure "from" is required (not null)
-            if (from == null)
-            {
-                throw new ArgumentNullException("from is a required property for Letter and cannot be null");
-            }
-            this.From = from;
-            this.DateCreated = dateCreated;
-            this.DateModified = dateModified;
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for Letter and cannot be null");
-            }
-            this.Id = id;
-            this.Object = _object;
-            this.ReturnEnvelope = returnEnvelope;
-            this.Carrier = carrier;
-            this.Thumbnails = thumbnails;
-            this.ExpectedDeliveryDate = expectedDeliveryDate;
-            this.Deleted = deleted;
-            this.TemplateId = templateId;
-            this.TemplateVersionId = templateVersionId;
-            this.Description = description;
-            this.Metadata = metadata;
-            this.MergeVariables = mergeVariables;
-            this.SendDate = sendDate;
-            this.ExtraService = extraService;
-            this.TrackingNumber = trackingNumber;
-            this.TrackingEvents = trackingEvents;
-            this.ReturnAddress = returnAddress;
-            this.MailType = mailType;
-            this.Color = color;
-            this.DoubleSided = doubleSided;
-            this.AddressPlacement = addressPlacement;
-            this.PerforatedPage = perforatedPage;
-            this.CustomEnvelope = customEnvelope;
-        }
 
         /// <summary>
         /// Gets or Sets To
         /// </summary>
         [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = false)]
-        public Address To { get; set; }
+        private Address to;
+        public Address getTo() {
+            return to;
+        }
+        public void setTo(Address value) {
+            to = value;
+        }
 
         /// <summary>
         /// Gets or Sets From
         /// </summary>
         [DataMember(Name = "from", IsRequired = true, EmitDefaultValue = false)]
-        public Address From { get; set; }
+        private Address from;
+        public Address getFrom() {
+            return from;
+        }
+        public void setFrom(Address value) {
+            from = value;
+        }
 
         /// <summary>
         /// Gets or Sets Thumbnails
         /// </summary>
         [DataMember(Name = "thumbnails", EmitDefaultValue = false)]
-        public List<Thumbnail> Thumbnails { get; set; }
+        private List<Thumbnail> thumbnails;
+        public List<Thumbnail> getThumbnails() {
+            return thumbnails;
+        }
+        public void setThumbnails(List<Thumbnail> value) {
+            thumbnails = value;
+        }
 
         /// <summary>
         /// A date in YYYY-MM-DD format of the mailpiece&#39;s expected delivery date based on its &#x60;send_date&#x60;.
@@ -223,144 +214,276 @@ namespace lob.dotnet.Model
         /// <value>A date in YYYY-MM-DD format of the mailpiece&#39;s expected delivery date based on its &#x60;send_date&#x60;.</value>
         [DataMember(Name = "expected_delivery_date", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime ExpectedDeliveryDate { get; set; }
+        private DateTime expectedDeliveryDate;
+        public DateTime getExpectedDeliveryDate() {
+            return expectedDeliveryDate;
+        }
+        public void setExpectedDeliveryDate(DateTime value) {
+            expectedDeliveryDate = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was created.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was created.</value>
         [DataMember(Name = "date_created", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime DateCreated { get; set; }
+        private DateTime dateCreated;
+        public DateTime getDateCreated() {
+            return dateCreated;
+        }
+        public void setDateCreated(DateTime value) {
+            dateCreated = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was last modified.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was last modified.</value>
         [DataMember(Name = "date_modified", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime DateModified { get; set; }
+        private DateTime dateModified;
+        public DateTime getDateModified() {
+            return dateModified;
+        }
+        public void setDateModified(DateTime value) {
+            dateModified = value;
+        }
 
         /// <summary>
         /// Only returned if the resource has been successfully deleted.
         /// </summary>
         /// <value>Only returned if the resource has been successfully deleted.</value>
         [DataMember(Name = "deleted", EmitDefaultValue = true)]
-        public bool Deleted { get; set; }
+        private bool deleted;
+        public bool getDeleted() {
+            return deleted;
+        }
+        public void setDeleted(bool value) {
+            deleted = value;
+        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;ltr_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;ltr_&#x60;.</value>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
-        public string Id { get; set; }
+        private string id;
+        public string getId() {
+            return id;
+        }
+        public void setId(string value) {
+            id = value;
+        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;tmpl_&#x60;. ID of a saved [HTML template](#section/HTML-Templates).
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;tmpl_&#x60;. ID of a saved [HTML template](#section/HTML-Templates).</value>
         [DataMember(Name = "template_id", EmitDefaultValue = false)]
-        public string TemplateId { get; set; }
+        private string templateId;
+        public string getTemplateId() {
+            return templateId;
+        }
+        public void setTemplateId(string value) {
+            templateId = value;
+        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;vrsn_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;vrsn_&#x60;.</value>
         [DataMember(Name = "template_version_id", EmitDefaultValue = false)]
-        public string TemplateVersionId { get; set; }
+        private string templateVersionId;
+        public string getTemplateVersionId() {
+            return templateVersionId;
+        }
+        public void setTemplateVersionId(string value) {
+            templateVersionId = value;
+        }
 
         /// <summary>
         /// An internal description that identifies this resource. Must be no longer than 255 characters. 
         /// </summary>
         /// <value>An internal description that identifies this resource. Must be no longer than 255 characters. </value>
         [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
+        private string description;
+        public string getDescription() {
+            return description;
+        }
+        public void setDescription(string value) {
+            description = value;
+        }
 
         /// <summary>
         /// Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information.
         /// </summary>
         /// <value>Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information.</value>
         [DataMember(Name = "metadata", EmitDefaultValue = false)]
-        public Dictionary<string, string> Metadata { get; set; }
+        private Dictionary<string, string> metadata;
+        public Dictionary<string, string> getMetadata() {
+            return metadata;
+        }
+        public void setMetadata(Dictionary<string, string> value) {
+            metadata = value;
+        }
 
         /// <summary>
         /// You can input a merge variable payload object to your template to render dynamic content. For example, if you have a template like: &#x60;{{variable_name}}&#x60;, pass in &#x60;{\&quot;variable_name\&quot;: \&quot;Harry\&quot;}&#x60; to render &#x60;Harry&#x60;. &#x60;merge_variables&#x60; must be an object. Any type of value is accepted as long as the object is valid JSON; you can use &#x60;strings&#x60;, &#x60;numbers&#x60;, &#x60;booleans&#x60;, &#x60;arrays&#x60;, &#x60;objects&#x60;, or &#x60;null&#x60;. The max length of the object is 25,000 characters. If you call &#x60;JSON.stringify&#x60; on your object, it can be no longer than 25,000 characters. Your variable names cannot contain any whitespace or any of the following special characters: &#x60;!&#x60;, &#x60;\&quot;&#x60;, &#x60;#&#x60;, &#x60;%&#x60;, &#x60;&amp;&#x60;, &#x60;&#39;&#x60;, &#x60;(&#x60;, &#x60;)&#x60;, &#x60;*&#x60;, &#x60;+&#x60;, &#x60;,&#x60;, &#x60;/&#x60;, &#x60;;&#x60;, &#x60;&lt;&#x60;, &#x60;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;@&#x60;, &#x60;[&#x60;, &#x60;\\&#x60;, &#x60;]&#x60;, &#x60;^&#x60;, &#x60;&#x60; &#x60; &#x60;&#x60;, &#x60;{&#x60;, &#x60;|&#x60;, &#x60;}&#x60;, &#x60;~&#x60;. More instructions can be found in [our guide to using html and merge variables](https://lob.com/resources/guides/general/using-html-and-merge-variables). Depending on your [Merge Variable strictness](https://dashboard.lob.com/#/settings/account) setting, if you define variables in your HTML but do not pass them here, you will either receive an error or the variable will render as an empty string.
         /// </summary>
         /// <value>You can input a merge variable payload object to your template to render dynamic content. For example, if you have a template like: &#x60;{{variable_name}}&#x60;, pass in &#x60;{\&quot;variable_name\&quot;: \&quot;Harry\&quot;}&#x60; to render &#x60;Harry&#x60;. &#x60;merge_variables&#x60; must be an object. Any type of value is accepted as long as the object is valid JSON; you can use &#x60;strings&#x60;, &#x60;numbers&#x60;, &#x60;booleans&#x60;, &#x60;arrays&#x60;, &#x60;objects&#x60;, or &#x60;null&#x60;. The max length of the object is 25,000 characters. If you call &#x60;JSON.stringify&#x60; on your object, it can be no longer than 25,000 characters. Your variable names cannot contain any whitespace or any of the following special characters: &#x60;!&#x60;, &#x60;\&quot;&#x60;, &#x60;#&#x60;, &#x60;%&#x60;, &#x60;&amp;&#x60;, &#x60;&#39;&#x60;, &#x60;(&#x60;, &#x60;)&#x60;, &#x60;*&#x60;, &#x60;+&#x60;, &#x60;,&#x60;, &#x60;/&#x60;, &#x60;;&#x60;, &#x60;&lt;&#x60;, &#x60;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;@&#x60;, &#x60;[&#x60;, &#x60;\\&#x60;, &#x60;]&#x60;, &#x60;^&#x60;, &#x60;&#x60; &#x60; &#x60;&#x60;, &#x60;{&#x60;, &#x60;|&#x60;, &#x60;}&#x60;, &#x60;~&#x60;. More instructions can be found in [our guide to using html and merge variables](https://lob.com/resources/guides/general/using-html-and-merge-variables). Depending on your [Merge Variable strictness](https://dashboard.lob.com/#/settings/account) setting, if you define variables in your HTML but do not pass them here, you will either receive an error or the variable will render as an empty string.</value>
         [DataMember(Name = "merge_variables", EmitDefaultValue = true)]
-        public Object MergeVariables { get; set; }
+        private Object mergeVariables;
+        public Object getMergeVariables() {
+            return mergeVariables;
+        }
+        public void setMergeVariables(Object value) {
+            mergeVariables = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the &#x60;send_date&#x60; has passed, the mailpiece can be canceled. If a date in the format &#x60;2017-11-01&#x60; is passed, it will evaluate to midnight UTC of that date (&#x60;2017-11-01T00:00:00.000Z&#x60;). If a datetime is passed, that exact time will be used. A &#x60;send_date&#x60; passed with no time zone will default to UTC, while a &#x60;send_date&#x60; passed with a time zone will be converted to UTC.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the &#x60;send_date&#x60; has passed, the mailpiece can be canceled. If a date in the format &#x60;2017-11-01&#x60; is passed, it will evaluate to midnight UTC of that date (&#x60;2017-11-01T00:00:00.000Z&#x60;). If a datetime is passed, that exact time will be used. A &#x60;send_date&#x60; passed with no time zone will default to UTC, while a &#x60;send_date&#x60; passed with a time zone will be converted to UTC.</value>
         [DataMember(Name = "send_date", EmitDefaultValue = false)]
-        public DateTime SendDate { get; set; }
+        private DateTime sendDate;
+        public DateTime getSendDate() {
+            return sendDate;
+        }
+        public void setSendDate(DateTime value) {
+            sendDate = value;
+        }
 
         /// <summary>
-        /// Add an extra service to your letter. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred.   * registered - provides tracking and confirmation for international addresses   * &#x60;certified&#x60; - track and confirm delivery for domestic destinations. An extra sheet (1 PDF page single-sided or 2 PDF pages double-sided) is added to the beginning of your letter for address and barcode information. See here for templates: [#10 envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_template.pdf) and [flat envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_flat_template.pdf) (used for letters over 6 pages single-sided or 12 pages double-sided). You will not be charged for this extra sheet.   * &#x60;certified_return_receipt&#x60; - request an electronic copy of the recipient&#39;s signature to prove delivery of your certified letter 
+        /// Add an extra service to your letter. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred.
         /// </summary>
-        /// <value>Add an extra service to your letter. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred.   * registered - provides tracking and confirmation for international addresses   * &#x60;certified&#x60; - track and confirm delivery for domestic destinations. An extra sheet (1 PDF page single-sided or 2 PDF pages double-sided) is added to the beginning of your letter for address and barcode information. See here for templates: [#10 envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_template.pdf) and [flat envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_flat_template.pdf) (used for letters over 6 pages single-sided or 12 pages double-sided). You will not be charged for this extra sheet.   * &#x60;certified_return_receipt&#x60; - request an electronic copy of the recipient&#39;s signature to prove delivery of your certified letter </value>
+        /// <value>Add an extra service to your letter. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred.</value>
         [DataMember(Name = "extra_service", EmitDefaultValue = false)]
-        public string ExtraService { get; set; }
+        private string extraService;
+        public string getExtraService() {
+            return extraService;
+        }
+        public void setExtraService(string value) {
+            extraService = value;
+        }
 
         /// <summary>
         /// The tracking number, if applicable, will appear here when it becomes available. Dummy tracking numbers are not created in test mode.
         /// </summary>
         /// <value>The tracking number, if applicable, will appear here when it becomes available. Dummy tracking numbers are not created in test mode.</value>
         [DataMember(Name = "tracking_number", EmitDefaultValue = true)]
-        public string TrackingNumber { get; set; }
+        private string trackingNumber;
+        public string getTrackingNumber() {
+            return trackingNumber;
+        }
+        public void setTrackingNumber(string value) {
+            trackingNumber = value;
+        }
 
         /// <summary>
         /// Tracking events are not populated for registered or regular (no extra service) letters.
         /// </summary>
         /// <value>Tracking events are not populated for registered or regular (no extra service) letters.</value>
         [DataMember(Name = "tracking_events", EmitDefaultValue = false)]
-        public List<TrackingEventNormal> TrackingEvents { get; set; }
+        private List<TrackingEventNormal> trackingEvents;
+        public List<TrackingEventNormal> getTrackingEvents() {
+            return trackingEvents;
+        }
+        public void setTrackingEvents(List<TrackingEventNormal> value) {
+            trackingEvents = value;
+        }
 
         /// <summary>
         /// Specifies the address the return envelope will be sent back to. This is an optional argument that is available if an account is signed up for the return envelope tracking beta, and has &#x60;return_envelope&#x60;, and &#x60;perforated_page&#x60; fields populated in the API request.
         /// </summary>
         /// <value>Specifies the address the return envelope will be sent back to. This is an optional argument that is available if an account is signed up for the return envelope tracking beta, and has &#x60;return_envelope&#x60;, and &#x60;perforated_page&#x60; fields populated in the API request.</value>
         [DataMember(Name = "return_address", EmitDefaultValue = false)]
-        public string ReturnAddress { get; set; }
+        private string returnAddress;
+        public string getReturnAddress() {
+            return returnAddress;
+        }
+        public void setReturnAddress(string value) {
+            returnAddress = value;
+        }
+        public void setReturnAddress(AddressEditable value) {
+            returnAddress = Newtonsoft.Json.JsonConvert.SerializeObject(value);
+        }
 
         /// <summary>
         /// Gets or Sets MailType
         /// </summary>
         [DataMember(Name = "mail_type", EmitDefaultValue = false)]
-        public MailType MailType { get; set; }
+        private MailType mailType;
+        public MailType getMailType() {
+            return mailType;
+        }
+        public void setMailType(MailType value) {
+            mailType = value;
+        }
 
         /// <summary>
         /// Set this key to &#x60;true&#x60; if you would like to print in color. Set to &#x60;false&#x60; if you would like to print in black and white.
         /// </summary>
         /// <value>Set this key to &#x60;true&#x60; if you would like to print in color. Set to &#x60;false&#x60; if you would like to print in black and white.</value>
         [DataMember(Name = "color", EmitDefaultValue = true)]
-        public bool Color { get; set; }
+        private bool color;
+        public bool getColor() {
+            return color;
+        }
+        public void setColor(bool value) {
+            color = value;
+        }
 
         /// <summary>
         /// Set this attribute to &#x60;true&#x60; for double sided printing, or &#x60;false&#x60; for for single sided printing. Defaults to &#x60;true&#x60;.
         /// </summary>
         /// <value>Set this attribute to &#x60;true&#x60; for double sided printing, or &#x60;false&#x60; for for single sided printing. Defaults to &#x60;true&#x60;.</value>
         [DataMember(Name = "double_sided", EmitDefaultValue = true)]
-        public bool DoubleSided { get; set; }
+        private bool doubleSided;
+        public bool getDoubleSided() {
+            return doubleSided;
+        }
+        public void setDoubleSided(bool value) {
+            doubleSided = value;
+        }
 
         /// <summary>
         /// Gets or Sets ReturnEnvelope
         /// </summary>
         [DataMember(Name = "return_envelope", IsRequired = true, EmitDefaultValue = true)]
-        public bool ReturnEnvelope { get; set; }
+        private string returnEnvelope;
+        public string getReturnEnvelope() {
+            return returnEnvelope;
+        }
+        public void setReturnEnvelope(bool value) {
+            returnEnvelope = value.ToString();
+        }
+        public void setReturnEnvelope(ReturnEnvelope value) {
+            returnEnvelope = Newtonsoft.Json.JsonConvert.SerializeObject(value);
+        }
 
         /// <summary>
         /// Required if &#x60;return_envelope&#x60; is &#x60;true&#x60;. The number of the page that should be perforated for use with the return envelope. Must be greater than or equal to &#x60;1&#x60;. The blank page added by &#x60;address_placement&#x3D;insert_blank_page&#x60; will be ignored when considering the perforated page number. To see how perforation will impact your letter design, view our [perforation guide](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_perf_template.pdf).
         /// </summary>
         /// <value>Required if &#x60;return_envelope&#x60; is &#x60;true&#x60;. The number of the page that should be perforated for use with the return envelope. Must be greater than or equal to &#x60;1&#x60;. The blank page added by &#x60;address_placement&#x3D;insert_blank_page&#x60; will be ignored when considering the perforated page number. To see how perforation will impact your letter design, view our [perforation guide](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_perf_template.pdf).</value>
         [DataMember(Name = "perforated_page", EmitDefaultValue = true)]
-        public int? PerforatedPage { get; set; }
+        private int? perforatedPage;
+        public int? getPerforatedPage() {
+            return perforatedPage;
+        }
+        public void setPerforatedPage(int? value) {
+            perforatedPage = value;
+        }
 
         /// <summary>
         /// Gets or Sets CustomEnvelope
         /// </summary>
         [DataMember(Name = "custom_envelope", EmitDefaultValue = true)]
-        public LetterCustomEnvelope CustomEnvelope { get; set; }
+        private LetterCustomEnvelope customEnvelope;
+        public LetterCustomEnvelope getCustomEnvelope() {
+            return customEnvelope;
+        }
+        public void setCustomEnvelope(LetterCustomEnvelope value) {
+            customEnvelope = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -370,33 +493,33 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Letter {\n");
-            sb.Append("  To: ").Append(To).Append("\n");
-            sb.Append("  From: ").Append(From).Append("\n");
-            sb.Append("  Carrier: ").Append(Carrier).Append("\n");
-            sb.Append("  Thumbnails: ").Append(Thumbnails).Append("\n");
-            sb.Append("  ExpectedDeliveryDate: ").Append(ExpectedDeliveryDate).Append("\n");
-            sb.Append("  DateCreated: ").Append(DateCreated).Append("\n");
-            sb.Append("  DateModified: ").Append(DateModified).Append("\n");
-            sb.Append("  Deleted: ").Append(Deleted).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  TemplateId: ").Append(TemplateId).Append("\n");
-            sb.Append("  TemplateVersionId: ").Append(TemplateVersionId).Append("\n");
-            sb.Append("  Object: ").Append(Object).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
-            sb.Append("  MergeVariables: ").Append(MergeVariables).Append("\n");
-            sb.Append("  SendDate: ").Append(SendDate).Append("\n");
-            sb.Append("  ExtraService: ").Append(ExtraService).Append("\n");
-            sb.Append("  TrackingNumber: ").Append(TrackingNumber).Append("\n");
-            sb.Append("  TrackingEvents: ").Append(TrackingEvents).Append("\n");
-            sb.Append("  ReturnAddress: ").Append(ReturnAddress).Append("\n");
-            sb.Append("  MailType: ").Append(MailType).Append("\n");
-            sb.Append("  Color: ").Append(Color).Append("\n");
-            sb.Append("  DoubleSided: ").Append(DoubleSided).Append("\n");
-            sb.Append("  AddressPlacement: ").Append(AddressPlacement).Append("\n");
-            sb.Append("  ReturnEnvelope: ").Append(ReturnEnvelope).Append("\n");
-            sb.Append("  PerforatedPage: ").Append(PerforatedPage).Append("\n");
-            sb.Append("  CustomEnvelope: ").Append(CustomEnvelope).Append("\n");
+            sb.Append("  to: ").Append(to).Append("\n");
+            sb.Append("  from: ").Append(from).Append("\n");
+            sb.Append("  carrier: ").Append(carrier).Append("\n");
+            sb.Append("  thumbnails: ").Append(thumbnails).Append("\n");
+            sb.Append("  expectedDeliveryDate: ").Append(expectedDeliveryDate).Append("\n");
+            sb.Append("  dateCreated: ").Append(dateCreated).Append("\n");
+            sb.Append("  dateModified: ").Append(dateModified).Append("\n");
+            sb.Append("  deleted: ").Append(deleted).Append("\n");
+            sb.Append("  id: ").Append(id).Append("\n");
+            sb.Append("  templateId: ").Append(templateId).Append("\n");
+            sb.Append("  templateVersionId: ").Append(templateVersionId).Append("\n");
+            sb.Append("  _object: ").Append(_object).Append("\n");
+            sb.Append("  description: ").Append(description).Append("\n");
+            sb.Append("  metadata: ").Append(metadata).Append("\n");
+            sb.Append("  mergeVariables: ").Append(mergeVariables).Append("\n");
+            sb.Append("  sendDate: ").Append(sendDate).Append("\n");
+            sb.Append("  extraService: ").Append(extraService).Append("\n");
+            sb.Append("  trackingNumber: ").Append(trackingNumber).Append("\n");
+            sb.Append("  trackingEvents: ").Append(trackingEvents).Append("\n");
+            sb.Append("  returnAddress: ").Append(returnAddress).Append("\n");
+            sb.Append("  mailType: ").Append(mailType).Append("\n");
+            sb.Append("  color: ").Append(color).Append("\n");
+            sb.Append("  doubleSided: ").Append(doubleSided).Append("\n");
+            sb.Append("  addressPlacement: ").Append(addressPlacement).Append("\n");
+            sb.Append("  returnEnvelope: ").Append(returnEnvelope).Append("\n");
+            sb.Append("  perforatedPage: ").Append(perforatedPage).Append("\n");
+            sb.Append("  customEnvelope: ").Append(customEnvelope).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -407,7 +530,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -433,135 +556,136 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.To == input.To ||
-                    (this.To != null &&
-                    this.To.Equals(input.To))
+                    this.to == input.getTo() ||
+                    (this.to != null &&
+                    this.to.Equals(input.getTo()))
                 ) && 
                 (
-                    this.From == input.From ||
-                    (this.From != null &&
-                    this.From.Equals(input.From))
+                    this.from == input.getFrom() ||
+                    (this.from != null &&
+                    this.from.Equals(input.getFrom()))
                 ) && 
                 (
-                    this.Carrier == input.Carrier ||
-                    this.Carrier.Equals(input.Carrier)
+                    this.carrier == input.getCarrier() ||
+                    this.carrier.Equals(input.getCarrier())
                 ) && 
                 (
-                    this.Thumbnails == input.Thumbnails ||
-                    this.Thumbnails != null &&
-                    input.Thumbnails != null &&
-                    this.Thumbnails.SequenceEqual(input.Thumbnails)
+                    this.thumbnails == input.getThumbnails() ||
+                    this.thumbnails != null &&
+                    input.getThumbnails() != null &&
+                    this.thumbnails.SequenceEqual(input.getThumbnails())
                 ) && 
                 (
-                    this.ExpectedDeliveryDate == input.ExpectedDeliveryDate ||
-                    (this.ExpectedDeliveryDate != null &&
-                    this.ExpectedDeliveryDate.Equals(input.ExpectedDeliveryDate))
+                    this.expectedDeliveryDate == input.getExpectedDeliveryDate() ||
+                    (this.expectedDeliveryDate != null &&
+                    this.expectedDeliveryDate.Equals(input.getExpectedDeliveryDate()))
                 ) && 
                 (
-                    this.DateCreated == input.DateCreated ||
-                    (this.DateCreated != null &&
-                    this.DateCreated.Equals(input.DateCreated))
+                    this.dateCreated == input.getDateCreated() ||
+                    (this.dateCreated != null &&
+                    this.dateCreated.Equals(input.getDateCreated()))
                 ) && 
                 (
-                    this.DateModified == input.DateModified ||
-                    (this.DateModified != null &&
-                    this.DateModified.Equals(input.DateModified))
+                    this.dateModified == input.getDateModified() ||
+                    (this.dateModified != null &&
+                    this.dateModified.Equals(input.getDateModified()))
                 ) && 
                 (
-                    this.Deleted == input.Deleted ||
-                    this.Deleted.Equals(input.Deleted)
+                    this.deleted == input.getDeleted() ||
+                    this.deleted.Equals(input.getDeleted())
                 ) && 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.id == input.getId() ||
+                    (this.id != null &&
+                    this.id.Equals(input.getId()))
                 ) && 
                 (
-                    this.TemplateId == input.TemplateId ||
-                    (this.TemplateId != null &&
-                    this.TemplateId.Equals(input.TemplateId))
+                    this.templateId == input.getTemplateId() ||
+                    (this.templateId != null &&
+                    this.templateId.Equals(input.getTemplateId()))
                 ) && 
                 (
-                    this.TemplateVersionId == input.TemplateVersionId ||
-                    (this.TemplateVersionId != null &&
-                    this.TemplateVersionId.Equals(input.TemplateVersionId))
+                    this.templateVersionId == input.getTemplateVersionId() ||
+                    (this.templateVersionId != null &&
+                    this.templateVersionId.Equals(input.getTemplateVersionId()))
                 ) && 
                 (
-                    this.Object == input.Object ||
-                    this.Object.Equals(input.Object)
+                    this._object == input.getObject() ||
+                    this._object.Equals(input.getObject())
                 ) && 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.description == input.getDescription() ||
+                    (this.description != null &&
+                    this.description.Equals(input.getDescription()))
                 ) && 
                 (
-                    this.Metadata == input.Metadata ||
-                    this.Metadata != null &&
-                    input.Metadata != null &&
-                    this.Metadata.SequenceEqual(input.Metadata)
+                    this.metadata == input.getMetadata() ||
+                    this.metadata != null &&
+                    input.getMetadata() != null &&
+                    this.metadata.SequenceEqual(input.getMetadata())
                 ) && 
                 (
-                    this.MergeVariables == input.MergeVariables ||
-                    (this.MergeVariables != null &&
-                    this.MergeVariables.Equals(input.MergeVariables))
+                    this.mergeVariables == input.getMergeVariables() ||
+                    (this.mergeVariables != null &&
+                    this.mergeVariables.Equals(input.getMergeVariables()))
                 ) && 
                 (
-                    this.SendDate == input.SendDate ||
-                    (this.SendDate != null &&
-                    this.SendDate.Equals(input.SendDate))
+                    this.sendDate == input.getSendDate() ||
+                    (this.sendDate != null &&
+                    this.sendDate.Equals(input.getSendDate()))
                 ) && 
                 (
-                    this.ExtraService == input.ExtraService ||
-                    (this.ExtraService != null &&
-                    this.ExtraService.Equals(input.ExtraService))
+                    this.extraService == input.getExtraService() ||
+                    (this.extraService != null &&
+                    this.extraService.Equals(input.getExtraService()))
                 ) && 
                 (
-                    this.TrackingNumber == input.TrackingNumber ||
-                    (this.TrackingNumber != null &&
-                    this.TrackingNumber.Equals(input.TrackingNumber))
+                    this.trackingNumber == input.getTrackingNumber() ||
+                    (this.trackingNumber != null &&
+                    this.trackingNumber.Equals(input.getTrackingNumber()))
                 ) && 
                 (
-                    this.TrackingEvents == input.TrackingEvents ||
-                    this.TrackingEvents != null &&
-                    input.TrackingEvents != null &&
-                    this.TrackingEvents.SequenceEqual(input.TrackingEvents)
+                    this.trackingEvents == input.getTrackingEvents() ||
+                    this.trackingEvents != null &&
+                    input.getTrackingEvents() != null &&
+                    this.trackingEvents.SequenceEqual(input.getTrackingEvents())
                 ) && 
                 (
-                    this.ReturnAddress == input.ReturnAddress ||
-                    (this.ReturnAddress != null &&
-                    this.ReturnAddress.Equals(input.ReturnAddress))
+                    this.returnAddress == input.getReturnAddress() ||
+                    (this.returnAddress != null &&
+                    this.returnAddress.Equals(input.getReturnAddress()))
                 ) && 
                 (
-                    this.MailType == input.MailType ||
-                    (this.MailType != null &&
-                    this.MailType.Equals(input.MailType))
+                    this.mailType == input.getMailType() ||
+                    (this.mailType != null &&
+                    this.mailType.Equals(input.getMailType()))
                 ) && 
                 (
-                    this.Color == input.Color ||
-                    this.Color.Equals(input.Color)
+                    this.color == input.getColor() ||
+                    this.color.Equals(input.getColor())
                 ) && 
                 (
-                    this.DoubleSided == input.DoubleSided ||
-                    this.DoubleSided.Equals(input.DoubleSided)
+                    this.doubleSided == input.getDoubleSided() ||
+                    this.doubleSided.Equals(input.getDoubleSided())
                 ) && 
                 (
-                    this.AddressPlacement == input.AddressPlacement ||
-                    this.AddressPlacement.Equals(input.AddressPlacement)
+                    this.addressPlacement == input.getAddressPlacement() ||
+                    this.addressPlacement.Equals(input.getAddressPlacement())
                 ) && 
                 (
-                    this.ReturnEnvelope == input.ReturnEnvelope ||
-                    this.ReturnEnvelope.Equals(input.ReturnEnvelope)
+                    this.returnEnvelope == input.getReturnEnvelope() ||
+                    (this.returnEnvelope != null &&
+                    this.returnEnvelope.Equals(input.getReturnEnvelope()))
                 ) && 
                 (
-                    this.PerforatedPage == input.PerforatedPage ||
-                    (this.PerforatedPage != null &&
-                    this.PerforatedPage.Equals(input.PerforatedPage))
+                    this.perforatedPage == input.getPerforatedPage() ||
+                    (this.perforatedPage != null &&
+                    this.perforatedPage.Equals(input.getPerforatedPage()))
                 ) && 
                 (
-                    this.CustomEnvelope == input.CustomEnvelope ||
-                    (this.CustomEnvelope != null &&
-                    this.CustomEnvelope.Equals(input.CustomEnvelope))
+                    this.customEnvelope == input.getCustomEnvelope() ||
+                    (this.customEnvelope != null &&
+                    this.customEnvelope.Equals(input.getCustomEnvelope()))
                 );
         }
 
@@ -574,92 +698,95 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.To != null)
+                if (this.to != null)
                 {
-                    hashCode = (hashCode * 59) + this.To.GetHashCode();
+                    hashCode = (hashCode * 59) + this.to.GetHashCode();
                 }
-                if (this.From != null)
+                if (this.from != null)
                 {
-                    hashCode = (hashCode * 59) + this.From.GetHashCode();
+                    hashCode = (hashCode * 59) + this.from.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Carrier.GetHashCode();
-                if (this.Thumbnails != null)
+                hashCode = (hashCode * 59) + this.carrier.GetHashCode();
+                if (this.thumbnails != null)
                 {
-                    hashCode = (hashCode * 59) + this.Thumbnails.GetHashCode();
+                    hashCode = (hashCode * 59) + this.thumbnails.GetHashCode();
                 }
-                if (this.ExpectedDeliveryDate != null)
+                if (this.expectedDeliveryDate != null)
                 {
-                    hashCode = (hashCode * 59) + this.ExpectedDeliveryDate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.expectedDeliveryDate.GetHashCode();
                 }
-                if (this.DateCreated != null)
+                if (this.dateCreated != null)
                 {
-                    hashCode = (hashCode * 59) + this.DateCreated.GetHashCode();
+                    hashCode = (hashCode * 59) + this.dateCreated.GetHashCode();
                 }
-                if (this.DateModified != null)
+                if (this.dateModified != null)
                 {
-                    hashCode = (hashCode * 59) + this.DateModified.GetHashCode();
+                    hashCode = (hashCode * 59) + this.dateModified.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Deleted.GetHashCode();
-                if (this.Id != null)
+                hashCode = (hashCode * 59) + this.deleted.GetHashCode();
+                if (this.id != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.id.GetHashCode();
                 }
-                if (this.TemplateId != null)
+                if (this.templateId != null)
                 {
-                    hashCode = (hashCode * 59) + this.TemplateId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.templateId.GetHashCode();
                 }
-                if (this.TemplateVersionId != null)
+                if (this.templateVersionId != null)
                 {
-                    hashCode = (hashCode * 59) + this.TemplateVersionId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.templateVersionId.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Object.GetHashCode();
-                if (this.Description != null)
+                hashCode = (hashCode * 59) + this._object.GetHashCode();
+                if (this.description != null)
                 {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                    hashCode = (hashCode * 59) + this.description.GetHashCode();
                 }
-                if (this.Metadata != null)
+                if (this.metadata != null)
                 {
-                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                    hashCode = (hashCode * 59) + this.metadata.GetHashCode();
                 }
-                if (this.MergeVariables != null)
+                if (this.mergeVariables != null)
                 {
-                    hashCode = (hashCode * 59) + this.MergeVariables.GetHashCode();
+                    hashCode = (hashCode * 59) + this.mergeVariables.GetHashCode();
                 }
-                if (this.SendDate != null)
+                if (this.sendDate != null)
                 {
-                    hashCode = (hashCode * 59) + this.SendDate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.sendDate.GetHashCode();
                 }
-                if (this.ExtraService != null)
+                if (this.extraService != null)
                 {
-                    hashCode = (hashCode * 59) + this.ExtraService.GetHashCode();
+                    hashCode = (hashCode * 59) + this.extraService.GetHashCode();
                 }
-                if (this.TrackingNumber != null)
+                if (this.trackingNumber != null)
                 {
-                    hashCode = (hashCode * 59) + this.TrackingNumber.GetHashCode();
+                    hashCode = (hashCode * 59) + this.trackingNumber.GetHashCode();
                 }
-                if (this.TrackingEvents != null)
+                if (this.trackingEvents != null)
                 {
-                    hashCode = (hashCode * 59) + this.TrackingEvents.GetHashCode();
+                    hashCode = (hashCode * 59) + this.trackingEvents.GetHashCode();
                 }
-                if (this.ReturnAddress != null)
+                if (this.returnAddress != null)
                 {
-                    hashCode = (hashCode * 59) + this.ReturnAddress.GetHashCode();
+                    hashCode = (hashCode * 59) + this.returnAddress.GetHashCode();
                 }
-                if (this.MailType != null)
+                if (this.mailType != null)
                 {
-                    hashCode = (hashCode * 59) + this.MailType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.mailType.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Color.GetHashCode();
-                hashCode = (hashCode * 59) + this.DoubleSided.GetHashCode();
-                hashCode = (hashCode * 59) + this.AddressPlacement.GetHashCode();
-                hashCode = (hashCode * 59) + this.ReturnEnvelope.GetHashCode();
-                if (this.PerforatedPage != null)
+                hashCode = (hashCode * 59) + this.color.GetHashCode();
+                hashCode = (hashCode * 59) + this.doubleSided.GetHashCode();
+                hashCode = (hashCode * 59) + this.addressPlacement.GetHashCode();
+                if (this.returnEnvelope != null)
                 {
-                    hashCode = (hashCode * 59) + this.PerforatedPage.GetHashCode();
+                    hashCode = (hashCode * 59) + this.returnEnvelope.GetHashCode();
                 }
-                if (this.CustomEnvelope != null)
+                if (this.perforatedPage != null)
                 {
-                    hashCode = (hashCode * 59) + this.CustomEnvelope.GetHashCode();
+                    hashCode = (hashCode * 59) + this.perforatedPage.GetHashCode();
+                }
+                if (this.customEnvelope != null)
+                {
+                    hashCode = (hashCode * 59) + this.customEnvelope.GetHashCode();
                 }
                 return hashCode;
             }
@@ -672,31 +799,31 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Id (string) pattern
-            Regex regexId = new Regex(@"^ltr_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexId.Match(this.Id).Success)
+            // id (string) pattern
+            Regex regexid = new Regex(@"^ltr_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regexid.Match(this.id).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for id, must match a pattern of " + regexid, new [] { "id" });
             }
 
-            // TemplateId (string) pattern
-            Regex regexTemplateId = new Regex(@"^tmpl_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexTemplateId.Match(this.TemplateId).Success)
+            // templateId (string) pattern
+            Regex regextemplateId = new Regex(@"^tmpl_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regextemplateId.Match(this.templateId).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TemplateId, must match a pattern of " + regexTemplateId, new [] { "TemplateId" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for templateId, must match a pattern of " + regextemplateId, new [] { "templateId" });
             }
 
-            // TemplateVersionId (string) pattern
-            Regex regexTemplateVersionId = new Regex(@"^vrsn_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexTemplateVersionId.Match(this.TemplateVersionId).Success)
+            // templateVersionId (string) pattern
+            Regex regextemplateVersionId = new Regex(@"^vrsn_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regextemplateVersionId.Match(this.templateVersionId).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TemplateVersionId, must match a pattern of " + regexTemplateVersionId, new [] { "TemplateVersionId" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for templateVersionId, must match a pattern of " + regextemplateVersionId, new [] { "templateVersionId" });
             }
 
-            // Description (string) maxLength
-            if (this.Description != null && this.Description.Length > 255)
+            // description (string) maxLength
+            if (this.description != null && this.description.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 255.", new [] { "Description" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for description, length must be less than 255.", new [] { "description" });
             }
 
             yield break;

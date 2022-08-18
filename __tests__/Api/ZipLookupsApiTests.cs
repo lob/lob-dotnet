@@ -44,21 +44,21 @@ namespace __tests__.Api
         /// </summary>
         [Test]
         public void LookupTest200() {
-            Zip fakeZipObject = new Zip(
-                default(string), // zipCode
-                "us_zip_fakeId", // id
-                new List<ZipLookupCity>(), // cities
-                default(ZipCodeType), // zipCodeType
-                Zip.ObjectEnum.UsZipLookup // _object
-            );
+            Zip fakeZipObject = new Zip();
+            fakeZipObject.setZipCode(default(string));
+            fakeZipObject.setId("us_zip_fakeId");
+            fakeZipObject.setCities(new List<ZipLookupCity>());
+            fakeZipObject.setZipCodeType(default(ZipCodeType));
+            fakeZipObject.setObject(Zip.ObjectEnum.UsZipLookup);
 
-            ZipEditable zipEditable = new ZipEditable("94107");
+            ZipEditable zipEditable = new ZipEditable();
+            zipEditable.setZipCode("94107");
             zipLookupsApiMock.Setup(x => x.ZipLookup(zipEditable, It.IsAny<int>())).Returns(fakeZipObject);
             Zip response = zipLookupsApiMock.Object.ZipLookup(zipEditable);
 
             Assert.IsInstanceOf<Zip>(response);
-            Assert.AreEqual(response.Id, fakeZipObject.Id);
-            Assert.AreEqual(response.Cities.Count, fakeZipObject.Cities.Count);
+            Assert.AreEqual(response.getId(), fakeZipObject.getId());
+            Assert.AreEqual(response.getCities().Count, fakeZipObject.getCities().Count);
         }
 
         /// <summary>

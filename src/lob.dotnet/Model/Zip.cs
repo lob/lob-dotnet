@@ -52,12 +52,18 @@ namespace lob.dotnet.Model
         /// Gets or Sets Object
         /// </summary>
         [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = false)]
-        public ObjectEnum Object { get; set; }
+        private ObjectEnum _object;
+        public ObjectEnum getObject() {
+            return _object;
+        }
+        public void setObject(ObjectEnum value) {
+            _object = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="Zip" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Zip() { }
+        public Zip() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="Zip" /> class.
         /// </summary>
@@ -66,56 +72,57 @@ namespace lob.dotnet.Model
         /// <param name="cities">An array of city objects containing valid cities for the &#x60;zip_code&#x60;. Multiple cities will be returned if more than one city is associated with the input ZIP code.  (required).</param>
         /// <param name="zipCodeType">zipCodeType (required).</param>
         /// <param name="_object">_object (required) (default to ObjectEnum.UsZipLookup).</param>
-        public Zip(string zipCode = default(string), string id = default(string), List<ZipLookupCity> cities = default(List<ZipLookupCity>), ZipCodeType zipCodeType = default(ZipCodeType), ObjectEnum _object = ObjectEnum.UsZipLookup)
-        {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for Zip and cannot be null");
-            }
-            this.Id = id;
-            // to ensure "cities" is required (not null)
-            if (cities == null)
-            {
-                throw new ArgumentNullException("cities is a required property for Zip and cannot be null");
-            }
-            this.Cities = cities;
-            // to ensure "zipCodeType" is required (not null)
-            if (zipCodeType == null)
-            {
-                throw new ArgumentNullException("zipCodeType is a required property for Zip and cannot be null");
-            }
-            this.ZipCodeType = zipCodeType;
-            this.Object = _object;
-            this.ZipCode = zipCode;
-        }
 
         /// <summary>
         /// A 5-digit ZIP code.
         /// </summary>
         /// <value>A 5-digit ZIP code.</value>
         [DataMember(Name = "zip_code", EmitDefaultValue = false)]
-        public string ZipCode { get; set; }
+        private string zipCode;
+        public string getZipCode() {
+            return zipCode;
+        }
+        public void setZipCode(string value) {
+            zipCode = value;
+        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;us_zip_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;us_zip_&#x60;.</value>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
-        public string Id { get; set; }
+        private string id;
+        public string getId() {
+            return id;
+        }
+        public void setId(string value) {
+            id = value;
+        }
 
         /// <summary>
         /// An array of city objects containing valid cities for the &#x60;zip_code&#x60;. Multiple cities will be returned if more than one city is associated with the input ZIP code. 
         /// </summary>
         /// <value>An array of city objects containing valid cities for the &#x60;zip_code&#x60;. Multiple cities will be returned if more than one city is associated with the input ZIP code. </value>
         [DataMember(Name = "cities", IsRequired = true, EmitDefaultValue = false)]
-        public List<ZipLookupCity> Cities { get; set; }
+        private List<ZipLookupCity> cities;
+        public List<ZipLookupCity> getCities() {
+            return cities;
+        }
+        public void setCities(List<ZipLookupCity> value) {
+            cities = value;
+        }
 
         /// <summary>
         /// Gets or Sets ZipCodeType
         /// </summary>
         [DataMember(Name = "zip_code_type", IsRequired = true, EmitDefaultValue = false)]
-        public ZipCodeType ZipCodeType { get; set; }
+        private ZipCodeType zipCodeType;
+        public ZipCodeType getZipCodeType() {
+            return zipCodeType;
+        }
+        public void setZipCodeType(ZipCodeType value) {
+            zipCodeType = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -125,11 +132,11 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Zip {\n");
-            sb.Append("  ZipCode: ").Append(ZipCode).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Cities: ").Append(Cities).Append("\n");
-            sb.Append("  ZipCodeType: ").Append(ZipCodeType).Append("\n");
-            sb.Append("  Object: ").Append(Object).Append("\n");
+            sb.Append("  zipCode: ").Append(zipCode).Append("\n");
+            sb.Append("  id: ").Append(id).Append("\n");
+            sb.Append("  cities: ").Append(cities).Append("\n");
+            sb.Append("  zipCodeType: ").Append(zipCodeType).Append("\n");
+            sb.Append("  _object: ").Append(_object).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -140,7 +147,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -166,29 +173,29 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.ZipCode == input.ZipCode ||
-                    (this.ZipCode != null &&
-                    this.ZipCode.Equals(input.ZipCode))
+                    this.zipCode == input.getZipCode() ||
+                    (this.zipCode != null &&
+                    this.zipCode.Equals(input.getZipCode()))
                 ) && 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.id == input.getId() ||
+                    (this.id != null &&
+                    this.id.Equals(input.getId()))
                 ) && 
                 (
-                    this.Cities == input.Cities ||
-                    this.Cities != null &&
-                    input.Cities != null &&
-                    this.Cities.SequenceEqual(input.Cities)
+                    this.cities == input.getCities() ||
+                    this.cities != null &&
+                    input.getCities() != null &&
+                    this.cities.SequenceEqual(input.getCities())
                 ) && 
                 (
-                    this.ZipCodeType == input.ZipCodeType ||
-                    (this.ZipCodeType != null &&
-                    this.ZipCodeType.Equals(input.ZipCodeType))
+                    this.zipCodeType == input.getZipCodeType() ||
+                    (this.zipCodeType != null &&
+                    this.zipCodeType.Equals(input.getZipCodeType()))
                 ) && 
                 (
-                    this.Object == input.Object ||
-                    this.Object.Equals(input.Object)
+                    this._object == input.getObject() ||
+                    this._object.Equals(input.getObject())
                 );
         }
 
@@ -201,23 +208,23 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ZipCode != null)
+                if (this.zipCode != null)
                 {
-                    hashCode = (hashCode * 59) + this.ZipCode.GetHashCode();
+                    hashCode = (hashCode * 59) + this.zipCode.GetHashCode();
                 }
-                if (this.Id != null)
+                if (this.id != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.id.GetHashCode();
                 }
-                if (this.Cities != null)
+                if (this.cities != null)
                 {
-                    hashCode = (hashCode * 59) + this.Cities.GetHashCode();
+                    hashCode = (hashCode * 59) + this.cities.GetHashCode();
                 }
-                if (this.ZipCodeType != null)
+                if (this.zipCodeType != null)
                 {
-                    hashCode = (hashCode * 59) + this.ZipCodeType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.zipCodeType.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Object.GetHashCode();
+                hashCode = (hashCode * 59) + this._object.GetHashCode();
                 return hashCode;
             }
         }
@@ -229,18 +236,18 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // ZipCode (string) pattern
-            Regex regexZipCode = new Regex(@"^\\d{5}$", RegexOptions.CultureInvariant);
-            if (false == regexZipCode.Match(this.ZipCode).Success)
+            // zipCode (string) pattern
+            Regex regexzipCode = new Regex(@"^\\d{5}$", RegexOptions.CultureInvariant);
+            if (false == regexzipCode.Match(this.zipCode).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ZipCode, must match a pattern of " + regexZipCode, new [] { "ZipCode" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for zipCode, must match a pattern of " + regexzipCode, new [] { "zipCode" });
             }
 
-            // Id (string) pattern
-            Regex regexId = new Regex(@"^us_zip_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexId.Match(this.Id).Success)
+            // id (string) pattern
+            Regex regexid = new Regex(@"^us_zip_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regexid.Match(this.id).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for id, must match a pattern of " + regexid, new [] { "id" });
             }
 
             yield break;

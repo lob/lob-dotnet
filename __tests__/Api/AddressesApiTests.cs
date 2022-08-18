@@ -59,12 +59,12 @@ namespace __tests__.Api
             Address fakeAddress = new Address();
             AddressEditable addressEditable = new AddressEditable();
 
-            fakeAddress.Id = "adr_fakeid";
+            fakeAddress.setId("adr_fakeid");
             addressesApiMock.Setup(x => x.AddressCreate(addressEditable, It.IsAny<int>())).Returns(fakeAddress);
             Address response = addressesApiMock.Object.AddressCreate(addressEditable);
 
             Assert.IsInstanceOf<Address>(response);
-            Assert.AreEqual(response.Id, "adr_fakeid");
+            Assert.AreEqual(response.getId(), "adr_fakeid");
         }
 
         /// <summary>
@@ -97,16 +97,16 @@ namespace __tests__.Api
         {
             AddressDeletion fakeAddress = new AddressDeletion();
 
-            fakeAddress.Id = "adr_fakeid";
-            fakeAddress.Deleted = true;
+            fakeAddress.setId("adr_fakeid");
+            fakeAddress.setDeleted(true);
 
-            addressesApiMock.Setup(x => x.AddressDelete(fakeAddress.Id, It.IsAny<int>())).Returns(fakeAddress);
+            addressesApiMock.Setup(x => x.AddressDelete(fakeAddress.getId(), It.IsAny<int>())).Returns(fakeAddress);
 
-            var response = addressesApiMock.Object.AddressDelete(fakeAddress.Id);
+            var response = addressesApiMock.Object.AddressDelete(fakeAddress.getId());
 
             Assert.IsInstanceOf<AddressDeletion>(response);
-            Assert.AreEqual(response.Deleted, fakeAddress.Deleted);
-            Assert.AreEqual(response.Id, fakeAddress.Id);
+            Assert.AreEqual(response.getDeleted(), fakeAddress.getDeleted());
+            Assert.AreEqual(response.getId(), fakeAddress.getId());
         }
 
 
@@ -140,13 +140,13 @@ namespace __tests__.Api
             Address fakeAddress = new Address();
             AddressEditable addressEditable = new AddressEditable();
 
-            fakeAddress.Id = "adr_fakeid";
-            fakeAddress.AddressLine1 = "607 Blue Spring Dr";
-            addressesApiMock.Setup(x => x.AddressRetrieve(fakeAddress.Id, It.IsAny<int>())).Returns(fakeAddress);
-            Address response = addressesApiMock.Object.AddressRetrieve(fakeAddress.Id);
+            fakeAddress.setId("adr_fakeid");
+            fakeAddress.setAddressLine1("607 Blue Spring Dr");
+            addressesApiMock.Setup(x => x.AddressRetrieve(fakeAddress.getId(), It.IsAny<int>())).Returns(fakeAddress);
+            Address response = addressesApiMock.Object.AddressRetrieve(fakeAddress.getId());
 
             Assert.IsInstanceOf<Address>(response);
-            Assert.AreEqual(response.AddressLine1, fakeAddress.AddressLine1);
+            Assert.AreEqual(response.getAddressLine1(), fakeAddress.getAddressLine1());
         }
 
         /// <summary>
@@ -187,20 +187,20 @@ namespace __tests__.Api
             Address data1 = new Address();
             Address data2 = new Address();
 
-            data1.Id = "adr_id";
-            data2.Id = "adr_Id2";
+            data1.setId("adr_id");
+            data2.setId("adr_Id2");
             data.Add(data1);
             data.Add(data2);
-            fakeAddress.Data = data;
-            fakeAddress.Object = "list";
-            fakeAddress.Count = data.Count;
+            fakeAddress.setData(data);
+            fakeAddress.setObject("list");
+            fakeAddress.setCount(data.Count);
 
             addressesApiMock.Setup(x => x.AddressesList(limit, before, after, include, dateCreated, metadata, It.IsAny<int>())).Returns(fakeAddress);
 
             var response = addressesApiMock.Object.AddressesList(limit, before, after, include, dateCreated, metadata);
 
             Assert.IsInstanceOf<AddressList>(response);
-            Assert.AreEqual(response.Count, fakeAddress.Count);
+            Assert.AreEqual(response.getCount(), fakeAddress.getCount());
         }
 
         /// <summary>

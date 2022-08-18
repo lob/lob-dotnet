@@ -36,21 +36,23 @@ namespace lob.dotnet.Model
         /// Initializes a new instance of the <see cref="CardOrderEditable" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected CardOrderEditable() { }
+        public CardOrderEditable() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="CardOrderEditable" /> class.
         /// </summary>
         /// <param name="quantity">quantity (required).</param>
-        public CardOrderEditable(int quantity = default(int))
-        {
-            this.Quantity = quantity;
-        }
 
         /// <summary>
         /// Gets or Sets Quantity
         /// </summary>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = false)]
-        public int Quantity { get; set; }
+        private int quantity;
+        public int getQuantity() {
+            return quantity;
+        }
+        public void setQuantity(int value) {
+            quantity = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,7 +62,7 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CardOrderEditable {\n");
-            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
+            sb.Append("  quantity: ").Append(quantity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -71,7 +73,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -97,8 +99,8 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Quantity == input.Quantity ||
-                    this.Quantity.Equals(input.Quantity)
+                    this.quantity == input.getQuantity() ||
+                    this.quantity.Equals(input.getQuantity())
                 );
         }
 
@@ -111,7 +113,7 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
+                hashCode = (hashCode * 59) + this.quantity.GetHashCode();
                 return hashCode;
             }
         }
@@ -123,16 +125,16 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Quantity (int) maximum
-            if (this.Quantity > (int)10000000)
+            // quantity (int) maximum
+            if (this.quantity > (int)10000000)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Quantity, must be a value less than or equal to 10000000.", new [] { "Quantity" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for quantity, must be a value less than or equal to 10000000.", new [] { "quantity" });
             }
 
-            // Quantity (int) minimum
-            if (this.Quantity < (int)0)
+            // quantity (int) minimum
+            if (this.quantity < (int)0)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Quantity, must be a value greater than or equal to 0.", new [] { "Quantity" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for quantity, must be a value greater than or equal to 0.", new [] { "quantity" });
             }
 
             yield break;

@@ -61,7 +61,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>The type of entity that holds the account.</value>
         [DataMember(Name = "account_type", IsRequired = true, EmitDefaultValue = false)]
-        public AccountTypeEnum AccountType { get; set; }
+        private AccountTypeEnum accountType;
+        public AccountTypeEnum getAccountType() {
+            return accountType;
+        }
+        public void setAccountType(AccountTypeEnum value) {
+            accountType = value;
+        }
         /// <summary>
         /// Defines Object
         /// </summary>
@@ -82,12 +88,18 @@ namespace lob.dotnet.Model
         /// Gets or Sets Object
         /// </summary>
         [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = false)]
-        public ObjectEnum Object { get; set; }
+        private ObjectEnum _object;
+        public ObjectEnum getObject() {
+            return _object;
+        }
+        public void setObject(ObjectEnum value) {
+            _object = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="BankAccount" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected BankAccount() { }
+        public BankAccount() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="BankAccount" /> class.
         /// </summary>
@@ -105,126 +117,161 @@ namespace lob.dotnet.Model
         /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified. (required).</param>
         /// <param name="deleted">Only returned if the resource has been successfully deleted..</param>
         /// <param name="_object">_object (required) (default to ObjectEnum.BankAccount).</param>
-        public BankAccount(string description = default(string), string routingNumber = default(string), string accountNumber = default(string), AccountTypeEnum accountType = default(AccountTypeEnum), string signatory = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), string id = default(string), string signatureUrl = default(string), string bankName = default(string), bool verified = false, DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), ObjectEnum _object = ObjectEnum.BankAccount)
-        {
-            // to ensure "routingNumber" is required (not null)
-            if (routingNumber == null)
-            {
-                throw new ArgumentNullException("routingNumber is a required property for BankAccount and cannot be null");
-            }
-            this.RoutingNumber = routingNumber;
-            // to ensure "accountNumber" is required (not null)
-            if (accountNumber == null)
-            {
-                throw new ArgumentNullException("accountNumber is a required property for BankAccount and cannot be null");
-            }
-            this.AccountNumber = accountNumber;
-            this.AccountType = accountType;
-            // to ensure "signatory" is required (not null)
-            if (signatory == null)
-            {
-                throw new ArgumentNullException("signatory is a required property for BankAccount and cannot be null");
-            }
-            this.Signatory = signatory;
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for BankAccount and cannot be null");
-            }
-            this.Id = id;
-            this.DateCreated = dateCreated;
-            this.DateModified = dateModified;
-            this.Object = _object;
-            this.Description = description;
-            this.Metadata = metadata;
-            this.SignatureUrl = signatureUrl;
-            this.BankName = bankName;
-            this.Verified = verified;
-            this.Deleted = deleted;
-        }
 
         /// <summary>
         /// An internal description that identifies this resource. Must be no longer than 255 characters. 
         /// </summary>
         /// <value>An internal description that identifies this resource. Must be no longer than 255 characters. </value>
         [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
+        private string description;
+        public string getDescription() {
+            return description;
+        }
+        public void setDescription(string value) {
+            description = value;
+        }
 
         /// <summary>
         /// Must be a [valid US routing number](https://www.frbservices.org/index.html).
         /// </summary>
         /// <value>Must be a [valid US routing number](https://www.frbservices.org/index.html).</value>
         [DataMember(Name = "routing_number", IsRequired = true, EmitDefaultValue = false)]
-        public string RoutingNumber { get; set; }
+        private string routingNumber;
+        public string getRoutingNumber() {
+            return routingNumber;
+        }
+        public void setRoutingNumber(string value) {
+            routingNumber = value;
+        }
 
         /// <summary>
         /// Gets or Sets AccountNumber
         /// </summary>
         [DataMember(Name = "account_number", IsRequired = true, EmitDefaultValue = false)]
-        public string AccountNumber { get; set; }
+        private string accountNumber;
+        public string getAccountNumber() {
+            return accountNumber;
+        }
+        public void setAccountNumber(string value) {
+            accountNumber = value;
+        }
 
         /// <summary>
         /// The signatory associated with your account. This name will be printed on checks created with this bank account. If you prefer to use a custom signature image on your checks instead, please create your bank account from the [Dashboard](https://dashboard.lob.com/#/login).
         /// </summary>
         /// <value>The signatory associated with your account. This name will be printed on checks created with this bank account. If you prefer to use a custom signature image on your checks instead, please create your bank account from the [Dashboard](https://dashboard.lob.com/#/login).</value>
         [DataMember(Name = "signatory", IsRequired = true, EmitDefaultValue = false)]
-        public string Signatory { get; set; }
+        private string signatory;
+        public string getSignatory() {
+            return signatory;
+        }
+        public void setSignatory(string value) {
+            signatory = value;
+        }
 
         /// <summary>
         /// Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information.
         /// </summary>
         /// <value>Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information.</value>
         [DataMember(Name = "metadata", EmitDefaultValue = false)]
-        public Dictionary<string, string> Metadata { get; set; }
+        private Dictionary<string, string> metadata;
+        public Dictionary<string, string> getMetadata() {
+            return metadata;
+        }
+        public void setMetadata(Dictionary<string, string> value) {
+            metadata = value;
+        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;bank_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;bank_&#x60;.</value>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
-        public string Id { get; set; }
+        private string id;
+        public string getId() {
+            return id;
+        }
+        public void setId(string value) {
+            id = value;
+        }
 
         /// <summary>
         /// A signed link to the signature image. will be generated.
         /// </summary>
         /// <value>A signed link to the signature image. will be generated.</value>
         [DataMember(Name = "signature_url", EmitDefaultValue = true)]
-        public string SignatureUrl { get; set; }
+        private string signatureUrl;
+        public string getSignatureUrl() {
+            return signatureUrl;
+        }
+        public void setSignatureUrl(string value) {
+            signatureUrl = value;
+        }
 
         /// <summary>
         /// The name of the bank based on the provided routing number, e.g. &#x60;JPMORGAN CHASE BANK&#x60;.
         /// </summary>
         /// <value>The name of the bank based on the provided routing number, e.g. &#x60;JPMORGAN CHASE BANK&#x60;.</value>
         [DataMember(Name = "bank_name", EmitDefaultValue = false)]
-        public string BankName { get; set; }
+        private string bankName;
+        public string getBankName() {
+            return bankName;
+        }
+        public void setBankName(string value) {
+            bankName = value;
+        }
 
         /// <summary>
         /// A bank account must be verified before a check can be created.
         /// </summary>
         /// <value>A bank account must be verified before a check can be created.</value>
         [DataMember(Name = "verified", EmitDefaultValue = true)]
-        public bool Verified { get; set; }
+        private bool verified;
+        public bool getVerified() {
+            return verified;
+        }
+        public void setVerified(bool value) {
+            verified = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was created.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was created.</value>
         [DataMember(Name = "date_created", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime DateCreated { get; set; }
+        private DateTime dateCreated;
+        public DateTime getDateCreated() {
+            return dateCreated;
+        }
+        public void setDateCreated(DateTime value) {
+            dateCreated = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was last modified.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was last modified.</value>
         [DataMember(Name = "date_modified", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime DateModified { get; set; }
+        private DateTime dateModified;
+        public DateTime getDateModified() {
+            return dateModified;
+        }
+        public void setDateModified(DateTime value) {
+            dateModified = value;
+        }
 
         /// <summary>
         /// Only returned if the resource has been successfully deleted.
         /// </summary>
         /// <value>Only returned if the resource has been successfully deleted.</value>
         [DataMember(Name = "deleted", EmitDefaultValue = true)]
-        public bool Deleted { get; set; }
+        private bool deleted;
+        public bool getDeleted() {
+            return deleted;
+        }
+        public void setDeleted(bool value) {
+            deleted = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -234,20 +281,20 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class BankAccount {\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  RoutingNumber: ").Append(RoutingNumber).Append("\n");
-            sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
-            sb.Append("  AccountType: ").Append(AccountType).Append("\n");
-            sb.Append("  Signatory: ").Append(Signatory).Append("\n");
-            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  SignatureUrl: ").Append(SignatureUrl).Append("\n");
-            sb.Append("  BankName: ").Append(BankName).Append("\n");
-            sb.Append("  Verified: ").Append(Verified).Append("\n");
-            sb.Append("  DateCreated: ").Append(DateCreated).Append("\n");
-            sb.Append("  DateModified: ").Append(DateModified).Append("\n");
-            sb.Append("  Deleted: ").Append(Deleted).Append("\n");
-            sb.Append("  Object: ").Append(Object).Append("\n");
+            sb.Append("  description: ").Append(description).Append("\n");
+            sb.Append("  routingNumber: ").Append(routingNumber).Append("\n");
+            sb.Append("  accountNumber: ").Append(accountNumber).Append("\n");
+            sb.Append("  accountType: ").Append(accountType).Append("\n");
+            sb.Append("  signatory: ").Append(signatory).Append("\n");
+            sb.Append("  metadata: ").Append(metadata).Append("\n");
+            sb.Append("  id: ").Append(id).Append("\n");
+            sb.Append("  signatureUrl: ").Append(signatureUrl).Append("\n");
+            sb.Append("  bankName: ").Append(bankName).Append("\n");
+            sb.Append("  verified: ").Append(verified).Append("\n");
+            sb.Append("  dateCreated: ").Append(dateCreated).Append("\n");
+            sb.Append("  dateModified: ").Append(dateModified).Append("\n");
+            sb.Append("  deleted: ").Append(deleted).Append("\n");
+            sb.Append("  _object: ").Append(_object).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -258,7 +305,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -284,71 +331,71 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.description == input.getDescription() ||
+                    (this.description != null &&
+                    this.description.Equals(input.getDescription()))
                 ) && 
                 (
-                    this.RoutingNumber == input.RoutingNumber ||
-                    (this.RoutingNumber != null &&
-                    this.RoutingNumber.Equals(input.RoutingNumber))
+                    this.routingNumber == input.getRoutingNumber() ||
+                    (this.routingNumber != null &&
+                    this.routingNumber.Equals(input.getRoutingNumber()))
                 ) && 
                 (
-                    this.AccountNumber == input.AccountNumber ||
-                    (this.AccountNumber != null &&
-                    this.AccountNumber.Equals(input.AccountNumber))
+                    this.accountNumber == input.getAccountNumber() ||
+                    (this.accountNumber != null &&
+                    this.accountNumber.Equals(input.getAccountNumber()))
                 ) && 
                 (
-                    this.AccountType == input.AccountType ||
-                    this.AccountType.Equals(input.AccountType)
+                    this.accountType == input.getAccountType() ||
+                    this.accountType.Equals(input.getAccountType())
                 ) && 
                 (
-                    this.Signatory == input.Signatory ||
-                    (this.Signatory != null &&
-                    this.Signatory.Equals(input.Signatory))
+                    this.signatory == input.getSignatory() ||
+                    (this.signatory != null &&
+                    this.signatory.Equals(input.getSignatory()))
                 ) && 
                 (
-                    this.Metadata == input.Metadata ||
-                    this.Metadata != null &&
-                    input.Metadata != null &&
-                    this.Metadata.SequenceEqual(input.Metadata)
+                    this.metadata == input.getMetadata() ||
+                    this.metadata != null &&
+                    input.getMetadata() != null &&
+                    this.metadata.SequenceEqual(input.getMetadata())
                 ) && 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.id == input.getId() ||
+                    (this.id != null &&
+                    this.id.Equals(input.getId()))
                 ) && 
                 (
-                    this.SignatureUrl == input.SignatureUrl ||
-                    (this.SignatureUrl != null &&
-                    this.SignatureUrl.Equals(input.SignatureUrl))
+                    this.signatureUrl == input.getSignatureUrl() ||
+                    (this.signatureUrl != null &&
+                    this.signatureUrl.Equals(input.getSignatureUrl()))
                 ) && 
                 (
-                    this.BankName == input.BankName ||
-                    (this.BankName != null &&
-                    this.BankName.Equals(input.BankName))
+                    this.bankName == input.getBankName() ||
+                    (this.bankName != null &&
+                    this.bankName.Equals(input.getBankName()))
                 ) && 
                 (
-                    this.Verified == input.Verified ||
-                    this.Verified.Equals(input.Verified)
+                    this.verified == input.getVerified() ||
+                    this.verified.Equals(input.getVerified())
                 ) && 
                 (
-                    this.DateCreated == input.DateCreated ||
-                    (this.DateCreated != null &&
-                    this.DateCreated.Equals(input.DateCreated))
+                    this.dateCreated == input.getDateCreated() ||
+                    (this.dateCreated != null &&
+                    this.dateCreated.Equals(input.getDateCreated()))
                 ) && 
                 (
-                    this.DateModified == input.DateModified ||
-                    (this.DateModified != null &&
-                    this.DateModified.Equals(input.DateModified))
+                    this.dateModified == input.getDateModified() ||
+                    (this.dateModified != null &&
+                    this.dateModified.Equals(input.getDateModified()))
                 ) && 
                 (
-                    this.Deleted == input.Deleted ||
-                    this.Deleted.Equals(input.Deleted)
+                    this.deleted == input.getDeleted() ||
+                    this.deleted.Equals(input.getDeleted())
                 ) && 
                 (
-                    this.Object == input.Object ||
-                    this.Object.Equals(input.Object)
+                    this._object == input.getObject() ||
+                    this._object.Equals(input.getObject())
                 );
         }
 
@@ -361,50 +408,50 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Description != null)
+                if (this.description != null)
                 {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                    hashCode = (hashCode * 59) + this.description.GetHashCode();
                 }
-                if (this.RoutingNumber != null)
+                if (this.routingNumber != null)
                 {
-                    hashCode = (hashCode * 59) + this.RoutingNumber.GetHashCode();
+                    hashCode = (hashCode * 59) + this.routingNumber.GetHashCode();
                 }
-                if (this.AccountNumber != null)
+                if (this.accountNumber != null)
                 {
-                    hashCode = (hashCode * 59) + this.AccountNumber.GetHashCode();
+                    hashCode = (hashCode * 59) + this.accountNumber.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AccountType.GetHashCode();
-                if (this.Signatory != null)
+                hashCode = (hashCode * 59) + this.accountType.GetHashCode();
+                if (this.signatory != null)
                 {
-                    hashCode = (hashCode * 59) + this.Signatory.GetHashCode();
+                    hashCode = (hashCode * 59) + this.signatory.GetHashCode();
                 }
-                if (this.Metadata != null)
+                if (this.metadata != null)
                 {
-                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                    hashCode = (hashCode * 59) + this.metadata.GetHashCode();
                 }
-                if (this.Id != null)
+                if (this.id != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.id.GetHashCode();
                 }
-                if (this.SignatureUrl != null)
+                if (this.signatureUrl != null)
                 {
-                    hashCode = (hashCode * 59) + this.SignatureUrl.GetHashCode();
+                    hashCode = (hashCode * 59) + this.signatureUrl.GetHashCode();
                 }
-                if (this.BankName != null)
+                if (this.bankName != null)
                 {
-                    hashCode = (hashCode * 59) + this.BankName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.bankName.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Verified.GetHashCode();
-                if (this.DateCreated != null)
+                hashCode = (hashCode * 59) + this.verified.GetHashCode();
+                if (this.dateCreated != null)
                 {
-                    hashCode = (hashCode * 59) + this.DateCreated.GetHashCode();
+                    hashCode = (hashCode * 59) + this.dateCreated.GetHashCode();
                 }
-                if (this.DateModified != null)
+                if (this.dateModified != null)
                 {
-                    hashCode = (hashCode * 59) + this.DateModified.GetHashCode();
+                    hashCode = (hashCode * 59) + this.dateModified.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Deleted.GetHashCode();
-                hashCode = (hashCode * 59) + this.Object.GetHashCode();
+                hashCode = (hashCode * 59) + this.deleted.GetHashCode();
+                hashCode = (hashCode * 59) + this._object.GetHashCode();
                 return hashCode;
             }
         }
@@ -416,48 +463,48 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Description (string) maxLength
-            if (this.Description != null && this.Description.Length > 255)
+            // description (string) maxLength
+            if (this.description != null && this.description.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 255.", new [] { "Description" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for description, length must be less than 255.", new [] { "description" });
             }
 
-            // RoutingNumber (string) maxLength
-            if (this.RoutingNumber != null && this.RoutingNumber.Length > 9)
+            // routingNumber (string) maxLength
+            if (this.routingNumber != null && this.routingNumber.Length > 9)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RoutingNumber, length must be less than 9.", new [] { "RoutingNumber" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for routingNumber, length must be less than 9.", new [] { "routingNumber" });
             }
 
-            // RoutingNumber (string) minLength
-            if (this.RoutingNumber != null && this.RoutingNumber.Length < 9)
+            // routingNumber (string) minLength
+            if (this.routingNumber != null && this.routingNumber.Length < 9)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RoutingNumber, length must be greater than 9.", new [] { "RoutingNumber" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for routingNumber, length must be greater than 9.", new [] { "routingNumber" });
             }
 
-            // AccountNumber (string) maxLength
-            if (this.AccountNumber != null && this.AccountNumber.Length > 17)
+            // accountNumber (string) maxLength
+            if (this.accountNumber != null && this.accountNumber.Length > 17)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AccountNumber, length must be less than 17.", new [] { "AccountNumber" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for accountNumber, length must be less than 17.", new [] { "accountNumber" });
             }
 
-            // Signatory (string) maxLength
-            if (this.Signatory != null && this.Signatory.Length > 30)
+            // signatory (string) maxLength
+            if (this.signatory != null && this.signatory.Length > 30)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Signatory, length must be less than 30.", new [] { "Signatory" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for signatory, length must be less than 30.", new [] { "signatory" });
             }
 
-            // Id (string) pattern
-            Regex regexId = new Regex(@"^bank_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexId.Match(this.Id).Success)
+            // id (string) pattern
+            Regex regexid = new Regex(@"^bank_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regexid.Match(this.id).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for id, must match a pattern of " + regexid, new [] { "id" });
             }
 
-            // SignatureUrl (string) pattern
-            Regex regexSignatureUrl = new Regex(@"^https:\/\/lob-assets\\.com\/(letters|postcards|bank-accounts|checks|self-mailers|cards)\/[a-z]{3,4}_[a-z0-9]{15,16}(\\.pdf|_thumb_[a-z]+_[0-9]+\\.png)\\?(version=[a-z0-9-]*&)?expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexSignatureUrl.Match(this.SignatureUrl).Success)
+            // signatureUrl (string) pattern
+            Regex regexsignatureUrl = new Regex(@"^https:\/\/lob-assets\\.com\/(letters|postcards|bank-accounts|checks|self-mailers|cards)\/[a-z]{3,4}_[a-z0-9]{15,16}(\\.pdf|_thumb_[a-z]+_[0-9]+\\.png)\\?(version=[a-z0-9-]*&)?expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+$", RegexOptions.CultureInvariant);
+            if (false == regexsignatureUrl.Match(this.signatureUrl).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SignatureUrl, must match a pattern of " + regexSignatureUrl, new [] { "SignatureUrl" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for signatureUrl, must match a pattern of " + regexsignatureUrl, new [] { "signatureUrl" });
             }
 
             yield break;

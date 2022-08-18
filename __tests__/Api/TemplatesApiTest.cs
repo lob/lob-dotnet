@@ -35,63 +35,59 @@ namespace __tests__.Api
         {
             templatesApiMock = new Mock<ITemplatesApi>();
 
-            TemplateVersion fakeTemplateVersion = new TemplateVersion(
-                "vrsn_fakeId", // id
-                default(string), // description
-                "fake html", // html
-                default(EngineHtml), // engine
-                default(bool), // suggestJsonEditor
-                default(Object), // mergeVariables
-                default(DateTime), // dateCreated
-                default(DateTime), // dateModified
-                default(bool), // deleted
-                TemplateVersion.ObjectEnum.Version // _object
-            );
+            TemplateVersion fakeTemplateVersion = new TemplateVersion();
+            fakeTemplateVersion.setId("vrsn_fakeId");
+            fakeTemplateVersion.setDescription(default(string));
+            fakeTemplateVersion.setHtml("fake html");
+            fakeTemplateVersion.setEngine(default(EngineHtml));
+            fakeTemplateVersion.setSuggestJsonEditor(default(bool));
+            fakeTemplateVersion.setMergeVariables(default(Object));
+            fakeTemplateVersion.setDateCreated(default(DateTime));
+            fakeTemplateVersion.setDateModified(default(DateTime));
+            fakeTemplateVersion.setDeleted(default(bool));
+            fakeTemplateVersion.setObject(TemplateVersion.ObjectEnum.Version);
 
-            fakeTemplate = new Template(
-                default(string), // description
-                "tmpl_fakeId", // id
-                new List<TemplateVersion>(), // versions
-                fakeTemplateVersion, // publishedVersion
-                Template.ObjectEnum.Template, // _object
-                default(Dictionary<string, string>), // metadata
-                default(DateTime), // dateCreated
-                default(DateTime), // dateModified
-                default(bool) // deleted
-            );
+            fakeTemplate = new Template();
+            fakeTemplate.setDescription(default(string));
+            fakeTemplate.setId("tmpl_fakeId");
+            fakeTemplate.setVersions(new List<TemplateVersion>());
+            fakeTemplate.setPublishedVersion(fakeTemplateVersion);
+            fakeTemplate.setObject(Template.ObjectEnum.Template);
+            fakeTemplate.setMetadata(default(Dictionary<string, string>));
+            fakeTemplate.setDateCreated(default(DateTime));
+            fakeTemplate.setDateModified(default(DateTime));
+            fakeTemplate.setDeleted(default(bool));
 
             List<Template> listOfTemplates = new List<Template>();
-            Template data1 = new Template(
-                default(string), // description
-                "tmpl_fakeId1", // id
-                new List<TemplateVersion>(), // versions
-                fakeTemplateVersion, // publishedVersion
-                Template.ObjectEnum.Template, // _object
-                default(Dictionary<string, string>), // metadata
-                default(DateTime), // dateCreated
-                default(DateTime), // dateModified
-                default(bool) // deleted
-            );
-            Template data2 = new Template(
-                default(string), // description
-                "tmpl_fakeId2", // id
-                new List<TemplateVersion>(), // versions
-                fakeTemplateVersion, // publishedVersion
-                Template.ObjectEnum.Template, // _object
-                default(Dictionary<string, string>), // metadata
-                default(DateTime), // dateCreated
-                default(DateTime), // dateModified
-                default(bool) // deleted
-            );
+            Template data1 = new Template();
+            data1.setDescription(default(string));
+            data1.setId("tmpl_fakeId1");
+            data1.setVersions(new List<TemplateVersion>());
+            data1.setPublishedVersion(fakeTemplateVersion);
+            data1.setObject(Template.ObjectEnum.Template);
+            data1.setMetadata(default(Dictionary<string, string>));
+            data1.setDateCreated(default(DateTime));
+            data1.setDateModified(default(DateTime));
+            data1.setDeleted(default(bool));
+            Template data2 = new Template();
+            data2.setDescription(default(string));
+            data2.setId("tmpl_fakeId2");
+            data2.setVersions(new List<TemplateVersion>());
+            data2.setPublishedVersion(fakeTemplateVersion);
+            data2.setObject(Template.ObjectEnum.Template);
+            data2.setMetadata(default(Dictionary<string, string>));
+            data2.setDateCreated(default(DateTime));
+            data2.setDateModified(default(DateTime));
+            data2.setDeleted(default(bool));
 
             listOfTemplates.Add(data1);
             listOfTemplates.Add(data2);
 
             fakeTemplateList = new TemplateList();
 
-            fakeTemplateList.Data = listOfTemplates;
-            fakeTemplateList.Object = "list";
-            fakeTemplateList.Count = listOfTemplates.Count;
+            fakeTemplateList.setData(listOfTemplates);
+            fakeTemplateList.setObject("list");
+            fakeTemplateList.setCount(listOfTemplates.Count);
         }
 
         public void Dispose()
@@ -105,18 +101,17 @@ namespace __tests__.Api
         [Test]
         public void CreateTemplateTest()
         {
-            TemplateWritable templateWritable = new TemplateWritable(
-                "C# unit test description", // description
-                "<html>Updated HTML</html>", // html
-                default(Dictionary<string, string>), // metadata
-                default(EngineHtml) // engine
-            );
+            TemplateWritable templateWritable = new TemplateWritable();
+            templateWritable.setDescription("C# unit test description");
+            templateWritable.setHtml("<html>Updated HTML</html>");
+            templateWritable.setMetadata(default(Dictionary<string, string>));
+            templateWritable.setEngine(default(EngineHtml));
 
             templatesApiMock.Setup(x => x.CreateTemplate(templateWritable, It.IsAny<int>())).Returns(fakeTemplate);
             Template response = templatesApiMock.Object.CreateTemplate(templateWritable);
 
             Assert.IsInstanceOf<Template>(response);
-            Assert.AreEqual(response.Id, "tmpl_fakeId");
+            Assert.AreEqual(response.getId(), "tmpl_fakeId");
         }
 
         /// <summary>
@@ -148,16 +143,16 @@ namespace __tests__.Api
         {
             TemplateDeletion fakeTemplate = new TemplateDeletion();
 
-            fakeTemplate.Id = "tmpl_fakeId";
-            fakeTemplate.Deleted = true;
+            fakeTemplate.setId("tmpl_fakeId");
+            fakeTemplate.setDeleted(true);
 
-            templatesApiMock.Setup(x => x.TemplateDelete(fakeTemplate.Id, It.IsAny<int>())).Returns(fakeTemplate);
+            templatesApiMock.Setup(x => x.TemplateDelete(fakeTemplate.getId(), It.IsAny<int>())).Returns(fakeTemplate);
 
-            var response = templatesApiMock.Object.TemplateDelete(fakeTemplate.Id);
+            var response = templatesApiMock.Object.TemplateDelete(fakeTemplate.getId());
 
             Assert.IsInstanceOf<TemplateDeletion>(response);
-            Assert.AreEqual(response.Deleted, fakeTemplate.Deleted);
-            Assert.AreEqual(response.Id, fakeTemplate.Id);
+            Assert.AreEqual(response.getDeleted(), fakeTemplate.getDeleted());
+            Assert.AreEqual(response.getId(), fakeTemplate.getId());
         }
 
         /// <summary>
@@ -187,11 +182,11 @@ namespace __tests__.Api
         [Test]
         public void TemplateRetrieveTest()
         {
-            templatesApiMock.Setup(x => x.TemplateRetrieve(fakeTemplate.Id, It.IsAny<int>())).Returns(fakeTemplate);
-            Template response = templatesApiMock.Object.TemplateRetrieve(fakeTemplate.Id);
+            templatesApiMock.Setup(x => x.TemplateRetrieve(fakeTemplate.getId(), It.IsAny<int>())).Returns(fakeTemplate);
+            Template response = templatesApiMock.Object.TemplateRetrieve(fakeTemplate.getId());
 
             Assert.IsInstanceOf<Template>(response);
-            Assert.AreEqual(response.Id, fakeTemplate.Id);
+            Assert.AreEqual(response.getId(), fakeTemplate.getId());
         }
 
         /// <summary>
@@ -226,7 +221,7 @@ namespace __tests__.Api
             var response = templatesApiMock.Object.TemplatesList(null, null, null, null, null, null);
 
             Assert.IsInstanceOf<TemplateList>(response);
-            Assert.AreEqual(response.Count, fakeTemplateList.Count);
+            Assert.AreEqual(response.getCount(), fakeTemplateList.getCount());
         }
 
         /// <summary>
@@ -263,7 +258,7 @@ namespace __tests__.Api
             var response = templatesApiMock.Object.TemplatesList(limit, null, null, null, null, null);
 
             Assert.IsInstanceOf<TemplateList>(response);
-            Assert.AreEqual(response.Count, fakeTemplateList.Count);
+            Assert.AreEqual(response.getCount(), fakeTemplateList.getCount());
         }
 
         /// <summary>
@@ -279,7 +274,7 @@ namespace __tests__.Api
             var response = templatesApiMock.Object.TemplatesList(null, before, null, null, null, null);
 
             Assert.IsInstanceOf<TemplateList>(response);
-            Assert.AreEqual(response.Count, fakeTemplateList.Count);
+            Assert.AreEqual(response.getCount(), fakeTemplateList.getCount());
         }
 
         /// <summary>
@@ -295,7 +290,7 @@ namespace __tests__.Api
             var response = templatesApiMock.Object.TemplatesList(null, null, after, null, null, null);
 
             Assert.IsInstanceOf<TemplateList>(response);
-            Assert.AreEqual(response.Count, fakeTemplateList.Count);
+            Assert.AreEqual(response.getCount(), fakeTemplateList.getCount());
         }
 
         /// <summary>
@@ -312,7 +307,7 @@ namespace __tests__.Api
             var response = templatesApiMock.Object.TemplatesList(null, null, null, include, null, null);
 
             Assert.IsInstanceOf<TemplateList>(response);
-            Assert.AreEqual(response.Count, fakeTemplateList.Count);
+            Assert.AreEqual(response.getCount(), fakeTemplateList.getCount());
         }
 
         /// <summary>
@@ -322,15 +317,15 @@ namespace __tests__.Api
         public void TemplateListTestWithDateCreatedParam()
         {
             Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
-            dateCreated.Add("gt", DateTime.Now);
-            dateCreated.Add("lt", DateTime.Now);
+            DateTime lastMonth = DateTime.Today.AddMonths(-1);
+            dateCreated.Add("lt", lastMonth);
 
             templatesApiMock.Setup(x => x.TemplatesList(null, null, null, null, dateCreated, null, It.IsAny<int>())).Returns(fakeTemplateList);
 
             var response = templatesApiMock.Object.TemplatesList(null, null, null, null, dateCreated, null);
 
             Assert.IsInstanceOf<TemplateList>(response);
-            Assert.AreEqual(response.Count, fakeTemplateList.Count);
+            Assert.AreEqual(response.getCount(), fakeTemplateList.getCount());
         }
 
         /// <summary>
@@ -347,7 +342,7 @@ namespace __tests__.Api
             var response = templatesApiMock.Object.TemplatesList(null, null, null, null, null, metadata);
 
             Assert.IsInstanceOf<TemplateList>(response);
-            Assert.AreEqual(response.Count, fakeTemplateList.Count);
+            Assert.AreEqual(response.getCount(), fakeTemplateList.getCount());
         }
 
         /// <summary>
@@ -356,14 +351,16 @@ namespace __tests__.Api
         [Test]
         public void TemplateUpdateTest()
         {
-            TemplateUpdate templateUpdate = new TemplateUpdate("C# unit test template update description", "vrsn_fakeId");
+            TemplateUpdate templateUpdate = new TemplateUpdate();
+            templateUpdate.setDescription("C# unit test template update description");
+            templateUpdate.setPublishedVersion("vrsn_fakeId");
 
-            templatesApiMock.Setup(x => x.TemplateUpdate(fakeTemplate.Id, templateUpdate, It.IsAny<int>())).Returns(fakeTemplate);
+            templatesApiMock.Setup(x => x.TemplateUpdate(fakeTemplate.getId(), templateUpdate, It.IsAny<int>())).Returns(fakeTemplate);
 
-            Template response = templatesApiMock.Object.TemplateUpdate(fakeTemplate.Id, templateUpdate);
+            Template response = templatesApiMock.Object.TemplateUpdate(fakeTemplate.getId(), templateUpdate);
 
             Assert.IsInstanceOf<Template>(response);
-            Assert.AreEqual(response.Id, fakeTemplate.Id);
+            Assert.AreEqual(response.getId(), fakeTemplate.getId());
         }
 
         /// <summary>

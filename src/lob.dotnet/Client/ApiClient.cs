@@ -1,7 +1,7 @@
 /*
  * Lob
  *
- * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)? 
+ * The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p> Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?
  *
  * The version of the OpenAPI document: 1.3.0
  * Contact: lob-openapi@lob.com
@@ -31,6 +31,7 @@ using RestSharp;
 using RestSharp.Deserializers;
 using RestSharpMethod = RestSharp.Method;
 using Polly;
+using lob.dotnet.Model;
 
 namespace lob.dotnet.Client
 {
@@ -521,6 +522,58 @@ namespace lob.dotnet.Client
                 try
                 {
                     response.Data = existingDeserializer.Deserialize<T>(response);
+                }
+                catch (ApiException ex) when (ex.Message.Contains("Unexpected character encountered while parsing value: {"))
+                {
+                    // know this only fails with SelfMailer on the "to" and "from" fields
+                    // first find starting indices A of all "to" and "from" substrings
+                    // then find index B of closest "}" character after each one of those indices
+                    // save all contents within respective A+(either length of 'to": ' or length of 'from:": ' and B indices
+                    // remove contents from those indices in response.Content
+                    // deserialize response.Content now
+                    // set "to" and "from" to their rightful values as JSON strings
+
+                    Dictionary<string, int> keyFieldsAndLengths = new Dictionary<string, int>();
+                    keyFieldsAndLengths.Add(@"""to""", 6);
+                    keyFieldsAndLengths.Add(@"""from""", 8);
+
+                    List<string> tosAndFroms = new List<string>();
+
+                    foreach(KeyValuePair<string, int> kvp in keyFieldsAndLengths) {
+                        int startIndex = response.Content.IndexOf(kvp.Key);
+                        while (startIndex != -1) { // find all the "to" fields. then all the "from" fields
+                            startIndex += kvp.Value; // reach the first curly brace
+                            if (response.Content[startIndex] != '{') { // null "from"
+                                tosAndFroms.Add(null);
+                                response.Content.Remove(startIndex, 4).Insert(startIndex, @"""""");
+                                startIndex = response.Content.IndexOf(kvp.Key, startIndex + 1);
+                                continue;
+                            }
+                            int endIndex = response.Content.IndexOf('}', startIndex);
+                            endIndex = response.Content.IndexOf('}', endIndex + 1); // because "to" and "from" have "metadata", which is an obj with curly braces of its own
+                            tosAndFroms.Add(response.Content.Substring(startIndex, endIndex - startIndex + 1));
+                            response.Content = response.Content.Remove(startIndex, endIndex - startIndex + 1).Insert(startIndex, @"""""");
+                            startIndex = response.Content.IndexOf(kvp.Key, startIndex + 1);
+                        }
+                    }
+                    response.Data = existingDeserializer.Deserialize<T>(response);
+
+                    // add the "to" and "from" fields back
+                    if (typeof(T).Name == "SelfMailer") {
+                        SelfMailer res = (SelfMailer)(object)response.Data;
+                        res.setTo(tosAndFroms[0]);
+                        res.setFrom(tosAndFroms[1]);
+                        response.Data = (T)(object)res;
+                    }
+
+                    if (typeof(T).Name == "SelfMailerList") {
+                        SelfMailerList res = (SelfMailerList)(object)response.Data;
+                        for (int toIndex = 0; toIndex < tosAndFroms.Count / 2; toIndex++) {
+                            res.getData()[toIndex].setTo(tosAndFroms[toIndex]);
+                            res.getData()[toIndex].setFrom(tosAndFroms[toIndex + tosAndFroms.Count / 2]);
+                        }
+                        response.Data = (T)(object)res;
+                    }
                 }
                 catch (Exception ex)
                 {

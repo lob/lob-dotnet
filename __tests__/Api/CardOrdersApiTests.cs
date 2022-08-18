@@ -35,43 +35,39 @@ namespace __tests__.Api
         {
             cardOrdersApiMock = new Mock<ICardOrdersApi>();
             string fakeCardId = "card_fakeId";
-            fakeCardOrder = new CardOrder(
-                "co_fakeId", // id
-                fakeCardId, // cardId
-                null, // status
-                0M, // inventory
-                0M, // quantityOrdered
-                0M, // unitPrice
-                default(string), // cancelledReason
-                default(DateTime), // availabilityDate
-                default(DateTime), // expectedAvailabilityDate
-                default(DateTime), // dateCreated
-                default(DateTime), // dateModified
-                default(bool), // deleted
-                "card_order" // _object
-            );
+            fakeCardOrder = new CardOrder();
+            fakeCardOrder.setId("co_fakeId");
+            fakeCardOrder.setCardId(fakeCardId);
+            fakeCardOrder.setInventory(0M);
+            fakeCardOrder.setQuantityOrdered(0M);
+            fakeCardOrder.setUnitPrice(0M);
+            fakeCardOrder.setCancelledReason(default(string));
+            fakeCardOrder.setAvailabilityDate(default(DateTime));
+            fakeCardOrder.setExpectedAvailabilityDate(default(DateTime));
+            fakeCardOrder.setDateCreated(default(DateTime));
+            fakeCardOrder.setDateModified(default(DateTime));
+            fakeCardOrder.setDeleted(default(bool));
+            fakeCardOrder.setObject("card_order");
 
-            fakeCard = new Card(
-                fakeCardId, // id
-                "fake url", // url
-                false, // autoReorder
-                null, // reorderQuantity
-                "fake raw url", // rawUrl
-                "fake front original url", // frontOriginalUrl
-                "fake back original url", // backOriginalUrl
-                new List<Thumbnail>(), // thumbnails
-                0, // availableQuantity
-                0, // pendingQuantity
-                default(Card.StatusEnum), // status
-                Card.OrientationEnum.Horizontal, // orientation
-                0, // thresholdAmount
-                default(DateTime), // dateCreated
-                default(DateTime), // dateModified
-                default(bool), // deleted
-                Card.ObjectEnum.Card, // _object
-                default(string), // description
-                Card.SizeEnum._2125x3375 // size
-            );
+            fakeCard = new Card();
+            fakeCard.setId(fakeCardId);
+            fakeCard.setUrl("fake url");
+            fakeCard.setAutoReorder(false);
+            fakeCard.setRawUrl("fake raw url");
+            fakeCard.setFrontOriginalUrl("fake front original url");
+            fakeCard.setBackOriginalUrl("fake back original url");
+            fakeCard.setThumbnails(new List<Thumbnail>());
+            fakeCard.setAvailableQuantity(0);
+            fakeCard.setPendingQuantity(0);
+            fakeCard.setStatus(default(Card.StatusEnum));
+            fakeCard.setOrientation(Card.OrientationEnum.Horizontal);
+            fakeCard.setThresholdAmount(0);
+            fakeCard.setDateCreated(default(DateTime));
+            fakeCard.setDateModified(default(DateTime));
+            fakeCard.setDeleted(default(bool));
+            fakeCard.setObject(Card.ObjectEnum.Card);
+            fakeCard.setDescription(default(string));
+            fakeCard.setSize(Card.SizeEnum._2125x3375);
         }
 
         public void Dispose()
@@ -85,13 +81,14 @@ namespace __tests__.Api
         [Test]
         public void CardOrderCreateTest()
         {
-            CardOrderEditable cardOrderEditable = new CardOrderEditable(10000);
+            CardOrderEditable cardOrderEditable = new CardOrderEditable();
+            cardOrderEditable.setQuantity(10000);
 
             cardOrdersApiMock.Setup(x => x.CardOrderCreate("card_fakeId", cardOrderEditable, It.IsAny<int>())).Returns(fakeCardOrder);
             CardOrder response = cardOrdersApiMock.Object.CardOrderCreate("card_fakeId", cardOrderEditable);
 
             Assert.IsInstanceOf<CardOrder>(response);
-            Assert.AreEqual(response.Id, fakeCardOrder.Id);
+            Assert.AreEqual(response.getId(), fakeCardOrder.getId());
         }
 
         /// <summary>
@@ -124,16 +121,16 @@ namespace __tests__.Api
             CardOrderList fakeCardOrderList = new CardOrderList();
             List<CardOrder> cardOrders = new List<CardOrder>();
             cardOrders.Add(fakeCardOrder);
-            fakeCardOrderList.Data = cardOrders;
+            fakeCardOrderList.setData(cardOrders);
 
-            cardOrdersApiMock.Setup(x => x.CardOrdersRetrieve(fakeCard.Id, null, null, It.IsAny<int>())).Returns(fakeCardOrderList);
-            CardOrderList response = cardOrdersApiMock.Object.CardOrdersRetrieve(fakeCard.Id);
+            cardOrdersApiMock.Setup(x => x.CardOrdersRetrieve(fakeCard.getId(), null, null, It.IsAny<int>())).Returns(fakeCardOrderList);
+            CardOrderList response = cardOrdersApiMock.Object.CardOrdersRetrieve(fakeCard.getId());
 
             Assert.IsInstanceOf<CardOrderList>(response);
 
             Boolean retrievedCardOrder = false;
-            foreach(var cardOrder in response.Data) {
-                if (cardOrder.CardId == fakeCard.Id)
+            foreach(var cardOrder in response.getData()) {
+                if (cardOrder.getCardId() == fakeCard.getId())
                     retrievedCardOrder = true;
             }
             Assert.True(retrievedCardOrder);

@@ -54,7 +54,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>non-Certified postcards, self mailers, letters, and checks</value>
         [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = false)]
-        public TypeEnum Type { get; set; }
+        private TypeEnum type;
+        public TypeEnum getType() {
+            return type;
+        }
+        public void setType(TypeEnum value) {
+            type = value;
+        }
         /// <summary>
         /// Name of tracking event (for normal postcards, self mailers, letters, and checks):    * &#x60;In Transit&#x60; - The mailpiece is being processed at the entry/origin facility.    * &#x60;In Local Area&#x60; - The mailpiece is being processed at the destination facility.    * &#x60;Processed for Delivery&#x60; - The mailpiece has been greenlit for     delivery at the recipient&#39;s nearest postal facility. The mailpiece     should reach the mailbox within 1 business day of this tracking     event.    * &#x60;Re-Routed&#x60; - The mailpiece is re-routed due to recipient change of     address, address errors, or USPS relabeling of barcode/ID tag     area.    * &#x60;Returned to Sender&#x60; - The mailpiece is being returned to sender due     to barcode, ID tag area, or address errors.    * &#x60;Mailed&#x60; - The mailpiece has been handed off to and accepted by USPS     and is en route. [More about     Mailed.](https://support.lob.com/hc/en-us/articles/360001724400-What-does-a-Mailed-tracking-event-mean-)     Note this data is only available in Enterprise editions of     Lob. [Contact Sales](https://lob.com/support/contact#contact) if     you want access to this feature.  [More about tracking](https://support.lob.com/hc/en-us/articles/115000097404-Can-I-track-my-mail-) 
         /// </summary>
@@ -112,7 +118,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Name of tracking event (for normal postcards, self mailers, letters, and checks):    * &#x60;In Transit&#x60; - The mailpiece is being processed at the entry/origin facility.    * &#x60;In Local Area&#x60; - The mailpiece is being processed at the destination facility.    * &#x60;Processed for Delivery&#x60; - The mailpiece has been greenlit for     delivery at the recipient&#39;s nearest postal facility. The mailpiece     should reach the mailbox within 1 business day of this tracking     event.    * &#x60;Re-Routed&#x60; - The mailpiece is re-routed due to recipient change of     address, address errors, or USPS relabeling of barcode/ID tag     area.    * &#x60;Returned to Sender&#x60; - The mailpiece is being returned to sender due     to barcode, ID tag area, or address errors.    * &#x60;Mailed&#x60; - The mailpiece has been handed off to and accepted by USPS     and is en route. [More about     Mailed.](https://support.lob.com/hc/en-us/articles/360001724400-What-does-a-Mailed-tracking-event-mean-)     Note this data is only available in Enterprise editions of     Lob. [Contact Sales](https://lob.com/support/contact#contact) if     you want access to this feature.  [More about tracking](https://support.lob.com/hc/en-us/articles/115000097404-Can-I-track-my-mail-) </value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
-        public NameEnum Name { get; set; }
+        private NameEnum name;
+        public NameEnum getName() {
+            return name;
+        }
+        public void setName(NameEnum value) {
+            name = value;
+        }
         /// <summary>
         /// Will be &#x60;null&#x60; for &#x60;type&#x3D;normal&#x60; events
         /// </summary>
@@ -135,7 +147,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Will be &#x60;null&#x60; for &#x60;type&#x3D;normal&#x60; events</value>
         [DataMember(Name = "details", EmitDefaultValue = true)]
-        public DetailsEnum? Details { get; set; }
+        private DetailsEnum? details;
+        public DetailsEnum? getDetails() {
+            return details;
+        }
+        public void setDetails(DetailsEnum value) {
+            details = value;
+        }
         /// <summary>
         /// Defines Object
         /// </summary>
@@ -156,12 +174,18 @@ namespace lob.dotnet.Model
         /// Gets or Sets Object
         /// </summary>
         [DataMember(Name = "object", EmitDefaultValue = false)]
-        public ObjectEnum? Object { get; set; }
+        private ObjectEnum? _object;
+        public ObjectEnum? getObject() {
+            return _object;
+        }
+        public void setObject(ObjectEnum value) {
+            _object = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="TrackingEventNormal" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected TrackingEventNormal() { }
+        public TrackingEventNormal() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="TrackingEventNormal" /> class.
         /// </summary>
@@ -174,53 +198,71 @@ namespace lob.dotnet.Model
         /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created..</param>
         /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified..</param>
         /// <param name="_object">_object (default to ObjectEnum.TrackingEvent).</param>
-        public TrackingEventNormal(TypeEnum type = default(TypeEnum), NameEnum name = default(NameEnum), DetailsEnum? details = default(DetailsEnum?), string location = default(string), string id = default(string), DateTime time = default(DateTime), DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), ObjectEnum? _object = ObjectEnum.TrackingEvent)
-        {
-            this.Type = type;
-            this.Name = name;
-            this.Details = details;
-            this.Location = location;
-            this.Id = id;
-            this.Time = time;
-            this.DateCreated = dateCreated;
-            this.DateModified = dateModified;
-            this.Object = _object;
-        }
 
         /// <summary>
         /// The zip code in which the scan event occurred. Null for &#x60;Mailed&#x60; events. 
         /// </summary>
         /// <value>The zip code in which the scan event occurred. Null for &#x60;Mailed&#x60; events. </value>
         [DataMember(Name = "location", EmitDefaultValue = true)]
-        public string Location { get; set; }
+        private string location;
+        public string getLocation() {
+            return location;
+        }
+        public void setLocation(string value) {
+            location = value;
+        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;evnt_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;evnt_&#x60;.</value>
         [DataMember(Name = "id", EmitDefaultValue = false)]
-        public string Id { get; set; }
+        private string id;
+        public string getId() {
+            return id;
+        }
+        public void setId(string value) {
+            id = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date USPS registered the event.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date USPS registered the event.</value>
         [DataMember(Name = "time", EmitDefaultValue = false)]
-        public DateTime Time { get; set; }
+        private DateTime time;
+        public DateTime getTime() {
+            return time;
+        }
+        public void setTime(DateTime value) {
+            time = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was created.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was created.</value>
         [DataMember(Name = "date_created", EmitDefaultValue = false)]
-        public DateTime DateCreated { get; set; }
+        private DateTime dateCreated;
+        public DateTime getDateCreated() {
+            return dateCreated;
+        }
+        public void setDateCreated(DateTime value) {
+            dateCreated = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was last modified.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was last modified.</value>
         [DataMember(Name = "date_modified", EmitDefaultValue = false)]
-        public DateTime DateModified { get; set; }
+        private DateTime dateModified;
+        public DateTime getDateModified() {
+            return dateModified;
+        }
+        public void setDateModified(DateTime value) {
+            dateModified = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -230,15 +272,15 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TrackingEventNormal {\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Details: ").Append(Details).Append("\n");
-            sb.Append("  Location: ").Append(Location).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Time: ").Append(Time).Append("\n");
-            sb.Append("  DateCreated: ").Append(DateCreated).Append("\n");
-            sb.Append("  DateModified: ").Append(DateModified).Append("\n");
-            sb.Append("  Object: ").Append(Object).Append("\n");
+            sb.Append("  type: ").Append(type).Append("\n");
+            sb.Append("  name: ").Append(name).Append("\n");
+            sb.Append("  details: ").Append(details).Append("\n");
+            sb.Append("  location: ").Append(location).Append("\n");
+            sb.Append("  id: ").Append(id).Append("\n");
+            sb.Append("  time: ").Append(time).Append("\n");
+            sb.Append("  dateCreated: ").Append(dateCreated).Append("\n");
+            sb.Append("  dateModified: ").Append(dateModified).Append("\n");
+            sb.Append("  _object: ").Append(_object).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -249,7 +291,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -275,45 +317,45 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Type == input.Type ||
-                    this.Type.Equals(input.Type)
+                    this.type == input.getType() ||
+                    this.type.Equals(input.getType())
                 ) && 
                 (
-                    this.Name == input.Name ||
-                    this.Name.Equals(input.Name)
+                    this.name == input.getName() ||
+                    this.name.Equals(input.getName())
                 ) && 
                 (
-                    this.Details == input.Details ||
-                    this.Details.Equals(input.Details)
+                    this.details == input.getDetails() ||
+                    this.details.Equals(input.getDetails())
                 ) && 
                 (
-                    this.Location == input.Location ||
-                    (this.Location != null &&
-                    this.Location.Equals(input.Location))
+                    this.location == input.getLocation() ||
+                    (this.location != null &&
+                    this.location.Equals(input.getLocation()))
                 ) && 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.id == input.getId() ||
+                    (this.id != null &&
+                    this.id.Equals(input.getId()))
                 ) && 
                 (
-                    this.Time == input.Time ||
-                    (this.Time != null &&
-                    this.Time.Equals(input.Time))
+                    this.time == input.getTime() ||
+                    (this.time != null &&
+                    this.time.Equals(input.getTime()))
                 ) && 
                 (
-                    this.DateCreated == input.DateCreated ||
-                    (this.DateCreated != null &&
-                    this.DateCreated.Equals(input.DateCreated))
+                    this.dateCreated == input.getDateCreated() ||
+                    (this.dateCreated != null &&
+                    this.dateCreated.Equals(input.getDateCreated()))
                 ) && 
                 (
-                    this.DateModified == input.DateModified ||
-                    (this.DateModified != null &&
-                    this.DateModified.Equals(input.DateModified))
+                    this.dateModified == input.getDateModified() ||
+                    (this.dateModified != null &&
+                    this.dateModified.Equals(input.getDateModified()))
                 ) && 
                 (
-                    this.Object == input.Object ||
-                    this.Object.Equals(input.Object)
+                    this._object == input.getObject() ||
+                    this._object.Equals(input.getObject())
                 );
         }
 
@@ -326,30 +368,30 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Type.GetHashCode();
-                hashCode = (hashCode * 59) + this.Name.GetHashCode();
-                hashCode = (hashCode * 59) + this.Details.GetHashCode();
-                if (this.Location != null)
+                hashCode = (hashCode * 59) + this.type.GetHashCode();
+                hashCode = (hashCode * 59) + this.name.GetHashCode();
+                hashCode = (hashCode * 59) + this.details.GetHashCode();
+                if (this.location != null)
                 {
-                    hashCode = (hashCode * 59) + this.Location.GetHashCode();
+                    hashCode = (hashCode * 59) + this.location.GetHashCode();
                 }
-                if (this.Id != null)
+                if (this.id != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.id.GetHashCode();
                 }
-                if (this.Time != null)
+                if (this.time != null)
                 {
-                    hashCode = (hashCode * 59) + this.Time.GetHashCode();
+                    hashCode = (hashCode * 59) + this.time.GetHashCode();
                 }
-                if (this.DateCreated != null)
+                if (this.dateCreated != null)
                 {
-                    hashCode = (hashCode * 59) + this.DateCreated.GetHashCode();
+                    hashCode = (hashCode * 59) + this.dateCreated.GetHashCode();
                 }
-                if (this.DateModified != null)
+                if (this.dateModified != null)
                 {
-                    hashCode = (hashCode * 59) + this.DateModified.GetHashCode();
+                    hashCode = (hashCode * 59) + this.dateModified.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Object.GetHashCode();
+                hashCode = (hashCode * 59) + this._object.GetHashCode();
                 return hashCode;
             }
         }
@@ -361,11 +403,11 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Id (string) pattern
-            Regex regexId = new Regex(@"^evnt_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexId.Match(this.Id).Success)
+            // id (string) pattern
+            Regex regexid = new Regex(@"^evnt_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regexid.Match(this.id).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for id, must match a pattern of " + regexid, new [] { "id" });
             }
 
             yield break;

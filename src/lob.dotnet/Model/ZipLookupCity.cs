@@ -36,7 +36,7 @@ namespace lob.dotnet.Model
         /// Initializes a new instance of the <see cref="ZipLookupCity" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ZipLookupCity() { }
+        public ZipLookupCity() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="ZipLookupCity" /> class.
         /// </summary>
@@ -45,68 +45,70 @@ namespace lob.dotnet.Model
         /// <param name="county">County name of the address city. (required).</param>
         /// <param name="countyFips">A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies &#x60;components[county]&#x60;. It consists of a 2-digit state code and a 3-digit county code.  (required).</param>
         /// <param name="preferred">Indicates whether or not the city is the [USPS default city](https://en.wikipedia.org/wiki/ZIP_Code#ZIP_Codes_and_previous_zoning_lines) (preferred city) of a ZIP code. There is only one preferred city per ZIP code, which will always be in position 0 in the array of cities.  (required).</param>
-        public ZipLookupCity(string city = default(string), string state = default(string), string county = default(string), string countyFips = default(string), bool preferred = default(bool))
-        {
-            // to ensure "city" is required (not null)
-            if (city == null)
-            {
-                throw new ArgumentNullException("city is a required property for ZipLookupCity and cannot be null");
-            }
-            this.City = city;
-            // to ensure "state" is required (not null)
-            if (state == null)
-            {
-                throw new ArgumentNullException("state is a required property for ZipLookupCity and cannot be null");
-            }
-            this.State = state;
-            // to ensure "county" is required (not null)
-            if (county == null)
-            {
-                throw new ArgumentNullException("county is a required property for ZipLookupCity and cannot be null");
-            }
-            this.County = county;
-            // to ensure "countyFips" is required (not null)
-            if (countyFips == null)
-            {
-                throw new ArgumentNullException("countyFips is a required property for ZipLookupCity and cannot be null");
-            }
-            this.CountyFips = countyFips;
-            this.Preferred = preferred;
-        }
 
         /// <summary>
         /// Gets or Sets City
         /// </summary>
         [DataMember(Name = "city", IsRequired = true, EmitDefaultValue = false)]
-        public string City { get; set; }
+        private string city;
+        public string getCity() {
+            return city;
+        }
+        public void setCity(string value) {
+            city = value;
+        }
 
         /// <summary>
         /// The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. 
         /// </summary>
         /// <value>The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. </value>
         [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = false)]
-        public string State { get; set; }
+        private string state;
+        public string getState() {
+            return state;
+        }
+        public void setState(string value) {
+            state = value;
+        }
 
         /// <summary>
         /// County name of the address city.
         /// </summary>
         /// <value>County name of the address city.</value>
         [DataMember(Name = "county", IsRequired = true, EmitDefaultValue = false)]
-        public string County { get; set; }
+        private string county;
+        public string getCounty() {
+            return county;
+        }
+        public void setCounty(string value) {
+            county = value;
+        }
 
         /// <summary>
         /// A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies &#x60;components[county]&#x60;. It consists of a 2-digit state code and a 3-digit county code. 
         /// </summary>
         /// <value>A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies &#x60;components[county]&#x60;. It consists of a 2-digit state code and a 3-digit county code. </value>
         [DataMember(Name = "county_fips", IsRequired = true, EmitDefaultValue = false)]
-        public string CountyFips { get; set; }
+        private string countyFips;
+        public string getCountyFips() {
+            return countyFips;
+        }
+        public void setCountyFips(string value) {
+            countyFips = value;
+        }
 
         /// <summary>
         /// Indicates whether or not the city is the [USPS default city](https://en.wikipedia.org/wiki/ZIP_Code#ZIP_Codes_and_previous_zoning_lines) (preferred city) of a ZIP code. There is only one preferred city per ZIP code, which will always be in position 0 in the array of cities. 
         /// </summary>
         /// <value>Indicates whether or not the city is the [USPS default city](https://en.wikipedia.org/wiki/ZIP_Code#ZIP_Codes_and_previous_zoning_lines) (preferred city) of a ZIP code. There is only one preferred city per ZIP code, which will always be in position 0 in the array of cities. </value>
         [DataMember(Name = "preferred", IsRequired = true, EmitDefaultValue = true)]
-        public bool Preferred { get; set; }
+        private bool preferred;
+        public bool getPreferred() {
+            return preferred;
+        }
+        public void setPreferred(bool value) {
+            preferred = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -116,11 +118,11 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ZipLookupCity {\n");
-            sb.Append("  City: ").Append(City).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  County: ").Append(County).Append("\n");
-            sb.Append("  CountyFips: ").Append(CountyFips).Append("\n");
-            sb.Append("  Preferred: ").Append(Preferred).Append("\n");
+            sb.Append("  city: ").Append(city).Append("\n");
+            sb.Append("  state: ").Append(state).Append("\n");
+            sb.Append("  county: ").Append(county).Append("\n");
+            sb.Append("  countyFips: ").Append(countyFips).Append("\n");
+            sb.Append("  preferred: ").Append(preferred).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -131,7 +133,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -157,28 +159,28 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.City == input.City ||
-                    (this.City != null &&
-                    this.City.Equals(input.City))
+                    this.city == input.getCity() ||
+                    (this.city != null &&
+                    this.city.Equals(input.getCity()))
                 ) && 
                 (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
+                    this.state == input.getState() ||
+                    (this.state != null &&
+                    this.state.Equals(input.getState()))
                 ) && 
                 (
-                    this.County == input.County ||
-                    (this.County != null &&
-                    this.County.Equals(input.County))
+                    this.county == input.getCounty() ||
+                    (this.county != null &&
+                    this.county.Equals(input.getCounty()))
                 ) && 
                 (
-                    this.CountyFips == input.CountyFips ||
-                    (this.CountyFips != null &&
-                    this.CountyFips.Equals(input.CountyFips))
+                    this.countyFips == input.getCountyFips() ||
+                    (this.countyFips != null &&
+                    this.countyFips.Equals(input.getCountyFips()))
                 ) && 
                 (
-                    this.Preferred == input.Preferred ||
-                    this.Preferred.Equals(input.Preferred)
+                    this.preferred == input.getPreferred() ||
+                    this.preferred.Equals(input.getPreferred())
                 );
         }
 
@@ -191,23 +193,23 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.City != null)
+                if (this.city != null)
                 {
-                    hashCode = (hashCode * 59) + this.City.GetHashCode();
+                    hashCode = (hashCode * 59) + this.city.GetHashCode();
                 }
-                if (this.State != null)
+                if (this.state != null)
                 {
-                    hashCode = (hashCode * 59) + this.State.GetHashCode();
+                    hashCode = (hashCode * 59) + this.state.GetHashCode();
                 }
-                if (this.County != null)
+                if (this.county != null)
                 {
-                    hashCode = (hashCode * 59) + this.County.GetHashCode();
+                    hashCode = (hashCode * 59) + this.county.GetHashCode();
                 }
-                if (this.CountyFips != null)
+                if (this.countyFips != null)
                 {
-                    hashCode = (hashCode * 59) + this.CountyFips.GetHashCode();
+                    hashCode = (hashCode * 59) + this.countyFips.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Preferred.GetHashCode();
+                hashCode = (hashCode * 59) + this.preferred.GetHashCode();
                 return hashCode;
             }
         }
@@ -219,16 +221,16 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // City (string) maxLength
-            if (this.City != null && this.City.Length > 200)
+            // city (string) maxLength
+            if (this.city != null && this.city.Length > 200)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for City, length must be less than 200.", new [] { "City" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for city, length must be less than 200.", new [] { "city" });
             }
 
-            // State (string) maxLength
-            if (this.State != null && this.State.Length > 2)
+            // state (string) maxLength
+            if (this.state != null && this.state.Length > 2)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for State, length must be less than 2.", new [] { "State" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for state, length must be less than 2.", new [] { "state" });
             }
 
             yield break;

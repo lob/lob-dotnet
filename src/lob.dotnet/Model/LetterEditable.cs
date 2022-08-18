@@ -75,7 +75,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Specifies the location of the address information that will show through the double-window envelope. To see how this will impact your letter design, view our letter template.   * &#x60;top_first_page&#x60; - (default) print address information at the top of your provided first page   * &#x60;insert_blank_page&#x60; - insert a blank address page at the beginning of your file (you will be charged for the extra page)   * &#x60;bottom_first_page_center&#x60; - **(deprecation planned within a few months)** print address information at the bottom center of your provided first page   * &#x60;bottom_first_page&#x60; - print address information at the bottom of your provided first page </value>
         [DataMember(Name = "address_placement", EmitDefaultValue = false)]
-        public AddressPlacementEnum? AddressPlacement { get; set; }
+        private AddressPlacementEnum? addressPlacement;
+        public AddressPlacementEnum? getAddressPlacement() {
+            return addressPlacement;
+        }
+        public void setAddressPlacement(AddressPlacementEnum value) {
+            addressPlacement = value;
+        }
         /// <summary>
         /// Add an extra service to your letter:   * &#x60;certified&#x60; - track and confirm delivery for domestic destinations. An extra sheet (1 PDF page single-sided or 2 PDF pages double-sided) is added to the beginning of your letter for address and barcode information. See here for templates: [#10 envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_template.pdf) and [flat envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_flat_template.pdf) (used for letters over 6 pages single-sided or 12 pages double-sided). You will not be charged for this extra sheet.   * &#x60;certified_return_receipt&#x60; - request an electronic copy of the recipient&#39;s signature to prove delivery of your certified letter   * &#x60;registered&#x60; - provides tracking and confirmation for international addresses 
         /// </summary>
@@ -119,12 +125,18 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Add an extra service to your letter:   * &#x60;certified&#x60; - track and confirm delivery for domestic destinations. An extra sheet (1 PDF page single-sided or 2 PDF pages double-sided) is added to the beginning of your letter for address and barcode information. See here for templates: [#10 envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_template.pdf) and [flat envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_flat_template.pdf) (used for letters over 6 pages single-sided or 12 pages double-sided). You will not be charged for this extra sheet.   * &#x60;certified_return_receipt&#x60; - request an electronic copy of the recipient&#39;s signature to prove delivery of your certified letter   * &#x60;registered&#x60; - provides tracking and confirmation for international addresses </value>
         [DataMember(Name = "extra_service", EmitDefaultValue = true)]
-        public ExtraServiceEnum? ExtraService { get; set; }
+        private ExtraServiceEnum? extraService;
+        public ExtraServiceEnum? getExtraService() {
+            return extraService;
+        }
+        public void setExtraService(ExtraServiceEnum value) {
+            extraService = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="LetterEditable" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected LetterEditable() { }
+        public LetterEditable() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="LetterEditable" /> class.
         /// </summary>
@@ -136,7 +148,7 @@ namespace lob.dotnet.Model
         /// <param name="color">Set this key to &#x60;true&#x60; if you would like to print in color. Set to &#x60;false&#x60; if you would like to print in black and white. (required).</param>
         /// <param name="doubleSided">Set this attribute to &#x60;true&#x60; for double sided printing, or &#x60;false&#x60; for for single sided printing. Defaults to &#x60;true&#x60;. (default to true).</param>
         /// <param name="addressPlacement">Specifies the location of the address information that will show through the double-window envelope. To see how this will impact your letter design, view our letter template.   * &#x60;top_first_page&#x60; - (default) print address information at the top of your provided first page   * &#x60;insert_blank_page&#x60; - insert a blank address page at the beginning of your file (you will be charged for the extra page)   * &#x60;bottom_first_page_center&#x60; - **(deprecation planned within a few months)** print address information at the bottom center of your provided first page   * &#x60;bottom_first_page&#x60; - print address information at the bottom of your provided first page  (default to AddressPlacementEnum.TopFirstPage).</param>
-        /// <param name="returnEnvelope">indicates if a return envelope is requested for the letter. The value corresponding to this field is by default a boolean. But if the account is signed up for custom return envelopes, the value is of type string and is &#x60;no_9_single_window&#x60; for a standard return envelope and a custom &#x60;return_envelope_id&#x60; for non-standard return envelopes.  To include a return envelope with your letter, set to &#x60;true&#x60; and specify the &#x60;perforated_page&#x60;. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred. (default to false).</param>
+        /// <param name="returnEnvelope">indicates if a return envelope is requested for the letter. The value corresponding to this field is by default a boolean. But if the account is signed up for custom return envelopes, the value is of type string and is &#x60;no_9_single_window&#x60; for a standard return envelope and a custom &#x60;return_envelope_id&#x60; for non-standard return envelopes.  To include a return envelope with your letter, set to &#x60;true&#x60; and specify the &#x60;perforated_page&#x60;. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred..</param>
         /// <param name="perforatedPage">Required if &#x60;return_envelope&#x60; is &#x60;true&#x60;. The number of the page that should be perforated for use with the return envelope. Must be greater than or equal to &#x60;1&#x60;. The blank page added by &#x60;address_placement&#x3D;insert_blank_page&#x60; will be ignored when considering the perforated page number. To see how perforation will impact your letter design, view our [perforation guide](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_perf_template.pdf)..</param>
         /// <param name="customEnvelope">customEnvelope.</param>
         /// <param name="to">Must either be an address ID or an inline object with correct address parameters. (required).</param>
@@ -145,144 +157,208 @@ namespace lob.dotnet.Model
         /// <param name="extraService">Add an extra service to your letter:   * &#x60;certified&#x60; - track and confirm delivery for domestic destinations. An extra sheet (1 PDF page single-sided or 2 PDF pages double-sided) is added to the beginning of your letter for address and barcode information. See here for templates: [#10 envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_template.pdf) and [flat envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_flat_template.pdf) (used for letters over 6 pages single-sided or 12 pages double-sided). You will not be charged for this extra sheet.   * &#x60;certified_return_receipt&#x60; - request an electronic copy of the recipient&#39;s signature to prove delivery of your certified letter   * &#x60;registered&#x60; - provides tracking and confirmation for international addresses .</param>
         /// <param name="cards">A single-element array containing an existing card id in a string format. See [cards](#tag/Cards) for more information..</param>
         /// <param name="billingGroupId">An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information..</param>
-        public LetterEditable(string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), bool color = default(bool), bool doubleSided = true, AddressPlacementEnum? addressPlacement = AddressPlacementEnum.TopFirstPage, bool returnEnvelope = false, int? perforatedPage = default(int?), LetterEditableCustomEnvelope customEnvelope = default(LetterEditableCustomEnvelope), string to = default(string), string from = default(string), string file = default(string), ExtraServiceEnum? extraService = default(ExtraServiceEnum?), List<string> cards = default(List<string>), string billingGroupId = default(string))
-        {
-            this.Color = color;
-            // to ensure "to" is required (not null)
-            if (to == null)
-            {
-                throw new ArgumentNullException("to is a required property for LetterEditable and cannot be null");
-            }
-            this.To = to;
-            // to ensure "from" is required (not null)
-            if (from == null)
-            {
-                throw new ArgumentNullException("from is a required property for LetterEditable and cannot be null");
-            }
-            this.From = from;
-            // to ensure "file" is required (not null)
-            if (file == null)
-            {
-                throw new ArgumentNullException("file is a required property for LetterEditable and cannot be null");
-            }
-            this.File = file;
-            this.Description = description;
-            this.Metadata = metadata;
-            this.MailType = mailType;
-            this.MergeVariables = mergeVariables;
-            this.SendDate = sendDate;
-            this.DoubleSided = doubleSided;
-            this.AddressPlacement = addressPlacement;
-            this.ReturnEnvelope = returnEnvelope;
-            this.PerforatedPage = perforatedPage;
-            this.CustomEnvelope = customEnvelope;
-            this.ExtraService = extraService;
-            this.Cards = cards;
-            this.BillingGroupId = billingGroupId;
-        }
 
         /// <summary>
         /// An internal description that identifies this resource. Must be no longer than 255 characters. 
         /// </summary>
         /// <value>An internal description that identifies this resource. Must be no longer than 255 characters. </value>
         [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
+        private string description;
+        public string getDescription() {
+            return description;
+        }
+        public void setDescription(string value) {
+            description = value;
+        }
 
         /// <summary>
         /// Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information.
         /// </summary>
         /// <value>Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information.</value>
         [DataMember(Name = "metadata", EmitDefaultValue = false)]
-        public Dictionary<string, string> Metadata { get; set; }
+        private Dictionary<string, string> metadata;
+        public Dictionary<string, string> getMetadata() {
+            return metadata;
+        }
+        public void setMetadata(Dictionary<string, string> value) {
+            metadata = value;
+        }
 
         /// <summary>
         /// Gets or Sets MailType
         /// </summary>
         [DataMember(Name = "mail_type", EmitDefaultValue = false)]
-        public MailType MailType { get; set; }
+        private MailType mailType;
+        public MailType getMailType() {
+            return mailType;
+        }
+        public void setMailType(MailType value) {
+            mailType = value;
+        }
 
         /// <summary>
         /// You can input a merge variable payload object to your template to render dynamic content. For example, if you have a template like: &#x60;{{variable_name}}&#x60;, pass in &#x60;{\&quot;variable_name\&quot;: \&quot;Harry\&quot;}&#x60; to render &#x60;Harry&#x60;. &#x60;merge_variables&#x60; must be an object. Any type of value is accepted as long as the object is valid JSON; you can use &#x60;strings&#x60;, &#x60;numbers&#x60;, &#x60;booleans&#x60;, &#x60;arrays&#x60;, &#x60;objects&#x60;, or &#x60;null&#x60;. The max length of the object is 25,000 characters. If you call &#x60;JSON.stringify&#x60; on your object, it can be no longer than 25,000 characters. Your variable names cannot contain any whitespace or any of the following special characters: &#x60;!&#x60;, &#x60;\&quot;&#x60;, &#x60;#&#x60;, &#x60;%&#x60;, &#x60;&amp;&#x60;, &#x60;&#39;&#x60;, &#x60;(&#x60;, &#x60;)&#x60;, &#x60;*&#x60;, &#x60;+&#x60;, &#x60;,&#x60;, &#x60;/&#x60;, &#x60;;&#x60;, &#x60;&lt;&#x60;, &#x60;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;@&#x60;, &#x60;[&#x60;, &#x60;\\&#x60;, &#x60;]&#x60;, &#x60;^&#x60;, &#x60;&#x60; &#x60; &#x60;&#x60;, &#x60;{&#x60;, &#x60;|&#x60;, &#x60;}&#x60;, &#x60;~&#x60;. More instructions can be found in [our guide to using html and merge variables](https://lob.com/resources/guides/general/using-html-and-merge-variables). Depending on your [Merge Variable strictness](https://dashboard.lob.com/#/settings/account) setting, if you define variables in your HTML but do not pass them here, you will either receive an error or the variable will render as an empty string.
         /// </summary>
         /// <value>You can input a merge variable payload object to your template to render dynamic content. For example, if you have a template like: &#x60;{{variable_name}}&#x60;, pass in &#x60;{\&quot;variable_name\&quot;: \&quot;Harry\&quot;}&#x60; to render &#x60;Harry&#x60;. &#x60;merge_variables&#x60; must be an object. Any type of value is accepted as long as the object is valid JSON; you can use &#x60;strings&#x60;, &#x60;numbers&#x60;, &#x60;booleans&#x60;, &#x60;arrays&#x60;, &#x60;objects&#x60;, or &#x60;null&#x60;. The max length of the object is 25,000 characters. If you call &#x60;JSON.stringify&#x60; on your object, it can be no longer than 25,000 characters. Your variable names cannot contain any whitespace or any of the following special characters: &#x60;!&#x60;, &#x60;\&quot;&#x60;, &#x60;#&#x60;, &#x60;%&#x60;, &#x60;&amp;&#x60;, &#x60;&#39;&#x60;, &#x60;(&#x60;, &#x60;)&#x60;, &#x60;*&#x60;, &#x60;+&#x60;, &#x60;,&#x60;, &#x60;/&#x60;, &#x60;;&#x60;, &#x60;&lt;&#x60;, &#x60;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;@&#x60;, &#x60;[&#x60;, &#x60;\\&#x60;, &#x60;]&#x60;, &#x60;^&#x60;, &#x60;&#x60; &#x60; &#x60;&#x60;, &#x60;{&#x60;, &#x60;|&#x60;, &#x60;}&#x60;, &#x60;~&#x60;. More instructions can be found in [our guide to using html and merge variables](https://lob.com/resources/guides/general/using-html-and-merge-variables). Depending on your [Merge Variable strictness](https://dashboard.lob.com/#/settings/account) setting, if you define variables in your HTML but do not pass them here, you will either receive an error or the variable will render as an empty string.</value>
         [DataMember(Name = "merge_variables", EmitDefaultValue = true)]
-        public Object MergeVariables { get; set; }
+        private Object mergeVariables;
+        public Object getMergeVariables() {
+            return mergeVariables;
+        }
+        public void setMergeVariables(Object value) {
+            mergeVariables = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the &#x60;send_date&#x60; has passed, the mailpiece can be canceled. If a date in the format &#x60;2017-11-01&#x60; is passed, it will evaluate to midnight UTC of that date (&#x60;2017-11-01T00:00:00.000Z&#x60;). If a datetime is passed, that exact time will be used. A &#x60;send_date&#x60; passed with no time zone will default to UTC, while a &#x60;send_date&#x60; passed with a time zone will be converted to UTC.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the &#x60;send_date&#x60; has passed, the mailpiece can be canceled. If a date in the format &#x60;2017-11-01&#x60; is passed, it will evaluate to midnight UTC of that date (&#x60;2017-11-01T00:00:00.000Z&#x60;). If a datetime is passed, that exact time will be used. A &#x60;send_date&#x60; passed with no time zone will default to UTC, while a &#x60;send_date&#x60; passed with a time zone will be converted to UTC.</value>
         [DataMember(Name = "send_date", EmitDefaultValue = false)]
-        public DateTime SendDate { get; set; }
+        private DateTime sendDate;
+        public DateTime getSendDate() {
+            return sendDate;
+        }
+        public void setSendDate(DateTime value) {
+            sendDate = value;
+        }
 
         /// <summary>
         /// Set this key to &#x60;true&#x60; if you would like to print in color. Set to &#x60;false&#x60; if you would like to print in black and white.
         /// </summary>
         /// <value>Set this key to &#x60;true&#x60; if you would like to print in color. Set to &#x60;false&#x60; if you would like to print in black and white.</value>
         [DataMember(Name = "color", IsRequired = true, EmitDefaultValue = true)]
-        public bool Color { get; set; }
+        private bool color;
+        public bool getColor() {
+            return color;
+        }
+        public void setColor(bool value) {
+            color = value;
+        }
 
         /// <summary>
         /// Set this attribute to &#x60;true&#x60; for double sided printing, or &#x60;false&#x60; for for single sided printing. Defaults to &#x60;true&#x60;.
         /// </summary>
         /// <value>Set this attribute to &#x60;true&#x60; for double sided printing, or &#x60;false&#x60; for for single sided printing. Defaults to &#x60;true&#x60;.</value>
         [DataMember(Name = "double_sided", EmitDefaultValue = true)]
-        public bool DoubleSided { get; set; }
+        private bool doubleSided;
+        public bool getDoubleSided() {
+            return doubleSided;
+        }
+        public void setDoubleSided(bool value) {
+            doubleSided = value;
+        }
 
         /// <summary>
         /// indicates if a return envelope is requested for the letter. The value corresponding to this field is by default a boolean. But if the account is signed up for custom return envelopes, the value is of type string and is &#x60;no_9_single_window&#x60; for a standard return envelope and a custom &#x60;return_envelope_id&#x60; for non-standard return envelopes.  To include a return envelope with your letter, set to &#x60;true&#x60; and specify the &#x60;perforated_page&#x60;. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred.
         /// </summary>
         /// <value>indicates if a return envelope is requested for the letter. The value corresponding to this field is by default a boolean. But if the account is signed up for custom return envelopes, the value is of type string and is &#x60;no_9_single_window&#x60; for a standard return envelope and a custom &#x60;return_envelope_id&#x60; for non-standard return envelopes.  To include a return envelope with your letter, set to &#x60;true&#x60; and specify the &#x60;perforated_page&#x60;. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred.</value>
         [DataMember(Name = "return_envelope", EmitDefaultValue = true)]
-        public bool ReturnEnvelope { get; set; }
+        private string returnEnvelope;
+        public string getReturnEnvelope() {
+            return returnEnvelope;
+        }
+        public void setReturnEnvelope(string value) {
+            returnEnvelope = value;
+        }
+        public void setReturnEnvelope(bool value) {
+            returnEnvelope = value.ToString();
+        }
 
         /// <summary>
         /// Required if &#x60;return_envelope&#x60; is &#x60;true&#x60;. The number of the page that should be perforated for use with the return envelope. Must be greater than or equal to &#x60;1&#x60;. The blank page added by &#x60;address_placement&#x3D;insert_blank_page&#x60; will be ignored when considering the perforated page number. To see how perforation will impact your letter design, view our [perforation guide](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_perf_template.pdf).
         /// </summary>
         /// <value>Required if &#x60;return_envelope&#x60; is &#x60;true&#x60;. The number of the page that should be perforated for use with the return envelope. Must be greater than or equal to &#x60;1&#x60;. The blank page added by &#x60;address_placement&#x3D;insert_blank_page&#x60; will be ignored when considering the perforated page number. To see how perforation will impact your letter design, view our [perforation guide](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_perf_template.pdf).</value>
         [DataMember(Name = "perforated_page", EmitDefaultValue = true)]
-        public int? PerforatedPage { get; set; }
+        private int? perforatedPage;
+        public int? getPerforatedPage() {
+            return perforatedPage;
+        }
+        public void setPerforatedPage(int? value) {
+            perforatedPage = value;
+        }
 
         /// <summary>
         /// Gets or Sets CustomEnvelope
         /// </summary>
         [DataMember(Name = "custom_envelope", EmitDefaultValue = true)]
-        public LetterEditableCustomEnvelope CustomEnvelope { get; set; }
+        private LetterEditableCustomEnvelope customEnvelope;
+        public LetterEditableCustomEnvelope getCustomEnvelope() {
+            return customEnvelope;
+        }
+        public void setCustomEnvelope(LetterEditableCustomEnvelope value) {
+            customEnvelope = value;
+        }
 
         /// <summary>
         /// Must either be an address ID or an inline object with correct address parameters.
         /// </summary>
         /// <value>Must either be an address ID or an inline object with correct address parameters.</value>
         [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = false)]
-        public string To { get; set; }
+        private string to;
+        public string getTo() {
+            return to;
+        }
+        public void setTo(string value) {
+            to = value;
+        }
+        public void setTo(AddressEditable value) {
+            to = Newtonsoft.Json.JsonConvert.SerializeObject(value);
+        }
 
         /// <summary>
         /// Must either be an address ID or an inline object with correct address parameters.
         /// </summary>
         /// <value>Must either be an address ID or an inline object with correct address parameters.</value>
         [DataMember(Name = "from", IsRequired = true, EmitDefaultValue = false)]
-        public string From { get; set; }
+        private string from;
+        public string getFrom() {
+            return from;
+        }
+        public void setFrom(string value) {
+            from = value;
+        }
+        public void setFrom(AddressEditable value) {
+            from = Newtonsoft.Json.JsonConvert.SerializeObject(value);
+        }
 
         /// <summary>
         /// PDF file containing the letter&#39;s formatting.
         /// </summary>
         /// <value>PDF file containing the letter&#39;s formatting.</value>
         [DataMember(Name = "file", IsRequired = true, EmitDefaultValue = false)]
-        public string File { get; set; }
+        private string file;
+        public string getFile() {
+            return file;
+        }
+        public void setFile(string value) {
+            file = value;
+        }
 
         /// <summary>
         /// A single-element array containing an existing card id in a string format. See [cards](#tag/Cards) for more information.
         /// </summary>
         /// <value>A single-element array containing an existing card id in a string format. See [cards](#tag/Cards) for more information.</value>
         [DataMember(Name = "cards", EmitDefaultValue = true)]
-        public List<string> Cards { get; set; }
+        private List<string> cards;
+        public List<string> getCards() {
+            return cards;
+        }
+        public void setCards(List<string> value) {
+            cards = value;
+        }
 
         /// <summary>
         /// An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information.
         /// </summary>
         /// <value>An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information.</value>
         [DataMember(Name = "billing_group_id", EmitDefaultValue = false)]
-        public string BillingGroupId { get; set; }
+        private string billingGroupId;
+        public string getBillingGroupId() {
+            return billingGroupId;
+        }
+        public void setBillingGroupId(string value) {
+            billingGroupId = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -292,23 +368,23 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class LetterEditable {\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
-            sb.Append("  MailType: ").Append(MailType).Append("\n");
-            sb.Append("  MergeVariables: ").Append(MergeVariables).Append("\n");
-            sb.Append("  SendDate: ").Append(SendDate).Append("\n");
-            sb.Append("  Color: ").Append(Color).Append("\n");
-            sb.Append("  DoubleSided: ").Append(DoubleSided).Append("\n");
-            sb.Append("  AddressPlacement: ").Append(AddressPlacement).Append("\n");
-            sb.Append("  ReturnEnvelope: ").Append(ReturnEnvelope).Append("\n");
-            sb.Append("  PerforatedPage: ").Append(PerforatedPage).Append("\n");
-            sb.Append("  CustomEnvelope: ").Append(CustomEnvelope).Append("\n");
-            sb.Append("  To: ").Append(To).Append("\n");
-            sb.Append("  From: ").Append(From).Append("\n");
-            sb.Append("  File: ").Append(File).Append("\n");
-            sb.Append("  ExtraService: ").Append(ExtraService).Append("\n");
-            sb.Append("  Cards: ").Append(Cards).Append("\n");
-            sb.Append("  BillingGroupId: ").Append(BillingGroupId).Append("\n");
+            sb.Append("  description: ").Append(description).Append("\n");
+            sb.Append("  metadata: ").Append(metadata).Append("\n");
+            sb.Append("  mailType: ").Append(mailType).Append("\n");
+            sb.Append("  mergeVariables: ").Append(mergeVariables).Append("\n");
+            sb.Append("  sendDate: ").Append(sendDate).Append("\n");
+            sb.Append("  color: ").Append(color).Append("\n");
+            sb.Append("  doubleSided: ").Append(doubleSided).Append("\n");
+            sb.Append("  addressPlacement: ").Append(addressPlacement).Append("\n");
+            sb.Append("  returnEnvelope: ").Append(returnEnvelope).Append("\n");
+            sb.Append("  perforatedPage: ").Append(perforatedPage).Append("\n");
+            sb.Append("  customEnvelope: ").Append(customEnvelope).Append("\n");
+            sb.Append("  to: ").Append(to).Append("\n");
+            sb.Append("  from: ").Append(from).Append("\n");
+            sb.Append("  file: ").Append(file).Append("\n");
+            sb.Append("  extraService: ").Append(extraService).Append("\n");
+            sb.Append("  cards: ").Append(cards).Append("\n");
+            sb.Append("  billingGroupId: ").Append(billingGroupId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -319,7 +395,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -345,86 +421,87 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.description == input.getDescription() ||
+                    (this.description != null &&
+                    this.description.Equals(input.getDescription()))
                 ) && 
                 (
-                    this.Metadata == input.Metadata ||
-                    this.Metadata != null &&
-                    input.Metadata != null &&
-                    this.Metadata.SequenceEqual(input.Metadata)
+                    this.metadata == input.getMetadata() ||
+                    this.metadata != null &&
+                    input.getMetadata() != null &&
+                    this.metadata.SequenceEqual(input.getMetadata())
                 ) && 
                 (
-                    this.MailType == input.MailType ||
-                    (this.MailType != null &&
-                    this.MailType.Equals(input.MailType))
+                    this.mailType == input.getMailType() ||
+                    (this.mailType != null &&
+                    this.mailType.Equals(input.getMailType()))
                 ) && 
                 (
-                    this.MergeVariables == input.MergeVariables ||
-                    (this.MergeVariables != null &&
-                    this.MergeVariables.Equals(input.MergeVariables))
+                    this.mergeVariables == input.getMergeVariables() ||
+                    (this.mergeVariables != null &&
+                    this.mergeVariables.Equals(input.getMergeVariables()))
                 ) && 
                 (
-                    this.SendDate == input.SendDate ||
-                    (this.SendDate != null &&
-                    this.SendDate.Equals(input.SendDate))
+                    this.sendDate == input.getSendDate() ||
+                    (this.sendDate != null &&
+                    this.sendDate.Equals(input.getSendDate()))
                 ) && 
                 (
-                    this.Color == input.Color ||
-                    this.Color.Equals(input.Color)
+                    this.color == input.getColor() ||
+                    this.color.Equals(input.getColor())
                 ) && 
                 (
-                    this.DoubleSided == input.DoubleSided ||
-                    this.DoubleSided.Equals(input.DoubleSided)
+                    this.doubleSided == input.getDoubleSided() ||
+                    this.doubleSided.Equals(input.getDoubleSided())
                 ) && 
                 (
-                    this.AddressPlacement == input.AddressPlacement ||
-                    this.AddressPlacement.Equals(input.AddressPlacement)
+                    this.addressPlacement == input.getAddressPlacement() ||
+                    this.addressPlacement.Equals(input.getAddressPlacement())
                 ) && 
                 (
-                    this.ReturnEnvelope == input.ReturnEnvelope ||
-                    this.ReturnEnvelope.Equals(input.ReturnEnvelope)
+                    this.returnEnvelope == input.getReturnEnvelope() ||
+                    (this.returnEnvelope != null &&
+                    this.returnEnvelope.Equals(input.getReturnEnvelope()))
                 ) && 
                 (
-                    this.PerforatedPage == input.PerforatedPage ||
-                    (this.PerforatedPage != null &&
-                    this.PerforatedPage.Equals(input.PerforatedPage))
+                    this.perforatedPage == input.getPerforatedPage() ||
+                    (this.perforatedPage != null &&
+                    this.perforatedPage.Equals(input.getPerforatedPage()))
                 ) && 
                 (
-                    this.CustomEnvelope == input.CustomEnvelope ||
-                    (this.CustomEnvelope != null &&
-                    this.CustomEnvelope.Equals(input.CustomEnvelope))
+                    this.customEnvelope == input.getCustomEnvelope() ||
+                    (this.customEnvelope != null &&
+                    this.customEnvelope.Equals(input.getCustomEnvelope()))
                 ) && 
                 (
-                    this.To == input.To ||
-                    (this.To != null &&
-                    this.To.Equals(input.To))
+                    this.to == input.getTo() ||
+                    (this.to != null &&
+                    this.to.Equals(input.getTo()))
                 ) && 
                 (
-                    this.From == input.From ||
-                    (this.From != null &&
-                    this.From.Equals(input.From))
+                    this.from == input.getFrom() ||
+                    (this.from != null &&
+                    this.from.Equals(input.getFrom()))
                 ) && 
                 (
-                    this.File == input.File ||
-                    (this.File != null &&
-                    this.File.Equals(input.File))
+                    this.file == input.getFile() ||
+                    (this.file != null &&
+                    this.file.Equals(input.getFile()))
                 ) && 
                 (
-                    this.ExtraService == input.ExtraService ||
-                    this.ExtraService.Equals(input.ExtraService)
+                    this.extraService == input.getExtraService() ||
+                    this.extraService.Equals(input.getExtraService())
                 ) && 
                 (
-                    this.Cards == input.Cards ||
-                    this.Cards != null &&
-                    input.Cards != null &&
-                    this.Cards.SequenceEqual(input.Cards)
+                    this.cards == input.getCards() ||
+                    this.cards != null &&
+                    input.getCards() != null &&
+                    this.cards.SequenceEqual(input.getCards())
                 ) && 
                 (
-                    this.BillingGroupId == input.BillingGroupId ||
-                    (this.BillingGroupId != null &&
-                    this.BillingGroupId.Equals(input.BillingGroupId))
+                    this.billingGroupId == input.getBillingGroupId() ||
+                    (this.billingGroupId != null &&
+                    this.billingGroupId.Equals(input.getBillingGroupId()))
                 );
         }
 
@@ -437,58 +514,61 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Description != null)
+                if (this.description != null)
                 {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                    hashCode = (hashCode * 59) + this.description.GetHashCode();
                 }
-                if (this.Metadata != null)
+                if (this.metadata != null)
                 {
-                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                    hashCode = (hashCode * 59) + this.metadata.GetHashCode();
                 }
-                if (this.MailType != null)
+                if (this.mailType != null)
                 {
-                    hashCode = (hashCode * 59) + this.MailType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.mailType.GetHashCode();
                 }
-                if (this.MergeVariables != null)
+                if (this.mergeVariables != null)
                 {
-                    hashCode = (hashCode * 59) + this.MergeVariables.GetHashCode();
+                    hashCode = (hashCode * 59) + this.mergeVariables.GetHashCode();
                 }
-                if (this.SendDate != null)
+                if (this.sendDate != null)
                 {
-                    hashCode = (hashCode * 59) + this.SendDate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.sendDate.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Color.GetHashCode();
-                hashCode = (hashCode * 59) + this.DoubleSided.GetHashCode();
-                hashCode = (hashCode * 59) + this.AddressPlacement.GetHashCode();
-                hashCode = (hashCode * 59) + this.ReturnEnvelope.GetHashCode();
-                if (this.PerforatedPage != null)
+                hashCode = (hashCode * 59) + this.color.GetHashCode();
+                hashCode = (hashCode * 59) + this.doubleSided.GetHashCode();
+                hashCode = (hashCode * 59) + this.addressPlacement.GetHashCode();
+                if (this.returnEnvelope != null)
                 {
-                    hashCode = (hashCode * 59) + this.PerforatedPage.GetHashCode();
+                    hashCode = (hashCode * 59) + this.returnEnvelope.GetHashCode();
                 }
-                if (this.CustomEnvelope != null)
+                if (this.perforatedPage != null)
                 {
-                    hashCode = (hashCode * 59) + this.CustomEnvelope.GetHashCode();
+                    hashCode = (hashCode * 59) + this.perforatedPage.GetHashCode();
                 }
-                if (this.To != null)
+                if (this.customEnvelope != null)
                 {
-                    hashCode = (hashCode * 59) + this.To.GetHashCode();
+                    hashCode = (hashCode * 59) + this.customEnvelope.GetHashCode();
                 }
-                if (this.From != null)
+                if (this.to != null)
                 {
-                    hashCode = (hashCode * 59) + this.From.GetHashCode();
+                    hashCode = (hashCode * 59) + this.to.GetHashCode();
                 }
-                if (this.File != null)
+                if (this.from != null)
                 {
-                    hashCode = (hashCode * 59) + this.File.GetHashCode();
+                    hashCode = (hashCode * 59) + this.from.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.ExtraService.GetHashCode();
-                if (this.Cards != null)
+                if (this.file != null)
                 {
-                    hashCode = (hashCode * 59) + this.Cards.GetHashCode();
+                    hashCode = (hashCode * 59) + this.file.GetHashCode();
                 }
-                if (this.BillingGroupId != null)
+                hashCode = (hashCode * 59) + this.extraService.GetHashCode();
+                if (this.cards != null)
                 {
-                    hashCode = (hashCode * 59) + this.BillingGroupId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.cards.GetHashCode();
+                }
+                if (this.billingGroupId != null)
+                {
+                    hashCode = (hashCode * 59) + this.billingGroupId.GetHashCode();
                 }
                 return hashCode;
             }
@@ -501,10 +581,10 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Description (string) maxLength
-            if (this.Description != null && this.Description.Length > 255)
+            // description (string) maxLength
+            if (this.description != null && this.description.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 255.", new [] { "Description" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for description, length must be less than 255.", new [] { "description" });
             }
 
             yield break;

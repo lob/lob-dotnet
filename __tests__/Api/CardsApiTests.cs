@@ -34,80 +34,74 @@ namespace __tests__.Api
         public CardsApiTests()
         {
             cardsApiMock = new Mock<ICardsApi>();
-            fakeCard = new Card(
-                "card_fakeId", // id
-                "fake url", // url
-                false, // autoReorder
-                null, // reorderQuantity
-                "fake raw url", // rawUrl
-                "fake front original url", // frontOriginalUrl
-                "fake back original url", // backOriginalUrl
-                new List<Thumbnail>(), // thumbnails
-                0, // availableQuantity
-                0, // pendingQuantity
-                default(Card.StatusEnum), // status
-                Card.OrientationEnum.Horizontal, // orientation
-                0, // thresholdAmount
-                default(DateTime), // dateCreated
-                default(DateTime), // dateModified
-                default(bool), // deleted
-                Card.ObjectEnum.Card, // _object
-                default(string), // description
-                Card.SizeEnum._2125x3375 // size
-            );
+            fakeCard = new Card();
+            fakeCard.setId("card_fakeId");
+            fakeCard.setUrl("fake url");
+            fakeCard.setAutoReorder(false);
+            fakeCard.setRawUrl("fake raw url");
+            fakeCard.setFrontOriginalUrl("fake front original url");
+            fakeCard.setBackOriginalUrl("fake back original url");
+            fakeCard.setThumbnails(new List<Thumbnail>());
+            fakeCard.setAvailableQuantity(0);
+            fakeCard.setPendingQuantity(0);
+            fakeCard.setStatus(default(Card.StatusEnum));
+            fakeCard.setOrientation(Card.OrientationEnum.Horizontal);
+            fakeCard.setThresholdAmount(0);
+            fakeCard.setDateCreated(default(DateTime));
+            fakeCard.setDateModified(default(DateTime));
+            fakeCard.setDeleted(default(bool));
+            fakeCard.setObject(Card.ObjectEnum.Card);
+            fakeCard.setDescription(default(string));
+            fakeCard.setSize(Card.SizeEnum._2125x3375);
 
             List<Card> listOfCards = new List<Card>();
-            Card data1 = new Card(
-                "card_fakeId1", // id
-                "fake url", // url
-                false, // autoReorder
-                null, // reorderQuantity
-                "fake raw url", // rawUrl
-                "fake front original url", // frontOriginalUrl
-                "fake back original url", // backOriginalUrl
-                new List<Thumbnail>(), // thumbnails
-                0, // availableQuantity
-                0, // pendingQuantity
-                default(Card.StatusEnum), // status
-                Card.OrientationEnum.Horizontal, // orientation
-                0, // thresholdAmount
-                default(DateTime), // dateCreated
-                default(DateTime), // dateModified
-                default(bool), // deleted
-                Card.ObjectEnum.Card, // _object
-                default(string), // description
-                Card.SizeEnum._2125x3375 // size
-            );
-            Card data2 = new Card(
-                "card_fakeId2", // id
-                "fake url", // url
-                false, // autoReorder
-                null, // reorderQuantity
-                "fake raw url", // rawUrl
-                "fake front original url", // frontOriginalUrl
-                "fake back original url", // backOriginalUrl
-                new List<Thumbnail>(), // thumbnails
-                0, // availableQuantity
-                0, // pendingQuantity
-                default(Card.StatusEnum), // status
-                Card.OrientationEnum.Horizontal, // orientation
-                0, // thresholdAmount
-                default(DateTime), // dateCreated
-                default(DateTime), // dateModified
-                default(bool), // deleted
-                Card.ObjectEnum.Card, // _object
-                default(string), // description
-                Card.SizeEnum._2125x3375 // size
-            );
+            Card data1 = new Card();
+            data1.setId("card_fakeId1");
+            data1.setUrl("fake url");
+            data1.setAutoReorder(false);
+            data1.setRawUrl("fake raw url");
+            data1.setFrontOriginalUrl("fake front original url");
+            data1.setBackOriginalUrl("fake back original url");
+            data1.setThumbnails(new List<Thumbnail>());
+            data1.setAvailableQuantity(0);
+            data1.setPendingQuantity(0);
+            data1.setStatus(default(Card.StatusEnum));
+            data1.setOrientation(Card.OrientationEnum.Horizontal);
+            data1.setThresholdAmount(0);
+            data1.setDateCreated(default(DateTime));
+            data1.setDateModified(default(DateTime));
+            data1.setDeleted(default(bool));
+            data1.setObject(Card.ObjectEnum.Card);
+            data1.setDescription(default(string));
+            data1.setSize(Card.SizeEnum._2125x3375);
+            Card data2 = new Card();
+            data2.setId("card_fakeId2");
+            data2.setUrl("fake url");
+            data2.setAutoReorder(false);
+            data2.setRawUrl("fake raw url");
+            data2.setFrontOriginalUrl("fake front original url");
+            data2.setBackOriginalUrl("fake back original url");
+            data2.setThumbnails(new List<Thumbnail>());
+            data2.setAvailableQuantity(0);
+            data2.setPendingQuantity(0);
+            data2.setStatus(default(Card.StatusEnum));
+            data2.setOrientation(Card.OrientationEnum.Horizontal);
+            data2.setThresholdAmount(0);
+            data2.setDateCreated(default(DateTime));
+            data2.setDateModified(default(DateTime));
+            data2.setDeleted(default(bool));
+            data2.setObject(Card.ObjectEnum.Card);
+            data2.setDescription(default(string));
+            data2.setSize(Card.SizeEnum._2125x3375);
 
             listOfCards.Add(data1);
             listOfCards.Add(data2);
 
             fakeCardList = new CardList();
 
-            fakeCardList.Data = listOfCards;
-            fakeCardList.Object = "list";
-            fakeCardList.Count = listOfCards.Count;
+            fakeCardList.setData(listOfCards);
+            fakeCardList.setObject("list");
+            fakeCardList.setCount(listOfCards.Count);
         }
 
         public void Dispose()
@@ -121,18 +115,17 @@ namespace __tests__.Api
         [Test]
         public void CardCreateTest()
         {
-            CardEditable cardEditable = new CardEditable(
-                "fake front", // front
-                "fake back", // back
-                CardEditable.SizeEnum._2125x3375, // size
-                "fake description" // description
-            );
+            CardEditable cardEditable = new CardEditable();
+            cardEditable.setFront("fake front");
+            cardEditable.setBack("fake back");
+            cardEditable.setSize(CardEditable.SizeEnum._2125x3375);
+            cardEditable.setDescription("fake description");
 
             cardsApiMock.Setup(x => x.CardCreate(cardEditable, It.IsAny<int>())).Returns(fakeCard);
             Card response = cardsApiMock.Object.CardCreate(cardEditable);
 
             Assert.IsInstanceOf<Card>(response);
-            Assert.AreEqual(response.Id, "card_fakeId");
+            Assert.AreEqual(response.getId(), "card_fakeId");
         }
 
         /// <summary>
@@ -164,16 +157,16 @@ namespace __tests__.Api
         {
             CardDeletion fakeCard = new CardDeletion();
 
-            fakeCard.Id = "card_fakeId";
-            fakeCard.Deleted = true;
+            fakeCard.setId("card_fakeId");
+            fakeCard.setDeleted(true);
 
-            cardsApiMock.Setup(x => x.CardDelete(fakeCard.Id, It.IsAny<int>())).Returns(fakeCard);
+            cardsApiMock.Setup(x => x.CardDelete(fakeCard.getId(), It.IsAny<int>())).Returns(fakeCard);
 
-            var response = cardsApiMock.Object.CardDelete(fakeCard.Id);
+            var response = cardsApiMock.Object.CardDelete(fakeCard.getId());
 
             Assert.IsInstanceOf<CardDeletion>(response);
-            Assert.AreEqual(response.Deleted, fakeCard.Deleted);
-            Assert.AreEqual(response.Id, fakeCard.Id);
+            Assert.AreEqual(response.getDeleted(), fakeCard.getDeleted());
+            Assert.AreEqual(response.getId(), fakeCard.getId());
         }
 
         /// <summary>
@@ -203,11 +196,11 @@ namespace __tests__.Api
         [Test]
         public void CardRetrieveTest()
         {
-            cardsApiMock.Setup(x => x.CardRetrieve(fakeCard.Id, It.IsAny<int>())).Returns(fakeCard);
-            Card response = cardsApiMock.Object.CardRetrieve(fakeCard.Id);
+            cardsApiMock.Setup(x => x.CardRetrieve(fakeCard.getId(), It.IsAny<int>())).Returns(fakeCard);
+            Card response = cardsApiMock.Object.CardRetrieve(fakeCard.getId());
 
             Assert.IsInstanceOf<Card>(response);
-            Assert.AreEqual(response.Id, fakeCard.Id);
+            Assert.AreEqual(response.getId(), fakeCard.getId());
         }
 
         /// <summary>
@@ -242,7 +235,7 @@ namespace __tests__.Api
             var response = cardsApiMock.Object.CardsList(null, null, null, null);
 
             Assert.IsInstanceOf<CardList>(response);
-            Assert.AreEqual(response.Count, fakeCardList.Count);
+            Assert.AreEqual(response.getCount(), fakeCardList.getCount());
         }
 
         /// <summary>
@@ -279,7 +272,7 @@ namespace __tests__.Api
             var response = cardsApiMock.Object.CardsList(limit, null, null, null);
 
             Assert.IsInstanceOf<CardList>(response);
-            Assert.AreEqual(response.Count, fakeCardList.Count);
+            Assert.AreEqual(response.getCount(), fakeCardList.getCount());
         }
 
         /// <summary>
@@ -295,7 +288,7 @@ namespace __tests__.Api
             var response = cardsApiMock.Object.CardsList(null, before, null, null);
 
             Assert.IsInstanceOf<CardList>(response);
-            Assert.AreEqual(response.Count, fakeCardList.Count);
+            Assert.AreEqual(response.getCount(), fakeCardList.getCount());
         }
 
         /// <summary>
@@ -311,7 +304,7 @@ namespace __tests__.Api
             var response = cardsApiMock.Object.CardsList(null, null, after, null);
 
             Assert.IsInstanceOf<CardList>(response);
-            Assert.AreEqual(response.Count, fakeCardList.Count);
+            Assert.AreEqual(response.getCount(), fakeCardList.getCount());
         }
 
         /// <summary>
@@ -320,19 +313,18 @@ namespace __tests__.Api
         [Test]
         public void CardUpdateTest()
         {
-            CardUpdatable cardUpdatable = new CardUpdatable(
-                "Awesome card",
-                true,
-                10000
-            );
+            CardUpdatable cardUpdatable = new CardUpdatable();
+            cardUpdatable.setDescription("Awesome card");
+            cardUpdatable.setAutoReorder(true);
+            cardUpdatable.setReorderQuantity(10000);
 
-            cardsApiMock.Setup(x => x.CardUpdate(fakeCard.Id, cardUpdatable, It.IsAny<int>())).Returns(fakeCard);
+            cardsApiMock.Setup(x => x.CardUpdate(fakeCard.getId(), cardUpdatable, It.IsAny<int>())).Returns(fakeCard);
 
-            Card response = cardsApiMock.Object.CardUpdate(fakeCard.Id, cardUpdatable);
+            Card response = cardsApiMock.Object.CardUpdate(fakeCard.getId(), cardUpdatable);
 
             Assert.IsInstanceOf<Card>(response);
-            Assert.AreEqual(response.Id, fakeCard.Id);
-            Assert.AreEqual(response.Description, fakeCard.Description);
+            Assert.AreEqual(response.getId(), fakeCard.getId());
+            Assert.AreEqual(response.getDescription(), fakeCard.getDescription());
         }
 
         /// <summary>

@@ -36,27 +36,24 @@ namespace lob.dotnet.Model
         /// Initializes a new instance of the <see cref="BankAccountVerify" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected BankAccountVerify() { }
+        public BankAccountVerify() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="BankAccountVerify" /> class.
         /// </summary>
         /// <param name="amounts">In live mode, an array containing the two micro deposits (in cents) placed in the bank account. In test mode, no micro deposits will be placed, so any two integers between &#x60;1&#x60; and &#x60;100&#x60; will work. (required).</param>
-        public BankAccountVerify(List<int> amounts = default(List<int>))
-        {
-            // to ensure "amounts" is required (not null)
-            if (amounts == null)
-            {
-                throw new ArgumentNullException("amounts is a required property for BankAccountVerify and cannot be null");
-            }
-            this.Amounts = amounts;
-        }
 
         /// <summary>
         /// In live mode, an array containing the two micro deposits (in cents) placed in the bank account. In test mode, no micro deposits will be placed, so any two integers between &#x60;1&#x60; and &#x60;100&#x60; will work.
         /// </summary>
         /// <value>In live mode, an array containing the two micro deposits (in cents) placed in the bank account. In test mode, no micro deposits will be placed, so any two integers between &#x60;1&#x60; and &#x60;100&#x60; will work.</value>
         [DataMember(Name = "amounts", IsRequired = true, EmitDefaultValue = false)]
-        public List<int> Amounts { get; set; }
+        private List<int> amounts;
+        public List<int> getAmounts() {
+            return amounts;
+        }
+        public void setAmounts(List<int> value) {
+            amounts = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,7 +63,7 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class BankAccountVerify {\n");
-            sb.Append("  Amounts: ").Append(Amounts).Append("\n");
+            sb.Append("  amounts: ").Append(amounts).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -77,7 +74,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -103,10 +100,10 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Amounts == input.Amounts ||
-                    this.Amounts != null &&
-                    input.Amounts != null &&
-                    this.Amounts.SequenceEqual(input.Amounts)
+                    this.amounts == input.getAmounts() ||
+                    this.amounts != null &&
+                    input.getAmounts() != null &&
+                    this.amounts.SequenceEqual(input.getAmounts())
                 );
         }
 
@@ -119,9 +116,9 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Amounts != null)
+                if (this.amounts != null)
                 {
-                    hashCode = (hashCode * 59) + this.Amounts.GetHashCode();
+                    hashCode = (hashCode * 59) + this.amounts.GetHashCode();
                 }
                 return hashCode;
             }

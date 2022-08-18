@@ -34,43 +34,40 @@ namespace __tests__.Api
         public BillingGroupsApiTests()
         {
             billingGroupsApiMock = new Mock<IBillingGroupsApi>();
-            fakeBillingGroup = new BillingGroup(
-                default(string), // description
-                "fake name", // name
-                "bg_fakeId", // id
-                default(DateTime), // dateCreated
-                default(DateTime), // dateModified
-                BillingGroup.ObjectEnum.BillingGroup // _object
-            );
+            fakeBillingGroup = new BillingGroup();
+            fakeBillingGroup.setDescription(default(string));
+            fakeBillingGroup.setName("fake name");
+            fakeBillingGroup.setId("bg_fakeId");
+            fakeBillingGroup.setDateCreated(default(DateTime));
+            fakeBillingGroup.setDateModified(default(DateTime));
+            fakeBillingGroup.setObject(BillingGroup.ObjectEnum.BillingGroup);
 
             List<BillingGroup> listOfBillingGroups = new List<BillingGroup>();
-            BillingGroup data1 = new BillingGroup(
-                default(string), // description
-                "fake name", // name
-                "bg_fakeId1", // id
-                default(DateTime), // dateCreated
-                default(DateTime), // dateModified
-                BillingGroup.ObjectEnum.BillingGroup // _object
-            );
-            BillingGroup data2 = new BillingGroup(
-                default(string), // description
-                "fake name", // name
-                "bg_fakeId2", // id
-                default(DateTime), // dateCreated
-                default(DateTime), // dateModified
-                BillingGroup.ObjectEnum.BillingGroup // _object
-            );
+            BillingGroup data1 = new BillingGroup();
+            data1.setDescription(default(string));
+            data1.setName("fake name");
+            data1.setId("bg_fakeId1");
+            data1.setDateCreated(default(DateTime));
+            data1.setDateModified(default(DateTime));
+            data1.setObject(BillingGroup.ObjectEnum.BillingGroup);
+            BillingGroup data2 = new BillingGroup();
+            data2.setDescription(default(string));
+            data2.setName("fake name");
+            data2.setId("bg_fakeId2");
+            data2.setDateCreated(default(DateTime));
+            data2.setDateModified(default(DateTime));
+            data2.setObject(BillingGroup.ObjectEnum.BillingGroup);
 
-            data1.Id = "bg_fakeId1";
-            data2.Id = "bg_fakeId2";
+            data1.setId("bg_fakeId1");
+            data2.setId("bg_fakeId2");
             listOfBillingGroups.Add(data1);
             listOfBillingGroups.Add(data2);
 
             fakeBillingGroupList = new BillingGroupList();
 
-            fakeBillingGroupList.Data = listOfBillingGroups;
-            fakeBillingGroupList.Object = "list";
-            fakeBillingGroupList.Count = listOfBillingGroups.Count;
+            fakeBillingGroupList.setData(listOfBillingGroups);
+            fakeBillingGroupList.setObject("list");
+            fakeBillingGroupList.setCount(listOfBillingGroups.Count);
         }
 
         public void Dispose()
@@ -84,16 +81,15 @@ namespace __tests__.Api
         [Test]
         public void BillingGroupCreateTest()
         {
-            BillingGroupEditable billingGroupEditable = new BillingGroupEditable(
-                "fake billing group description",
-                "fake billing group name"
-            );
+            BillingGroupEditable billingGroupEditable = new BillingGroupEditable();
+            billingGroupEditable.setDescription("fake billing group description");
+            billingGroupEditable.setName("fake billing group name");
 
             billingGroupsApiMock.Setup(x => x.BillingGroupCreate(billingGroupEditable, It.IsAny<int>())).Returns(fakeBillingGroup);
             BillingGroup response = billingGroupsApiMock.Object.BillingGroupCreate(billingGroupEditable);
 
             Assert.IsInstanceOf<BillingGroup>(response);
-            Assert.AreEqual(response.Id, "bg_fakeId");
+            Assert.AreEqual(response.getId(), "bg_fakeId");
         }
 
         /// <summary>
@@ -123,11 +119,11 @@ namespace __tests__.Api
         [Test]
         public void BillingGroupRetrieveTest()
         {
-            billingGroupsApiMock.Setup(x => x.BillingGroupRetrieve(fakeBillingGroup.Id, It.IsAny<int>())).Returns(fakeBillingGroup);
-            BillingGroup response = billingGroupsApiMock.Object.BillingGroupRetrieve(fakeBillingGroup.Id);
+            billingGroupsApiMock.Setup(x => x.BillingGroupRetrieve(fakeBillingGroup.getId(), It.IsAny<int>())).Returns(fakeBillingGroup);
+            BillingGroup response = billingGroupsApiMock.Object.BillingGroupRetrieve(fakeBillingGroup.getId());
 
             Assert.IsInstanceOf<BillingGroup>(response);
-            Assert.AreEqual(response.Id, fakeBillingGroup.Id);
+            Assert.AreEqual(response.getId(), fakeBillingGroup.getId());
         }
 
         /// <summary>
@@ -162,7 +158,7 @@ namespace __tests__.Api
             var response = billingGroupsApiMock.Object.BillingGroupsList(null, null, null, null, null, null);
 
             Assert.IsInstanceOf<BillingGroupList>(response);
-            Assert.AreEqual(response.Count, fakeBillingGroupList.Count);
+            Assert.AreEqual(response.getCount(), fakeBillingGroupList.getCount());
         }
 
         /// <summary>
@@ -199,7 +195,7 @@ namespace __tests__.Api
             var response = billingGroupsApiMock.Object.BillingGroupsList(limit, null, null, null, null, null);
 
             Assert.IsInstanceOf<BillingGroupList>(response);
-            Assert.AreEqual(response.Count, fakeBillingGroupList.Count);
+            Assert.AreEqual(response.getCount(), fakeBillingGroupList.getCount());
         }
 
         /// <summary>
@@ -215,7 +211,7 @@ namespace __tests__.Api
             var response = billingGroupsApiMock.Object.BillingGroupsList(null, offset, null, null, null, null);
 
             Assert.IsInstanceOf<BillingGroupList>(response);
-            Assert.AreEqual(response.Count, fakeBillingGroupList.Count);
+            Assert.AreEqual(response.getCount(), fakeBillingGroupList.getCount());
         }
 
         /// <summary>
@@ -232,7 +228,7 @@ namespace __tests__.Api
             var response = billingGroupsApiMock.Object.BillingGroupsList(null, null, include, null, null, null);
 
             Assert.IsInstanceOf<BillingGroupList>(response);
-            Assert.AreEqual(response.Count, fakeBillingGroupList.Count);
+            Assert.AreEqual(response.getCount(), fakeBillingGroupList.getCount());
         }
 
         /// <summary>
@@ -250,7 +246,7 @@ namespace __tests__.Api
             var response = billingGroupsApiMock.Object.BillingGroupsList(null, null, null, dateCreated, null, null);
 
             Assert.IsInstanceOf<BillingGroupList>(response);
-            Assert.AreEqual(response.Count, fakeBillingGroupList.Count);
+            Assert.AreEqual(response.getCount(), fakeBillingGroupList.getCount());
         }
 
         /// <summary>
@@ -268,7 +264,7 @@ namespace __tests__.Api
             var response = billingGroupsApiMock.Object.BillingGroupsList(null, null, null, null, dateModified, null);
 
             Assert.IsInstanceOf<BillingGroupList>(response);
-            Assert.AreEqual(response.Count, fakeBillingGroupList.Count);
+            Assert.AreEqual(response.getCount(), fakeBillingGroupList.getCount());
         }
 
         /// <summary>
@@ -277,14 +273,15 @@ namespace __tests__.Api
         [Test]
         public void BillingGroupListTestWithSortByParam()
         {
-            SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Desc);
+            SortBy5 sortBy = new SortBy5();
+            sortBy.setSendDate(SortBy5.SendDateEnum.Desc);
 
             billingGroupsApiMock.Setup(x => x.BillingGroupsList(null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakeBillingGroupList);
 
             var response = billingGroupsApiMock.Object.BillingGroupsList(null, null, null, null, null, sortBy);
 
             Assert.IsInstanceOf<BillingGroupList>(response);
-            Assert.AreEqual(response.Count, fakeBillingGroupList.Count);
+            Assert.AreEqual(response.getCount(), fakeBillingGroupList.getCount());
         }
 
         /// <summary>
@@ -293,18 +290,17 @@ namespace __tests__.Api
         [Test]
         public void BillingGroupUpdateTest()
         {
-            BillingGroupEditable updatedBillingGroupEditable = new BillingGroupEditable(
-                "billing group updated",
-                "billing group updated"
-            );
+            BillingGroupEditable updatedBillingGroupEditable = new BillingGroupEditable();
+            updatedBillingGroupEditable.setDescription("billing group updated");
+            updatedBillingGroupEditable.setName("billing group updated");
 
-            billingGroupsApiMock.Setup(x => x.BillingGroupUpdate(fakeBillingGroup.Id, updatedBillingGroupEditable, It.IsAny<int>())).Returns(fakeBillingGroup);
+            billingGroupsApiMock.Setup(x => x.BillingGroupUpdate(fakeBillingGroup.getId(), updatedBillingGroupEditable, It.IsAny<int>())).Returns(fakeBillingGroup);
 
-            BillingGroup response = billingGroupsApiMock.Object.BillingGroupUpdate(fakeBillingGroup.Id, updatedBillingGroupEditable);
+            BillingGroup response = billingGroupsApiMock.Object.BillingGroupUpdate(fakeBillingGroup.getId(), updatedBillingGroupEditable);
 
             Assert.IsInstanceOf<BillingGroup>(response);
-            Assert.AreEqual(response.Id, fakeBillingGroup.Id);
-            Assert.AreEqual(response.Description, fakeBillingGroup.Description);
+            Assert.AreEqual(response.getId(), fakeBillingGroup.getId());
+            Assert.AreEqual(response.getDescription(), fakeBillingGroup.getDescription());
         }
 
         /// <summary>

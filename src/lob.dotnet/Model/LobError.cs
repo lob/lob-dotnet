@@ -88,7 +88,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>A conventional HTTP status code.</value>
         [DataMember(Name = "status_code", EmitDefaultValue = false)]
-        public StatusCodeEnum? StatusCode { get; set; }
+        private StatusCodeEnum? statusCode;
+        public StatusCodeEnum? getStatusCode() {
+            return statusCode;
+        }
+        public void setStatusCode(StatusCodeEnum value) {
+            statusCode = value;
+        }
         /// <summary>
         /// A pre-defined string identifying an error.
         /// </summary>
@@ -433,26 +439,32 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>A pre-defined string identifying an error.</value>
         [DataMember(Name = "code", EmitDefaultValue = false)]
-        public CodeEnum? Code { get; set; }
+        private CodeEnum? code;
+        public CodeEnum? getCode() {
+            return code;
+        }
+        public void setCode(CodeEnum value) {
+            code = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="LobError" /> class.
         /// </summary>
         /// <param name="message">A human-readable message with more details about the error.</param>
         /// <param name="statusCode">A conventional HTTP status code..</param>
         /// <param name="code">A pre-defined string identifying an error..</param>
-        public LobError(string message = default(string), StatusCodeEnum? statusCode = default(StatusCodeEnum?), CodeEnum? code = default(CodeEnum?))
-        {
-            this.Message = message;
-            this.StatusCode = statusCode;
-            this.Code = code;
-        }
 
         /// <summary>
         /// A human-readable message with more details about the error
         /// </summary>
         /// <value>A human-readable message with more details about the error</value>
         [DataMember(Name = "message", EmitDefaultValue = false)]
-        public string Message { get; set; }
+        private string message;
+        public string getMessage() {
+            return message;
+        }
+        public void setMessage(string value) {
+            message = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -462,9 +474,9 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class LobError {\n");
-            sb.Append("  Message: ").Append(Message).Append("\n");
-            sb.Append("  StatusCode: ").Append(StatusCode).Append("\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("  message: ").Append(message).Append("\n");
+            sb.Append("  statusCode: ").Append(statusCode).Append("\n");
+            sb.Append("  code: ").Append(code).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -475,7 +487,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -501,17 +513,17 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Message == input.Message ||
-                    (this.Message != null &&
-                    this.Message.Equals(input.Message))
+                    this.message == input.getMessage() ||
+                    (this.message != null &&
+                    this.message.Equals(input.getMessage()))
                 ) && 
                 (
-                    this.StatusCode == input.StatusCode ||
-                    this.StatusCode.Equals(input.StatusCode)
+                    this.statusCode == input.getStatusCode() ||
+                    this.statusCode.Equals(input.getStatusCode())
                 ) && 
                 (
-                    this.Code == input.Code ||
-                    this.Code.Equals(input.Code)
+                    this.code == input.getCode() ||
+                    this.code.Equals(input.getCode())
                 );
         }
 
@@ -524,12 +536,12 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Message != null)
+                if (this.message != null)
                 {
-                    hashCode = (hashCode * 59) + this.Message.GetHashCode();
+                    hashCode = (hashCode * 59) + this.message.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.StatusCode.GetHashCode();
-                hashCode = (hashCode * 59) + this.Code.GetHashCode();
+                hashCode = (hashCode * 59) + this.statusCode.GetHashCode();
+                hashCode = (hashCode * 59) + this.code.GetHashCode();
                 return hashCode;
             }
         }

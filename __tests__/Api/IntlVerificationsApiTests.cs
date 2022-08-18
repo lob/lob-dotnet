@@ -37,29 +37,38 @@ namespace __tests__.Api
         public IntlVerificationsApiTests()
         {
             intlVerificationsApiMock = new Mock<IIntlVerificationsApi>();
-            mockIntlVerificationResponse = new IntlVerification("intl_ver_fakeId");
+            mockIntlVerificationResponse = new IntlVerification();
+            mockIntlVerificationResponse.setId("intl_ver_fakeId");
             mockVerificationWritable = new IntlVerificationWritable();
 
-            MultipleComponentsIntl item1 = new MultipleComponentsIntl(null, "123 street");
-            MultipleComponentsIntl item2 = new MultipleComponentsIntl(null, "456 street");
-            MultipleComponentsIntl item3 = new MultipleComponentsIntl(null, "789 street");
+            MultipleComponentsIntl item1 = new MultipleComponentsIntl();
+            item1.setPrimaryLine("123 street");
+            MultipleComponentsIntl item2 = new MultipleComponentsIntl();
+            item2.setPrimaryLine("456 street");
+            MultipleComponentsIntl item3 = new MultipleComponentsIntl();
+            item3.setPrimaryLine("789 street");
 
             addresses = new List<MultipleComponentsIntl>();
             addresses.Add(item1);
             addresses.Add(item2);
             addresses.Add(item3);
 
-            mockMultipleComponentsList = new IntlVerificationsPayload(addresses);
+            mockMultipleComponentsList = new IntlVerificationsPayload();
+            mockMultipleComponentsList.setAddresses(addresses);
 
-            IntlVerificationOrError resp1 = new IntlVerificationOrError(null, null, "123 street");
-            IntlVerificationOrError resp2 = new IntlVerificationOrError(null, null, "456 street");
-            IntlVerificationOrError resp3 = new IntlVerificationOrError(null, null, "789 street");
+            IntlVerificationOrError resp1 = new IntlVerificationOrError();
+            resp1.setPrimaryLine("123 street");
+            IntlVerificationOrError resp2 = new IntlVerificationOrError();
+            resp2.setPrimaryLine("456 street");
+            IntlVerificationOrError resp3 = new IntlVerificationOrError();
+            resp3.setPrimaryLine("789 street");
             List<IntlVerificationOrError> intlVersList = new List<IntlVerificationOrError>();
             intlVersList.Add(resp1);
             intlVersList.Add(resp2);
             intlVersList.Add(resp3);
 
-            mockIntlVerificationBulkResponse = new IntlVerifications(intlVersList);
+            mockIntlVerificationBulkResponse = new IntlVerifications();
+            mockIntlVerificationBulkResponse.setAddresses(intlVersList);
         }
 
         public void Dispose()
@@ -77,7 +86,7 @@ namespace __tests__.Api
             IntlVerification response = intlVerificationsApiMock.Object.IntlVerification(mockVerificationWritable, null);
 
             Assert.IsInstanceOf<IntlVerification>(response);
-            Assert.AreEqual(response.Id, mockIntlVerificationResponse.Id);
+            Assert.AreEqual(response.getId(), mockIntlVerificationResponse.getId());
         }
 
         /// <summary>
@@ -90,7 +99,7 @@ namespace __tests__.Api
             IntlVerification response = intlVerificationsApiMock.Object.IntlVerification(mockVerificationWritable, "native");
 
             Assert.IsInstanceOf<IntlVerification>(response);
-            Assert.AreEqual(response.Id, mockIntlVerificationResponse.Id);
+            Assert.AreEqual(response.getId(), mockIntlVerificationResponse.getId());
         }
 
         /// <summary>
@@ -124,10 +133,10 @@ namespace __tests__.Api
             IntlVerifications response = intlVerificationsApiMock.Object.BulkIntlVerifications(mockMultipleComponentsList);
 
             Assert.IsInstanceOf<IntlVerifications>(response);
-            Assert.AreEqual(response.Addresses.Count, addresses.Count);
-            Assert.AreEqual(response.Addresses[0].PrimaryLine, "123 street");
-            Assert.AreEqual(response.Addresses[1].PrimaryLine, "456 street");
-            Assert.AreEqual(response.Addresses[2].PrimaryLine, "789 street");
+            Assert.AreEqual(response.getAddresses().Count, addresses.Count);
+            Assert.AreEqual(response.getAddresses()[0].getPrimaryLine(), "123 street");
+            Assert.AreEqual(response.getAddresses()[1].getPrimaryLine(), "456 street");
+            Assert.AreEqual(response.getAddresses()[2].getPrimaryLine(), "789 street");
         }
 
         /// <summary>

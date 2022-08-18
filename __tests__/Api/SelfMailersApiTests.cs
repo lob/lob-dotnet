@@ -34,71 +34,68 @@ namespace __tests__.Api
         public SelfMailersApiTests()
         {
             SelfMailersApiMock = new Mock<ISelfMailersApi>();
-            fakeSelfMailer = new SelfMailer(
-                "sfm_fakeId", // id
-                new Address(), // to
-                default(AddressDomesticExpanded), // from
-                default(SelfMailerSize), // size
-                default(string), // description
-                default(Dictionary<string, string>), // metadata
-                default(MailType), // mailType
-                default(Object), // mergeVariables
-                default(DateTime), // sendDate
-                default(string), // outsideTemplateId
-                default(string), // insideTemplateId
-                default(string), // outsideTemplateVersionId
-                default(string), // insideTemplateVersionId
-                SelfMailer.ObjectEnum.SelfMailer, // _object
-                default(List<TrackingEventCertified>), // trackingEvents
-                "fake url" // url
-            );
+            fakeSelfMailer = new SelfMailer();
+            fakeSelfMailer.setId("sfm_fakeId");
+            fakeSelfMailer.setTo(new Address());
+            fakeSelfMailer.setFrom(default(AddressDomesticExpanded));
+            fakeSelfMailer.setSize(default(SelfMailerSize));
+            fakeSelfMailer.setDescription(default(string));
+            fakeSelfMailer.setMetadata(default(Dictionary<string, string>));
+            fakeSelfMailer.setMailType(default(MailType));
+            fakeSelfMailer.setMergeVariables(default(Object));
+            fakeSelfMailer.setSendDate(default(DateTime));
+            fakeSelfMailer.setOutsideTemplateId(default(string));
+            fakeSelfMailer.setInsideTemplateId(default(string));
+            fakeSelfMailer.setOutsideTemplateVersionId(default(string));
+            fakeSelfMailer.setInsideTemplateVersionId(default(string));
+            fakeSelfMailer.setObject(SelfMailer.ObjectEnum.SelfMailer);
+            fakeSelfMailer.setTrackingEvents(default(List<TrackingEventCertified>));
+            fakeSelfMailer.setUrl("fake url");
 
             List<SelfMailer> listOfSelfMailers = new List<SelfMailer>();
-            SelfMailer data1 = new SelfMailer(
-                "sfm_fakeId1", // id
-                new Address(), // to
-                default(AddressDomesticExpanded), // from
-                default(SelfMailerSize), // size
-                default(string), // description
-                default(Dictionary<string, string>), // metadata
-                default(MailType), // mailType
-                default(Object), // mergeVariables
-                default(DateTime), // sendDate
-                default(string), // outsideTemplateId
-                default(string), // insideTemplateId
-                default(string), // outsideTemplateVersionId
-                default(string), // insideTemplateVersionId
-                SelfMailer.ObjectEnum.SelfMailer, // _object
-                default(List<TrackingEventCertified>), // trackingEvents
-                "fake url" // url
-            );
-            SelfMailer data2 = new SelfMailer(
-                "sfm_fakeId2", // id
-                new Address(), // to
-                default(AddressDomesticExpanded), // from
-                default(SelfMailerSize), // size
-                default(string), // description
-                default(Dictionary<string, string>), // metadata
-                default(MailType), // mailType
-                default(Object), // mergeVariables
-                default(DateTime), // sendDate
-                default(string), // outsideTemplateId
-                default(string), // insideTemplateId
-                default(string), // outsideTemplateVersionId
-                default(string), // insideTemplateVersionId
-                SelfMailer.ObjectEnum.SelfMailer, // _object
-                default(List<TrackingEventCertified>), // trackingEvents
-                "fake url" // url
-            );
+            SelfMailer data1 = new SelfMailer();
+            data1.setId("sfm_fakeId1");
+            data1.setTo(new Address());
+            data1.setFrom(default(AddressDomesticExpanded));
+            data1.setSize(default(SelfMailerSize));
+            data1.setDescription(default(string));
+            data1.setMetadata(default(Dictionary<string, string>));
+            data1.setMailType(default(MailType));
+            data1.setMergeVariables(default(Object));
+            data1.setSendDate(default(DateTime));
+            data1.setOutsideTemplateId(default(string));
+            data1.setInsideTemplateId(default(string));
+            data1.setOutsideTemplateVersionId(default(string));
+            data1.setInsideTemplateVersionId(default(string));
+            data1.setObject(SelfMailer.ObjectEnum.SelfMailer);
+            data1.setTrackingEvents(default(List<TrackingEventCertified>));
+            data1.setUrl("fake url");
+            SelfMailer data2 = new SelfMailer();
+            data2.setId("sfm_fakeId2");
+            data2.setTo(new Address());
+            data2.setFrom(default(AddressDomesticExpanded));
+            data2.setSize(default(SelfMailerSize));
+            data2.setDescription(default(string));
+            data2.setMetadata(default(Dictionary<string, string>));
+            data2.setMailType(default(MailType));
+            data2.setMergeVariables(default(Object));
+            data2.setSendDate(default(DateTime));
+            data2.setOutsideTemplateId(default(string));
+            data2.setInsideTemplateId(default(string));
+            data2.setOutsideTemplateVersionId(default(string));
+            data2.setInsideTemplateVersionId(default(string));
+            data2.setObject(SelfMailer.ObjectEnum.SelfMailer);
+            data2.setTrackingEvents(default(List<TrackingEventCertified>));
+            data2.setUrl("fake url");
 
             listOfSelfMailers.Add(data1);
             listOfSelfMailers.Add(data2);
 
             fakeSelfMailerList = new SelfMailerList();
 
-            fakeSelfMailerList.Data = listOfSelfMailers;
-            fakeSelfMailerList.Object = "list";
-            fakeSelfMailerList.Count = listOfSelfMailers.Count;
+            fakeSelfMailerList.setData(listOfSelfMailers);
+            fakeSelfMailerList.setObject("list");
+            fakeSelfMailerList.setCount(listOfSelfMailers.Count);
         }
 
         public void Dispose()
@@ -112,25 +109,24 @@ namespace __tests__.Api
         [Test]
         public void SelfMailerCreateTest()
         {
-            SelfMailerEditable selfMailerEditable = new SelfMailerEditable(
-                "adr_fakeId", // to
-                "adr_fakeId", // from
-                default(SelfMailerSize), // size
-                "C# unit test selfMailer", // description
-                default(Dictionary<string, string>), // metadata
-                default(MailType), // mailType
-                default(Object), // mergeVariables
-                default(DateTime), // sendDate
-                "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf", // front
-                "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf", // back
-                default(string) // billingGroupId
-            );
+            SelfMailerEditable selfMailerEditable = new SelfMailerEditable();
+            selfMailerEditable.setTo("adr_fakeId");
+            selfMailerEditable.setFrom("adr_fakeId");
+            selfMailerEditable.setSize(default(SelfMailerSize));
+            selfMailerEditable.setDescription("C# unit test selfMailer");
+            selfMailerEditable.setMetadata(default(Dictionary<string, string>));
+            selfMailerEditable.setMailType(default(MailType));
+            selfMailerEditable.setMergeVariables(default(Object));
+            selfMailerEditable.setSendDate(default(DateTime));
+            selfMailerEditable.setInside("https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf");
+            selfMailerEditable.setOutside("https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf");
+            selfMailerEditable.setBillingGroupId(default(string));
 
             SelfMailersApiMock.Setup(x => x.SelfMailerCreate(selfMailerEditable, null, It.IsAny<int>())).Returns(fakeSelfMailer);
             SelfMailer response = SelfMailersApiMock.Object.SelfMailerCreate(selfMailerEditable);
 
             Assert.IsInstanceOf<SelfMailer>(response);
-            Assert.AreEqual(response.Id, "sfm_fakeId");
+            Assert.AreEqual(response.getId(), "sfm_fakeId");
         }
 
         /// <summary>
@@ -162,16 +158,16 @@ namespace __tests__.Api
         {
             SelfMailerDeletion fakeSelfMailer = new SelfMailerDeletion();
 
-            fakeSelfMailer.Id = "sfm_fakeId";
-            fakeSelfMailer.Deleted = true;
+            fakeSelfMailer.setId("sfm_fakeId");
+            fakeSelfMailer.setDeleted(true);
 
-            SelfMailersApiMock.Setup(x => x.SelfMailerDelete(fakeSelfMailer.Id, It.IsAny<int>())).Returns(fakeSelfMailer);
+            SelfMailersApiMock.Setup(x => x.SelfMailerDelete(fakeSelfMailer.getId(), It.IsAny<int>())).Returns(fakeSelfMailer);
 
-            var response = SelfMailersApiMock.Object.SelfMailerDelete(fakeSelfMailer.Id);
+            var response = SelfMailersApiMock.Object.SelfMailerDelete(fakeSelfMailer.getId());
 
             Assert.IsInstanceOf<SelfMailerDeletion>(response);
-            Assert.AreEqual(response.Deleted, fakeSelfMailer.Deleted);
-            Assert.AreEqual(response.Id, fakeSelfMailer.Id);
+            Assert.AreEqual(response.getDeleted(), fakeSelfMailer.getDeleted());
+            Assert.AreEqual(response.getId(), fakeSelfMailer.getId());
         }
 
         /// <summary>
@@ -201,11 +197,11 @@ namespace __tests__.Api
         [Test]
         public void SelfMailerRetrieveTest()
         {
-            SelfMailersApiMock.Setup(x => x.SelfMailerRetrieve(fakeSelfMailer.Id, It.IsAny<int>())).Returns(fakeSelfMailer);
-            SelfMailer response = SelfMailersApiMock.Object.SelfMailerRetrieve(fakeSelfMailer.Id);
+            SelfMailersApiMock.Setup(x => x.SelfMailerRetrieve(fakeSelfMailer.getId(), It.IsAny<int>())).Returns(fakeSelfMailer);
+            SelfMailer response = SelfMailersApiMock.Object.SelfMailerRetrieve(fakeSelfMailer.getId());
 
             Assert.IsInstanceOf<SelfMailer>(response);
-            Assert.AreEqual(response.Id, fakeSelfMailer.Id);
+            Assert.AreEqual(response.getId(), fakeSelfMailer.getId());
         }
 
         /// <summary>
@@ -240,7 +236,7 @@ namespace __tests__.Api
             var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
-            Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
+            Assert.AreEqual(response.getCount(), fakeSelfMailerList.getCount());
         }
 
         /// <summary>
@@ -277,7 +273,7 @@ namespace __tests__.Api
             var response = SelfMailersApiMock.Object.SelfMailersList(limit, null, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
-            Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
+            Assert.AreEqual(response.getCount(), fakeSelfMailerList.getCount());
         }
 
         /// <summary>
@@ -293,7 +289,7 @@ namespace __tests__.Api
             var response = SelfMailersApiMock.Object.SelfMailersList(null, before, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
-            Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
+            Assert.AreEqual(response.getCount(), fakeSelfMailerList.getCount());
         }
 
         /// <summary>
@@ -309,7 +305,7 @@ namespace __tests__.Api
             var response = SelfMailersApiMock.Object.SelfMailersList(null, null, after, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
-            Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
+            Assert.AreEqual(response.getCount(), fakeSelfMailerList.getCount());
         }
 
         /// <summary>
@@ -326,7 +322,7 @@ namespace __tests__.Api
             var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, include, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
-            Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
+            Assert.AreEqual(response.getCount(), fakeSelfMailerList.getCount());
         }
 
         /// <summary>
@@ -344,7 +340,7 @@ namespace __tests__.Api
             var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, null, dateCreated, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
-            Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
+            Assert.AreEqual(response.getCount(), fakeSelfMailerList.getCount());
         }
 
         /// <summary>
@@ -361,7 +357,7 @@ namespace __tests__.Api
             var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, null, null, metadata, null, null, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
-            Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
+            Assert.AreEqual(response.getCount(), fakeSelfMailerList.getCount());
         }
 
         /// <summary>
@@ -377,7 +373,7 @@ namespace __tests__.Api
             var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, null, null, null, size, null, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
-            Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
+            Assert.AreEqual(response.getCount(), fakeSelfMailerList.getCount());
         }
 
         /// <summary>
@@ -393,7 +389,7 @@ namespace __tests__.Api
             var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, null, null, null, null, scheduled, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
-            Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
+            Assert.AreEqual(response.getCount(), fakeSelfMailerList.getCount());
         }
 
         /// <summary>
@@ -411,7 +407,7 @@ namespace __tests__.Api
             var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, null, null, null, null, null, sendDate, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
-            Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
+            Assert.AreEqual(response.getCount(), fakeSelfMailerList.getCount());
         }
 
         /// <summary>
@@ -427,7 +423,7 @@ namespace __tests__.Api
             var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, null, null, null, null, null, null, mailType, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
-            Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
+            Assert.AreEqual(response.getCount(), fakeSelfMailerList.getCount());
         }
 
         /// <summary>
@@ -436,14 +432,15 @@ namespace __tests__.Api
         [Test]
         public void SelfMailerListTestWithSortByParam()
         {
-            SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
+            SortBy5 sortBy = new SortBy5();
+            sortBy.setSendDate(SortBy5.SendDateEnum.Asc);
 
             SelfMailersApiMock.Setup(x => x.SelfMailersList(null, null, null, null, null, null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakeSelfMailerList);
 
             var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, null, null, null, null, null, null, null, sortBy);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
-            Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
+            Assert.AreEqual(response.getCount(), fakeSelfMailerList.getCount());
         }
     }
 }

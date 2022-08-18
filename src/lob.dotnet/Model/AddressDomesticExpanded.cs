@@ -47,103 +47,160 @@ namespace lob.dotnet.Model
         /// <param name="email">Must be no longer than 100 characters..</param>
         /// <param name="addressCountry">The country associated with this address..</param>
         /// <param name="metadata">Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information..</param>
-        public AddressDomesticExpanded(string addressLine1 = default(string), string addressLine2 = default(string), string addressCity = default(string), string addressState = default(string), string addressZip = default(string), string description = default(string), string name = default(string), string company = default(string), string phone = default(string), string email = default(string), string addressCountry = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>))
-        {
-            this.AddressLine1 = addressLine1;
-            this.AddressLine2 = addressLine2;
-            this.AddressCity = addressCity;
-            this.AddressState = addressState;
-            this.AddressZip = addressZip;
-            this.Description = description;
-            this.Name = name;
-            this.Company = company;
-            this.Phone = phone;
-            this.Email = email;
-            this.AddressCountry = addressCountry;
-            this.Metadata = metadata;
-        }
 
         /// <summary>
         /// The building number, street name, street suffix, and any street directionals. For US addresses, the max length is 64 characters.
         /// </summary>
         /// <value>The building number, street name, street suffix, and any street directionals. For US addresses, the max length is 64 characters.</value>
         [DataMember(Name = "address_line1", EmitDefaultValue = false)]
-        public string AddressLine1 { get; set; }
+        private string addressLine1;
+        public string getAddressLine1() {
+            return addressLine1;
+        }
+        public void setAddressLine1(string value) {
+            addressLine1 = value;
+        }
 
         /// <summary>
         /// The suite or apartment number of the recipient address, if applicable. For US addresses, the max length is 64 characters.
         /// </summary>
         /// <value>The suite or apartment number of the recipient address, if applicable. For US addresses, the max length is 64 characters.</value>
         [DataMember(Name = "address_line2", EmitDefaultValue = true)]
-        public string AddressLine2 { get; set; }
+        private string addressLine2;
+        public string getAddressLine2() {
+            return addressLine2;
+        }
+        public void setAddressLine2(string value) {
+            addressLine2 = value;
+        }
 
         /// <summary>
         /// Gets or Sets AddressCity
         /// </summary>
         [DataMember(Name = "address_city", EmitDefaultValue = true)]
-        public string AddressCity { get; set; }
+        private string addressCity;
+        public string getAddressCity() {
+            return addressCity;
+        }
+        public void setAddressCity(string value) {
+            addressCity = value;
+        }
 
         /// <summary>
         /// Gets or Sets AddressState
         /// </summary>
         [DataMember(Name = "address_state", EmitDefaultValue = true)]
-        public string AddressState { get; set; }
+        private string addressState;
+        public string getAddressState() {
+            return addressState;
+        }
+        public void setAddressState(string value) {
+            addressState = value;
+        }
 
         /// <summary>
         /// Optional postal code. For US addresses, must be either 5 or 9 digits.
         /// </summary>
         /// <value>Optional postal code. For US addresses, must be either 5 or 9 digits.</value>
         [DataMember(Name = "address_zip", EmitDefaultValue = true)]
-        public string AddressZip { get; set; }
+        private string addressZip;
+        public string getAddressZip() {
+            return addressZip;
+        }
+        public void setAddressZip(string value) {
+            addressZip = value;
+        }
 
         /// <summary>
         /// An internal description that identifies this resource. Must be no longer than 255 characters. 
         /// </summary>
         /// <value>An internal description that identifies this resource. Must be no longer than 255 characters. </value>
         [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
+        private string description;
+        public string getDescription() {
+            return description;
+        }
+        public void setDescription(string value) {
+            description = value;
+        }
 
         /// <summary>
         /// Either &#x60;name&#x60; or &#x60;company&#x60; is required, you may also add both. Must be no longer than 40 characters. If both &#x60;name&#x60; and &#x60;company&#x60; are provided, they will be printed on two separate lines above the rest of the address. 
         /// </summary>
         /// <value>Either &#x60;name&#x60; or &#x60;company&#x60; is required, you may also add both. Must be no longer than 40 characters. If both &#x60;name&#x60; and &#x60;company&#x60; are provided, they will be printed on two separate lines above the rest of the address. </value>
         [DataMember(Name = "name", EmitDefaultValue = true)]
-        public string Name { get; set; }
+        private string name;
+        public string getName() {
+            return name;
+        }
+        public void setName(string value) {
+            name = value;
+        }
 
         /// <summary>
         /// Either &#x60;name&#x60; or &#x60;company&#x60; is required, you may also add both.
         /// </summary>
         /// <value>Either &#x60;name&#x60; or &#x60;company&#x60; is required, you may also add both.</value>
         [DataMember(Name = "company", EmitDefaultValue = true)]
-        public string Company { get; set; }
+        private string company;
+        public string getCompany() {
+            return company;
+        }
+        public void setCompany(string value) {
+            company = value;
+        }
 
         /// <summary>
         /// Must be no longer than 40 characters.
         /// </summary>
         /// <value>Must be no longer than 40 characters.</value>
         [DataMember(Name = "phone", EmitDefaultValue = true)]
-        public string Phone { get; set; }
+        private string phone;
+        public string getPhone() {
+            return phone;
+        }
+        public void setPhone(string value) {
+            phone = value;
+        }
 
         /// <summary>
         /// Must be no longer than 100 characters.
         /// </summary>
         /// <value>Must be no longer than 100 characters.</value>
         [DataMember(Name = "email", EmitDefaultValue = true)]
-        public string Email { get; set; }
+        private string email;
+        public string getEmail() {
+            return email;
+        }
+        public void setEmail(string value) {
+            email = value;
+        }
 
         /// <summary>
         /// The country associated with this address.
         /// </summary>
         /// <value>The country associated with this address.</value>
         [DataMember(Name = "address_country", EmitDefaultValue = false)]
-        public string AddressCountry { get; set; }
+        private string addressCountry;
+        public string getAddressCountry() {
+            return addressCountry;
+        }
+        public void setAddressCountry(string value) {
+            addressCountry = value;
+        }
 
         /// <summary>
         /// Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information.
         /// </summary>
         /// <value>Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information.</value>
         [DataMember(Name = "metadata", EmitDefaultValue = false)]
-        public Dictionary<string, string> Metadata { get; set; }
+        private Dictionary<string, string> metadata;
+        public Dictionary<string, string> getMetadata() {
+            return metadata;
+        }
+        public void setMetadata(Dictionary<string, string> value) {
+            metadata = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -153,18 +210,18 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class AddressDomesticExpanded {\n");
-            sb.Append("  AddressLine1: ").Append(AddressLine1).Append("\n");
-            sb.Append("  AddressLine2: ").Append(AddressLine2).Append("\n");
-            sb.Append("  AddressCity: ").Append(AddressCity).Append("\n");
-            sb.Append("  AddressState: ").Append(AddressState).Append("\n");
-            sb.Append("  AddressZip: ").Append(AddressZip).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Company: ").Append(Company).Append("\n");
-            sb.Append("  Phone: ").Append(Phone).Append("\n");
-            sb.Append("  Email: ").Append(Email).Append("\n");
-            sb.Append("  AddressCountry: ").Append(AddressCountry).Append("\n");
-            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
+            sb.Append("  addressLine1: ").Append(addressLine1).Append("\n");
+            sb.Append("  addressLine2: ").Append(addressLine2).Append("\n");
+            sb.Append("  addressCity: ").Append(addressCity).Append("\n");
+            sb.Append("  addressState: ").Append(addressState).Append("\n");
+            sb.Append("  addressZip: ").Append(addressZip).Append("\n");
+            sb.Append("  description: ").Append(description).Append("\n");
+            sb.Append("  name: ").Append(name).Append("\n");
+            sb.Append("  company: ").Append(company).Append("\n");
+            sb.Append("  phone: ").Append(phone).Append("\n");
+            sb.Append("  email: ").Append(email).Append("\n");
+            sb.Append("  addressCountry: ").Append(addressCountry).Append("\n");
+            sb.Append("  metadata: ").Append(metadata).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -175,7 +232,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -201,65 +258,65 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.AddressLine1 == input.AddressLine1 ||
-                    (this.AddressLine1 != null &&
-                    this.AddressLine1.Equals(input.AddressLine1))
+                    this.addressLine1 == input.getAddressLine1() ||
+                    (this.addressLine1 != null &&
+                    this.addressLine1.Equals(input.getAddressLine1()))
                 ) && 
                 (
-                    this.AddressLine2 == input.AddressLine2 ||
-                    (this.AddressLine2 != null &&
-                    this.AddressLine2.Equals(input.AddressLine2))
+                    this.addressLine2 == input.getAddressLine2() ||
+                    (this.addressLine2 != null &&
+                    this.addressLine2.Equals(input.getAddressLine2()))
                 ) && 
                 (
-                    this.AddressCity == input.AddressCity ||
-                    (this.AddressCity != null &&
-                    this.AddressCity.Equals(input.AddressCity))
+                    this.addressCity == input.getAddressCity() ||
+                    (this.addressCity != null &&
+                    this.addressCity.Equals(input.getAddressCity()))
                 ) && 
                 (
-                    this.AddressState == input.AddressState ||
-                    (this.AddressState != null &&
-                    this.AddressState.Equals(input.AddressState))
+                    this.addressState == input.getAddressState() ||
+                    (this.addressState != null &&
+                    this.addressState.Equals(input.getAddressState()))
                 ) && 
                 (
-                    this.AddressZip == input.AddressZip ||
-                    (this.AddressZip != null &&
-                    this.AddressZip.Equals(input.AddressZip))
+                    this.addressZip == input.getAddressZip() ||
+                    (this.addressZip != null &&
+                    this.addressZip.Equals(input.getAddressZip()))
                 ) && 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.description == input.getDescription() ||
+                    (this.description != null &&
+                    this.description.Equals(input.getDescription()))
                 ) && 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.name == input.getName() ||
+                    (this.name != null &&
+                    this.name.Equals(input.getName()))
                 ) && 
                 (
-                    this.Company == input.Company ||
-                    (this.Company != null &&
-                    this.Company.Equals(input.Company))
+                    this.company == input.getCompany() ||
+                    (this.company != null &&
+                    this.company.Equals(input.getCompany()))
                 ) && 
                 (
-                    this.Phone == input.Phone ||
-                    (this.Phone != null &&
-                    this.Phone.Equals(input.Phone))
+                    this.phone == input.getPhone() ||
+                    (this.phone != null &&
+                    this.phone.Equals(input.getPhone()))
                 ) && 
                 (
-                    this.Email == input.Email ||
-                    (this.Email != null &&
-                    this.Email.Equals(input.Email))
+                    this.email == input.getEmail() ||
+                    (this.email != null &&
+                    this.email.Equals(input.getEmail()))
                 ) && 
                 (
-                    this.AddressCountry == input.AddressCountry ||
-                    (this.AddressCountry != null &&
-                    this.AddressCountry.Equals(input.AddressCountry))
+                    this.addressCountry == input.getAddressCountry() ||
+                    (this.addressCountry != null &&
+                    this.addressCountry.Equals(input.getAddressCountry()))
                 ) && 
                 (
-                    this.Metadata == input.Metadata ||
-                    this.Metadata != null &&
-                    input.Metadata != null &&
-                    this.Metadata.SequenceEqual(input.Metadata)
+                    this.metadata == input.getMetadata() ||
+                    this.metadata != null &&
+                    input.getMetadata() != null &&
+                    this.metadata.SequenceEqual(input.getMetadata())
                 );
         }
 
@@ -272,53 +329,53 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.AddressLine1 != null)
+                if (this.addressLine1 != null)
                 {
-                    hashCode = (hashCode * 59) + this.AddressLine1.GetHashCode();
+                    hashCode = (hashCode * 59) + this.addressLine1.GetHashCode();
                 }
-                if (this.AddressLine2 != null)
+                if (this.addressLine2 != null)
                 {
-                    hashCode = (hashCode * 59) + this.AddressLine2.GetHashCode();
+                    hashCode = (hashCode * 59) + this.addressLine2.GetHashCode();
                 }
-                if (this.AddressCity != null)
+                if (this.addressCity != null)
                 {
-                    hashCode = (hashCode * 59) + this.AddressCity.GetHashCode();
+                    hashCode = (hashCode * 59) + this.addressCity.GetHashCode();
                 }
-                if (this.AddressState != null)
+                if (this.addressState != null)
                 {
-                    hashCode = (hashCode * 59) + this.AddressState.GetHashCode();
+                    hashCode = (hashCode * 59) + this.addressState.GetHashCode();
                 }
-                if (this.AddressZip != null)
+                if (this.addressZip != null)
                 {
-                    hashCode = (hashCode * 59) + this.AddressZip.GetHashCode();
+                    hashCode = (hashCode * 59) + this.addressZip.GetHashCode();
                 }
-                if (this.Description != null)
+                if (this.description != null)
                 {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                    hashCode = (hashCode * 59) + this.description.GetHashCode();
                 }
-                if (this.Name != null)
+                if (this.name != null)
                 {
-                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                    hashCode = (hashCode * 59) + this.name.GetHashCode();
                 }
-                if (this.Company != null)
+                if (this.company != null)
                 {
-                    hashCode = (hashCode * 59) + this.Company.GetHashCode();
+                    hashCode = (hashCode * 59) + this.company.GetHashCode();
                 }
-                if (this.Phone != null)
+                if (this.phone != null)
                 {
-                    hashCode = (hashCode * 59) + this.Phone.GetHashCode();
+                    hashCode = (hashCode * 59) + this.phone.GetHashCode();
                 }
-                if (this.Email != null)
+                if (this.email != null)
                 {
-                    hashCode = (hashCode * 59) + this.Email.GetHashCode();
+                    hashCode = (hashCode * 59) + this.email.GetHashCode();
                 }
-                if (this.AddressCountry != null)
+                if (this.addressCountry != null)
                 {
-                    hashCode = (hashCode * 59) + this.AddressCountry.GetHashCode();
+                    hashCode = (hashCode * 59) + this.addressCountry.GetHashCode();
                 }
-                if (this.Metadata != null)
+                if (this.metadata != null)
                 {
-                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                    hashCode = (hashCode * 59) + this.metadata.GetHashCode();
                 }
                 return hashCode;
             }
@@ -331,71 +388,71 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // AddressLine1 (string) maxLength
-            if (this.AddressLine1 != null && this.AddressLine1.Length > 200)
+            // addressLine1 (string) maxLength
+            if (this.addressLine1 != null && this.addressLine1.Length > 200)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressLine1, length must be less than 200.", new [] { "AddressLine1" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for addressLine1, length must be less than 200.", new [] { "addressLine1" });
             }
 
-            // AddressLine2 (string) maxLength
-            if (this.AddressLine2 != null && this.AddressLine2.Length > 200)
+            // addressLine2 (string) maxLength
+            if (this.addressLine2 != null && this.addressLine2.Length > 200)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressLine2, length must be less than 200.", new [] { "AddressLine2" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for addressLine2, length must be less than 200.", new [] { "addressLine2" });
             }
 
-            // AddressCity (string) maxLength
-            if (this.AddressCity != null && this.AddressCity.Length > 200)
+            // addressCity (string) maxLength
+            if (this.addressCity != null && this.addressCity.Length > 200)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressCity, length must be less than 200.", new [] { "AddressCity" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for addressCity, length must be less than 200.", new [] { "addressCity" });
             }
 
-            // AddressState (string) maxLength
-            if (this.AddressState != null && this.AddressState.Length > 200)
+            // addressState (string) maxLength
+            if (this.addressState != null && this.addressState.Length > 200)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressState, length must be less than 200.", new [] { "AddressState" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for addressState, length must be less than 200.", new [] { "addressState" });
             }
 
-            // AddressZip (string) maxLength
-            if (this.AddressZip != null && this.AddressZip.Length > 40)
+            // addressZip (string) maxLength
+            if (this.addressZip != null && this.addressZip.Length > 40)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressZip, length must be less than 40.", new [] { "AddressZip" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for addressZip, length must be less than 40.", new [] { "addressZip" });
             }
 
-            // Description (string) maxLength
-            if (this.Description != null && this.Description.Length > 255)
+            // description (string) maxLength
+            if (this.description != null && this.description.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 255.", new [] { "Description" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for description, length must be less than 255.", new [] { "description" });
             }
 
-            // Name (string) maxLength
-            if (this.Name != null && this.Name.Length > 40)
+            // name (string) maxLength
+            if (this.name != null && this.name.Length > 40)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 40.", new [] { "Name" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for name, length must be less than 40.", new [] { "name" });
             }
 
-            // Company (string) maxLength
-            if (this.Company != null && this.Company.Length > 40)
+            // company (string) maxLength
+            if (this.company != null && this.company.Length > 40)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Company, length must be less than 40.", new [] { "Company" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for company, length must be less than 40.", new [] { "company" });
             }
 
-            // Phone (string) maxLength
-            if (this.Phone != null && this.Phone.Length > 40)
+            // phone (string) maxLength
+            if (this.phone != null && this.phone.Length > 40)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Phone, length must be less than 40.", new [] { "Phone" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for phone, length must be less than 40.", new [] { "phone" });
             }
 
-            // Email (string) maxLength
-            if (this.Email != null && this.Email.Length > 100)
+            // email (string) maxLength
+            if (this.email != null && this.email.Length > 100)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Email, length must be less than 100.", new [] { "Email" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for email, length must be less than 100.", new [] { "email" });
             }
 
-            // AddressCountry (string) pattern
-            Regex regexAddressCountry = new Regex(@"UNITED STATES", RegexOptions.CultureInvariant);
-            if (false == regexAddressCountry.Match(this.AddressCountry).Success)
+            // addressCountry (string) pattern
+            Regex regexaddressCountry = new Regex(@"UNITED STATES", RegexOptions.CultureInvariant);
+            if (false == regexaddressCountry.Match(this.addressCountry).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressCountry, must match a pattern of " + regexAddressCountry, new [] { "AddressCountry" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for addressCountry, must match a pattern of " + regexaddressCountry, new [] { "addressCountry" });
             }
 
             yield break;

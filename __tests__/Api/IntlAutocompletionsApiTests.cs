@@ -34,22 +34,20 @@ namespace __tests__.Api
         public IntlAutocompletionsApiTests()
         {
             intlAutocompletionsApiMock = new Mock<IIntlAutocompletionsApi>();
-            intlAutocompletionsWritable = new IntlAutocompletionsWritable(
-                "fake prefix", // addressPrefix
-                "fake city", // city
-                "XX", // state
-                "12345", // zipCode
-                CountryExtended.CA // country
-            );
+            intlAutocompletionsWritable = new IntlAutocompletionsWritable();
+            intlAutocompletionsWritable.setAddressPrefix("fake prefix");
+            intlAutocompletionsWritable.setCity("fake city");
+            intlAutocompletionsWritable.setState("XX");
+            intlAutocompletionsWritable.setZipCode("12345");
+            intlAutocompletionsWritable.setCountry(CountryExtended.CA);
 
-            intlSuggestion = new IntlSuggestions(
-                "fake primaryNumberRange", // primaryNumberRange
-                "fake primaryLine", // primaryLine
-                "fake city", // city
-                "XX", // state
-                IntlSuggestions.CountryEnum.CA, // country
-                "12345" // zipCode
-            );
+            intlSuggestion = new IntlSuggestions();
+            intlSuggestion.setPrimaryNumberRange("fake primaryNumberRange");
+            intlSuggestion.setPrimaryLine("fake primaryLine");
+            intlSuggestion.setCity("fake city");
+            intlSuggestion.setState("XX");
+            intlSuggestion.setCountry(IntlSuggestions.CountryEnum.CA);
+            intlSuggestion.setZipCode("12345");
         }
 
         public void Dispose()
@@ -66,14 +64,16 @@ namespace __tests__.Api
             List<IntlSuggestions> intlSuggestionsList = new List<IntlSuggestions>();
             intlSuggestionsList.Add(intlSuggestion);
 
-            IntlAutocompletions fakeIntlAutocompletions = new IntlAutocompletions("intl_auto_fakeId", intlSuggestionsList);
+            IntlAutocompletions fakeIntlAutocompletions = new IntlAutocompletions();
+            fakeIntlAutocompletions.setId("intl_auto_fakeId");
+            fakeIntlAutocompletions.setSuggestions(intlSuggestionsList);
 
             intlAutocompletionsApiMock.Setup(x => x.IntlAutocompletion(intlAutocompletionsWritable, null, It.IsAny<int>())).Returns(fakeIntlAutocompletions);
             IntlAutocompletions response = intlAutocompletionsApiMock.Object.IntlAutocompletion(intlAutocompletionsWritable, null);
 
             Assert.IsInstanceOf<IntlAutocompletions>(response);
-            Assert.NotNull(response.Suggestions);
-            Assert.AreEqual(response.Suggestions.Count, 1);
+            Assert.NotNull(response.getSuggestions());
+            Assert.AreEqual(response.getSuggestions().Count, 1);
         }
 
         /// <summary>

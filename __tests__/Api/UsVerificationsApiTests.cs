@@ -35,42 +35,24 @@ namespace __tests__.Api
         public UsVerificationsApiTests()
         {
             usVerificationsApiMock = new Mock<IUsVerificationsApi>();
-            usVerificationsWritable = new UsVerificationsWritable(
-                null, // address
-                null, // recipient
-                "370 WATER ST", // primaryLine
-                null, // secondaryLine
-                null, // urbanization
-                null, // city
-                null, // state
-                "07090" // zipCode
-            );
+            usVerificationsWritable = new UsVerificationsWritable();
+            usVerificationsWritable.setPrimaryLine("370 WATER ST");
+            usVerificationsWritable.setZipCode("07090");
 
-            MultipleComponents address1 = new MultipleComponents(
-              null, // recipient
-              "370 WATER ST", // primaryLine
-              null, // secondaryLine
-              null, // urbanization
-              null, // city
-              null, // state
-              "12345" // zipCode
-            );
+            MultipleComponents address1 = new MultipleComponents();
+            address1.setPrimaryLine("370 WATER ST");
+            address1.setZipCode("12345");
 
-            MultipleComponents address2 = new MultipleComponents(
-              null, // recipient
-              "012 PLACEHOLDER ST", // primaryLine
-              null, // secondaryLine
-              null, // urbanization
-              null, // city
-              null, // state
-              "12345" // zipCode
-            );
+            MultipleComponents address2 = new MultipleComponents();
+            address2.setPrimaryLine("012 PLACEHOLDER ST");
+            address2.setZipCode("12345");
 
             addresses = new List<MultipleComponents>();
             addresses.Add(address1);
             addresses.Add(address2);
 
-            addressList = new MultipleComponentsList(addresses);
+            addressList = new MultipleComponentsList();
+            addressList.setAddresses(addresses);
         }
 
         public void Dispose()
@@ -84,22 +66,14 @@ namespace __tests__.Api
         [Test]
         public void UsVerificationVerifySingleTest()
         {
-            UsVerification fakeUsVerification = new UsVerification(
-                null, // id
-                null, // recipient
-                null, // primaryLine
-                null, // secondaryLine
-                null, // urbanization
-                null, // lastLine
-                UsVerification.DeliverabilityEnum.Deliverable // deliverability
-            );
-            fakeUsVerification.Deliverability = UsVerification.DeliverabilityEnum.Deliverable;
+            UsVerification fakeUsVerification = new UsVerification();
+            fakeUsVerification.setDeliverability(UsVerification.DeliverabilityEnum.Deliverable);
 
             usVerificationsApiMock.Setup(x => x.UsVerification(usVerificationsWritable, null, It.IsAny<int>())).Returns(fakeUsVerification);
             UsVerification response = usVerificationsApiMock.Object.UsVerification(usVerificationsWritable, null);
 
             Assert.IsInstanceOf<UsVerification>(response);
-            Assert.AreEqual(response.Deliverability, fakeUsVerification.Deliverability);
+            Assert.AreEqual(response.getDeliverability(), fakeUsVerification.getDeliverability());
         }
 
         /// <summary>
@@ -108,22 +82,14 @@ namespace __tests__.Api
         [Test]
         public void UsVerificationVerifySingleTestWithCase()
         {
-            UsVerification fakeUsVerification = new UsVerification(
-                null, // id
-                null, // recipient
-                null, // primaryLine
-                null, // secondaryLine
-                null, // urbanization
-                null, // lastLine
-                UsVerification.DeliverabilityEnum.Deliverable // deliverability
-            );
-            fakeUsVerification.Deliverability = UsVerification.DeliverabilityEnum.Deliverable;
+            UsVerification fakeUsVerification = new UsVerification();
+            fakeUsVerification.setDeliverability(UsVerification.DeliverabilityEnum.Deliverable);
 
             usVerificationsApiMock.Setup(x => x.UsVerification(usVerificationsWritable, "upper", It.IsAny<int>())).Returns(fakeUsVerification);
             UsVerification response = usVerificationsApiMock.Object.UsVerification(usVerificationsWritable, "upper");
 
             Assert.IsInstanceOf<UsVerification>(response);
-            Assert.AreEqual(response.Deliverability, fakeUsVerification.Deliverability);
+            Assert.AreEqual(response.getDeliverability(), fakeUsVerification.getDeliverability());
         }
 
         /// <summary>
@@ -154,25 +120,21 @@ namespace __tests__.Api
         public void UsVerificationVerifyBulkTest()
         {
             List<UsVerificationOrError> fakeAddresses = new List<UsVerificationOrError>();
-            UsVerificationOrError fakeAddress = new UsVerificationOrError(
-                "us_ver_fakeId", // id
-                null, // recipient
-                null, // primaryLine
-                null, // secondaryLine
-                null, // urbanization
-                null, // lastLine
-                UsVerificationOrError.DeliverabilityEnum.Deliverable // deliverability
-            );
+            UsVerificationOrError fakeAddress = new UsVerificationOrError();
+            fakeAddress.setId("us_ver_fakeId");
+            fakeAddress.setDeliverability(UsVerificationOrError.DeliverabilityEnum.Deliverable);
             fakeAddresses.Add(fakeAddress);
             fakeAddresses.Add(fakeAddress);
 
-            UsVerifications fakeUsVerifications = new UsVerifications(fakeAddresses, true);
+            UsVerifications fakeUsVerifications = new UsVerifications();
+            fakeUsVerifications.setAddresses(fakeAddresses);
+            fakeUsVerifications.setErrors(true);
 
             usVerificationsApiMock.Setup(x => x.BulkUsVerifications(addressList, null, It.IsAny<int>())).Returns(fakeUsVerifications);
             UsVerifications response = usVerificationsApiMock.Object.BulkUsVerifications(addressList, null);
 
             Assert.IsInstanceOf<UsVerifications>(response);
-            Assert.AreEqual(response.Addresses.Count, addresses.Count);
+            Assert.AreEqual(response.getAddresses().Count, addresses.Count);
         }
 
         /// <summary>
@@ -182,25 +144,22 @@ namespace __tests__.Api
         public void UsVerificationVerifyBulkTestWithCase()
         {
             List<UsVerificationOrError> fakeAddresses = new List<UsVerificationOrError>();
-            UsVerificationOrError fakeAddress = new UsVerificationOrError(
-                "us_ver_fakeId", // id
-                null, // recipient
-                null, // primaryLine
-                null, // secondaryLine
-                null, // urbanization
-                null, // lastLine
-                UsVerificationOrError.DeliverabilityEnum.Deliverable // deliverability
-            );
+            UsVerificationOrError fakeAddress = new UsVerificationOrError();
+            fakeAddress.setId("us_ver_fakeId");
+            fakeAddress.setDeliverability(UsVerificationOrError.DeliverabilityEnum.Deliverable);
+
             fakeAddresses.Add(fakeAddress);
             fakeAddresses.Add(fakeAddress);
 
-            UsVerifications fakeUsVerifications = new UsVerifications(fakeAddresses, true);
+            UsVerifications fakeUsVerifications = new UsVerifications();
+            fakeUsVerifications.setAddresses(fakeAddresses);
+            fakeUsVerifications.setErrors(true);
 
             usVerificationsApiMock.Setup(x => x.BulkUsVerifications(addressList, "upper", It.IsAny<int>())).Returns(fakeUsVerifications);
             UsVerifications response = usVerificationsApiMock.Object.BulkUsVerifications(addressList, "upper");
 
             Assert.IsInstanceOf<UsVerifications>(response);
-            Assert.AreEqual(response.Addresses.Count, addresses.Count);
+            Assert.AreEqual(response.getAddresses().Count, addresses.Count);
         }
 
         /// <summary>

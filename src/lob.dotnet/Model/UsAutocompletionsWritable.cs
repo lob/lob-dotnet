@@ -36,7 +36,7 @@ namespace lob.dotnet.Model
         /// Initializes a new instance of the <see cref="UsAutocompletionsWritable" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected UsAutocompletionsWritable() { }
+        public UsAutocompletionsWritable() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="UsAutocompletionsWritable" /> class.
         /// </summary>
@@ -45,54 +45,71 @@ namespace lob.dotnet.Model
         /// <param name="state">An optional state input used to filter suggestions. Case insensitive and does not match partial abbreviations. .</param>
         /// <param name="zipCode">An optional ZIP Code input used to filter suggestions. Matches partial entries. .</param>
         /// <param name="geoIpSort">If &#x60;true&#x60;, sort suggestions by proximity to the IP set in the &#x60;X-Forwarded-For&#x60; header. .</param>
-        public UsAutocompletionsWritable(string addressPrefix = default(string), string city = default(string), string state = default(string), string zipCode = default(string), bool geoIpSort = default(bool))
-        {
-            // to ensure "addressPrefix" is required (not null)
-            if (addressPrefix == null)
-            {
-                throw new ArgumentNullException("addressPrefix is a required property for UsAutocompletionsWritable and cannot be null");
-            }
-            this.AddressPrefix = addressPrefix;
-            this.City = city;
-            this.State = state;
-            this.ZipCode = zipCode;
-            this.GeoIpSort = geoIpSort;
-        }
 
         /// <summary>
         /// Only accepts numbers and street names in an alphanumeric format. 
         /// </summary>
         /// <value>Only accepts numbers and street names in an alphanumeric format. </value>
         [DataMember(Name = "address_prefix", IsRequired = true, EmitDefaultValue = false)]
-        public string AddressPrefix { get; set; }
+        private string addressPrefix;
+        public string getAddressPrefix() {
+            return addressPrefix;
+        }
+        public void setAddressPrefix(string value) {
+            addressPrefix = value;
+        }
 
         /// <summary>
         /// An optional city input used to filter suggestions. Case insensitive and does not match partial abbreviations. 
         /// </summary>
         /// <value>An optional city input used to filter suggestions. Case insensitive and does not match partial abbreviations. </value>
         [DataMember(Name = "city", EmitDefaultValue = false)]
-        public string City { get; set; }
+        private string city;
+        public string getCity() {
+            return city;
+        }
+        public void setCity(string value) {
+            city = value;
+        }
 
         /// <summary>
         /// An optional state input used to filter suggestions. Case insensitive and does not match partial abbreviations. 
         /// </summary>
         /// <value>An optional state input used to filter suggestions. Case insensitive and does not match partial abbreviations. </value>
         [DataMember(Name = "state", EmitDefaultValue = false)]
-        public string State { get; set; }
+        private string state;
+        public string getState() {
+            return state;
+        }
+        public void setState(string value) {
+            state = value;
+        }
 
         /// <summary>
         /// An optional ZIP Code input used to filter suggestions. Matches partial entries. 
         /// </summary>
         /// <value>An optional ZIP Code input used to filter suggestions. Matches partial entries. </value>
         [DataMember(Name = "zip_code", EmitDefaultValue = false)]
-        public string ZipCode { get; set; }
+        private string zipCode;
+        public string getZipCode() {
+            return zipCode;
+        }
+        public void setZipCode(string value) {
+            zipCode = value;
+        }
 
         /// <summary>
         /// If &#x60;true&#x60;, sort suggestions by proximity to the IP set in the &#x60;X-Forwarded-For&#x60; header. 
         /// </summary>
         /// <value>If &#x60;true&#x60;, sort suggestions by proximity to the IP set in the &#x60;X-Forwarded-For&#x60; header. </value>
         [DataMember(Name = "geo_ip_sort", EmitDefaultValue = true)]
-        public bool GeoIpSort { get; set; }
+        private bool geoIpSort;
+        public bool getGeoIpSort() {
+            return geoIpSort;
+        }
+        public void setGeoIpSort(bool value) {
+            geoIpSort = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -102,11 +119,11 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UsAutocompletionsWritable {\n");
-            sb.Append("  AddressPrefix: ").Append(AddressPrefix).Append("\n");
-            sb.Append("  City: ").Append(City).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  ZipCode: ").Append(ZipCode).Append("\n");
-            sb.Append("  GeoIpSort: ").Append(GeoIpSort).Append("\n");
+            sb.Append("  addressPrefix: ").Append(addressPrefix).Append("\n");
+            sb.Append("  city: ").Append(city).Append("\n");
+            sb.Append("  state: ").Append(state).Append("\n");
+            sb.Append("  zipCode: ").Append(zipCode).Append("\n");
+            sb.Append("  geoIpSort: ").Append(geoIpSort).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -117,7 +134,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -143,28 +160,28 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.AddressPrefix == input.AddressPrefix ||
-                    (this.AddressPrefix != null &&
-                    this.AddressPrefix.Equals(input.AddressPrefix))
+                    this.addressPrefix == input.getAddressPrefix() ||
+                    (this.addressPrefix != null &&
+                    this.addressPrefix.Equals(input.getAddressPrefix()))
                 ) && 
                 (
-                    this.City == input.City ||
-                    (this.City != null &&
-                    this.City.Equals(input.City))
+                    this.city == input.getCity() ||
+                    (this.city != null &&
+                    this.city.Equals(input.getCity()))
                 ) && 
                 (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
+                    this.state == input.getState() ||
+                    (this.state != null &&
+                    this.state.Equals(input.getState()))
                 ) && 
                 (
-                    this.ZipCode == input.ZipCode ||
-                    (this.ZipCode != null &&
-                    this.ZipCode.Equals(input.ZipCode))
+                    this.zipCode == input.getZipCode() ||
+                    (this.zipCode != null &&
+                    this.zipCode.Equals(input.getZipCode()))
                 ) && 
                 (
-                    this.GeoIpSort == input.GeoIpSort ||
-                    this.GeoIpSort.Equals(input.GeoIpSort)
+                    this.geoIpSort == input.getGeoIpSort() ||
+                    this.geoIpSort.Equals(input.getGeoIpSort())
                 );
         }
 
@@ -177,23 +194,23 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.AddressPrefix != null)
+                if (this.addressPrefix != null)
                 {
-                    hashCode = (hashCode * 59) + this.AddressPrefix.GetHashCode();
+                    hashCode = (hashCode * 59) + this.addressPrefix.GetHashCode();
                 }
-                if (this.City != null)
+                if (this.city != null)
                 {
-                    hashCode = (hashCode * 59) + this.City.GetHashCode();
+                    hashCode = (hashCode * 59) + this.city.GetHashCode();
                 }
-                if (this.State != null)
+                if (this.state != null)
                 {
-                    hashCode = (hashCode * 59) + this.State.GetHashCode();
+                    hashCode = (hashCode * 59) + this.state.GetHashCode();
                 }
-                if (this.ZipCode != null)
+                if (this.zipCode != null)
                 {
-                    hashCode = (hashCode * 59) + this.ZipCode.GetHashCode();
+                    hashCode = (hashCode * 59) + this.zipCode.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.GeoIpSort.GetHashCode();
+                hashCode = (hashCode * 59) + this.geoIpSort.GetHashCode();
                 return hashCode;
             }
         }

@@ -39,20 +39,19 @@ namespace __tests__.Integration {
             validApi = new BankAccountsApi(config);
             invalidApi = new BankAccountsApi(invalidConfig);
 
-            bankAccountWritable = new BankAccountWritable(
-                "Test Bank Account", // description
-                "322271627", // routingNumber
-                "123456789", // accountNumber
-                BankTypeEnum.Individual, // accountType
-                "Sinead Connor", // signatory
-                null // metadata
-            );
+            bankAccountWritable = new BankAccountWritable();
+            bankAccountWritable.setDescription("Test Bank Account");
+            bankAccountWritable.setRoutingNumber("322271627");
+            bankAccountWritable.setAccountNumber("123456789");
+            bankAccountWritable.setAccountType(BankTypeEnum.Individual);
+            bankAccountWritable.setSignatory("Sinead Connor");
 
             List<int> amounts = new List<int>();
             amounts.Add(11);
             amounts.Add(35);
 
-            verification = new BankAccountVerify(amounts);
+            verification = new BankAccountVerify();
+            verification.setAmounts(amounts);
 
             idsToDelete = new List<string>();
         }
@@ -66,9 +65,9 @@ namespace __tests__.Integration {
         public void BankAccountCreateTest() {
             BankAccount response = validApi.BankAccountCreate(bankAccountWritable);
 
-            Assert.NotNull(response.Id);
-            idsToDelete.Add(response.Id);
-            Assert.AreEqual(response.RoutingNumber, bankAccountWritable.RoutingNumber);
+            Assert.NotNull(response.getId());
+            idsToDelete.Add(response.getId());
+            Assert.AreEqual(response.getRoutingNumber(), bankAccountWritable.getRoutingNumber());
         }
 
         [Test]
@@ -96,12 +95,12 @@ namespace __tests__.Integration {
         [Test]
         public void BankAccountVerifyTest() {
             BankAccount bankAccount = validApi.BankAccountCreate(bankAccountWritable);
-            idsToDelete.Add(bankAccount.Id);
-            BankAccount response = validApi.BankAccountVerify(bankAccount.Id, verification);
+            idsToDelete.Add(bankAccount.getId());
+            BankAccount response = validApi.BankAccountVerify(bankAccount.getId(), verification);
 
             Assert.NotNull(response);
-            Assert.AreEqual(response.Id, bankAccount.Id);
-            Assert.True(response.Verified);
+            Assert.AreEqual(response.getId(), bankAccount.getId());
+            Assert.True(response.getVerified());
         }
 
         [Test]
@@ -118,9 +117,9 @@ namespace __tests__.Integration {
         [Test]
         public void BankAccountVerifyTestBadUsername() {
             BankAccount bankAccount = validApi.BankAccountCreate(bankAccountWritable);
-            idsToDelete.Add(bankAccount.Id);
+            idsToDelete.Add(bankAccount.getId());
             try {
-                BankAccount response = invalidApi.BankAccountVerify(bankAccount.Id, verification);
+                BankAccount response = invalidApi.BankAccountVerify(bankAccount.getId(), verification);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -131,11 +130,11 @@ namespace __tests__.Integration {
         [Test]
         public void BankAccountRetrieveTest() {
             BankAccount bankAccount = validApi.BankAccountCreate(bankAccountWritable);
-            idsToDelete.Add(bankAccount.Id);
-            BankAccount response = validApi.BankAccountRetrieve(bankAccount.Id);
+            idsToDelete.Add(bankAccount.getId());
+            BankAccount response = validApi.BankAccountRetrieve(bankAccount.getId());
 
-            Assert.NotNull(response.Id);
-            Assert.AreEqual(response.Id, bankAccount.Id);
+            Assert.NotNull(response.getId());
+            Assert.AreEqual(response.getId(), bankAccount.getId());
         }
 
         [Test]
@@ -152,9 +151,9 @@ namespace __tests__.Integration {
         [Test]
         public void BankAccountRetrieveTestBadUsername() {
             BankAccount bankAccount = validApi.BankAccountCreate(bankAccountWritable);
-            idsToDelete.Add(bankAccount.Id);
+            idsToDelete.Add(bankAccount.getId());
             try {
-                BankAccount response = invalidApi.BankAccountRetrieve(bankAccount.Id);
+                BankAccount response = invalidApi.BankAccountRetrieve(bankAccount.getId());
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -166,7 +165,7 @@ namespace __tests__.Integration {
         public void BankAccountListTest() {
             BankAccountList response = validApi.BankAccountsList(null, null, null, null, null, null);
 
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -174,7 +173,7 @@ namespace __tests__.Integration {
             int limit = 2;
             BankAccountList response = validApi.BankAccountsList(limit, null, null, null, null, null);
 
-            Assert.AreEqual(response.Count, 2);
+            Assert.AreEqual(response.getCount(), 2);
         }
 
         [Test]
@@ -183,8 +182,8 @@ namespace __tests__.Integration {
             includeList.Add("total_count");
 
             BankAccountList response = validApi.BankAccountsList(null, null, null, includeList, null, null);
-            Assert.Greater(response.Count, 0);
-            Assert.NotNull(response.TotalCount);
+            Assert.Greater(response.getCount(), 0);
+            Assert.NotNull(response.getTotalCount());
         }
 
         [Test]
@@ -194,7 +193,7 @@ namespace __tests__.Integration {
             dateCreated.Add("lt", lastMonth);
 
             BankAccountList response = validApi.BankAccountsList(null, null, null, null, dateCreated, null);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -203,7 +202,7 @@ namespace __tests__.Integration {
             metadata.Add("name", "Harry");
 
             BankAccountList response = validApi.BankAccountsList(null, null, null, null, null, metadata);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
     }
 }

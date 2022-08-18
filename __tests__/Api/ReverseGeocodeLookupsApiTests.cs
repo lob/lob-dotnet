@@ -45,15 +45,17 @@ namespace __tests__.Api
         [Test]
         public void LookupTest200() {
             ReverseGeocode fakeReverseGeocodeObject = new ReverseGeocode();
-            fakeReverseGeocodeObject.Id = "us_reverse_geocode_fakeId";
+            fakeReverseGeocodeObject.setId("us_reverse_geocode_fakeId");
 
-            Location location = new Location(1234f, 1234f);
+            Location location = new Location();
+            location.setLatitude(1234f);
+            location.setLongitude(1234f);
             int size = 3;
             reverseGeocodeLookupsApiMock.Setup(x => x.ReverseGeocodeLookup(location, size, It.IsAny<int>())).Returns(fakeReverseGeocodeObject);
             ReverseGeocode response = reverseGeocodeLookupsApiMock.Object.ReverseGeocodeLookup(location, size);
 
             Assert.IsInstanceOf<ReverseGeocode>(response);
-            Assert.AreEqual(response.Id, "us_reverse_geocode_fakeId");
+            Assert.AreEqual(response.getId(), "us_reverse_geocode_fakeId");
         }
 
         /// <summary>

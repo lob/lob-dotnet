@@ -236,12 +236,18 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Find the full table [here](#tag/Tracking-Events). A detailed substatus about the event: * &#x60;package_accepted&#x60; - Package has been accepted into the carrier network for delivery. * &#x60;package_arrived&#x60; - Package has arrived at an intermediate location in the carrier network. * &#x60;package_departed&#x60; - Package has departed from an intermediate location in the carrier network. * &#x60;package_processing&#x60; - Package is processing at an intermediate location in the carrier network. * &#x60;package_processed&#x60; - Package has been processed at an intermediate location. * &#x60;package_in_local_area&#x60; - Package is at a location near the end destination. * &#x60;delivery_scheduled&#x60; - Package is scheduled for delivery. * &#x60;out_for_delivery&#x60; - Package is out for delivery. * &#x60;pickup_available&#x60; - Package is available for pickup at carrier location. * &#x60;delivered&#x60; - Package has been delivered. * &#x60;package_forwarded&#x60; - Package has been forwarded. * &#x60;returned_to_sender&#x60; - Package is to be returned to sender. * &#x60;address_issue&#x60; - Address information is incorrect. Contact carrier to ensure delivery. * &#x60;contact_carrier&#x60; - Contact the carrier for more information. * &#x60;delayed&#x60; - Delivery of package is delayed. * &#x60;delivery_attempted&#x60; - Delivery of package has been attempted. Contact carrier to ensure delivery. * &#x60;delivery_rescheduled&#x60; - Delivery of package has been rescheduled. * &#x60;location_inaccessible&#x60; - Delivery location inaccessible to carrier. Contact carrier to ensure delivery. * &#x60;notice_left&#x60; - Carrier left notice during attempted delivery. Follow carrier instructions on notice. * &#x60;package_damaged&#x60; - Package has been damaged. Contact carrier for more details. * &#x60;package_disposed&#x60; - Package has been disposed. * &#x60;package_held&#x60; - Package held at carrier location. Contact carrier for more details. * &#x60;package_lost&#x60; - Package has been lost. Contact carrier for more details. * &#x60;package_unclaimed&#x60; - Package is unclaimed. * &#x60;package_undeliverable&#x60; - Package is not able to be delivered. * &#x60;reschedule_delivery&#x60; - Contact carrier to reschedule delivery. * &#x60;other&#x60; - Unrecognized carrier status. </value>
         [DataMember(Name = "event", IsRequired = true, EmitDefaultValue = false)]
-        public EventEnum Event { get; set; }
+        private EventEnum _event;
+        public EventEnum getEvent() {
+            return _event;
+        }
+        public void setEvent(EventEnum value) {
+            _event = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="TrackingEventDetails" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected TrackingEventDetails() { }
+        public TrackingEventDetails() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="TrackingEventDetails" /> class.
         /// </summary>
@@ -249,39 +255,45 @@ namespace lob.dotnet.Model
         /// <param name="description">The description as listed in the description for event. (required).</param>
         /// <param name="notes">Event-specific notes from USPS about the tracking event..</param>
         /// <param name="actionRequired">&#x60;true&#x60; if action is required by the end recipient, &#x60;false&#x60; otherwise.  (required).</param>
-        public TrackingEventDetails(EventEnum _event = default(EventEnum), string description = default(string), string notes = default(string), bool actionRequired = default(bool))
-        {
-            this.Event = _event;
-            // to ensure "description" is required (not null)
-            if (description == null)
-            {
-                throw new ArgumentNullException("description is a required property for TrackingEventDetails and cannot be null");
-            }
-            this.Description = description;
-            this.ActionRequired = actionRequired;
-            this.Notes = notes;
-        }
 
         /// <summary>
         /// The description as listed in the description for event.
         /// </summary>
         /// <value>The description as listed in the description for event.</value>
         [DataMember(Name = "description", IsRequired = true, EmitDefaultValue = false)]
-        public string Description { get; set; }
+        private string description;
+        public string getDescription() {
+            return description;
+        }
+        public void setDescription(string value) {
+            description = value;
+        }
 
         /// <summary>
         /// Event-specific notes from USPS about the tracking event.
         /// </summary>
         /// <value>Event-specific notes from USPS about the tracking event.</value>
         [DataMember(Name = "notes", EmitDefaultValue = false)]
-        public string Notes { get; set; }
+        private string notes;
+        public string getNotes() {
+            return notes;
+        }
+        public void setNotes(string value) {
+            notes = value;
+        }
 
         /// <summary>
         /// &#x60;true&#x60; if action is required by the end recipient, &#x60;false&#x60; otherwise. 
         /// </summary>
         /// <value>&#x60;true&#x60; if action is required by the end recipient, &#x60;false&#x60; otherwise. </value>
         [DataMember(Name = "action_required", IsRequired = true, EmitDefaultValue = true)]
-        public bool ActionRequired { get; set; }
+        private bool actionRequired;
+        public bool getActionRequired() {
+            return actionRequired;
+        }
+        public void setActionRequired(bool value) {
+            actionRequired = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -291,10 +303,10 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TrackingEventDetails {\n");
-            sb.Append("  Event: ").Append(Event).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Notes: ").Append(Notes).Append("\n");
-            sb.Append("  ActionRequired: ").Append(ActionRequired).Append("\n");
+            sb.Append("  _event: ").Append(_event).Append("\n");
+            sb.Append("  description: ").Append(description).Append("\n");
+            sb.Append("  notes: ").Append(notes).Append("\n");
+            sb.Append("  actionRequired: ").Append(actionRequired).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -305,7 +317,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -331,22 +343,22 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Event == input.Event ||
-                    this.Event.Equals(input.Event)
+                    this._event == input.getEvent() ||
+                    this._event.Equals(input.getEvent())
                 ) && 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.description == input.getDescription() ||
+                    (this.description != null &&
+                    this.description.Equals(input.getDescription()))
                 ) && 
                 (
-                    this.Notes == input.Notes ||
-                    (this.Notes != null &&
-                    this.Notes.Equals(input.Notes))
+                    this.notes == input.getNotes() ||
+                    (this.notes != null &&
+                    this.notes.Equals(input.getNotes()))
                 ) && 
                 (
-                    this.ActionRequired == input.ActionRequired ||
-                    this.ActionRequired.Equals(input.ActionRequired)
+                    this.actionRequired == input.getActionRequired() ||
+                    this.actionRequired.Equals(input.getActionRequired())
                 );
         }
 
@@ -359,16 +371,16 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Event.GetHashCode();
-                if (this.Description != null)
+                hashCode = (hashCode * 59) + this._event.GetHashCode();
+                if (this.description != null)
                 {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                    hashCode = (hashCode * 59) + this.description.GetHashCode();
                 }
-                if (this.Notes != null)
+                if (this.notes != null)
                 {
-                    hashCode = (hashCode * 59) + this.Notes.GetHashCode();
+                    hashCode = (hashCode * 59) + this.notes.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.ActionRequired.GetHashCode();
+                hashCode = (hashCode * 59) + this.actionRequired.GetHashCode();
                 return hashCode;
             }
         }

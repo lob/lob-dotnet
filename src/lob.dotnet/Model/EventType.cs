@@ -87,7 +87,13 @@ namespace lob.dotnet.Model
         /// Gets or Sets Resource
         /// </summary>
         [DataMember(Name = "resource", IsRequired = true, EmitDefaultValue = false)]
-        public ResourceEnum Resource { get; set; }
+        private ResourceEnum resource;
+        public ResourceEnum getResource() {
+            return resource;
+        }
+        public void setResource(ResourceEnum value) {
+            resource = value;
+        }
         /// <summary>
         /// Value is resource type.
         /// </summary>
@@ -110,12 +116,18 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Value is resource type.</value>
         [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = false)]
-        public ObjectEnum Object { get; set; }
+        private ObjectEnum _object;
+        public ObjectEnum getObject() {
+            return _object;
+        }
+        public void setObject(ObjectEnum value) {
+            _object = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="EventType" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected EventType() { }
+        public EventType() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="EventType" /> class.
         /// </summary>
@@ -123,31 +135,31 @@ namespace lob.dotnet.Model
         /// <param name="enabledForTest">Value is &#x60;true&#x60; if the event type is enabled in both the test and live environments. (required).</param>
         /// <param name="resource">resource (required).</param>
         /// <param name="_object">Value is resource type. (required) (default to ObjectEnum.EventType).</param>
-        public EventType(string id = default(string), bool enabledForTest = default(bool), ResourceEnum resource = default(ResourceEnum), ObjectEnum _object = ObjectEnum.EventType)
-        {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for EventType and cannot be null");
-            }
-            this.Id = id;
-            this.EnabledForTest = enabledForTest;
-            this.Resource = resource;
-            this.Object = _object;
-        }
 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
-        public string Id { get; set; }
+        private string id;
+        public string getId() {
+            return id;
+        }
+        public void setId(string value) {
+            id = value;
+        }
 
         /// <summary>
         /// Value is &#x60;true&#x60; if the event type is enabled in both the test and live environments.
         /// </summary>
         /// <value>Value is &#x60;true&#x60; if the event type is enabled in both the test and live environments.</value>
         [DataMember(Name = "enabled_for_test", IsRequired = true, EmitDefaultValue = true)]
-        public bool EnabledForTest { get; set; }
+        private bool enabledForTest;
+        public bool getEnabledForTest() {
+            return enabledForTest;
+        }
+        public void setEnabledForTest(bool value) {
+            enabledForTest = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -157,10 +169,10 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class EventType {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  EnabledForTest: ").Append(EnabledForTest).Append("\n");
-            sb.Append("  Resource: ").Append(Resource).Append("\n");
-            sb.Append("  Object: ").Append(Object).Append("\n");
+            sb.Append("  id: ").Append(id).Append("\n");
+            sb.Append("  enabledForTest: ").Append(enabledForTest).Append("\n");
+            sb.Append("  resource: ").Append(resource).Append("\n");
+            sb.Append("  _object: ").Append(_object).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -171,7 +183,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -197,21 +209,21 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.id == input.getId() ||
+                    (this.id != null &&
+                    this.id.Equals(input.getId()))
                 ) && 
                 (
-                    this.EnabledForTest == input.EnabledForTest ||
-                    this.EnabledForTest.Equals(input.EnabledForTest)
+                    this.enabledForTest == input.getEnabledForTest() ||
+                    this.enabledForTest.Equals(input.getEnabledForTest())
                 ) && 
                 (
-                    this.Resource == input.Resource ||
-                    this.Resource.Equals(input.Resource)
+                    this.resource == input.getResource() ||
+                    this.resource.Equals(input.getResource())
                 ) && 
                 (
-                    this.Object == input.Object ||
-                    this.Object.Equals(input.Object)
+                    this._object == input.getObject() ||
+                    this._object.Equals(input.getObject())
                 );
         }
 
@@ -224,13 +236,13 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                if (this.id != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.id.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.EnabledForTest.GetHashCode();
-                hashCode = (hashCode * 59) + this.Resource.GetHashCode();
-                hashCode = (hashCode * 59) + this.Object.GetHashCode();
+                hashCode = (hashCode * 59) + this.enabledForTest.GetHashCode();
+                hashCode = (hashCode * 59) + this.resource.GetHashCode();
+                hashCode = (hashCode * 59) + this._object.GetHashCode();
                 return hashCode;
             }
         }

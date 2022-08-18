@@ -34,104 +34,98 @@ namespace __tests__.Api
         public LettersApiTests()
         {
             LettersApiMock = new Mock<ILettersApi>();
-            fakeLetter = new Letter(
-              new Address(), // to
-              new Address(), // from
-              Letter.CarrierEnum.USPS, // carrier
-              default(List<Thumbnail>), // thumbnails
-              default(DateTime), // expectedDeliveryDate
-              default(DateTime), // dateCreated
-              default(DateTime), // dateModified
-              default(bool), // deleted
-              "ltr_fakeId", // id
-              default(string), // templateId
-              default(string), // templateVersionId
-              Letter.ObjectEnum.Letter, // _object
-              default(string), // description
-              default(Dictionary<string, string>), // metadata
-              default(Object), // mergeVariables
-              default(DateTime), // sendDate
-              default(string), // extraService
-              default(string), // trackingNumber
-              default(List<TrackingEventNormal>), // trackingEvents
-              default(string), // returnAddress
-              default(MailType), // mailType
-              default(bool), // color
-              true, // doubleSided
-              Letter.AddressPlacementEnum.TopFirstPage, // addressPlacement
-              default(bool), // returnEnvelope
-              null, // perforatedPage
-              default(LetterCustomEnvelope) // customEnvelope
-            );
+            fakeLetter = new Letter();
+            fakeLetter.setTo(new Address());
+            fakeLetter.setFrom(new Address());
+            fakeLetter.setCarrier(Letter.CarrierEnum.USPS);
+            fakeLetter.setThumbnails(default(List<Thumbnail>));
+            fakeLetter.setExpectedDeliveryDate(default(DateTime));
+            fakeLetter.setDateCreated(default(DateTime));
+            fakeLetter.setDateModified(default(DateTime));
+            fakeLetter.setDeleted(default(bool));
+            fakeLetter.setId("ltr_fakeId");
+            fakeLetter.setTemplateId(default(string));
+            fakeLetter.setTemplateVersionId(default(string));
+            fakeLetter.setObject(Letter.ObjectEnum.Letter);
+            fakeLetter.setDescription(default(string));
+            fakeLetter.setMetadata(default(Dictionary<string, string>));
+            fakeLetter.setMergeVariables(default(Object));
+            fakeLetter.setSendDate(default(DateTime));
+            fakeLetter.setExtraService(default(string));
+            fakeLetter.setTrackingNumber(default(string));
+            fakeLetter.setTrackingEvents(default(List<TrackingEventNormal>));
+            fakeLetter.setReturnAddress(default(string));
+            fakeLetter.setMailType(default(MailType));
+            fakeLetter.setColor(default(bool));
+            fakeLetter.setDoubleSided(true);
+            fakeLetter.setAddressPlacement(Letter.AddressPlacementEnum.TopFirstPage);
+            fakeLetter.setReturnEnvelope(default(bool));
+            fakeLetter.setCustomEnvelope(default(LetterCustomEnvelope));
 
             List<Letter> listOfLetters = new List<Letter>();
-            Letter data1 = new Letter(
-              new Address(), // to
-              new Address(), // from
-              Letter.CarrierEnum.USPS, // carrier
-              default(List<Thumbnail>), // thumbnails
-              default(DateTime), // expectedDeliveryDate
-              default(DateTime), // dateCreated
-              default(DateTime), // dateModified
-              default(bool), // deleted
-              "ltr_fakeId1", // id
-              default(string), // templateId
-              default(string), // templateVersionId
-              Letter.ObjectEnum.Letter, // _object
-              default(string), // description
-              default(Dictionary<string, string>), // metadata
-              default(Object), // mergeVariables
-              default(DateTime), // sendDate
-              default(string), // extraService
-              default(string), // trackingNumber
-              default(List<TrackingEventNormal>), // trackingEvents
-              default(string), // returnAddress
-              default(MailType), // mailType
-              default(bool), // color
-              true, // doubleSided
-              Letter.AddressPlacementEnum.TopFirstPage, // addressPlacement
-              default(bool), // returnEnvelope
-              null, // perforatedPage
-              default(LetterCustomEnvelope) // customEnvelope
-            );
-            Letter data2 = new Letter(
-              new Address(), // to
-              new Address(), // from
-              Letter.CarrierEnum.USPS, // carrier
-              default(List<Thumbnail>), // thumbnails
-              default(DateTime), // expectedDeliveryDate
-              default(DateTime), // dateCreated
-              default(DateTime), // dateModified
-              default(bool), // deleted
-              "ltr_fakeId2", // id
-              default(string), // templateId
-              default(string), // templateVersionId
-              Letter.ObjectEnum.Letter, // _object
-              default(string), // description
-              default(Dictionary<string, string>), // metadata
-              default(Object), // mergeVariables
-              default(DateTime), // sendDate
-              default(string), // extraService
-              default(string), // trackingNumber
-              default(List<TrackingEventNormal>), // trackingEvents
-              default(string), // returnAddress
-              default(MailType), // mailType
-              default(bool), // color
-              true, // doubleSided
-              Letter.AddressPlacementEnum.TopFirstPage, // addressPlacement
-              default(bool), // returnEnvelope
-              null, // perforatedPage
-              default(LetterCustomEnvelope) // customEnvelope
-            );
+            Letter data1 = new Letter();
+            data1.setTo(new Address());
+            data1.setFrom(new Address());
+            data1.setCarrier(Letter.CarrierEnum.USPS);
+            data1.setThumbnails(default(List<Thumbnail>));
+            data1.setExpectedDeliveryDate(default(DateTime));
+            data1.setDateCreated(default(DateTime));
+            data1.setDateModified(default(DateTime));
+            data1.setDeleted(default(bool));
+            data1.setId("ltr_fakeId1");
+            data1.setTemplateId(default(string));
+            data1.setTemplateVersionId(default(string));
+            data1.setObject(Letter.ObjectEnum.Letter);
+            data1.setDescription(default(string));
+            data1.setMetadata(default(Dictionary<string, string>));
+            data1.setMergeVariables(default(Object));
+            data1.setSendDate(default(DateTime));
+            data1.setExtraService(default(string));
+            data1.setTrackingNumber(default(string));
+            data1.setTrackingEvents(default(List<TrackingEventNormal>));
+            data1.setReturnAddress(default(string));
+            data1.setMailType(default(MailType));
+            data1.setColor(default(bool));
+            data1.setDoubleSided(true);
+            data1.setAddressPlacement(Letter.AddressPlacementEnum.TopFirstPage);
+            data1.setReturnEnvelope(default(bool));
+            data1.setCustomEnvelope(default(LetterCustomEnvelope));
+            Letter data2 = new Letter();
+            data2.setTo(new Address());
+            data2.setFrom(new Address());
+            data2.setCarrier(Letter.CarrierEnum.USPS);
+            data2.setThumbnails(default(List<Thumbnail>));
+            data2.setExpectedDeliveryDate(default(DateTime));
+            data2.setDateCreated(default(DateTime));
+            data2.setDateModified(default(DateTime));
+            data2.setDeleted(default(bool));
+            data2.setId("ltr_fakeId2");
+            data2.setTemplateId(default(string));
+            data2.setTemplateVersionId(default(string));
+            data2.setObject(Letter.ObjectEnum.Letter);
+            data2.setDescription(default(string));
+            data2.setMetadata(default(Dictionary<string, string>));
+            data2.setMergeVariables(default(Object));
+            data2.setSendDate(default(DateTime));
+            data2.setExtraService(default(string));
+            data2.setTrackingNumber(default(string));
+            data2.setTrackingEvents(default(List<TrackingEventNormal>));
+            data2.setReturnAddress(default(string));
+            data2.setMailType(default(MailType));
+            data2.setColor(default(bool));
+            data2.setDoubleSided(true);
+            data2.setAddressPlacement(Letter.AddressPlacementEnum.TopFirstPage);
+            data2.setReturnEnvelope(default(bool));
+            data2.setCustomEnvelope(default(LetterCustomEnvelope));
 
             listOfLetters.Add(data1);
             listOfLetters.Add(data2);
 
             fakeLetterList = new LetterList();
 
-            fakeLetterList.Data = listOfLetters;
-            fakeLetterList.Object = "list";
-            fakeLetterList.Count = listOfLetters.Count;
+            fakeLetterList.setData(listOfLetters);
+            fakeLetterList.setObject("list");
+            fakeLetterList.setCount(listOfLetters.Count);
         }
 
         public void Dispose()
@@ -145,29 +139,22 @@ namespace __tests__.Api
         [Test]
         public void LetterCreateTest()
         {
-            LetterEditable letterEditable = new LetterEditable(
-                null, // description
-                null, // metadata
-                default(MailType), // mailType
-                null, // mergeVariables
-                default(DateTime), // sendDate
-                default(bool), // color
-                true, // doubleSided
-                LetterEditable.AddressPlacementEnum.TopFirstPage, // addressPlacement
-                default(bool), // returnEnvelope
-                null, // perforatedPage
-                null, // customEnvelope
-                "adr_fakeId", // to
-                "adr_fakeId", // from
-                "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf", // file
-                null // extraService
-            );
+            LetterEditable letterEditable = new LetterEditable();
+            letterEditable.setMailType(default(MailType));
+            letterEditable.setSendDate(default(DateTime));
+            letterEditable.setColor(default(bool));
+            letterEditable.setDoubleSided(true);
+            letterEditable.setAddressPlacement(LetterEditable.AddressPlacementEnum.TopFirstPage);
+            letterEditable.setReturnEnvelope(default(bool));
+            letterEditable.setTo("adr_fakeId");
+            letterEditable.setFrom("adr_fakeId");
+            letterEditable.setFile("https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf");
 
             LettersApiMock.Setup(x => x.LetterCreate(letterEditable, null, It.IsAny<int>())).Returns(fakeLetter);
             Letter response = LettersApiMock.Object.LetterCreate(letterEditable);
 
             Assert.IsInstanceOf<Letter>(response);
-            Assert.AreEqual(response.Id, "ltr_fakeId");
+            Assert.AreEqual(response.getId(), "ltr_fakeId");
         }
 
         /// <summary>
@@ -199,16 +186,16 @@ namespace __tests__.Api
         {
             LetterDeletion fakeLetter = new LetterDeletion();
 
-            fakeLetter.Id = "ltr_fakeId";
-            fakeLetter.Deleted = true;
+            fakeLetter.setId("ltr_fakeId");
+            fakeLetter.setDeleted(true);
 
-            LettersApiMock.Setup(x => x.LetterCancel(fakeLetter.Id, It.IsAny<int>())).Returns(fakeLetter);
+            LettersApiMock.Setup(x => x.LetterCancel(fakeLetter.getId(), It.IsAny<int>())).Returns(fakeLetter);
 
-            var response = LettersApiMock.Object.LetterCancel(fakeLetter.Id);
+            var response = LettersApiMock.Object.LetterCancel(fakeLetter.getId());
 
             Assert.IsInstanceOf<LetterDeletion>(response);
-            Assert.AreEqual(response.Deleted, fakeLetter.Deleted);
-            Assert.AreEqual(response.Id, fakeLetter.Id);
+            Assert.AreEqual(response.getDeleted(), fakeLetter.getDeleted());
+            Assert.AreEqual(response.getId(), fakeLetter.getId());
         }
 
         /// <summary>
@@ -238,11 +225,11 @@ namespace __tests__.Api
         [Test]
         public void LetterRetrieveTest()
         {
-            LettersApiMock.Setup(x => x.LetterRetrieve(fakeLetter.Id, It.IsAny<int>())).Returns(fakeLetter);
-            Letter response = LettersApiMock.Object.LetterRetrieve(fakeLetter.Id);
+            LettersApiMock.Setup(x => x.LetterRetrieve(fakeLetter.getId(), It.IsAny<int>())).Returns(fakeLetter);
+            Letter response = LettersApiMock.Object.LetterRetrieve(fakeLetter.getId());
 
             Assert.IsInstanceOf<Letter>(response);
-            Assert.AreEqual(response.Id, fakeLetter.Id);
+            Assert.AreEqual(response.getId(), fakeLetter.getId());
         }
 
         /// <summary>
@@ -277,7 +264,7 @@ namespace __tests__.Api
             var response = LettersApiMock.Object.LettersList(null, null, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
-            Assert.AreEqual(response.Count, fakeLetterList.Count);
+            Assert.AreEqual(response.getCount(), fakeLetterList.getCount());
         }
 
         /// <summary>
@@ -314,7 +301,7 @@ namespace __tests__.Api
             var response = LettersApiMock.Object.LettersList(limit, null, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
-            Assert.AreEqual(response.Count, fakeLetterList.Count);
+            Assert.AreEqual(response.getCount(), fakeLetterList.getCount());
         }
 
         /// <summary>
@@ -330,7 +317,7 @@ namespace __tests__.Api
             var response = LettersApiMock.Object.LettersList(null, before, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
-            Assert.AreEqual(response.Count, fakeLetterList.Count);
+            Assert.AreEqual(response.getCount(), fakeLetterList.getCount());
         }
 
         /// <summary>
@@ -346,7 +333,7 @@ namespace __tests__.Api
             var response = LettersApiMock.Object.LettersList(null, null, after, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
-            Assert.AreEqual(response.Count, fakeLetterList.Count);
+            Assert.AreEqual(response.getCount(), fakeLetterList.getCount());
         }
 
         /// <summary>
@@ -363,7 +350,7 @@ namespace __tests__.Api
             var response = LettersApiMock.Object.LettersList(null, null, null, include, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
-            Assert.AreEqual(response.Count, fakeLetterList.Count);
+            Assert.AreEqual(response.getCount(), fakeLetterList.getCount());
         }
 
         /// <summary>
@@ -381,7 +368,7 @@ namespace __tests__.Api
             var response = LettersApiMock.Object.LettersList(null, null, null, null, dateCreated, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
-            Assert.AreEqual(response.Count, fakeLetterList.Count);
+            Assert.AreEqual(response.getCount(), fakeLetterList.getCount());
         }
 
         /// <summary>
@@ -398,7 +385,7 @@ namespace __tests__.Api
             var response = LettersApiMock.Object.LettersList(null, null, null, null, null, metadata, null, null, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
-            Assert.AreEqual(response.Count, fakeLetterList.Count);
+            Assert.AreEqual(response.getCount(), fakeLetterList.getCount());
         }
 
         /// <summary>
@@ -414,7 +401,7 @@ namespace __tests__.Api
             var response = LettersApiMock.Object.LettersList(null, null, null, null, null, null, color, null, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
-            Assert.AreEqual(response.Count, fakeLetterList.Count);
+            Assert.AreEqual(response.getCount(), fakeLetterList.getCount());
         }
 
         /// <summary>
@@ -430,7 +417,7 @@ namespace __tests__.Api
             var response = LettersApiMock.Object.LettersList(null, null, null, null, null, null, null, scheduled, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
-            Assert.AreEqual(response.Count, fakeLetterList.Count);
+            Assert.AreEqual(response.getCount(), fakeLetterList.getCount());
         }
 
         /// <summary>
@@ -448,7 +435,7 @@ namespace __tests__.Api
             var response = LettersApiMock.Object.LettersList(null, null, null, null, null, null, null, null, sendDate, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
-            Assert.AreEqual(response.Count, fakeLetterList.Count);
+            Assert.AreEqual(response.getCount(), fakeLetterList.getCount());
         }
 
         /// <summary>
@@ -464,7 +451,7 @@ namespace __tests__.Api
             var response = LettersApiMock.Object.LettersList(null, null, null, null, null, null, null, null, null, mailType, null);
 
             Assert.IsInstanceOf<LetterList>(response);
-            Assert.AreEqual(response.Count, fakeLetterList.Count);
+            Assert.AreEqual(response.getCount(), fakeLetterList.getCount());
         }
 
         /// <summary>
@@ -473,14 +460,15 @@ namespace __tests__.Api
         [Test]
         public void LetterListTestWithSortByParam()
         {
-            SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
+            SortBy5 sortBy = new SortBy5();
+            sortBy.setSendDate(SortBy5.SendDateEnum.Asc);
 
             LettersApiMock.Setup(x => x.LettersList(null, null, null, null, null, null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakeLetterList);
 
             var response = LettersApiMock.Object.LettersList(null, null, null, null, null, null, null, null, null, null, sortBy);
 
             Assert.IsInstanceOf<LetterList>(response);
-            Assert.AreEqual(response.Count, fakeLetterList.Count);
+            Assert.AreEqual(response.getCount(), fakeLetterList.getCount());
         }
     }
 }

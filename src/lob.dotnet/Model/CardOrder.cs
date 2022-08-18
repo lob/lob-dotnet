@@ -82,12 +82,18 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>The status of the card order.</value>
         [DataMember(Name = "status", EmitDefaultValue = false)]
-        public StatusEnum? Status { get; set; }
+        private StatusEnum? status;
+        public StatusEnum? getStatus() {
+            return status;
+        }
+        public void setStatus(StatusEnum value) {
+            status = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="CardOrder" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected CardOrder() { }
+        public CardOrder() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="CardOrder" /> class.
         /// </summary>
@@ -104,111 +110,162 @@ namespace lob.dotnet.Model
         /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified. (required).</param>
         /// <param name="deleted">Only returned if the resource has been successfully deleted..</param>
         /// <param name="_object">Value is type of resource. (required).</param>
-        public CardOrder(string id = default(string), string cardId = default(string), StatusEnum? status = default(StatusEnum?), decimal inventory = 0M, decimal quantityOrdered = 0M, decimal unitPrice = 0M, string cancelledReason = default(string), DateTime availabilityDate = default(DateTime), DateTime expectedAvailabilityDate = default(DateTime), DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), string _object = default(string))
-        {
-            this.DateCreated = dateCreated;
-            this.DateModified = dateModified;
-            // to ensure "_object" is required (not null)
-            if (_object == null)
-            {
-                throw new ArgumentNullException("_object is a required property for CardOrder and cannot be null");
-            }
-            this.Object = _object;
-            this.Id = id;
-            this.CardId = cardId;
-            this.Status = status;
-            this.Inventory = inventory;
-            this.QuantityOrdered = quantityOrdered;
-            this.UnitPrice = unitPrice;
-            this.CancelledReason = cancelledReason;
-            this.AvailabilityDate = availabilityDate;
-            this.ExpectedAvailabilityDate = expectedAvailabilityDate;
-            this.Deleted = deleted;
-        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;co_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;co_&#x60;.</value>
         [DataMember(Name = "id", EmitDefaultValue = false)]
-        public string Id { get; set; }
+        private string id;
+        public string getId() {
+            return id;
+        }
+        public void setId(string value) {
+            id = value;
+        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;card_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;card_&#x60;.</value>
         [DataMember(Name = "card_id", EmitDefaultValue = false)]
-        public string CardId { get; set; }
+        private string cardId;
+        public string getCardId() {
+            return cardId;
+        }
+        public void setCardId(string value) {
+            cardId = value;
+        }
 
         /// <summary>
         /// The inventory of the card order.
         /// </summary>
         /// <value>The inventory of the card order.</value>
         [DataMember(Name = "inventory", EmitDefaultValue = false)]
-        public decimal Inventory { get; set; }
+        private decimal inventory;
+        public decimal getInventory() {
+            return inventory;
+        }
+        public void setInventory(decimal value) {
+            inventory = value;
+        }
 
         /// <summary>
         /// The quantity of cards ordered
         /// </summary>
         /// <value>The quantity of cards ordered</value>
         [DataMember(Name = "quantity_ordered", EmitDefaultValue = false)]
-        public decimal QuantityOrdered { get; set; }
+        private decimal quantityOrdered;
+        public decimal getQuantityOrdered() {
+            return quantityOrdered;
+        }
+        public void setQuantityOrdered(decimal value) {
+            quantityOrdered = value;
+        }
 
         /// <summary>
         /// The unit price for the card order.
         /// </summary>
         /// <value>The unit price for the card order.</value>
         [DataMember(Name = "unit_price", EmitDefaultValue = false)]
-        public decimal UnitPrice { get; set; }
+        private decimal unitPrice;
+        public decimal getUnitPrice() {
+            return unitPrice;
+        }
+        public void setUnitPrice(decimal value) {
+            unitPrice = value;
+        }
 
         /// <summary>
         /// The reason for cancellation.
         /// </summary>
         /// <value>The reason for cancellation.</value>
         [DataMember(Name = "cancelled_reason", EmitDefaultValue = false)]
-        public string CancelledReason { get; set; }
+        private string cancelledReason;
+        public string getCancelledReason() {
+            return cancelledReason;
+        }
+        public void setCancelledReason(string value) {
+            cancelledReason = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was created.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was created.</value>
         [DataMember(Name = "availability_date", EmitDefaultValue = false)]
-        public DateTime AvailabilityDate { get; set; }
+        private DateTime availabilityDate;
+        public DateTime getAvailabilityDate() {
+            return availabilityDate;
+        }
+        public void setAvailabilityDate(DateTime value) {
+            availabilityDate = value;
+        }
 
         /// <summary>
         /// The fixed deadline for the cards to be printed.
         /// </summary>
         /// <value>The fixed deadline for the cards to be printed.</value>
         [DataMember(Name = "expected_availability_date", EmitDefaultValue = false)]
-        public DateTime ExpectedAvailabilityDate { get; set; }
+        private DateTime expectedAvailabilityDate;
+        public DateTime getExpectedAvailabilityDate() {
+            return expectedAvailabilityDate;
+        }
+        public void setExpectedAvailabilityDate(DateTime value) {
+            expectedAvailabilityDate = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was created.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was created.</value>
         [DataMember(Name = "date_created", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime DateCreated { get; set; }
+        private DateTime dateCreated;
+        public DateTime getDateCreated() {
+            return dateCreated;
+        }
+        public void setDateCreated(DateTime value) {
+            dateCreated = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was last modified.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was last modified.</value>
         [DataMember(Name = "date_modified", IsRequired = true, EmitDefaultValue = false)]
-        public DateTime DateModified { get; set; }
+        private DateTime dateModified;
+        public DateTime getDateModified() {
+            return dateModified;
+        }
+        public void setDateModified(DateTime value) {
+            dateModified = value;
+        }
 
         /// <summary>
         /// Only returned if the resource has been successfully deleted.
         /// </summary>
         /// <value>Only returned if the resource has been successfully deleted.</value>
         [DataMember(Name = "deleted", EmitDefaultValue = true)]
-        public bool Deleted { get; set; }
+        private bool deleted;
+        public bool getDeleted() {
+            return deleted;
+        }
+        public void setDeleted(bool value) {
+            deleted = value;
+        }
 
         /// <summary>
         /// Value is type of resource.
         /// </summary>
         /// <value>Value is type of resource.</value>
         [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = false)]
-        public string Object { get; set; }
+        private string _object;
+        public string getObject() {
+            return _object;
+        }
+        public void setObject(string value) {
+            _object = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -218,19 +275,19 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CardOrder {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CardId: ").Append(CardId).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Inventory: ").Append(Inventory).Append("\n");
-            sb.Append("  QuantityOrdered: ").Append(QuantityOrdered).Append("\n");
-            sb.Append("  UnitPrice: ").Append(UnitPrice).Append("\n");
-            sb.Append("  CancelledReason: ").Append(CancelledReason).Append("\n");
-            sb.Append("  AvailabilityDate: ").Append(AvailabilityDate).Append("\n");
-            sb.Append("  ExpectedAvailabilityDate: ").Append(ExpectedAvailabilityDate).Append("\n");
-            sb.Append("  DateCreated: ").Append(DateCreated).Append("\n");
-            sb.Append("  DateModified: ").Append(DateModified).Append("\n");
-            sb.Append("  Deleted: ").Append(Deleted).Append("\n");
-            sb.Append("  Object: ").Append(Object).Append("\n");
+            sb.Append("  id: ").Append(id).Append("\n");
+            sb.Append("  cardId: ").Append(cardId).Append("\n");
+            sb.Append("  status: ").Append(status).Append("\n");
+            sb.Append("  inventory: ").Append(inventory).Append("\n");
+            sb.Append("  quantityOrdered: ").Append(quantityOrdered).Append("\n");
+            sb.Append("  unitPrice: ").Append(unitPrice).Append("\n");
+            sb.Append("  cancelledReason: ").Append(cancelledReason).Append("\n");
+            sb.Append("  availabilityDate: ").Append(availabilityDate).Append("\n");
+            sb.Append("  expectedAvailabilityDate: ").Append(expectedAvailabilityDate).Append("\n");
+            sb.Append("  dateCreated: ").Append(dateCreated).Append("\n");
+            sb.Append("  dateModified: ").Append(dateModified).Append("\n");
+            sb.Append("  deleted: ").Append(deleted).Append("\n");
+            sb.Append("  _object: ").Append(_object).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -241,7 +298,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -267,64 +324,64 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.id == input.getId() ||
+                    (this.id != null &&
+                    this.id.Equals(input.getId()))
                 ) && 
                 (
-                    this.CardId == input.CardId ||
-                    (this.CardId != null &&
-                    this.CardId.Equals(input.CardId))
+                    this.cardId == input.getCardId() ||
+                    (this.cardId != null &&
+                    this.cardId.Equals(input.getCardId()))
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    this.Status.Equals(input.Status)
+                    this.status == input.getStatus() ||
+                    this.status.Equals(input.getStatus())
                 ) && 
                 (
-                    this.Inventory == input.Inventory ||
-                    this.Inventory.Equals(input.Inventory)
+                    this.inventory == input.getInventory() ||
+                    this.inventory.Equals(input.getInventory())
                 ) && 
                 (
-                    this.QuantityOrdered == input.QuantityOrdered ||
-                    this.QuantityOrdered.Equals(input.QuantityOrdered)
+                    this.quantityOrdered == input.getQuantityOrdered() ||
+                    this.quantityOrdered.Equals(input.getQuantityOrdered())
                 ) && 
                 (
-                    this.UnitPrice == input.UnitPrice ||
-                    this.UnitPrice.Equals(input.UnitPrice)
+                    this.unitPrice == input.getUnitPrice() ||
+                    this.unitPrice.Equals(input.getUnitPrice())
                 ) && 
                 (
-                    this.CancelledReason == input.CancelledReason ||
-                    (this.CancelledReason != null &&
-                    this.CancelledReason.Equals(input.CancelledReason))
+                    this.cancelledReason == input.getCancelledReason() ||
+                    (this.cancelledReason != null &&
+                    this.cancelledReason.Equals(input.getCancelledReason()))
                 ) && 
                 (
-                    this.AvailabilityDate == input.AvailabilityDate ||
-                    (this.AvailabilityDate != null &&
-                    this.AvailabilityDate.Equals(input.AvailabilityDate))
+                    this.availabilityDate == input.getAvailabilityDate() ||
+                    (this.availabilityDate != null &&
+                    this.availabilityDate.Equals(input.getAvailabilityDate()))
                 ) && 
                 (
-                    this.ExpectedAvailabilityDate == input.ExpectedAvailabilityDate ||
-                    (this.ExpectedAvailabilityDate != null &&
-                    this.ExpectedAvailabilityDate.Equals(input.ExpectedAvailabilityDate))
+                    this.expectedAvailabilityDate == input.getExpectedAvailabilityDate() ||
+                    (this.expectedAvailabilityDate != null &&
+                    this.expectedAvailabilityDate.Equals(input.getExpectedAvailabilityDate()))
                 ) && 
                 (
-                    this.DateCreated == input.DateCreated ||
-                    (this.DateCreated != null &&
-                    this.DateCreated.Equals(input.DateCreated))
+                    this.dateCreated == input.getDateCreated() ||
+                    (this.dateCreated != null &&
+                    this.dateCreated.Equals(input.getDateCreated()))
                 ) && 
                 (
-                    this.DateModified == input.DateModified ||
-                    (this.DateModified != null &&
-                    this.DateModified.Equals(input.DateModified))
+                    this.dateModified == input.getDateModified() ||
+                    (this.dateModified != null &&
+                    this.dateModified.Equals(input.getDateModified()))
                 ) && 
                 (
-                    this.Deleted == input.Deleted ||
-                    this.Deleted.Equals(input.Deleted)
+                    this.deleted == input.getDeleted() ||
+                    this.deleted.Equals(input.getDeleted())
                 ) && 
                 (
-                    this.Object == input.Object ||
-                    (this.Object != null &&
-                    this.Object.Equals(input.Object))
+                    this._object == input.getObject() ||
+                    (this._object != null &&
+                    this._object.Equals(input.getObject()))
                 );
         }
 
@@ -337,42 +394,42 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                if (this.id != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.id.GetHashCode();
                 }
-                if (this.CardId != null)
+                if (this.cardId != null)
                 {
-                    hashCode = (hashCode * 59) + this.CardId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.cardId.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                hashCode = (hashCode * 59) + this.Inventory.GetHashCode();
-                hashCode = (hashCode * 59) + this.QuantityOrdered.GetHashCode();
-                hashCode = (hashCode * 59) + this.UnitPrice.GetHashCode();
-                if (this.CancelledReason != null)
+                hashCode = (hashCode * 59) + this.status.GetHashCode();
+                hashCode = (hashCode * 59) + this.inventory.GetHashCode();
+                hashCode = (hashCode * 59) + this.quantityOrdered.GetHashCode();
+                hashCode = (hashCode * 59) + this.unitPrice.GetHashCode();
+                if (this.cancelledReason != null)
                 {
-                    hashCode = (hashCode * 59) + this.CancelledReason.GetHashCode();
+                    hashCode = (hashCode * 59) + this.cancelledReason.GetHashCode();
                 }
-                if (this.AvailabilityDate != null)
+                if (this.availabilityDate != null)
                 {
-                    hashCode = (hashCode * 59) + this.AvailabilityDate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.availabilityDate.GetHashCode();
                 }
-                if (this.ExpectedAvailabilityDate != null)
+                if (this.expectedAvailabilityDate != null)
                 {
-                    hashCode = (hashCode * 59) + this.ExpectedAvailabilityDate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.expectedAvailabilityDate.GetHashCode();
                 }
-                if (this.DateCreated != null)
+                if (this.dateCreated != null)
                 {
-                    hashCode = (hashCode * 59) + this.DateCreated.GetHashCode();
+                    hashCode = (hashCode * 59) + this.dateCreated.GetHashCode();
                 }
-                if (this.DateModified != null)
+                if (this.dateModified != null)
                 {
-                    hashCode = (hashCode * 59) + this.DateModified.GetHashCode();
+                    hashCode = (hashCode * 59) + this.dateModified.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Deleted.GetHashCode();
-                if (this.Object != null)
+                hashCode = (hashCode * 59) + this.deleted.GetHashCode();
+                if (this._object != null)
                 {
-                    hashCode = (hashCode * 59) + this.Object.GetHashCode();
+                    hashCode = (hashCode * 59) + this._object.GetHashCode();
                 }
                 return hashCode;
             }
@@ -385,18 +442,18 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Id (string) pattern
-            Regex regexId = new Regex(@"^co_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexId.Match(this.Id).Success)
+            // id (string) pattern
+            Regex regexid = new Regex(@"^co_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regexid.Match(this.id).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for id, must match a pattern of " + regexid, new [] { "id" });
             }
 
-            // CardId (string) pattern
-            Regex regexCardId = new Regex(@"^card_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexCardId.Match(this.CardId).Success)
+            // cardId (string) pattern
+            Regex regexcardId = new Regex(@"^card_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regexcardId.Match(this.cardId).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CardId, must match a pattern of " + regexCardId, new [] { "CardId" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for cardId, must match a pattern of " + regexcardId, new [] { "cardId" });
             }
 
             yield break;

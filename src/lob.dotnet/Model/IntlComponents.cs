@@ -40,48 +40,70 @@ namespace lob.dotnet.Model
         /// <param name="city">city.</param>
         /// <param name="state">The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. .</param>
         /// <param name="postalCode">The postal code..</param>
-        public IntlComponents(string primaryNumber = default(string), string streetName = default(string), string city = default(string), string state = default(string), string postalCode = default(string))
-        {
-            this.PrimaryNumber = primaryNumber;
-            this.StreetName = streetName;
-            this.City = city;
-            this.State = state;
-            this.PostalCode = postalCode;
-        }
 
         /// <summary>
         /// The numeric or alphanumeric part of an address preceding the street name. Often the house, building, or PO Box number.
         /// </summary>
         /// <value>The numeric or alphanumeric part of an address preceding the street name. Often the house, building, or PO Box number.</value>
         [DataMember(Name = "primary_number", EmitDefaultValue = false)]
-        public string PrimaryNumber { get; set; }
+        private string primaryNumber;
+        public string getPrimaryNumber() {
+            return primaryNumber;
+        }
+        public void setPrimaryNumber(string value) {
+            primaryNumber = value;
+        }
 
         /// <summary>
         /// The name of the street.
         /// </summary>
         /// <value>The name of the street.</value>
         [DataMember(Name = "street_name", EmitDefaultValue = false)]
-        public string StreetName { get; set; }
+        private string streetName;
+        public string getStreetName() {
+            return streetName;
+        }
+        public void setStreetName(string value) {
+            streetName = value;
+        }
 
         /// <summary>
         /// Gets or Sets City
         /// </summary>
         [DataMember(Name = "city", EmitDefaultValue = false)]
-        public string City { get; set; }
+        private string city;
+        public string getCity() {
+            return city;
+        }
+        public void setCity(string value) {
+            city = value;
+        }
 
         /// <summary>
         /// The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. 
         /// </summary>
         /// <value>The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. </value>
         [DataMember(Name = "state", EmitDefaultValue = false)]
-        public string State { get; set; }
+        private string state;
+        public string getState() {
+            return state;
+        }
+        public void setState(string value) {
+            state = value;
+        }
 
         /// <summary>
         /// The postal code.
         /// </summary>
         /// <value>The postal code.</value>
         [DataMember(Name = "postal_code", EmitDefaultValue = false)]
-        public string PostalCode { get; set; }
+        private string postalCode;
+        public string getPostalCode() {
+            return postalCode;
+        }
+        public void setPostalCode(string value) {
+            postalCode = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -91,11 +113,11 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class IntlComponents {\n");
-            sb.Append("  PrimaryNumber: ").Append(PrimaryNumber).Append("\n");
-            sb.Append("  StreetName: ").Append(StreetName).Append("\n");
-            sb.Append("  City: ").Append(City).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
+            sb.Append("  primaryNumber: ").Append(primaryNumber).Append("\n");
+            sb.Append("  streetName: ").Append(streetName).Append("\n");
+            sb.Append("  city: ").Append(city).Append("\n");
+            sb.Append("  state: ").Append(state).Append("\n");
+            sb.Append("  postalCode: ").Append(postalCode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -106,7 +128,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -132,29 +154,29 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.PrimaryNumber == input.PrimaryNumber ||
-                    (this.PrimaryNumber != null &&
-                    this.PrimaryNumber.Equals(input.PrimaryNumber))
+                    this.primaryNumber == input.getPrimaryNumber() ||
+                    (this.primaryNumber != null &&
+                    this.primaryNumber.Equals(input.getPrimaryNumber()))
                 ) && 
                 (
-                    this.StreetName == input.StreetName ||
-                    (this.StreetName != null &&
-                    this.StreetName.Equals(input.StreetName))
+                    this.streetName == input.getStreetName() ||
+                    (this.streetName != null &&
+                    this.streetName.Equals(input.getStreetName()))
                 ) && 
                 (
-                    this.City == input.City ||
-                    (this.City != null &&
-                    this.City.Equals(input.City))
+                    this.city == input.getCity() ||
+                    (this.city != null &&
+                    this.city.Equals(input.getCity()))
                 ) && 
                 (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
+                    this.state == input.getState() ||
+                    (this.state != null &&
+                    this.state.Equals(input.getState()))
                 ) && 
                 (
-                    this.PostalCode == input.PostalCode ||
-                    (this.PostalCode != null &&
-                    this.PostalCode.Equals(input.PostalCode))
+                    this.postalCode == input.getPostalCode() ||
+                    (this.postalCode != null &&
+                    this.postalCode.Equals(input.getPostalCode()))
                 );
         }
 
@@ -167,25 +189,25 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.PrimaryNumber != null)
+                if (this.primaryNumber != null)
                 {
-                    hashCode = (hashCode * 59) + this.PrimaryNumber.GetHashCode();
+                    hashCode = (hashCode * 59) + this.primaryNumber.GetHashCode();
                 }
-                if (this.StreetName != null)
+                if (this.streetName != null)
                 {
-                    hashCode = (hashCode * 59) + this.StreetName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.streetName.GetHashCode();
                 }
-                if (this.City != null)
+                if (this.city != null)
                 {
-                    hashCode = (hashCode * 59) + this.City.GetHashCode();
+                    hashCode = (hashCode * 59) + this.city.GetHashCode();
                 }
-                if (this.State != null)
+                if (this.state != null)
                 {
-                    hashCode = (hashCode * 59) + this.State.GetHashCode();
+                    hashCode = (hashCode * 59) + this.state.GetHashCode();
                 }
-                if (this.PostalCode != null)
+                if (this.postalCode != null)
                 {
-                    hashCode = (hashCode * 59) + this.PostalCode.GetHashCode();
+                    hashCode = (hashCode * 59) + this.postalCode.GetHashCode();
                 }
                 return hashCode;
             }
@@ -198,22 +220,22 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // City (string) maxLength
-            if (this.City != null && this.City.Length > 200)
+            // city (string) maxLength
+            if (this.city != null && this.city.Length > 200)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for City, length must be less than 200.", new [] { "City" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for city, length must be less than 200.", new [] { "city" });
             }
 
-            // State (string) maxLength
-            if (this.State != null && this.State.Length > 2)
+            // state (string) maxLength
+            if (this.state != null && this.state.Length > 2)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for State, length must be less than 2.", new [] { "State" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for state, length must be less than 2.", new [] { "state" });
             }
 
-            // PostalCode (string) maxLength
-            if (this.PostalCode != null && this.PostalCode.Length > 12)
+            // postalCode (string) maxLength
+            if (this.postalCode != null && this.postalCode.Length > 12)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PostalCode, length must be less than 12.", new [] { "PostalCode" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for postalCode, length must be less than 12.", new [] { "postalCode" });
             }
 
             yield break;

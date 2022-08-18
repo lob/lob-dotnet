@@ -36,16 +36,18 @@ namespace lob.dotnet.Model
         /// Initializes a new instance of the <see cref="BulkError" /> class.
         /// </summary>
         /// <param name="error">error.</param>
-        public BulkError(BulkErrorProperties error = default(BulkErrorProperties))
-        {
-            this.Error = error;
-        }
 
         /// <summary>
         /// Gets or Sets Error
         /// </summary>
         [DataMember(Name = "error", EmitDefaultValue = false)]
-        public BulkErrorProperties Error { get; set; }
+        private BulkErrorProperties error;
+        public BulkErrorProperties getError() {
+            return error;
+        }
+        public void setError(BulkErrorProperties value) {
+            error = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -55,7 +57,7 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class BulkError {\n");
-            sb.Append("  Error: ").Append(Error).Append("\n");
+            sb.Append("  error: ").Append(error).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -66,7 +68,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -92,9 +94,9 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Error == input.Error ||
-                    (this.Error != null &&
-                    this.Error.Equals(input.Error))
+                    this.error == input.getError() ||
+                    (this.error != null &&
+                    this.error.Equals(input.getError()))
                 );
         }
 
@@ -107,9 +109,9 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Error != null)
+                if (this.error != null)
                 {
-                    hashCode = (hashCode * 59) + this.Error.GetHashCode();
+                    hashCode = (hashCode * 59) + this.error.GetHashCode();
                 }
                 return hashCode;
             }

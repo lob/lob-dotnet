@@ -36,7 +36,7 @@ namespace lob.dotnet.Model
         /// Initializes a new instance of the <see cref="IntlAutocompletionsWritable" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected IntlAutocompletionsWritable() { }
+        public IntlAutocompletionsWritable() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="IntlAutocompletionsWritable" /> class.
         /// </summary>
@@ -45,58 +45,70 @@ namespace lob.dotnet.Model
         /// <param name="state">An optional state input used to filter suggestions. Case insensitive and does not match partial abbreviations. .</param>
         /// <param name="zipCode">An optional Zip Code input used to filter suggestions. Matches partial entries. .</param>
         /// <param name="country">country (required).</param>
-        public IntlAutocompletionsWritable(string addressPrefix = default(string), string city = default(string), string state = default(string), string zipCode = default(string), CountryExtended country = default(CountryExtended))
-        {
-            // to ensure "addressPrefix" is required (not null)
-            if (addressPrefix == null)
-            {
-                throw new ArgumentNullException("addressPrefix is a required property for IntlAutocompletionsWritable and cannot be null");
-            }
-            this.AddressPrefix = addressPrefix;
-            // to ensure "country" is required (not null)
-            if (country == null)
-            {
-                throw new ArgumentNullException("country is a required property for IntlAutocompletionsWritable and cannot be null");
-            }
-            this.Country = country;
-            this.City = city;
-            this.State = state;
-            this.ZipCode = zipCode;
-        }
 
         /// <summary>
         /// Only accepts numbers and street names in an alphanumeric format. 
         /// </summary>
         /// <value>Only accepts numbers and street names in an alphanumeric format. </value>
         [DataMember(Name = "address_prefix", IsRequired = true, EmitDefaultValue = false)]
-        public string AddressPrefix { get; set; }
+        private string addressPrefix;
+        public string getAddressPrefix() {
+            return addressPrefix;
+        }
+        public void setAddressPrefix(string value) {
+            addressPrefix = value;
+        }
 
         /// <summary>
         /// An optional city input used to filter suggestions. Case insensitive and does not match partial abbreviations. 
         /// </summary>
         /// <value>An optional city input used to filter suggestions. Case insensitive and does not match partial abbreviations. </value>
         [DataMember(Name = "city", EmitDefaultValue = false)]
-        public string City { get; set; }
+        private string city;
+        public string getCity() {
+            return city;
+        }
+        public void setCity(string value) {
+            city = value;
+        }
 
         /// <summary>
         /// An optional state input used to filter suggestions. Case insensitive and does not match partial abbreviations. 
         /// </summary>
         /// <value>An optional state input used to filter suggestions. Case insensitive and does not match partial abbreviations. </value>
         [DataMember(Name = "state", EmitDefaultValue = false)]
-        public string State { get; set; }
+        private string state;
+        public string getState() {
+            return state;
+        }
+        public void setState(string value) {
+            state = value;
+        }
 
         /// <summary>
         /// An optional Zip Code input used to filter suggestions. Matches partial entries. 
         /// </summary>
         /// <value>An optional Zip Code input used to filter suggestions. Matches partial entries. </value>
         [DataMember(Name = "zip_code", EmitDefaultValue = false)]
-        public string ZipCode { get; set; }
+        private string zipCode;
+        public string getZipCode() {
+            return zipCode;
+        }
+        public void setZipCode(string value) {
+            zipCode = value;
+        }
 
         /// <summary>
         /// Gets or Sets Country
         /// </summary>
         [DataMember(Name = "country", IsRequired = true, EmitDefaultValue = false)]
-        public CountryExtended Country { get; set; }
+        private CountryExtended country;
+        public CountryExtended getCountry() {
+            return country;
+        }
+        public void setCountry(CountryExtended value) {
+            country = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -106,11 +118,11 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class IntlAutocompletionsWritable {\n");
-            sb.Append("  AddressPrefix: ").Append(AddressPrefix).Append("\n");
-            sb.Append("  City: ").Append(City).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  ZipCode: ").Append(ZipCode).Append("\n");
-            sb.Append("  Country: ").Append(Country).Append("\n");
+            sb.Append("  addressPrefix: ").Append(addressPrefix).Append("\n");
+            sb.Append("  city: ").Append(city).Append("\n");
+            sb.Append("  state: ").Append(state).Append("\n");
+            sb.Append("  zipCode: ").Append(zipCode).Append("\n");
+            sb.Append("  country: ").Append(country).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -121,7 +133,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -147,29 +159,29 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.AddressPrefix == input.AddressPrefix ||
-                    (this.AddressPrefix != null &&
-                    this.AddressPrefix.Equals(input.AddressPrefix))
+                    this.addressPrefix == input.getAddressPrefix() ||
+                    (this.addressPrefix != null &&
+                    this.addressPrefix.Equals(input.getAddressPrefix()))
                 ) && 
                 (
-                    this.City == input.City ||
-                    (this.City != null &&
-                    this.City.Equals(input.City))
+                    this.city == input.getCity() ||
+                    (this.city != null &&
+                    this.city.Equals(input.getCity()))
                 ) && 
                 (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
+                    this.state == input.getState() ||
+                    (this.state != null &&
+                    this.state.Equals(input.getState()))
                 ) && 
                 (
-                    this.ZipCode == input.ZipCode ||
-                    (this.ZipCode != null &&
-                    this.ZipCode.Equals(input.ZipCode))
+                    this.zipCode == input.getZipCode() ||
+                    (this.zipCode != null &&
+                    this.zipCode.Equals(input.getZipCode()))
                 ) && 
                 (
-                    this.Country == input.Country ||
-                    (this.Country != null &&
-                    this.Country.Equals(input.Country))
+                    this.country == input.getCountry() ||
+                    (this.country != null &&
+                    this.country.Equals(input.getCountry()))
                 );
         }
 
@@ -182,25 +194,25 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.AddressPrefix != null)
+                if (this.addressPrefix != null)
                 {
-                    hashCode = (hashCode * 59) + this.AddressPrefix.GetHashCode();
+                    hashCode = (hashCode * 59) + this.addressPrefix.GetHashCode();
                 }
-                if (this.City != null)
+                if (this.city != null)
                 {
-                    hashCode = (hashCode * 59) + this.City.GetHashCode();
+                    hashCode = (hashCode * 59) + this.city.GetHashCode();
                 }
-                if (this.State != null)
+                if (this.state != null)
                 {
-                    hashCode = (hashCode * 59) + this.State.GetHashCode();
+                    hashCode = (hashCode * 59) + this.state.GetHashCode();
                 }
-                if (this.ZipCode != null)
+                if (this.zipCode != null)
                 {
-                    hashCode = (hashCode * 59) + this.ZipCode.GetHashCode();
+                    hashCode = (hashCode * 59) + this.zipCode.GetHashCode();
                 }
-                if (this.Country != null)
+                if (this.country != null)
                 {
-                    hashCode = (hashCode * 59) + this.Country.GetHashCode();
+                    hashCode = (hashCode * 59) + this.country.GetHashCode();
                 }
                 return hashCode;
             }

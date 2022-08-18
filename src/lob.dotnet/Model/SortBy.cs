@@ -59,7 +59,13 @@ namespace lob.dotnet.Model
         /// Gets or Sets DateCreated
         /// </summary>
         [DataMember(Name = "date_created", EmitDefaultValue = false)]
-        public DateCreatedEnum? DateCreated { get; set; }
+        private DateCreatedEnum? dateCreated;
+        public DateCreatedEnum? getDateCreated() {
+            return dateCreated;
+        }
+        public void setDateCreated(DateCreatedEnum value) {
+            dateCreated = value;
+        }
         /// <summary>
         /// Defines SendDate
         /// </summary>
@@ -87,17 +93,18 @@ namespace lob.dotnet.Model
         /// Gets or Sets SendDate
         /// </summary>
         [DataMember(Name = "send_date", EmitDefaultValue = false)]
-        public SendDateEnum? SendDate { get; set; }
+        private SendDateEnum? sendDate;
+        public SendDateEnum? getSendDate() {
+            return sendDate;
+        }
+        public void setSendDate(SendDateEnum value) {
+            sendDate = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="SortBy" /> class.
         /// </summary>
         /// <param name="dateCreated">dateCreated.</param>
         /// <param name="sendDate">sendDate.</param>
-        public SortBy(DateCreatedEnum? dateCreated = default(DateCreatedEnum?), SendDateEnum? sendDate = default(SendDateEnum?))
-        {
-            this.DateCreated = dateCreated;
-            this.SendDate = sendDate;
-        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -107,8 +114,8 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SortBy {\n");
-            sb.Append("  DateCreated: ").Append(DateCreated).Append("\n");
-            sb.Append("  SendDate: ").Append(SendDate).Append("\n");
+            sb.Append("  dateCreated: ").Append(dateCreated).Append("\n");
+            sb.Append("  sendDate: ").Append(sendDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -119,7 +126,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -145,12 +152,12 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.DateCreated == input.DateCreated ||
-                    this.DateCreated.Equals(input.DateCreated)
+                    this.dateCreated == input.getDateCreated() ||
+                    this.dateCreated.Equals(input.getDateCreated())
                 ) && 
                 (
-                    this.SendDate == input.SendDate ||
-                    this.SendDate.Equals(input.SendDate)
+                    this.sendDate == input.getSendDate() ||
+                    this.sendDate.Equals(input.getSendDate())
                 );
         }
 
@@ -163,8 +170,8 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.DateCreated.GetHashCode();
-                hashCode = (hashCode * 59) + this.SendDate.GetHashCode();
+                hashCode = (hashCode * 59) + this.dateCreated.GetHashCode();
+                hashCode = (hashCode * 59) + this.sendDate.GetHashCode();
                 return hashCode;
             }
         }

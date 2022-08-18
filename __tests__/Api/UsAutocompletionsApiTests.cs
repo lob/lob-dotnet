@@ -33,13 +33,12 @@ namespace __tests__.Api
         public UsAutocompletionsApiTests()
         {
             usAutocompletionsApiMock = new Mock<IUsAutocompletionsApi>();
-            usAutocompletionsWritable = new UsAutocompletionsWritable(
-                "fake prefix", // addressPrefix
-                "fake city", // city
-                "XX", // state
-                "12345", // zipCode
-                false // geoIpSort
-            );
+            usAutocompletionsWritable = new UsAutocompletionsWritable();
+            usAutocompletionsWritable.setAddressPrefix("fake prefix");
+            usAutocompletionsWritable.setCity("fake city");
+            usAutocompletionsWritable.setState("XX");
+            usAutocompletionsWritable.setZipCode("12345");
+            usAutocompletionsWritable.setGeoIpSort(false);
         }
 
         public void Dispose()
@@ -53,14 +52,16 @@ namespace __tests__.Api
         [Test]
         public void UsAutocompletionTest()
         {
-            UsAutocompletions fakeUsAutocompletions = new UsAutocompletions("us_auto_fakeId", new List<Suggestions>());
+            UsAutocompletions fakeUsAutocompletions = new UsAutocompletions();
+            fakeUsAutocompletions.setId("us_auto_fakeId");
+            fakeUsAutocompletions.setSuggestions(new List<Suggestions>());
 
             usAutocompletionsApiMock.Setup(x => x.UsAutocompletion(usAutocompletionsWritable, It.IsAny<int>())).Returns(fakeUsAutocompletions);
             UsAutocompletions response = usAutocompletionsApiMock.Object.UsAutocompletion(usAutocompletionsWritable);
 
             Assert.IsInstanceOf<UsAutocompletions>(response);
-            Assert.NotNull(response.Suggestions);
-            Assert.AreEqual(response.Suggestions.Count, 0);
+            Assert.NotNull(response.getSuggestions());
+            Assert.AreEqual(response.getSuggestions().Count, 0);
         }
 
         /// <summary>

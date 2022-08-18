@@ -36,7 +36,7 @@ namespace lob.dotnet.Model
         /// Initializes a new instance of the <see cref="SelfMailerEditable" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected SelfMailerEditable() { }
+        public SelfMailerEditable() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="SelfMailerEditable" /> class.
         /// </summary>
@@ -51,110 +51,153 @@ namespace lob.dotnet.Model
         /// <param name="inside">The artwork to use as the inside of your self mailer.  (required).</param>
         /// <param name="outside">The artwork to use as the outside of your self mailer.  (required).</param>
         /// <param name="billingGroupId">An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information..</param>
-        public SelfMailerEditable(string to = default(string), string from = default(string), SelfMailerSize size = default(SelfMailerSize), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string inside = default(string), string outside = default(string), string billingGroupId = default(string))
-        {
-            // to ensure "to" is required (not null)
-            if (to == null)
-            {
-                throw new ArgumentNullException("to is a required property for SelfMailerEditable and cannot be null");
-            }
-            this.To = to;
-            // to ensure "inside" is required (not null)
-            if (inside == null)
-            {
-                throw new ArgumentNullException("inside is a required property for SelfMailerEditable and cannot be null");
-            }
-            this.Inside = inside;
-            // to ensure "outside" is required (not null)
-            if (outside == null)
-            {
-                throw new ArgumentNullException("outside is a required property for SelfMailerEditable and cannot be null");
-            }
-            this.Outside = outside;
-            this.From = from;
-            this.Size = size;
-            this.Description = description;
-            this.Metadata = metadata;
-            this.MailType = mailType;
-            this.MergeVariables = mergeVariables;
-            this.SendDate = sendDate;
-            this.BillingGroupId = billingGroupId;
-        }
 
         /// <summary>
         /// Must either be an address ID or an inline object with correct address parameters.
         /// </summary>
         /// <value>Must either be an address ID or an inline object with correct address parameters.</value>
         [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = false)]
-        public string To { get; set; }
+        private string to;
+        public string getTo() {
+            return to;
+        }
+        public void setTo(string value) {
+            to = value;
+        }
+        public void setTo(AddressEditable value) {
+            to = Newtonsoft.Json.JsonConvert.SerializeObject(value);
+        }
 
         /// <summary>
         /// Must either be an address ID or an inline object with correct address parameters.
         /// </summary>
         /// <value>Must either be an address ID or an inline object with correct address parameters.</value>
         [DataMember(Name = "from", EmitDefaultValue = false)]
-        public string From { get; set; }
+        private string from;
+        public string getFrom() {
+            return from;
+        }
+        public void setFrom(string value) {
+            from = value;
+        }
+        public void setFrom(AddressEditable value) {
+            from = Newtonsoft.Json.JsonConvert.SerializeObject(value);
+        }
 
         /// <summary>
         /// Gets or Sets Size
         /// </summary>
         [DataMember(Name = "size", EmitDefaultValue = false)]
-        public SelfMailerSize Size { get; set; }
+        private SelfMailerSize size;
+        public SelfMailerSize getSize() {
+            return size;
+        }
+        public void setSize(SelfMailerSize value) {
+            size = value;
+        }
 
         /// <summary>
         /// An internal description that identifies this resource. Must be no longer than 255 characters. 
         /// </summary>
         /// <value>An internal description that identifies this resource. Must be no longer than 255 characters. </value>
         [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
+        private string description;
+        public string getDescription() {
+            return description;
+        }
+        public void setDescription(string value) {
+            description = value;
+        }
 
         /// <summary>
         /// Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information.
         /// </summary>
         /// <value>Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information.</value>
         [DataMember(Name = "metadata", EmitDefaultValue = false)]
-        public Dictionary<string, string> Metadata { get; set; }
+        private Dictionary<string, string> metadata;
+        public Dictionary<string, string> getMetadata() {
+            return metadata;
+        }
+        public void setMetadata(Dictionary<string, string> value) {
+            metadata = value;
+        }
 
         /// <summary>
         /// Gets or Sets MailType
         /// </summary>
         [DataMember(Name = "mail_type", EmitDefaultValue = false)]
-        public MailType MailType { get; set; }
+        private MailType mailType;
+        public MailType getMailType() {
+            return mailType;
+        }
+        public void setMailType(MailType value) {
+            mailType = value;
+        }
 
         /// <summary>
         /// You can input a merge variable payload object to your template to render dynamic content. For example, if you have a template like: &#x60;{{variable_name}}&#x60;, pass in &#x60;{\&quot;variable_name\&quot;: \&quot;Harry\&quot;}&#x60; to render &#x60;Harry&#x60;. &#x60;merge_variables&#x60; must be an object. Any type of value is accepted as long as the object is valid JSON; you can use &#x60;strings&#x60;, &#x60;numbers&#x60;, &#x60;booleans&#x60;, &#x60;arrays&#x60;, &#x60;objects&#x60;, or &#x60;null&#x60;. The max length of the object is 25,000 characters. If you call &#x60;JSON.stringify&#x60; on your object, it can be no longer than 25,000 characters. Your variable names cannot contain any whitespace or any of the following special characters: &#x60;!&#x60;, &#x60;\&quot;&#x60;, &#x60;#&#x60;, &#x60;%&#x60;, &#x60;&amp;&#x60;, &#x60;&#39;&#x60;, &#x60;(&#x60;, &#x60;)&#x60;, &#x60;*&#x60;, &#x60;+&#x60;, &#x60;,&#x60;, &#x60;/&#x60;, &#x60;;&#x60;, &#x60;&lt;&#x60;, &#x60;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;@&#x60;, &#x60;[&#x60;, &#x60;\\&#x60;, &#x60;]&#x60;, &#x60;^&#x60;, &#x60;&#x60; &#x60; &#x60;&#x60;, &#x60;{&#x60;, &#x60;|&#x60;, &#x60;}&#x60;, &#x60;~&#x60;. More instructions can be found in [our guide to using html and merge variables](https://lob.com/resources/guides/general/using-html-and-merge-variables). Depending on your [Merge Variable strictness](https://dashboard.lob.com/#/settings/account) setting, if you define variables in your HTML but do not pass them here, you will either receive an error or the variable will render as an empty string.
         /// </summary>
         /// <value>You can input a merge variable payload object to your template to render dynamic content. For example, if you have a template like: &#x60;{{variable_name}}&#x60;, pass in &#x60;{\&quot;variable_name\&quot;: \&quot;Harry\&quot;}&#x60; to render &#x60;Harry&#x60;. &#x60;merge_variables&#x60; must be an object. Any type of value is accepted as long as the object is valid JSON; you can use &#x60;strings&#x60;, &#x60;numbers&#x60;, &#x60;booleans&#x60;, &#x60;arrays&#x60;, &#x60;objects&#x60;, or &#x60;null&#x60;. The max length of the object is 25,000 characters. If you call &#x60;JSON.stringify&#x60; on your object, it can be no longer than 25,000 characters. Your variable names cannot contain any whitespace or any of the following special characters: &#x60;!&#x60;, &#x60;\&quot;&#x60;, &#x60;#&#x60;, &#x60;%&#x60;, &#x60;&amp;&#x60;, &#x60;&#39;&#x60;, &#x60;(&#x60;, &#x60;)&#x60;, &#x60;*&#x60;, &#x60;+&#x60;, &#x60;,&#x60;, &#x60;/&#x60;, &#x60;;&#x60;, &#x60;&lt;&#x60;, &#x60;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;@&#x60;, &#x60;[&#x60;, &#x60;\\&#x60;, &#x60;]&#x60;, &#x60;^&#x60;, &#x60;&#x60; &#x60; &#x60;&#x60;, &#x60;{&#x60;, &#x60;|&#x60;, &#x60;}&#x60;, &#x60;~&#x60;. More instructions can be found in [our guide to using html and merge variables](https://lob.com/resources/guides/general/using-html-and-merge-variables). Depending on your [Merge Variable strictness](https://dashboard.lob.com/#/settings/account) setting, if you define variables in your HTML but do not pass them here, you will either receive an error or the variable will render as an empty string.</value>
         [DataMember(Name = "merge_variables", EmitDefaultValue = true)]
-        public Object MergeVariables { get; set; }
+        private Object mergeVariables;
+        public Object getMergeVariables() {
+            return mergeVariables;
+        }
+        public void setMergeVariables(Object value) {
+            mergeVariables = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the &#x60;send_date&#x60; has passed, the mailpiece can be canceled. If a date in the format &#x60;2017-11-01&#x60; is passed, it will evaluate to midnight UTC of that date (&#x60;2017-11-01T00:00:00.000Z&#x60;). If a datetime is passed, that exact time will be used. A &#x60;send_date&#x60; passed with no time zone will default to UTC, while a &#x60;send_date&#x60; passed with a time zone will be converted to UTC.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the &#x60;send_date&#x60; has passed, the mailpiece can be canceled. If a date in the format &#x60;2017-11-01&#x60; is passed, it will evaluate to midnight UTC of that date (&#x60;2017-11-01T00:00:00.000Z&#x60;). If a datetime is passed, that exact time will be used. A &#x60;send_date&#x60; passed with no time zone will default to UTC, while a &#x60;send_date&#x60; passed with a time zone will be converted to UTC.</value>
         [DataMember(Name = "send_date", EmitDefaultValue = false)]
-        public DateTime SendDate { get; set; }
+        private DateTime sendDate;
+        public DateTime getSendDate() {
+            return sendDate;
+        }
+        public void setSendDate(DateTime value) {
+            sendDate = value;
+        }
 
         /// <summary>
         /// The artwork to use as the inside of your self mailer. 
         /// </summary>
         /// <value>The artwork to use as the inside of your self mailer. </value>
         [DataMember(Name = "inside", IsRequired = true, EmitDefaultValue = false)]
-        public string Inside { get; set; }
+        private string inside;
+        public string getInside() {
+            return inside;
+        }
+        public void setInside(string value) {
+            inside = value;
+        }
 
         /// <summary>
         /// The artwork to use as the outside of your self mailer. 
         /// </summary>
         /// <value>The artwork to use as the outside of your self mailer. </value>
         [DataMember(Name = "outside", IsRequired = true, EmitDefaultValue = false)]
-        public string Outside { get; set; }
+        private string outside;
+        public string getOutside() {
+            return outside;
+        }
+        public void setOutside(string value) {
+            outside = value;
+        }
 
         /// <summary>
         /// An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information.
         /// </summary>
         /// <value>An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information.</value>
         [DataMember(Name = "billing_group_id", EmitDefaultValue = false)]
-        public string BillingGroupId { get; set; }
+        private string billingGroupId;
+        public string getBillingGroupId() {
+            return billingGroupId;
+        }
+        public void setBillingGroupId(string value) {
+            billingGroupId = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -164,17 +207,17 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SelfMailerEditable {\n");
-            sb.Append("  To: ").Append(To).Append("\n");
-            sb.Append("  From: ").Append(From).Append("\n");
-            sb.Append("  Size: ").Append(Size).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
-            sb.Append("  MailType: ").Append(MailType).Append("\n");
-            sb.Append("  MergeVariables: ").Append(MergeVariables).Append("\n");
-            sb.Append("  SendDate: ").Append(SendDate).Append("\n");
-            sb.Append("  Inside: ").Append(Inside).Append("\n");
-            sb.Append("  Outside: ").Append(Outside).Append("\n");
-            sb.Append("  BillingGroupId: ").Append(BillingGroupId).Append("\n");
+            sb.Append("  to: ").Append(to).Append("\n");
+            sb.Append("  from: ").Append(from).Append("\n");
+            sb.Append("  size: ").Append(size).Append("\n");
+            sb.Append("  description: ").Append(description).Append("\n");
+            sb.Append("  metadata: ").Append(metadata).Append("\n");
+            sb.Append("  mailType: ").Append(mailType).Append("\n");
+            sb.Append("  mergeVariables: ").Append(mergeVariables).Append("\n");
+            sb.Append("  sendDate: ").Append(sendDate).Append("\n");
+            sb.Append("  inside: ").Append(inside).Append("\n");
+            sb.Append("  outside: ").Append(outside).Append("\n");
+            sb.Append("  billingGroupId: ").Append(billingGroupId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -185,7 +228,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -211,60 +254,60 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.To == input.To ||
-                    (this.To != null &&
-                    this.To.Equals(input.To))
+                    this.to == input.getTo() ||
+                    (this.to != null &&
+                    this.to.Equals(input.getTo()))
                 ) && 
                 (
-                    this.From == input.From ||
-                    (this.From != null &&
-                    this.From.Equals(input.From))
+                    this.from == input.getFrom() ||
+                    (this.from != null &&
+                    this.from.Equals(input.getFrom()))
                 ) && 
                 (
-                    this.Size == input.Size ||
-                    (this.Size != null &&
-                    this.Size.Equals(input.Size))
+                    this.size == input.getSize() ||
+                    (this.size != null &&
+                    this.size.Equals(input.getSize()))
                 ) && 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.description == input.getDescription() ||
+                    (this.description != null &&
+                    this.description.Equals(input.getDescription()))
                 ) && 
                 (
-                    this.Metadata == input.Metadata ||
-                    this.Metadata != null &&
-                    input.Metadata != null &&
-                    this.Metadata.SequenceEqual(input.Metadata)
+                    this.metadata == input.getMetadata() ||
+                    this.metadata != null &&
+                    input.getMetadata() != null &&
+                    this.metadata.SequenceEqual(input.getMetadata())
                 ) && 
                 (
-                    this.MailType == input.MailType ||
-                    (this.MailType != null &&
-                    this.MailType.Equals(input.MailType))
+                    this.mailType == input.getMailType() ||
+                    (this.mailType != null &&
+                    this.mailType.Equals(input.getMailType()))
                 ) && 
                 (
-                    this.MergeVariables == input.MergeVariables ||
-                    (this.MergeVariables != null &&
-                    this.MergeVariables.Equals(input.MergeVariables))
+                    this.mergeVariables == input.getMergeVariables() ||
+                    (this.mergeVariables != null &&
+                    this.mergeVariables.Equals(input.getMergeVariables()))
                 ) && 
                 (
-                    this.SendDate == input.SendDate ||
-                    (this.SendDate != null &&
-                    this.SendDate.Equals(input.SendDate))
+                    this.sendDate == input.getSendDate() ||
+                    (this.sendDate != null &&
+                    this.sendDate.Equals(input.getSendDate()))
                 ) && 
                 (
-                    this.Inside == input.Inside ||
-                    (this.Inside != null &&
-                    this.Inside.Equals(input.Inside))
+                    this.inside == input.getInside() ||
+                    (this.inside != null &&
+                    this.inside.Equals(input.getInside()))
                 ) && 
                 (
-                    this.Outside == input.Outside ||
-                    (this.Outside != null &&
-                    this.Outside.Equals(input.Outside))
+                    this.outside == input.getOutside() ||
+                    (this.outside != null &&
+                    this.outside.Equals(input.getOutside()))
                 ) && 
                 (
-                    this.BillingGroupId == input.BillingGroupId ||
-                    (this.BillingGroupId != null &&
-                    this.BillingGroupId.Equals(input.BillingGroupId))
+                    this.billingGroupId == input.getBillingGroupId() ||
+                    (this.billingGroupId != null &&
+                    this.billingGroupId.Equals(input.getBillingGroupId()))
                 );
         }
 
@@ -277,49 +320,49 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.To != null)
+                if (this.to != null)
                 {
-                    hashCode = (hashCode * 59) + this.To.GetHashCode();
+                    hashCode = (hashCode * 59) + this.to.GetHashCode();
                 }
-                if (this.From != null)
+                if (this.from != null)
                 {
-                    hashCode = (hashCode * 59) + this.From.GetHashCode();
+                    hashCode = (hashCode * 59) + this.from.GetHashCode();
                 }
-                if (this.Size != null)
+                if (this.size != null)
                 {
-                    hashCode = (hashCode * 59) + this.Size.GetHashCode();
+                    hashCode = (hashCode * 59) + this.size.GetHashCode();
                 }
-                if (this.Description != null)
+                if (this.description != null)
                 {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                    hashCode = (hashCode * 59) + this.description.GetHashCode();
                 }
-                if (this.Metadata != null)
+                if (this.metadata != null)
                 {
-                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                    hashCode = (hashCode * 59) + this.metadata.GetHashCode();
                 }
-                if (this.MailType != null)
+                if (this.mailType != null)
                 {
-                    hashCode = (hashCode * 59) + this.MailType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.mailType.GetHashCode();
                 }
-                if (this.MergeVariables != null)
+                if (this.mergeVariables != null)
                 {
-                    hashCode = (hashCode * 59) + this.MergeVariables.GetHashCode();
+                    hashCode = (hashCode * 59) + this.mergeVariables.GetHashCode();
                 }
-                if (this.SendDate != null)
+                if (this.sendDate != null)
                 {
-                    hashCode = (hashCode * 59) + this.SendDate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.sendDate.GetHashCode();
                 }
-                if (this.Inside != null)
+                if (this.inside != null)
                 {
-                    hashCode = (hashCode * 59) + this.Inside.GetHashCode();
+                    hashCode = (hashCode * 59) + this.inside.GetHashCode();
                 }
-                if (this.Outside != null)
+                if (this.outside != null)
                 {
-                    hashCode = (hashCode * 59) + this.Outside.GetHashCode();
+                    hashCode = (hashCode * 59) + this.outside.GetHashCode();
                 }
-                if (this.BillingGroupId != null)
+                if (this.billingGroupId != null)
                 {
-                    hashCode = (hashCode * 59) + this.BillingGroupId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.billingGroupId.GetHashCode();
                 }
                 return hashCode;
             }
@@ -332,10 +375,10 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Description (string) maxLength
-            if (this.Description != null && this.Description.Length > 255)
+            // description (string) maxLength
+            if (this.description != null && this.description.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 255.", new [] { "Description" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for description, length must be less than 255.", new [] { "description" });
             }
 
             yield break;

@@ -52,7 +52,13 @@ namespace lob.dotnet.Model
         /// Gets or Sets Object
         /// </summary>
         [DataMember(Name = "object", EmitDefaultValue = false)]
-        public ObjectEnum? Object { get; set; }
+        private ObjectEnum? _object;
+        public ObjectEnum? getObject() {
+            return _object;
+        }
+        public void setObject(ObjectEnum value) {
+            _object = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="Address" /> class.
         /// </summary>
@@ -74,142 +80,223 @@ namespace lob.dotnet.Model
         /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified..</param>
         /// <param name="deleted">Only returned if the resource has been successfully deleted..</param>
         /// <param name="recipientMoved">Only returned for accounts on certain &lt;a href&#x3D;\&quot;https://dashboard.lob.com/#/settings/editions\&quot;&gt;Print &amp;amp; Mail Editions&lt;/a&gt;. Value is &#x60;true&#x60; if the address was altered because the recipient filed for a &lt;a href&#x3D;\&quot;#ncoa\&quot;&gt;National Change of Address (NCOA)&lt;/a&gt;, &#x60;false&#x60; if the NCOA check was run but no altered address was found, and &#x60;null&#x60; if the NCOA check was not run. The NCOA check does not happen for non-US addresses, for non-deliverable US addresses, or for addresses created before the NCOA feature was added to your account. .</param>
-        public Address(string id = default(string), string description = default(string), string name = default(string), string company = default(string), string phone = default(string), string email = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), string addressLine1 = default(string), string addressLine2 = default(string), string addressCity = default(string), string addressState = default(string), string addressZip = default(string), CountryExtendedExpanded addressCountry = default(CountryExtendedExpanded), ObjectEnum? _object = ObjectEnum.Address, DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), bool? recipientMoved = default(bool?))
-        {
-            this.Id = id;
-            this.Description = description;
-            this.Name = name;
-            this.Company = company;
-            this.Phone = phone;
-            this.Email = email;
-            this.Metadata = metadata;
-            this.AddressLine1 = addressLine1;
-            this.AddressLine2 = addressLine2;
-            this.AddressCity = addressCity;
-            this.AddressState = addressState;
-            this.AddressZip = addressZip;
-            this.AddressCountry = addressCountry;
-            this.Object = _object;
-            this.DateCreated = dateCreated;
-            this.DateModified = dateModified;
-            this.Deleted = deleted;
-            this.RecipientMoved = recipientMoved;
-        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;adr_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;adr_&#x60;.</value>
         [DataMember(Name = "id", EmitDefaultValue = false)]
-        public string Id { get; set; }
+        private string id;
+        public string getId() {
+            return id;
+        }
+        public void setId(string value) {
+            id = value;
+        }
 
         /// <summary>
         /// An internal description that identifies this resource. Must be no longer than 255 characters. 
         /// </summary>
         /// <value>An internal description that identifies this resource. Must be no longer than 255 characters. </value>
         [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
+        private string description;
+        public string getDescription() {
+            return description;
+        }
+        public void setDescription(string value) {
+            description = value;
+        }
 
         /// <summary>
         /// name associated with address
         /// </summary>
         /// <value>name associated with address</value>
         [DataMember(Name = "name", EmitDefaultValue = true)]
-        public string Name { get; set; }
+        private string name;
+        public string getName() {
+            return name;
+        }
+        public void setName(string value) {
+            name = value;
+        }
 
         /// <summary>
         /// Either &#x60;name&#x60; or &#x60;company&#x60; is required, you may also add both.
         /// </summary>
         /// <value>Either &#x60;name&#x60; or &#x60;company&#x60; is required, you may also add both.</value>
         [DataMember(Name = "company", EmitDefaultValue = true)]
-        public string Company { get; set; }
+        private string company;
+        public string getCompany() {
+            return company;
+        }
+        public void setCompany(string value) {
+            company = value;
+        }
 
         /// <summary>
         /// Must be no longer than 40 characters.
         /// </summary>
         /// <value>Must be no longer than 40 characters.</value>
         [DataMember(Name = "phone", EmitDefaultValue = true)]
-        public string Phone { get; set; }
+        private string phone;
+        public string getPhone() {
+            return phone;
+        }
+        public void setPhone(string value) {
+            phone = value;
+        }
 
         /// <summary>
         /// Must be no longer than 100 characters.
         /// </summary>
         /// <value>Must be no longer than 100 characters.</value>
         [DataMember(Name = "email", EmitDefaultValue = true)]
-        public string Email { get; set; }
+        private string email;
+        public string getEmail() {
+            return email;
+        }
+        public void setEmail(string value) {
+            email = value;
+        }
 
         /// <summary>
         /// Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information.
         /// </summary>
         /// <value>Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information.</value>
         [DataMember(Name = "metadata", EmitDefaultValue = false)]
-        public Dictionary<string, string> Metadata { get; set; }
+        private Dictionary<string, string> metadata;
+        public Dictionary<string, string> getMetadata() {
+            return metadata;
+        }
+        public void setMetadata(Dictionary<string, string> value) {
+            metadata = value;
+        }
 
         /// <summary>
         /// Gets or Sets AddressLine1
         /// </summary>
         [DataMember(Name = "address_line1", EmitDefaultValue = false)]
-        public string AddressLine1 { get; set; }
+        private string addressLine1;
+        public string getAddressLine1() {
+            return addressLine1;
+        }
+        public void setAddressLine1(string value) {
+            addressLine1 = value;
+        }
 
         /// <summary>
         /// Gets or Sets AddressLine2
         /// </summary>
         [DataMember(Name = "address_line2", EmitDefaultValue = true)]
-        public string AddressLine2 { get; set; }
+        private string addressLine2;
+        public string getAddressLine2() {
+            return addressLine2;
+        }
+        public void setAddressLine2(string value) {
+            addressLine2 = value;
+        }
 
         /// <summary>
         /// Gets or Sets AddressCity
         /// </summary>
         [DataMember(Name = "address_city", EmitDefaultValue = false)]
-        public string AddressCity { get; set; }
+        private string addressCity;
+        public string getAddressCity() {
+            return addressCity;
+        }
+        public void setAddressCity(string value) {
+            addressCity = value;
+        }
 
         /// <summary>
         /// 2 letter state short-name code
         /// </summary>
         /// <value>2 letter state short-name code</value>
         [DataMember(Name = "address_state", EmitDefaultValue = false)]
-        public string AddressState { get; set; }
+        private string addressState;
+        public string getAddressState() {
+            return addressState;
+        }
+        public void setAddressState(string value) {
+            addressState = value;
+        }
 
         /// <summary>
         /// Must follow the ZIP format of &#x60;12345&#x60; or ZIP+4 format of &#x60;12345-1234&#x60;. 
         /// </summary>
         /// <value>Must follow the ZIP format of &#x60;12345&#x60; or ZIP+4 format of &#x60;12345-1234&#x60;. </value>
         [DataMember(Name = "address_zip", EmitDefaultValue = false)]
-        public string AddressZip { get; set; }
+        private string addressZip;
+        public string getAddressZip() {
+            return addressZip;
+        }
+        public void setAddressZip(string value) {
+            addressZip = value;
+        }
 
         /// <summary>
         /// Gets or Sets AddressCountry
         /// </summary>
         [DataMember(Name = "address_country", EmitDefaultValue = false)]
-        public CountryExtendedExpanded AddressCountry { get; set; }
+        private CountryExtendedExpanded addressCountry;
+        public CountryExtendedExpanded getAddressCountry() {
+            return addressCountry;
+        }
+        public void setAddressCountry(CountryExtendedExpanded value) {
+            addressCountry = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was created.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was created.</value>
         [DataMember(Name = "date_created", EmitDefaultValue = false)]
-        public DateTime DateCreated { get; set; }
+        private DateTime dateCreated;
+        public DateTime getDateCreated() {
+            return dateCreated;
+        }
+        public void setDateCreated(DateTime value) {
+            dateCreated = value;
+        }
 
         /// <summary>
         /// A timestamp in ISO 8601 format of the date the resource was last modified.
         /// </summary>
         /// <value>A timestamp in ISO 8601 format of the date the resource was last modified.</value>
         [DataMember(Name = "date_modified", EmitDefaultValue = false)]
-        public DateTime DateModified { get; set; }
+        private DateTime dateModified;
+        public DateTime getDateModified() {
+            return dateModified;
+        }
+        public void setDateModified(DateTime value) {
+            dateModified = value;
+        }
 
         /// <summary>
         /// Only returned if the resource has been successfully deleted.
         /// </summary>
         /// <value>Only returned if the resource has been successfully deleted.</value>
         [DataMember(Name = "deleted", EmitDefaultValue = true)]
-        public bool Deleted { get; set; }
+        private bool deleted;
+        public bool getDeleted() {
+            return deleted;
+        }
+        public void setDeleted(bool value) {
+            deleted = value;
+        }
 
         /// <summary>
         /// Only returned for accounts on certain &lt;a href&#x3D;\&quot;https://dashboard.lob.com/#/settings/editions\&quot;&gt;Print &amp;amp; Mail Editions&lt;/a&gt;. Value is &#x60;true&#x60; if the address was altered because the recipient filed for a &lt;a href&#x3D;\&quot;#ncoa\&quot;&gt;National Change of Address (NCOA)&lt;/a&gt;, &#x60;false&#x60; if the NCOA check was run but no altered address was found, and &#x60;null&#x60; if the NCOA check was not run. The NCOA check does not happen for non-US addresses, for non-deliverable US addresses, or for addresses created before the NCOA feature was added to your account. 
         /// </summary>
         /// <value>Only returned for accounts on certain &lt;a href&#x3D;\&quot;https://dashboard.lob.com/#/settings/editions\&quot;&gt;Print &amp;amp; Mail Editions&lt;/a&gt;. Value is &#x60;true&#x60; if the address was altered because the recipient filed for a &lt;a href&#x3D;\&quot;#ncoa\&quot;&gt;National Change of Address (NCOA)&lt;/a&gt;, &#x60;false&#x60; if the NCOA check was run but no altered address was found, and &#x60;null&#x60; if the NCOA check was not run. The NCOA check does not happen for non-US addresses, for non-deliverable US addresses, or for addresses created before the NCOA feature was added to your account. </value>
         [DataMember(Name = "recipient_moved", EmitDefaultValue = true)]
-        public bool? RecipientMoved { get; set; }
+        private bool? recipientMoved;
+        public bool? getRecipientMoved() {
+            return recipientMoved;
+        }
+        public void setRecipientMoved(bool? value) {
+            recipientMoved = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -219,24 +306,24 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Address {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Company: ").Append(Company).Append("\n");
-            sb.Append("  Phone: ").Append(Phone).Append("\n");
-            sb.Append("  Email: ").Append(Email).Append("\n");
-            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
-            sb.Append("  AddressLine1: ").Append(AddressLine1).Append("\n");
-            sb.Append("  AddressLine2: ").Append(AddressLine2).Append("\n");
-            sb.Append("  AddressCity: ").Append(AddressCity).Append("\n");
-            sb.Append("  AddressState: ").Append(AddressState).Append("\n");
-            sb.Append("  AddressZip: ").Append(AddressZip).Append("\n");
-            sb.Append("  AddressCountry: ").Append(AddressCountry).Append("\n");
-            sb.Append("  Object: ").Append(Object).Append("\n");
-            sb.Append("  DateCreated: ").Append(DateCreated).Append("\n");
-            sb.Append("  DateModified: ").Append(DateModified).Append("\n");
-            sb.Append("  Deleted: ").Append(Deleted).Append("\n");
-            sb.Append("  RecipientMoved: ").Append(RecipientMoved).Append("\n");
+            sb.Append("  id: ").Append(id).Append("\n");
+            sb.Append("  description: ").Append(description).Append("\n");
+            sb.Append("  name: ").Append(name).Append("\n");
+            sb.Append("  company: ").Append(company).Append("\n");
+            sb.Append("  phone: ").Append(phone).Append("\n");
+            sb.Append("  email: ").Append(email).Append("\n");
+            sb.Append("  metadata: ").Append(metadata).Append("\n");
+            sb.Append("  addressLine1: ").Append(addressLine1).Append("\n");
+            sb.Append("  addressLine2: ").Append(addressLine2).Append("\n");
+            sb.Append("  addressCity: ").Append(addressCity).Append("\n");
+            sb.Append("  addressState: ").Append(addressState).Append("\n");
+            sb.Append("  addressZip: ").Append(addressZip).Append("\n");
+            sb.Append("  addressCountry: ").Append(addressCountry).Append("\n");
+            sb.Append("  _object: ").Append(_object).Append("\n");
+            sb.Append("  dateCreated: ").Append(dateCreated).Append("\n");
+            sb.Append("  dateModified: ").Append(dateModified).Append("\n");
+            sb.Append("  deleted: ").Append(deleted).Append("\n");
+            sb.Append("  recipientMoved: ").Append(recipientMoved).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -247,7 +334,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -273,93 +360,93 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.id == input.getId() ||
+                    (this.id != null &&
+                    this.id.Equals(input.getId()))
                 ) && 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.description == input.getDescription() ||
+                    (this.description != null &&
+                    this.description.Equals(input.getDescription()))
                 ) && 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.name == input.getName() ||
+                    (this.name != null &&
+                    this.name.Equals(input.getName()))
                 ) && 
                 (
-                    this.Company == input.Company ||
-                    (this.Company != null &&
-                    this.Company.Equals(input.Company))
+                    this.company == input.getCompany() ||
+                    (this.company != null &&
+                    this.company.Equals(input.getCompany()))
                 ) && 
                 (
-                    this.Phone == input.Phone ||
-                    (this.Phone != null &&
-                    this.Phone.Equals(input.Phone))
+                    this.phone == input.getPhone() ||
+                    (this.phone != null &&
+                    this.phone.Equals(input.getPhone()))
                 ) && 
                 (
-                    this.Email == input.Email ||
-                    (this.Email != null &&
-                    this.Email.Equals(input.Email))
+                    this.email == input.getEmail() ||
+                    (this.email != null &&
+                    this.email.Equals(input.getEmail()))
                 ) && 
                 (
-                    this.Metadata == input.Metadata ||
-                    this.Metadata != null &&
-                    input.Metadata != null &&
-                    this.Metadata.SequenceEqual(input.Metadata)
+                    this.metadata == input.getMetadata() ||
+                    this.metadata != null &&
+                    input.getMetadata() != null &&
+                    this.metadata.SequenceEqual(input.getMetadata())
                 ) && 
                 (
-                    this.AddressLine1 == input.AddressLine1 ||
-                    (this.AddressLine1 != null &&
-                    this.AddressLine1.Equals(input.AddressLine1))
+                    this.addressLine1 == input.getAddressLine1() ||
+                    (this.addressLine1 != null &&
+                    this.addressLine1.Equals(input.getAddressLine1()))
                 ) && 
                 (
-                    this.AddressLine2 == input.AddressLine2 ||
-                    (this.AddressLine2 != null &&
-                    this.AddressLine2.Equals(input.AddressLine2))
+                    this.addressLine2 == input.getAddressLine2() ||
+                    (this.addressLine2 != null &&
+                    this.addressLine2.Equals(input.getAddressLine2()))
                 ) && 
                 (
-                    this.AddressCity == input.AddressCity ||
-                    (this.AddressCity != null &&
-                    this.AddressCity.Equals(input.AddressCity))
+                    this.addressCity == input.getAddressCity() ||
+                    (this.addressCity != null &&
+                    this.addressCity.Equals(input.getAddressCity()))
                 ) && 
                 (
-                    this.AddressState == input.AddressState ||
-                    (this.AddressState != null &&
-                    this.AddressState.Equals(input.AddressState))
+                    this.addressState == input.getAddressState() ||
+                    (this.addressState != null &&
+                    this.addressState.Equals(input.getAddressState()))
                 ) && 
                 (
-                    this.AddressZip == input.AddressZip ||
-                    (this.AddressZip != null &&
-                    this.AddressZip.Equals(input.AddressZip))
+                    this.addressZip == input.getAddressZip() ||
+                    (this.addressZip != null &&
+                    this.addressZip.Equals(input.getAddressZip()))
                 ) && 
                 (
-                    this.AddressCountry == input.AddressCountry ||
-                    (this.AddressCountry != null &&
-                    this.AddressCountry.Equals(input.AddressCountry))
+                    this.addressCountry == input.getAddressCountry() ||
+                    (this.addressCountry != null &&
+                    this.addressCountry.Equals(input.getAddressCountry()))
                 ) && 
                 (
-                    this.Object == input.Object ||
-                    this.Object.Equals(input.Object)
+                    this._object == input.getObject() ||
+                    this._object.Equals(input.getObject())
                 ) && 
                 (
-                    this.DateCreated == input.DateCreated ||
-                    (this.DateCreated != null &&
-                    this.DateCreated.Equals(input.DateCreated))
+                    this.dateCreated == input.getDateCreated() ||
+                    (this.dateCreated != null &&
+                    this.dateCreated.Equals(input.getDateCreated()))
                 ) && 
                 (
-                    this.DateModified == input.DateModified ||
-                    (this.DateModified != null &&
-                    this.DateModified.Equals(input.DateModified))
+                    this.dateModified == input.getDateModified() ||
+                    (this.dateModified != null &&
+                    this.dateModified.Equals(input.getDateModified()))
                 ) && 
                 (
-                    this.Deleted == input.Deleted ||
-                    this.Deleted.Equals(input.Deleted)
+                    this.deleted == input.getDeleted() ||
+                    this.deleted.Equals(input.getDeleted())
                 ) && 
                 (
-                    this.RecipientMoved == input.RecipientMoved ||
-                    (this.RecipientMoved != null &&
-                    this.RecipientMoved.Equals(input.RecipientMoved))
+                    this.recipientMoved == input.getRecipientMoved() ||
+                    (this.recipientMoved != null &&
+                    this.recipientMoved.Equals(input.getRecipientMoved()))
                 );
         }
 
@@ -372,71 +459,71 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                if (this.id != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.id.GetHashCode();
                 }
-                if (this.Description != null)
+                if (this.description != null)
                 {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                    hashCode = (hashCode * 59) + this.description.GetHashCode();
                 }
-                if (this.Name != null)
+                if (this.name != null)
                 {
-                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                    hashCode = (hashCode * 59) + this.name.GetHashCode();
                 }
-                if (this.Company != null)
+                if (this.company != null)
                 {
-                    hashCode = (hashCode * 59) + this.Company.GetHashCode();
+                    hashCode = (hashCode * 59) + this.company.GetHashCode();
                 }
-                if (this.Phone != null)
+                if (this.phone != null)
                 {
-                    hashCode = (hashCode * 59) + this.Phone.GetHashCode();
+                    hashCode = (hashCode * 59) + this.phone.GetHashCode();
                 }
-                if (this.Email != null)
+                if (this.email != null)
                 {
-                    hashCode = (hashCode * 59) + this.Email.GetHashCode();
+                    hashCode = (hashCode * 59) + this.email.GetHashCode();
                 }
-                if (this.Metadata != null)
+                if (this.metadata != null)
                 {
-                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                    hashCode = (hashCode * 59) + this.metadata.GetHashCode();
                 }
-                if (this.AddressLine1 != null)
+                if (this.addressLine1 != null)
                 {
-                    hashCode = (hashCode * 59) + this.AddressLine1.GetHashCode();
+                    hashCode = (hashCode * 59) + this.addressLine1.GetHashCode();
                 }
-                if (this.AddressLine2 != null)
+                if (this.addressLine2 != null)
                 {
-                    hashCode = (hashCode * 59) + this.AddressLine2.GetHashCode();
+                    hashCode = (hashCode * 59) + this.addressLine2.GetHashCode();
                 }
-                if (this.AddressCity != null)
+                if (this.addressCity != null)
                 {
-                    hashCode = (hashCode * 59) + this.AddressCity.GetHashCode();
+                    hashCode = (hashCode * 59) + this.addressCity.GetHashCode();
                 }
-                if (this.AddressState != null)
+                if (this.addressState != null)
                 {
-                    hashCode = (hashCode * 59) + this.AddressState.GetHashCode();
+                    hashCode = (hashCode * 59) + this.addressState.GetHashCode();
                 }
-                if (this.AddressZip != null)
+                if (this.addressZip != null)
                 {
-                    hashCode = (hashCode * 59) + this.AddressZip.GetHashCode();
+                    hashCode = (hashCode * 59) + this.addressZip.GetHashCode();
                 }
-                if (this.AddressCountry != null)
+                if (this.addressCountry != null)
                 {
-                    hashCode = (hashCode * 59) + this.AddressCountry.GetHashCode();
+                    hashCode = (hashCode * 59) + this.addressCountry.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Object.GetHashCode();
-                if (this.DateCreated != null)
+                hashCode = (hashCode * 59) + this._object.GetHashCode();
+                if (this.dateCreated != null)
                 {
-                    hashCode = (hashCode * 59) + this.DateCreated.GetHashCode();
+                    hashCode = (hashCode * 59) + this.dateCreated.GetHashCode();
                 }
-                if (this.DateModified != null)
+                if (this.dateModified != null)
                 {
-                    hashCode = (hashCode * 59) + this.DateModified.GetHashCode();
+                    hashCode = (hashCode * 59) + this.dateModified.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Deleted.GetHashCode();
-                if (this.RecipientMoved != null)
+                hashCode = (hashCode * 59) + this.deleted.GetHashCode();
+                if (this.recipientMoved != null)
                 {
-                    hashCode = (hashCode * 59) + this.RecipientMoved.GetHashCode();
+                    hashCode = (hashCode * 59) + this.recipientMoved.GetHashCode();
                 }
                 return hashCode;
             }
@@ -449,73 +536,73 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Id (string) pattern
-            Regex regexId = new Regex(@"^adr_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexId.Match(this.Id).Success)
+            // id (string) pattern
+            Regex regexid = new Regex(@"^adr_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regexid.Match(this.id).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for id, must match a pattern of " + regexid, new [] { "id" });
             }
 
-            // Description (string) maxLength
-            if (this.Description != null && this.Description.Length > 255)
+            // description (string) maxLength
+            if (this.description != null && this.description.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 255.", new [] { "Description" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for description, length must be less than 255.", new [] { "description" });
             }
 
-            // Name (string) maxLength
-            if (this.Name != null && this.Name.Length > 40)
+            // name (string) maxLength
+            if (this.name != null && this.name.Length > 40)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 40.", new [] { "Name" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for name, length must be less than 40.", new [] { "name" });
             }
 
-            // Company (string) maxLength
-            if (this.Company != null && this.Company.Length > 40)
+            // company (string) maxLength
+            if (this.company != null && this.company.Length > 40)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Company, length must be less than 40.", new [] { "Company" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for company, length must be less than 40.", new [] { "company" });
             }
 
-            // Phone (string) maxLength
-            if (this.Phone != null && this.Phone.Length > 40)
+            // phone (string) maxLength
+            if (this.phone != null && this.phone.Length > 40)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Phone, length must be less than 40.", new [] { "Phone" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for phone, length must be less than 40.", new [] { "phone" });
             }
 
-            // Email (string) maxLength
-            if (this.Email != null && this.Email.Length > 100)
+            // email (string) maxLength
+            if (this.email != null && this.email.Length > 100)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Email, length must be less than 100.", new [] { "Email" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for email, length must be less than 100.", new [] { "email" });
             }
 
-            // AddressLine1 (string) maxLength
-            if (this.AddressLine1 != null && this.AddressLine1.Length > 64)
+            // addressLine1 (string) maxLength
+            if (this.addressLine1 != null && this.addressLine1.Length > 64)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressLine1, length must be less than 64.", new [] { "AddressLine1" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for addressLine1, length must be less than 64.", new [] { "addressLine1" });
             }
 
-            // AddressLine2 (string) maxLength
-            if (this.AddressLine2 != null && this.AddressLine2.Length > 64)
+            // addressLine2 (string) maxLength
+            if (this.addressLine2 != null && this.addressLine2.Length > 64)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressLine2, length must be less than 64.", new [] { "AddressLine2" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for addressLine2, length must be less than 64.", new [] { "addressLine2" });
             }
 
-            // AddressCity (string) maxLength
-            if (this.AddressCity != null && this.AddressCity.Length > 200)
+            // addressCity (string) maxLength
+            if (this.addressCity != null && this.addressCity.Length > 200)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressCity, length must be less than 200.", new [] { "AddressCity" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for addressCity, length must be less than 200.", new [] { "addressCity" });
             }
 
-            // AddressState (string) pattern
-            Regex regexAddressState = new Regex(@"^[a-zA-Z]{2}$", RegexOptions.CultureInvariant);
-            if (false == regexAddressState.Match(this.AddressState).Success)
+            // addressState (string) pattern
+            Regex regexaddressState = new Regex(@"^[a-zA-Z]{2}$", RegexOptions.CultureInvariant);
+            if (false == regexaddressState.Match(this.addressState).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressState, must match a pattern of " + regexAddressState, new [] { "AddressState" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for addressState, must match a pattern of " + regexaddressState, new [] { "addressState" });
             }
 
-            // AddressZip (string) pattern
-            Regex regexAddressZip = new Regex(@"^\\d{5}(-\\d{4})?$", RegexOptions.CultureInvariant);
-            if (false == regexAddressZip.Match(this.AddressZip).Success)
+            // addressZip (string) pattern
+            Regex regexaddressZip = new Regex(@"^\\d{5}(-\\d{4})?$", RegexOptions.CultureInvariant);
+            if (false == regexaddressZip.Match(this.addressZip).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressZip, must match a pattern of " + regexAddressZip, new [] { "AddressZip" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for addressZip, must match a pattern of " + regexaddressZip, new [] { "addressZip" });
             }
 
             yield break;

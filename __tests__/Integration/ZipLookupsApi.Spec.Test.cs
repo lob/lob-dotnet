@@ -37,7 +37,8 @@ namespace __tests__.Integration {
             validApi = new ZipLookupsApi(config);
             invalidApi = new ZipLookupsApi(invalidConfig);
 
-            zipEditable = new ZipEditable("94107");
+            zipEditable = new ZipEditable();
+            zipEditable.setZipCode("94107");
         }
 
         public void Dispose() {}
@@ -45,8 +46,8 @@ namespace __tests__.Integration {
         [Test]
         public void LookupTest200() {
             Zip zipObject = validApi.ZipLookup(zipEditable);
-            Assert.That(zipObject.Id, Does.Contain("us_zip_"));
-            Assert.GreaterOrEqual(zipObject.Cities.Count, 1);
+            Assert.That(zipObject.getId(), Does.Contain("us_zip_"));
+            Assert.GreaterOrEqual(zipObject.getCities().Count, 1);
         }
 
         [Test]

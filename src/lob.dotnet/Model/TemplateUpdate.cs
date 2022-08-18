@@ -37,25 +37,32 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <param name="description">An internal description that identifies this resource. Must be no longer than 255 characters. .</param>
         /// <param name="publishedVersion">Unique identifier prefixed with &#x60;vrsn_&#x60;..</param>
-        public TemplateUpdate(string description = default(string), string publishedVersion = default(string))
-        {
-            this.Description = description;
-            this.PublishedVersion = publishedVersion;
-        }
 
         /// <summary>
         /// An internal description that identifies this resource. Must be no longer than 255 characters. 
         /// </summary>
         /// <value>An internal description that identifies this resource. Must be no longer than 255 characters. </value>
         [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
+        private string description;
+        public string getDescription() {
+            return description;
+        }
+        public void setDescription(string value) {
+            description = value;
+        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;vrsn_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;vrsn_&#x60;.</value>
         [DataMember(Name = "published_version", EmitDefaultValue = false)]
-        public string PublishedVersion { get; set; }
+        private string publishedVersion;
+        public string getPublishedVersion() {
+            return publishedVersion;
+        }
+        public void setPublishedVersion(string value) {
+            publishedVersion = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -65,8 +72,8 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TemplateUpdate {\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  PublishedVersion: ").Append(PublishedVersion).Append("\n");
+            sb.Append("  description: ").Append(description).Append("\n");
+            sb.Append("  publishedVersion: ").Append(publishedVersion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -77,7 +84,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -103,14 +110,14 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.description == input.getDescription() ||
+                    (this.description != null &&
+                    this.description.Equals(input.getDescription()))
                 ) && 
                 (
-                    this.PublishedVersion == input.PublishedVersion ||
-                    (this.PublishedVersion != null &&
-                    this.PublishedVersion.Equals(input.PublishedVersion))
+                    this.publishedVersion == input.getPublishedVersion() ||
+                    (this.publishedVersion != null &&
+                    this.publishedVersion.Equals(input.getPublishedVersion()))
                 );
         }
 
@@ -123,13 +130,13 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Description != null)
+                if (this.description != null)
                 {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                    hashCode = (hashCode * 59) + this.description.GetHashCode();
                 }
-                if (this.PublishedVersion != null)
+                if (this.publishedVersion != null)
                 {
-                    hashCode = (hashCode * 59) + this.PublishedVersion.GetHashCode();
+                    hashCode = (hashCode * 59) + this.publishedVersion.GetHashCode();
                 }
                 return hashCode;
             }
@@ -142,17 +149,17 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Description (string) maxLength
-            if (this.Description != null && this.Description.Length > 255)
+            // description (string) maxLength
+            if (this.description != null && this.description.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 255.", new [] { "Description" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for description, length must be less than 255.", new [] { "description" });
             }
 
-            // PublishedVersion (string) pattern
-            Regex regexPublishedVersion = new Regex(@"^vrsn_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexPublishedVersion.Match(this.PublishedVersion).Success)
+            // publishedVersion (string) pattern
+            Regex regexpublishedVersion = new Regex(@"^vrsn_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regexpublishedVersion.Match(this.publishedVersion).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PublishedVersion, must match a pattern of " + regexPublishedVersion, new [] { "PublishedVersion" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for publishedVersion, must match a pattern of " + regexpublishedVersion, new [] { "publishedVersion" });
             }
 
             yield break;

@@ -38,7 +38,9 @@ namespace __tests__.Integration {
             validApi = new ReverseGeocodeLookupsApi(config);
             invalidApi = new ReverseGeocodeLookupsApi(invalidConfig);
 
-            location = new Location(37.777456f, -122.393039f);
+            location = new Location();
+            location.setLatitude(37.777456f);
+            location.setLongitude(-122.393039f);
             size = 3;
         }
 
@@ -47,8 +49,8 @@ namespace __tests__.Integration {
         [Test]
         public void LookupTest200() {
             ReverseGeocode reverseGeocodeObject = validApi.ReverseGeocodeLookup(location, size);
-            Assert.That(reverseGeocodeObject.Id, Does.Contain("us_reverse_geocode_"));
-            Assert.GreaterOrEqual(reverseGeocodeObject.Addresses.Count, 1);
+            Assert.That(reverseGeocodeObject.getId(), Does.Contain("us_reverse_geocode_"));
+            Assert.GreaterOrEqual(reverseGeocodeObject.getAddresses().Count, 1);
         }
 
         [Test]

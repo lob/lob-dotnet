@@ -36,35 +36,37 @@ namespace lob.dotnet.Model
         /// Initializes a new instance of the <see cref="UsVerifications" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected UsVerifications() { }
+        public UsVerifications() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="UsVerifications" /> class.
         /// </summary>
         /// <param name="addresses">addresses (required).</param>
         /// <param name="errors">Indicates whether any errors occurred during the verification process. (required).</param>
-        public UsVerifications(List<UsVerificationOrError> addresses = default(List<UsVerificationOrError>), bool errors = default(bool))
-        {
-            // to ensure "addresses" is required (not null)
-            if (addresses == null)
-            {
-                throw new ArgumentNullException("addresses is a required property for UsVerifications and cannot be null");
-            }
-            this.Addresses = addresses;
-            this.Errors = errors;
-        }
 
         /// <summary>
         /// Gets or Sets Addresses
         /// </summary>
         [DataMember(Name = "addresses", IsRequired = true, EmitDefaultValue = false)]
-        public List<UsVerificationOrError> Addresses { get; set; }
+        private List<UsVerificationOrError> addresses;
+        public List<UsVerificationOrError> getAddresses() {
+            return addresses;
+        }
+        public void setAddresses(List<UsVerificationOrError> value) {
+            addresses = value;
+        }
 
         /// <summary>
         /// Indicates whether any errors occurred during the verification process.
         /// </summary>
         /// <value>Indicates whether any errors occurred during the verification process.</value>
         [DataMember(Name = "errors", IsRequired = true, EmitDefaultValue = true)]
-        public bool Errors { get; set; }
+        private bool errors;
+        public bool getErrors() {
+            return errors;
+        }
+        public void setErrors(bool value) {
+            errors = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -74,8 +76,8 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UsVerifications {\n");
-            sb.Append("  Addresses: ").Append(Addresses).Append("\n");
-            sb.Append("  Errors: ").Append(Errors).Append("\n");
+            sb.Append("  addresses: ").Append(addresses).Append("\n");
+            sb.Append("  errors: ").Append(errors).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -86,7 +88,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -112,14 +114,14 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Addresses == input.Addresses ||
-                    this.Addresses != null &&
-                    input.Addresses != null &&
-                    this.Addresses.SequenceEqual(input.Addresses)
+                    this.addresses == input.getAddresses() ||
+                    this.addresses != null &&
+                    input.getAddresses() != null &&
+                    this.addresses.SequenceEqual(input.getAddresses())
                 ) && 
                 (
-                    this.Errors == input.Errors ||
-                    this.Errors.Equals(input.Errors)
+                    this.errors == input.getErrors() ||
+                    this.errors.Equals(input.getErrors())
                 );
         }
 
@@ -132,11 +134,11 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Addresses != null)
+                if (this.addresses != null)
                 {
-                    hashCode = (hashCode * 59) + this.Addresses.GetHashCode();
+                    hashCode = (hashCode * 59) + this.addresses.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Errors.GetHashCode();
+                hashCode = (hashCode * 59) + this.errors.GetHashCode();
                 return hashCode;
             }
         }

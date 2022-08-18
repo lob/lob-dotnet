@@ -54,12 +54,18 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Value is resource type.</value>
         [DataMember(Name = "object", EmitDefaultValue = false)]
-        public ObjectEnum? Object { get; set; }
+        private ObjectEnum? _object;
+        public ObjectEnum? getObject() {
+            return _object;
+        }
+        public void setObject(ObjectEnum value) {
+            _object = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="Suggestions" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Suggestions() { }
+        public Suggestions() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="Suggestions" /> class.
         /// </summary>
@@ -68,61 +74,57 @@ namespace lob.dotnet.Model
         /// <param name="state">The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state.  (required).</param>
         /// <param name="zipCode">A 5-digit zip code. Left empty if a test key is used. (required).</param>
         /// <param name="_object">Value is resource type. (default to ObjectEnum.UsAutocompletion).</param>
-        public Suggestions(string primaryLine = default(string), string city = default(string), string state = default(string), string zipCode = default(string), ObjectEnum? _object = ObjectEnum.UsAutocompletion)
-        {
-            // to ensure "primaryLine" is required (not null)
-            if (primaryLine == null)
-            {
-                throw new ArgumentNullException("primaryLine is a required property for Suggestions and cannot be null");
-            }
-            this.PrimaryLine = primaryLine;
-            // to ensure "city" is required (not null)
-            if (city == null)
-            {
-                throw new ArgumentNullException("city is a required property for Suggestions and cannot be null");
-            }
-            this.City = city;
-            // to ensure "state" is required (not null)
-            if (state == null)
-            {
-                throw new ArgumentNullException("state is a required property for Suggestions and cannot be null");
-            }
-            this.State = state;
-            // to ensure "zipCode" is required (not null)
-            if (zipCode == null)
-            {
-                throw new ArgumentNullException("zipCode is a required property for Suggestions and cannot be null");
-            }
-            this.ZipCode = zipCode;
-            this.Object = _object;
-        }
 
         /// <summary>
         /// The primary delivery line (usually the street address) of the address. Combination of the following applicable &#x60;components&#x60; (primary number &amp; secondary information may be missing or inaccurate): * &#x60;primary_number&#x60; * &#x60;street_predirection&#x60; * &#x60;street_name&#x60; * &#x60;street_suffix&#x60; * &#x60;street_postdirection&#x60; * &#x60;secondary_designator&#x60; * &#x60;secondary_number&#x60; * &#x60;pmb_designator&#x60; * &#x60;pmb_number&#x60; 
         /// </summary>
         /// <value>The primary delivery line (usually the street address) of the address. Combination of the following applicable &#x60;components&#x60; (primary number &amp; secondary information may be missing or inaccurate): * &#x60;primary_number&#x60; * &#x60;street_predirection&#x60; * &#x60;street_name&#x60; * &#x60;street_suffix&#x60; * &#x60;street_postdirection&#x60; * &#x60;secondary_designator&#x60; * &#x60;secondary_number&#x60; * &#x60;pmb_designator&#x60; * &#x60;pmb_number&#x60; </value>
         [DataMember(Name = "primary_line", IsRequired = true, EmitDefaultValue = false)]
-        public string PrimaryLine { get; set; }
+        private string primaryLine;
+        public string getPrimaryLine() {
+            return primaryLine;
+        }
+        public void setPrimaryLine(string value) {
+            primaryLine = value;
+        }
 
         /// <summary>
         /// Gets or Sets City
         /// </summary>
         [DataMember(Name = "city", IsRequired = true, EmitDefaultValue = false)]
-        public string City { get; set; }
+        private string city;
+        public string getCity() {
+            return city;
+        }
+        public void setCity(string value) {
+            city = value;
+        }
 
         /// <summary>
         /// The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. 
         /// </summary>
         /// <value>The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. </value>
         [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = false)]
-        public string State { get; set; }
+        private string state;
+        public string getState() {
+            return state;
+        }
+        public void setState(string value) {
+            state = value;
+        }
 
         /// <summary>
         /// A 5-digit zip code. Left empty if a test key is used.
         /// </summary>
         /// <value>A 5-digit zip code. Left empty if a test key is used.</value>
         [DataMember(Name = "zip_code", IsRequired = true, EmitDefaultValue = false)]
-        public string ZipCode { get; set; }
+        private string zipCode;
+        public string getZipCode() {
+            return zipCode;
+        }
+        public void setZipCode(string value) {
+            zipCode = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -132,11 +134,11 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Suggestions {\n");
-            sb.Append("  PrimaryLine: ").Append(PrimaryLine).Append("\n");
-            sb.Append("  City: ").Append(City).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  ZipCode: ").Append(ZipCode).Append("\n");
-            sb.Append("  Object: ").Append(Object).Append("\n");
+            sb.Append("  primaryLine: ").Append(primaryLine).Append("\n");
+            sb.Append("  city: ").Append(city).Append("\n");
+            sb.Append("  state: ").Append(state).Append("\n");
+            sb.Append("  zipCode: ").Append(zipCode).Append("\n");
+            sb.Append("  _object: ").Append(_object).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -147,7 +149,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -173,28 +175,28 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.PrimaryLine == input.PrimaryLine ||
-                    (this.PrimaryLine != null &&
-                    this.PrimaryLine.Equals(input.PrimaryLine))
+                    this.primaryLine == input.getPrimaryLine() ||
+                    (this.primaryLine != null &&
+                    this.primaryLine.Equals(input.getPrimaryLine()))
                 ) && 
                 (
-                    this.City == input.City ||
-                    (this.City != null &&
-                    this.City.Equals(input.City))
+                    this.city == input.getCity() ||
+                    (this.city != null &&
+                    this.city.Equals(input.getCity()))
                 ) && 
                 (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
+                    this.state == input.getState() ||
+                    (this.state != null &&
+                    this.state.Equals(input.getState()))
                 ) && 
                 (
-                    this.ZipCode == input.ZipCode ||
-                    (this.ZipCode != null &&
-                    this.ZipCode.Equals(input.ZipCode))
+                    this.zipCode == input.getZipCode() ||
+                    (this.zipCode != null &&
+                    this.zipCode.Equals(input.getZipCode()))
                 ) && 
                 (
-                    this.Object == input.Object ||
-                    this.Object.Equals(input.Object)
+                    this._object == input.getObject() ||
+                    this._object.Equals(input.getObject())
                 );
         }
 
@@ -207,23 +209,23 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.PrimaryLine != null)
+                if (this.primaryLine != null)
                 {
-                    hashCode = (hashCode * 59) + this.PrimaryLine.GetHashCode();
+                    hashCode = (hashCode * 59) + this.primaryLine.GetHashCode();
                 }
-                if (this.City != null)
+                if (this.city != null)
                 {
-                    hashCode = (hashCode * 59) + this.City.GetHashCode();
+                    hashCode = (hashCode * 59) + this.city.GetHashCode();
                 }
-                if (this.State != null)
+                if (this.state != null)
                 {
-                    hashCode = (hashCode * 59) + this.State.GetHashCode();
+                    hashCode = (hashCode * 59) + this.state.GetHashCode();
                 }
-                if (this.ZipCode != null)
+                if (this.zipCode != null)
                 {
-                    hashCode = (hashCode * 59) + this.ZipCode.GetHashCode();
+                    hashCode = (hashCode * 59) + this.zipCode.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Object.GetHashCode();
+                hashCode = (hashCode * 59) + this._object.GetHashCode();
                 return hashCode;
             }
         }
@@ -235,10 +237,10 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // City (string) maxLength
-            if (this.City != null && this.City.Length > 200)
+            // city (string) maxLength
+            if (this.city != null && this.city.Length > 200)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for City, length must be less than 200.", new [] { "City" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for city, length must be less than 200.", new [] { "city" });
             }
 
             yield break;

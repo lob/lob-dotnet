@@ -110,7 +110,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Geographic direction preceding a street name (&#x60;N&#x60;, &#x60;S&#x60;, &#x60;E&#x60;, &#x60;W&#x60;, &#x60;NE&#x60;, &#x60;SW&#x60;, &#x60;SE&#x60;, &#x60;NW&#x60;). </value>
         [DataMember(Name = "street_predirection", IsRequired = true, EmitDefaultValue = false)]
-        public StreetPredirectionEnum StreetPredirection { get; set; }
+        private StreetPredirectionEnum streetPredirection;
+        public StreetPredirectionEnum getStreetPredirection() {
+            return streetPredirection;
+        }
+        public void setStreetPredirection(StreetPredirectionEnum value) {
+            streetPredirection = value;
+        }
         /// <summary>
         /// Geographic direction following a street name (&#x60;N&#x60;, &#x60;S&#x60;, &#x60;E&#x60;, &#x60;W&#x60;, &#x60;NE&#x60;, &#x60;SW&#x60;, &#x60;SE&#x60;, &#x60;NW&#x60;). 
         /// </summary>
@@ -189,7 +195,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Geographic direction following a street name (&#x60;N&#x60;, &#x60;S&#x60;, &#x60;E&#x60;, &#x60;W&#x60;, &#x60;NE&#x60;, &#x60;SW&#x60;, &#x60;SE&#x60;, &#x60;NW&#x60;). </value>
         [DataMember(Name = "street_postdirection", IsRequired = true, EmitDefaultValue = false)]
-        public StreetPostdirectionEnum StreetPostdirection { get; set; }
+        private StreetPostdirectionEnum streetPostdirection;
+        public StreetPostdirectionEnum getStreetPostdirection() {
+            return streetPostdirection;
+        }
+        public void setStreetPostdirection(StreetPostdirectionEnum value) {
+            streetPostdirection = value;
+        }
         /// <summary>
         /// Uses USPS&#39;s [Residential Delivery Indicator (RDI)](https://www.usps.com/nationalpremieraccounts/rdi.htm) to identify whether an address is classified as residential or business. Possible values are: * &#x60;residential&#x60; –– The address is residential or a PO Box. * &#x60;commercial&#x60; –– The address is commercial. * &#x60;&#39;&#39;&#x60; –– Not enough information provided to be determined. 
         /// </summary>
@@ -226,7 +238,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Uses USPS&#39;s [Residential Delivery Indicator (RDI)](https://www.usps.com/nationalpremieraccounts/rdi.htm) to identify whether an address is classified as residential or business. Possible values are: * &#x60;residential&#x60; –– The address is residential or a PO Box. * &#x60;commercial&#x60; –– The address is commercial. * &#x60;&#39;&#39;&#x60; –– Not enough information provided to be determined. </value>
         [DataMember(Name = "address_type", IsRequired = true, EmitDefaultValue = false)]
-        public AddressTypeEnum AddressType { get; set; }
+        private AddressTypeEnum addressType;
+        public AddressTypeEnum getAddressType() {
+            return addressType;
+        }
+        public void setAddressType(AddressTypeEnum value) {
+            addressType = value;
+        }
         /// <summary>
         /// A description of the type of address. Populated if a DPV match is made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;Y&#x60;, &#x60;S&#x60;, or &#x60;D&#x60;). For more detailed information about each record type, see [US Verification Details](#tag/US-Verification-Types). 
         /// </summary>
@@ -291,7 +309,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>A description of the type of address. Populated if a DPV match is made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;Y&#x60;, &#x60;S&#x60;, or &#x60;D&#x60;). For more detailed information about each record type, see [US Verification Details](#tag/US-Verification-Types). </value>
         [DataMember(Name = "record_type", IsRequired = true, EmitDefaultValue = false)]
-        public RecordTypeEnum RecordType { get; set; }
+        private RecordTypeEnum recordType;
+        public RecordTypeEnum getRecordType() {
+            return recordType;
+        }
+        public void setRecordType(RecordTypeEnum value) {
+            recordType = value;
+        }
         /// <summary>
         /// The type of &#x60;components[carrier_route]&#x60;. For more detailed information about each carrier route type, see [US Verification Details](#tag/US-Verification-Types). 
         /// </summary>
@@ -349,12 +373,18 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>The type of &#x60;components[carrier_route]&#x60;. For more detailed information about each carrier route type, see [US Verification Details](#tag/US-Verification-Types). </value>
         [DataMember(Name = "carrier_route_type", IsRequired = true, EmitDefaultValue = false)]
-        public CarrierRouteTypeEnum CarrierRouteType { get; set; }
+        private CarrierRouteTypeEnum carrierRouteType;
+        public CarrierRouteTypeEnum getCarrierRouteType() {
+            return carrierRouteType;
+        }
+        public void setCarrierRouteType(CarrierRouteTypeEnum value) {
+            carrierRouteType = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="UsComponents" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected UsComponents() { }
+        public UsComponents() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="UsComponents" /> class.
         /// </summary>
@@ -384,269 +414,276 @@ namespace lob.dotnet.Model
         /// <param name="carrierRouteType">The type of &#x60;components[carrier_route]&#x60;. For more detailed information about each carrier route type, see [US Verification Details](#tag/US-Verification-Types).  (required).</param>
         /// <param name="latitude">A positive or negative decimal indicating the geographic latitude of the address, specifying the north-to-south position of a location. This should be used with &#x60;longitude&#x60; to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is &#x60;AA&#x60;, &#x60;AE&#x60;, or &#x60;AP&#x60;). .</param>
         /// <param name="longitude">A positive or negative decimal indicating the geographic longitude of the address, specifying the north-to-south position of a location. This should be used with &#x60;latitude&#x60; to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is &#x60;AA&#x60;, &#x60;AE&#x60;, or &#x60;AP&#x60;). .</param>
-        public UsComponents(string primaryNumber = default(string), StreetPredirectionEnum streetPredirection = default(StreetPredirectionEnum), string streetName = default(string), string streetSuffix = default(string), StreetPostdirectionEnum streetPostdirection = default(StreetPostdirectionEnum), string secondaryDesignator = default(string), string secondaryNumber = default(string), string pmbDesignator = default(string), string pmbNumber = default(string), string extraSecondaryDesignator = default(string), string extraSecondaryNumber = default(string), string city = default(string), string state = default(string), string zipCode = default(string), string zipCodePlus4 = default(string), ZipCodeType zipCodeType = default(ZipCodeType), string deliveryPointBarcode = default(string), AddressTypeEnum addressType = default(AddressTypeEnum), RecordTypeEnum recordType = default(RecordTypeEnum), bool defaultBuildingAddress = default(bool), string county = default(string), string countyFips = default(string), string carrierRoute = default(string), CarrierRouteTypeEnum carrierRouteType = default(CarrierRouteTypeEnum), float? latitude = default(float?), float? longitude = default(float?))
-        {
-            // to ensure "primaryNumber" is required (not null)
-            if (primaryNumber == null)
-            {
-                throw new ArgumentNullException("primaryNumber is a required property for UsComponents and cannot be null");
-            }
-            this.PrimaryNumber = primaryNumber;
-            this.StreetPredirection = streetPredirection;
-            // to ensure "streetName" is required (not null)
-            if (streetName == null)
-            {
-                throw new ArgumentNullException("streetName is a required property for UsComponents and cannot be null");
-            }
-            this.StreetName = streetName;
-            // to ensure "streetSuffix" is required (not null)
-            if (streetSuffix == null)
-            {
-                throw new ArgumentNullException("streetSuffix is a required property for UsComponents and cannot be null");
-            }
-            this.StreetSuffix = streetSuffix;
-            this.StreetPostdirection = streetPostdirection;
-            // to ensure "secondaryDesignator" is required (not null)
-            if (secondaryDesignator == null)
-            {
-                throw new ArgumentNullException("secondaryDesignator is a required property for UsComponents and cannot be null");
-            }
-            this.SecondaryDesignator = secondaryDesignator;
-            // to ensure "secondaryNumber" is required (not null)
-            if (secondaryNumber == null)
-            {
-                throw new ArgumentNullException("secondaryNumber is a required property for UsComponents and cannot be null");
-            }
-            this.SecondaryNumber = secondaryNumber;
-            // to ensure "pmbDesignator" is required (not null)
-            if (pmbDesignator == null)
-            {
-                throw new ArgumentNullException("pmbDesignator is a required property for UsComponents and cannot be null");
-            }
-            this.PmbDesignator = pmbDesignator;
-            // to ensure "pmbNumber" is required (not null)
-            if (pmbNumber == null)
-            {
-                throw new ArgumentNullException("pmbNumber is a required property for UsComponents and cannot be null");
-            }
-            this.PmbNumber = pmbNumber;
-            // to ensure "extraSecondaryDesignator" is required (not null)
-            if (extraSecondaryDesignator == null)
-            {
-                throw new ArgumentNullException("extraSecondaryDesignator is a required property for UsComponents and cannot be null");
-            }
-            this.ExtraSecondaryDesignator = extraSecondaryDesignator;
-            // to ensure "extraSecondaryNumber" is required (not null)
-            if (extraSecondaryNumber == null)
-            {
-                throw new ArgumentNullException("extraSecondaryNumber is a required property for UsComponents and cannot be null");
-            }
-            this.ExtraSecondaryNumber = extraSecondaryNumber;
-            // to ensure "city" is required (not null)
-            if (city == null)
-            {
-                throw new ArgumentNullException("city is a required property for UsComponents and cannot be null");
-            }
-            this.City = city;
-            // to ensure "state" is required (not null)
-            if (state == null)
-            {
-                throw new ArgumentNullException("state is a required property for UsComponents and cannot be null");
-            }
-            this.State = state;
-            // to ensure "zipCode" is required (not null)
-            if (zipCode == null)
-            {
-                throw new ArgumentNullException("zipCode is a required property for UsComponents and cannot be null");
-            }
-            this.ZipCode = zipCode;
-            // to ensure "zipCodePlus4" is required (not null)
-            if (zipCodePlus4 == null)
-            {
-                throw new ArgumentNullException("zipCodePlus4 is a required property for UsComponents and cannot be null");
-            }
-            this.ZipCodePlus4 = zipCodePlus4;
-            // to ensure "zipCodeType" is required (not null)
-            if (zipCodeType == null)
-            {
-                throw new ArgumentNullException("zipCodeType is a required property for UsComponents and cannot be null");
-            }
-            this.ZipCodeType = zipCodeType;
-            // to ensure "deliveryPointBarcode" is required (not null)
-            if (deliveryPointBarcode == null)
-            {
-                throw new ArgumentNullException("deliveryPointBarcode is a required property for UsComponents and cannot be null");
-            }
-            this.DeliveryPointBarcode = deliveryPointBarcode;
-            this.AddressType = addressType;
-            this.RecordType = recordType;
-            this.DefaultBuildingAddress = defaultBuildingAddress;
-            // to ensure "county" is required (not null)
-            if (county == null)
-            {
-                throw new ArgumentNullException("county is a required property for UsComponents and cannot be null");
-            }
-            this.County = county;
-            // to ensure "countyFips" is required (not null)
-            if (countyFips == null)
-            {
-                throw new ArgumentNullException("countyFips is a required property for UsComponents and cannot be null");
-            }
-            this.CountyFips = countyFips;
-            // to ensure "carrierRoute" is required (not null)
-            if (carrierRoute == null)
-            {
-                throw new ArgumentNullException("carrierRoute is a required property for UsComponents and cannot be null");
-            }
-            this.CarrierRoute = carrierRoute;
-            this.CarrierRouteType = carrierRouteType;
-            this.Latitude = latitude;
-            this.Longitude = longitude;
-        }
 
         /// <summary>
         /// The numeric or alphanumeric part of an address preceding the street name. Often the house, building, or PO Box number.
         /// </summary>
         /// <value>The numeric or alphanumeric part of an address preceding the street name. Often the house, building, or PO Box number.</value>
         [DataMember(Name = "primary_number", IsRequired = true, EmitDefaultValue = false)]
-        public string PrimaryNumber { get; set; }
+        private string primaryNumber;
+        public string getPrimaryNumber() {
+            return primaryNumber;
+        }
+        public void setPrimaryNumber(string value) {
+            primaryNumber = value;
+        }
 
         /// <summary>
         /// The name of the street.
         /// </summary>
         /// <value>The name of the street.</value>
         [DataMember(Name = "street_name", IsRequired = true, EmitDefaultValue = false)]
-        public string StreetName { get; set; }
+        private string streetName;
+        public string getStreetName() {
+            return streetName;
+        }
+        public void setStreetName(string value) {
+            streetName = value;
+        }
 
         /// <summary>
         /// The standard USPS abbreviation for the street suffix (&#x60;ST&#x60;, &#x60;AVE&#x60;, &#x60;BLVD&#x60;, etc). 
         /// </summary>
         /// <value>The standard USPS abbreviation for the street suffix (&#x60;ST&#x60;, &#x60;AVE&#x60;, &#x60;BLVD&#x60;, etc). </value>
         [DataMember(Name = "street_suffix", IsRequired = true, EmitDefaultValue = false)]
-        public string StreetSuffix { get; set; }
+        private string streetSuffix;
+        public string getStreetSuffix() {
+            return streetSuffix;
+        }
+        public void setStreetSuffix(string value) {
+            streetSuffix = value;
+        }
 
         /// <summary>
         /// The standard USPS abbreviation describing the &#x60;components[secondary_number]&#x60; (&#x60;STE&#x60;, &#x60;APT&#x60;, &#x60;BLDG&#x60;, etc). 
         /// </summary>
         /// <value>The standard USPS abbreviation describing the &#x60;components[secondary_number]&#x60; (&#x60;STE&#x60;, &#x60;APT&#x60;, &#x60;BLDG&#x60;, etc). </value>
         [DataMember(Name = "secondary_designator", IsRequired = true, EmitDefaultValue = false)]
-        public string SecondaryDesignator { get; set; }
+        private string secondaryDesignator;
+        public string getSecondaryDesignator() {
+            return secondaryDesignator;
+        }
+        public void setSecondaryDesignator(string value) {
+            secondaryDesignator = value;
+        }
 
         /// <summary>
         /// Number of the apartment/unit/etc. 
         /// </summary>
         /// <value>Number of the apartment/unit/etc. </value>
         [DataMember(Name = "secondary_number", IsRequired = true, EmitDefaultValue = false)]
-        public string SecondaryNumber { get; set; }
+        private string secondaryNumber;
+        public string getSecondaryNumber() {
+            return secondaryNumber;
+        }
+        public void setSecondaryNumber(string value) {
+            secondaryNumber = value;
+        }
 
         /// <summary>
         /// Designator of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox. 
         /// </summary>
         /// <value>Designator of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox. </value>
         [DataMember(Name = "pmb_designator", IsRequired = true, EmitDefaultValue = false)]
-        public string PmbDesignator { get; set; }
+        private string pmbDesignator;
+        public string getPmbDesignator() {
+            return pmbDesignator;
+        }
+        public void setPmbDesignator(string value) {
+            pmbDesignator = value;
+        }
 
         /// <summary>
         /// Number of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox. 
         /// </summary>
         /// <value>Number of a [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency) private mailbox. </value>
         [DataMember(Name = "pmb_number", IsRequired = true, EmitDefaultValue = false)]
-        public string PmbNumber { get; set; }
+        private string pmbNumber;
+        public string getPmbNumber() {
+            return pmbNumber;
+        }
+        public void setPmbNumber(string value) {
+            pmbNumber = value;
+        }
 
         /// <summary>
         /// An extra (often unnecessary) secondary designator provided with the input address. 
         /// </summary>
         /// <value>An extra (often unnecessary) secondary designator provided with the input address. </value>
         [DataMember(Name = "extra_secondary_designator", IsRequired = true, EmitDefaultValue = false)]
-        public string ExtraSecondaryDesignator { get; set; }
+        private string extraSecondaryDesignator;
+        public string getExtraSecondaryDesignator() {
+            return extraSecondaryDesignator;
+        }
+        public void setExtraSecondaryDesignator(string value) {
+            extraSecondaryDesignator = value;
+        }
 
         /// <summary>
         /// An extra (often unnecessary) secondary number provided with the input address. 
         /// </summary>
         /// <value>An extra (often unnecessary) secondary number provided with the input address. </value>
         [DataMember(Name = "extra_secondary_number", IsRequired = true, EmitDefaultValue = false)]
-        public string ExtraSecondaryNumber { get; set; }
+        private string extraSecondaryNumber;
+        public string getExtraSecondaryNumber() {
+            return extraSecondaryNumber;
+        }
+        public void setExtraSecondaryNumber(string value) {
+            extraSecondaryNumber = value;
+        }
 
         /// <summary>
         /// Gets or Sets City
         /// </summary>
         [DataMember(Name = "city", IsRequired = true, EmitDefaultValue = false)]
-        public string City { get; set; }
+        private string city;
+        public string getCity() {
+            return city;
+        }
+        public void setCity(string value) {
+            city = value;
+        }
 
         /// <summary>
         /// The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. 
         /// </summary>
         /// <value>The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. </value>
         [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = false)]
-        public string State { get; set; }
+        private string state;
+        public string getState() {
+            return state;
+        }
+        public void setState(string value) {
+            state = value;
+        }
 
         /// <summary>
         /// The 5-digit ZIP code
         /// </summary>
         /// <value>The 5-digit ZIP code</value>
         [DataMember(Name = "zip_code", IsRequired = true, EmitDefaultValue = false)]
-        public string ZipCode { get; set; }
+        private string zipCode;
+        public string getZipCode() {
+            return zipCode;
+        }
+        public void setZipCode(string value) {
+            zipCode = value;
+        }
 
         /// <summary>
         /// Gets or Sets ZipCodePlus4
         /// </summary>
         [DataMember(Name = "zip_code_plus_4", IsRequired = true, EmitDefaultValue = false)]
-        public string ZipCodePlus4 { get; set; }
+        private string zipCodePlus4;
+        public string getZipCodePlus4() {
+            return zipCodePlus4;
+        }
+        public void setZipCodePlus4(string value) {
+            zipCodePlus4 = value;
+        }
 
         /// <summary>
         /// Gets or Sets ZipCodeType
         /// </summary>
         [DataMember(Name = "zip_code_type", IsRequired = true, EmitDefaultValue = false)]
-        public ZipCodeType ZipCodeType { get; set; }
+        private ZipCodeType zipCodeType;
+        public ZipCodeType getZipCodeType() {
+            return zipCodeType;
+        }
+        public void setZipCodeType(ZipCodeType value) {
+            zipCodeType = value;
+        }
 
         /// <summary>
         /// A 12-digit identifier that uniquely identifies a delivery point (location where mail can be sent and received). It consists of the 5-digit ZIP code (&#x60;zip_code&#x60;), 4-digit ZIP+4 add-on (&#x60;zip_code_plus_4&#x60;), 2-digit delivery point, and 1-digit delivery point check digit. 
         /// </summary>
         /// <value>A 12-digit identifier that uniquely identifies a delivery point (location where mail can be sent and received). It consists of the 5-digit ZIP code (&#x60;zip_code&#x60;), 4-digit ZIP+4 add-on (&#x60;zip_code_plus_4&#x60;), 2-digit delivery point, and 1-digit delivery point check digit. </value>
         [DataMember(Name = "delivery_point_barcode", IsRequired = true, EmitDefaultValue = false)]
-        public string DeliveryPointBarcode { get; set; }
+        private string deliveryPointBarcode;
+        public string getDeliveryPointBarcode() {
+            return deliveryPointBarcode;
+        }
+        public void setDeliveryPointBarcode(string value) {
+            deliveryPointBarcode = value;
+        }
 
         /// <summary>
         /// Designates whether or not the address is the default address for a building containing multiple delivery points. 
         /// </summary>
         /// <value>Designates whether or not the address is the default address for a building containing multiple delivery points. </value>
         [DataMember(Name = "default_building_address", IsRequired = true, EmitDefaultValue = true)]
-        public bool DefaultBuildingAddress { get; set; }
+        private bool defaultBuildingAddress;
+        public bool getDefaultBuildingAddress() {
+            return defaultBuildingAddress;
+        }
+        public void setDefaultBuildingAddress(bool value) {
+            defaultBuildingAddress = value;
+        }
 
         /// <summary>
         /// County name of the address city.
         /// </summary>
         /// <value>County name of the address city.</value>
         [DataMember(Name = "county", IsRequired = true, EmitDefaultValue = false)]
-        public string County { get; set; }
+        private string county;
+        public string getCounty() {
+            return county;
+        }
+        public void setCounty(string value) {
+            county = value;
+        }
 
         /// <summary>
         /// A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies &#x60;components[county]&#x60;. It consists of a 2-digit state code and a 3-digit county code. 
         /// </summary>
         /// <value>A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies &#x60;components[county]&#x60;. It consists of a 2-digit state code and a 3-digit county code. </value>
         [DataMember(Name = "county_fips", IsRequired = true, EmitDefaultValue = false)]
-        public string CountyFips { get; set; }
+        private string countyFips;
+        public string getCountyFips() {
+            return countyFips;
+        }
+        public void setCountyFips(string value) {
+            countyFips = value;
+        }
 
         /// <summary>
         /// A 4-character code assigned to a mail delivery route within a ZIP code. 
         /// </summary>
         /// <value>A 4-character code assigned to a mail delivery route within a ZIP code. </value>
         [DataMember(Name = "carrier_route", IsRequired = true, EmitDefaultValue = false)]
-        public string CarrierRoute { get; set; }
+        private string carrierRoute;
+        public string getCarrierRoute() {
+            return carrierRoute;
+        }
+        public void setCarrierRoute(string value) {
+            carrierRoute = value;
+        }
 
         /// <summary>
         /// A positive or negative decimal indicating the geographic latitude of the address, specifying the north-to-south position of a location. This should be used with &#x60;longitude&#x60; to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is &#x60;AA&#x60;, &#x60;AE&#x60;, or &#x60;AP&#x60;). 
         /// </summary>
         /// <value>A positive or negative decimal indicating the geographic latitude of the address, specifying the north-to-south position of a location. This should be used with &#x60;longitude&#x60; to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is &#x60;AA&#x60;, &#x60;AE&#x60;, or &#x60;AP&#x60;). </value>
         [DataMember(Name = "latitude", EmitDefaultValue = true)]
-        public float? Latitude { get; set; }
+        private float? latitude;
+        public float? getLatitude() {
+            return latitude;
+        }
+        public void setLatitude(float? value) {
+            latitude = value;
+        }
 
         /// <summary>
         /// A positive or negative decimal indicating the geographic longitude of the address, specifying the north-to-south position of a location. This should be used with &#x60;latitude&#x60; to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is &#x60;AA&#x60;, &#x60;AE&#x60;, or &#x60;AP&#x60;). 
         /// </summary>
         /// <value>A positive or negative decimal indicating the geographic longitude of the address, specifying the north-to-south position of a location. This should be used with &#x60;latitude&#x60; to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is &#x60;AA&#x60;, &#x60;AE&#x60;, or &#x60;AP&#x60;). </value>
         [DataMember(Name = "longitude", EmitDefaultValue = true)]
-        public float? Longitude { get; set; }
+        private float? longitude;
+        public float? getLongitude() {
+            return longitude;
+        }
+        public void setLongitude(float? value) {
+            longitude = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -656,32 +693,32 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UsComponents {\n");
-            sb.Append("  PrimaryNumber: ").Append(PrimaryNumber).Append("\n");
-            sb.Append("  StreetPredirection: ").Append(StreetPredirection).Append("\n");
-            sb.Append("  StreetName: ").Append(StreetName).Append("\n");
-            sb.Append("  StreetSuffix: ").Append(StreetSuffix).Append("\n");
-            sb.Append("  StreetPostdirection: ").Append(StreetPostdirection).Append("\n");
-            sb.Append("  SecondaryDesignator: ").Append(SecondaryDesignator).Append("\n");
-            sb.Append("  SecondaryNumber: ").Append(SecondaryNumber).Append("\n");
-            sb.Append("  PmbDesignator: ").Append(PmbDesignator).Append("\n");
-            sb.Append("  PmbNumber: ").Append(PmbNumber).Append("\n");
-            sb.Append("  ExtraSecondaryDesignator: ").Append(ExtraSecondaryDesignator).Append("\n");
-            sb.Append("  ExtraSecondaryNumber: ").Append(ExtraSecondaryNumber).Append("\n");
-            sb.Append("  City: ").Append(City).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  ZipCode: ").Append(ZipCode).Append("\n");
-            sb.Append("  ZipCodePlus4: ").Append(ZipCodePlus4).Append("\n");
-            sb.Append("  ZipCodeType: ").Append(ZipCodeType).Append("\n");
-            sb.Append("  DeliveryPointBarcode: ").Append(DeliveryPointBarcode).Append("\n");
-            sb.Append("  AddressType: ").Append(AddressType).Append("\n");
-            sb.Append("  RecordType: ").Append(RecordType).Append("\n");
-            sb.Append("  DefaultBuildingAddress: ").Append(DefaultBuildingAddress).Append("\n");
-            sb.Append("  County: ").Append(County).Append("\n");
-            sb.Append("  CountyFips: ").Append(CountyFips).Append("\n");
-            sb.Append("  CarrierRoute: ").Append(CarrierRoute).Append("\n");
-            sb.Append("  CarrierRouteType: ").Append(CarrierRouteType).Append("\n");
-            sb.Append("  Latitude: ").Append(Latitude).Append("\n");
-            sb.Append("  Longitude: ").Append(Longitude).Append("\n");
+            sb.Append("  primaryNumber: ").Append(primaryNumber).Append("\n");
+            sb.Append("  streetPredirection: ").Append(streetPredirection).Append("\n");
+            sb.Append("  streetName: ").Append(streetName).Append("\n");
+            sb.Append("  streetSuffix: ").Append(streetSuffix).Append("\n");
+            sb.Append("  streetPostdirection: ").Append(streetPostdirection).Append("\n");
+            sb.Append("  secondaryDesignator: ").Append(secondaryDesignator).Append("\n");
+            sb.Append("  secondaryNumber: ").Append(secondaryNumber).Append("\n");
+            sb.Append("  pmbDesignator: ").Append(pmbDesignator).Append("\n");
+            sb.Append("  pmbNumber: ").Append(pmbNumber).Append("\n");
+            sb.Append("  extraSecondaryDesignator: ").Append(extraSecondaryDesignator).Append("\n");
+            sb.Append("  extraSecondaryNumber: ").Append(extraSecondaryNumber).Append("\n");
+            sb.Append("  city: ").Append(city).Append("\n");
+            sb.Append("  state: ").Append(state).Append("\n");
+            sb.Append("  zipCode: ").Append(zipCode).Append("\n");
+            sb.Append("  zipCodePlus4: ").Append(zipCodePlus4).Append("\n");
+            sb.Append("  zipCodeType: ").Append(zipCodeType).Append("\n");
+            sb.Append("  deliveryPointBarcode: ").Append(deliveryPointBarcode).Append("\n");
+            sb.Append("  addressType: ").Append(addressType).Append("\n");
+            sb.Append("  recordType: ").Append(recordType).Append("\n");
+            sb.Append("  defaultBuildingAddress: ").Append(defaultBuildingAddress).Append("\n");
+            sb.Append("  county: ").Append(county).Append("\n");
+            sb.Append("  countyFips: ").Append(countyFips).Append("\n");
+            sb.Append("  carrierRoute: ").Append(carrierRoute).Append("\n");
+            sb.Append("  carrierRouteType: ").Append(carrierRouteType).Append("\n");
+            sb.Append("  latitude: ").Append(latitude).Append("\n");
+            sb.Append("  longitude: ").Append(longitude).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -692,7 +729,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -718,128 +755,128 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.PrimaryNumber == input.PrimaryNumber ||
-                    (this.PrimaryNumber != null &&
-                    this.PrimaryNumber.Equals(input.PrimaryNumber))
+                    this.primaryNumber == input.getPrimaryNumber() ||
+                    (this.primaryNumber != null &&
+                    this.primaryNumber.Equals(input.getPrimaryNumber()))
                 ) && 
                 (
-                    this.StreetPredirection == input.StreetPredirection ||
-                    this.StreetPredirection.Equals(input.StreetPredirection)
+                    this.streetPredirection == input.getStreetPredirection() ||
+                    this.streetPredirection.Equals(input.getStreetPredirection())
                 ) && 
                 (
-                    this.StreetName == input.StreetName ||
-                    (this.StreetName != null &&
-                    this.StreetName.Equals(input.StreetName))
+                    this.streetName == input.getStreetName() ||
+                    (this.streetName != null &&
+                    this.streetName.Equals(input.getStreetName()))
                 ) && 
                 (
-                    this.StreetSuffix == input.StreetSuffix ||
-                    (this.StreetSuffix != null &&
-                    this.StreetSuffix.Equals(input.StreetSuffix))
+                    this.streetSuffix == input.getStreetSuffix() ||
+                    (this.streetSuffix != null &&
+                    this.streetSuffix.Equals(input.getStreetSuffix()))
                 ) && 
                 (
-                    this.StreetPostdirection == input.StreetPostdirection ||
-                    this.StreetPostdirection.Equals(input.StreetPostdirection)
+                    this.streetPostdirection == input.getStreetPostdirection() ||
+                    this.streetPostdirection.Equals(input.getStreetPostdirection())
                 ) && 
                 (
-                    this.SecondaryDesignator == input.SecondaryDesignator ||
-                    (this.SecondaryDesignator != null &&
-                    this.SecondaryDesignator.Equals(input.SecondaryDesignator))
+                    this.secondaryDesignator == input.getSecondaryDesignator() ||
+                    (this.secondaryDesignator != null &&
+                    this.secondaryDesignator.Equals(input.getSecondaryDesignator()))
                 ) && 
                 (
-                    this.SecondaryNumber == input.SecondaryNumber ||
-                    (this.SecondaryNumber != null &&
-                    this.SecondaryNumber.Equals(input.SecondaryNumber))
+                    this.secondaryNumber == input.getSecondaryNumber() ||
+                    (this.secondaryNumber != null &&
+                    this.secondaryNumber.Equals(input.getSecondaryNumber()))
                 ) && 
                 (
-                    this.PmbDesignator == input.PmbDesignator ||
-                    (this.PmbDesignator != null &&
-                    this.PmbDesignator.Equals(input.PmbDesignator))
+                    this.pmbDesignator == input.getPmbDesignator() ||
+                    (this.pmbDesignator != null &&
+                    this.pmbDesignator.Equals(input.getPmbDesignator()))
                 ) && 
                 (
-                    this.PmbNumber == input.PmbNumber ||
-                    (this.PmbNumber != null &&
-                    this.PmbNumber.Equals(input.PmbNumber))
+                    this.pmbNumber == input.getPmbNumber() ||
+                    (this.pmbNumber != null &&
+                    this.pmbNumber.Equals(input.getPmbNumber()))
                 ) && 
                 (
-                    this.ExtraSecondaryDesignator == input.ExtraSecondaryDesignator ||
-                    (this.ExtraSecondaryDesignator != null &&
-                    this.ExtraSecondaryDesignator.Equals(input.ExtraSecondaryDesignator))
+                    this.extraSecondaryDesignator == input.getExtraSecondaryDesignator() ||
+                    (this.extraSecondaryDesignator != null &&
+                    this.extraSecondaryDesignator.Equals(input.getExtraSecondaryDesignator()))
                 ) && 
                 (
-                    this.ExtraSecondaryNumber == input.ExtraSecondaryNumber ||
-                    (this.ExtraSecondaryNumber != null &&
-                    this.ExtraSecondaryNumber.Equals(input.ExtraSecondaryNumber))
+                    this.extraSecondaryNumber == input.getExtraSecondaryNumber() ||
+                    (this.extraSecondaryNumber != null &&
+                    this.extraSecondaryNumber.Equals(input.getExtraSecondaryNumber()))
                 ) && 
                 (
-                    this.City == input.City ||
-                    (this.City != null &&
-                    this.City.Equals(input.City))
+                    this.city == input.getCity() ||
+                    (this.city != null &&
+                    this.city.Equals(input.getCity()))
                 ) && 
                 (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
+                    this.state == input.getState() ||
+                    (this.state != null &&
+                    this.state.Equals(input.getState()))
                 ) && 
                 (
-                    this.ZipCode == input.ZipCode ||
-                    (this.ZipCode != null &&
-                    this.ZipCode.Equals(input.ZipCode))
+                    this.zipCode == input.getZipCode() ||
+                    (this.zipCode != null &&
+                    this.zipCode.Equals(input.getZipCode()))
                 ) && 
                 (
-                    this.ZipCodePlus4 == input.ZipCodePlus4 ||
-                    (this.ZipCodePlus4 != null &&
-                    this.ZipCodePlus4.Equals(input.ZipCodePlus4))
+                    this.zipCodePlus4 == input.getZipCodePlus4() ||
+                    (this.zipCodePlus4 != null &&
+                    this.zipCodePlus4.Equals(input.getZipCodePlus4()))
                 ) && 
                 (
-                    this.ZipCodeType == input.ZipCodeType ||
-                    (this.ZipCodeType != null &&
-                    this.ZipCodeType.Equals(input.ZipCodeType))
+                    this.zipCodeType == input.getZipCodeType() ||
+                    (this.zipCodeType != null &&
+                    this.zipCodeType.Equals(input.getZipCodeType()))
                 ) && 
                 (
-                    this.DeliveryPointBarcode == input.DeliveryPointBarcode ||
-                    (this.DeliveryPointBarcode != null &&
-                    this.DeliveryPointBarcode.Equals(input.DeliveryPointBarcode))
+                    this.deliveryPointBarcode == input.getDeliveryPointBarcode() ||
+                    (this.deliveryPointBarcode != null &&
+                    this.deliveryPointBarcode.Equals(input.getDeliveryPointBarcode()))
                 ) && 
                 (
-                    this.AddressType == input.AddressType ||
-                    this.AddressType.Equals(input.AddressType)
+                    this.addressType == input.getAddressType() ||
+                    this.addressType.Equals(input.getAddressType())
                 ) && 
                 (
-                    this.RecordType == input.RecordType ||
-                    this.RecordType.Equals(input.RecordType)
+                    this.recordType == input.getRecordType() ||
+                    this.recordType.Equals(input.getRecordType())
                 ) && 
                 (
-                    this.DefaultBuildingAddress == input.DefaultBuildingAddress ||
-                    this.DefaultBuildingAddress.Equals(input.DefaultBuildingAddress)
+                    this.defaultBuildingAddress == input.getDefaultBuildingAddress() ||
+                    this.defaultBuildingAddress.Equals(input.getDefaultBuildingAddress())
                 ) && 
                 (
-                    this.County == input.County ||
-                    (this.County != null &&
-                    this.County.Equals(input.County))
+                    this.county == input.getCounty() ||
+                    (this.county != null &&
+                    this.county.Equals(input.getCounty()))
                 ) && 
                 (
-                    this.CountyFips == input.CountyFips ||
-                    (this.CountyFips != null &&
-                    this.CountyFips.Equals(input.CountyFips))
+                    this.countyFips == input.getCountyFips() ||
+                    (this.countyFips != null &&
+                    this.countyFips.Equals(input.getCountyFips()))
                 ) && 
                 (
-                    this.CarrierRoute == input.CarrierRoute ||
-                    (this.CarrierRoute != null &&
-                    this.CarrierRoute.Equals(input.CarrierRoute))
+                    this.carrierRoute == input.getCarrierRoute() ||
+                    (this.carrierRoute != null &&
+                    this.carrierRoute.Equals(input.getCarrierRoute()))
                 ) && 
                 (
-                    this.CarrierRouteType == input.CarrierRouteType ||
-                    this.CarrierRouteType.Equals(input.CarrierRouteType)
+                    this.carrierRouteType == input.getCarrierRouteType() ||
+                    this.carrierRouteType.Equals(input.getCarrierRouteType())
                 ) && 
                 (
-                    this.Latitude == input.Latitude ||
-                    (this.Latitude != null &&
-                    this.Latitude.Equals(input.Latitude))
+                    this.latitude == input.getLatitude() ||
+                    (this.latitude != null &&
+                    this.latitude.Equals(input.getLatitude()))
                 ) && 
                 (
-                    this.Longitude == input.Longitude ||
-                    (this.Longitude != null &&
-                    this.Longitude.Equals(input.Longitude))
+                    this.longitude == input.getLongitude() ||
+                    (this.longitude != null &&
+                    this.longitude.Equals(input.getLongitude()))
                 );
         }
 
@@ -852,91 +889,91 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.PrimaryNumber != null)
+                if (this.primaryNumber != null)
                 {
-                    hashCode = (hashCode * 59) + this.PrimaryNumber.GetHashCode();
+                    hashCode = (hashCode * 59) + this.primaryNumber.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.StreetPredirection.GetHashCode();
-                if (this.StreetName != null)
+                hashCode = (hashCode * 59) + this.streetPredirection.GetHashCode();
+                if (this.streetName != null)
                 {
-                    hashCode = (hashCode * 59) + this.StreetName.GetHashCode();
+                    hashCode = (hashCode * 59) + this.streetName.GetHashCode();
                 }
-                if (this.StreetSuffix != null)
+                if (this.streetSuffix != null)
                 {
-                    hashCode = (hashCode * 59) + this.StreetSuffix.GetHashCode();
+                    hashCode = (hashCode * 59) + this.streetSuffix.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.StreetPostdirection.GetHashCode();
-                if (this.SecondaryDesignator != null)
+                hashCode = (hashCode * 59) + this.streetPostdirection.GetHashCode();
+                if (this.secondaryDesignator != null)
                 {
-                    hashCode = (hashCode * 59) + this.SecondaryDesignator.GetHashCode();
+                    hashCode = (hashCode * 59) + this.secondaryDesignator.GetHashCode();
                 }
-                if (this.SecondaryNumber != null)
+                if (this.secondaryNumber != null)
                 {
-                    hashCode = (hashCode * 59) + this.SecondaryNumber.GetHashCode();
+                    hashCode = (hashCode * 59) + this.secondaryNumber.GetHashCode();
                 }
-                if (this.PmbDesignator != null)
+                if (this.pmbDesignator != null)
                 {
-                    hashCode = (hashCode * 59) + this.PmbDesignator.GetHashCode();
+                    hashCode = (hashCode * 59) + this.pmbDesignator.GetHashCode();
                 }
-                if (this.PmbNumber != null)
+                if (this.pmbNumber != null)
                 {
-                    hashCode = (hashCode * 59) + this.PmbNumber.GetHashCode();
+                    hashCode = (hashCode * 59) + this.pmbNumber.GetHashCode();
                 }
-                if (this.ExtraSecondaryDesignator != null)
+                if (this.extraSecondaryDesignator != null)
                 {
-                    hashCode = (hashCode * 59) + this.ExtraSecondaryDesignator.GetHashCode();
+                    hashCode = (hashCode * 59) + this.extraSecondaryDesignator.GetHashCode();
                 }
-                if (this.ExtraSecondaryNumber != null)
+                if (this.extraSecondaryNumber != null)
                 {
-                    hashCode = (hashCode * 59) + this.ExtraSecondaryNumber.GetHashCode();
+                    hashCode = (hashCode * 59) + this.extraSecondaryNumber.GetHashCode();
                 }
-                if (this.City != null)
+                if (this.city != null)
                 {
-                    hashCode = (hashCode * 59) + this.City.GetHashCode();
+                    hashCode = (hashCode * 59) + this.city.GetHashCode();
                 }
-                if (this.State != null)
+                if (this.state != null)
                 {
-                    hashCode = (hashCode * 59) + this.State.GetHashCode();
+                    hashCode = (hashCode * 59) + this.state.GetHashCode();
                 }
-                if (this.ZipCode != null)
+                if (this.zipCode != null)
                 {
-                    hashCode = (hashCode * 59) + this.ZipCode.GetHashCode();
+                    hashCode = (hashCode * 59) + this.zipCode.GetHashCode();
                 }
-                if (this.ZipCodePlus4 != null)
+                if (this.zipCodePlus4 != null)
                 {
-                    hashCode = (hashCode * 59) + this.ZipCodePlus4.GetHashCode();
+                    hashCode = (hashCode * 59) + this.zipCodePlus4.GetHashCode();
                 }
-                if (this.ZipCodeType != null)
+                if (this.zipCodeType != null)
                 {
-                    hashCode = (hashCode * 59) + this.ZipCodeType.GetHashCode();
+                    hashCode = (hashCode * 59) + this.zipCodeType.GetHashCode();
                 }
-                if (this.DeliveryPointBarcode != null)
+                if (this.deliveryPointBarcode != null)
                 {
-                    hashCode = (hashCode * 59) + this.DeliveryPointBarcode.GetHashCode();
+                    hashCode = (hashCode * 59) + this.deliveryPointBarcode.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AddressType.GetHashCode();
-                hashCode = (hashCode * 59) + this.RecordType.GetHashCode();
-                hashCode = (hashCode * 59) + this.DefaultBuildingAddress.GetHashCode();
-                if (this.County != null)
+                hashCode = (hashCode * 59) + this.addressType.GetHashCode();
+                hashCode = (hashCode * 59) + this.recordType.GetHashCode();
+                hashCode = (hashCode * 59) + this.defaultBuildingAddress.GetHashCode();
+                if (this.county != null)
                 {
-                    hashCode = (hashCode * 59) + this.County.GetHashCode();
+                    hashCode = (hashCode * 59) + this.county.GetHashCode();
                 }
-                if (this.CountyFips != null)
+                if (this.countyFips != null)
                 {
-                    hashCode = (hashCode * 59) + this.CountyFips.GetHashCode();
+                    hashCode = (hashCode * 59) + this.countyFips.GetHashCode();
                 }
-                if (this.CarrierRoute != null)
+                if (this.carrierRoute != null)
                 {
-                    hashCode = (hashCode * 59) + this.CarrierRoute.GetHashCode();
+                    hashCode = (hashCode * 59) + this.carrierRoute.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.CarrierRouteType.GetHashCode();
-                if (this.Latitude != null)
+                hashCode = (hashCode * 59) + this.carrierRouteType.GetHashCode();
+                if (this.latitude != null)
                 {
-                    hashCode = (hashCode * 59) + this.Latitude.GetHashCode();
+                    hashCode = (hashCode * 59) + this.latitude.GetHashCode();
                 }
-                if (this.Longitude != null)
+                if (this.longitude != null)
                 {
-                    hashCode = (hashCode * 59) + this.Longitude.GetHashCode();
+                    hashCode = (hashCode * 59) + this.longitude.GetHashCode();
                 }
                 return hashCode;
             }
@@ -949,30 +986,30 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // City (string) maxLength
-            if (this.City != null && this.City.Length > 200)
+            // city (string) maxLength
+            if (this.city != null && this.city.Length > 200)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for City, length must be less than 200.", new [] { "City" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for city, length must be less than 200.", new [] { "city" });
             }
 
-            // State (string) maxLength
-            if (this.State != null && this.State.Length > 2)
+            // state (string) maxLength
+            if (this.state != null && this.state.Length > 2)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for State, length must be less than 2.", new [] { "State" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for state, length must be less than 2.", new [] { "state" });
             }
 
-            // ZipCode (string) pattern
-            Regex regexZipCode = new Regex(@"^\\d{5}$", RegexOptions.CultureInvariant);
-            if (false == regexZipCode.Match(this.ZipCode).Success)
+            // zipCode (string) pattern
+            Regex regexzipCode = new Regex(@"^\\d{5}$", RegexOptions.CultureInvariant);
+            if (false == regexzipCode.Match(this.zipCode).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ZipCode, must match a pattern of " + regexZipCode, new [] { "ZipCode" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for zipCode, must match a pattern of " + regexzipCode, new [] { "zipCode" });
             }
 
-            // ZipCodePlus4 (string) pattern
-            Regex regexZipCodePlus4 = new Regex(@"^\\d{4}$", RegexOptions.CultureInvariant);
-            if (false == regexZipCodePlus4.Match(this.ZipCodePlus4).Success)
+            // zipCodePlus4 (string) pattern
+            Regex regexzipCodePlus4 = new Regex(@"^\\d{4}$", RegexOptions.CultureInvariant);
+            if (false == regexzipCodePlus4.Match(this.zipCodePlus4).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ZipCodePlus4, must match a pattern of " + regexZipCodePlus4, new [] { "ZipCodePlus4" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for zipCodePlus4, must match a pattern of " + regexzipCodePlus4, new [] { "zipCodePlus4" });
             }
 
             yield break;

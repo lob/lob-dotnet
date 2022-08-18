@@ -36,7 +36,7 @@ namespace lob.dotnet.Model
         /// Initializes a new instance of the <see cref="MultipleComponentsIntl" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected MultipleComponentsIntl() { }
+        public MultipleComponentsIntl() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="MultipleComponentsIntl" /> class.
         /// </summary>
@@ -47,73 +47,95 @@ namespace lob.dotnet.Model
         /// <param name="state">The name of the state..</param>
         /// <param name="postalCode">The postal code..</param>
         /// <param name="country">country (required).</param>
-        public MultipleComponentsIntl(string recipient = default(string), string primaryLine = default(string), string secondaryLine = default(string), string city = default(string), string state = default(string), string postalCode = default(string), CountryExtended country = default(CountryExtended))
-        {
-            // to ensure "primaryLine" is required (not null)
-            if (primaryLine == null)
-            {
-                throw new ArgumentNullException("primaryLine is a required property for MultipleComponentsIntl and cannot be null");
-            }
-            this.PrimaryLine = primaryLine;
-            // to ensure "country" is required (not null)
-            if (country == null)
-            {
-                throw new ArgumentNullException("country is a required property for MultipleComponentsIntl and cannot be null");
-            }
-            this.Country = country;
-            this.Recipient = recipient;
-            this.SecondaryLine = secondaryLine;
-            this.City = city;
-            this.State = state;
-            this.PostalCode = postalCode;
-        }
 
         /// <summary>
         /// The intended recipient, typically a person&#39;s or firm&#39;s name.
         /// </summary>
         /// <value>The intended recipient, typically a person&#39;s or firm&#39;s name.</value>
         [DataMember(Name = "recipient", EmitDefaultValue = true)]
-        public string Recipient { get; set; }
+        private string recipient;
+        public string getRecipient() {
+            return recipient;
+        }
+        public void setRecipient(string value) {
+            recipient = value;
+        }
 
         /// <summary>
         /// The primary delivery line (usually the street address) of the address. 
         /// </summary>
         /// <value>The primary delivery line (usually the street address) of the address. </value>
         [DataMember(Name = "primary_line", IsRequired = true, EmitDefaultValue = false)]
-        public string PrimaryLine { get; set; }
+        private string primaryLine;
+        public string getPrimaryLine() {
+            return primaryLine;
+        }
+        public void setPrimaryLine(string value) {
+            primaryLine = value;
+        }
 
         /// <summary>
         /// The secondary delivery line of the address. This field is typically empty but may contain information if &#x60;primary_line&#x60; is too long. 
         /// </summary>
         /// <value>The secondary delivery line of the address. This field is typically empty but may contain information if &#x60;primary_line&#x60; is too long. </value>
         [DataMember(Name = "secondary_line", EmitDefaultValue = false)]
-        public string SecondaryLine { get; set; }
+        private string secondaryLine;
+        public string getSecondaryLine() {
+            return secondaryLine;
+        }
+        public void setSecondaryLine(string value) {
+            secondaryLine = value;
+        }
 
         /// <summary>
         /// Gets or Sets City
         /// </summary>
         [DataMember(Name = "city", EmitDefaultValue = false)]
-        public string City { get; set; }
+        private string city;
+        public string getCity() {
+            return city;
+        }
+        public void setCity(string value) {
+            city = value;
+        }
 
         /// <summary>
         /// The name of the state.
         /// </summary>
         /// <value>The name of the state.</value>
         [DataMember(Name = "state", EmitDefaultValue = false)]
-        public string State { get; set; }
+        private string state;
+        public string getState() {
+            return state;
+        }
+        public void setState(string value) {
+            state = value;
+        }
 
         /// <summary>
         /// The postal code.
         /// </summary>
         /// <value>The postal code.</value>
         [DataMember(Name = "postal_code", EmitDefaultValue = false)]
-        public string PostalCode { get; set; }
+        private string postalCode;
+        public string getPostalCode() {
+            return postalCode;
+        }
+        public void setPostalCode(string value) {
+            postalCode = value;
+        }
 
         /// <summary>
         /// Gets or Sets Country
         /// </summary>
         [DataMember(Name = "country", IsRequired = true, EmitDefaultValue = false)]
-        public CountryExtended Country { get; set; }
+        private CountryExtended country;
+        public CountryExtended getCountry() {
+            return country;
+        }
+        public void setCountry(CountryExtended value) {
+            country = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -123,13 +145,13 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class MultipleComponentsIntl {\n");
-            sb.Append("  Recipient: ").Append(Recipient).Append("\n");
-            sb.Append("  PrimaryLine: ").Append(PrimaryLine).Append("\n");
-            sb.Append("  SecondaryLine: ").Append(SecondaryLine).Append("\n");
-            sb.Append("  City: ").Append(City).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
-            sb.Append("  Country: ").Append(Country).Append("\n");
+            sb.Append("  recipient: ").Append(recipient).Append("\n");
+            sb.Append("  primaryLine: ").Append(primaryLine).Append("\n");
+            sb.Append("  secondaryLine: ").Append(secondaryLine).Append("\n");
+            sb.Append("  city: ").Append(city).Append("\n");
+            sb.Append("  state: ").Append(state).Append("\n");
+            sb.Append("  postalCode: ").Append(postalCode).Append("\n");
+            sb.Append("  country: ").Append(country).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -140,7 +162,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -166,39 +188,39 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Recipient == input.Recipient ||
-                    (this.Recipient != null &&
-                    this.Recipient.Equals(input.Recipient))
+                    this.recipient == input.getRecipient() ||
+                    (this.recipient != null &&
+                    this.recipient.Equals(input.getRecipient()))
                 ) && 
                 (
-                    this.PrimaryLine == input.PrimaryLine ||
-                    (this.PrimaryLine != null &&
-                    this.PrimaryLine.Equals(input.PrimaryLine))
+                    this.primaryLine == input.getPrimaryLine() ||
+                    (this.primaryLine != null &&
+                    this.primaryLine.Equals(input.getPrimaryLine()))
                 ) && 
                 (
-                    this.SecondaryLine == input.SecondaryLine ||
-                    (this.SecondaryLine != null &&
-                    this.SecondaryLine.Equals(input.SecondaryLine))
+                    this.secondaryLine == input.getSecondaryLine() ||
+                    (this.secondaryLine != null &&
+                    this.secondaryLine.Equals(input.getSecondaryLine()))
                 ) && 
                 (
-                    this.City == input.City ||
-                    (this.City != null &&
-                    this.City.Equals(input.City))
+                    this.city == input.getCity() ||
+                    (this.city != null &&
+                    this.city.Equals(input.getCity()))
                 ) && 
                 (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
+                    this.state == input.getState() ||
+                    (this.state != null &&
+                    this.state.Equals(input.getState()))
                 ) && 
                 (
-                    this.PostalCode == input.PostalCode ||
-                    (this.PostalCode != null &&
-                    this.PostalCode.Equals(input.PostalCode))
+                    this.postalCode == input.getPostalCode() ||
+                    (this.postalCode != null &&
+                    this.postalCode.Equals(input.getPostalCode()))
                 ) && 
                 (
-                    this.Country == input.Country ||
-                    (this.Country != null &&
-                    this.Country.Equals(input.Country))
+                    this.country == input.getCountry() ||
+                    (this.country != null &&
+                    this.country.Equals(input.getCountry()))
                 );
         }
 
@@ -211,33 +233,33 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Recipient != null)
+                if (this.recipient != null)
                 {
-                    hashCode = (hashCode * 59) + this.Recipient.GetHashCode();
+                    hashCode = (hashCode * 59) + this.recipient.GetHashCode();
                 }
-                if (this.PrimaryLine != null)
+                if (this.primaryLine != null)
                 {
-                    hashCode = (hashCode * 59) + this.PrimaryLine.GetHashCode();
+                    hashCode = (hashCode * 59) + this.primaryLine.GetHashCode();
                 }
-                if (this.SecondaryLine != null)
+                if (this.secondaryLine != null)
                 {
-                    hashCode = (hashCode * 59) + this.SecondaryLine.GetHashCode();
+                    hashCode = (hashCode * 59) + this.secondaryLine.GetHashCode();
                 }
-                if (this.City != null)
+                if (this.city != null)
                 {
-                    hashCode = (hashCode * 59) + this.City.GetHashCode();
+                    hashCode = (hashCode * 59) + this.city.GetHashCode();
                 }
-                if (this.State != null)
+                if (this.state != null)
                 {
-                    hashCode = (hashCode * 59) + this.State.GetHashCode();
+                    hashCode = (hashCode * 59) + this.state.GetHashCode();
                 }
-                if (this.PostalCode != null)
+                if (this.postalCode != null)
                 {
-                    hashCode = (hashCode * 59) + this.PostalCode.GetHashCode();
+                    hashCode = (hashCode * 59) + this.postalCode.GetHashCode();
                 }
-                if (this.Country != null)
+                if (this.country != null)
                 {
-                    hashCode = (hashCode * 59) + this.Country.GetHashCode();
+                    hashCode = (hashCode * 59) + this.country.GetHashCode();
                 }
                 return hashCode;
             }
@@ -250,34 +272,34 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Recipient (string) maxLength
-            if (this.Recipient != null && this.Recipient.Length > 500)
+            // recipient (string) maxLength
+            if (this.recipient != null && this.recipient.Length > 500)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Recipient, length must be less than 500.", new [] { "Recipient" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for recipient, length must be less than 500.", new [] { "recipient" });
             }
 
-            // PrimaryLine (string) maxLength
-            if (this.PrimaryLine != null && this.PrimaryLine.Length > 200)
+            // primaryLine (string) maxLength
+            if (this.primaryLine != null && this.primaryLine.Length > 200)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PrimaryLine, length must be less than 200.", new [] { "PrimaryLine" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for primaryLine, length must be less than 200.", new [] { "primaryLine" });
             }
 
-            // SecondaryLine (string) maxLength
-            if (this.SecondaryLine != null && this.SecondaryLine.Length > 500)
+            // secondaryLine (string) maxLength
+            if (this.secondaryLine != null && this.secondaryLine.Length > 500)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SecondaryLine, length must be less than 500.", new [] { "SecondaryLine" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for secondaryLine, length must be less than 500.", new [] { "secondaryLine" });
             }
 
-            // City (string) maxLength
-            if (this.City != null && this.City.Length > 200)
+            // city (string) maxLength
+            if (this.city != null && this.city.Length > 200)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for City, length must be less than 200.", new [] { "City" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for city, length must be less than 200.", new [] { "city" });
             }
 
-            // PostalCode (string) maxLength
-            if (this.PostalCode != null && this.PostalCode.Length > 12)
+            // postalCode (string) maxLength
+            if (this.postalCode != null && this.postalCode.Length > 12)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PostalCode, length must be less than 12.", new [] { "PostalCode" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for postalCode, length must be less than 12.", new [] { "postalCode" });
             }
 
             yield break;

@@ -44,14 +44,12 @@ namespace __tests__.Integration {
             validApi = new ChecksApi(config);
             invalidApi = new ChecksApi(invalidConfig);
 
-            BankAccountWritable bankAccountWritable = new BankAccountWritable(
-                "Test Bank Account", // description
-                "322271627", // routingNumber
-                "123456789", // accountNumber
-                BankTypeEnum.Individual, // accountType
-                "Sinead Connor", // signatory
-                null // metadata
-            );
+            BankAccountWritable bankAccountWritable = new BankAccountWritable();
+            bankAccountWritable.setDescription("Test Bank Account");
+            bankAccountWritable.setRoutingNumber("322271627");
+            bankAccountWritable.setAccountNumber("123456789");
+            bankAccountWritable.setAccountType(BankTypeEnum.Individual);
+            bankAccountWritable.setSignatory("Sinead Connor");
 
             validBankAccountsApi = new BankAccountsApi(config);
             bankAccount = validBankAccountsApi.BankAccountCreate(bankAccountWritable);
@@ -60,62 +58,47 @@ namespace __tests__.Integration {
             amounts.Add(11);
             amounts.Add(35);
 
-            BankAccountVerify verification = new BankAccountVerify(amounts);
-            validBankAccountsApi.BankAccountVerify(bankAccount.Id, verification);
+            BankAccountVerify verification = new BankAccountVerify();
+            verification.setAmounts(amounts);
+            validBankAccountsApi.BankAccountVerify(bankAccount.getId(), verification);
 
-            AddressEditable addressEditable1 = new AddressEditable(
-                "1313 CEMETERY LN", // addressLine1
-                null, // addressLine2
-                "WESTFIELD", // addressCity
-                "NJ", // addressState
-                "07000", // addressZip
-                CountryExtended.US, // addressCountry
-                "test description", // description
-                "Thing T. Thing", // name
-                null, // company
-                null, // phone
-                null, // email
-                null // metadata
-            );
+            AddressEditable addressEditable1 = new AddressEditable();
+            addressEditable1.setAddressLine1("1313 CEMETERY LN");
+            addressEditable1.setAddressCity("WESTFIELD");
+            addressEditable1.setAddressState("NJ");
+            addressEditable1.setAddressZip("07000");
+            addressEditable1.setAddressCountry(CountryExtended.US);
+            addressEditable1.setDescription("test description");
+            addressEditable1.setName("Thing T. Thing");
 
-            AddressEditable addressEditable2 = new AddressEditable(
-                "001 CEMETERY LN", // addressLine1
-                "SUITE 666", // addressLine2
-                "WESTFIELD", // addressCity
-                "NJ", // addressState
-                "07000", // addressZip
-                CountryExtended.US, // addressCountry
-                null, // description
-                "FESTER", // name
-                null, // company
-                null, // phone
-                null, // email
-                null // metadata
-            );
+            AddressEditable addressEditable2 = new AddressEditable();
+            addressEditable2.setAddressLine1("001 CEMETERY LN");
+            addressEditable2.setAddressLine2("SUITE 666");
+            addressEditable2.setAddressCity("WESTFIELD");
+            addressEditable2.setAddressState("NJ");
+            addressEditable2.setAddressZip("07000");
+            addressEditable2.setAddressCountry(CountryExtended.US);
+            addressEditable2.setName("FESTER");
 
             validAddressesApi = new AddressesApi(config);
             address1 = validAddressesApi.AddressCreate(addressEditable1);
             address2 = validAddressesApi.AddressCreate(addressEditable2);
 
-            checkEditable = new CheckEditable(
-                address1.Id, // from
-                address2.Id, // to
-                bankAccount.Id, // bankAccount
-                100, // amount
-                null, // logo
-                null, // checkBottom
-                null, // attachment
-                "check 1" // description
-            );
+            checkEditable = new CheckEditable();
+            checkEditable.setFrom(address1.getId());
+            checkEditable.setTo(address2.getId());
+            checkEditable.setBankAccount(bankAccount.getId());
+            checkEditable.setAmount(100);
+            checkEditable.setDescription("check 1");
 
             idsToDelete = new List<string>();
         }
 
         public void Dispose()
         {
-            validBankAccountsApi.BankAccountDelete(bankAccount.Id);
-            validAddressesApi.AddressDelete(address1.Id);
-            validAddressesApi.AddressDelete(address2.Id);
+            validBankAccountsApi.BankAccountDelete(bankAccount.getId());
+            validAddressesApi.AddressDelete(address1.getId());
+            validAddressesApi.AddressDelete(address2.getId());
             idsToDelete.ForEach(id => validApi.CheckCancel(id));
         }
 
@@ -123,9 +106,9 @@ namespace __tests__.Integration {
         public void CheckCreateTest() {
             Check response = validApi.CheckCreate(checkEditable);
 
-            Assert.NotNull(response.Id);
-            idsToDelete.Add(response.Id);
-            Assert.AreEqual(response.Description, checkEditable.Description);
+            Assert.NotNull(response.getId());
+            idsToDelete.Add(response.getId());
+            Assert.AreEqual(response.getDescription(), checkEditable.getDescription());
         }
 
         [Test]
@@ -153,11 +136,11 @@ namespace __tests__.Integration {
         [Test]
         public void CheckRetrieveTest() {
             Check check = validApi.CheckCreate(checkEditable);
-            idsToDelete.Add(check.Id);
-            Check response = validApi.CheckRetrieve(check.Id);
+            idsToDelete.Add(check.getId());
+            Check response = validApi.CheckRetrieve(check.getId());
 
-            Assert.NotNull(response.Id);
-            Assert.AreEqual(response.Id, check.Id);
+            Assert.NotNull(response.getId());
+            Assert.AreEqual(response.getId(), check.getId());
         }
 
         [Test]
@@ -174,9 +157,9 @@ namespace __tests__.Integration {
         [Test]
         public void CheckRetrieveTestBadUsername() {
             Check check = validApi.CheckCreate(checkEditable);
-            idsToDelete.Add(check.Id);
+            idsToDelete.Add(check.getId());
             try {
-                Check response = invalidApi.CheckRetrieve(check.Id);
+                Check response = invalidApi.CheckRetrieve(check.getId());
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -188,7 +171,7 @@ namespace __tests__.Integration {
         public void CheckListTest() {
             CheckList response = validApi.ChecksList(null, null, null, null, null, null, null, null, null, null);
 
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -196,7 +179,7 @@ namespace __tests__.Integration {
             int limit = 2;
             CheckList response = validApi.ChecksList(limit, null, null, null, null, null, null, null, null, null);
 
-            Assert.AreEqual(response.Count, 2);
+            Assert.AreEqual(response.getCount(), 2);
         }
 
         [Test]
@@ -205,8 +188,8 @@ namespace __tests__.Integration {
             includeList.Add("total_count");
 
             CheckList response = validApi.ChecksList(null, null, null, includeList);
-            Assert.Greater(response.Count, 0);
-            Assert.NotNull(response.TotalCount);
+            Assert.Greater(response.getCount(), 0);
+            Assert.NotNull(response.getTotalCount());
         }
 
         [Test]
@@ -216,7 +199,7 @@ namespace __tests__.Integration {
             dateCreated.Add("lt", lastMonth);
 
             CheckList response = validApi.ChecksList(null, null, null, null, dateCreated);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -225,7 +208,7 @@ namespace __tests__.Integration {
             metadata.Add("name", "Harry");
 
             CheckList response = validApi.ChecksList(null, null, null, null, null, metadata);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -233,7 +216,7 @@ namespace __tests__.Integration {
             Boolean scheduled = true;
 
             CheckList response = validApi.ChecksList(null, null, null, null, null, null, scheduled);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -243,7 +226,7 @@ namespace __tests__.Integration {
             sendDate.Add("lt", lastMonth.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 
             CheckList response = validApi.ChecksList(null, null, null, null, null, null, null, sendDate);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
 
         [Test]
@@ -251,14 +234,15 @@ namespace __tests__.Integration {
             MailType mailType = MailType.FirstClass;
 
             CheckList response = validApi.ChecksList(null, null, null, null, null, null, null, null, mailType);
-            Assert.GreaterOrEqual(response.Count, 0);
+            Assert.GreaterOrEqual(response.getCount(), 0);
         }
 
         [Test]
         public void CheckListTestWithSortByParameter() {
-            SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
+            SortBy5 sortBy = new SortBy5();
+            sortBy.setSendDate(SortBy5.SendDateEnum.Asc);
             CheckList response = validApi.ChecksList(null, null, null, null, null, null, null, null, null, sortBy);
-            Assert.Greater(response.Count, 0);
+            Assert.Greater(response.getCount(), 0);
         }
     }
 }

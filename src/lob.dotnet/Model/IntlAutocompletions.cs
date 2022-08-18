@@ -37,25 +37,32 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <param name="id">Unique identifier prefixed with &#x60;intl_auto_&#x60;..</param>
         /// <param name="suggestions">An array of objects representing suggested addresses. .</param>
-        public IntlAutocompletions(string id = default(string), List<IntlSuggestions> suggestions = default(List<IntlSuggestions>))
-        {
-            this.Id = id;
-            this.Suggestions = suggestions;
-        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;intl_auto_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;intl_auto_&#x60;.</value>
         [DataMember(Name = "id", EmitDefaultValue = false)]
-        public string Id { get; set; }
+        private string id;
+        public string getId() {
+            return id;
+        }
+        public void setId(string value) {
+            id = value;
+        }
 
         /// <summary>
         /// An array of objects representing suggested addresses. 
         /// </summary>
         /// <value>An array of objects representing suggested addresses. </value>
         [DataMember(Name = "suggestions", EmitDefaultValue = false)]
-        public List<IntlSuggestions> Suggestions { get; set; }
+        private List<IntlSuggestions> suggestions;
+        public List<IntlSuggestions> getSuggestions() {
+            return suggestions;
+        }
+        public void setSuggestions(List<IntlSuggestions> value) {
+            suggestions = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -65,8 +72,8 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class IntlAutocompletions {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Suggestions: ").Append(Suggestions).Append("\n");
+            sb.Append("  id: ").Append(id).Append("\n");
+            sb.Append("  suggestions: ").Append(suggestions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -77,7 +84,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -103,15 +110,15 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.id == input.getId() ||
+                    (this.id != null &&
+                    this.id.Equals(input.getId()))
                 ) && 
                 (
-                    this.Suggestions == input.Suggestions ||
-                    this.Suggestions != null &&
-                    input.Suggestions != null &&
-                    this.Suggestions.SequenceEqual(input.Suggestions)
+                    this.suggestions == input.getSuggestions() ||
+                    this.suggestions != null &&
+                    input.getSuggestions() != null &&
+                    this.suggestions.SequenceEqual(input.getSuggestions())
                 );
         }
 
@@ -124,13 +131,13 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                if (this.id != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.id.GetHashCode();
                 }
-                if (this.Suggestions != null)
+                if (this.suggestions != null)
                 {
-                    hashCode = (hashCode * 59) + this.Suggestions.GetHashCode();
+                    hashCode = (hashCode * 59) + this.suggestions.GetHashCode();
                 }
                 return hashCode;
             }
@@ -143,11 +150,11 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Id (string) pattern
-            Regex regexId = new Regex(@"^intl_auto_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexId.Match(this.Id).Success)
+            // id (string) pattern
+            Regex regexid = new Regex(@"^intl_auto_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regexid.Match(this.id).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for id, must match a pattern of " + regexid, new [] { "id" });
             }
 
             yield break;

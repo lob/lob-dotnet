@@ -82,7 +82,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>The coverage level for the country. This represents the maximum level of accuracy an input address can be verified to.  * &#x60;SUBBUILDING&#x60; - Coverage down to unit numbers. For example, in an apartment or a large building * &#x60;HOUSENUMBER/BUILDING&#x60; - Coverage down to house number. For example, the address where a house or building may be located * &#x60;STREET&#x60; - Coverage down to street. This means that we can verify that an street exists in a city, state, country * &#x60;LOCALITY&#x60; - Coverage down to city, state, or village or province. This means that we can verify that a city, village, province, or state exists in a country. Countries differ in how they define what is a province, state, city, village, etc. This attempts to group eveyrthing together. * &#x60;SPARSE&#x60; - Some addresses for this country exist in our databases </value>
         [DataMember(Name = "coverage", EmitDefaultValue = false)]
-        public CoverageEnum? Coverage { get; set; }
+        private CoverageEnum? coverage;
+        public CoverageEnum? getCoverage() {
+            return coverage;
+        }
+        public void setCoverage(CoverageEnum value) {
+            coverage = value;
+        }
         /// <summary>
         /// Summarizes the deliverability of the &#x60;intl_verification&#x60; object. Possible values are: * &#x60;deliverable&#x60; — The address is deliverable. * &#x60;deliverable_missing_info&#x60; — The address is missing some information, but is most likely deliverable. * &#x60;undeliverable&#x60; — The address is most likely not deliverable. Some components of the address (such as city or postal code) may have been found. * &#x60;no_match&#x60; — This address is not deliverable. No matching street could be found within the city or postal code. 
         /// </summary>
@@ -126,7 +132,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Summarizes the deliverability of the &#x60;intl_verification&#x60; object. Possible values are: * &#x60;deliverable&#x60; — The address is deliverable. * &#x60;deliverable_missing_info&#x60; — The address is missing some information, but is most likely deliverable. * &#x60;undeliverable&#x60; — The address is most likely not deliverable. Some components of the address (such as city or postal code) may have been found. * &#x60;no_match&#x60; — This address is not deliverable. No matching street could be found within the city or postal code. </value>
         [DataMember(Name = "deliverability", EmitDefaultValue = false)]
-        public DeliverabilityEnum? Deliverability { get; set; }
+        private DeliverabilityEnum? deliverability;
+        public DeliverabilityEnum? getDeliverability() {
+            return deliverability;
+        }
+        public void setDeliverability(DeliverabilityEnum value) {
+            deliverability = value;
+        }
         /// <summary>
         /// The status level for the country. This represents the maximum level of accuracy an input address can be verified to.  * &#x60;LV4&#x60; - Verified. The input data is correct. All input data was able to match in databases. * &#x60;LV3&#x60; - Verified. The input data is correct. All input data was able to match in databases &lt;em&gt;after&lt;/em&gt; some or all elements were standarized. The input data may also be using outdated city, state, or country names. * &#x60;LV2&#x60; - Verified. The input data is correct although some input data is unverifiable due to incomplete data. * &#x60;LV1&#x60; - Verified. The input data is acceptable but in an attempt to standarize user input, errors were introduced. * &#x60;LF4&#x60; - Fixed. The input data is matched and fixed. (Example: Brighon, UK -&gt; Brighton, UK) * &#x60;LF3&#x60; - Fixed. The input data is matched and fixed but some elements such as Subbuilding number and house number cannot be checked. * &#x60;LF2&#x60; - Fixed. The input data is matched but some elements such as Street cannot be checked. * &#x60;LF1&#x60; - Fixed. The input data is acceptable but in an attempt to standarize user input, errors were introduced. * &#x60;LM4&#x60; - Missing Info. The input data cannot be corrected completely. * &#x60;LM3&#x60; - Missing Info. The input data cannot be corrected completely and there were multiple matches found in databases. * &#x60;LM2&#x60; - Missing Info. The input data cannot be corrected completely and only some elements were found. * &#x60;LU1&#x60; - Unverified. The input data cannot be corrected or matched. 
         /// </summary>
@@ -226,7 +238,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>The status level for the country. This represents the maximum level of accuracy an input address can be verified to.  * &#x60;LV4&#x60; - Verified. The input data is correct. All input data was able to match in databases. * &#x60;LV3&#x60; - Verified. The input data is correct. All input data was able to match in databases &lt;em&gt;after&lt;/em&gt; some or all elements were standarized. The input data may also be using outdated city, state, or country names. * &#x60;LV2&#x60; - Verified. The input data is correct although some input data is unverifiable due to incomplete data. * &#x60;LV1&#x60; - Verified. The input data is acceptable but in an attempt to standarize user input, errors were introduced. * &#x60;LF4&#x60; - Fixed. The input data is matched and fixed. (Example: Brighon, UK -&gt; Brighton, UK) * &#x60;LF3&#x60; - Fixed. The input data is matched and fixed but some elements such as Subbuilding number and house number cannot be checked. * &#x60;LF2&#x60; - Fixed. The input data is matched but some elements such as Street cannot be checked. * &#x60;LF1&#x60; - Fixed. The input data is acceptable but in an attempt to standarize user input, errors were introduced. * &#x60;LM4&#x60; - Missing Info. The input data cannot be corrected completely. * &#x60;LM3&#x60; - Missing Info. The input data cannot be corrected completely and there were multiple matches found in databases. * &#x60;LM2&#x60; - Missing Info. The input data cannot be corrected completely and only some elements were found. * &#x60;LU1&#x60; - Unverified. The input data cannot be corrected or matched. </value>
         [DataMember(Name = "status", EmitDefaultValue = false)]
-        public StatusEnum? Status { get; set; }
+        private StatusEnum? status;
+        public StatusEnum? getStatus() {
+            return status;
+        }
+        public void setStatus(StatusEnum value) {
+            status = value;
+        }
         /// <summary>
         /// Value is resource type.
         /// </summary>
@@ -249,7 +267,13 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Value is resource type.</value>
         [DataMember(Name = "object", EmitDefaultValue = false)]
-        public ObjectEnum? Object { get; set; }
+        private ObjectEnum? _object;
+        public ObjectEnum? getObject() {
+            return _object;
+        }
+        public void setObject(ObjectEnum value) {
+            _object = value;
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="IntlVerification" /> class.
         /// </summary>
@@ -264,68 +288,96 @@ namespace lob.dotnet.Model
         /// <param name="status">The status level for the country. This represents the maximum level of accuracy an input address can be verified to.  * &#x60;LV4&#x60; - Verified. The input data is correct. All input data was able to match in databases. * &#x60;LV3&#x60; - Verified. The input data is correct. All input data was able to match in databases &lt;em&gt;after&lt;/em&gt; some or all elements were standarized. The input data may also be using outdated city, state, or country names. * &#x60;LV2&#x60; - Verified. The input data is correct although some input data is unverifiable due to incomplete data. * &#x60;LV1&#x60; - Verified. The input data is acceptable but in an attempt to standarize user input, errors were introduced. * &#x60;LF4&#x60; - Fixed. The input data is matched and fixed. (Example: Brighon, UK -&gt; Brighton, UK) * &#x60;LF3&#x60; - Fixed. The input data is matched and fixed but some elements such as Subbuilding number and house number cannot be checked. * &#x60;LF2&#x60; - Fixed. The input data is matched but some elements such as Street cannot be checked. * &#x60;LF1&#x60; - Fixed. The input data is acceptable but in an attempt to standarize user input, errors were introduced. * &#x60;LM4&#x60; - Missing Info. The input data cannot be corrected completely. * &#x60;LM3&#x60; - Missing Info. The input data cannot be corrected completely and there were multiple matches found in databases. * &#x60;LM2&#x60; - Missing Info. The input data cannot be corrected completely and only some elements were found. * &#x60;LU1&#x60; - Unverified. The input data cannot be corrected or matched. .</param>
         /// <param name="components">components.</param>
         /// <param name="_object">Value is resource type. (default to ObjectEnum.IntlVerification).</param>
-        public IntlVerification(string id = default(string), string recipient = default(string), string primaryLine = default(string), string secondaryLine = default(string), string lastLine = default(string), string country = default(string), CoverageEnum? coverage = default(CoverageEnum?), DeliverabilityEnum? deliverability = default(DeliverabilityEnum?), StatusEnum? status = default(StatusEnum?), IntlComponents components = default(IntlComponents), ObjectEnum? _object = ObjectEnum.IntlVerification)
-        {
-            this.Id = id;
-            this.Recipient = recipient;
-            this.PrimaryLine = primaryLine;
-            this.SecondaryLine = secondaryLine;
-            this.LastLine = lastLine;
-            this.Country = country;
-            this.Coverage = coverage;
-            this.Deliverability = deliverability;
-            this.Status = status;
-            this.Components = components;
-            this.Object = _object;
-        }
 
         /// <summary>
         /// Unique identifier prefixed with &#x60;intl_ver_&#x60;.
         /// </summary>
         /// <value>Unique identifier prefixed with &#x60;intl_ver_&#x60;.</value>
         [DataMember(Name = "id", EmitDefaultValue = false)]
-        public string Id { get; set; }
+        private string id;
+        public string getId() {
+            return id;
+        }
+        public void setId(string value) {
+            id = value;
+        }
 
         /// <summary>
         /// The intended recipient, typically a person&#39;s or firm&#39;s name.
         /// </summary>
         /// <value>The intended recipient, typically a person&#39;s or firm&#39;s name.</value>
         [DataMember(Name = "recipient", EmitDefaultValue = true)]
-        public string Recipient { get; set; }
+        private string recipient;
+        public string getRecipient() {
+            return recipient;
+        }
+        public void setRecipient(string value) {
+            recipient = value;
+        }
 
         /// <summary>
         /// The primary delivery line (usually the street address) of the address. 
         /// </summary>
         /// <value>The primary delivery line (usually the street address) of the address. </value>
         [DataMember(Name = "primary_line", EmitDefaultValue = false)]
-        public string PrimaryLine { get; set; }
+        private string primaryLine;
+        public string getPrimaryLine() {
+            return primaryLine;
+        }
+        public void setPrimaryLine(string value) {
+            primaryLine = value;
+        }
 
         /// <summary>
         /// The secondary delivery line of the address. This field is typically empty but may contain information if &#x60;primary_line&#x60; is too long. 
         /// </summary>
         /// <value>The secondary delivery line of the address. This field is typically empty but may contain information if &#x60;primary_line&#x60; is too long. </value>
         [DataMember(Name = "secondary_line", EmitDefaultValue = false)]
-        public string SecondaryLine { get; set; }
+        private string secondaryLine;
+        public string getSecondaryLine() {
+            return secondaryLine;
+        }
+        public void setSecondaryLine(string value) {
+            secondaryLine = value;
+        }
 
         /// <summary>
         /// Combination of the following applicable &#x60;components&#x60;: * &#x60;city&#x60; * &#x60;state&#x60; * &#x60;zip_code&#x60; * &#x60;zip_code_plus_4&#x60; 
         /// </summary>
         /// <value>Combination of the following applicable &#x60;components&#x60;: * &#x60;city&#x60; * &#x60;state&#x60; * &#x60;zip_code&#x60; * &#x60;zip_code_plus_4&#x60; </value>
         [DataMember(Name = "last_line", EmitDefaultValue = false)]
-        public string LastLine { get; set; }
+        private string lastLine;
+        public string getLastLine() {
+            return lastLine;
+        }
+        public void setLastLine(string value) {
+            lastLine = value;
+        }
 
         /// <summary>
         /// The country of the address. Will be returned as a 2 letter country short-name code (ISO 3166).
         /// </summary>
         /// <value>The country of the address. Will be returned as a 2 letter country short-name code (ISO 3166).</value>
         [DataMember(Name = "country", EmitDefaultValue = false)]
-        public string Country { get; set; }
+        private string country;
+        public string getCountry() {
+            return country;
+        }
+        public void setCountry(string value) {
+            country = value;
+        }
 
         /// <summary>
         /// Gets or Sets Components
         /// </summary>
         [DataMember(Name = "components", EmitDefaultValue = false)]
-        public IntlComponents Components { get; set; }
+        private IntlComponents components;
+        public IntlComponents getComponents() {
+            return components;
+        }
+        public void setComponents(IntlComponents value) {
+            components = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -335,17 +387,17 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class IntlVerification {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Recipient: ").Append(Recipient).Append("\n");
-            sb.Append("  PrimaryLine: ").Append(PrimaryLine).Append("\n");
-            sb.Append("  SecondaryLine: ").Append(SecondaryLine).Append("\n");
-            sb.Append("  LastLine: ").Append(LastLine).Append("\n");
-            sb.Append("  Country: ").Append(Country).Append("\n");
-            sb.Append("  Coverage: ").Append(Coverage).Append("\n");
-            sb.Append("  Deliverability: ").Append(Deliverability).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Components: ").Append(Components).Append("\n");
-            sb.Append("  Object: ").Append(Object).Append("\n");
+            sb.Append("  id: ").Append(id).Append("\n");
+            sb.Append("  recipient: ").Append(recipient).Append("\n");
+            sb.Append("  primaryLine: ").Append(primaryLine).Append("\n");
+            sb.Append("  secondaryLine: ").Append(secondaryLine).Append("\n");
+            sb.Append("  lastLine: ").Append(lastLine).Append("\n");
+            sb.Append("  country: ").Append(country).Append("\n");
+            sb.Append("  coverage: ").Append(coverage).Append("\n");
+            sb.Append("  deliverability: ").Append(deliverability).Append("\n");
+            sb.Append("  status: ").Append(status).Append("\n");
+            sb.Append("  components: ").Append(components).Append("\n");
+            sb.Append("  _object: ").Append(_object).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -356,7 +408,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -382,55 +434,55 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.id == input.getId() ||
+                    (this.id != null &&
+                    this.id.Equals(input.getId()))
                 ) && 
                 (
-                    this.Recipient == input.Recipient ||
-                    (this.Recipient != null &&
-                    this.Recipient.Equals(input.Recipient))
+                    this.recipient == input.getRecipient() ||
+                    (this.recipient != null &&
+                    this.recipient.Equals(input.getRecipient()))
                 ) && 
                 (
-                    this.PrimaryLine == input.PrimaryLine ||
-                    (this.PrimaryLine != null &&
-                    this.PrimaryLine.Equals(input.PrimaryLine))
+                    this.primaryLine == input.getPrimaryLine() ||
+                    (this.primaryLine != null &&
+                    this.primaryLine.Equals(input.getPrimaryLine()))
                 ) && 
                 (
-                    this.SecondaryLine == input.SecondaryLine ||
-                    (this.SecondaryLine != null &&
-                    this.SecondaryLine.Equals(input.SecondaryLine))
+                    this.secondaryLine == input.getSecondaryLine() ||
+                    (this.secondaryLine != null &&
+                    this.secondaryLine.Equals(input.getSecondaryLine()))
                 ) && 
                 (
-                    this.LastLine == input.LastLine ||
-                    (this.LastLine != null &&
-                    this.LastLine.Equals(input.LastLine))
+                    this.lastLine == input.getLastLine() ||
+                    (this.lastLine != null &&
+                    this.lastLine.Equals(input.getLastLine()))
                 ) && 
                 (
-                    this.Country == input.Country ||
-                    (this.Country != null &&
-                    this.Country.Equals(input.Country))
+                    this.country == input.getCountry() ||
+                    (this.country != null &&
+                    this.country.Equals(input.getCountry()))
                 ) && 
                 (
-                    this.Coverage == input.Coverage ||
-                    this.Coverage.Equals(input.Coverage)
+                    this.coverage == input.getCoverage() ||
+                    this.coverage.Equals(input.getCoverage())
                 ) && 
                 (
-                    this.Deliverability == input.Deliverability ||
-                    this.Deliverability.Equals(input.Deliverability)
+                    this.deliverability == input.getDeliverability() ||
+                    this.deliverability.Equals(input.getDeliverability())
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    this.Status.Equals(input.Status)
+                    this.status == input.getStatus() ||
+                    this.status.Equals(input.getStatus())
                 ) && 
                 (
-                    this.Components == input.Components ||
-                    (this.Components != null &&
-                    this.Components.Equals(input.Components))
+                    this.components == input.getComponents() ||
+                    (this.components != null &&
+                    this.components.Equals(input.getComponents()))
                 ) && 
                 (
-                    this.Object == input.Object ||
-                    this.Object.Equals(input.Object)
+                    this._object == input.getObject() ||
+                    this._object.Equals(input.getObject())
                 );
         }
 
@@ -443,38 +495,38 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                if (this.id != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.id.GetHashCode();
                 }
-                if (this.Recipient != null)
+                if (this.recipient != null)
                 {
-                    hashCode = (hashCode * 59) + this.Recipient.GetHashCode();
+                    hashCode = (hashCode * 59) + this.recipient.GetHashCode();
                 }
-                if (this.PrimaryLine != null)
+                if (this.primaryLine != null)
                 {
-                    hashCode = (hashCode * 59) + this.PrimaryLine.GetHashCode();
+                    hashCode = (hashCode * 59) + this.primaryLine.GetHashCode();
                 }
-                if (this.SecondaryLine != null)
+                if (this.secondaryLine != null)
                 {
-                    hashCode = (hashCode * 59) + this.SecondaryLine.GetHashCode();
+                    hashCode = (hashCode * 59) + this.secondaryLine.GetHashCode();
                 }
-                if (this.LastLine != null)
+                if (this.lastLine != null)
                 {
-                    hashCode = (hashCode * 59) + this.LastLine.GetHashCode();
+                    hashCode = (hashCode * 59) + this.lastLine.GetHashCode();
                 }
-                if (this.Country != null)
+                if (this.country != null)
                 {
-                    hashCode = (hashCode * 59) + this.Country.GetHashCode();
+                    hashCode = (hashCode * 59) + this.country.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Coverage.GetHashCode();
-                hashCode = (hashCode * 59) + this.Deliverability.GetHashCode();
-                hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                if (this.Components != null)
+                hashCode = (hashCode * 59) + this.coverage.GetHashCode();
+                hashCode = (hashCode * 59) + this.deliverability.GetHashCode();
+                hashCode = (hashCode * 59) + this.status.GetHashCode();
+                if (this.components != null)
                 {
-                    hashCode = (hashCode * 59) + this.Components.GetHashCode();
+                    hashCode = (hashCode * 59) + this.components.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Object.GetHashCode();
+                hashCode = (hashCode * 59) + this._object.GetHashCode();
                 return hashCode;
             }
         }
@@ -486,29 +538,29 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Id (string) pattern
-            Regex regexId = new Regex(@"^intl_ver_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
-            if (false == regexId.Match(this.Id).Success)
+            // id (string) pattern
+            Regex regexid = new Regex(@"^intl_ver_[a-zA-Z0-9]+$", RegexOptions.CultureInvariant);
+            if (false == regexid.Match(this.id).Success)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for id, must match a pattern of " + regexid, new [] { "id" });
             }
 
-            // Recipient (string) maxLength
-            if (this.Recipient != null && this.Recipient.Length > 500)
+            // recipient (string) maxLength
+            if (this.recipient != null && this.recipient.Length > 500)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Recipient, length must be less than 500.", new [] { "Recipient" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for recipient, length must be less than 500.", new [] { "recipient" });
             }
 
-            // PrimaryLine (string) maxLength
-            if (this.PrimaryLine != null && this.PrimaryLine.Length > 200)
+            // primaryLine (string) maxLength
+            if (this.primaryLine != null && this.primaryLine.Length > 200)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PrimaryLine, length must be less than 200.", new [] { "PrimaryLine" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for primaryLine, length must be less than 200.", new [] { "primaryLine" });
             }
 
-            // SecondaryLine (string) maxLength
-            if (this.SecondaryLine != null && this.SecondaryLine.Length > 500)
+            // secondaryLine (string) maxLength
+            if (this.secondaryLine != null && this.secondaryLine.Length > 500)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SecondaryLine, length must be less than 500.", new [] { "SecondaryLine" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for secondaryLine, length must be less than 500.", new [] { "secondaryLine" });
             }
 
             yield break;

@@ -36,36 +36,38 @@ namespace lob.dotnet.Model
         /// Initializes a new instance of the <see cref="BillingGroupEditable" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected BillingGroupEditable() { }
+        public BillingGroupEditable() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="BillingGroupEditable" /> class.
         /// </summary>
         /// <param name="description">Description of the billing group..</param>
         /// <param name="name">Name of the billing group. (required).</param>
-        public BillingGroupEditable(string description = default(string), string name = default(string))
-        {
-            // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for BillingGroupEditable and cannot be null");
-            }
-            this.Name = name;
-            this.Description = description;
-        }
 
         /// <summary>
         /// Description of the billing group.
         /// </summary>
         /// <value>Description of the billing group.</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
-        public string Description { get; set; }
+        private string description;
+        public string getDescription() {
+            return description;
+        }
+        public void setDescription(string value) {
+            description = value;
+        }
 
         /// <summary>
         /// Name of the billing group.
         /// </summary>
         /// <value>Name of the billing group.</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
-        public string Name { get; set; }
+        private string name;
+        public string getName() {
+            return name;
+        }
+        public void setName(string value) {
+            name = value;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -75,8 +77,8 @@ namespace lob.dotnet.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class BillingGroupEditable {\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  description: ").Append(description).Append("\n");
+            sb.Append("  name: ").Append(name).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -87,7 +89,7 @@ namespace lob.dotnet.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -113,14 +115,14 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.description == input.getDescription() ||
+                    (this.description != null &&
+                    this.description.Equals(input.getDescription()))
                 ) && 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.name == input.getName() ||
+                    (this.name != null &&
+                    this.name.Equals(input.getName()))
                 );
         }
 
@@ -133,13 +135,13 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Description != null)
+                if (this.description != null)
                 {
-                    hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                    hashCode = (hashCode * 59) + this.description.GetHashCode();
                 }
-                if (this.Name != null)
+                if (this.name != null)
                 {
-                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                    hashCode = (hashCode * 59) + this.name.GetHashCode();
                 }
                 return hashCode;
             }
@@ -152,16 +154,16 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
-            // Description (string) maxLength
-            if (this.Description != null && this.Description.Length > 255)
+            // description (string) maxLength
+            if (this.description != null && this.description.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 255.", new [] { "Description" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for description, length must be less than 255.", new [] { "description" });
             }
 
-            // Name (string) maxLength
-            if (this.Name != null && this.Name.Length > 255)
+            // name (string) maxLength
+            if (this.name != null && this.name.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 255.", new [] { "Name" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for name, length must be less than 255.", new [] { "name" });
             }
 
             yield break;
