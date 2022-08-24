@@ -37,10 +37,18 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <param name="returnEnvelope">returnEnvelope.</param>
         /// <param name="addressDomestic">addressDomestic.</param>
-        public PlaceholderModel(ReturnEnvelope returnEnvelope = default(ReturnEnvelope), AddressDomestic addressDomestic = default(AddressDomestic))
+        /// <param name="letterDetailsWritable">letterDetailsWritable.</param>
+        /// <param name="postcardDetailsWritable">postcardDetailsWritable.</param>
+        /// <param name="letterDetailsReturned">letterDetailsReturned.</param>
+        /// <param name="postcardDetailsReturned">postcardDetailsReturned.</param>
+        public PlaceholderModel(ReturnEnvelope returnEnvelope = default(ReturnEnvelope), AddressDomestic addressDomestic = default(AddressDomestic), LetterDetailsWritable letterDetailsWritable = default(LetterDetailsWritable), PostcardDetailsWritable postcardDetailsWritable = default(PostcardDetailsWritable), LetterDetailsReturned letterDetailsReturned = default(LetterDetailsReturned), PostcardDetailsReturned postcardDetailsReturned = default(PostcardDetailsReturned))
         {
             this.ReturnEnvelope = returnEnvelope;
             this.AddressDomestic = addressDomestic;
+            this.LetterDetailsWritable = letterDetailsWritable;
+            this.PostcardDetailsWritable = postcardDetailsWritable;
+            this.LetterDetailsReturned = letterDetailsReturned;
+            this.PostcardDetailsReturned = postcardDetailsReturned;
         }
 
         /// <summary>
@@ -56,6 +64,30 @@ namespace lob.dotnet.Model
         public AddressDomestic AddressDomestic { get; set; }
 
         /// <summary>
+        /// Gets or Sets LetterDetailsWritable
+        /// </summary>
+        [DataMember(Name = "letter_details_writable", EmitDefaultValue = false)]
+        public LetterDetailsWritable LetterDetailsWritable { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PostcardDetailsWritable
+        /// </summary>
+        [DataMember(Name = "postcard_details_writable", EmitDefaultValue = false)]
+        public PostcardDetailsWritable PostcardDetailsWritable { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LetterDetailsReturned
+        /// </summary>
+        [DataMember(Name = "letter_details_returned", EmitDefaultValue = false)]
+        public LetterDetailsReturned LetterDetailsReturned { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PostcardDetailsReturned
+        /// </summary>
+        [DataMember(Name = "postcard_details_returned", EmitDefaultValue = false)]
+        public PostcardDetailsReturned PostcardDetailsReturned { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -65,6 +97,10 @@ namespace lob.dotnet.Model
             sb.Append("class PlaceholderModel {\n");
             sb.Append("  ReturnEnvelope: ").Append(ReturnEnvelope).Append("\n");
             sb.Append("  AddressDomestic: ").Append(AddressDomestic).Append("\n");
+            sb.Append("  LetterDetailsWritable: ").Append(LetterDetailsWritable).Append("\n");
+            sb.Append("  PostcardDetailsWritable: ").Append(PostcardDetailsWritable).Append("\n");
+            sb.Append("  LetterDetailsReturned: ").Append(LetterDetailsReturned).Append("\n");
+            sb.Append("  PostcardDetailsReturned: ").Append(PostcardDetailsReturned).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -109,6 +145,26 @@ namespace lob.dotnet.Model
                     this.AddressDomestic == input.AddressDomestic ||
                     (this.AddressDomestic != null &&
                     this.AddressDomestic.Equals(input.AddressDomestic))
+                ) && 
+                (
+                    this.LetterDetailsWritable == input.LetterDetailsWritable ||
+                    (this.LetterDetailsWritable != null &&
+                    this.LetterDetailsWritable.Equals(input.LetterDetailsWritable))
+                ) && 
+                (
+                    this.PostcardDetailsWritable == input.PostcardDetailsWritable ||
+                    (this.PostcardDetailsWritable != null &&
+                    this.PostcardDetailsWritable.Equals(input.PostcardDetailsWritable))
+                ) && 
+                (
+                    this.LetterDetailsReturned == input.LetterDetailsReturned ||
+                    (this.LetterDetailsReturned != null &&
+                    this.LetterDetailsReturned.Equals(input.LetterDetailsReturned))
+                ) && 
+                (
+                    this.PostcardDetailsReturned == input.PostcardDetailsReturned ||
+                    (this.PostcardDetailsReturned != null &&
+                    this.PostcardDetailsReturned.Equals(input.PostcardDetailsReturned))
                 );
         }
 
@@ -128,6 +184,22 @@ namespace lob.dotnet.Model
                 if (this.AddressDomestic != null)
                 {
                     hashCode = (hashCode * 59) + this.AddressDomestic.GetHashCode();
+                }
+                if (this.LetterDetailsWritable != null)
+                {
+                    hashCode = (hashCode * 59) + this.LetterDetailsWritable.GetHashCode();
+                }
+                if (this.PostcardDetailsWritable != null)
+                {
+                    hashCode = (hashCode * 59) + this.PostcardDetailsWritable.GetHashCode();
+                }
+                if (this.LetterDetailsReturned != null)
+                {
+                    hashCode = (hashCode * 59) + this.LetterDetailsReturned.GetHashCode();
+                }
+                if (this.PostcardDetailsReturned != null)
+                {
+                    hashCode = (hashCode * 59) + this.PostcardDetailsReturned.GetHashCode();
                 }
                 return hashCode;
             }

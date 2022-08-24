@@ -27,7 +27,6 @@ namespace __tests__.Integration {
         private List<string> idsToDelete;
 
         private Address address1;
-        private Address address2;
         private AddressesApi validAddressesApi;
         private BankAccount bankAccount;
         private BankAccountsApi validBankAccountsApi;
@@ -78,28 +77,28 @@ namespace __tests__.Integration {
                 null // metadata
             );
 
-            AddressEditable addressEditable2 = new AddressEditable(
-                "001 CEMETERY LN", // addressLine1
-                "SUITE 666", // addressLine2
-                "WESTFIELD", // addressCity
-                "NJ", // addressState
-                "07000", // addressZip
-                CountryExtended.US, // addressCountry
-                null, // description
-                "FESTER", // name
-                null, // company
-                null, // phone
-                null, // email
+            AddressDomestic addressEditable2 = new AddressDomestic(
+                "210 King St", // addressLine1
+                "# 6100", // addressLine2
+                "San Francisco", // addressCity
+                "CA", // addressState
+                "94107", // addressZip
+                "Harry - Office", // description
+                "Harry Zhang", // name
+                "Lob", // company
+                "5555555555", // phone
+                "harry@lob.com", // email
+                "US", // addressCountry
                 null // metadata
             );
 
             validAddressesApi = new AddressesApi(config);
             address1 = validAddressesApi.AddressCreate(addressEditable1);
-            address2 = validAddressesApi.AddressCreate(addressEditable2);
+            string address2 = addressEditable2.ToJson();
 
             checkEditable = new CheckEditable(
                 address1.Id, // from
-                address2.Id, // to
+                address2, // to
                 bankAccount.Id, // bankAccount
                 100, // amount
                 null, // logo
@@ -115,12 +114,13 @@ namespace __tests__.Integration {
         {
             validBankAccountsApi.BankAccountDelete(bankAccount.Id);
             validAddressesApi.AddressDelete(address1.Id);
-            validAddressesApi.AddressDelete(address2.Id);
             idsToDelete.ForEach(id => validApi.CheckCancel(id));
         }
 
         [Test]
         public void CheckCreateTest() {
+            checkEditable.CheckNumber = 2;
+            checkEditable.SendDate = DateTime.Now.AddDays(34);
             Check response = validApi.CheckCreate(checkEditable);
 
             Assert.NotNull(response.Id);

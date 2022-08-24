@@ -79,7 +79,7 @@ namespace lob.dotnet.Model
         /// <param name="_object">Value is resource type. (default to ObjectEnum.SelfMailer).</param>
         /// <param name="trackingEvents">An array of certified tracking events ordered by ascending &#x60;time&#x60;. Not populated in test mode..</param>
         /// <param name="url">A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated. (required).</param>
-        public SelfMailer(string id = default(string), Address to = default(Address), AddressDomesticExpanded from = default(AddressDomesticExpanded), SelfMailerSize size = default(SelfMailerSize), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string outsideTemplateId = default(string), string insideTemplateId = default(string), string outsideTemplateVersionId = default(string), string insideTemplateVersionId = default(string), ObjectEnum? _object = ObjectEnum.SelfMailer, List<TrackingEventCertified> trackingEvents = default(List<TrackingEventCertified>), string url = default(string))
+        public SelfMailer(string id = default(string), Object to = default(Object), Object from = default(Object), SelfMailerSize size = default(SelfMailerSize), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string outsideTemplateId = default(string), string insideTemplateId = default(string), string outsideTemplateVersionId = default(string), string insideTemplateVersionId = default(string), ObjectEnum? _object = ObjectEnum.SelfMailer, List<TrackingEventCertified> trackingEvents = default(List<TrackingEventCertified>), string url = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -124,14 +124,14 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets To
         /// </summary>
-        [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = false)]
-        public Address To { get; set; }
+        [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = true)]
+        public Object To { get; set; }
 
         /// <summary>
         /// Gets or Sets From
         /// </summary>
-        [DataMember(Name = "from", EmitDefaultValue = false)]
-        public AddressDomesticExpanded From { get; set; }
+        [DataMember(Name = "from", EmitDefaultValue = true)]
+        public Object From { get; set; }
 
         /// <summary>
         /// Gets or Sets Size
