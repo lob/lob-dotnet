@@ -42,7 +42,7 @@ namespace __tests__.Integration {
             invalidApi = new PostcardsApi(invalidConfig);
 
             AddressEditable addressEditable = new AddressEditable(
-                null, // addressLine1
+                "1313 CEMETERY LN", // addressLine1
                 null, // addressLine2
                 "WESTFIELD", // addressCity
                 "NJ", // addressState
