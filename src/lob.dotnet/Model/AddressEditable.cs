@@ -74,26 +74,26 @@ namespace lob.dotnet.Model
         /// The suite or apartment number of the recipient address, if applicable. For US addresses, the max length is 64 characters.
         /// </summary>
         /// <value>The suite or apartment number of the recipient address, if applicable. For US addresses, the max length is 64 characters.</value>
-        [DataMember(Name = "address_line2", EmitDefaultValue = true)]
+        [DataMember(Name = "address_line2", EmitDefaultValue = false)]
         public string AddressLine2 { get; set; }
 
         /// <summary>
         /// Gets or Sets AddressCity
         /// </summary>
-        [DataMember(Name = "address_city", EmitDefaultValue = true)]
+        [DataMember(Name = "address_city", EmitDefaultValue = false)]
         public string AddressCity { get; set; }
 
         /// <summary>
         /// Gets or Sets AddressState
         /// </summary>
-        [DataMember(Name = "address_state", EmitDefaultValue = true)]
+        [DataMember(Name = "address_state", EmitDefaultValue = false)]
         public string AddressState { get; set; }
 
         /// <summary>
         /// Optional postal code. For US addresses, must be either 5 or 9 digits.
         /// </summary>
         /// <value>Optional postal code. For US addresses, must be either 5 or 9 digits.</value>
-        [DataMember(Name = "address_zip", EmitDefaultValue = true)]
+        [DataMember(Name = "address_zip", EmitDefaultValue = false)]
         public string AddressZip { get; set; }
 
         /// <summary>
@@ -106,35 +106,35 @@ namespace lob.dotnet.Model
         /// An internal description that identifies this resource. Must be no longer than 255 characters. 
         /// </summary>
         /// <value>An internal description that identifies this resource. Must be no longer than 255 characters. </value>
-        [DataMember(Name = "description", EmitDefaultValue = true)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// name associated with address.
         /// </summary>
         /// <value>name associated with address.</value>
-        [DataMember(Name = "name", EmitDefaultValue = true)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Either &#x60;name&#x60; or &#x60;company&#x60; is required, you may also add both.
         /// </summary>
         /// <value>Either &#x60;name&#x60; or &#x60;company&#x60; is required, you may also add both.</value>
-        [DataMember(Name = "company", EmitDefaultValue = true)]
+        [DataMember(Name = "company", EmitDefaultValue = false)]
         public string Company { get; set; }
 
         /// <summary>
         /// Must be no longer than 40 characters.
         /// </summary>
         /// <value>Must be no longer than 40 characters.</value>
-        [DataMember(Name = "phone", EmitDefaultValue = true)]
+        [DataMember(Name = "phone", EmitDefaultValue = false)]
         public string Phone { get; set; }
 
         /// <summary>
         /// Must be no longer than 100 characters.
         /// </summary>
         /// <value>Must be no longer than 100 characters.</value>
-        [DataMember(Name = "email", EmitDefaultValue = true)]
+        [DataMember(Name = "email", EmitDefaultValue = false)]
         public string Email { get; set; }
 
         /// <summary>

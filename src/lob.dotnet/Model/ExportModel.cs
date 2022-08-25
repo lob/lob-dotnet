@@ -27,44 +27,54 @@ using OpenAPIDateConverter = lob.dotnet.Client.OpenAPIDateConverter;
 namespace lob.dotnet.Model
 {
     /// <summary>
-    /// IntlVerifications
+    /// ExportModel
     /// </summary>
-    [DataContract(Name = "intl_verifications")]
-    public partial class IntlVerifications : IEquatable<IntlVerifications>, IValidatableObject
+    [DataContract(Name = "export_model")]
+    public partial class ExportModel : IEquatable<ExportModel>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="IntlVerifications" /> class.
+        /// Defines Type
         /// </summary>
-        [JsonConstructorAttribute]
-        protected IntlVerifications() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="IntlVerifications" /> class.
-        /// </summary>
-        /// <param name="addresses">addresses (required).</param>
-        /// <param name="errors">Indicates whether any errors occurred during the verification process. (required).</param>
-        public IntlVerifications(List<IntlVerificationOrError> addresses = default(List<IntlVerificationOrError>), bool errors = default(bool))
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TypeEnum
         {
-            // to ensure "addresses" is required (not null)
-            if (addresses == null)
-            {
-                throw new ArgumentNullException("addresses is a required property for IntlVerifications and cannot be null");
-            }
-            this.Addresses = addresses;
-            this.Errors = errors;
+            /// <summary>
+            /// Enum All for value: all
+            /// </summary>
+            [EnumMember(Value = "all")]
+            All = 1,
+            
+
+            /// <summary>
+            /// Enum Failures for value: failures
+            /// </summary>
+            [EnumMember(Value = "failures")]
+            Failures = 2,
+            
+
+            /// <summary>
+            /// Enum Successes for value: successes
+            /// </summary>
+            [EnumMember(Value = "successes")]
+            Successes = 3
+            
+
         }
 
-        /// <summary>
-        /// Gets or Sets Addresses
-        /// </summary>
-        [DataMember(Name = "addresses", IsRequired = true, EmitDefaultValue = false)]
-        public List<IntlVerificationOrError> Addresses { get; set; }
 
         /// <summary>
-        /// Indicates whether any errors occurred during the verification process.
+        /// Gets or Sets Type
         /// </summary>
-        /// <value>Indicates whether any errors occurred during the verification process.</value>
-        [DataMember(Name = "errors", IsRequired = true, EmitDefaultValue = false)]
-        public bool Errors { get; set; }
+        [DataMember(Name = "type", EmitDefaultValue = false)]
+        public TypeEnum? Type { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ExportModel" /> class.
+        /// </summary>
+        /// <param name="type">type.</param>
+        public ExportModel(TypeEnum? type = default(TypeEnum?))
+        {
+            this.Type = type;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,9 +83,8 @@ namespace lob.dotnet.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class IntlVerifications {\n");
-            sb.Append("  Addresses: ").Append(Addresses).Append("\n");
-            sb.Append("  Errors: ").Append(Errors).Append("\n");
+            sb.Append("class ExportModel {\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -96,15 +105,15 @@ namespace lob.dotnet.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as IntlVerifications);
+            return this.Equals(input as ExportModel);
         }
 
         /// <summary>
-        /// Returns true if IntlVerifications instances are equal
+        /// Returns true if ExportModel instances are equal
         /// </summary>
-        /// <param name="input">Instance of IntlVerifications to be compared</param>
+        /// <param name="input">Instance of ExportModel to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(IntlVerifications input)
+        public bool Equals(ExportModel input)
         {
             if (input == null)
             {
@@ -112,14 +121,8 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.Addresses == input.Addresses ||
-                    this.Addresses != null &&
-                    input.Addresses != null &&
-                    this.Addresses.SequenceEqual(input.Addresses)
-                ) && 
-                (
-                    this.Errors == input.Errors ||
-                    this.Errors.Equals(input.Errors)
+                    this.Type == input.Type ||
+                    this.Type.Equals(input.Type)
                 );
         }
 
@@ -132,11 +135,7 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Addresses != null)
-                {
-                    hashCode = (hashCode * 59) + this.Addresses.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.Errors.GetHashCode();
+                hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 return hashCode;
             }
         }

@@ -610,7 +610,7 @@ namespace lob.dotnet.Model
         /// Designates whether or not the address is the default address for a building containing multiple delivery points. 
         /// </summary>
         /// <value>Designates whether or not the address is the default address for a building containing multiple delivery points. </value>
-        [DataMember(Name = "default_building_address", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "default_building_address", IsRequired = true, EmitDefaultValue = false)]
         public bool DefaultBuildingAddress { get; set; }
 
         /// <summary>
@@ -638,14 +638,14 @@ namespace lob.dotnet.Model
         /// A positive or negative decimal indicating the geographic latitude of the address, specifying the north-to-south position of a location. This should be used with &#x60;longitude&#x60; to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is &#x60;AA&#x60;, &#x60;AE&#x60;, or &#x60;AP&#x60;). 
         /// </summary>
         /// <value>A positive or negative decimal indicating the geographic latitude of the address, specifying the north-to-south position of a location. This should be used with &#x60;longitude&#x60; to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is &#x60;AA&#x60;, &#x60;AE&#x60;, or &#x60;AP&#x60;). </value>
-        [DataMember(Name = "latitude", EmitDefaultValue = true)]
+        [DataMember(Name = "latitude", EmitDefaultValue = false)]
         public float? Latitude { get; set; }
 
         /// <summary>
         /// A positive or negative decimal indicating the geographic longitude of the address, specifying the north-to-south position of a location. This should be used with &#x60;latitude&#x60; to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is &#x60;AA&#x60;, &#x60;AE&#x60;, or &#x60;AP&#x60;). 
         /// </summary>
         /// <value>A positive or negative decimal indicating the geographic longitude of the address, specifying the north-to-south position of a location. This should be used with &#x60;latitude&#x60; to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is &#x60;AA&#x60;, &#x60;AE&#x60;, or &#x60;AP&#x60;). </value>
-        [DataMember(Name = "longitude", EmitDefaultValue = true)]
+        [DataMember(Name = "longitude", EmitDefaultValue = false)]
         public float? Longitude { get; set; }
 
         /// <summary>

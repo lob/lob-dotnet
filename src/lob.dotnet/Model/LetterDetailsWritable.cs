@@ -113,21 +113,21 @@ namespace lob.dotnet.Model
         /// A single-element array containing an existing card id in a string format. See [cards](#tag/Cards) for more information.
         /// </summary>
         /// <value>A single-element array containing an existing card id in a string format. See [cards](#tag/Cards) for more information.</value>
-        [DataMember(Name = "cards", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "cards", IsRequired = true, EmitDefaultValue = false)]
         public List<string> Cards { get; set; }
 
         /// <summary>
         /// Set this key to &#x60;true&#x60; if you would like to print in color. Set to &#x60;false&#x60; if you would like to print in black and white.
         /// </summary>
         /// <value>Set this key to &#x60;true&#x60; if you would like to print in color. Set to &#x60;false&#x60; if you would like to print in black and white.</value>
-        [DataMember(Name = "color", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "color", IsRequired = true, EmitDefaultValue = false)]
         public bool Color { get; set; }
 
         /// <summary>
         /// Set this attribute to &#x60;true&#x60; for double sided printing, or &#x60;false&#x60; for for single sided printing. Defaults to &#x60;true&#x60;.
         /// </summary>
         /// <value>Set this attribute to &#x60;true&#x60; for double sided printing, or &#x60;false&#x60; for for single sided printing. Defaults to &#x60;true&#x60;.</value>
-        [DataMember(Name = "double_sided", EmitDefaultValue = true)]
+        [DataMember(Name = "double_sided", EmitDefaultValue = false)]
         public bool DoubleSided { get; set; }
 
         /// <summary>
@@ -146,14 +146,14 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets ReturnEnvelope
         /// </summary>
-        [DataMember(Name = "return_envelope", EmitDefaultValue = true)]
+        [DataMember(Name = "return_envelope", EmitDefaultValue = false)]
         public bool ReturnEnvelope { get; set; }
 
         /// <summary>
         /// Accepts an envelope ID for any customized envelope with available inventory.
         /// </summary>
         /// <value>Accepts an envelope ID for any customized envelope with available inventory.</value>
-        [DataMember(Name = "custom_envelope", EmitDefaultValue = true)]
+        [DataMember(Name = "custom_envelope", EmitDefaultValue = false)]
         public string CustomEnvelope { get; set; }
 
         /// <summary>

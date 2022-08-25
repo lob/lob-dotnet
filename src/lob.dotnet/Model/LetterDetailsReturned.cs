@@ -117,27 +117,27 @@ namespace lob.dotnet.Model
         /// Set this key to &#x60;true&#x60; if you would like to print in color, false for black and white.
         /// </summary>
         /// <value>Set this key to &#x60;true&#x60; if you would like to print in color, false for black and white.</value>
-        [DataMember(Name = "color", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "color", IsRequired = true, EmitDefaultValue = false)]
         public bool Color { get; set; }
 
         /// <summary>
         /// A single-element array containing an existing card id in a string format. See [cards](#tag/Cards) for more information.
         /// </summary>
         /// <value>A single-element array containing an existing card id in a string format. See [cards](#tag/Cards) for more information.</value>
-        [DataMember(Name = "cards", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "cards", IsRequired = true, EmitDefaultValue = false)]
         public List<string> Cards { get; set; }
 
         /// <summary>
         /// Gets or Sets CustomEnvelope
         /// </summary>
-        [DataMember(Name = "custom_envelope", EmitDefaultValue = true)]
+        [DataMember(Name = "custom_envelope", EmitDefaultValue = false)]
         public CustomEnvelopeReturned CustomEnvelope { get; set; }
 
         /// <summary>
         /// Set this attribute to &#x60;true&#x60; for double sided printing,  &#x60;false&#x60; for for single sided printing.
         /// </summary>
         /// <value>Set this attribute to &#x60;true&#x60; for double sided printing,  &#x60;false&#x60; for for single sided printing.</value>
-        [DataMember(Name = "double_sided", EmitDefaultValue = true)]
+        [DataMember(Name = "double_sided", EmitDefaultValue = false)]
         public bool DoubleSided { get; set; }
 
         /// <summary>
@@ -156,20 +156,20 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets ReturnEnvelope
         /// </summary>
-        [DataMember(Name = "return_envelope", EmitDefaultValue = true)]
+        [DataMember(Name = "return_envelope", EmitDefaultValue = false)]
         public Object ReturnEnvelope { get; set; }
 
         /// <summary>
         /// Allows for letter bleed. Enabled only with specific feature flags.
         /// </summary>
         /// <value>Allows for letter bleed. Enabled only with specific feature flags.</value>
-        [DataMember(Name = "bleed", EmitDefaultValue = true)]
+        [DataMember(Name = "bleed", EmitDefaultValue = false)]
         public bool Bleed { get; set; }
 
         /// <summary>
         /// Gets or Sets FileOriginalUrl
         /// </summary>
-        [DataMember(Name = "file_original_url", EmitDefaultValue = true)]
+        [DataMember(Name = "file_original_url", EmitDefaultValue = false)]
         public string FileOriginalUrl { get; set; }
 
         /// <summary>

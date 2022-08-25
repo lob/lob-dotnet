@@ -49,14 +49,14 @@ namespace lob.dotnet.Model
         /// Description of the card.
         /// </summary>
         /// <value>Description of the card.</value>
-        [DataMember(Name = "description", EmitDefaultValue = true)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// Allows for auto reordering
         /// </summary>
         /// <value>Allows for auto reordering</value>
-        [DataMember(Name = "auto_reorder", EmitDefaultValue = true)]
+        [DataMember(Name = "auto_reorder", EmitDefaultValue = false)]
         public bool AutoReorder { get; set; }
 
         /// <summary>

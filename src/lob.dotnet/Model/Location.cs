@@ -62,14 +62,14 @@ namespace lob.dotnet.Model
         /// A positive or negative decimal indicating the geographic latitude of the address, specifying the north-to-south position of a location. This should be input with &#x60;longitude&#x60; to pinpoint locations on a map. 
         /// </summary>
         /// <value>A positive or negative decimal indicating the geographic latitude of the address, specifying the north-to-south position of a location. This should be input with &#x60;longitude&#x60; to pinpoint locations on a map. </value>
-        [DataMember(Name = "latitude", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "latitude", IsRequired = true, EmitDefaultValue = false)]
         public float? Latitude { get; set; }
 
         /// <summary>
         /// A positive or negative decimal indicating the geographic longitude of the address, specifying the north-to-south position of a location. This should be input with &#x60;latitude&#x60; to pinpoint locations on a map. 
         /// </summary>
         /// <value>A positive or negative decimal indicating the geographic longitude of the address, specifying the north-to-south position of a location. This should be input with &#x60;latitude&#x60; to pinpoint locations on a map. </value>
-        [DataMember(Name = "longitude", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "longitude", IsRequired = true, EmitDefaultValue = false)]
         public float? Longitude { get; set; }
 
         /// <summary>

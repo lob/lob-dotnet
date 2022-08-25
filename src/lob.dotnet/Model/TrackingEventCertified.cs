@@ -200,7 +200,7 @@ namespace lob.dotnet.Model
         /// The zip code in which the event occurred if it exists, otherwise will be the name of a Regional Distribution Center if it exists, otherwise will be null. 
         /// </summary>
         /// <value>The zip code in which the event occurred if it exists, otherwise will be the name of a Regional Distribution Center if it exists, otherwise will be null. </value>
-        [DataMember(Name = "location", EmitDefaultValue = true)]
+        [DataMember(Name = "location", EmitDefaultValue = false)]
         public string Location { get; set; }
 
         /// <summary>

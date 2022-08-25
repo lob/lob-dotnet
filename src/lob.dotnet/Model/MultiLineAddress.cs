@@ -72,7 +72,7 @@ namespace lob.dotnet.Model
         /// The intended recipient, typically a person&#39;s or firm&#39;s name.
         /// </summary>
         /// <value>The intended recipient, typically a person&#39;s or firm&#39;s name.</value>
-        [DataMember(Name = "recipient", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "recipient", IsRequired = true, EmitDefaultValue = false)]
         public string Recipient { get; set; }
 
         /// <summary>

@@ -67,14 +67,14 @@ namespace lob.dotnet.Model
         /// url of next page of items in list.
         /// </summary>
         /// <value>url of next page of items in list.</value>
-        [DataMember(Name = "next_url", EmitDefaultValue = true)]
+        [DataMember(Name = "next_url", EmitDefaultValue = false)]
         public string NextUrl { get; set; }
 
         /// <summary>
         /// url of previous page of items in list.
         /// </summary>
         /// <value>url of previous page of items in list.</value>
-        [DataMember(Name = "previous_url", EmitDefaultValue = true)]
+        [DataMember(Name = "previous_url", EmitDefaultValue = false)]
         public string PreviousUrl { get; set; }
 
         /// <summary>

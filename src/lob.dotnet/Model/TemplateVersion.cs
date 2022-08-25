@@ -108,7 +108,7 @@ namespace lob.dotnet.Model
         /// An internal description that identifies this resource. Must be no longer than 255 characters. 
         /// </summary>
         /// <value>An internal description that identifies this resource. Must be no longer than 255 characters. </value>
-        [DataMember(Name = "description", EmitDefaultValue = true)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
@@ -121,14 +121,14 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets Engine
         /// </summary>
-        [DataMember(Name = "engine", EmitDefaultValue = true)]
+        [DataMember(Name = "engine", EmitDefaultValue = false)]
         public EngineHtml Engine { get; set; }
 
         /// <summary>
         /// Used by frontend, true if the template uses advanced features. 
         /// </summary>
         /// <value>Used by frontend, true if the template uses advanced features. </value>
-        [DataMember(Name = "suggest_json_editor", EmitDefaultValue = true)]
+        [DataMember(Name = "suggest_json_editor", EmitDefaultValue = false)]
         public bool SuggestJsonEditor { get; set; }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace lob.dotnet.Model
         /// Only returned if the resource has been successfully deleted.
         /// </summary>
         /// <value>Only returned if the resource has been successfully deleted.</value>
-        [DataMember(Name = "deleted", EmitDefaultValue = true)]
+        [DataMember(Name = "deleted", EmitDefaultValue = false)]
         public bool Deleted { get; set; }
 
         /// <summary>

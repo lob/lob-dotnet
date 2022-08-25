@@ -106,7 +106,7 @@ namespace lob.dotnet.Model
         /// Description of the card.
         /// </summary>
         /// <value>Description of the card.</value>
-        [DataMember(Name = "description", EmitDefaultValue = true)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>

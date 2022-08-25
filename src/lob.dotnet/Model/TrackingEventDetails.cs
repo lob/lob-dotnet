@@ -280,7 +280,7 @@ namespace lob.dotnet.Model
         /// &#x60;true&#x60; if action is required by the end recipient, &#x60;false&#x60; otherwise. 
         /// </summary>
         /// <value>&#x60;true&#x60; if action is required by the end recipient, &#x60;false&#x60; otherwise. </value>
-        [DataMember(Name = "action_required", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "action_required", IsRequired = true, EmitDefaultValue = false)]
         public bool ActionRequired { get; set; }
 
         /// <summary>

@@ -200,7 +200,7 @@ namespace lob.dotnet.Model
         /// Only returned if the resource has been successfully deleted.
         /// </summary>
         /// <value>Only returned if the resource has been successfully deleted.</value>
-        [DataMember(Name = "deleted", EmitDefaultValue = true)]
+        [DataMember(Name = "deleted", EmitDefaultValue = false)]
         public bool Deleted { get; set; }
 
         /// <summary>

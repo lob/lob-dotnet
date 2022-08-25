@@ -135,7 +135,7 @@ namespace lob.dotnet.Model
         /// The intended recipient, typically a person&#39;s or firm&#39;s name.
         /// </summary>
         /// <value>The intended recipient, typically a person&#39;s or firm&#39;s name.</value>
-        [DataMember(Name = "recipient", EmitDefaultValue = true)]
+        [DataMember(Name = "recipient", EmitDefaultValue = false)]
         public string Recipient { get; set; }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace lob.dotnet.Model
         /// A numerical score between 0 and 100 that represents the likelihood the provided name is associated with a physical address. 
         /// </summary>
         /// <value>A numerical score between 0 and 100 that represents the likelihood the provided name is associated with a physical address. </value>
-        [DataMember(Name = "score", EmitDefaultValue = true)]
+        [DataMember(Name = "score", EmitDefaultValue = false)]
         public float? Score { get; set; }
 
         /// <summary>

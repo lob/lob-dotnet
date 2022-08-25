@@ -319,7 +319,7 @@ namespace lob.dotnet.Model
         /// indicates whether or not an address has been flagged in the [Early Warning System](https://docs.informatica.com/data-engineering/data-engineering-quality/10-4-0/address-validator-port-reference/postal-carrier-certification-data-ports/early-warning-system-return-code.html), meaning the address is under development and not yet ready to receive mail. However, it should become available in a few months. 
         /// </summary>
         /// <value>indicates whether or not an address has been flagged in the [Early Warning System](https://docs.informatica.com/data-engineering/data-engineering-quality/10-4-0/address-validator-port-reference/postal-carrier-certification-data-ports/early-warning-system-return-code.html), meaning the address is under development and not yet ready to receive mail. However, it should become available in a few months. </value>
-        [DataMember(Name = "ews_match", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "ews_match", IsRequired = true, EmitDefaultValue = false)]
         public bool EwsMatch { get; set; }
 
         /// <summary>

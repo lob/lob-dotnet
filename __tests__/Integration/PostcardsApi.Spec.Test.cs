@@ -42,7 +42,7 @@ namespace __tests__.Integration {
             invalidApi = new PostcardsApi(invalidConfig);
 
             AddressEditable addressEditable = new AddressEditable(
-                "1313 CEMETERY LN", // addressLine1
+                null, // addressLine1
                 null, // addressLine2
                 "WESTFIELD", // addressCity
                 "NJ", // addressState
@@ -58,10 +58,11 @@ namespace __tests__.Integration {
 
             validAddressesApi = new AddressesApi(config);
             address = validAddressesApi.AddressCreate(addressEditable);
+            var address2 = addressEditable.ToJson();
 
             postcardEditable = new PostcardEditable(
                 address.Id, // to
-                address.Id, // from
+                address2, // from
                 default(PostcardSize), // size
                 "C# integration test postcard", // description
                 default(Dictionary<string, string>), // metadata

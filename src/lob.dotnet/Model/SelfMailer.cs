@@ -124,13 +124,13 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets To
         /// </summary>
-        [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = false)]
         public Object To { get; set; }
 
         /// <summary>
         /// Gets or Sets From
         /// </summary>
-        [DataMember(Name = "from", EmitDefaultValue = true)]
+        [DataMember(Name = "from", EmitDefaultValue = false)]
         public Object From { get; set; }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace lob.dotnet.Model
         /// An internal description that identifies this resource. Must be no longer than 255 characters. 
         /// </summary>
         /// <value>An internal description that identifies this resource. Must be no longer than 255 characters. </value>
-        [DataMember(Name = "description", EmitDefaultValue = true)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace lob.dotnet.Model
         /// You can input a merge variable payload object to your template to render dynamic content. For example, if you have a template like: &#x60;{{variable_name}}&#x60;, pass in &#x60;{\&quot;variable_name\&quot;: \&quot;Harry\&quot;}&#x60; to render &#x60;Harry&#x60;. &#x60;merge_variables&#x60; must be an object. Any type of value is accepted as long as the object is valid JSON; you can use &#x60;strings&#x60;, &#x60;numbers&#x60;, &#x60;booleans&#x60;, &#x60;arrays&#x60;, &#x60;objects&#x60;, or &#x60;null&#x60;. The max length of the object is 25,000 characters. If you call &#x60;JSON.stringify&#x60; on your object, it can be no longer than 25,000 characters. Your variable names cannot contain any whitespace or any of the following special characters: &#x60;!&#x60;, &#x60;\&quot;&#x60;, &#x60;#&#x60;, &#x60;%&#x60;, &#x60;&amp;&#x60;, &#x60;&#39;&#x60;, &#x60;(&#x60;, &#x60;)&#x60;, &#x60;*&#x60;, &#x60;+&#x60;, &#x60;,&#x60;, &#x60;/&#x60;, &#x60;;&#x60;, &#x60;&lt;&#x60;, &#x60;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;@&#x60;, &#x60;[&#x60;, &#x60;\\&#x60;, &#x60;]&#x60;, &#x60;^&#x60;, &#x60;&#x60; &#x60; &#x60;&#x60;, &#x60;{&#x60;, &#x60;|&#x60;, &#x60;}&#x60;, &#x60;~&#x60;. More instructions can be found in [our guide to using html and merge variables](https://lob.com/resources/guides/general/using-html-and-merge-variables). Depending on your [Merge Variable strictness](https://dashboard.lob.com/#/settings/account) setting, if you define variables in your HTML but do not pass them here, you will either receive an error or the variable will render as an empty string.
         /// </summary>
         /// <value>You can input a merge variable payload object to your template to render dynamic content. For example, if you have a template like: &#x60;{{variable_name}}&#x60;, pass in &#x60;{\&quot;variable_name\&quot;: \&quot;Harry\&quot;}&#x60; to render &#x60;Harry&#x60;. &#x60;merge_variables&#x60; must be an object. Any type of value is accepted as long as the object is valid JSON; you can use &#x60;strings&#x60;, &#x60;numbers&#x60;, &#x60;booleans&#x60;, &#x60;arrays&#x60;, &#x60;objects&#x60;, or &#x60;null&#x60;. The max length of the object is 25,000 characters. If you call &#x60;JSON.stringify&#x60; on your object, it can be no longer than 25,000 characters. Your variable names cannot contain any whitespace or any of the following special characters: &#x60;!&#x60;, &#x60;\&quot;&#x60;, &#x60;#&#x60;, &#x60;%&#x60;, &#x60;&amp;&#x60;, &#x60;&#39;&#x60;, &#x60;(&#x60;, &#x60;)&#x60;, &#x60;*&#x60;, &#x60;+&#x60;, &#x60;,&#x60;, &#x60;/&#x60;, &#x60;;&#x60;, &#x60;&lt;&#x60;, &#x60;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;@&#x60;, &#x60;[&#x60;, &#x60;\\&#x60;, &#x60;]&#x60;, &#x60;^&#x60;, &#x60;&#x60; &#x60; &#x60;&#x60;, &#x60;{&#x60;, &#x60;|&#x60;, &#x60;}&#x60;, &#x60;~&#x60;. More instructions can be found in [our guide to using html and merge variables](https://lob.com/resources/guides/general/using-html-and-merge-variables). Depending on your [Merge Variable strictness](https://dashboard.lob.com/#/settings/account) setting, if you define variables in your HTML but do not pass them here, you will either receive an error or the variable will render as an empty string.</value>
-        [DataMember(Name = "merge_variables", EmitDefaultValue = true)]
+        [DataMember(Name = "merge_variables", EmitDefaultValue = false)]
         public Object MergeVariables { get; set; }
 
         /// <summary>
@@ -177,28 +177,28 @@ namespace lob.dotnet.Model
         /// The unique ID of the HTML template used for the outside of the self mailer.
         /// </summary>
         /// <value>The unique ID of the HTML template used for the outside of the self mailer.</value>
-        [DataMember(Name = "outside_template_id", EmitDefaultValue = true)]
+        [DataMember(Name = "outside_template_id", EmitDefaultValue = false)]
         public string OutsideTemplateId { get; set; }
 
         /// <summary>
         /// The unique ID of the HTML template used for the inside of the self mailer.
         /// </summary>
         /// <value>The unique ID of the HTML template used for the inside of the self mailer.</value>
-        [DataMember(Name = "inside_template_id", EmitDefaultValue = true)]
+        [DataMember(Name = "inside_template_id", EmitDefaultValue = false)]
         public string InsideTemplateId { get; set; }
 
         /// <summary>
         /// The unique ID of the specific version of the HTML template used for the outside of the self mailer.
         /// </summary>
         /// <value>The unique ID of the specific version of the HTML template used for the outside of the self mailer.</value>
-        [DataMember(Name = "outside_template_version_id", EmitDefaultValue = true)]
+        [DataMember(Name = "outside_template_version_id", EmitDefaultValue = false)]
         public string OutsideTemplateVersionId { get; set; }
 
         /// <summary>
         /// The unique ID of the specific version of the HTML template used for the inside of the self mailer.
         /// </summary>
         /// <value>The unique ID of the specific version of the HTML template used for the inside of the self mailer.</value>
-        [DataMember(Name = "inside_template_version_id", EmitDefaultValue = true)]
+        [DataMember(Name = "inside_template_version_id", EmitDefaultValue = false)]
         public string InsideTemplateVersionId { get; set; }
 
         /// <summary>

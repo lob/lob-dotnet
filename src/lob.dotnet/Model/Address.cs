@@ -107,35 +107,35 @@ namespace lob.dotnet.Model
         /// An internal description that identifies this resource. Must be no longer than 255 characters. 
         /// </summary>
         /// <value>An internal description that identifies this resource. Must be no longer than 255 characters. </value>
-        [DataMember(Name = "description", EmitDefaultValue = true)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// name associated with address
         /// </summary>
         /// <value>name associated with address</value>
-        [DataMember(Name = "name", EmitDefaultValue = true)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Either &#x60;name&#x60; or &#x60;company&#x60; is required, you may also add both.
         /// </summary>
         /// <value>Either &#x60;name&#x60; or &#x60;company&#x60; is required, you may also add both.</value>
-        [DataMember(Name = "company", EmitDefaultValue = true)]
+        [DataMember(Name = "company", EmitDefaultValue = false)]
         public string Company { get; set; }
 
         /// <summary>
         /// Must be no longer than 40 characters.
         /// </summary>
         /// <value>Must be no longer than 40 characters.</value>
-        [DataMember(Name = "phone", EmitDefaultValue = true)]
+        [DataMember(Name = "phone", EmitDefaultValue = false)]
         public string Phone { get; set; }
 
         /// <summary>
         /// Must be no longer than 100 characters.
         /// </summary>
         /// <value>Must be no longer than 100 characters.</value>
-        [DataMember(Name = "email", EmitDefaultValue = true)]
+        [DataMember(Name = "email", EmitDefaultValue = false)]
         public string Email { get; set; }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets AddressLine2
         /// </summary>
-        [DataMember(Name = "address_line2", EmitDefaultValue = true)]
+        [DataMember(Name = "address_line2", EmitDefaultValue = false)]
         public string AddressLine2 { get; set; }
 
         /// <summary>
@@ -201,14 +201,14 @@ namespace lob.dotnet.Model
         /// Only returned if the resource has been successfully deleted.
         /// </summary>
         /// <value>Only returned if the resource has been successfully deleted.</value>
-        [DataMember(Name = "deleted", EmitDefaultValue = true)]
+        [DataMember(Name = "deleted", EmitDefaultValue = false)]
         public bool Deleted { get; set; }
 
         /// <summary>
         /// Only returned for accounts on certain &lt;a href&#x3D;\&quot;https://dashboard.lob.com/#/settings/editions\&quot;&gt;Print &amp;amp; Mail Editions&lt;/a&gt;. Value is &#x60;true&#x60; if the address was altered because the recipient filed for a &lt;a href&#x3D;\&quot;#ncoa\&quot;&gt;National Change of Address (NCOA)&lt;/a&gt;, &#x60;false&#x60; if the NCOA check was run but no altered address was found, and &#x60;null&#x60; if the NCOA check was not run. The NCOA check does not happen for non-US addresses, for non-deliverable US addresses, or for addresses created before the NCOA feature was added to your account. 
         /// </summary>
         /// <value>Only returned for accounts on certain &lt;a href&#x3D;\&quot;https://dashboard.lob.com/#/settings/editions\&quot;&gt;Print &amp;amp; Mail Editions&lt;/a&gt;. Value is &#x60;true&#x60; if the address was altered because the recipient filed for a &lt;a href&#x3D;\&quot;#ncoa\&quot;&gt;National Change of Address (NCOA)&lt;/a&gt;, &#x60;false&#x60; if the NCOA check was run but no altered address was found, and &#x60;null&#x60; if the NCOA check was not run. The NCOA check does not happen for non-US addresses, for non-deliverable US addresses, or for addresses created before the NCOA feature was added to your account. </value>
-        [DataMember(Name = "recipient_moved", EmitDefaultValue = true)]
+        [DataMember(Name = "recipient_moved", EmitDefaultValue = false)]
         public bool? RecipientMoved { get; set; }
 
         /// <summary>

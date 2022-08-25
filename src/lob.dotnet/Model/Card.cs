@@ -226,14 +226,14 @@ namespace lob.dotnet.Model
         /// True if the cards should be auto-reordered.
         /// </summary>
         /// <value>True if the cards should be auto-reordered.</value>
-        [DataMember(Name = "auto_reorder", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "auto_reorder", IsRequired = true, EmitDefaultValue = false)]
         public bool AutoReorder { get; set; }
 
         /// <summary>
         /// The number of cards to be reordered. Only present when auto_reorder is True.
         /// </summary>
         /// <value>The number of cards to be reordered. Only present when auto_reorder is True.</value>
-        [DataMember(Name = "reorder_quantity", EmitDefaultValue = true)]
+        [DataMember(Name = "reorder_quantity", EmitDefaultValue = false)]
         public int? ReorderQuantity { get; set; }
 
         /// <summary>
@@ -302,14 +302,14 @@ namespace lob.dotnet.Model
         /// Only returned if the resource has been successfully deleted.
         /// </summary>
         /// <value>Only returned if the resource has been successfully deleted.</value>
-        [DataMember(Name = "deleted", EmitDefaultValue = true)]
+        [DataMember(Name = "deleted", EmitDefaultValue = false)]
         public bool Deleted { get; set; }
 
         /// <summary>
         /// Description of the card.
         /// </summary>
         /// <value>Description of the card.</value>
-        [DataMember(Name = "description", EmitDefaultValue = true)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>

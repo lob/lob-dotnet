@@ -146,7 +146,7 @@ namespace lob.dotnet.Model
         /// Value is &#x60;true&#x60; if the event type is enabled in both the test and live environments.
         /// </summary>
         /// <value>Value is &#x60;true&#x60; if the event type is enabled in both the test and live environments.</value>
-        [DataMember(Name = "enabled_for_test", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "enabled_for_test", IsRequired = true, EmitDefaultValue = false)]
         public bool EnabledForTest { get; set; }
 
         /// <summary>

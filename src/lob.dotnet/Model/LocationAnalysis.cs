@@ -64,14 +64,14 @@ namespace lob.dotnet.Model
         /// A positive or negative decimal indicating the geographic latitude of the address.
         /// </summary>
         /// <value>A positive or negative decimal indicating the geographic latitude of the address.</value>
-        [DataMember(Name = "latitude", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "latitude", IsRequired = true, EmitDefaultValue = false)]
         public float? Latitude { get; set; }
 
         /// <summary>
         /// A positive or negative decimal indicating the geographic longitude of the address.
         /// </summary>
         /// <value>A positive or negative decimal indicating the geographic longitude of the address.</value>
-        [DataMember(Name = "longitude", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "longitude", IsRequired = true, EmitDefaultValue = false)]
         public float? Longitude { get; set; }
 
         /// <summary>

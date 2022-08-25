@@ -101,7 +101,7 @@ namespace lob.dotnet.Model
         /// A numerical score between 0 and 100 that represents the percentage of mailpieces Lob has sent to this addresses that have been delivered successfully over the past 2 years. Will be &#x60;null&#x60; if no tracking data exists for this address. 
         /// </summary>
         /// <value>A numerical score between 0 and 100 that represents the percentage of mailpieces Lob has sent to this addresses that have been delivered successfully over the past 2 years. Will be &#x60;null&#x60; if no tracking data exists for this address. </value>
-        [DataMember(Name = "score", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "score", IsRequired = true, EmitDefaultValue = false)]
         public float? Score { get; set; }
 
         /// <summary>

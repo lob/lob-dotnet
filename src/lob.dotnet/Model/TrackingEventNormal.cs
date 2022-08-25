@@ -191,7 +191,7 @@ namespace lob.dotnet.Model
         /// The zip code in which the scan event occurred. Null for &#x60;Mailed&#x60; events. 
         /// </summary>
         /// <value>The zip code in which the scan event occurred. Null for &#x60;Mailed&#x60; events. </value>
-        [DataMember(Name = "location", EmitDefaultValue = true)]
+        [DataMember(Name = "location", EmitDefaultValue = false)]
         public string Location { get; set; }
 
         /// <summary>

@@ -147,7 +147,7 @@ namespace lob.dotnet.Model
         /// An internal description that identifies this resource. Must be no longer than 255 characters. 
         /// </summary>
         /// <value>An internal description that identifies this resource. Must be no longer than 255 characters. </value>
-        [DataMember(Name = "description", EmitDefaultValue = true)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace lob.dotnet.Model
         /// A signed link to the signature image. will be generated.
         /// </summary>
         /// <value>A signed link to the signature image. will be generated.</value>
-        [DataMember(Name = "signature_url", EmitDefaultValue = true)]
+        [DataMember(Name = "signature_url", EmitDefaultValue = false)]
         public string SignatureUrl { get; set; }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace lob.dotnet.Model
         /// A bank account must be verified before a check can be created.
         /// </summary>
         /// <value>A bank account must be verified before a check can be created.</value>
-        [DataMember(Name = "verified", EmitDefaultValue = true)]
+        [DataMember(Name = "verified", EmitDefaultValue = false)]
         public bool Verified { get; set; }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace lob.dotnet.Model
         /// Only returned if the resource has been successfully deleted.
         /// </summary>
         /// <value>Only returned if the resource has been successfully deleted.</value>
-        [DataMember(Name = "deleted", EmitDefaultValue = true)]
+        [DataMember(Name = "deleted", EmitDefaultValue = false)]
         public bool Deleted { get; set; }
 
         /// <summary>
