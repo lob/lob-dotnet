@@ -47,7 +47,7 @@ namespace __tests__.Api
                 "fake primaryLine", // primaryLine
                 "fake city", // city
                 "XX", // state
-                IntlSuggestions.CountryEnum.CA, // country
+                CountryExtendedExpanded.CANADA, // country
                 "12345" // zipCode
             );
         }
