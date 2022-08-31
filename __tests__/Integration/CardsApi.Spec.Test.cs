@@ -141,14 +141,6 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        [Ignore("Ignore until API fixed or docs updated")]
-        public void CardListTestWithSortByParameter() {
-            SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
-            CardList response = validApi.CardsList(null, null, null, sortBy);
-            Assert.Greater(response.Count, 0);
-        }
-
-        [Test]
         public void CardUpdateTest() {
             Card card = validApi.CardCreate(cardEditable);
             idsToDelete.Add(card.Id);

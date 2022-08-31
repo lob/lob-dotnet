@@ -119,7 +119,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LetterList</returns>
-        LetterList LettersList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
+        LetterList LettersList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -141,7 +141,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LetterList</returns>
-        ApiResponse<LetterList> LettersListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
+        ApiResponse<LetterList> LettersListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -249,7 +249,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LetterList</returns>
-        System.Threading.Tasks.Task<LetterList> LettersListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<LetterList> LettersListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -272,7 +272,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LetterList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LetterList>> LettersListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<LetterList>> LettersListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -896,7 +896,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LetterList</returns>
-        public LetterList LettersList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
+        public LetterList LettersList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
         {
             lob.dotnet.Client.ApiResponse<LetterList> localVarResponse = LettersListWithHttpInfo(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy);
             return localVarResponse.Data;
@@ -919,7 +919,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LetterList</returns>
-        public lob.dotnet.Client.ApiResponse<LetterList> LettersListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<LetterList> LettersListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -1030,7 +1030,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LetterList</returns>
-        public async System.Threading.Tasks.Task<LetterList> LettersListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<LetterList> LettersListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             lob.dotnet.Client.ApiResponse<LetterList> localVarResponse = await LettersListWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1054,7 +1054,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LetterList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<LetterList>> LettersListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<LetterList>> LettersListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();

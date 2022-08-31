@@ -471,7 +471,7 @@ namespace __tests__.Api
         [Test]
         public void CheckListTestWithSortByParam()
         {
-            SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
+            SortBy3 sortBy = new SortBy3(null, SortBy3.SendDateEnum.Asc);
 
             ChecksApiMock.Setup(x => x.ChecksList(null, null, null, null, null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakeCheckList);
 

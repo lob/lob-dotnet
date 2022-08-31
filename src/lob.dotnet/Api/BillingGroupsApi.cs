@@ -111,10 +111,10 @@ namespace lob.dotnet.Api
         /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="dateCreated">Filter by date created. (optional)</param>
         /// <param name="dateModified">Filter by date modified. (optional)</param>
-        /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
+        /// <param name="sortByDateModified">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BillingGroupList</returns>
-        BillingGroupList BillingGroupsList(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
+        BillingGroupList BillingGroupsList(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -128,10 +128,10 @@ namespace lob.dotnet.Api
         /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="dateCreated">Filter by date created. (optional)</param>
         /// <param name="dateModified">Filter by date modified. (optional)</param>
-        /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
+        /// <param name="sortByDateModified">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BillingGroupList</returns>
-        ApiResponse<BillingGroupList> BillingGroupsListWithHttpInfo(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
+        ApiResponse<BillingGroupList> BillingGroupsListWithHttpInfo(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -230,11 +230,11 @@ namespace lob.dotnet.Api
         /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="dateCreated">Filter by date created. (optional)</param>
         /// <param name="dateModified">Filter by date modified. (optional)</param>
-        /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
+        /// <param name="sortByDateModified">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BillingGroupList</returns>
-        System.Threading.Tasks.Task<BillingGroupList> BillingGroupsListAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BillingGroupList> BillingGroupsListAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -248,11 +248,11 @@ namespace lob.dotnet.Api
         /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="dateCreated">Filter by date created. (optional)</param>
         /// <param name="dateModified">Filter by date modified. (optional)</param>
-        /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
+        /// <param name="sortByDateModified">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BillingGroupList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BillingGroupList>> BillingGroupsListWithHttpInfoAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BillingGroupList>> BillingGroupsListWithHttpInfoAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -880,12 +880,12 @@ namespace lob.dotnet.Api
         /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="dateCreated">Filter by date created. (optional)</param>
         /// <param name="dateModified">Filter by date modified. (optional)</param>
-        /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
+        /// <param name="sortByDateModified">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BillingGroupList</returns>
-        public BillingGroupList BillingGroupsList(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
+        public BillingGroupList BillingGroupsList(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<BillingGroupList> localVarResponse = BillingGroupsListWithHttpInfo(limit, offset, include, dateCreated, dateModified, sortBy);
+            lob.dotnet.Client.ApiResponse<BillingGroupList> localVarResponse = BillingGroupsListWithHttpInfo(limit, offset, include, dateCreated, dateModified, sortByDateModified);
             return localVarResponse.Data;
         }
 
@@ -898,10 +898,10 @@ namespace lob.dotnet.Api
         /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="dateCreated">Filter by date created. (optional)</param>
         /// <param name="dateModified">Filter by date modified. (optional)</param>
-        /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
+        /// <param name="sortByDateModified">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BillingGroupList</returns>
-        public lob.dotnet.Client.ApiResponse<BillingGroupList> BillingGroupsListWithHttpInfo(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<BillingGroupList> BillingGroupsListWithHttpInfo(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -945,9 +945,9 @@ namespace lob.dotnet.Api
             {
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "date_modified", dateModified));
             }
-            if (sortBy != null)
+            if (sortByDateModified != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "sort_by", sortBy.ToJson()));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "sort_by", sortByDateModified.ToJson()));
             }
 
             localVarRequestOptions.Operation = "BillingGroupsApi.BillingGroupsList";
@@ -983,13 +983,13 @@ namespace lob.dotnet.Api
         /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="dateCreated">Filter by date created. (optional)</param>
         /// <param name="dateModified">Filter by date modified. (optional)</param>
-        /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
+        /// <param name="sortByDateModified">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BillingGroupList</returns>
-        public async System.Threading.Tasks.Task<BillingGroupList> BillingGroupsListAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BillingGroupList> BillingGroupsListAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<BillingGroupList> localVarResponse = await BillingGroupsListWithHttpInfoAsync(limit, offset, include, dateCreated, dateModified, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<BillingGroupList> localVarResponse = await BillingGroupsListWithHttpInfoAsync(limit, offset, include, dateCreated, dateModified, sortByDateModified, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1002,11 +1002,11 @@ namespace lob.dotnet.Api
         /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="dateCreated">Filter by date created. (optional)</param>
         /// <param name="dateModified">Filter by date modified. (optional)</param>
-        /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
+        /// <param name="sortByDateModified">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BillingGroupList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BillingGroupList>> BillingGroupsListWithHttpInfoAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BillingGroupList>> BillingGroupsListWithHttpInfoAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1051,9 +1051,9 @@ namespace lob.dotnet.Api
             {
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "date_modified", dateModified));
             }
-            if (sortBy != null)
+            if (sortByDateModified != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "sort_by_date_modified", sortByDateModified));
             }
 
             localVarRequestOptions.Operation = "BillingGroupsApi.BillingGroupsList";

@@ -453,7 +453,7 @@ namespace __tests__.Api
         [Test]
         public void PostcardListTestWithSortByParam()
         {
-            SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
+            SortBy3 sortBy = new SortBy3(null, SortBy3.SendDateEnum.Asc);
 
             PostcardsApiMock.Setup(x => x.PostcardsList(null, null, null, null, null, null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakePostcardList);
 

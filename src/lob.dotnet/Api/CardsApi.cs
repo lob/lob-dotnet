@@ -132,10 +132,10 @@ namespace lob.dotnet.Api
         /// <param name="limit">How many results to return. (optional, default to 10)</param>
         /// <param name="before">A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)</param>
         /// <param name="after">A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)</param>
-        /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
+        /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CardList</returns>
-        CardList CardsList(int? limit = default(int?), string before = default(string), string after = default(string), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
+        CardList CardsList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -147,10 +147,10 @@ namespace lob.dotnet.Api
         /// <param name="limit">How many results to return. (optional, default to 10)</param>
         /// <param name="before">A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)</param>
         /// <param name="after">A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)</param>
-        /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
+        /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CardList</returns>
-        ApiResponse<CardList> CardsListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), SortBy5 sortBy = default(SortBy5), int operationIndex = 0);
+        ApiResponse<CardList> CardsListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -272,11 +272,11 @@ namespace lob.dotnet.Api
         /// <param name="limit">How many results to return. (optional, default to 10)</param>
         /// <param name="before">A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)</param>
         /// <param name="after">A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)</param>
-        /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
+        /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CardList</returns>
-        System.Threading.Tasks.Task<CardList> CardsListAsync(int? limit = default(int?), string before = default(string), string after = default(string), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CardList> CardsListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -288,11 +288,11 @@ namespace lob.dotnet.Api
         /// <param name="limit">How many results to return. (optional, default to 10)</param>
         /// <param name="before">A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)</param>
         /// <param name="after">A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)</param>
-        /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
+        /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CardList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CardList>> CardsListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CardList>> CardsListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -1074,12 +1074,12 @@ namespace lob.dotnet.Api
         /// <param name="limit">How many results to return. (optional, default to 10)</param>
         /// <param name="before">A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)</param>
         /// <param name="after">A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)</param>
-        /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
+        /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CardList</returns>
-        public CardList CardsList(int? limit = default(int?), string before = default(string), string after = default(string), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
+        public CardList CardsList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<CardList> localVarResponse = CardsListWithHttpInfo(limit, before, after, sortBy);
+            lob.dotnet.Client.ApiResponse<CardList> localVarResponse = CardsListWithHttpInfo(limit, before, after, include);
             return localVarResponse.Data;
         }
 
@@ -1090,10 +1090,10 @@ namespace lob.dotnet.Api
         /// <param name="limit">How many results to return. (optional, default to 10)</param>
         /// <param name="before">A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)</param>
         /// <param name="after">A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)</param>
-        /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
+        /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CardList</returns>
-        public lob.dotnet.Client.ApiResponse<CardList> CardsListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), SortBy5 sortBy = default(SortBy5), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<CardList> CardsListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -1129,9 +1129,9 @@ namespace lob.dotnet.Api
             {
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "after", after));
             }
-            if (sortBy != null)
+            if (include != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "sort_by", sortBy.ToJson()));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("multi", "include", include));
             }
 
             localVarRequestOptions.Operation = "CardsApi.CardsList";
@@ -1165,13 +1165,13 @@ namespace lob.dotnet.Api
         /// <param name="limit">How many results to return. (optional, default to 10)</param>
         /// <param name="before">A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)</param>
         /// <param name="after">A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)</param>
-        /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
+        /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CardList</returns>
-        public async System.Threading.Tasks.Task<CardList> CardsListAsync(int? limit = default(int?), string before = default(string), string after = default(string), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CardList> CardsListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<CardList> localVarResponse = await CardsListWithHttpInfoAsync(limit, before, after, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<CardList> localVarResponse = await CardsListWithHttpInfoAsync(limit, before, after, include, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1182,11 +1182,11 @@ namespace lob.dotnet.Api
         /// <param name="limit">How many results to return. (optional, default to 10)</param>
         /// <param name="before">A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  (optional)</param>
         /// <param name="after">A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  (optional)</param>
-        /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
+        /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CardList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<CardList>> CardsListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), SortBy5 sortBy = default(SortBy5), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<CardList>> CardsListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1223,9 +1223,9 @@ namespace lob.dotnet.Api
             {
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "after", after));
             }
-            if (sortBy != null)
+            if (include != null)
             {
-                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("multi", "include", include));
             }
 
             localVarRequestOptions.Operation = "CardsApi.CardsList";

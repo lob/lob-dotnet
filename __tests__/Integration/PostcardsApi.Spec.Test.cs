@@ -236,7 +236,7 @@ namespace __tests__.Integration {
 
         [Test]
         public void PostcardListTestWithSortByParameter() {
-            SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
+            SortBy3 sortBy = new SortBy3(null, SortBy3.SendDateEnum.Asc);
 
             PostcardList response = validApi.PostcardsList(null, null, null, null, null, null, null, null, null, null, sortBy);
             Assert.Greater(response.Count, 0);

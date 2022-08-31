@@ -277,7 +277,7 @@ namespace __tests__.Api
         [Test]
         public void BillingGroupListTestWithSortByParam()
         {
-            SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Desc);
+            SortByDateModified sortBy = new SortByDateModified(null, SortByDateModified.DateModifiedEnum.Desc);
 
             billingGroupsApiMock.Setup(x => x.BillingGroupsList(null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakeBillingGroupList);
 

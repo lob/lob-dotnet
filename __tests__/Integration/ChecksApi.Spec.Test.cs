@@ -256,7 +256,7 @@ namespace __tests__.Integration {
 
         [Test]
         public void CheckListTestWithSortByParameter() {
-            SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
+            SortBy3 sortBy = new SortBy3(null, SortBy3.SendDateEnum.Asc);
             CheckList response = validApi.ChecksList(null, null, null, null, null, null, null, null, null, sortBy);
             Assert.Greater(response.Count, 0);
         }

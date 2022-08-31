@@ -204,9 +204,8 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        [Ignore("Ignore until API fixed or docs updated")]
         public void BillingGroupListTestWithSortByParameter() {
-            SortBy5 sortBy = new SortBy5(null, SortBy5.SendDateEnum.Asc);
+            SortByDateModified sortBy = new SortByDateModified(null, SortByDateModified.DateModifiedEnum.Asc);
             BillingGroupList response = validApi.BillingGroupsList(null, null, null, null, null, sortBy);
             Assert.Greater(response.Count, 0);
         }
