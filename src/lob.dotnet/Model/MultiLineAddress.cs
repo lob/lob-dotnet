@@ -40,27 +40,24 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MultiLineAddress" /> class.
         /// </summary>
-        /// <param name="recipient">The intended recipient, typically a person&#39;s or firm&#39;s name. (required).</param>
+        /// <param name="recipient">The intended recipient, typically a person&#39;s or firm&#39;s name..</param>
+        /// <param name="company">Either &#x60;name&#x60; or &#x60;company&#x60; is required, you may also add both..</param>
         /// <param name="primaryLine">The primary delivery line (usually the street address) of the address. Combination of the following applicable &#x60;components&#x60;: * &#x60;primary_number&#x60; * &#x60;street_predirection&#x60; * &#x60;street_name&#x60; * &#x60;street_suffix&#x60; * &#x60;street_postdirection&#x60; * &#x60;secondary_designator&#x60; * &#x60;secondary_number&#x60; * &#x60;pmb_designator&#x60; * &#x60;pmb_number&#x60;  (required).</param>
         /// <param name="secondaryLine">The secondary delivery line of the address. This field is typically empty but may contain information if &#x60;primary_line&#x60; is too long. .</param>
         /// <param name="urbanization">Only present for addresses in Puerto Rico. An urbanization refers to an area, sector, or development within a city. See [USPS documentation](https://pe.usps.com/text/pub28/28api_008.htm#:~:text&#x3D;I51.,-4%20Urbanizations&amp;text&#x3D;In%20Puerto%20Rico%2C%20identical%20street,placed%20before%20the%20urbanization%20name.) for clarification. .</param>
         /// <param name="city">city.</param>
         /// <param name="state">The &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_3166-2:US\&quot; target&#x3D;\&quot;_blank\&quot;&gt;ISO 3166-2&lt;/a&gt; two letter code or subdivision name for the state. &#x60;city&#x60; and &#x60;state&#x60; are required if no &#x60;zip_code&#x60; is passed..</param>
         /// <param name="zipCode">Required if &#x60;city&#x60; and &#x60;state&#x60; are not passed in. If included, must be formatted as a US ZIP or ZIP+4 (e.g. &#x60;94107&#x60;, &#x60;941072282&#x60;, &#x60;94107-2282&#x60;)..</param>
-        public MultiLineAddress(string recipient = default(string), string primaryLine = default(string), string secondaryLine = default(string), string urbanization = default(string), string city = default(string), string state = default(string), string zipCode = default(string))
+        public MultiLineAddress(string recipient = default(string), string company = default(string), string primaryLine = default(string), string secondaryLine = default(string), string urbanization = default(string), string city = default(string), string state = default(string), string zipCode = default(string))
         {
-            // to ensure "recipient" is required (not null)
-            if (recipient == null)
-            {
-                throw new ArgumentNullException("recipient is a required property for MultiLineAddress and cannot be null");
-            }
-            this.Recipient = recipient;
             // to ensure "primaryLine" is required (not null)
             if (primaryLine == null)
             {
                 throw new ArgumentNullException("primaryLine is a required property for MultiLineAddress and cannot be null");
             }
             this.PrimaryLine = primaryLine;
+            this.Recipient = recipient;
+            this.Company = company;
             this.SecondaryLine = secondaryLine;
             this.Urbanization = urbanization;
             this.City = city;
@@ -72,8 +69,15 @@ namespace lob.dotnet.Model
         /// The intended recipient, typically a person&#39;s or firm&#39;s name.
         /// </summary>
         /// <value>The intended recipient, typically a person&#39;s or firm&#39;s name.</value>
-        [DataMember(Name = "recipient", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "recipient", EmitDefaultValue = false)]
         public string Recipient { get; set; }
+
+        /// <summary>
+        /// Either &#x60;name&#x60; or &#x60;company&#x60; is required, you may also add both.
+        /// </summary>
+        /// <value>Either &#x60;name&#x60; or &#x60;company&#x60; is required, you may also add both.</value>
+        [DataMember(Name = "company", EmitDefaultValue = false)]
+        public string Company { get; set; }
 
         /// <summary>
         /// The primary delivery line (usually the street address) of the address. Combination of the following applicable &#x60;components&#x60;: * &#x60;primary_number&#x60; * &#x60;street_predirection&#x60; * &#x60;street_name&#x60; * &#x60;street_suffix&#x60; * &#x60;street_postdirection&#x60; * &#x60;secondary_designator&#x60; * &#x60;secondary_number&#x60; * &#x60;pmb_designator&#x60; * &#x60;pmb_number&#x60; 
@@ -125,6 +129,7 @@ namespace lob.dotnet.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class MultiLineAddress {\n");
             sb.Append("  Recipient: ").Append(Recipient).Append("\n");
+            sb.Append("  Company: ").Append(Company).Append("\n");
             sb.Append("  PrimaryLine: ").Append(PrimaryLine).Append("\n");
             sb.Append("  SecondaryLine: ").Append(SecondaryLine).Append("\n");
             sb.Append("  Urbanization: ").Append(Urbanization).Append("\n");
@@ -172,6 +177,11 @@ namespace lob.dotnet.Model
                     this.Recipient.Equals(input.Recipient))
                 ) && 
                 (
+                    this.Company == input.Company ||
+                    (this.Company != null &&
+                    this.Company.Equals(input.Company))
+                ) && 
+                (
                     this.PrimaryLine == input.PrimaryLine ||
                     (this.PrimaryLine != null &&
                     this.PrimaryLine.Equals(input.PrimaryLine))
@@ -216,6 +226,10 @@ namespace lob.dotnet.Model
                 {
                     hashCode = (hashCode * 59) + this.Recipient.GetHashCode();
                 }
+                if (this.Company != null)
+                {
+                    hashCode = (hashCode * 59) + this.Company.GetHashCode();
+                }
                 if (this.PrimaryLine != null)
                 {
                     hashCode = (hashCode * 59) + this.PrimaryLine.GetHashCode();
@@ -255,6 +269,12 @@ namespace lob.dotnet.Model
             if (this.Recipient != null && this.Recipient.Length > 500)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Recipient, length must be less than 500.", new [] { "Recipient" });
+            }
+
+            // Company (string) maxLength
+            if (this.Company != null && this.Company.Length > 40)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Company, length must be less than 40.", new [] { "Company" });
             }
 
             // PrimaryLine (string) maxLength

@@ -39,7 +39,7 @@ namespace lob.dotnet.Api
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Postcard</returns>
-        Postcard PostcardCreate(PostcardEditable postcardEditable, string idempotencyKey = default(string), int operationIndex = 0);
+        Postcard create(PostcardEditable postcardEditable, string idempotencyKey = default(string), int operationIndex = 0);
 
         /// <summary>
         /// create
@@ -52,7 +52,7 @@ namespace lob.dotnet.Api
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Postcard</returns>
-        ApiResponse<Postcard> PostcardCreateWithHttpInfo(PostcardEditable postcardEditable, string idempotencyKey = default(string), int operationIndex = 0);
+        ApiResponse<Postcard> createWithHttpInfo(PostcardEditable postcardEditable, string idempotencyKey = default(string), int operationIndex = 0);
         /// <summary>
         /// cancel
         /// </summary>
@@ -63,7 +63,7 @@ namespace lob.dotnet.Api
         /// <param name="pscId">id of the postcard</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PostcardDeletion</returns>
-        PostcardDeletion PostcardDelete(string pscId, int operationIndex = 0);
+        PostcardDeletion cancel(string pscId, int operationIndex = 0);
 
         /// <summary>
         /// cancel
@@ -75,7 +75,7 @@ namespace lob.dotnet.Api
         /// <param name="pscId">id of the postcard</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PostcardDeletion</returns>
-        ApiResponse<PostcardDeletion> PostcardDeleteWithHttpInfo(string pscId, int operationIndex = 0);
+        ApiResponse<PostcardDeletion> cancelWithHttpInfo(string pscId, int operationIndex = 0);
         /// <summary>
         /// get
         /// </summary>
@@ -86,7 +86,7 @@ namespace lob.dotnet.Api
         /// <param name="pscId">id of the postcard</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Postcard</returns>
-        Postcard PostcardRetrieve(string pscId, int operationIndex = 0);
+        Postcard get(string pscId, int operationIndex = 0);
 
         /// <summary>
         /// get
@@ -98,7 +98,7 @@ namespace lob.dotnet.Api
         /// <param name="pscId">id of the postcard</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Postcard</returns>
-        ApiResponse<Postcard> PostcardRetrieveWithHttpInfo(string pscId, int operationIndex = 0);
+        ApiResponse<Postcard> getWithHttpInfo(string pscId, int operationIndex = 0);
         /// <summary>
         /// list
         /// </summary>
@@ -119,7 +119,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PostcardList</returns>
-        PostcardList PostcardsList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
+        PostcardList list(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -141,7 +141,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PostcardList</returns>
-        ApiResponse<PostcardList> PostcardsListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
+        ApiResponse<PostcardList> listWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -163,7 +163,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Postcard</returns>
-        System.Threading.Tasks.Task<Postcard> PostcardCreateAsync(PostcardEditable postcardEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Postcard> createAsync(PostcardEditable postcardEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// create
@@ -177,7 +177,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Postcard)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Postcard>> PostcardCreateWithHttpInfoAsync(PostcardEditable postcardEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Postcard>> createWithHttpInfoAsync(PostcardEditable postcardEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// cancel
         /// </summary>
@@ -189,7 +189,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PostcardDeletion</returns>
-        System.Threading.Tasks.Task<PostcardDeletion> PostcardDeleteAsync(string pscId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PostcardDeletion> cancelAsync(string pscId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// cancel
@@ -202,7 +202,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PostcardDeletion)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PostcardDeletion>> PostcardDeleteWithHttpInfoAsync(string pscId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PostcardDeletion>> cancelWithHttpInfoAsync(string pscId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// get
         /// </summary>
@@ -214,7 +214,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Postcard</returns>
-        System.Threading.Tasks.Task<Postcard> PostcardRetrieveAsync(string pscId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Postcard> getAsync(string pscId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// get
@@ -227,7 +227,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Postcard)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Postcard>> PostcardRetrieveWithHttpInfoAsync(string pscId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Postcard>> getWithHttpInfoAsync(string pscId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// list
         /// </summary>
@@ -249,7 +249,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PostcardList</returns>
-        System.Threading.Tasks.Task<PostcardList> PostcardsListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PostcardList> listAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -272,7 +272,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PostcardList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PostcardList>> PostcardsListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PostcardList>> listWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -401,9 +401,9 @@ namespace lob.dotnet.Api
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Postcard</returns>
-        public Postcard PostcardCreate(PostcardEditable postcardEditable, string idempotencyKey = default(string), int operationIndex = 0)
+        public Postcard create(PostcardEditable postcardEditable, string idempotencyKey = default(string), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<Postcard> localVarResponse = PostcardCreateWithHttpInfo(postcardEditable, idempotencyKey);
+            lob.dotnet.Client.ApiResponse<Postcard> localVarResponse = createWithHttpInfo(postcardEditable, idempotencyKey);
             return localVarResponse.Data;
         }
 
@@ -415,12 +415,12 @@ namespace lob.dotnet.Api
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Postcard</returns>
-        public lob.dotnet.Client.ApiResponse<Postcard> PostcardCreateWithHttpInfo(PostcardEditable postcardEditable, string idempotencyKey = default(string), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<Postcard> createWithHttpInfo(PostcardEditable postcardEditable, string idempotencyKey = default(string), int operationIndex = 0)
         {
             // verify the required parameter 'postcardEditable' is set
             if (postcardEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'postcardEditable' when calling PostcardsApi->PostcardCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'postcardEditable' when calling PostcardsApi->create");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -454,7 +454,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = postcardEditable;
 
-            localVarRequestOptions.Operation = "PostcardsApi.PostcardCreate";
+            localVarRequestOptions.Operation = "PostcardsApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -468,7 +468,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<Postcard>("/postcards", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("PostcardCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -487,9 +487,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Postcard</returns>
-        public async System.Threading.Tasks.Task<Postcard> PostcardCreateAsync(PostcardEditable postcardEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Postcard> createAsync(PostcardEditable postcardEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<Postcard> localVarResponse = await PostcardCreateWithHttpInfoAsync(postcardEditable, idempotencyKey, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<Postcard> localVarResponse = await createWithHttpInfoAsync(postcardEditable, idempotencyKey, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -502,12 +502,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Postcard)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Postcard>> PostcardCreateWithHttpInfoAsync(PostcardEditable postcardEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Postcard>> createWithHttpInfoAsync(PostcardEditable postcardEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'postcardEditable' is set
             if (postcardEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'postcardEditable' when calling PostcardsApi->PostcardCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'postcardEditable' when calling PostcardsApi->create");
             }
 
 
@@ -542,7 +542,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = postcardEditable;
 
-            localVarRequestOptions.Operation = "PostcardsApi.PostcardCreate";
+            localVarRequestOptions.Operation = "PostcardsApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -557,7 +557,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("PostcardCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -574,9 +574,9 @@ namespace lob.dotnet.Api
         /// <param name="pscId">id of the postcard</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PostcardDeletion</returns>
-        public PostcardDeletion PostcardDelete(string pscId, int operationIndex = 0)
+        public PostcardDeletion cancel(string pscId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<PostcardDeletion> localVarResponse = PostcardDeleteWithHttpInfo(pscId);
+            lob.dotnet.Client.ApiResponse<PostcardDeletion> localVarResponse = cancelWithHttpInfo(pscId);
             return localVarResponse.Data;
         }
 
@@ -587,12 +587,12 @@ namespace lob.dotnet.Api
         /// <param name="pscId">id of the postcard</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PostcardDeletion</returns>
-        public lob.dotnet.Client.ApiResponse<PostcardDeletion> PostcardDeleteWithHttpInfo(string pscId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<PostcardDeletion> cancelWithHttpInfo(string pscId, int operationIndex = 0)
         {
             // verify the required parameter 'pscId' is set
             if (pscId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'pscId' when calling PostcardsApi->PostcardDelete");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'pscId' when calling PostcardsApi->cancel");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -619,7 +619,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("psc_id", lob.dotnet.Client.ClientUtils.ParameterToString(pscId)); // path parameter
 
-            localVarRequestOptions.Operation = "PostcardsApi.PostcardDelete";
+            localVarRequestOptions.Operation = "PostcardsApi.cancel";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -633,7 +633,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Delete<PostcardDeletion>("/postcards/{psc_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("PostcardDelete", localVarResponse);
+                Exception _exception = this.ExceptionFactory("cancel", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -651,9 +651,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PostcardDeletion</returns>
-        public async System.Threading.Tasks.Task<PostcardDeletion> PostcardDeleteAsync(string pscId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PostcardDeletion> cancelAsync(string pscId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<PostcardDeletion> localVarResponse = await PostcardDeleteWithHttpInfoAsync(pscId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<PostcardDeletion> localVarResponse = await cancelWithHttpInfoAsync(pscId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -665,12 +665,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PostcardDeletion)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<PostcardDeletion>> PostcardDeleteWithHttpInfoAsync(string pscId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<PostcardDeletion>> cancelWithHttpInfoAsync(string pscId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'pscId' is set
             if (pscId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'pscId' when calling PostcardsApi->PostcardDelete");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'pscId' when calling PostcardsApi->cancel");
             }
 
 
@@ -698,7 +698,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("psc_id", lob.dotnet.Client.ClientUtils.ParameterToString(pscId)); // path parameter
 
-            localVarRequestOptions.Operation = "PostcardsApi.PostcardDelete";
+            localVarRequestOptions.Operation = "PostcardsApi.cancel";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -713,7 +713,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("PostcardDelete", localVarResponse);
+                Exception _exception = this.ExceptionFactory("cancel", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -730,9 +730,9 @@ namespace lob.dotnet.Api
         /// <param name="pscId">id of the postcard</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Postcard</returns>
-        public Postcard PostcardRetrieve(string pscId, int operationIndex = 0)
+        public Postcard get(string pscId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<Postcard> localVarResponse = PostcardRetrieveWithHttpInfo(pscId);
+            lob.dotnet.Client.ApiResponse<Postcard> localVarResponse = getWithHttpInfo(pscId);
             return localVarResponse.Data;
         }
 
@@ -743,12 +743,12 @@ namespace lob.dotnet.Api
         /// <param name="pscId">id of the postcard</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Postcard</returns>
-        public lob.dotnet.Client.ApiResponse<Postcard> PostcardRetrieveWithHttpInfo(string pscId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<Postcard> getWithHttpInfo(string pscId, int operationIndex = 0)
         {
             // verify the required parameter 'pscId' is set
             if (pscId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'pscId' when calling PostcardsApi->PostcardRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'pscId' when calling PostcardsApi->get");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -775,7 +775,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("psc_id", lob.dotnet.Client.ClientUtils.ParameterToString(pscId)); // path parameter
 
-            localVarRequestOptions.Operation = "PostcardsApi.PostcardRetrieve";
+            localVarRequestOptions.Operation = "PostcardsApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -789,7 +789,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<Postcard>("/postcards/{psc_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("PostcardRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -807,9 +807,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Postcard</returns>
-        public async System.Threading.Tasks.Task<Postcard> PostcardRetrieveAsync(string pscId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Postcard> getAsync(string pscId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<Postcard> localVarResponse = await PostcardRetrieveWithHttpInfoAsync(pscId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<Postcard> localVarResponse = await getWithHttpInfoAsync(pscId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -821,12 +821,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Postcard)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Postcard>> PostcardRetrieveWithHttpInfoAsync(string pscId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Postcard>> getWithHttpInfoAsync(string pscId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'pscId' is set
             if (pscId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'pscId' when calling PostcardsApi->PostcardRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'pscId' when calling PostcardsApi->get");
             }
 
 
@@ -854,7 +854,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("psc_id", lob.dotnet.Client.ClientUtils.ParameterToString(pscId)); // path parameter
 
-            localVarRequestOptions.Operation = "PostcardsApi.PostcardRetrieve";
+            localVarRequestOptions.Operation = "PostcardsApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -869,7 +869,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("PostcardRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -896,9 +896,9 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PostcardList</returns>
-        public PostcardList PostcardsList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
+        public PostcardList list(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<PostcardList> localVarResponse = PostcardsListWithHttpInfo(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
+            lob.dotnet.Client.ApiResponse<PostcardList> localVarResponse = listWithHttpInfo(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
             return localVarResponse.Data;
         }
 
@@ -919,7 +919,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PostcardList</returns>
-        public lob.dotnet.Client.ApiResponse<PostcardList> PostcardsListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<PostcardList> listWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -996,7 +996,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "sort_by", sortBy.ToJson()));
             }
 
-            localVarRequestOptions.Operation = "PostcardsApi.PostcardsList";
+            localVarRequestOptions.Operation = "PostcardsApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1010,7 +1010,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<PostcardList>("/postcards", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("PostcardsList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1038,9 +1038,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PostcardList</returns>
-        public async System.Threading.Tasks.Task<PostcardList> PostcardsListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PostcardList> listAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<PostcardList> localVarResponse = await PostcardsListWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<PostcardList> localVarResponse = await listWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1062,7 +1062,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PostcardList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<PostcardList>> PostcardsListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<PostcardList>> listWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<PostcardSize> size = default(List<PostcardSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1132,7 +1132,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
             }
 
-            localVarRequestOptions.Operation = "PostcardsApi.PostcardsList";
+            localVarRequestOptions.Operation = "PostcardsApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1147,7 +1147,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("PostcardsList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

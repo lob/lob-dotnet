@@ -145,7 +145,7 @@ namespace lob.dotnet.Model
         /// <param name="extraService">Add an extra service to your letter:   * &#x60;certified&#x60; - track and confirm delivery for domestic destinations. An extra sheet (1 PDF page single-sided or 2 PDF pages double-sided) is added to the beginning of your letter for address and barcode information. See here for templates: [#10 envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_template.pdf) and [flat envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_flat_template.pdf) (used for letters over 6 pages single-sided or 12 pages double-sided). You will not be charged for this extra sheet.   * &#x60;certified_return_receipt&#x60; - request an electronic copy of the recipient&#39;s signature to prove delivery of your certified letter   * &#x60;registered&#x60; - provides tracking and confirmation for international addresses .</param>
         /// <param name="cards">A single-element array containing an existing card id in a string format. See [cards](#tag/Cards) for more information..</param>
         /// <param name="billingGroupId">An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information..</param>
-        public LetterEditable(string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), bool color = default(bool), bool doubleSided = true, AddressPlacementEnum? addressPlacement = AddressPlacementEnum.TopFirstPage, Object returnEnvelope = default(Object), int? perforatedPage = default(int?), LetterEditableCustomEnvelope customEnvelope = default(LetterEditableCustomEnvelope), string to = default(string), string from = default(string), string file = default(string), ExtraServiceEnum? extraService = default(ExtraServiceEnum?), List<string> cards = default(List<string>), string billingGroupId = default(string))
+        public LetterEditable(string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), bool color = default(bool), bool doubleSided = true, AddressPlacementEnum? addressPlacement = AddressPlacementEnum.TopFirstPage, Object returnEnvelope = default(Object), int? perforatedPage = default(int?), string customEnvelope = default(string), string to = default(string), string from = default(string), string file = default(string), ExtraServiceEnum? extraService = default(ExtraServiceEnum?), List<string> cards = default(List<string>), string billingGroupId = default(string))
         {
             this.Color = color;
             // to ensure "to" is required (not null)
@@ -247,7 +247,7 @@ namespace lob.dotnet.Model
         /// Gets or Sets CustomEnvelope
         /// </summary>
         [DataMember(Name = "custom_envelope", EmitDefaultValue = false)]
-        public LetterEditableCustomEnvelope CustomEnvelope { get; set; }
+        public string CustomEnvelope { get; set; }
 
         /// <summary>
         /// Must either be an address ID or an inline object with correct address parameters.

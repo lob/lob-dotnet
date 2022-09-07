@@ -38,7 +38,7 @@ namespace lob.dotnet.Api
         /// <param name="templateWritable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Template</returns>
-        Template CreateTemplate(TemplateWritable templateWritable, int operationIndex = 0);
+        Template create(TemplateWritable templateWritable, int operationIndex = 0);
 
         /// <summary>
         /// create
@@ -50,7 +50,7 @@ namespace lob.dotnet.Api
         /// <param name="templateWritable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Template</returns>
-        ApiResponse<Template> CreateTemplateWithHttpInfo(TemplateWritable templateWritable, int operationIndex = 0);
+        ApiResponse<Template> createWithHttpInfo(TemplateWritable templateWritable, int operationIndex = 0);
         /// <summary>
         /// delete
         /// </summary>
@@ -61,7 +61,7 @@ namespace lob.dotnet.Api
         /// <param name="tmplId">id of the template</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateDeletion</returns>
-        TemplateDeletion TemplateDelete(string tmplId, int operationIndex = 0);
+        TemplateDeletion delete(string tmplId, int operationIndex = 0);
 
         /// <summary>
         /// delete
@@ -73,7 +73,7 @@ namespace lob.dotnet.Api
         /// <param name="tmplId">id of the template</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateDeletion</returns>
-        ApiResponse<TemplateDeletion> TemplateDeleteWithHttpInfo(string tmplId, int operationIndex = 0);
+        ApiResponse<TemplateDeletion> deleteWithHttpInfo(string tmplId, int operationIndex = 0);
         /// <summary>
         /// get
         /// </summary>
@@ -84,7 +84,7 @@ namespace lob.dotnet.Api
         /// <param name="tmplId">id of the template</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Template</returns>
-        Template TemplateRetrieve(string tmplId, int operationIndex = 0);
+        Template get(string tmplId, int operationIndex = 0);
 
         /// <summary>
         /// get
@@ -96,7 +96,7 @@ namespace lob.dotnet.Api
         /// <param name="tmplId">id of the template</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Template</returns>
-        ApiResponse<Template> TemplateRetrieveWithHttpInfo(string tmplId, int operationIndex = 0);
+        ApiResponse<Template> getWithHttpInfo(string tmplId, int operationIndex = 0);
         /// <summary>
         /// update
         /// </summary>
@@ -108,7 +108,7 @@ namespace lob.dotnet.Api
         /// <param name="templateUpdate"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Template</returns>
-        Template TemplateUpdate(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0);
+        Template update(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0);
 
         /// <summary>
         /// update
@@ -121,7 +121,7 @@ namespace lob.dotnet.Api
         /// <param name="templateUpdate"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Template</returns>
-        ApiResponse<Template> TemplateUpdateWithHttpInfo(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0);
+        ApiResponse<Template> updateWithHttpInfo(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0);
         /// <summary>
         /// list
         /// </summary>
@@ -137,7 +137,7 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateList</returns>
-        TemplateList TemplatesList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
+        TemplateList list(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -154,7 +154,7 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateList</returns>
-        ApiResponse<TemplateList> TemplatesListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
+        ApiResponse<TemplateList> listWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -175,7 +175,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Template</returns>
-        System.Threading.Tasks.Task<Template> CreateTemplateAsync(TemplateWritable templateWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Template> createAsync(TemplateWritable templateWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// create
@@ -188,7 +188,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Template)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Template>> CreateTemplateWithHttpInfoAsync(TemplateWritable templateWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Template>> createWithHttpInfoAsync(TemplateWritable templateWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// delete
         /// </summary>
@@ -200,7 +200,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateDeletion</returns>
-        System.Threading.Tasks.Task<TemplateDeletion> TemplateDeleteAsync(string tmplId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TemplateDeletion> deleteAsync(string tmplId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// delete
@@ -213,7 +213,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateDeletion)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TemplateDeletion>> TemplateDeleteWithHttpInfoAsync(string tmplId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TemplateDeletion>> deleteWithHttpInfoAsync(string tmplId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// get
         /// </summary>
@@ -225,7 +225,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Template</returns>
-        System.Threading.Tasks.Task<Template> TemplateRetrieveAsync(string tmplId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Template> getAsync(string tmplId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// get
@@ -238,7 +238,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Template)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Template>> TemplateRetrieveWithHttpInfoAsync(string tmplId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Template>> getWithHttpInfoAsync(string tmplId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// update
         /// </summary>
@@ -251,7 +251,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Template</returns>
-        System.Threading.Tasks.Task<Template> TemplateUpdateAsync(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Template> updateAsync(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// update
@@ -265,7 +265,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Template)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Template>> TemplateUpdateWithHttpInfoAsync(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Template>> updateWithHttpInfoAsync(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// list
         /// </summary>
@@ -282,7 +282,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateList</returns>
-        System.Threading.Tasks.Task<TemplateList> TemplatesListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TemplateList> listAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -300,7 +300,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TemplateList>> TemplatesListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TemplateList>> listWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -428,9 +428,9 @@ namespace lob.dotnet.Api
         /// <param name="templateWritable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Template</returns>
-        public Template CreateTemplate(TemplateWritable templateWritable, int operationIndex = 0)
+        public Template create(TemplateWritable templateWritable, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<Template> localVarResponse = CreateTemplateWithHttpInfo(templateWritable);
+            lob.dotnet.Client.ApiResponse<Template> localVarResponse = createWithHttpInfo(templateWritable);
             return localVarResponse.Data;
         }
 
@@ -441,12 +441,12 @@ namespace lob.dotnet.Api
         /// <param name="templateWritable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Template</returns>
-        public lob.dotnet.Client.ApiResponse<Template> CreateTemplateWithHttpInfo(TemplateWritable templateWritable, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<Template> createWithHttpInfo(TemplateWritable templateWritable, int operationIndex = 0)
         {
             // verify the required parameter 'templateWritable' is set
             if (templateWritable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateWritable' when calling TemplatesApi->CreateTemplate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateWritable' when calling TemplatesApi->create");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -476,7 +476,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = templateWritable;
 
-            localVarRequestOptions.Operation = "TemplatesApi.CreateTemplate";
+            localVarRequestOptions.Operation = "TemplatesApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -490,7 +490,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<Template>("/templates", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateTemplate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -508,9 +508,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Template</returns>
-        public async System.Threading.Tasks.Task<Template> CreateTemplateAsync(TemplateWritable templateWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Template> createAsync(TemplateWritable templateWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<Template> localVarResponse = await CreateTemplateWithHttpInfoAsync(templateWritable, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<Template> localVarResponse = await createWithHttpInfoAsync(templateWritable, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -522,12 +522,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Template)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Template>> CreateTemplateWithHttpInfoAsync(TemplateWritable templateWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Template>> createWithHttpInfoAsync(TemplateWritable templateWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'templateWritable' is set
             if (templateWritable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateWritable' when calling TemplatesApi->CreateTemplate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateWritable' when calling TemplatesApi->create");
             }
 
 
@@ -558,7 +558,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = templateWritable;
 
-            localVarRequestOptions.Operation = "TemplatesApi.CreateTemplate";
+            localVarRequestOptions.Operation = "TemplatesApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -573,7 +573,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateTemplate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -590,9 +590,9 @@ namespace lob.dotnet.Api
         /// <param name="tmplId">id of the template</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateDeletion</returns>
-        public TemplateDeletion TemplateDelete(string tmplId, int operationIndex = 0)
+        public TemplateDeletion delete(string tmplId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<TemplateDeletion> localVarResponse = TemplateDeleteWithHttpInfo(tmplId);
+            lob.dotnet.Client.ApiResponse<TemplateDeletion> localVarResponse = deleteWithHttpInfo(tmplId);
             return localVarResponse.Data;
         }
 
@@ -603,12 +603,12 @@ namespace lob.dotnet.Api
         /// <param name="tmplId">id of the template</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateDeletion</returns>
-        public lob.dotnet.Client.ApiResponse<TemplateDeletion> TemplateDeleteWithHttpInfo(string tmplId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<TemplateDeletion> deleteWithHttpInfo(string tmplId, int operationIndex = 0)
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplatesApi->TemplateDelete");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplatesApi->delete");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -635,7 +635,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("tmpl_id", lob.dotnet.Client.ClientUtils.ParameterToString(tmplId)); // path parameter
 
-            localVarRequestOptions.Operation = "TemplatesApi.TemplateDelete";
+            localVarRequestOptions.Operation = "TemplatesApi.delete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -649,7 +649,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Delete<TemplateDeletion>("/templates/{tmpl_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("TemplateDelete", localVarResponse);
+                Exception _exception = this.ExceptionFactory("delete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -667,9 +667,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateDeletion</returns>
-        public async System.Threading.Tasks.Task<TemplateDeletion> TemplateDeleteAsync(string tmplId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TemplateDeletion> deleteAsync(string tmplId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<TemplateDeletion> localVarResponse = await TemplateDeleteWithHttpInfoAsync(tmplId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<TemplateDeletion> localVarResponse = await deleteWithHttpInfoAsync(tmplId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -681,12 +681,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateDeletion)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateDeletion>> TemplateDeleteWithHttpInfoAsync(string tmplId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateDeletion>> deleteWithHttpInfoAsync(string tmplId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplatesApi->TemplateDelete");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplatesApi->delete");
             }
 
 
@@ -714,7 +714,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("tmpl_id", lob.dotnet.Client.ClientUtils.ParameterToString(tmplId)); // path parameter
 
-            localVarRequestOptions.Operation = "TemplatesApi.TemplateDelete";
+            localVarRequestOptions.Operation = "TemplatesApi.delete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -729,7 +729,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("TemplateDelete", localVarResponse);
+                Exception _exception = this.ExceptionFactory("delete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -746,9 +746,9 @@ namespace lob.dotnet.Api
         /// <param name="tmplId">id of the template</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Template</returns>
-        public Template TemplateRetrieve(string tmplId, int operationIndex = 0)
+        public Template get(string tmplId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<Template> localVarResponse = TemplateRetrieveWithHttpInfo(tmplId);
+            lob.dotnet.Client.ApiResponse<Template> localVarResponse = getWithHttpInfo(tmplId);
             return localVarResponse.Data;
         }
 
@@ -759,12 +759,12 @@ namespace lob.dotnet.Api
         /// <param name="tmplId">id of the template</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Template</returns>
-        public lob.dotnet.Client.ApiResponse<Template> TemplateRetrieveWithHttpInfo(string tmplId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<Template> getWithHttpInfo(string tmplId, int operationIndex = 0)
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplatesApi->TemplateRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplatesApi->get");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -791,7 +791,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("tmpl_id", lob.dotnet.Client.ClientUtils.ParameterToString(tmplId)); // path parameter
 
-            localVarRequestOptions.Operation = "TemplatesApi.TemplateRetrieve";
+            localVarRequestOptions.Operation = "TemplatesApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -805,7 +805,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<Template>("/templates/{tmpl_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("TemplateRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -823,9 +823,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Template</returns>
-        public async System.Threading.Tasks.Task<Template> TemplateRetrieveAsync(string tmplId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Template> getAsync(string tmplId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<Template> localVarResponse = await TemplateRetrieveWithHttpInfoAsync(tmplId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<Template> localVarResponse = await getWithHttpInfoAsync(tmplId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -837,12 +837,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Template)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Template>> TemplateRetrieveWithHttpInfoAsync(string tmplId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Template>> getWithHttpInfoAsync(string tmplId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplatesApi->TemplateRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplatesApi->get");
             }
 
 
@@ -870,7 +870,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("tmpl_id", lob.dotnet.Client.ClientUtils.ParameterToString(tmplId)); // path parameter
 
-            localVarRequestOptions.Operation = "TemplatesApi.TemplateRetrieve";
+            localVarRequestOptions.Operation = "TemplatesApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -885,7 +885,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("TemplateRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -903,9 +903,9 @@ namespace lob.dotnet.Api
         /// <param name="templateUpdate"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Template</returns>
-        public Template TemplateUpdate(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0)
+        public Template update(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<Template> localVarResponse = TemplateUpdateWithHttpInfo(tmplId, templateUpdate);
+            lob.dotnet.Client.ApiResponse<Template> localVarResponse = updateWithHttpInfo(tmplId, templateUpdate);
             return localVarResponse.Data;
         }
 
@@ -917,18 +917,18 @@ namespace lob.dotnet.Api
         /// <param name="templateUpdate"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Template</returns>
-        public lob.dotnet.Client.ApiResponse<Template> TemplateUpdateWithHttpInfo(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<Template> updateWithHttpInfo(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0)
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplatesApi->TemplateUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplatesApi->update");
             }
 
             // verify the required parameter 'templateUpdate' is set
             if (templateUpdate == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateUpdate' when calling TemplatesApi->TemplateUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateUpdate' when calling TemplatesApi->update");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -959,7 +959,7 @@ namespace lob.dotnet.Api
             localVarRequestOptions.PathParameters.Add("tmpl_id", lob.dotnet.Client.ClientUtils.ParameterToString(tmplId)); // path parameter
             localVarRequestOptions.Data = templateUpdate;
 
-            localVarRequestOptions.Operation = "TemplatesApi.TemplateUpdate";
+            localVarRequestOptions.Operation = "TemplatesApi.update";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -973,7 +973,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<Template>("/templates/{tmpl_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("TemplateUpdate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("update", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -992,9 +992,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Template</returns>
-        public async System.Threading.Tasks.Task<Template> TemplateUpdateAsync(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Template> updateAsync(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<Template> localVarResponse = await TemplateUpdateWithHttpInfoAsync(tmplId, templateUpdate, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<Template> localVarResponse = await updateWithHttpInfoAsync(tmplId, templateUpdate, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1007,18 +1007,18 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Template)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Template>> TemplateUpdateWithHttpInfoAsync(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Template>> updateWithHttpInfoAsync(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplatesApi->TemplateUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplatesApi->update");
             }
 
             // verify the required parameter 'templateUpdate' is set
             if (templateUpdate == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateUpdate' when calling TemplatesApi->TemplateUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateUpdate' when calling TemplatesApi->update");
             }
 
 
@@ -1050,7 +1050,7 @@ namespace lob.dotnet.Api
             localVarRequestOptions.PathParameters.Add("tmpl_id", lob.dotnet.Client.ClientUtils.ParameterToString(tmplId)); // path parameter
             localVarRequestOptions.Data = templateUpdate;
 
-            localVarRequestOptions.Operation = "TemplatesApi.TemplateUpdate";
+            localVarRequestOptions.Operation = "TemplatesApi.update";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1065,7 +1065,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("TemplateUpdate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("update", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1087,9 +1087,9 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateList</returns>
-        public TemplateList TemplatesList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
+        public TemplateList list(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<TemplateList> localVarResponse = TemplatesListWithHttpInfo(limit, before, after, include, dateCreated, metadata);
+            lob.dotnet.Client.ApiResponse<TemplateList> localVarResponse = listWithHttpInfo(limit, before, after, include, dateCreated, metadata);
             return localVarResponse.Data;
         }
 
@@ -1105,7 +1105,7 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateList</returns>
-        public lob.dotnet.Client.ApiResponse<TemplateList> TemplatesListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<TemplateList> listWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -1154,7 +1154,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "metadata", metadata));
             }
 
-            localVarRequestOptions.Operation = "TemplatesApi.TemplatesList";
+            localVarRequestOptions.Operation = "TemplatesApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1168,7 +1168,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<TemplateList>("/templates", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("TemplatesList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1191,9 +1191,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateList</returns>
-        public async System.Threading.Tasks.Task<TemplateList> TemplatesListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TemplateList> listAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<TemplateList> localVarResponse = await TemplatesListWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<TemplateList> localVarResponse = await listWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1210,7 +1210,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateList>> TemplatesListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateList>> listWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1260,7 +1260,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "metadata", metadata));
             }
 
-            localVarRequestOptions.Operation = "TemplatesApi.TemplatesList";
+            localVarRequestOptions.Operation = "TemplatesApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1275,7 +1275,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("TemplatesList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

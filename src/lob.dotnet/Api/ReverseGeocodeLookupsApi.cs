@@ -39,7 +39,7 @@ namespace lob.dotnet.Api
         /// <param name="size">Determines the number of locations returned. Possible values are between 1 and 50 and any number higher will be rounded down to 50. Default size is a list of 5 reverse geocoded locations. (optional, default to 5)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ReverseGeocode</returns>
-        ReverseGeocode ReverseGeocodeLookup(Location location, int? size = default(int?), int operationIndex = 0);
+        ReverseGeocode lookup(Location location, int? size = default(int?), int operationIndex = 0);
 
         /// <summary>
         /// lookup
@@ -52,7 +52,7 @@ namespace lob.dotnet.Api
         /// <param name="size">Determines the number of locations returned. Possible values are between 1 and 50 and any number higher will be rounded down to 50. Default size is a list of 5 reverse geocoded locations. (optional, default to 5)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ReverseGeocode</returns>
-        ApiResponse<ReverseGeocode> ReverseGeocodeLookupWithHttpInfo(Location location, int? size = default(int?), int operationIndex = 0);
+        ApiResponse<ReverseGeocode> lookupWithHttpInfo(Location location, int? size = default(int?), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -74,7 +74,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ReverseGeocode</returns>
-        System.Threading.Tasks.Task<ReverseGeocode> ReverseGeocodeLookupAsync(Location location, int? size = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ReverseGeocode> lookupAsync(Location location, int? size = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// lookup
@@ -88,7 +88,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ReverseGeocode)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ReverseGeocode>> ReverseGeocodeLookupWithHttpInfoAsync(Location location, int? size = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ReverseGeocode>> lookupWithHttpInfoAsync(Location location, int? size = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -217,9 +217,9 @@ namespace lob.dotnet.Api
         /// <param name="size">Determines the number of locations returned. Possible values are between 1 and 50 and any number higher will be rounded down to 50. Default size is a list of 5 reverse geocoded locations. (optional, default to 5)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ReverseGeocode</returns>
-        public ReverseGeocode ReverseGeocodeLookup(Location location, int? size = default(int?), int operationIndex = 0)
+        public ReverseGeocode lookup(Location location, int? size = default(int?), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<ReverseGeocode> localVarResponse = ReverseGeocodeLookupWithHttpInfo(location, size);
+            lob.dotnet.Client.ApiResponse<ReverseGeocode> localVarResponse = lookupWithHttpInfo(location, size);
             return localVarResponse.Data;
         }
 
@@ -231,12 +231,12 @@ namespace lob.dotnet.Api
         /// <param name="size">Determines the number of locations returned. Possible values are between 1 and 50 and any number higher will be rounded down to 50. Default size is a list of 5 reverse geocoded locations. (optional, default to 5)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ReverseGeocode</returns>
-        public lob.dotnet.Client.ApiResponse<ReverseGeocode> ReverseGeocodeLookupWithHttpInfo(Location location, int? size = default(int?), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<ReverseGeocode> lookupWithHttpInfo(Location location, int? size = default(int?), int operationIndex = 0)
         {
             // verify the required parameter 'location' is set
             if (location == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'location' when calling ReverseGeocodeLookupsApi->ReverseGeocodeLookup");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'location' when calling ReverseGeocodeLookupsApi->lookup");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -270,7 +270,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = location;
 
-            localVarRequestOptions.Operation = "ReverseGeocodeLookupsApi.ReverseGeocodeLookup";
+            localVarRequestOptions.Operation = "ReverseGeocodeLookupsApi.lookup";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -284,7 +284,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<ReverseGeocode>("/us_reverse_geocode_lookups", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ReverseGeocodeLookup", localVarResponse);
+                Exception _exception = this.ExceptionFactory("lookup", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -303,9 +303,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ReverseGeocode</returns>
-        public async System.Threading.Tasks.Task<ReverseGeocode> ReverseGeocodeLookupAsync(Location location, int? size = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ReverseGeocode> lookupAsync(Location location, int? size = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<ReverseGeocode> localVarResponse = await ReverseGeocodeLookupWithHttpInfoAsync(location, size, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<ReverseGeocode> localVarResponse = await lookupWithHttpInfoAsync(location, size, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -318,12 +318,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ReverseGeocode)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<ReverseGeocode>> ReverseGeocodeLookupWithHttpInfoAsync(Location location, int? size = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<ReverseGeocode>> lookupWithHttpInfoAsync(Location location, int? size = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'location' is set
             if (location == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'location' when calling ReverseGeocodeLookupsApi->ReverseGeocodeLookup");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'location' when calling ReverseGeocodeLookupsApi->lookup");
             }
 
 
@@ -358,7 +358,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = location;
 
-            localVarRequestOptions.Operation = "ReverseGeocodeLookupsApi.ReverseGeocodeLookup";
+            localVarRequestOptions.Operation = "ReverseGeocodeLookupsApi.lookup";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -373,7 +373,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ReverseGeocodeLookup", localVarResponse);
+                Exception _exception = this.ExceptionFactory("lookup", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

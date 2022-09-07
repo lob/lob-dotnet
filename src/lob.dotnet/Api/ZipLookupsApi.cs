@@ -38,7 +38,7 @@ namespace lob.dotnet.Api
         /// <param name="zipEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Zip</returns>
-        Zip ZipLookup(ZipEditable zipEditable, int operationIndex = 0);
+        Zip lookup(ZipEditable zipEditable, int operationIndex = 0);
 
         /// <summary>
         /// lookup
@@ -50,7 +50,7 @@ namespace lob.dotnet.Api
         /// <param name="zipEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Zip</returns>
-        ApiResponse<Zip> ZipLookupWithHttpInfo(ZipEditable zipEditable, int operationIndex = 0);
+        ApiResponse<Zip> lookupWithHttpInfo(ZipEditable zipEditable, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -71,7 +71,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Zip</returns>
-        System.Threading.Tasks.Task<Zip> ZipLookupAsync(ZipEditable zipEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Zip> lookupAsync(ZipEditable zipEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// lookup
@@ -84,7 +84,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Zip)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Zip>> ZipLookupWithHttpInfoAsync(ZipEditable zipEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Zip>> lookupWithHttpInfoAsync(ZipEditable zipEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -212,9 +212,9 @@ namespace lob.dotnet.Api
         /// <param name="zipEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Zip</returns>
-        public Zip ZipLookup(ZipEditable zipEditable, int operationIndex = 0)
+        public Zip lookup(ZipEditable zipEditable, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<Zip> localVarResponse = ZipLookupWithHttpInfo(zipEditable);
+            lob.dotnet.Client.ApiResponse<Zip> localVarResponse = lookupWithHttpInfo(zipEditable);
             return localVarResponse.Data;
         }
 
@@ -225,12 +225,12 @@ namespace lob.dotnet.Api
         /// <param name="zipEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Zip</returns>
-        public lob.dotnet.Client.ApiResponse<Zip> ZipLookupWithHttpInfo(ZipEditable zipEditable, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<Zip> lookupWithHttpInfo(ZipEditable zipEditable, int operationIndex = 0)
         {
             // verify the required parameter 'zipEditable' is set
             if (zipEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'zipEditable' when calling ZipLookupsApi->ZipLookup");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'zipEditable' when calling ZipLookupsApi->lookup");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -260,7 +260,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = zipEditable;
 
-            localVarRequestOptions.Operation = "ZipLookupsApi.ZipLookup";
+            localVarRequestOptions.Operation = "ZipLookupsApi.lookup";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -274,7 +274,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<Zip>("/us_zip_lookups", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ZipLookup", localVarResponse);
+                Exception _exception = this.ExceptionFactory("lookup", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -292,9 +292,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Zip</returns>
-        public async System.Threading.Tasks.Task<Zip> ZipLookupAsync(ZipEditable zipEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Zip> lookupAsync(ZipEditable zipEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<Zip> localVarResponse = await ZipLookupWithHttpInfoAsync(zipEditable, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<Zip> localVarResponse = await lookupWithHttpInfoAsync(zipEditable, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -306,12 +306,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Zip)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Zip>> ZipLookupWithHttpInfoAsync(ZipEditable zipEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Zip>> lookupWithHttpInfoAsync(ZipEditable zipEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'zipEditable' is set
             if (zipEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'zipEditable' when calling ZipLookupsApi->ZipLookup");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'zipEditable' when calling ZipLookupsApi->lookup");
             }
 
 
@@ -342,7 +342,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = zipEditable;
 
-            localVarRequestOptions.Operation = "ZipLookupsApi.ZipLookup";
+            localVarRequestOptions.Operation = "ZipLookupsApi.lookup";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -357,7 +357,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ZipLookup", localVarResponse);
+                Exception _exception = this.ExceptionFactory("lookup", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

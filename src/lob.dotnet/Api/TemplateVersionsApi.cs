@@ -39,7 +39,7 @@ namespace lob.dotnet.Api
         /// <param name="templateVersionWritable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateVersion</returns>
-        TemplateVersion CreateTemplateVersion(string tmplId, TemplateVersionWritable templateVersionWritable, int operationIndex = 0);
+        TemplateVersion create(string tmplId, TemplateVersionWritable templateVersionWritable, int operationIndex = 0);
 
         /// <summary>
         /// create
@@ -52,7 +52,7 @@ namespace lob.dotnet.Api
         /// <param name="templateVersionWritable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateVersion</returns>
-        ApiResponse<TemplateVersion> CreateTemplateVersionWithHttpInfo(string tmplId, TemplateVersionWritable templateVersionWritable, int operationIndex = 0);
+        ApiResponse<TemplateVersion> createWithHttpInfo(string tmplId, TemplateVersionWritable templateVersionWritable, int operationIndex = 0);
         /// <summary>
         /// delete
         /// </summary>
@@ -64,7 +64,7 @@ namespace lob.dotnet.Api
         /// <param name="vrsnId">id of the template_version</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateVersionDeletion</returns>
-        TemplateVersionDeletion TemplateVersionDelete(string tmplId, string vrsnId, int operationIndex = 0);
+        TemplateVersionDeletion delete(string tmplId, string vrsnId, int operationIndex = 0);
 
         /// <summary>
         /// delete
@@ -77,7 +77,7 @@ namespace lob.dotnet.Api
         /// <param name="vrsnId">id of the template_version</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateVersionDeletion</returns>
-        ApiResponse<TemplateVersionDeletion> TemplateVersionDeleteWithHttpInfo(string tmplId, string vrsnId, int operationIndex = 0);
+        ApiResponse<TemplateVersionDeletion> deleteWithHttpInfo(string tmplId, string vrsnId, int operationIndex = 0);
         /// <summary>
         /// get
         /// </summary>
@@ -89,7 +89,7 @@ namespace lob.dotnet.Api
         /// <param name="vrsnId">id of the template_version</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateVersion</returns>
-        TemplateVersion TemplateVersionRetrieve(string tmplId, string vrsnId, int operationIndex = 0);
+        TemplateVersion get(string tmplId, string vrsnId, int operationIndex = 0);
 
         /// <summary>
         /// get
@@ -102,7 +102,7 @@ namespace lob.dotnet.Api
         /// <param name="vrsnId">id of the template_version</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateVersion</returns>
-        ApiResponse<TemplateVersion> TemplateVersionRetrieveWithHttpInfo(string tmplId, string vrsnId, int operationIndex = 0);
+        ApiResponse<TemplateVersion> getWithHttpInfo(string tmplId, string vrsnId, int operationIndex = 0);
         /// <summary>
         /// update
         /// </summary>
@@ -115,7 +115,7 @@ namespace lob.dotnet.Api
         /// <param name="templateVersionUpdatable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateVersion</returns>
-        TemplateVersion TemplateVersionUpdate(string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable, int operationIndex = 0);
+        TemplateVersion update(string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable, int operationIndex = 0);
 
         /// <summary>
         /// update
@@ -129,7 +129,7 @@ namespace lob.dotnet.Api
         /// <param name="templateVersionUpdatable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateVersion</returns>
-        ApiResponse<TemplateVersion> TemplateVersionUpdateWithHttpInfo(string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable, int operationIndex = 0);
+        ApiResponse<TemplateVersion> updateWithHttpInfo(string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable, int operationIndex = 0);
         /// <summary>
         /// list
         /// </summary>
@@ -145,7 +145,7 @@ namespace lob.dotnet.Api
         /// <param name="dateCreated">Filter by date created. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateVersionList</returns>
-        TemplateVersionList TemplateVersionsList(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0);
+        TemplateVersionList list(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -162,7 +162,7 @@ namespace lob.dotnet.Api
         /// <param name="dateCreated">Filter by date created. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateVersionList</returns>
-        ApiResponse<TemplateVersionList> TemplateVersionsListWithHttpInfo(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0);
+        ApiResponse<TemplateVersionList> listWithHttpInfo(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -184,7 +184,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateVersion</returns>
-        System.Threading.Tasks.Task<TemplateVersion> CreateTemplateVersionAsync(string tmplId, TemplateVersionWritable templateVersionWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TemplateVersion> createAsync(string tmplId, TemplateVersionWritable templateVersionWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// create
@@ -198,7 +198,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateVersion)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TemplateVersion>> CreateTemplateVersionWithHttpInfoAsync(string tmplId, TemplateVersionWritable templateVersionWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TemplateVersion>> createWithHttpInfoAsync(string tmplId, TemplateVersionWritable templateVersionWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// delete
         /// </summary>
@@ -211,7 +211,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateVersionDeletion</returns>
-        System.Threading.Tasks.Task<TemplateVersionDeletion> TemplateVersionDeleteAsync(string tmplId, string vrsnId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TemplateVersionDeletion> deleteAsync(string tmplId, string vrsnId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// delete
@@ -225,7 +225,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateVersionDeletion)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TemplateVersionDeletion>> TemplateVersionDeleteWithHttpInfoAsync(string tmplId, string vrsnId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TemplateVersionDeletion>> deleteWithHttpInfoAsync(string tmplId, string vrsnId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// get
         /// </summary>
@@ -238,7 +238,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateVersion</returns>
-        System.Threading.Tasks.Task<TemplateVersion> TemplateVersionRetrieveAsync(string tmplId, string vrsnId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TemplateVersion> getAsync(string tmplId, string vrsnId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// get
@@ -252,7 +252,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateVersion)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TemplateVersion>> TemplateVersionRetrieveWithHttpInfoAsync(string tmplId, string vrsnId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TemplateVersion>> getWithHttpInfoAsync(string tmplId, string vrsnId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// update
         /// </summary>
@@ -266,7 +266,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateVersion</returns>
-        System.Threading.Tasks.Task<TemplateVersion> TemplateVersionUpdateAsync(string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TemplateVersion> updateAsync(string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// update
@@ -281,7 +281,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateVersion)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TemplateVersion>> TemplateVersionUpdateWithHttpInfoAsync(string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TemplateVersion>> updateWithHttpInfoAsync(string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// list
         /// </summary>
@@ -298,7 +298,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateVersionList</returns>
-        System.Threading.Tasks.Task<TemplateVersionList> TemplateVersionsListAsync(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TemplateVersionList> listAsync(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -316,7 +316,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateVersionList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TemplateVersionList>> TemplateVersionsListWithHttpInfoAsync(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TemplateVersionList>> listWithHttpInfoAsync(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -445,9 +445,9 @@ namespace lob.dotnet.Api
         /// <param name="templateVersionWritable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateVersion</returns>
-        public TemplateVersion CreateTemplateVersion(string tmplId, TemplateVersionWritable templateVersionWritable, int operationIndex = 0)
+        public TemplateVersion create(string tmplId, TemplateVersionWritable templateVersionWritable, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<TemplateVersion> localVarResponse = CreateTemplateVersionWithHttpInfo(tmplId, templateVersionWritable);
+            lob.dotnet.Client.ApiResponse<TemplateVersion> localVarResponse = createWithHttpInfo(tmplId, templateVersionWritable);
             return localVarResponse.Data;
         }
 
@@ -459,18 +459,18 @@ namespace lob.dotnet.Api
         /// <param name="templateVersionWritable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateVersion</returns>
-        public lob.dotnet.Client.ApiResponse<TemplateVersion> CreateTemplateVersionWithHttpInfo(string tmplId, TemplateVersionWritable templateVersionWritable, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<TemplateVersion> createWithHttpInfo(string tmplId, TemplateVersionWritable templateVersionWritable, int operationIndex = 0)
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->CreateTemplateVersion");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->create");
             }
 
             // verify the required parameter 'templateVersionWritable' is set
             if (templateVersionWritable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateVersionWritable' when calling TemplateVersionsApi->CreateTemplateVersion");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateVersionWritable' when calling TemplateVersionsApi->create");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -501,7 +501,7 @@ namespace lob.dotnet.Api
             localVarRequestOptions.PathParameters.Add("tmpl_id", lob.dotnet.Client.ClientUtils.ParameterToString(tmplId)); // path parameter
             localVarRequestOptions.Data = templateVersionWritable;
 
-            localVarRequestOptions.Operation = "TemplateVersionsApi.CreateTemplateVersion";
+            localVarRequestOptions.Operation = "TemplateVersionsApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -515,7 +515,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<TemplateVersion>("/templates/{tmpl_id}/versions", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateTemplateVersion", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -534,9 +534,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateVersion</returns>
-        public async System.Threading.Tasks.Task<TemplateVersion> CreateTemplateVersionAsync(string tmplId, TemplateVersionWritable templateVersionWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TemplateVersion> createAsync(string tmplId, TemplateVersionWritable templateVersionWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<TemplateVersion> localVarResponse = await CreateTemplateVersionWithHttpInfoAsync(tmplId, templateVersionWritable, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<TemplateVersion> localVarResponse = await createWithHttpInfoAsync(tmplId, templateVersionWritable, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -549,18 +549,18 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateVersion)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateVersion>> CreateTemplateVersionWithHttpInfoAsync(string tmplId, TemplateVersionWritable templateVersionWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateVersion>> createWithHttpInfoAsync(string tmplId, TemplateVersionWritable templateVersionWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->CreateTemplateVersion");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->create");
             }
 
             // verify the required parameter 'templateVersionWritable' is set
             if (templateVersionWritable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateVersionWritable' when calling TemplateVersionsApi->CreateTemplateVersion");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateVersionWritable' when calling TemplateVersionsApi->create");
             }
 
 
@@ -592,7 +592,7 @@ namespace lob.dotnet.Api
             localVarRequestOptions.PathParameters.Add("tmpl_id", lob.dotnet.Client.ClientUtils.ParameterToString(tmplId)); // path parameter
             localVarRequestOptions.Data = templateVersionWritable;
 
-            localVarRequestOptions.Operation = "TemplateVersionsApi.CreateTemplateVersion";
+            localVarRequestOptions.Operation = "TemplateVersionsApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -607,7 +607,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateTemplateVersion", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -625,9 +625,9 @@ namespace lob.dotnet.Api
         /// <param name="vrsnId">id of the template_version</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateVersionDeletion</returns>
-        public TemplateVersionDeletion TemplateVersionDelete(string tmplId, string vrsnId, int operationIndex = 0)
+        public TemplateVersionDeletion delete(string tmplId, string vrsnId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<TemplateVersionDeletion> localVarResponse = TemplateVersionDeleteWithHttpInfo(tmplId, vrsnId);
+            lob.dotnet.Client.ApiResponse<TemplateVersionDeletion> localVarResponse = deleteWithHttpInfo(tmplId, vrsnId);
             return localVarResponse.Data;
         }
 
@@ -639,18 +639,18 @@ namespace lob.dotnet.Api
         /// <param name="vrsnId">id of the template_version</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateVersionDeletion</returns>
-        public lob.dotnet.Client.ApiResponse<TemplateVersionDeletion> TemplateVersionDeleteWithHttpInfo(string tmplId, string vrsnId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<TemplateVersionDeletion> deleteWithHttpInfo(string tmplId, string vrsnId, int operationIndex = 0)
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->TemplateVersionDelete");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->delete");
             }
 
             // verify the required parameter 'vrsnId' is set
             if (vrsnId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'vrsnId' when calling TemplateVersionsApi->TemplateVersionDelete");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'vrsnId' when calling TemplateVersionsApi->delete");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -678,7 +678,7 @@ namespace lob.dotnet.Api
             localVarRequestOptions.PathParameters.Add("tmpl_id", lob.dotnet.Client.ClientUtils.ParameterToString(tmplId)); // path parameter
             localVarRequestOptions.PathParameters.Add("vrsn_id", lob.dotnet.Client.ClientUtils.ParameterToString(vrsnId)); // path parameter
 
-            localVarRequestOptions.Operation = "TemplateVersionsApi.TemplateVersionDelete";
+            localVarRequestOptions.Operation = "TemplateVersionsApi.delete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -692,7 +692,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Delete<TemplateVersionDeletion>("/templates/{tmpl_id}/versions/{vrsn_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("TemplateVersionDelete", localVarResponse);
+                Exception _exception = this.ExceptionFactory("delete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -711,9 +711,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateVersionDeletion</returns>
-        public async System.Threading.Tasks.Task<TemplateVersionDeletion> TemplateVersionDeleteAsync(string tmplId, string vrsnId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TemplateVersionDeletion> deleteAsync(string tmplId, string vrsnId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<TemplateVersionDeletion> localVarResponse = await TemplateVersionDeleteWithHttpInfoAsync(tmplId, vrsnId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<TemplateVersionDeletion> localVarResponse = await deleteWithHttpInfoAsync(tmplId, vrsnId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -726,18 +726,18 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateVersionDeletion)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateVersionDeletion>> TemplateVersionDeleteWithHttpInfoAsync(string tmplId, string vrsnId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateVersionDeletion>> deleteWithHttpInfoAsync(string tmplId, string vrsnId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->TemplateVersionDelete");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->delete");
             }
 
             // verify the required parameter 'vrsnId' is set
             if (vrsnId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'vrsnId' when calling TemplateVersionsApi->TemplateVersionDelete");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'vrsnId' when calling TemplateVersionsApi->delete");
             }
 
 
@@ -766,7 +766,7 @@ namespace lob.dotnet.Api
             localVarRequestOptions.PathParameters.Add("tmpl_id", lob.dotnet.Client.ClientUtils.ParameterToString(tmplId)); // path parameter
             localVarRequestOptions.PathParameters.Add("vrsn_id", lob.dotnet.Client.ClientUtils.ParameterToString(vrsnId)); // path parameter
 
-            localVarRequestOptions.Operation = "TemplateVersionsApi.TemplateVersionDelete";
+            localVarRequestOptions.Operation = "TemplateVersionsApi.delete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -781,7 +781,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("TemplateVersionDelete", localVarResponse);
+                Exception _exception = this.ExceptionFactory("delete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -799,9 +799,9 @@ namespace lob.dotnet.Api
         /// <param name="vrsnId">id of the template_version</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateVersion</returns>
-        public TemplateVersion TemplateVersionRetrieve(string tmplId, string vrsnId, int operationIndex = 0)
+        public TemplateVersion get(string tmplId, string vrsnId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<TemplateVersion> localVarResponse = TemplateVersionRetrieveWithHttpInfo(tmplId, vrsnId);
+            lob.dotnet.Client.ApiResponse<TemplateVersion> localVarResponse = getWithHttpInfo(tmplId, vrsnId);
             return localVarResponse.Data;
         }
 
@@ -813,18 +813,18 @@ namespace lob.dotnet.Api
         /// <param name="vrsnId">id of the template_version</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateVersion</returns>
-        public lob.dotnet.Client.ApiResponse<TemplateVersion> TemplateVersionRetrieveWithHttpInfo(string tmplId, string vrsnId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<TemplateVersion> getWithHttpInfo(string tmplId, string vrsnId, int operationIndex = 0)
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->TemplateVersionRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->get");
             }
 
             // verify the required parameter 'vrsnId' is set
             if (vrsnId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'vrsnId' when calling TemplateVersionsApi->TemplateVersionRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'vrsnId' when calling TemplateVersionsApi->get");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -852,7 +852,7 @@ namespace lob.dotnet.Api
             localVarRequestOptions.PathParameters.Add("tmpl_id", lob.dotnet.Client.ClientUtils.ParameterToString(tmplId)); // path parameter
             localVarRequestOptions.PathParameters.Add("vrsn_id", lob.dotnet.Client.ClientUtils.ParameterToString(vrsnId)); // path parameter
 
-            localVarRequestOptions.Operation = "TemplateVersionsApi.TemplateVersionRetrieve";
+            localVarRequestOptions.Operation = "TemplateVersionsApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -866,7 +866,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<TemplateVersion>("/templates/{tmpl_id}/versions/{vrsn_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("TemplateVersionRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -885,9 +885,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateVersion</returns>
-        public async System.Threading.Tasks.Task<TemplateVersion> TemplateVersionRetrieveAsync(string tmplId, string vrsnId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TemplateVersion> getAsync(string tmplId, string vrsnId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<TemplateVersion> localVarResponse = await TemplateVersionRetrieveWithHttpInfoAsync(tmplId, vrsnId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<TemplateVersion> localVarResponse = await getWithHttpInfoAsync(tmplId, vrsnId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -900,18 +900,18 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateVersion)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateVersion>> TemplateVersionRetrieveWithHttpInfoAsync(string tmplId, string vrsnId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateVersion>> getWithHttpInfoAsync(string tmplId, string vrsnId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->TemplateVersionRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->get");
             }
 
             // verify the required parameter 'vrsnId' is set
             if (vrsnId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'vrsnId' when calling TemplateVersionsApi->TemplateVersionRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'vrsnId' when calling TemplateVersionsApi->get");
             }
 
 
@@ -940,7 +940,7 @@ namespace lob.dotnet.Api
             localVarRequestOptions.PathParameters.Add("tmpl_id", lob.dotnet.Client.ClientUtils.ParameterToString(tmplId)); // path parameter
             localVarRequestOptions.PathParameters.Add("vrsn_id", lob.dotnet.Client.ClientUtils.ParameterToString(vrsnId)); // path parameter
 
-            localVarRequestOptions.Operation = "TemplateVersionsApi.TemplateVersionRetrieve";
+            localVarRequestOptions.Operation = "TemplateVersionsApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -955,7 +955,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("TemplateVersionRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -974,9 +974,9 @@ namespace lob.dotnet.Api
         /// <param name="templateVersionUpdatable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateVersion</returns>
-        public TemplateVersion TemplateVersionUpdate(string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable, int operationIndex = 0)
+        public TemplateVersion update(string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<TemplateVersion> localVarResponse = TemplateVersionUpdateWithHttpInfo(tmplId, vrsnId, templateVersionUpdatable);
+            lob.dotnet.Client.ApiResponse<TemplateVersion> localVarResponse = updateWithHttpInfo(tmplId, vrsnId, templateVersionUpdatable);
             return localVarResponse.Data;
         }
 
@@ -989,24 +989,24 @@ namespace lob.dotnet.Api
         /// <param name="templateVersionUpdatable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateVersion</returns>
-        public lob.dotnet.Client.ApiResponse<TemplateVersion> TemplateVersionUpdateWithHttpInfo(string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<TemplateVersion> updateWithHttpInfo(string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable, int operationIndex = 0)
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->TemplateVersionUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->update");
             }
 
             // verify the required parameter 'vrsnId' is set
             if (vrsnId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'vrsnId' when calling TemplateVersionsApi->TemplateVersionUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'vrsnId' when calling TemplateVersionsApi->update");
             }
 
             // verify the required parameter 'templateVersionUpdatable' is set
             if (templateVersionUpdatable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateVersionUpdatable' when calling TemplateVersionsApi->TemplateVersionUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateVersionUpdatable' when calling TemplateVersionsApi->update");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1038,7 +1038,7 @@ namespace lob.dotnet.Api
             localVarRequestOptions.PathParameters.Add("vrsn_id", lob.dotnet.Client.ClientUtils.ParameterToString(vrsnId)); // path parameter
             localVarRequestOptions.Data = templateVersionUpdatable;
 
-            localVarRequestOptions.Operation = "TemplateVersionsApi.TemplateVersionUpdate";
+            localVarRequestOptions.Operation = "TemplateVersionsApi.update";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1052,7 +1052,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<TemplateVersion>("/templates/{tmpl_id}/versions/{vrsn_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("TemplateVersionUpdate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("update", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1072,9 +1072,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateVersion</returns>
-        public async System.Threading.Tasks.Task<TemplateVersion> TemplateVersionUpdateAsync(string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TemplateVersion> updateAsync(string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<TemplateVersion> localVarResponse = await TemplateVersionUpdateWithHttpInfoAsync(tmplId, vrsnId, templateVersionUpdatable, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<TemplateVersion> localVarResponse = await updateWithHttpInfoAsync(tmplId, vrsnId, templateVersionUpdatable, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1088,24 +1088,24 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateVersion)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateVersion>> TemplateVersionUpdateWithHttpInfoAsync(string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateVersion>> updateWithHttpInfoAsync(string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->TemplateVersionUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->update");
             }
 
             // verify the required parameter 'vrsnId' is set
             if (vrsnId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'vrsnId' when calling TemplateVersionsApi->TemplateVersionUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'vrsnId' when calling TemplateVersionsApi->update");
             }
 
             // verify the required parameter 'templateVersionUpdatable' is set
             if (templateVersionUpdatable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateVersionUpdatable' when calling TemplateVersionsApi->TemplateVersionUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateVersionUpdatable' when calling TemplateVersionsApi->update");
             }
 
 
@@ -1138,7 +1138,7 @@ namespace lob.dotnet.Api
             localVarRequestOptions.PathParameters.Add("vrsn_id", lob.dotnet.Client.ClientUtils.ParameterToString(vrsnId)); // path parameter
             localVarRequestOptions.Data = templateVersionUpdatable;
 
-            localVarRequestOptions.Operation = "TemplateVersionsApi.TemplateVersionUpdate";
+            localVarRequestOptions.Operation = "TemplateVersionsApi.update";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1153,7 +1153,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("TemplateVersionUpdate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("update", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1175,9 +1175,9 @@ namespace lob.dotnet.Api
         /// <param name="dateCreated">Filter by date created. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TemplateVersionList</returns>
-        public TemplateVersionList TemplateVersionsList(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0)
+        public TemplateVersionList list(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<TemplateVersionList> localVarResponse = TemplateVersionsListWithHttpInfo(tmplId, limit, before, after, include, dateCreated);
+            lob.dotnet.Client.ApiResponse<TemplateVersionList> localVarResponse = listWithHttpInfo(tmplId, limit, before, after, include, dateCreated);
             return localVarResponse.Data;
         }
 
@@ -1193,12 +1193,12 @@ namespace lob.dotnet.Api
         /// <param name="dateCreated">Filter by date created. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TemplateVersionList</returns>
-        public lob.dotnet.Client.ApiResponse<TemplateVersionList> TemplateVersionsListWithHttpInfo(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<TemplateVersionList> listWithHttpInfo(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0)
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->TemplateVersionsList");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->list");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1245,7 +1245,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "date_created", dateCreated));
             }
 
-            localVarRequestOptions.Operation = "TemplateVersionsApi.TemplateVersionsList";
+            localVarRequestOptions.Operation = "TemplateVersionsApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1259,7 +1259,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<TemplateVersionList>("/templates/{tmpl_id}/versions", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("TemplateVersionsList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1282,9 +1282,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TemplateVersionList</returns>
-        public async System.Threading.Tasks.Task<TemplateVersionList> TemplateVersionsListAsync(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TemplateVersionList> listAsync(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<TemplateVersionList> localVarResponse = await TemplateVersionsListWithHttpInfoAsync(tmplId, limit, before, after, include, dateCreated, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<TemplateVersionList> localVarResponse = await listWithHttpInfoAsync(tmplId, limit, before, after, include, dateCreated, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1301,12 +1301,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TemplateVersionList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateVersionList>> TemplateVersionsListWithHttpInfoAsync(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<TemplateVersionList>> listWithHttpInfoAsync(string tmplId, int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->TemplateVersionsList");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplateVersionsApi->list");
             }
 
 
@@ -1354,7 +1354,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "date_created", dateCreated));
             }
 
-            localVarRequestOptions.Operation = "TemplateVersionsApi.TemplateVersionsList";
+            localVarRequestOptions.Operation = "TemplateVersionsApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1369,7 +1369,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("TemplateVersionsList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
