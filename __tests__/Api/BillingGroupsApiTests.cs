@@ -79,37 +79,37 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test BillingGroupCreate
+        /// Test create
         /// </summary>
         [Test]
-        public void BillingGroupCreateTest()
+        public void createTest()
         {
             BillingGroupEditable billingGroupEditable = new BillingGroupEditable(
                 "fake billing group description",
                 "fake billing group name"
             );
 
-            billingGroupsApiMock.Setup(x => x.BillingGroupCreate(billingGroupEditable, It.IsAny<int>())).Returns(fakeBillingGroup);
-            BillingGroup response = billingGroupsApiMock.Object.BillingGroupCreate(billingGroupEditable);
+            billingGroupsApiMock.Setup(x => x.create(billingGroupEditable, It.IsAny<int>())).Returns(fakeBillingGroup);
+            BillingGroup response = billingGroupsApiMock.Object.create(billingGroupEditable);
 
             Assert.IsInstanceOf<BillingGroup>(response);
             Assert.AreEqual(response.Id, "bg_fakeId");
         }
 
         /// <summary>
-        /// Test BillingGroupCreateHandlesException
+        /// Test createHandlesException
         /// </summary>
         [Test]
-        public void BillingGroupCreateTestHandlesException()
+        public void createTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
 
-            billingGroupsApiMock.Setup(x => x.BillingGroupCreate(null, It.IsAny<int>())).Throws(fakeException);
+            billingGroupsApiMock.Setup(x => x.create(null, It.IsAny<int>())).Throws(fakeException);
             try {
-                BillingGroup response = billingGroupsApiMock.Object.BillingGroupCreate(null);
+                BillingGroup response = billingGroupsApiMock.Object.create(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -118,32 +118,32 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test BillingGroupRetrieve
+        /// Test get
         /// </summary>
         [Test]
-        public void BillingGroupRetrieveTest()
+        public void getTest()
         {
-            billingGroupsApiMock.Setup(x => x.BillingGroupRetrieve(fakeBillingGroup.Id, It.IsAny<int>())).Returns(fakeBillingGroup);
-            BillingGroup response = billingGroupsApiMock.Object.BillingGroupRetrieve(fakeBillingGroup.Id);
+            billingGroupsApiMock.Setup(x => x.get(fakeBillingGroup.Id, It.IsAny<int>())).Returns(fakeBillingGroup);
+            BillingGroup response = billingGroupsApiMock.Object.get(fakeBillingGroup.Id);
 
             Assert.IsInstanceOf<BillingGroup>(response);
             Assert.AreEqual(response.Id, fakeBillingGroup.Id);
         }
 
         /// <summary>
-        /// Test BillingGroupRetrieveHandlesException
+        /// Test getHandlesException
         /// </summary>
         [Test]
-        public void BillingGroupRetrieveTestHandlesException()
+        public void getTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
-            billingGroupsApiMock.Setup(x => x.BillingGroupRetrieve("bg_fakeId", It.IsAny<int>())).Throws(fakeException);
+            billingGroupsApiMock.Setup(x => x.get("bg_fakeId", It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = billingGroupsApiMock.Object.BillingGroupRetrieve("bg_fakeId");
+                var response = billingGroupsApiMock.Object.get("bg_fakeId");
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -157,9 +157,9 @@ namespace __tests__.Api
         [Test]
         public void BillingGroupListTest()
         {
-            billingGroupsApiMock.Setup(x => x.BillingGroupsList(null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeBillingGroupList);
+            billingGroupsApiMock.Setup(x => x.list(null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeBillingGroupList);
 
-            var response = billingGroupsApiMock.Object.BillingGroupsList(null, null, null, null, null, null);
+            var response = billingGroupsApiMock.Object.list(null, null, null, null, null, null);
 
             Assert.IsInstanceOf<BillingGroupList>(response);
             Assert.AreEqual(response.Count, fakeBillingGroupList.Count);
@@ -175,10 +175,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            billingGroupsApiMock.Setup(x => x.BillingGroupsList(null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
+            billingGroupsApiMock.Setup(x => x.list(null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = billingGroupsApiMock.Object.BillingGroupsList(null, null, null, null, null, null);
+                var response = billingGroupsApiMock.Object.list(null, null, null, null, null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -194,9 +194,9 @@ namespace __tests__.Api
         {
             int limit = 2;
 
-            billingGroupsApiMock.Setup(x => x.BillingGroupsList(limit, null, null, null, null, null, It.IsAny<int>())).Returns(fakeBillingGroupList);
+            billingGroupsApiMock.Setup(x => x.list(limit, null, null, null, null, null, It.IsAny<int>())).Returns(fakeBillingGroupList);
 
-            var response = billingGroupsApiMock.Object.BillingGroupsList(limit, null, null, null, null, null);
+            var response = billingGroupsApiMock.Object.list(limit, null, null, null, null, null);
 
             Assert.IsInstanceOf<BillingGroupList>(response);
             Assert.AreEqual(response.Count, fakeBillingGroupList.Count);
@@ -210,9 +210,9 @@ namespace __tests__.Api
         {
             int offset = 2;
 
-            billingGroupsApiMock.Setup(x => x.BillingGroupsList(null, offset, null, null, null, null, It.IsAny<int>())).Returns(fakeBillingGroupList);
+            billingGroupsApiMock.Setup(x => x.list(null, offset, null, null, null, null, It.IsAny<int>())).Returns(fakeBillingGroupList);
 
-            var response = billingGroupsApiMock.Object.BillingGroupsList(null, offset, null, null, null, null);
+            var response = billingGroupsApiMock.Object.list(null, offset, null, null, null, null);
 
             Assert.IsInstanceOf<BillingGroupList>(response);
             Assert.AreEqual(response.Count, fakeBillingGroupList.Count);
@@ -227,9 +227,9 @@ namespace __tests__.Api
             List<string> include = new List<string>();
             include.Add("total_count");
 
-            billingGroupsApiMock.Setup(x => x.BillingGroupsList(null, null, include, null, null, null, It.IsAny<int>())).Returns(fakeBillingGroupList);
+            billingGroupsApiMock.Setup(x => x.list(null, null, include, null, null, null, It.IsAny<int>())).Returns(fakeBillingGroupList);
 
-            var response = billingGroupsApiMock.Object.BillingGroupsList(null, null, include, null, null, null);
+            var response = billingGroupsApiMock.Object.list(null, null, include, null, null, null);
 
             Assert.IsInstanceOf<BillingGroupList>(response);
             Assert.AreEqual(response.Count, fakeBillingGroupList.Count);
@@ -245,9 +245,9 @@ namespace __tests__.Api
             DateTime lastMonth = DateTime.Today.AddMonths(-1);
             dateCreated.Add("lt", lastMonth);
 
-            billingGroupsApiMock.Setup(x => x.BillingGroupsList(null, null, null, dateCreated, null, null, It.IsAny<int>())).Returns(fakeBillingGroupList);
+            billingGroupsApiMock.Setup(x => x.list(null, null, null, dateCreated, null, null, It.IsAny<int>())).Returns(fakeBillingGroupList);
 
-            var response = billingGroupsApiMock.Object.BillingGroupsList(null, null, null, dateCreated, null, null);
+            var response = billingGroupsApiMock.Object.list(null, null, null, dateCreated, null, null);
 
             Assert.IsInstanceOf<BillingGroupList>(response);
             Assert.AreEqual(response.Count, fakeBillingGroupList.Count);
@@ -263,9 +263,9 @@ namespace __tests__.Api
             dateModified.Add("gt", "2020-01-01");
             dateModified.Add("lt", "2020-01-31T12");
 
-            billingGroupsApiMock.Setup(x => x.BillingGroupsList(null, null, null, null, dateModified, null, It.IsAny<int>())).Returns(fakeBillingGroupList);
+            billingGroupsApiMock.Setup(x => x.list(null, null, null, null, dateModified, null, It.IsAny<int>())).Returns(fakeBillingGroupList);
 
-            var response = billingGroupsApiMock.Object.BillingGroupsList(null, null, null, null, dateModified, null);
+            var response = billingGroupsApiMock.Object.list(null, null, null, null, dateModified, null);
 
             Assert.IsInstanceOf<BillingGroupList>(response);
             Assert.AreEqual(response.Count, fakeBillingGroupList.Count);
@@ -279,28 +279,28 @@ namespace __tests__.Api
         {
             SortByDateModified sortBy = new SortByDateModified(null, SortByDateModified.DateModifiedEnum.Desc);
 
-            billingGroupsApiMock.Setup(x => x.BillingGroupsList(null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakeBillingGroupList);
+            billingGroupsApiMock.Setup(x => x.list(null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakeBillingGroupList);
 
-            var response = billingGroupsApiMock.Object.BillingGroupsList(null, null, null, null, null, sortBy);
+            var response = billingGroupsApiMock.Object.list(null, null, null, null, null, sortBy);
 
             Assert.IsInstanceOf<BillingGroupList>(response);
             Assert.AreEqual(response.Count, fakeBillingGroupList.Count);
         }
 
         /// <summary>
-        /// Test BillingGroupUpdate
+        /// Test update
         /// </summary>
         [Test]
-        public void BillingGroupUpdateTest()
+        public void updateTest()
         {
             BillingGroupEditable updatedBillingGroupEditable = new BillingGroupEditable(
                 "billing group updated",
                 "billing group updated"
             );
 
-            billingGroupsApiMock.Setup(x => x.BillingGroupUpdate(fakeBillingGroup.Id, updatedBillingGroupEditable, It.IsAny<int>())).Returns(fakeBillingGroup);
+            billingGroupsApiMock.Setup(x => x.update(fakeBillingGroup.Id, updatedBillingGroupEditable, It.IsAny<int>())).Returns(fakeBillingGroup);
 
-            BillingGroup response = billingGroupsApiMock.Object.BillingGroupUpdate(fakeBillingGroup.Id, updatedBillingGroupEditable);
+            BillingGroup response = billingGroupsApiMock.Object.update(fakeBillingGroup.Id, updatedBillingGroupEditable);
 
             Assert.IsInstanceOf<BillingGroup>(response);
             Assert.AreEqual(response.Id, fakeBillingGroup.Id);
@@ -308,19 +308,19 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test BillingGroupUpdateHandlesException
+        /// Test updateHandlesException
         /// </summary>
         [Test]
-        public void BillingGroupUpdateTestHandlesException()
+        public void updateTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
-            billingGroupsApiMock.Setup(x => x.BillingGroupUpdate(null, null, It.IsAny<int>())).Throws(fakeException);
+            billingGroupsApiMock.Setup(x => x.update(null, null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = billingGroupsApiMock.Object.BillingGroupUpdate(null, null);
+                var response = billingGroupsApiMock.Object.update(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

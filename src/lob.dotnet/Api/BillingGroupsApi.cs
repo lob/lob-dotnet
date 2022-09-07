@@ -38,7 +38,7 @@ namespace lob.dotnet.Api
         /// <param name="billingGroupEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BillingGroup</returns>
-        BillingGroup BillingGroupCreate(BillingGroupEditable billingGroupEditable, int operationIndex = 0);
+        BillingGroup create(BillingGroupEditable billingGroupEditable, int operationIndex = 0);
 
         /// <summary>
         /// create
@@ -50,7 +50,7 @@ namespace lob.dotnet.Api
         /// <param name="billingGroupEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BillingGroup</returns>
-        ApiResponse<BillingGroup> BillingGroupCreateWithHttpInfo(BillingGroupEditable billingGroupEditable, int operationIndex = 0);
+        ApiResponse<BillingGroup> createWithHttpInfo(BillingGroupEditable billingGroupEditable, int operationIndex = 0);
         /// <summary>
         /// get
         /// </summary>
@@ -61,7 +61,7 @@ namespace lob.dotnet.Api
         /// <param name="bgId">id of the billing_group</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BillingGroup</returns>
-        BillingGroup BillingGroupRetrieve(string bgId, int operationIndex = 0);
+        BillingGroup get(string bgId, int operationIndex = 0);
 
         /// <summary>
         /// get
@@ -73,7 +73,7 @@ namespace lob.dotnet.Api
         /// <param name="bgId">id of the billing_group</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BillingGroup</returns>
-        ApiResponse<BillingGroup> BillingGroupRetrieveWithHttpInfo(string bgId, int operationIndex = 0);
+        ApiResponse<BillingGroup> getWithHttpInfo(string bgId, int operationIndex = 0);
         /// <summary>
         /// update
         /// </summary>
@@ -85,7 +85,7 @@ namespace lob.dotnet.Api
         /// <param name="billingGroupEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BillingGroup</returns>
-        BillingGroup BillingGroupUpdate(string bgId, BillingGroupEditable billingGroupEditable, int operationIndex = 0);
+        BillingGroup update(string bgId, BillingGroupEditable billingGroupEditable, int operationIndex = 0);
 
         /// <summary>
         /// update
@@ -98,7 +98,7 @@ namespace lob.dotnet.Api
         /// <param name="billingGroupEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BillingGroup</returns>
-        ApiResponse<BillingGroup> BillingGroupUpdateWithHttpInfo(string bgId, BillingGroupEditable billingGroupEditable, int operationIndex = 0);
+        ApiResponse<BillingGroup> updateWithHttpInfo(string bgId, BillingGroupEditable billingGroupEditable, int operationIndex = 0);
         /// <summary>
         /// list
         /// </summary>
@@ -114,7 +114,7 @@ namespace lob.dotnet.Api
         /// <param name="sortByDateModified">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BillingGroupList</returns>
-        BillingGroupList BillingGroupsList(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0);
+        BillingGroupList list(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -131,7 +131,7 @@ namespace lob.dotnet.Api
         /// <param name="sortByDateModified">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BillingGroupList</returns>
-        ApiResponse<BillingGroupList> BillingGroupsListWithHttpInfo(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0);
+        ApiResponse<BillingGroupList> listWithHttpInfo(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -152,7 +152,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BillingGroup</returns>
-        System.Threading.Tasks.Task<BillingGroup> BillingGroupCreateAsync(BillingGroupEditable billingGroupEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BillingGroup> createAsync(BillingGroupEditable billingGroupEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// create
@@ -165,7 +165,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BillingGroup)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BillingGroup>> BillingGroupCreateWithHttpInfoAsync(BillingGroupEditable billingGroupEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BillingGroup>> createWithHttpInfoAsync(BillingGroupEditable billingGroupEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// get
         /// </summary>
@@ -177,7 +177,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BillingGroup</returns>
-        System.Threading.Tasks.Task<BillingGroup> BillingGroupRetrieveAsync(string bgId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BillingGroup> getAsync(string bgId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// get
@@ -190,7 +190,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BillingGroup)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BillingGroup>> BillingGroupRetrieveWithHttpInfoAsync(string bgId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BillingGroup>> getWithHttpInfoAsync(string bgId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// update
         /// </summary>
@@ -203,7 +203,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BillingGroup</returns>
-        System.Threading.Tasks.Task<BillingGroup> BillingGroupUpdateAsync(string bgId, BillingGroupEditable billingGroupEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BillingGroup> updateAsync(string bgId, BillingGroupEditable billingGroupEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// update
@@ -217,7 +217,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BillingGroup)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BillingGroup>> BillingGroupUpdateWithHttpInfoAsync(string bgId, BillingGroupEditable billingGroupEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BillingGroup>> updateWithHttpInfoAsync(string bgId, BillingGroupEditable billingGroupEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// list
         /// </summary>
@@ -234,7 +234,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BillingGroupList</returns>
-        System.Threading.Tasks.Task<BillingGroupList> BillingGroupsListAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BillingGroupList> listAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -252,7 +252,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BillingGroupList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BillingGroupList>> BillingGroupsListWithHttpInfoAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BillingGroupList>> listWithHttpInfoAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -380,9 +380,9 @@ namespace lob.dotnet.Api
         /// <param name="billingGroupEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BillingGroup</returns>
-        public BillingGroup BillingGroupCreate(BillingGroupEditable billingGroupEditable, int operationIndex = 0)
+        public BillingGroup create(BillingGroupEditable billingGroupEditable, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<BillingGroup> localVarResponse = BillingGroupCreateWithHttpInfo(billingGroupEditable);
+            lob.dotnet.Client.ApiResponse<BillingGroup> localVarResponse = createWithHttpInfo(billingGroupEditable);
             return localVarResponse.Data;
         }
 
@@ -393,12 +393,12 @@ namespace lob.dotnet.Api
         /// <param name="billingGroupEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BillingGroup</returns>
-        public lob.dotnet.Client.ApiResponse<BillingGroup> BillingGroupCreateWithHttpInfo(BillingGroupEditable billingGroupEditable, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<BillingGroup> createWithHttpInfo(BillingGroupEditable billingGroupEditable, int operationIndex = 0)
         {
             // verify the required parameter 'billingGroupEditable' is set
             if (billingGroupEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'billingGroupEditable' when calling BillingGroupsApi->BillingGroupCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'billingGroupEditable' when calling BillingGroupsApi->create");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -428,7 +428,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = billingGroupEditable;
 
-            localVarRequestOptions.Operation = "BillingGroupsApi.BillingGroupCreate";
+            localVarRequestOptions.Operation = "BillingGroupsApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -442,7 +442,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<BillingGroup>("/billing_groups", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BillingGroupCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -460,9 +460,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BillingGroup</returns>
-        public async System.Threading.Tasks.Task<BillingGroup> BillingGroupCreateAsync(BillingGroupEditable billingGroupEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BillingGroup> createAsync(BillingGroupEditable billingGroupEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<BillingGroup> localVarResponse = await BillingGroupCreateWithHttpInfoAsync(billingGroupEditable, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<BillingGroup> localVarResponse = await createWithHttpInfoAsync(billingGroupEditable, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -474,12 +474,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BillingGroup)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BillingGroup>> BillingGroupCreateWithHttpInfoAsync(BillingGroupEditable billingGroupEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BillingGroup>> createWithHttpInfoAsync(BillingGroupEditable billingGroupEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'billingGroupEditable' is set
             if (billingGroupEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'billingGroupEditable' when calling BillingGroupsApi->BillingGroupCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'billingGroupEditable' when calling BillingGroupsApi->create");
             }
 
 
@@ -510,7 +510,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = billingGroupEditable;
 
-            localVarRequestOptions.Operation = "BillingGroupsApi.BillingGroupCreate";
+            localVarRequestOptions.Operation = "BillingGroupsApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -525,7 +525,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BillingGroupCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -542,9 +542,9 @@ namespace lob.dotnet.Api
         /// <param name="bgId">id of the billing_group</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BillingGroup</returns>
-        public BillingGroup BillingGroupRetrieve(string bgId, int operationIndex = 0)
+        public BillingGroup get(string bgId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<BillingGroup> localVarResponse = BillingGroupRetrieveWithHttpInfo(bgId);
+            lob.dotnet.Client.ApiResponse<BillingGroup> localVarResponse = getWithHttpInfo(bgId);
             return localVarResponse.Data;
         }
 
@@ -555,12 +555,12 @@ namespace lob.dotnet.Api
         /// <param name="bgId">id of the billing_group</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BillingGroup</returns>
-        public lob.dotnet.Client.ApiResponse<BillingGroup> BillingGroupRetrieveWithHttpInfo(string bgId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<BillingGroup> getWithHttpInfo(string bgId, int operationIndex = 0)
         {
             // verify the required parameter 'bgId' is set
             if (bgId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bgId' when calling BillingGroupsApi->BillingGroupRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bgId' when calling BillingGroupsApi->get");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -587,7 +587,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("bg_id", lob.dotnet.Client.ClientUtils.ParameterToString(bgId)); // path parameter
 
-            localVarRequestOptions.Operation = "BillingGroupsApi.BillingGroupRetrieve";
+            localVarRequestOptions.Operation = "BillingGroupsApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -601,7 +601,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<BillingGroup>("/billing_groups/{bg_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BillingGroupRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -619,9 +619,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BillingGroup</returns>
-        public async System.Threading.Tasks.Task<BillingGroup> BillingGroupRetrieveAsync(string bgId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BillingGroup> getAsync(string bgId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<BillingGroup> localVarResponse = await BillingGroupRetrieveWithHttpInfoAsync(bgId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<BillingGroup> localVarResponse = await getWithHttpInfoAsync(bgId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -633,12 +633,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BillingGroup)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BillingGroup>> BillingGroupRetrieveWithHttpInfoAsync(string bgId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BillingGroup>> getWithHttpInfoAsync(string bgId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'bgId' is set
             if (bgId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bgId' when calling BillingGroupsApi->BillingGroupRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bgId' when calling BillingGroupsApi->get");
             }
 
 
@@ -666,7 +666,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("bg_id", lob.dotnet.Client.ClientUtils.ParameterToString(bgId)); // path parameter
 
-            localVarRequestOptions.Operation = "BillingGroupsApi.BillingGroupRetrieve";
+            localVarRequestOptions.Operation = "BillingGroupsApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -681,7 +681,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BillingGroupRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -699,9 +699,9 @@ namespace lob.dotnet.Api
         /// <param name="billingGroupEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BillingGroup</returns>
-        public BillingGroup BillingGroupUpdate(string bgId, BillingGroupEditable billingGroupEditable, int operationIndex = 0)
+        public BillingGroup update(string bgId, BillingGroupEditable billingGroupEditable, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<BillingGroup> localVarResponse = BillingGroupUpdateWithHttpInfo(bgId, billingGroupEditable);
+            lob.dotnet.Client.ApiResponse<BillingGroup> localVarResponse = updateWithHttpInfo(bgId, billingGroupEditable);
             return localVarResponse.Data;
         }
 
@@ -713,18 +713,18 @@ namespace lob.dotnet.Api
         /// <param name="billingGroupEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BillingGroup</returns>
-        public lob.dotnet.Client.ApiResponse<BillingGroup> BillingGroupUpdateWithHttpInfo(string bgId, BillingGroupEditable billingGroupEditable, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<BillingGroup> updateWithHttpInfo(string bgId, BillingGroupEditable billingGroupEditable, int operationIndex = 0)
         {
             // verify the required parameter 'bgId' is set
             if (bgId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bgId' when calling BillingGroupsApi->BillingGroupUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bgId' when calling BillingGroupsApi->update");
             }
 
             // verify the required parameter 'billingGroupEditable' is set
             if (billingGroupEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'billingGroupEditable' when calling BillingGroupsApi->BillingGroupUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'billingGroupEditable' when calling BillingGroupsApi->update");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -755,7 +755,7 @@ namespace lob.dotnet.Api
             localVarRequestOptions.PathParameters.Add("bg_id", lob.dotnet.Client.ClientUtils.ParameterToString(bgId)); // path parameter
             localVarRequestOptions.Data = billingGroupEditable;
 
-            localVarRequestOptions.Operation = "BillingGroupsApi.BillingGroupUpdate";
+            localVarRequestOptions.Operation = "BillingGroupsApi.update";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -769,7 +769,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<BillingGroup>("/billing_groups/{bg_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BillingGroupUpdate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("update", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -788,9 +788,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BillingGroup</returns>
-        public async System.Threading.Tasks.Task<BillingGroup> BillingGroupUpdateAsync(string bgId, BillingGroupEditable billingGroupEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BillingGroup> updateAsync(string bgId, BillingGroupEditable billingGroupEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<BillingGroup> localVarResponse = await BillingGroupUpdateWithHttpInfoAsync(bgId, billingGroupEditable, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<BillingGroup> localVarResponse = await updateWithHttpInfoAsync(bgId, billingGroupEditable, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -803,18 +803,18 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BillingGroup)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BillingGroup>> BillingGroupUpdateWithHttpInfoAsync(string bgId, BillingGroupEditable billingGroupEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BillingGroup>> updateWithHttpInfoAsync(string bgId, BillingGroupEditable billingGroupEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'bgId' is set
             if (bgId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bgId' when calling BillingGroupsApi->BillingGroupUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bgId' when calling BillingGroupsApi->update");
             }
 
             // verify the required parameter 'billingGroupEditable' is set
             if (billingGroupEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'billingGroupEditable' when calling BillingGroupsApi->BillingGroupUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'billingGroupEditable' when calling BillingGroupsApi->update");
             }
 
 
@@ -846,7 +846,7 @@ namespace lob.dotnet.Api
             localVarRequestOptions.PathParameters.Add("bg_id", lob.dotnet.Client.ClientUtils.ParameterToString(bgId)); // path parameter
             localVarRequestOptions.Data = billingGroupEditable;
 
-            localVarRequestOptions.Operation = "BillingGroupsApi.BillingGroupUpdate";
+            localVarRequestOptions.Operation = "BillingGroupsApi.update";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -861,7 +861,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BillingGroupUpdate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("update", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -883,9 +883,9 @@ namespace lob.dotnet.Api
         /// <param name="sortByDateModified">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BillingGroupList</returns>
-        public BillingGroupList BillingGroupsList(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0)
+        public BillingGroupList list(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<BillingGroupList> localVarResponse = BillingGroupsListWithHttpInfo(limit, offset, include, dateCreated, dateModified, sortByDateModified);
+            lob.dotnet.Client.ApiResponse<BillingGroupList> localVarResponse = listWithHttpInfo(limit, offset, include, dateCreated, dateModified, sortByDateModified);
             return localVarResponse.Data;
         }
 
@@ -901,7 +901,7 @@ namespace lob.dotnet.Api
         /// <param name="sortByDateModified">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BillingGroupList</returns>
-        public lob.dotnet.Client.ApiResponse<BillingGroupList> BillingGroupsListWithHttpInfo(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<BillingGroupList> listWithHttpInfo(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -950,7 +950,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "sort_by", sortByDateModified.ToJson()));
             }
 
-            localVarRequestOptions.Operation = "BillingGroupsApi.BillingGroupsList";
+            localVarRequestOptions.Operation = "BillingGroupsApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -964,7 +964,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<BillingGroupList>("/billing_groups", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BillingGroupsList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -987,9 +987,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BillingGroupList</returns>
-        public async System.Threading.Tasks.Task<BillingGroupList> BillingGroupsListAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BillingGroupList> listAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<BillingGroupList> localVarResponse = await BillingGroupsListWithHttpInfoAsync(limit, offset, include, dateCreated, dateModified, sortByDateModified, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<BillingGroupList> localVarResponse = await listWithHttpInfoAsync(limit, offset, include, dateCreated, dateModified, sortByDateModified, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1006,7 +1006,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BillingGroupList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BillingGroupList>> BillingGroupsListWithHttpInfoAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BillingGroupList>> listWithHttpInfoAsync(int? limit = default(int?), int? offset = default(int?), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> dateModified = default(Dictionary<string, string>), SortByDateModified sortByDateModified = default(SortByDateModified), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1056,7 +1056,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "sort_by_date_modified", sortByDateModified));
             }
 
-            localVarRequestOptions.Operation = "BillingGroupsApi.BillingGroupsList";
+            localVarRequestOptions.Operation = "BillingGroupsApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1071,7 +1071,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BillingGroupsList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

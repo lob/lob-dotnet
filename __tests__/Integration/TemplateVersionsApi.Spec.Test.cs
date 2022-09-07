@@ -54,26 +54,26 @@ namespace __tests__.Integration {
 
             templateWritable.Metadata.Add("name", "Harry");
             templatesApi = new TemplatesApi(config);
-            template = templatesApi.CreateTemplate(templateWritable);
+            template = templatesApi.create(templateWritable);
         }
 
         public void Dispose()
         {
-            templatesApi.TemplateDelete(template.Id);
+            templatesApi.delete(template.Id);
         }
 
         [Test]
-        public void CreateTemplateVersionTest() {
-            TemplateVersion response = validApi.CreateTemplateVersion(template.Id, templateVersionWritable);
+        public void createTest() {
+            TemplateVersion response = validApi.create(template.Id, templateVersionWritable);
 
             Assert.NotNull(response.Id);
             Assert.AreEqual(response.Description, templateVersionWritable.Description);
         }
 
         [Test]
-        public void CreateTemplateVersionTestBadParameter() {
+        public void createTestBadParameter() {
             try {
-                TemplateVersion response = validApi.CreateTemplateVersion(null, null);
+                TemplateVersion response = validApi.create(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -82,9 +82,9 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void CreateTemplateVersionTestBadUsername() {
+        public void createTestBadUsername() {
             try {
-                TemplateVersion response = invalidApi.CreateTemplateVersion(template.Id, templateVersionWritable);
+                TemplateVersion response = invalidApi.create(template.Id, templateVersionWritable);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -93,20 +93,20 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void TemplateVersionUpdateTest() {
-            TemplateVersion ogTemplateVersion = validApi.CreateTemplateVersion(template.Id, templateVersionWritable);
+        public void updateTest() {
+            TemplateVersion ogTemplateVersion = validApi.create(template.Id, templateVersionWritable);
             TemplateVersionUpdatable updatedTmplVrsn = new TemplateVersionUpdatable("C# integration test Updated templateVersion description", EngineHtml.Handlebars);
 
-            TemplateVersion response = validApi.TemplateVersionUpdate(template.Id, ogTemplateVersion.Id, updatedTmplVrsn);
+            TemplateVersion response = validApi.update(template.Id, ogTemplateVersion.Id, updatedTmplVrsn);
 
             Assert.NotNull(response);
             Assert.AreEqual(updatedTmplVrsn.Description, response.Description);
         }
 
         [Test]
-        public void TemplateVersionUpdateTestBadParameter() {
+        public void updateTestBadParameter() {
             try {
-                TemplateVersion response = validApi.TemplateVersionUpdate(null, null, null);
+                TemplateVersion response = validApi.update(null, null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -115,13 +115,13 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void TemplateVersionUpdateTestBadUsername() {
-            TemplateVersion ogTemplateVersion = validApi.CreateTemplateVersion(template.Id, templateVersionWritable);
+        public void updateTestBadUsername() {
+            TemplateVersion ogTemplateVersion = validApi.create(template.Id, templateVersionWritable);
 
             TemplateVersionUpdatable updatedTmplVrsn = new TemplateVersionUpdatable("C# integration test Updated templateVersion description", EngineHtml.Handlebars);
 
             try {
-                TemplateVersion response = invalidApi.TemplateVersionUpdate(template.Id, ogTemplateVersion.Id, updatedTmplVrsn);
+                TemplateVersion response = invalidApi.update(template.Id, ogTemplateVersion.Id, updatedTmplVrsn);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -130,19 +130,19 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void TemplateVersionRetrieveTest() {
-            TemplateVersion templateVersion = validApi.CreateTemplateVersion(template.Id, templateVersionWritable);
+        public void getTest() {
+            TemplateVersion templateVersion = validApi.create(template.Id, templateVersionWritable);
 
-            TemplateVersion response = validApi.TemplateVersionRetrieve(template.Id, templateVersion.Id);
+            TemplateVersion response = validApi.get(template.Id, templateVersion.Id);
 
             Assert.NotNull(response.Id);
             Assert.AreEqual(response.Id, templateVersion.Id);
         }
 
         [Test]
-        public void TemplateVersionRetrieveTestBadParameter() {
+        public void getTestBadParameter() {
             try {
-                TemplateVersion response = validApi.TemplateVersionRetrieve(null, null);
+                TemplateVersion response = validApi.get(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -151,11 +151,11 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void TemplateVersionRetrieveTestBadUsername() {
-            TemplateVersion templateVersion = validApi.CreateTemplateVersion(template.Id, templateVersionWritable);
+        public void getTestBadUsername() {
+            TemplateVersion templateVersion = validApi.create(template.Id, templateVersionWritable);
 
             try {
-                TemplateVersion response = invalidApi.TemplateVersionRetrieve(template.Id, templateVersion.Id);
+                TemplateVersion response = invalidApi.get(template.Id, templateVersion.Id);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -165,7 +165,7 @@ namespace __tests__.Integration {
 
         [Test]
         public void TemplateVersionListTest() {
-            TemplateVersionList response = validApi.TemplateVersionsList(template.Id, null, null, null, null, null);
+            TemplateVersionList response = validApi.list(template.Id, null, null, null, null, null);
 
             Assert.Greater(response.Count, 0);
         }
@@ -173,7 +173,7 @@ namespace __tests__.Integration {
         [Test]
         public void TemplateVersionListTestWithLimitParameter() {
             int limit = 2;
-            TemplateVersionList response = validApi.TemplateVersionsList(template.Id, limit, null, null, null, null);
+            TemplateVersionList response = validApi.list(template.Id, limit, null, null, null, null);
 
             Assert.AreEqual(response.Count, 2);
         }
@@ -183,7 +183,7 @@ namespace __tests__.Integration {
             List<string> includeList = new List<string>();
             includeList.Add("total_count");
 
-            TemplateVersionList response = validApi.TemplateVersionsList(template.Id, null, null, null, includeList, null);
+            TemplateVersionList response = validApi.list(template.Id, null, null, null, includeList, null);
             Assert.Greater(response.Count, 0);
             Assert.NotNull(response.TotalCount);
         }
@@ -195,7 +195,7 @@ namespace __tests__.Integration {
         //     dateCreated.Add("gt", "2020-01-01");
         //     dateCreated.Add("lt", "2020-01-31T12");
 
-        //     TemplateVersionList response = validApi.TemplateVersionsList(template.Id, null, null, null, null, dateCreated);
+        //     TemplateVersionList response = validApi.list(template.Id, null, null, null, null, dateCreated);
         //     Console.WriteLine(response);
         //     Assert.Greater(response.Count, 0);
         // } */
@@ -203,7 +203,7 @@ namespace __tests__.Integration {
         [Test]
         public void TemplateVersionListTestBadParameter() {
             try {
-                TemplateVersionList response = validApi.TemplateVersionsList(null);
+                TemplateVersionList response = validApi.list(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -213,10 +213,10 @@ namespace __tests__.Integration {
 
         [Test]
         public void TemplateVersionListTestBadUsername() {
-            TemplateVersion templateVersion = validApi.CreateTemplateVersion(template.Id, templateVersionWritable);
+            TemplateVersion templateVersion = validApi.create(template.Id, templateVersionWritable);
 
             try {
-                TemplateVersionList response = invalidApi.TemplateVersionsList(template.Id);
+                TemplateVersionList response = invalidApi.list(template.Id);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -225,18 +225,18 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void TemplateVersionDeleteTest() {
-            TemplateVersion templateVersion = validApi.CreateTemplateVersion(template.Id, templateVersionWritable);
-            TemplateVersionDeletion response = validApi.TemplateVersionDelete(template.Id, templateVersion.Id);
+        public void deleteTest() {
+            TemplateVersion templateVersion = validApi.create(template.Id, templateVersionWritable);
+            TemplateVersionDeletion response = validApi.delete(template.Id, templateVersion.Id);
 
             Assert.NotNull(response);
             Assert.True(response.Deleted);
         }
 
         [Test]
-        public void TemplateVersionDeleteTestBadParameter() {
+        public void deleteTestBadParameter() {
             try {
-                TemplateVersionDeletion response = validApi.TemplateVersionDelete(null, null);
+                TemplateVersionDeletion response = validApi.delete(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -245,11 +245,11 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void TemplateVersionDeleteTestBadUsername() {
-            TemplateVersion templateVersion = validApi.CreateTemplateVersion(template.Id, templateVersionWritable);
+        public void deleteTestBadUsername() {
+            TemplateVersion templateVersion = validApi.create(template.Id, templateVersionWritable);
 
             try {
-                TemplateVersionDeletion response = invalidApi.TemplateVersionDelete(template.Id, templateVersion.Id);
+                TemplateVersionDeletion response = invalidApi.delete(template.Id, templateVersion.Id);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

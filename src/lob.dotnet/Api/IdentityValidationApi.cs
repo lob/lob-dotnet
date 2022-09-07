@@ -38,7 +38,7 @@ namespace lob.dotnet.Api
         /// <param name="multiLineAddress"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>IdentityValidation</returns>
-        IdentityValidation IdentityValidation(MultiLineAddress multiLineAddress, int operationIndex = 0);
+        IdentityValidation validate(MultiLineAddress multiLineAddress, int operationIndex = 0);
 
         /// <summary>
         /// validate
@@ -50,7 +50,7 @@ namespace lob.dotnet.Api
         /// <param name="multiLineAddress"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of IdentityValidation</returns>
-        ApiResponse<IdentityValidation> IdentityValidationWithHttpInfo(MultiLineAddress multiLineAddress, int operationIndex = 0);
+        ApiResponse<IdentityValidation> validateWithHttpInfo(MultiLineAddress multiLineAddress, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -71,7 +71,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdentityValidation</returns>
-        System.Threading.Tasks.Task<IdentityValidation> IdentityValidationAsync(MultiLineAddress multiLineAddress, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<IdentityValidation> validateAsync(MultiLineAddress multiLineAddress, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// validate
@@ -84,7 +84,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdentityValidation)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IdentityValidation>> IdentityValidationWithHttpInfoAsync(MultiLineAddress multiLineAddress, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<IdentityValidation>> validateWithHttpInfoAsync(MultiLineAddress multiLineAddress, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -212,9 +212,9 @@ namespace lob.dotnet.Api
         /// <param name="multiLineAddress"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>IdentityValidation</returns>
-        public IdentityValidation IdentityValidation(MultiLineAddress multiLineAddress, int operationIndex = 0)
+        public IdentityValidation validate(MultiLineAddress multiLineAddress, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<IdentityValidation> localVarResponse = IdentityValidationWithHttpInfo(multiLineAddress);
+            lob.dotnet.Client.ApiResponse<IdentityValidation> localVarResponse = validateWithHttpInfo(multiLineAddress);
             return localVarResponse.Data;
         }
 
@@ -225,12 +225,12 @@ namespace lob.dotnet.Api
         /// <param name="multiLineAddress"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of IdentityValidation</returns>
-        public lob.dotnet.Client.ApiResponse<IdentityValidation> IdentityValidationWithHttpInfo(MultiLineAddress multiLineAddress, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<IdentityValidation> validateWithHttpInfo(MultiLineAddress multiLineAddress, int operationIndex = 0)
         {
             // verify the required parameter 'multiLineAddress' is set
             if (multiLineAddress == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'multiLineAddress' when calling IdentityValidationApi->IdentityValidation");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'multiLineAddress' when calling IdentityValidationApi->validate");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -260,7 +260,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = multiLineAddress;
 
-            localVarRequestOptions.Operation = "IdentityValidationApi.IdentityValidation";
+            localVarRequestOptions.Operation = "IdentityValidationApi.validate";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -274,7 +274,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<IdentityValidation>("/identity_validation", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("IdentityValidation", localVarResponse);
+                Exception _exception = this.ExceptionFactory("validate", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -292,9 +292,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdentityValidation</returns>
-        public async System.Threading.Tasks.Task<IdentityValidation> IdentityValidationAsync(MultiLineAddress multiLineAddress, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<IdentityValidation> validateAsync(MultiLineAddress multiLineAddress, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<IdentityValidation> localVarResponse = await IdentityValidationWithHttpInfoAsync(multiLineAddress, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<IdentityValidation> localVarResponse = await validateWithHttpInfoAsync(multiLineAddress, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -306,12 +306,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdentityValidation)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<IdentityValidation>> IdentityValidationWithHttpInfoAsync(MultiLineAddress multiLineAddress, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<IdentityValidation>> validateWithHttpInfoAsync(MultiLineAddress multiLineAddress, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'multiLineAddress' is set
             if (multiLineAddress == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'multiLineAddress' when calling IdentityValidationApi->IdentityValidation");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'multiLineAddress' when calling IdentityValidationApi->validate");
             }
 
 
@@ -342,7 +342,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = multiLineAddress;
 
-            localVarRequestOptions.Operation = "IdentityValidationApi.IdentityValidation";
+            localVarRequestOptions.Operation = "IdentityValidationApi.validate";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -357,7 +357,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("IdentityValidation", localVarResponse);
+                Exception _exception = this.ExceptionFactory("validate", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

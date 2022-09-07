@@ -39,7 +39,7 @@ namespace lob.dotnet.Api
         /// <param name="cardOrderEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CardOrder</returns>
-        CardOrder CardOrderCreate(string cardId, CardOrderEditable cardOrderEditable, int operationIndex = 0);
+        CardOrder create(string cardId, CardOrderEditable cardOrderEditable, int operationIndex = 0);
 
         /// <summary>
         /// create
@@ -52,7 +52,7 @@ namespace lob.dotnet.Api
         /// <param name="cardOrderEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CardOrder</returns>
-        ApiResponse<CardOrder> CardOrderCreateWithHttpInfo(string cardId, CardOrderEditable cardOrderEditable, int operationIndex = 0);
+        ApiResponse<CardOrder> createWithHttpInfo(string cardId, CardOrderEditable cardOrderEditable, int operationIndex = 0);
         /// <summary>
         /// get
         /// </summary>
@@ -65,7 +65,7 @@ namespace lob.dotnet.Api
         /// <param name="offset">An integer that designates the offset at which to begin returning results. Defaults to 0. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CardOrderList</returns>
-        CardOrderList CardOrdersRetrieve(string cardId, int? limit = default(int?), int? offset = default(int?), int operationIndex = 0);
+        CardOrderList get(string cardId, int? limit = default(int?), int? offset = default(int?), int operationIndex = 0);
 
         /// <summary>
         /// get
@@ -79,7 +79,7 @@ namespace lob.dotnet.Api
         /// <param name="offset">An integer that designates the offset at which to begin returning results. Defaults to 0. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CardOrderList</returns>
-        ApiResponse<CardOrderList> CardOrdersRetrieveWithHttpInfo(string cardId, int? limit = default(int?), int? offset = default(int?), int operationIndex = 0);
+        ApiResponse<CardOrderList> getWithHttpInfo(string cardId, int? limit = default(int?), int? offset = default(int?), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -101,7 +101,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CardOrder</returns>
-        System.Threading.Tasks.Task<CardOrder> CardOrderCreateAsync(string cardId, CardOrderEditable cardOrderEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CardOrder> createAsync(string cardId, CardOrderEditable cardOrderEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// create
@@ -115,7 +115,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CardOrder)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CardOrder>> CardOrderCreateWithHttpInfoAsync(string cardId, CardOrderEditable cardOrderEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CardOrder>> createWithHttpInfoAsync(string cardId, CardOrderEditable cardOrderEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// get
         /// </summary>
@@ -129,7 +129,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CardOrderList</returns>
-        System.Threading.Tasks.Task<CardOrderList> CardOrdersRetrieveAsync(string cardId, int? limit = default(int?), int? offset = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CardOrderList> getAsync(string cardId, int? limit = default(int?), int? offset = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// get
@@ -144,7 +144,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CardOrderList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CardOrderList>> CardOrdersRetrieveWithHttpInfoAsync(string cardId, int? limit = default(int?), int? offset = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CardOrderList>> getWithHttpInfoAsync(string cardId, int? limit = default(int?), int? offset = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -273,9 +273,9 @@ namespace lob.dotnet.Api
         /// <param name="cardOrderEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CardOrder</returns>
-        public CardOrder CardOrderCreate(string cardId, CardOrderEditable cardOrderEditable, int operationIndex = 0)
+        public CardOrder create(string cardId, CardOrderEditable cardOrderEditable, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<CardOrder> localVarResponse = CardOrderCreateWithHttpInfo(cardId, cardOrderEditable);
+            lob.dotnet.Client.ApiResponse<CardOrder> localVarResponse = createWithHttpInfo(cardId, cardOrderEditable);
             return localVarResponse.Data;
         }
 
@@ -287,18 +287,18 @@ namespace lob.dotnet.Api
         /// <param name="cardOrderEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CardOrder</returns>
-        public lob.dotnet.Client.ApiResponse<CardOrder> CardOrderCreateWithHttpInfo(string cardId, CardOrderEditable cardOrderEditable, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<CardOrder> createWithHttpInfo(string cardId, CardOrderEditable cardOrderEditable, int operationIndex = 0)
         {
             // verify the required parameter 'cardId' is set
             if (cardId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardOrdersApi->CardOrderCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardOrdersApi->create");
             }
 
             // verify the required parameter 'cardOrderEditable' is set
             if (cardOrderEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardOrderEditable' when calling CardOrdersApi->CardOrderCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardOrderEditable' when calling CardOrdersApi->create");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -329,7 +329,7 @@ namespace lob.dotnet.Api
             localVarRequestOptions.PathParameters.Add("card_id", lob.dotnet.Client.ClientUtils.ParameterToString(cardId)); // path parameter
             localVarRequestOptions.Data = cardOrderEditable;
 
-            localVarRequestOptions.Operation = "CardOrdersApi.CardOrderCreate";
+            localVarRequestOptions.Operation = "CardOrdersApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -343,7 +343,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<CardOrder>("/cards/{card_id}/orders", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CardOrderCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -362,9 +362,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CardOrder</returns>
-        public async System.Threading.Tasks.Task<CardOrder> CardOrderCreateAsync(string cardId, CardOrderEditable cardOrderEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CardOrder> createAsync(string cardId, CardOrderEditable cardOrderEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<CardOrder> localVarResponse = await CardOrderCreateWithHttpInfoAsync(cardId, cardOrderEditable, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<CardOrder> localVarResponse = await createWithHttpInfoAsync(cardId, cardOrderEditable, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -377,18 +377,18 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CardOrder)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<CardOrder>> CardOrderCreateWithHttpInfoAsync(string cardId, CardOrderEditable cardOrderEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<CardOrder>> createWithHttpInfoAsync(string cardId, CardOrderEditable cardOrderEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'cardId' is set
             if (cardId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardOrdersApi->CardOrderCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardOrdersApi->create");
             }
 
             // verify the required parameter 'cardOrderEditable' is set
             if (cardOrderEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardOrderEditable' when calling CardOrdersApi->CardOrderCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardOrderEditable' when calling CardOrdersApi->create");
             }
 
 
@@ -420,7 +420,7 @@ namespace lob.dotnet.Api
             localVarRequestOptions.PathParameters.Add("card_id", lob.dotnet.Client.ClientUtils.ParameterToString(cardId)); // path parameter
             localVarRequestOptions.Data = cardOrderEditable;
 
-            localVarRequestOptions.Operation = "CardOrdersApi.CardOrderCreate";
+            localVarRequestOptions.Operation = "CardOrdersApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -435,7 +435,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CardOrderCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -454,9 +454,9 @@ namespace lob.dotnet.Api
         /// <param name="offset">An integer that designates the offset at which to begin returning results. Defaults to 0. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CardOrderList</returns>
-        public CardOrderList CardOrdersRetrieve(string cardId, int? limit = default(int?), int? offset = default(int?), int operationIndex = 0)
+        public CardOrderList get(string cardId, int? limit = default(int?), int? offset = default(int?), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<CardOrderList> localVarResponse = CardOrdersRetrieveWithHttpInfo(cardId, limit, offset);
+            lob.dotnet.Client.ApiResponse<CardOrderList> localVarResponse = getWithHttpInfo(cardId, limit, offset);
             return localVarResponse.Data;
         }
 
@@ -469,12 +469,12 @@ namespace lob.dotnet.Api
         /// <param name="offset">An integer that designates the offset at which to begin returning results. Defaults to 0. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CardOrderList</returns>
-        public lob.dotnet.Client.ApiResponse<CardOrderList> CardOrdersRetrieveWithHttpInfo(string cardId, int? limit = default(int?), int? offset = default(int?), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<CardOrderList> getWithHttpInfo(string cardId, int? limit = default(int?), int? offset = default(int?), int operationIndex = 0)
         {
             // verify the required parameter 'cardId' is set
             if (cardId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardOrdersApi->CardOrdersRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardOrdersApi->get");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -509,7 +509,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
             }
 
-            localVarRequestOptions.Operation = "CardOrdersApi.CardOrdersRetrieve";
+            localVarRequestOptions.Operation = "CardOrdersApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -523,7 +523,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<CardOrderList>("/cards/{card_id}/orders", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CardOrdersRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -543,9 +543,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CardOrderList</returns>
-        public async System.Threading.Tasks.Task<CardOrderList> CardOrdersRetrieveAsync(string cardId, int? limit = default(int?), int? offset = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CardOrderList> getAsync(string cardId, int? limit = default(int?), int? offset = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<CardOrderList> localVarResponse = await CardOrdersRetrieveWithHttpInfoAsync(cardId, limit, offset, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<CardOrderList> localVarResponse = await getWithHttpInfoAsync(cardId, limit, offset, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -559,12 +559,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CardOrderList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<CardOrderList>> CardOrdersRetrieveWithHttpInfoAsync(string cardId, int? limit = default(int?), int? offset = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<CardOrderList>> getWithHttpInfoAsync(string cardId, int? limit = default(int?), int? offset = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'cardId' is set
             if (cardId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardOrdersApi->CardOrdersRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardOrdersApi->get");
             }
 
 
@@ -600,7 +600,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
             }
 
-            localVarRequestOptions.Operation = "CardOrdersApi.CardOrdersRetrieve";
+            localVarRequestOptions.Operation = "CardOrdersApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -615,7 +615,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CardOrdersRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

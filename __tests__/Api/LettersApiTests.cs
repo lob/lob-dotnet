@@ -140,10 +140,10 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test LetterCreate
+        /// Test create
         /// </summary>
         [Test]
-        public void LetterCreateTest()
+        public void createTest()
         {
             LetterEditable letterEditable = new LetterEditable(
                 null, // description
@@ -163,27 +163,27 @@ namespace __tests__.Api
                 null // extraService
             );
 
-            LettersApiMock.Setup(x => x.LetterCreate(letterEditable, null, It.IsAny<int>())).Returns(fakeLetter);
-            Letter response = LettersApiMock.Object.LetterCreate(letterEditable);
+            LettersApiMock.Setup(x => x.create(letterEditable, null, It.IsAny<int>())).Returns(fakeLetter);
+            Letter response = LettersApiMock.Object.create(letterEditable);
 
             Assert.IsInstanceOf<Letter>(response);
             Assert.AreEqual(response.Id, "ltr_fakeId");
         }
 
         /// <summary>
-        /// Test LetterCreateHandlesException
+        /// Test createHandlesException
         /// </summary>
         [Test]
-        public void LetterCreateTestHandlesException()
+        public void createTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
 
-            LettersApiMock.Setup(x => x.LetterCreate(null, null, It.IsAny<int>())).Throws(fakeException);
+            LettersApiMock.Setup(x => x.create(null, null, It.IsAny<int>())).Throws(fakeException);
             try {
-                Letter response = LettersApiMock.Object.LetterCreate(null, null);
+                Letter response = LettersApiMock.Object.create(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -192,19 +192,19 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test LetterCancel
+        /// Test cancel
         /// </summary>
         [Test]
-        public void LetterCancelTest()
+        public void cancelTest()
         {
             LetterDeletion fakeLetter = new LetterDeletion();
 
             fakeLetter.Id = "ltr_fakeId";
             fakeLetter.Deleted = true;
 
-            LettersApiMock.Setup(x => x.LetterCancel(fakeLetter.Id, It.IsAny<int>())).Returns(fakeLetter);
+            LettersApiMock.Setup(x => x.cancel(fakeLetter.Id, It.IsAny<int>())).Returns(fakeLetter);
 
-            var response = LettersApiMock.Object.LetterCancel(fakeLetter.Id);
+            var response = LettersApiMock.Object.cancel(fakeLetter.Id);
 
             Assert.IsInstanceOf<LetterDeletion>(response);
             Assert.AreEqual(response.Deleted, fakeLetter.Deleted);
@@ -212,19 +212,19 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test LetterCancelHandlesException
+        /// Test cancelHandlesException
         /// </summary>
         [Test]
-        public void LetterCancelHandlesException()
+        public void cancelHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
 
-            LettersApiMock.Setup(x => x.LetterCancel(null, It.IsAny<int>())).Throws(fakeException);
+            LettersApiMock.Setup(x => x.cancel(null, It.IsAny<int>())).Throws(fakeException);
             try {
-                var response = LettersApiMock.Object.LetterCancel(null);
+                var response = LettersApiMock.Object.cancel(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -233,32 +233,32 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test LetterRetrieve
+        /// Test get
         /// </summary>
         [Test]
-        public void LetterRetrieveTest()
+        public void getTest()
         {
-            LettersApiMock.Setup(x => x.LetterRetrieve(fakeLetter.Id, It.IsAny<int>())).Returns(fakeLetter);
-            Letter response = LettersApiMock.Object.LetterRetrieve(fakeLetter.Id);
+            LettersApiMock.Setup(x => x.get(fakeLetter.Id, It.IsAny<int>())).Returns(fakeLetter);
+            Letter response = LettersApiMock.Object.get(fakeLetter.Id);
 
             Assert.IsInstanceOf<Letter>(response);
             Assert.AreEqual(response.Id, fakeLetter.Id);
         }
 
         /// <summary>
-        /// Test LetterRetrieveHandlesException
+        /// Test getHandlesException
         /// </summary>
         [Test]
-        public void LetterRetrieveTestHandlesException()
+        public void getTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
-            LettersApiMock.Setup(x => x.LetterRetrieve("ltr_fakeId", It.IsAny<int>())).Throws(fakeException);
+            LettersApiMock.Setup(x => x.get("ltr_fakeId", It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = LettersApiMock.Object.LetterRetrieve("ltr_fakeId");
+                var response = LettersApiMock.Object.get("ltr_fakeId");
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -272,9 +272,9 @@ namespace __tests__.Api
         [Test]
         public void LetterListTest()
         {
-            LettersApiMock.Setup(x => x.LettersList(null, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
+            LettersApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
 
-            var response = LettersApiMock.Object.LettersList(null, null, null, null, null, null, null, null, null, null, null);
+            var response = LettersApiMock.Object.list(null, null, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
             Assert.AreEqual(response.Count, fakeLetterList.Count);
@@ -290,10 +290,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            LettersApiMock.Setup(x => x.LettersList(null, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
+            LettersApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = LettersApiMock.Object.LettersList(null, null, null, null, null, null, null, null, null, null, null);
+                var response = LettersApiMock.Object.list(null, null, null, null, null, null, null, null, null, null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -309,9 +309,9 @@ namespace __tests__.Api
         {
             int limit = 2;
 
-            LettersApiMock.Setup(x => x.LettersList(limit, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
+            LettersApiMock.Setup(x => x.list(limit, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
 
-            var response = LettersApiMock.Object.LettersList(limit, null, null, null, null, null, null, null, null, null, null);
+            var response = LettersApiMock.Object.list(limit, null, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
             Assert.AreEqual(response.Count, fakeLetterList.Count);
@@ -325,9 +325,9 @@ namespace __tests__.Api
         {
             string before = "before";
 
-            LettersApiMock.Setup(x => x.LettersList(null, before, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
+            LettersApiMock.Setup(x => x.list(null, before, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
 
-            var response = LettersApiMock.Object.LettersList(null, before, null, null, null, null, null, null, null, null, null);
+            var response = LettersApiMock.Object.list(null, before, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
             Assert.AreEqual(response.Count, fakeLetterList.Count);
@@ -341,9 +341,9 @@ namespace __tests__.Api
         {
             string after = "after";
 
-            LettersApiMock.Setup(x => x.LettersList(null, null, after, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
+            LettersApiMock.Setup(x => x.list(null, null, after, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
 
-            var response = LettersApiMock.Object.LettersList(null, null, after, null, null, null, null, null, null, null, null);
+            var response = LettersApiMock.Object.list(null, null, after, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
             Assert.AreEqual(response.Count, fakeLetterList.Count);
@@ -358,9 +358,9 @@ namespace __tests__.Api
             List<string> include = new List<string>();
             include.Add("total_count");
 
-            LettersApiMock.Setup(x => x.LettersList(null, null, null, include, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
+            LettersApiMock.Setup(x => x.list(null, null, null, include, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
 
-            var response = LettersApiMock.Object.LettersList(null, null, null, include, null, null, null, null, null, null, null);
+            var response = LettersApiMock.Object.list(null, null, null, include, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
             Assert.AreEqual(response.Count, fakeLetterList.Count);
@@ -376,9 +376,9 @@ namespace __tests__.Api
             DateTime lastMonth = DateTime.Today.AddMonths(-1);
             dateCreated.Add("lt", lastMonth);
 
-            LettersApiMock.Setup(x => x.LettersList(null, null, null, null, dateCreated, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
+            LettersApiMock.Setup(x => x.list(null, null, null, null, dateCreated, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
 
-            var response = LettersApiMock.Object.LettersList(null, null, null, null, dateCreated, null, null, null, null, null, null);
+            var response = LettersApiMock.Object.list(null, null, null, null, dateCreated, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
             Assert.AreEqual(response.Count, fakeLetterList.Count);
@@ -393,9 +393,9 @@ namespace __tests__.Api
             Dictionary<String, String> metadata = new Dictionary<String, String>();
             metadata.Add("name", "Harry");
 
-            LettersApiMock.Setup(x => x.LettersList(null, null, null, null, null, metadata, null, null, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
+            LettersApiMock.Setup(x => x.list(null, null, null, null, null, metadata, null, null, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
 
-            var response = LettersApiMock.Object.LettersList(null, null, null, null, null, metadata, null, null, null, null, null);
+            var response = LettersApiMock.Object.list(null, null, null, null, null, metadata, null, null, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
             Assert.AreEqual(response.Count, fakeLetterList.Count);
@@ -409,9 +409,9 @@ namespace __tests__.Api
         {
             Boolean color = true;
 
-            LettersApiMock.Setup(x => x.LettersList(null, null, null, null, null, null, color, null, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
+            LettersApiMock.Setup(x => x.list(null, null, null, null, null, null, color, null, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
 
-            var response = LettersApiMock.Object.LettersList(null, null, null, null, null, null, color, null, null, null, null);
+            var response = LettersApiMock.Object.list(null, null, null, null, null, null, color, null, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
             Assert.AreEqual(response.Count, fakeLetterList.Count);
@@ -425,9 +425,9 @@ namespace __tests__.Api
         {
             Boolean scheduled = true;
 
-            LettersApiMock.Setup(x => x.LettersList(null, null, null, null, null, null, null, scheduled, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
+            LettersApiMock.Setup(x => x.list(null, null, null, null, null, null, null, scheduled, null, null, null, It.IsAny<int>())).Returns(fakeLetterList);
 
-            var response = LettersApiMock.Object.LettersList(null, null, null, null, null, null, null, scheduled, null, null, null);
+            var response = LettersApiMock.Object.list(null, null, null, null, null, null, null, scheduled, null, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
             Assert.AreEqual(response.Count, fakeLetterList.Count);
@@ -443,9 +443,9 @@ namespace __tests__.Api
             sendDate.Add("gt", "2020-01-01");
             sendDate.Add("lt", "2020-01-31T12");
 
-            LettersApiMock.Setup(x => x.LettersList(null, null, null, null, null, null, null, null, sendDate, null, null, It.IsAny<int>())).Returns(fakeLetterList);
+            LettersApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, sendDate, null, null, It.IsAny<int>())).Returns(fakeLetterList);
 
-            var response = LettersApiMock.Object.LettersList(null, null, null, null, null, null, null, null, sendDate, null, null);
+            var response = LettersApiMock.Object.list(null, null, null, null, null, null, null, null, sendDate, null, null);
 
             Assert.IsInstanceOf<LetterList>(response);
             Assert.AreEqual(response.Count, fakeLetterList.Count);
@@ -459,9 +459,9 @@ namespace __tests__.Api
         {
             MailType mailType = MailType.FirstClass;
 
-            LettersApiMock.Setup(x => x.LettersList(null, null, null, null, null, null, null, null, null, mailType, null, It.IsAny<int>())).Returns(fakeLetterList);
+            LettersApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, null, mailType, null, It.IsAny<int>())).Returns(fakeLetterList);
 
-            var response = LettersApiMock.Object.LettersList(null, null, null, null, null, null, null, null, null, mailType, null);
+            var response = LettersApiMock.Object.list(null, null, null, null, null, null, null, null, null, mailType, null);
 
             Assert.IsInstanceOf<LetterList>(response);
             Assert.AreEqual(response.Count, fakeLetterList.Count);
@@ -475,9 +475,9 @@ namespace __tests__.Api
         {
             SortBy3 sortBy = new SortBy3(null, SortBy3.SendDateEnum.Asc);
 
-            LettersApiMock.Setup(x => x.LettersList(null, null, null, null, null, null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakeLetterList);
+            LettersApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakeLetterList);
 
-            var response = LettersApiMock.Object.LettersList(null, null, null, null, null, null, null, null, null, null, sortBy);
+            var response = LettersApiMock.Object.list(null, null, null, null, null, null, null, null, null, null, sortBy);
 
             Assert.IsInstanceOf<LetterList>(response);
             Assert.AreEqual(response.Count, fakeLetterList.Count);

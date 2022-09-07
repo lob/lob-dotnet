@@ -4,16 +4,16 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BankAccountCreate**](BankAccountsApi.md#bankaccountcreate) | **POST** /bank_accounts | create
-[**BankAccountDelete**](BankAccountsApi.md#bankaccountdelete) | **DELETE** /bank_accounts/{bank_id} | delete
-[**BankAccountRetrieve**](BankAccountsApi.md#bankaccountretrieve) | **GET** /bank_accounts/{bank_id} | get
-[**BankAccountVerify**](BankAccountsApi.md#bankaccountverify) | **POST** /bank_accounts/{bank_id}/verify | verify
-[**BankAccountsList**](BankAccountsApi.md#bankaccountslist) | **GET** /bank_accounts | list
+[**create**](BankAccountsApi.md#create) | **POST** /bank_accounts | create
+[**delete**](BankAccountsApi.md#delete) | **DELETE** /bank_accounts/{bank_id} | delete
+[**get**](BankAccountsApi.md#get) | **GET** /bank_accounts/{bank_id} | get
+[**verify**](BankAccountsApi.md#verify) | **POST** /bank_accounts/{bank_id}/verify | verify
+[**list**](BankAccountsApi.md#list) | **GET** /bank_accounts | list
 
 
-<a name="bankaccountcreate"></a>
-# **BankAccountCreate**
-> BankAccount BankAccountCreate (BankAccountWritable bankAccountWritable)
+<a name="create"></a>
+# **create**
+> BankAccount create (BankAccountWritable bankAccountWritable)
 
 create
 
@@ -29,7 +29,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class BankAccountCreateExample
+    public class createExample
     {
         public static void Main()
         {
@@ -45,12 +45,12 @@ namespace Example
             try
             {
                 // create
-                BankAccount result = apiInstance.BankAccountCreate(bankAccountWritable);
+                BankAccount result = apiInstance.create(bankAccountWritable);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BankAccountsApi.BankAccountCreate: " + e.Message );
+                Debug.Print("Exception when calling BankAccountsApi.create: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -87,9 +87,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="bankaccountdelete"></a>
-# **BankAccountDelete**
-> BankAccountDeletion BankAccountDelete (string bankId)
+<a name="delete"></a>
+# **delete**
+> BankAccountDeletion delete (string bankId)
 
 delete
 
@@ -105,7 +105,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class BankAccountDeleteExample
+    public class deleteExample
     {
         public static void Main()
         {
@@ -121,12 +121,12 @@ namespace Example
             try
             {
                 // delete
-                BankAccountDeletion result = apiInstance.BankAccountDelete(bankId);
+                BankAccountDeletion result = apiInstance.delete(bankId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BankAccountsApi.BankAccountDelete: " + e.Message );
+                Debug.Print("Exception when calling BankAccountsApi.delete: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -163,9 +163,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="bankaccountretrieve"></a>
-# **BankAccountRetrieve**
-> BankAccount BankAccountRetrieve (string bankId)
+<a name="get"></a>
+# **get**
+> BankAccount get (string bankId)
 
 get
 
@@ -181,7 +181,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class BankAccountRetrieveExample
+    public class getExample
     {
         public static void Main()
         {
@@ -197,12 +197,12 @@ namespace Example
             try
             {
                 // get
-                BankAccount result = apiInstance.BankAccountRetrieve(bankId);
+                BankAccount result = apiInstance.get(bankId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BankAccountsApi.BankAccountRetrieve: " + e.Message );
+                Debug.Print("Exception when calling BankAccountsApi.get: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -239,9 +239,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="bankaccountverify"></a>
-# **BankAccountVerify**
-> BankAccount BankAccountVerify (string bankId, BankAccountVerify bankAccountVerify)
+<a name="verify"></a>
+# **verify**
+> BankAccount verify (string bankId, verify verify)
 
 verify
 
@@ -257,7 +257,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class BankAccountVerifyExample
+    public class verifyExample
     {
         public static void Main()
         {
@@ -269,17 +269,17 @@ namespace Example
 
             var apiInstance = new BankAccountsApi(config);
             var bankId = bankId_example;  // string | id of the bank account to be verified
-            var bankAccountVerify = new BankAccountVerify(); // BankAccountVerify | 
+            var verify = new verify(); // verify | 
 
             try
             {
                 // verify
-                BankAccount result = apiInstance.BankAccountVerify(bankId, bankAccountVerify);
+                BankAccount result = apiInstance.verify(bankId, verify);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BankAccountsApi.BankAccountVerify: " + e.Message );
+                Debug.Print("Exception when calling BankAccountsApi.verify: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -293,7 +293,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bankId** | **string**| id of the bank account to be verified | 
- **bankAccountVerify** | [**BankAccountVerify**](BankAccountVerify.md)|  | 
+ **verify** | [**verify**](verify.md)|  | 
 
 ### Return type
 
@@ -317,9 +317,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="bankaccountslist"></a>
-# **BankAccountsList**
-> BankAccountList BankAccountsList (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null)
+<a name="list"></a>
+# **list**
+> BankAccountList list (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null)
 
 list
 
@@ -335,7 +335,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class BankAccountsListExample
+    public class listExample
     {
         public static void Main()
         {
@@ -356,12 +356,12 @@ namespace Example
             try
             {
                 // list
-                BankAccountList result = apiInstance.BankAccountsList(limit, before, after, include, dateCreated, metadata);
+                BankAccountList result = apiInstance.list(limit, before, after, include, dateCreated, metadata);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BankAccountsApi.BankAccountsList: " + e.Message );
+                Debug.Print("Exception when calling BankAccountsApi.list: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }

@@ -38,7 +38,7 @@ namespace lob.dotnet.Api
         /// <param name="usAutocompletionsWritable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UsAutocompletions</returns>
-        UsAutocompletions UsAutocompletion(UsAutocompletionsWritable usAutocompletionsWritable, int operationIndex = 0);
+        UsAutocompletions autocomplete(UsAutocompletionsWritable usAutocompletionsWritable, int operationIndex = 0);
 
         /// <summary>
         /// autocomplete
@@ -50,7 +50,7 @@ namespace lob.dotnet.Api
         /// <param name="usAutocompletionsWritable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UsAutocompletions</returns>
-        ApiResponse<UsAutocompletions> UsAutocompletionWithHttpInfo(UsAutocompletionsWritable usAutocompletionsWritable, int operationIndex = 0);
+        ApiResponse<UsAutocompletions> autocompleteWithHttpInfo(UsAutocompletionsWritable usAutocompletionsWritable, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -71,7 +71,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UsAutocompletions</returns>
-        System.Threading.Tasks.Task<UsAutocompletions> UsAutocompletionAsync(UsAutocompletionsWritable usAutocompletionsWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UsAutocompletions> autocompleteAsync(UsAutocompletionsWritable usAutocompletionsWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// autocomplete
@@ -84,7 +84,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UsAutocompletions)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UsAutocompletions>> UsAutocompletionWithHttpInfoAsync(UsAutocompletionsWritable usAutocompletionsWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UsAutocompletions>> autocompleteWithHttpInfoAsync(UsAutocompletionsWritable usAutocompletionsWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -212,9 +212,9 @@ namespace lob.dotnet.Api
         /// <param name="usAutocompletionsWritable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UsAutocompletions</returns>
-        public UsAutocompletions UsAutocompletion(UsAutocompletionsWritable usAutocompletionsWritable, int operationIndex = 0)
+        public UsAutocompletions autocomplete(UsAutocompletionsWritable usAutocompletionsWritable, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<UsAutocompletions> localVarResponse = UsAutocompletionWithHttpInfo(usAutocompletionsWritable);
+            lob.dotnet.Client.ApiResponse<UsAutocompletions> localVarResponse = autocompleteWithHttpInfo(usAutocompletionsWritable);
             return localVarResponse.Data;
         }
 
@@ -225,12 +225,12 @@ namespace lob.dotnet.Api
         /// <param name="usAutocompletionsWritable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UsAutocompletions</returns>
-        public lob.dotnet.Client.ApiResponse<UsAutocompletions> UsAutocompletionWithHttpInfo(UsAutocompletionsWritable usAutocompletionsWritable, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<UsAutocompletions> autocompleteWithHttpInfo(UsAutocompletionsWritable usAutocompletionsWritable, int operationIndex = 0)
         {
             // verify the required parameter 'usAutocompletionsWritable' is set
             if (usAutocompletionsWritable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'usAutocompletionsWritable' when calling UsAutocompletionsApi->UsAutocompletion");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'usAutocompletionsWritable' when calling UsAutocompletionsApi->autocomplete");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -260,7 +260,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = usAutocompletionsWritable;
 
-            localVarRequestOptions.Operation = "UsAutocompletionsApi.UsAutocompletion";
+            localVarRequestOptions.Operation = "UsAutocompletionsApi.autocomplete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -274,7 +274,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<UsAutocompletions>("/us_autocompletions", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("UsAutocompletion", localVarResponse);
+                Exception _exception = this.ExceptionFactory("autocomplete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -292,9 +292,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UsAutocompletions</returns>
-        public async System.Threading.Tasks.Task<UsAutocompletions> UsAutocompletionAsync(UsAutocompletionsWritable usAutocompletionsWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UsAutocompletions> autocompleteAsync(UsAutocompletionsWritable usAutocompletionsWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<UsAutocompletions> localVarResponse = await UsAutocompletionWithHttpInfoAsync(usAutocompletionsWritable, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<UsAutocompletions> localVarResponse = await autocompleteWithHttpInfoAsync(usAutocompletionsWritable, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -306,12 +306,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UsAutocompletions)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<UsAutocompletions>> UsAutocompletionWithHttpInfoAsync(UsAutocompletionsWritable usAutocompletionsWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<UsAutocompletions>> autocompleteWithHttpInfoAsync(UsAutocompletionsWritable usAutocompletionsWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'usAutocompletionsWritable' is set
             if (usAutocompletionsWritable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'usAutocompletionsWritable' when calling UsAutocompletionsApi->UsAutocompletion");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'usAutocompletionsWritable' when calling UsAutocompletionsApi->autocomplete");
             }
 
 
@@ -342,7 +342,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = usAutocompletionsWritable;
 
-            localVarRequestOptions.Operation = "UsAutocompletionsApi.UsAutocompletion";
+            localVarRequestOptions.Operation = "UsAutocompletionsApi.autocomplete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -357,7 +357,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("UsAutocompletion", localVarResponse);
+                Exception _exception = this.ExceptionFactory("autocomplete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

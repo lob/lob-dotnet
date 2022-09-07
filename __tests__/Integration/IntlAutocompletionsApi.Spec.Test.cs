@@ -51,14 +51,14 @@ namespace __tests__.Integration {
 
         [Test]
         public void IntlAutocompletionTest() {
-            IntlAutocompletions response = validApi.IntlAutocompletion(intlAutocompletionWritable);
+            IntlAutocompletions response = validApi.autocomplete(intlAutocompletionWritable);
             Assert.NotNull(response.Suggestions);
             Assert.GreaterOrEqual(response.Suggestions.Count, 0);
         }
 
         [Test]
         public void IntlAutocompletionTestWithXLangOutput() {
-            IntlAutocompletions response = validApi.IntlAutocompletion(intlAutocompletionWritable, "native");
+            IntlAutocompletions response = validApi.autocomplete(intlAutocompletionWritable, "native");
             Assert.NotNull(response.Suggestions);
             Assert.GreaterOrEqual(response.Suggestions.Count, 0);
         }
@@ -66,7 +66,7 @@ namespace __tests__.Integration {
         [Test]
         public void IntlAutocompletionTestBadParameter() {
             try {
-                IntlAutocompletions response = validApi.IntlAutocompletion(null);
+                IntlAutocompletions response = validApi.autocomplete(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -77,7 +77,7 @@ namespace __tests__.Integration {
         [Test]
         public void IntlAutocompletionTestBadUsername() {
             try {
-                IntlAutocompletions response = invalidApi.IntlAutocompletion(intlAutocompletionWritable);
+                IntlAutocompletions response = invalidApi.autocomplete(intlAutocompletionWritable);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

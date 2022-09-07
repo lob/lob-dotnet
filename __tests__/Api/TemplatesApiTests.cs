@@ -100,10 +100,10 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test CreateTemplate
+        /// Test create
         /// </summary>
         [Test]
-        public void CreateTemplateTest()
+        public void createTest()
         {
             TemplateWritable templateWritable = new TemplateWritable(
                 "C# unit test description", // description
@@ -112,27 +112,27 @@ namespace __tests__.Api
                 default(EngineHtml) // engine
             );
 
-            templatesApiMock.Setup(x => x.CreateTemplate(templateWritable, It.IsAny<int>())).Returns(fakeTemplate);
-            Template response = templatesApiMock.Object.CreateTemplate(templateWritable);
+            templatesApiMock.Setup(x => x.create(templateWritable, It.IsAny<int>())).Returns(fakeTemplate);
+            Template response = templatesApiMock.Object.create(templateWritable);
 
             Assert.IsInstanceOf<Template>(response);
             Assert.AreEqual(response.Id, "tmpl_fakeId");
         }
 
         /// <summary>
-        /// Test CreateTemplateHandlesException
+        /// Test createHandlesException
         /// </summary>
         [Test]
-        public void CreateTemplateTestHandlesException()
+        public void createTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
 
-            templatesApiMock.Setup(x => x.CreateTemplate(null, It.IsAny<int>())).Throws(fakeException);
+            templatesApiMock.Setup(x => x.create(null, It.IsAny<int>())).Throws(fakeException);
             try {
-                Template response = templatesApiMock.Object.CreateTemplate(null);
+                Template response = templatesApiMock.Object.create(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -141,19 +141,19 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test TemplateDelete
+        /// Test delete
         /// </summary>
         [Test]
-        public void TemplateDeleteTest()
+        public void deleteTest()
         {
             TemplateDeletion fakeTemplate = new TemplateDeletion();
 
             fakeTemplate.Id = "tmpl_fakeId";
             fakeTemplate.Deleted = true;
 
-            templatesApiMock.Setup(x => x.TemplateDelete(fakeTemplate.Id, It.IsAny<int>())).Returns(fakeTemplate);
+            templatesApiMock.Setup(x => x.delete(fakeTemplate.Id, It.IsAny<int>())).Returns(fakeTemplate);
 
-            var response = templatesApiMock.Object.TemplateDelete(fakeTemplate.Id);
+            var response = templatesApiMock.Object.delete(fakeTemplate.Id);
 
             Assert.IsInstanceOf<TemplateDeletion>(response);
             Assert.AreEqual(response.Deleted, fakeTemplate.Deleted);
@@ -161,19 +161,19 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test TemplateDeleteHandlesException
+        /// Test deleteHandlesException
         /// </summary>
         [Test]
-        public void TemplateDeleteHandlesException()
+        public void deleteHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
 
-            templatesApiMock.Setup(x => x.TemplateDelete(null, It.IsAny<int>())).Throws(fakeException);
+            templatesApiMock.Setup(x => x.delete(null, It.IsAny<int>())).Throws(fakeException);
             try {
-                var response = templatesApiMock.Object.TemplateDelete(null);
+                var response = templatesApiMock.Object.delete(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -182,32 +182,32 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test TemplateRetrieve
+        /// Test get
         /// </summary>
         [Test]
-        public void TemplateRetrieveTest()
+        public void getTest()
         {
-            templatesApiMock.Setup(x => x.TemplateRetrieve(fakeTemplate.Id, It.IsAny<int>())).Returns(fakeTemplate);
-            Template response = templatesApiMock.Object.TemplateRetrieve(fakeTemplate.Id);
+            templatesApiMock.Setup(x => x.get(fakeTemplate.Id, It.IsAny<int>())).Returns(fakeTemplate);
+            Template response = templatesApiMock.Object.get(fakeTemplate.Id);
 
             Assert.IsInstanceOf<Template>(response);
             Assert.AreEqual(response.Id, fakeTemplate.Id);
         }
 
         /// <summary>
-        /// Test TemplateRetrieveHandlesException
+        /// Test getHandlesException
         /// </summary>
         [Test]
-        public void TemplateRetrieveTestHandlesException()
+        public void getTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
-            templatesApiMock.Setup(x => x.TemplateRetrieve(null, It.IsAny<int>())).Throws(fakeException);
+            templatesApiMock.Setup(x => x.get(null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = templatesApiMock.Object.TemplateRetrieve(null);
+                var response = templatesApiMock.Object.get(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -221,9 +221,9 @@ namespace __tests__.Api
         [Test]
         public void TemplateListTest()
         {
-            templatesApiMock.Setup(x => x.TemplatesList(null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeTemplateList);
+            templatesApiMock.Setup(x => x.list(null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeTemplateList);
 
-            var response = templatesApiMock.Object.TemplatesList(null, null, null, null, null, null);
+            var response = templatesApiMock.Object.list(null, null, null, null, null, null);
 
             Assert.IsInstanceOf<TemplateList>(response);
             Assert.AreEqual(response.Count, fakeTemplateList.Count);
@@ -239,10 +239,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            templatesApiMock.Setup(x => x.TemplatesList(null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
+            templatesApiMock.Setup(x => x.list(null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = templatesApiMock.Object.TemplatesList(null, null, null, null, null, null);
+                var response = templatesApiMock.Object.list(null, null, null, null, null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -258,9 +258,9 @@ namespace __tests__.Api
         {
             int limit = 2;
 
-            templatesApiMock.Setup(x => x.TemplatesList(limit, null, null, null, null, null, It.IsAny<int>())).Returns(fakeTemplateList);
+            templatesApiMock.Setup(x => x.list(limit, null, null, null, null, null, It.IsAny<int>())).Returns(fakeTemplateList);
 
-            var response = templatesApiMock.Object.TemplatesList(limit, null, null, null, null, null);
+            var response = templatesApiMock.Object.list(limit, null, null, null, null, null);
 
             Assert.IsInstanceOf<TemplateList>(response);
             Assert.AreEqual(response.Count, fakeTemplateList.Count);
@@ -274,9 +274,9 @@ namespace __tests__.Api
         {
             string before = "before";
 
-            templatesApiMock.Setup(x => x.TemplatesList(null, before, null, null, null, null, It.IsAny<int>())).Returns(fakeTemplateList);
+            templatesApiMock.Setup(x => x.list(null, before, null, null, null, null, It.IsAny<int>())).Returns(fakeTemplateList);
 
-            var response = templatesApiMock.Object.TemplatesList(null, before, null, null, null, null);
+            var response = templatesApiMock.Object.list(null, before, null, null, null, null);
 
             Assert.IsInstanceOf<TemplateList>(response);
             Assert.AreEqual(response.Count, fakeTemplateList.Count);
@@ -290,9 +290,9 @@ namespace __tests__.Api
         {
             string after = "after";
 
-            templatesApiMock.Setup(x => x.TemplatesList(null, null, after, null, null, null, It.IsAny<int>())).Returns(fakeTemplateList);
+            templatesApiMock.Setup(x => x.list(null, null, after, null, null, null, It.IsAny<int>())).Returns(fakeTemplateList);
 
-            var response = templatesApiMock.Object.TemplatesList(null, null, after, null, null, null);
+            var response = templatesApiMock.Object.list(null, null, after, null, null, null);
 
             Assert.IsInstanceOf<TemplateList>(response);
             Assert.AreEqual(response.Count, fakeTemplateList.Count);
@@ -307,9 +307,9 @@ namespace __tests__.Api
             List<string> include = new List<string>();
             include.Add("total_count");
 
-            templatesApiMock.Setup(x => x.TemplatesList(null, null, null, include, null, null, It.IsAny<int>())).Returns(fakeTemplateList);
+            templatesApiMock.Setup(x => x.list(null, null, null, include, null, null, It.IsAny<int>())).Returns(fakeTemplateList);
 
-            var response = templatesApiMock.Object.TemplatesList(null, null, null, include, null, null);
+            var response = templatesApiMock.Object.list(null, null, null, include, null, null);
 
             Assert.IsInstanceOf<TemplateList>(response);
             Assert.AreEqual(response.Count, fakeTemplateList.Count);
@@ -325,9 +325,9 @@ namespace __tests__.Api
             dateCreated.Add("gt", DateTime.Now);
             dateCreated.Add("lt", DateTime.Now);
 
-            templatesApiMock.Setup(x => x.TemplatesList(null, null, null, null, dateCreated, null, It.IsAny<int>())).Returns(fakeTemplateList);
+            templatesApiMock.Setup(x => x.list(null, null, null, null, dateCreated, null, It.IsAny<int>())).Returns(fakeTemplateList);
 
-            var response = templatesApiMock.Object.TemplatesList(null, null, null, null, dateCreated, null);
+            var response = templatesApiMock.Object.list(null, null, null, null, dateCreated, null);
 
             Assert.IsInstanceOf<TemplateList>(response);
             Assert.AreEqual(response.Count, fakeTemplateList.Count);
@@ -342,44 +342,44 @@ namespace __tests__.Api
             Dictionary<String, String> metadata = new Dictionary<String, String>();
             metadata.Add("name", "Harry");
 
-            templatesApiMock.Setup(x => x.TemplatesList(null, null, null, null, null, metadata, It.IsAny<int>())).Returns(fakeTemplateList);
+            templatesApiMock.Setup(x => x.list(null, null, null, null, null, metadata, It.IsAny<int>())).Returns(fakeTemplateList);
 
-            var response = templatesApiMock.Object.TemplatesList(null, null, null, null, null, metadata);
+            var response = templatesApiMock.Object.list(null, null, null, null, null, metadata);
 
             Assert.IsInstanceOf<TemplateList>(response);
             Assert.AreEqual(response.Count, fakeTemplateList.Count);
         }
 
         /// <summary>
-        /// Test TemplateUpdate
+        /// Test update
         /// </summary>
         [Test]
-        public void TemplateUpdateTest()
+        public void updateTest()
         {
-            TemplateUpdate templateUpdate = new TemplateUpdate("C# unit test template update description", "vrsn_fakeId");
+            update update = new update("C# unit test template update description", "vrsn_fakeId");
 
-            templatesApiMock.Setup(x => x.TemplateUpdate(fakeTemplate.Id, templateUpdate, It.IsAny<int>())).Returns(fakeTemplate);
+            templatesApiMock.Setup(x => x.update(fakeTemplate.Id, update, It.IsAny<int>())).Returns(fakeTemplate);
 
-            Template response = templatesApiMock.Object.TemplateUpdate(fakeTemplate.Id, templateUpdate);
+            Template response = templatesApiMock.Object.update(fakeTemplate.Id, update);
 
             Assert.IsInstanceOf<Template>(response);
             Assert.AreEqual(response.Id, fakeTemplate.Id);
         }
 
         /// <summary>
-        /// Test TemplateUpdateHandlesException
+        /// Test updateHandlesException
         /// </summary>
         [Test]
-        public void TemplateUpdateTestHandlesException()
+        public void updateTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
-            templatesApiMock.Setup(x => x.TemplateUpdate(null, null, It.IsAny<int>())).Throws(fakeException);
+            templatesApiMock.Setup(x => x.update(null, null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = templatesApiMock.Object.TemplateUpdate(null, null);
+                var response = templatesApiMock.Object.update(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

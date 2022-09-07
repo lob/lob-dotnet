@@ -57,7 +57,7 @@ namespace __tests__.Integration {
             );
 
             validAddressesApi = new AddressesApi(config);
-            address = validAddressesApi.AddressCreate(addressEditable);
+            address = validAddressesApi.create(addressEditable);
             var address2 = addressEditable.ToJson();
 
             postcardEditable = new PostcardEditable(
@@ -81,13 +81,13 @@ namespace __tests__.Integration {
 
         public void Dispose()
         {
-            validAddressesApi.AddressDelete(address.Id);
-            idsToDelete.ForEach(id => validApi.PostcardDelete(id));
+            validAddressesApi.delete(address.Id);
+            idsToDelete.ForEach(id => validApi.cancel(id));
         }
 
         [Test]
-        public void PostcardCreateTest() {
-            Postcard response = validApi.PostcardCreate(postcardEditable);
+        public void createTest() {
+            Postcard response = validApi.create(postcardEditable);
 
             Assert.NotNull(response.Id);
             Assert.AreEqual(response.Metadata, postcardEditable.Metadata);
@@ -95,9 +95,9 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void PostcardCreateTestBadParameter() {
+        public void createTestBadParameter() {
             try {
-                Postcard response = validApi.PostcardCreate(null);
+                Postcard response = validApi.create(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -106,9 +106,9 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void PostcardCreateTestBadUsername() {
+        public void createTestBadUsername() {
             try {
-                Postcard response = invalidApi.PostcardCreate(postcardEditable);
+                Postcard response = invalidApi.create(postcardEditable);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -117,20 +117,20 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void PostcardRetrieveTest() {
-            Postcard createdPostcard = validApi.PostcardCreate(postcardEditable);
+        public void getTest() {
+            Postcard createdPostcard = validApi.create(postcardEditable);
             idsToDelete.Add(createdPostcard.Id);
 
-            Postcard retrievedPostcard = validApi.PostcardRetrieve(createdPostcard.Id);
+            Postcard retrievedPostcard = validApi.get(createdPostcard.Id);
 
             Assert.NotNull(retrievedPostcard.Id);
             Assert.AreEqual(retrievedPostcard.Id, createdPostcard.Id);
         }
 
         [Test]
-        public void PostcardRetrieveTestBadParameter() {
+        public void getTestBadParameter() {
             try {
-                Postcard response = validApi.PostcardRetrieve(null);
+                Postcard response = validApi.get(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -139,12 +139,12 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void PostcardRetrieveTestBadUsername() {
-            Postcard createdPostcard = validApi.PostcardCreate(postcardEditable);
+        public void getTestBadUsername() {
+            Postcard createdPostcard = validApi.create(postcardEditable);
             idsToDelete.Add(createdPostcard.Id);
 
             try {
-                Postcard response = invalidApi.PostcardRetrieve(createdPostcard.Id);
+                Postcard response = invalidApi.get(createdPostcard.Id);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -154,7 +154,7 @@ namespace __tests__.Integration {
 
         [Test]
         public void PostcardListTest() {
-            PostcardList response = validApi.PostcardsList(null, null, null, null, null, null, null, null, null, null, null);
+            PostcardList response = validApi.list(null, null, null, null, null, null, null, null, null, null, null);
 
             Assert.Greater(response.Count, 0);
         }
@@ -162,7 +162,7 @@ namespace __tests__.Integration {
         [Test]
         public void PostcardListTestWithLimitParameter() {
             int limit = 2;
-            PostcardList response = validApi.PostcardsList(limit, null, null, null, null, null, null, null, null, null, null);
+            PostcardList response = validApi.list(limit, null, null, null, null, null, null, null, null, null, null);
 
             Assert.AreEqual(response.Count, 2);
         }
@@ -172,7 +172,7 @@ namespace __tests__.Integration {
             List<string> includeList = new List<string>();
             includeList.Add("total_count");
 
-            PostcardList response = validApi.PostcardsList(null, null, null, includeList, null, null, null, null, null, null, null);
+            PostcardList response = validApi.list(null, null, null, includeList, null, null, null, null, null, null, null);
             Assert.Greater(response.Count, 0);
             Assert.NotNull(response.TotalCount);
         }
@@ -183,19 +183,19 @@ namespace __tests__.Integration {
             DateTime lastMonth = DateTime.Today.AddMonths(-1);
             dateCreated.Add("lt", lastMonth);
 
-            PostcardList response = validApi.PostcardsList(null, null, null, null, dateCreated, null, null, null, null, null, null);
+            PostcardList response = validApi.list(null, null, null, null, dateCreated, null, null, null, null, null, null);
             Assert.Greater(response.Count, 0);
         }
 
         [Test]
         public void PostcardListTestWithMetadataParameter() {
-            Postcard createdPostcard = validApi.PostcardCreate(postcardEditable);
+            Postcard createdPostcard = validApi.create(postcardEditable);
             idsToDelete.Add(createdPostcard.Id);
 
             Dictionary<String, String> metadata = new Dictionary<String, String>();
             metadata.Add("name", "Harry");
 
-            PostcardList response = validApi.PostcardsList(null, null, null, null, null, metadata, null, null, null, null, null);
+            PostcardList response = validApi.list(null, null, null, null, null, metadata, null, null, null, null, null);
             Assert.Greater(response.Count, 0);
         }
 
@@ -204,7 +204,7 @@ namespace __tests__.Integration {
             List<PostcardSize> sizeArray = new List<PostcardSize>();
             sizeArray.Add(PostcardSize._4x6);
 
-            PostcardList response = validApi.PostcardsList(null, null, null, null, null, null, sizeArray);
+            PostcardList response = validApi.list(null, null, null, null, null, null, sizeArray);
             Assert.Greater(response.Count, 0);
         }
 
@@ -212,7 +212,7 @@ namespace __tests__.Integration {
         public void PostcardListTestWithScheduledParameter() {
             Boolean scheduled = true;
 
-            PostcardList response = validApi.PostcardsList(null, null, null, null, null, null, null, scheduled);
+            PostcardList response = validApi.list(null, null, null, null, null, null, null, scheduled);
             Assert.Greater(response.Count, 0);
         }
 
@@ -222,7 +222,7 @@ namespace __tests__.Integration {
             DateTime lastMonth = DateTime.Today.AddMonths(-1);
             sendDate.Add("lt", lastMonth.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 
-            PostcardList response = validApi.PostcardsList(null, null, null, null, null, null, null, null, sendDate);
+            PostcardList response = validApi.list(null, null, null, null, null, null, null, null, sendDate);
             Assert.Greater(response.Count, 0);
         }
 
@@ -230,7 +230,7 @@ namespace __tests__.Integration {
         public void PostcardListTestWithMailTypeParameter() {
             MailType mailType = MailType.FirstClass;
 
-            PostcardList response = validApi.PostcardsList(null, null, null, null, null, null, null, null, null, mailType);
+            PostcardList response = validApi.list(null, null, null, null, null, null, null, null, null, mailType);
             Assert.GreaterOrEqual(response.Count, 0);
         }
 
@@ -238,22 +238,22 @@ namespace __tests__.Integration {
         public void PostcardListTestWithSortByParameter() {
             SortBy3 sortBy = new SortBy3(null, SortBy3.SendDateEnum.Asc);
 
-            PostcardList response = validApi.PostcardsList(null, null, null, null, null, null, null, null, null, null, sortBy);
+            PostcardList response = validApi.list(null, null, null, null, null, null, null, null, null, null, sortBy);
             Assert.Greater(response.Count, 0);
         }
 
         [Test]
-        public void PostcardDeleteTest() {
-            Postcard createdPostcard = validApi.PostcardCreate(postcardEditable);
+        public void deleteTest() {
+            Postcard createdPostcard = validApi.create(postcardEditable);
 
-            PostcardDeletion deletedPostcard = validApi.PostcardDelete(createdPostcard.Id);
+            PostcardDeletion deletedPostcard = validApi.cancel(createdPostcard.Id);
             Assert.True(deletedPostcard.Deleted);
         }
 
         [Test]
-        public void PostcardDeleteTestBadParameter() {
+        public void deleteTestBadParameter() {
             try {
-                PostcardDeletion deletedPostcard = validApi.PostcardDelete(null);
+                PostcardDeletion deletedPostcard = validApi.cancel(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -262,12 +262,12 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void PostcardDeleteTestBadUsername() {
-            Postcard createdPostcard = validApi.PostcardCreate(postcardEditable);
+        public void deleteTestBadUsername() {
+            Postcard createdPostcard = validApi.create(postcardEditable);
             idsToDelete.Add(createdPostcard.Id);
 
             try {
-                PostcardDeletion deletedPostcard = invalidApi.PostcardDelete(createdPostcard.Id);
+                PostcardDeletion deletedPostcard = invalidApi.cancel(createdPostcard.Id);
             } catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
                 Assert.That(e.Message, Does.Contain("Your API key is not valid"));

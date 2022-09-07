@@ -55,8 +55,8 @@ namespace __tests__.Api
         {
             UsAutocompletions fakeUsAutocompletions = new UsAutocompletions("us_auto_fakeId", new List<Suggestions>());
 
-            usAutocompletionsApiMock.Setup(x => x.UsAutocompletion(usAutocompletionsWritable, It.IsAny<int>())).Returns(fakeUsAutocompletions);
-            UsAutocompletions response = usAutocompletionsApiMock.Object.UsAutocompletion(usAutocompletionsWritable);
+            usAutocompletionsApiMock.Setup(x => x.autocomplete(usAutocompletionsWritable, It.IsAny<int>())).Returns(fakeUsAutocompletions);
+            UsAutocompletions response = usAutocompletionsApiMock.Object.autocomplete(usAutocompletionsWritable);
 
             Assert.IsInstanceOf<UsAutocompletions>(response);
             Assert.NotNull(response.Suggestions);
@@ -74,9 +74,9 @@ namespace __tests__.Api
                 "This is an error"
             );
 
-            usAutocompletionsApiMock.Setup(x => x.UsAutocompletion(null, It.IsAny<int>())).Throws(fakeException);
+            usAutocompletionsApiMock.Setup(x => x.autocomplete(null, It.IsAny<int>())).Throws(fakeException);
             try {
-                UsAutocompletions response = usAutocompletionsApiMock.Object.UsAutocompletion(null);
+                UsAutocompletions response = usAutocompletionsApiMock.Object.autocomplete(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

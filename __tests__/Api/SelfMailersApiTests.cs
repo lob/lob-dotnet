@@ -107,10 +107,10 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test SelfMailerCreate
+        /// Test create
         /// </summary>
         [Test]
-        public void SelfMailerCreateTest()
+        public void createTest()
         {
             SelfMailerEditable selfMailerEditable = new SelfMailerEditable(
                 "adr_fakeId", // to
@@ -126,27 +126,27 @@ namespace __tests__.Api
                 default(string) // billingGroupId
             );
 
-            SelfMailersApiMock.Setup(x => x.SelfMailerCreate(selfMailerEditable, null, It.IsAny<int>())).Returns(fakeSelfMailer);
-            SelfMailer response = SelfMailersApiMock.Object.SelfMailerCreate(selfMailerEditable);
+            SelfMailersApiMock.Setup(x => x.create(selfMailerEditable, null, It.IsAny<int>())).Returns(fakeSelfMailer);
+            SelfMailer response = SelfMailersApiMock.Object.create(selfMailerEditable);
 
             Assert.IsInstanceOf<SelfMailer>(response);
             Assert.AreEqual(response.Id, "sfm_fakeId");
         }
 
         /// <summary>
-        /// Test SelfMailerCreateHandlesException
+        /// Test createHandlesException
         /// </summary>
         [Test]
-        public void SelfMailerCreateTestHandlesException()
+        public void createTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
 
-            SelfMailersApiMock.Setup(x => x.SelfMailerCreate(null, null, It.IsAny<int>())).Throws(fakeException);
+            SelfMailersApiMock.Setup(x => x.create(null, null, It.IsAny<int>())).Throws(fakeException);
             try {
-                SelfMailer response = SelfMailersApiMock.Object.SelfMailerCreate(null, null);
+                SelfMailer response = SelfMailersApiMock.Object.create(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -155,19 +155,19 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test SelfMailerDelete
+        /// Test delete
         /// </summary>
         [Test]
-        public void SelfMailerDeleteTest()
+        public void deleteTest()
         {
             SelfMailerDeletion fakeSelfMailer = new SelfMailerDeletion();
 
             fakeSelfMailer.Id = "sfm_fakeId";
             fakeSelfMailer.Deleted = true;
 
-            SelfMailersApiMock.Setup(x => x.SelfMailerDelete(fakeSelfMailer.Id, It.IsAny<int>())).Returns(fakeSelfMailer);
+            SelfMailersApiMock.Setup(x => x.delete(fakeSelfMailer.Id, It.IsAny<int>())).Returns(fakeSelfMailer);
 
-            var response = SelfMailersApiMock.Object.SelfMailerDelete(fakeSelfMailer.Id);
+            var response = SelfMailersApiMock.Object.delete(fakeSelfMailer.Id);
 
             Assert.IsInstanceOf<SelfMailerDeletion>(response);
             Assert.AreEqual(response.Deleted, fakeSelfMailer.Deleted);
@@ -175,19 +175,19 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test SelfMailerDeleteHandlesException
+        /// Test deleteHandlesException
         /// </summary>
         [Test]
-        public void SelfMailerDeleteHandlesException()
+        public void deleteHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
 
-            SelfMailersApiMock.Setup(x => x.SelfMailerDelete(null, It.IsAny<int>())).Throws(fakeException);
+            SelfMailersApiMock.Setup(x => x.delete(null, It.IsAny<int>())).Throws(fakeException);
             try {
-                var response = SelfMailersApiMock.Object.SelfMailerDelete(null);
+                var response = SelfMailersApiMock.Object.delete(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -196,32 +196,32 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test SelfMailerRetrieve
+        /// Test get
         /// </summary>
         [Test]
-        public void SelfMailerRetrieveTest()
+        public void getTest()
         {
-            SelfMailersApiMock.Setup(x => x.SelfMailerRetrieve(fakeSelfMailer.Id, It.IsAny<int>())).Returns(fakeSelfMailer);
-            SelfMailer response = SelfMailersApiMock.Object.SelfMailerRetrieve(fakeSelfMailer.Id);
+            SelfMailersApiMock.Setup(x => x.get(fakeSelfMailer.Id, It.IsAny<int>())).Returns(fakeSelfMailer);
+            SelfMailer response = SelfMailersApiMock.Object.get(fakeSelfMailer.Id);
 
             Assert.IsInstanceOf<SelfMailer>(response);
             Assert.AreEqual(response.Id, fakeSelfMailer.Id);
         }
 
         /// <summary>
-        /// Test SelfMailerRetrieveHandlesException
+        /// Test getHandlesException
         /// </summary>
         [Test]
-        public void SelfMailerRetrieveTestHandlesException()
+        public void getTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
-            SelfMailersApiMock.Setup(x => x.SelfMailerRetrieve(null, It.IsAny<int>())).Throws(fakeException);
+            SelfMailersApiMock.Setup(x => x.get(null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = SelfMailersApiMock.Object.SelfMailerRetrieve(null);
+                var response = SelfMailersApiMock.Object.get(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -235,9 +235,9 @@ namespace __tests__.Api
         [Test]
         public void SelfMailerListTest()
         {
-            SelfMailersApiMock.Setup(x => x.SelfMailersList(null, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
+            SelfMailersApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
 
-            var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, null, null, null, null, null, null, null, null);
+            var response = SelfMailersApiMock.Object.list(null, null, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
             Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
@@ -253,10 +253,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            SelfMailersApiMock.Setup(x => x.SelfMailersList(null, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
+            SelfMailersApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, null, null, null, null, null, null, null, null);
+                var response = SelfMailersApiMock.Object.list(null, null, null, null, null, null, null, null, null, null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -272,9 +272,9 @@ namespace __tests__.Api
         {
             int limit = 2;
 
-            SelfMailersApiMock.Setup(x => x.SelfMailersList(limit, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
+            SelfMailersApiMock.Setup(x => x.list(limit, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
 
-            var response = SelfMailersApiMock.Object.SelfMailersList(limit, null, null, null, null, null, null, null, null, null, null);
+            var response = SelfMailersApiMock.Object.list(limit, null, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
             Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
@@ -288,9 +288,9 @@ namespace __tests__.Api
         {
             string before = "before";
 
-            SelfMailersApiMock.Setup(x => x.SelfMailersList(null, before, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
+            SelfMailersApiMock.Setup(x => x.list(null, before, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
 
-            var response = SelfMailersApiMock.Object.SelfMailersList(null, before, null, null, null, null, null, null, null, null, null);
+            var response = SelfMailersApiMock.Object.list(null, before, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
             Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
@@ -304,9 +304,9 @@ namespace __tests__.Api
         {
             string after = "after";
 
-            SelfMailersApiMock.Setup(x => x.SelfMailersList(null, null, after, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
+            SelfMailersApiMock.Setup(x => x.list(null, null, after, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
 
-            var response = SelfMailersApiMock.Object.SelfMailersList(null, null, after, null, null, null, null, null, null, null, null);
+            var response = SelfMailersApiMock.Object.list(null, null, after, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
             Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
@@ -321,9 +321,9 @@ namespace __tests__.Api
             List<string> include = new List<string>();
             include.Add("total_count");
 
-            SelfMailersApiMock.Setup(x => x.SelfMailersList(null, null, null, include, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
+            SelfMailersApiMock.Setup(x => x.list(null, null, null, include, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
 
-            var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, include, null, null, null, null, null, null, null);
+            var response = SelfMailersApiMock.Object.list(null, null, null, include, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
             Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
@@ -339,9 +339,9 @@ namespace __tests__.Api
             dateCreated.Add("gt", DateTime.Now);
             dateCreated.Add("lt", DateTime.Now);
 
-            SelfMailersApiMock.Setup(x => x.SelfMailersList(null, null, null, null, dateCreated, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
+            SelfMailersApiMock.Setup(x => x.list(null, null, null, null, dateCreated, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
 
-            var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, null, dateCreated, null, null, null, null, null, null);
+            var response = SelfMailersApiMock.Object.list(null, null, null, null, dateCreated, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
             Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
@@ -356,9 +356,9 @@ namespace __tests__.Api
             Dictionary<String, String> metadata = new Dictionary<String, String>();
             metadata.Add("name", "Harry");
 
-            SelfMailersApiMock.Setup(x => x.SelfMailersList(null, null, null, null, null, metadata, null, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
+            SelfMailersApiMock.Setup(x => x.list(null, null, null, null, null, metadata, null, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
 
-            var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, null, null, metadata, null, null, null, null, null);
+            var response = SelfMailersApiMock.Object.list(null, null, null, null, null, metadata, null, null, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
             Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
@@ -372,9 +372,9 @@ namespace __tests__.Api
         {
             List<SelfMailerSize> size = new List<SelfMailerSize>{SelfMailerSize._6x18Bifold};
 
-            SelfMailersApiMock.Setup(x => x.SelfMailersList(null, null, null, null, null, null, size, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
+            SelfMailersApiMock.Setup(x => x.list(null, null, null, null, null, null, size, null, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
 
-            var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, null, null, null, size, null, null, null, null);
+            var response = SelfMailersApiMock.Object.list(null, null, null, null, null, null, size, null, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
             Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
@@ -388,9 +388,9 @@ namespace __tests__.Api
         {
             Boolean scheduled = true;
 
-            SelfMailersApiMock.Setup(x => x.SelfMailersList(null, null, null, null, null, null, null, scheduled, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
+            SelfMailersApiMock.Setup(x => x.list(null, null, null, null, null, null, null, scheduled, null, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
 
-            var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, null, null, null, null, scheduled, null, null, null);
+            var response = SelfMailersApiMock.Object.list(null, null, null, null, null, null, null, scheduled, null, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
             Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
@@ -406,9 +406,9 @@ namespace __tests__.Api
             sendDate.Add("gt", "2020-01-01");
             sendDate.Add("lt", "2020-01-31T12");
 
-            SelfMailersApiMock.Setup(x => x.SelfMailersList(null, null, null, null, null, null, null, null, sendDate, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
+            SelfMailersApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, sendDate, null, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
 
-            var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, null, null, null, null, null, sendDate, null, null);
+            var response = SelfMailersApiMock.Object.list(null, null, null, null, null, null, null, null, sendDate, null, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
             Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
@@ -422,9 +422,9 @@ namespace __tests__.Api
         {
             MailType mailType = MailType.FirstClass;
 
-            SelfMailersApiMock.Setup(x => x.SelfMailersList(null, null, null, null, null, null, null, null, null, mailType, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
+            SelfMailersApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, null, mailType, null, It.IsAny<int>())).Returns(fakeSelfMailerList);
 
-            var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, null, null, null, null, null, null, mailType, null);
+            var response = SelfMailersApiMock.Object.list(null, null, null, null, null, null, null, null, null, mailType, null);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
             Assert.AreEqual(response.Count, fakeSelfMailerList.Count);
@@ -438,9 +438,9 @@ namespace __tests__.Api
         {
             SortBy3 sortBy = new SortBy3(null, SortBy3.SendDateEnum.Asc);
 
-            SelfMailersApiMock.Setup(x => x.SelfMailersList(null, null, null, null, null, null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakeSelfMailerList);
+            SelfMailersApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakeSelfMailerList);
 
-            var response = SelfMailersApiMock.Object.SelfMailersList(null, null, null, null, null, null, null, null, null, null, sortBy);
+            var response = SelfMailersApiMock.Object.list(null, null, null, null, null, null, null, null, null, null, sortBy);
 
             Assert.IsInstanceOf<SelfMailerList>(response);
             Assert.AreEqual(response.Count, fakeSelfMailerList.Count);

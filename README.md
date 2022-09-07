@@ -97,12 +97,12 @@ namespace Example
             try
             {
                 // create
-                Address result = apiInstance.AddressCreate(addressEditable);
+                Address result = apiInstance.create(addressEditable);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling AddressesApi.AddressCreate: " + e.Message );
+                Debug.Print("Exception when calling AddressesApi.create: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -119,56 +119,56 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AddressesApi* | [**AddressCreate**](docs/AddressesApi.md#addresscreate) | **POST** /addresses | create
-*AddressesApi* | [**AddressDelete**](docs/AddressesApi.md#addressdelete) | **DELETE** /addresses/{adr_id} | delete
-*AddressesApi* | [**AddressRetrieve**](docs/AddressesApi.md#addressretrieve) | **GET** /addresses/{adr_id} | get
-*AddressesApi* | [**AddressesList**](docs/AddressesApi.md#addresseslist) | **GET** /addresses | list
-*BankAccountsApi* | [**BankAccountCreate**](docs/BankAccountsApi.md#bankaccountcreate) | **POST** /bank_accounts | create
-*BankAccountsApi* | [**BankAccountDelete**](docs/BankAccountsApi.md#bankaccountdelete) | **DELETE** /bank_accounts/{bank_id} | delete
-*BankAccountsApi* | [**BankAccountRetrieve**](docs/BankAccountsApi.md#bankaccountretrieve) | **GET** /bank_accounts/{bank_id} | get
-*BankAccountsApi* | [**BankAccountVerify**](docs/BankAccountsApi.md#bankaccountverify) | **POST** /bank_accounts/{bank_id}/verify | verify
-*BankAccountsApi* | [**BankAccountsList**](docs/BankAccountsApi.md#bankaccountslist) | **GET** /bank_accounts | list
-*BillingGroupsApi* | [**BillingGroupCreate**](docs/BillingGroupsApi.md#billinggroupcreate) | **POST** /billing_groups | create
-*BillingGroupsApi* | [**BillingGroupRetrieve**](docs/BillingGroupsApi.md#billinggroupretrieve) | **GET** /billing_groups/{bg_id} | get
-*BillingGroupsApi* | [**BillingGroupUpdate**](docs/BillingGroupsApi.md#billinggroupupdate) | **POST** /billing_groups/{bg_id} | update
-*BillingGroupsApi* | [**BillingGroupsList**](docs/BillingGroupsApi.md#billinggroupslist) | **GET** /billing_groups | list
-*CardOrdersApi* | [**CardOrderCreate**](docs/CardOrdersApi.md#cardordercreate) | **POST** /cards/{card_id}/orders | create
-*CardOrdersApi* | [**CardOrdersRetrieve**](docs/CardOrdersApi.md#cardordersretrieve) | **GET** /cards/{card_id}/orders | get
-*CardsApi* | [**CardCreate**](docs/CardsApi.md#cardcreate) | **POST** /cards | create
-*CardsApi* | [**CardDelete**](docs/CardsApi.md#carddelete) | **DELETE** /cards/{card_id} | delete
-*CardsApi* | [**CardRetrieve**](docs/CardsApi.md#cardretrieve) | **GET** /cards/{card_id} | get
-*CardsApi* | [**CardUpdate**](docs/CardsApi.md#cardupdate) | **POST** /cards/{card_id} | update
-*CardsApi* | [**CardsList**](docs/CardsApi.md#cardslist) | **GET** /cards | list
-*ChecksApi* | [**CheckCancel**](docs/ChecksApi.md#checkcancel) | **DELETE** /checks/{chk_id} | cancel
-*ChecksApi* | [**CheckCreate**](docs/ChecksApi.md#checkcreate) | **POST** /checks | create
-*ChecksApi* | [**CheckRetrieve**](docs/ChecksApi.md#checkretrieve) | **GET** /checks/{chk_id} | get
-*ChecksApi* | [**ChecksList**](docs/ChecksApi.md#checkslist) | **GET** /checks | list
+*AddressesApi* | [**create**](docs/AddressesApi.md#create) | **POST** /addresses | create
+*AddressesApi* | [**delete**](docs/AddressesApi.md#delete) | **DELETE** /addresses/{adr_id} | delete
+*AddressesApi* | [**get**](docs/AddressesApi.md#get) | **GET** /addresses/{adr_id} | get
+*AddressesApi* | [**list**](docs/AddressesApi.md#list) | **GET** /addresses | list
+*BankAccountsApi* | [**create**](docs/BankAccountsApi.md#create) | **POST** /bank_accounts | create
+*BankAccountsApi* | [**delete**](docs/BankAccountsApi.md#delete) | **DELETE** /bank_accounts/{bank_id} | delete
+*BankAccountsApi* | [**get**](docs/BankAccountsApi.md#get) | **GET** /bank_accounts/{bank_id} | get
+*BankAccountsApi* | [**verify**](docs/BankAccountsApi.md#verify) | **POST** /bank_accounts/{bank_id}/verify | verify
+*BankAccountsApi* | [**list**](docs/BankAccountsApi.md#list) | **GET** /bank_accounts | list
+*BillingGroupsApi* | [**create**](docs/BillingGroupsApi.md#create) | **POST** /billing_groups | create
+*BillingGroupsApi* | [**get**](docs/BillingGroupsApi.md#get) | **GET** /billing_groups/{bg_id} | get
+*BillingGroupsApi* | [**update**](docs/BillingGroupsApi.md#update) | **POST** /billing_groups/{bg_id} | update
+*BillingGroupsApi* | [**list**](docs/BillingGroupsApi.md#list) | **GET** /billing_groups | list
+*CardOrdersApi* | [**create**](docs/CardOrdersApi.md#create) | **POST** /cards/{card_id}/orders | create
+*CardOrdersApi* | [**get**](docs/CardOrdersApi.md#get) | **GET** /cards/{card_id}/orders | get
+*CardsApi* | [**create**](docs/CardsApi.md#create) | **POST** /cards | create
+*CardsApi* | [**delete**](docs/CardsApi.md#delete) | **DELETE** /cards/{card_id} | delete
+*CardsApi* | [**get**](docs/CardsApi.md#get) | **GET** /cards/{card_id} | get
+*CardsApi* | [**update**](docs/CardsApi.md#update) | **POST** /cards/{card_id} | update
+*CardsApi* | [**list**](docs/CardsApi.md#list) | **GET** /cards | list
+*ChecksApi* | [**cancel**](docs/ChecksApi.md#cancel) | **DELETE** /checks/{chk_id} | cancel
+*ChecksApi* | [**create**](docs/ChecksApi.md#create) | **POST** /checks | create
+*ChecksApi* | [**get**](docs/ChecksApi.md#get) | **GET** /checks/{chk_id} | get
+*ChecksApi* | [**list**](docs/ChecksApi.md#list) | **GET** /checks | list
 *IntlAutocompletionsApi* | [**IntlAutocompletion**](docs/IntlAutocompletionsApi.md#intlautocompletion) | **POST** /intl_autocompletions | autocomplete
 *IntlVerificationsApi* | [**BulkIntlVerifications**](docs/IntlVerificationsApi.md#bulkintlverifications) | **POST** /bulk/intl_verifications | verifyBulk
 *IntlVerificationsApi* | [**IntlVerification**](docs/IntlVerificationsApi.md#intlverification) | **POST** /intl_verifications | verifySingle
-*LettersApi* | [**LetterCancel**](docs/LettersApi.md#lettercancel) | **DELETE** /letters/{ltr_id} | cancel
-*LettersApi* | [**LetterCreate**](docs/LettersApi.md#lettercreate) | **POST** /letters | create
-*LettersApi* | [**LetterRetrieve**](docs/LettersApi.md#letterretrieve) | **GET** /letters/{ltr_id} | get
-*LettersApi* | [**LettersList**](docs/LettersApi.md#letterslist) | **GET** /letters | list
-*PostcardsApi* | [**PostcardCreate**](docs/PostcardsApi.md#postcardcreate) | **POST** /postcards | create
-*PostcardsApi* | [**PostcardDelete**](docs/PostcardsApi.md#postcarddelete) | **DELETE** /postcards/{psc_id} | cancel
-*PostcardsApi* | [**PostcardRetrieve**](docs/PostcardsApi.md#postcardretrieve) | **GET** /postcards/{psc_id} | get
-*PostcardsApi* | [**PostcardsList**](docs/PostcardsApi.md#postcardslist) | **GET** /postcards | list
+*LettersApi* | [**cancel**](docs/LettersApi.md#cancel) | **DELETE** /letters/{ltr_id} | cancel
+*LettersApi* | [**create**](docs/LettersApi.md#create) | **POST** /letters | create
+*LettersApi* | [**get**](docs/LettersApi.md#get) | **GET** /letters/{ltr_id} | get
+*LettersApi* | [**list**](docs/LettersApi.md#list) | **GET** /letters | list
+*PostcardsApi* | [**create**](docs/PostcardsApi.md#create) | **POST** /postcards | create
+*PostcardsApi* | [**delete**](docs/PostcardsApi.md#delete) | **DELETE** /postcards/{psc_id} | cancel
+*PostcardsApi* | [**get**](docs/PostcardsApi.md#get) | **GET** /postcards/{psc_id} | get
+*PostcardsApi* | [**list**](docs/PostcardsApi.md#list) | **GET** /postcards | list
 *ReverseGeocodeLookupsApi* | [**ReverseGeocodeLookup**](docs/ReverseGeocodeLookupsApi.md#reversegeocodelookup) | **POST** /us_reverse_geocode_lookups | lookup
-*SelfMailersApi* | [**SelfMailerCreate**](docs/SelfMailersApi.md#selfmailercreate) | **POST** /self_mailers | create
-*SelfMailersApi* | [**SelfMailerDelete**](docs/SelfMailersApi.md#selfmailerdelete) | **DELETE** /self_mailers/{sfm_id} | delete
-*SelfMailersApi* | [**SelfMailerRetrieve**](docs/SelfMailersApi.md#selfmailerretrieve) | **GET** /self_mailers/{sfm_id} | get
-*SelfMailersApi* | [**SelfMailersList**](docs/SelfMailersApi.md#selfmailerslist) | **GET** /self_mailers | list
-*TemplateVersionsApi* | [**CreateTemplateVersion**](docs/TemplateVersionsApi.md#createtemplateversion) | **POST** /templates/{tmpl_id}/versions | create
-*TemplateVersionsApi* | [**TemplateVersionDelete**](docs/TemplateVersionsApi.md#templateversiondelete) | **DELETE** /templates/{tmpl_id}/versions/{vrsn_id} | delete
-*TemplateVersionsApi* | [**TemplateVersionRetrieve**](docs/TemplateVersionsApi.md#templateversionretrieve) | **GET** /templates/{tmpl_id}/versions/{vrsn_id} | get
-*TemplateVersionsApi* | [**TemplateVersionUpdate**](docs/TemplateVersionsApi.md#templateversionupdate) | **POST** /templates/{tmpl_id}/versions/{vrsn_id} | update
-*TemplateVersionsApi* | [**TemplateVersionsList**](docs/TemplateVersionsApi.md#templateversionslist) | **GET** /templates/{tmpl_id}/versions | list
-*TemplatesApi* | [**CreateTemplate**](docs/TemplatesApi.md#createtemplate) | **POST** /templates | create
-*TemplatesApi* | [**TemplateDelete**](docs/TemplatesApi.md#templatedelete) | **DELETE** /templates/{tmpl_id} | delete
-*TemplatesApi* | [**TemplateRetrieve**](docs/TemplatesApi.md#templateretrieve) | **GET** /templates/{tmpl_id} | get
-*TemplatesApi* | [**TemplateUpdate**](docs/TemplatesApi.md#templateupdate) | **POST** /templates/{tmpl_id} | update
-*TemplatesApi* | [**TemplatesList**](docs/TemplatesApi.md#templateslist) | **GET** /templates | list
+*SelfMailersApi* | [**create**](docs/SelfMailersApi.md#create) | **POST** /self_mailers | create
+*SelfMailersApi* | [**delete**](docs/SelfMailersApi.md#delete) | **DELETE** /self_mailers/{sfm_id} | delete
+*SelfMailersApi* | [**get**](docs/SelfMailersApi.md#get) | **GET** /self_mailers/{sfm_id} | get
+*SelfMailersApi* | [**list**](docs/SelfMailersApi.md#list) | **GET** /self_mailers | list
+*TemplateVersionsApi* | [**create**](docs/TemplateVersionsApi.md#create) | **POST** /templates/{tmpl_id}/versions | create
+*TemplateVersionsApi* | [**delete**](docs/TemplateVersionsApi.md#delete) | **DELETE** /templates/{tmpl_id}/versions/{vrsn_id} | delete
+*TemplateVersionsApi* | [**get**](docs/TemplateVersionsApi.md#get) | **GET** /templates/{tmpl_id}/versions/{vrsn_id} | get
+*TemplateVersionsApi* | [**update**](docs/TemplateVersionsApi.md#update) | **POST** /templates/{tmpl_id}/versions/{vrsn_id} | update
+*TemplateVersionsApi* | [**list**](docs/TemplateVersionsApi.md#list) | **GET** /templates/{tmpl_id}/versions | list
+*TemplatesApi* | [**create**](docs/TemplatesApi.md#create) | **POST** /templates | create
+*TemplatesApi* | [**delete**](docs/TemplatesApi.md#delete) | **DELETE** /templates/{tmpl_id} | delete
+*TemplatesApi* | [**get**](docs/TemplatesApi.md#get) | **GET** /templates/{tmpl_id} | get
+*TemplatesApi* | [**update**](docs/TemplatesApi.md#update) | **POST** /templates/{tmpl_id} | update
+*TemplatesApi* | [**list**](docs/TemplatesApi.md#list) | **GET** /templates | list
 *UsAutocompletionsApi* | [**UsAutocompletion**](docs/UsAutocompletionsApi.md#usautocompletion) | **POST** /us_autocompletions | autocomplete
 *UsVerificationsApi* | [**BulkUsVerifications**](docs/UsVerificationsApi.md#bulkusverifications) | **POST** /bulk/us_verifications | verifyBulk
 *UsVerificationsApi* | [**UsVerification**](docs/UsVerificationsApi.md#usverification) | **POST** /us_verifications | verifySingle
@@ -186,7 +186,7 @@ Class | Method | HTTP request | Description
  - [Model.BankAccount](docs/BankAccount.md)
  - [Model.BankAccountDeletion](docs/BankAccountDeletion.md)
  - [Model.BankAccountList](docs/BankAccountList.md)
- - [Model.BankAccountVerify](docs/BankAccountVerify.md)
+ - [Model.verify](docs/verify.md)
  - [Model.BankAccountWritable](docs/BankAccountWritable.md)
  - [Model.BankTypeEnum](docs/BankTypeEnum.md)
  - [Model.BillingGroup](docs/BillingGroup.md)
@@ -258,7 +258,7 @@ Class | Method | HTTP request | Description
  - [Model.Template](docs/Template.md)
  - [Model.TemplateDeletion](docs/TemplateDeletion.md)
  - [Model.TemplateList](docs/TemplateList.md)
- - [Model.TemplateUpdate](docs/TemplateUpdate.md)
+ - [Model.update](docs/update.md)
  - [Model.TemplateVersion](docs/TemplateVersion.md)
  - [Model.TemplateVersionDeletion](docs/TemplateVersionDeletion.md)
  - [Model.TemplateVersionList](docs/TemplateVersionList.md)

@@ -49,8 +49,8 @@ namespace __tests__.Api
 
             Location location = new Location(1234f, 1234f);
             int size = 3;
-            reverseGeocodeLookupsApiMock.Setup(x => x.ReverseGeocodeLookup(location, size, It.IsAny<int>())).Returns(fakeReverseGeocodeObject);
-            ReverseGeocode response = reverseGeocodeLookupsApiMock.Object.ReverseGeocodeLookup(location, size);
+            reverseGeocodeLookupsApiMock.Setup(x => x.lookup(location, size, It.IsAny<int>())).Returns(fakeReverseGeocodeObject);
+            ReverseGeocode response = reverseGeocodeLookupsApiMock.Object.lookup(location, size);
 
             Assert.IsInstanceOf<ReverseGeocode>(response);
             Assert.AreEqual(response.Id, "us_reverse_geocode_fakeId");
@@ -67,7 +67,7 @@ namespace __tests__.Api
             );
 
             try {
-                reverseGeocodeLookupsApiMock.Setup(x => x.ReverseGeocodeLookup(null, null, It.IsAny<int>())).Throws(fakeException);
+                reverseGeocodeLookupsApiMock.Setup(x => x.lookup(null, null, It.IsAny<int>())).Throws(fakeException);
             } catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
                 Assert.AreEqual(e.Message, fakeException.Message);

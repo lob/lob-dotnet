@@ -56,59 +56,59 @@ namespace lob.dotnet.Test.Api
         }
 
         /// <summary>
-        /// Test BankAccountCreate
+        /// Test create
         /// </summary>
         [Fact]
-        public void BankAccountCreateTest()
+        public void createTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //BankAccountWritable bankAccountWritable = null;
-            //var response = instance.BankAccountCreate(bankAccountWritable);
+            //var response = instance.create(bankAccountWritable);
             //Assert.IsType<BankAccount>(response);
         }
 
         /// <summary>
-        /// Test BankAccountDelete
+        /// Test delete
         /// </summary>
         [Fact]
-        public void BankAccountDeleteTest()
+        public void deleteTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string bankId = null;
-            //var response = instance.BankAccountDelete(bankId);
+            //var response = instance.delete(bankId);
             //Assert.IsType<BankAccountDeletion>(response);
         }
 
         /// <summary>
-        /// Test BankAccountRetrieve
+        /// Test get
         /// </summary>
         [Fact]
-        public void BankAccountRetrieveTest()
+        public void getTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string bankId = null;
-            //var response = instance.BankAccountRetrieve(bankId);
+            //var response = instance.get(bankId);
             //Assert.IsType<BankAccount>(response);
         }
 
         /// <summary>
-        /// Test BankAccountVerify
+        /// Test verify
         /// </summary>
         [Fact]
-        public void BankAccountVerifyTest()
+        public void verifyTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string bankId = null;
-            //BankAccountVerify bankAccountVerify = null;
-            //var response = instance.BankAccountVerify(bankId, bankAccountVerify);
+            //verify verify = null;
+            //var response = instance.verify(bankId, verify);
             //Assert.IsType<BankAccount>(response);
         }
 
         /// <summary>
-        /// Test BankAccountsList
+        /// Test list
         /// </summary>
         [Fact]
-        public void BankAccountsListTest()
+        public void listTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? limit = null;
@@ -117,7 +117,7 @@ namespace lob.dotnet.Test.Api
             //List<string> include = null;
             //Dictionary<string, DateTime> dateCreated = null;
             //Dictionary<string, string> metadata = null;
-            //var response = instance.BankAccountsList(limit, before, after, include, dateCreated, metadata);
+            //var response = instance.list(limit, before, after, include, dateCreated, metadata);
             //Assert.IsType<BankAccountList>(response);
         }
     }

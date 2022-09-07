@@ -39,7 +39,7 @@ namespace lob.dotnet.Api
         /// <param name="_case">Casing of the verified address. Possible values are &#x60;upper&#x60; and &#x60;proper&#x60; for uppercased (e.g. \&quot;PO BOX\&quot;) and proper-cased (e.g. \&quot;PO Box\&quot;), respectively. (optional, default to upper)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UsVerifications</returns>
-        UsVerifications BulkUsVerifications(MultipleComponentsList multipleComponentsList, string _case = default(string), int operationIndex = 0);
+        UsVerifications verifyBulk(MultipleComponentsList multipleComponentsList, string _case = default(string), int operationIndex = 0);
 
         /// <summary>
         /// verifyBulk
@@ -52,7 +52,7 @@ namespace lob.dotnet.Api
         /// <param name="_case">Casing of the verified address. Possible values are &#x60;upper&#x60; and &#x60;proper&#x60; for uppercased (e.g. \&quot;PO BOX\&quot;) and proper-cased (e.g. \&quot;PO Box\&quot;), respectively. (optional, default to upper)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UsVerifications</returns>
-        ApiResponse<UsVerifications> BulkUsVerificationsWithHttpInfo(MultipleComponentsList multipleComponentsList, string _case = default(string), int operationIndex = 0);
+        ApiResponse<UsVerifications> verifyBulkWithHttpInfo(MultipleComponentsList multipleComponentsList, string _case = default(string), int operationIndex = 0);
         /// <summary>
         /// verifySingle
         /// </summary>
@@ -64,7 +64,7 @@ namespace lob.dotnet.Api
         /// <param name="_case">Casing of the verified address. Possible values are &#x60;upper&#x60; and &#x60;proper&#x60; for uppercased (e.g. \&quot;PO BOX\&quot;) and proper-cased (e.g. \&quot;PO Box\&quot;), respectively. (optional, default to upper)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UsVerification</returns>
-        UsVerification UsVerification(UsVerificationsWritable usVerificationsWritable, string _case = default(string), int operationIndex = 0);
+        UsVerification verifySingle(UsVerificationsWritable usVerificationsWritable, string _case = default(string), int operationIndex = 0);
 
         /// <summary>
         /// verifySingle
@@ -77,7 +77,7 @@ namespace lob.dotnet.Api
         /// <param name="_case">Casing of the verified address. Possible values are &#x60;upper&#x60; and &#x60;proper&#x60; for uppercased (e.g. \&quot;PO BOX\&quot;) and proper-cased (e.g. \&quot;PO Box\&quot;), respectively. (optional, default to upper)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UsVerification</returns>
-        ApiResponse<UsVerification> UsVerificationWithHttpInfo(UsVerificationsWritable usVerificationsWritable, string _case = default(string), int operationIndex = 0);
+        ApiResponse<UsVerification> verifySingleWithHttpInfo(UsVerificationsWritable usVerificationsWritable, string _case = default(string), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -99,7 +99,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UsVerifications</returns>
-        System.Threading.Tasks.Task<UsVerifications> BulkUsVerificationsAsync(MultipleComponentsList multipleComponentsList, string _case = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UsVerifications> verifyBulkAsync(MultipleComponentsList multipleComponentsList, string _case = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// verifyBulk
@@ -113,7 +113,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UsVerifications)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UsVerifications>> BulkUsVerificationsWithHttpInfoAsync(MultipleComponentsList multipleComponentsList, string _case = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UsVerifications>> verifyBulkWithHttpInfoAsync(MultipleComponentsList multipleComponentsList, string _case = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// verifySingle
         /// </summary>
@@ -126,7 +126,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UsVerification</returns>
-        System.Threading.Tasks.Task<UsVerification> UsVerificationAsync(UsVerificationsWritable usVerificationsWritable, string _case = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UsVerification> verifySingleAsync(UsVerificationsWritable usVerificationsWritable, string _case = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// verifySingle
@@ -140,7 +140,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UsVerification)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UsVerification>> UsVerificationWithHttpInfoAsync(UsVerificationsWritable usVerificationsWritable, string _case = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UsVerification>> verifySingleWithHttpInfoAsync(UsVerificationsWritable usVerificationsWritable, string _case = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -269,9 +269,9 @@ namespace lob.dotnet.Api
         /// <param name="_case">Casing of the verified address. Possible values are &#x60;upper&#x60; and &#x60;proper&#x60; for uppercased (e.g. \&quot;PO BOX\&quot;) and proper-cased (e.g. \&quot;PO Box\&quot;), respectively. (optional, default to upper)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UsVerifications</returns>
-        public UsVerifications BulkUsVerifications(MultipleComponentsList multipleComponentsList, string _case = default(string), int operationIndex = 0)
+        public UsVerifications verifyBulk(MultipleComponentsList multipleComponentsList, string _case = default(string), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<UsVerifications> localVarResponse = BulkUsVerificationsWithHttpInfo(multipleComponentsList, _case);
+            lob.dotnet.Client.ApiResponse<UsVerifications> localVarResponse = verifyBulkWithHttpInfo(multipleComponentsList, _case);
             return localVarResponse.Data;
         }
 
@@ -283,12 +283,12 @@ namespace lob.dotnet.Api
         /// <param name="_case">Casing of the verified address. Possible values are &#x60;upper&#x60; and &#x60;proper&#x60; for uppercased (e.g. \&quot;PO BOX\&quot;) and proper-cased (e.g. \&quot;PO Box\&quot;), respectively. (optional, default to upper)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UsVerifications</returns>
-        public lob.dotnet.Client.ApiResponse<UsVerifications> BulkUsVerificationsWithHttpInfo(MultipleComponentsList multipleComponentsList, string _case = default(string), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<UsVerifications> verifyBulkWithHttpInfo(MultipleComponentsList multipleComponentsList, string _case = default(string), int operationIndex = 0)
         {
             // verify the required parameter 'multipleComponentsList' is set
             if (multipleComponentsList == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'multipleComponentsList' when calling UsVerificationsApi->BulkUsVerifications");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'multipleComponentsList' when calling UsVerificationsApi->verifyBulk");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -322,7 +322,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = multipleComponentsList;
 
-            localVarRequestOptions.Operation = "UsVerificationsApi.BulkUsVerifications";
+            localVarRequestOptions.Operation = "UsVerificationsApi.verifyBulk";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -336,7 +336,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<UsVerifications>("/bulk/us_verifications", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BulkUsVerifications", localVarResponse);
+                Exception _exception = this.ExceptionFactory("verifyBulk", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -355,9 +355,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UsVerifications</returns>
-        public async System.Threading.Tasks.Task<UsVerifications> BulkUsVerificationsAsync(MultipleComponentsList multipleComponentsList, string _case = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UsVerifications> verifyBulkAsync(MultipleComponentsList multipleComponentsList, string _case = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<UsVerifications> localVarResponse = await BulkUsVerificationsWithHttpInfoAsync(multipleComponentsList, _case, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<UsVerifications> localVarResponse = await verifyBulkWithHttpInfoAsync(multipleComponentsList, _case, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -370,12 +370,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UsVerifications)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<UsVerifications>> BulkUsVerificationsWithHttpInfoAsync(MultipleComponentsList multipleComponentsList, string _case = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<UsVerifications>> verifyBulkWithHttpInfoAsync(MultipleComponentsList multipleComponentsList, string _case = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'multipleComponentsList' is set
             if (multipleComponentsList == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'multipleComponentsList' when calling UsVerificationsApi->BulkUsVerifications");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'multipleComponentsList' when calling UsVerificationsApi->verifyBulk");
             }
 
 
@@ -410,7 +410,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = multipleComponentsList;
 
-            localVarRequestOptions.Operation = "UsVerificationsApi.BulkUsVerifications";
+            localVarRequestOptions.Operation = "UsVerificationsApi.verifyBulk";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -425,7 +425,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BulkUsVerifications", localVarResponse);
+                Exception _exception = this.ExceptionFactory("verifyBulk", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -443,9 +443,9 @@ namespace lob.dotnet.Api
         /// <param name="_case">Casing of the verified address. Possible values are &#x60;upper&#x60; and &#x60;proper&#x60; for uppercased (e.g. \&quot;PO BOX\&quot;) and proper-cased (e.g. \&quot;PO Box\&quot;), respectively. (optional, default to upper)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UsVerification</returns>
-        public UsVerification UsVerification(UsVerificationsWritable usVerificationsWritable, string _case = default(string), int operationIndex = 0)
+        public UsVerification verifySingle(UsVerificationsWritable usVerificationsWritable, string _case = default(string), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<UsVerification> localVarResponse = UsVerificationWithHttpInfo(usVerificationsWritable, _case);
+            lob.dotnet.Client.ApiResponse<UsVerification> localVarResponse = verifySingleWithHttpInfo(usVerificationsWritable, _case);
             return localVarResponse.Data;
         }
 
@@ -457,12 +457,12 @@ namespace lob.dotnet.Api
         /// <param name="_case">Casing of the verified address. Possible values are &#x60;upper&#x60; and &#x60;proper&#x60; for uppercased (e.g. \&quot;PO BOX\&quot;) and proper-cased (e.g. \&quot;PO Box\&quot;), respectively. (optional, default to upper)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UsVerification</returns>
-        public lob.dotnet.Client.ApiResponse<UsVerification> UsVerificationWithHttpInfo(UsVerificationsWritable usVerificationsWritable, string _case = default(string), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<UsVerification> verifySingleWithHttpInfo(UsVerificationsWritable usVerificationsWritable, string _case = default(string), int operationIndex = 0)
         {
             // verify the required parameter 'usVerificationsWritable' is set
             if (usVerificationsWritable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'usVerificationsWritable' when calling UsVerificationsApi->UsVerification");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'usVerificationsWritable' when calling UsVerificationsApi->verifySingle");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -496,7 +496,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = usVerificationsWritable;
 
-            localVarRequestOptions.Operation = "UsVerificationsApi.UsVerification";
+            localVarRequestOptions.Operation = "UsVerificationsApi.verifySingle";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -510,7 +510,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<UsVerification>("/us_verifications", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("UsVerification", localVarResponse);
+                Exception _exception = this.ExceptionFactory("verifySingle", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -529,9 +529,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UsVerification</returns>
-        public async System.Threading.Tasks.Task<UsVerification> UsVerificationAsync(UsVerificationsWritable usVerificationsWritable, string _case = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UsVerification> verifySingleAsync(UsVerificationsWritable usVerificationsWritable, string _case = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<UsVerification> localVarResponse = await UsVerificationWithHttpInfoAsync(usVerificationsWritable, _case, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<UsVerification> localVarResponse = await verifySingleWithHttpInfoAsync(usVerificationsWritable, _case, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -544,12 +544,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UsVerification)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<UsVerification>> UsVerificationWithHttpInfoAsync(UsVerificationsWritable usVerificationsWritable, string _case = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<UsVerification>> verifySingleWithHttpInfoAsync(UsVerificationsWritable usVerificationsWritable, string _case = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'usVerificationsWritable' is set
             if (usVerificationsWritable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'usVerificationsWritable' when calling UsVerificationsApi->UsVerification");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'usVerificationsWritable' when calling UsVerificationsApi->verifySingle");
             }
 
 
@@ -584,7 +584,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = usVerificationsWritable;
 
-            localVarRequestOptions.Operation = "UsVerificationsApi.UsVerification";
+            localVarRequestOptions.Operation = "UsVerificationsApi.verifySingle";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -599,7 +599,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("UsVerification", localVarResponse);
+                Exception _exception = this.ExceptionFactory("verifySingle", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

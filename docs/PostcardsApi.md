@@ -4,15 +4,15 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PostcardCreate**](PostcardsApi.md#postcardcreate) | **POST** /postcards | create
-[**PostcardDelete**](PostcardsApi.md#postcarddelete) | **DELETE** /postcards/{psc_id} | cancel
-[**PostcardRetrieve**](PostcardsApi.md#postcardretrieve) | **GET** /postcards/{psc_id} | get
-[**PostcardsList**](PostcardsApi.md#postcardslist) | **GET** /postcards | list
+[**create**](PostcardsApi.md#create) | **POST** /postcards | create
+[**delete**](PostcardsApi.md#delete) | **DELETE** /postcards/{psc_id} | cancel
+[**get**](PostcardsApi.md#get) | **GET** /postcards/{psc_id} | get
+[**list**](PostcardsApi.md#list) | **GET** /postcards | list
 
 
-<a name="postcardcreate"></a>
-# **PostcardCreate**
-> Postcard PostcardCreate (PostcardEditable postcardEditable, string idempotencyKey = null)
+<a name="create"></a>
+# **create**
+> Postcard create (PostcardEditable postcardEditable, string idempotencyKey = null)
 
 create
 
@@ -28,7 +28,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class PostcardCreateExample
+    public class createExample
     {
         public static void Main()
         {
@@ -45,12 +45,12 @@ namespace Example
             try
             {
                 // create
-                Postcard result = apiInstance.PostcardCreate(postcardEditable, idempotencyKey);
+                Postcard result = apiInstance.create(postcardEditable, idempotencyKey);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling PostcardsApi.PostcardCreate: " + e.Message );
+                Debug.Print("Exception when calling PostcardsApi.create: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -88,9 +88,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="postcarddelete"></a>
-# **PostcardDelete**
-> PostcardDeletion PostcardDelete (string pscId)
+<a name="delete"></a>
+# **delete**
+> PostcardDeletion delete (string pscId)
 
 cancel
 
@@ -106,7 +106,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class PostcardDeleteExample
+    public class deleteExample
     {
         public static void Main()
         {
@@ -122,12 +122,12 @@ namespace Example
             try
             {
                 // cancel
-                PostcardDeletion result = apiInstance.PostcardDelete(pscId);
+                PostcardDeletion result = apiInstance.delete(pscId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling PostcardsApi.PostcardDelete: " + e.Message );
+                Debug.Print("Exception when calling PostcardsApi.delete: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -164,9 +164,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="postcardretrieve"></a>
-# **PostcardRetrieve**
-> Postcard PostcardRetrieve (string pscId)
+<a name="get"></a>
+# **get**
+> Postcard get (string pscId)
 
 get
 
@@ -182,7 +182,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class PostcardRetrieveExample
+    public class getExample
     {
         public static void Main()
         {
@@ -198,12 +198,12 @@ namespace Example
             try
             {
                 // get
-                Postcard result = apiInstance.PostcardRetrieve(pscId);
+                Postcard result = apiInstance.get(pscId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling PostcardsApi.PostcardRetrieve: " + e.Message );
+                Debug.Print("Exception when calling PostcardsApi.get: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -240,9 +240,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="postcardslist"></a>
-# **PostcardsList**
-> PostcardList PostcardsList (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null, PostcardSize? size = null, bool? scheduled = null, Dictionary<string, string> sendDate = null, MailType? mailType = null, SortBy5 sortBy = null)
+<a name="list"></a>
+# **list**
+> PostcardList list (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null, PostcardSize? size = null, bool? scheduled = null, Dictionary<string, string> sendDate = null, MailType? mailType = null, SortBy5 sortBy = null)
 
 list
 
@@ -258,7 +258,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class PostcardsListExample
+    public class listExample
     {
         public static void Main()
         {
@@ -284,12 +284,12 @@ namespace Example
             try
             {
                 // list
-                PostcardList result = apiInstance.PostcardsList(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
+                PostcardList result = apiInstance.list(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling PostcardsApi.PostcardsList: " + e.Message );
+                Debug.Print("Exception when calling PostcardsApi.list: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }

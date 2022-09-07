@@ -1,15 +1,15 @@
-# lob.dotnet.Api.IntlAutocompletionsApi
+# lob.dotnet.Api.autocompletesApi
 
 All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**IntlAutocompletion**](IntlAutocompletionsApi.md#intlautocompletion) | **POST** /intl_autocompletions | autocomplete
+[**autocomplete**](autocompletesApi.md#autocomplete) | **POST** /intl_autocompletions | autocomplete
 
 
-<a name="intlautocompletion"></a>
-# **IntlAutocompletion**
-> IntlAutocompletions IntlAutocompletion (IntlAutocompletionsWritable intlAutocompletionsWritable, string xLangOutput = null)
+<a name="autocomplete"></a>
+# **autocomplete**
+> autocompletes autocomplete (autocompletesWritable autocompletesWritable, string xLangOutput = null)
 
 autocomplete
 
@@ -25,7 +25,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class IntlAutocompletionExample
+    public class autocompleteExample
     {
         public static void Main()
         {
@@ -35,19 +35,19 @@ namespace Example
             config.Username = "YOUR_USERNAME";
             config.Password = "YOUR_PASSWORD";
 
-            var apiInstance = new IntlAutocompletionsApi(config);
-            var intlAutocompletionsWritable = new IntlAutocompletionsWritable(); // IntlAutocompletionsWritable | 
+            var apiInstance = new autocompletesApi(config);
+            var autocompletesWritable = new autocompletesWritable(); // autocompletesWritable | 
             var xLangOutput = xLangOutput_example;  // string | * `native` - Translate response to the native language of the country in the request * `match` - match the response to the language in the request  Default response is in English.  (optional) 
 
             try
             {
                 // autocomplete
-                IntlAutocompletions result = apiInstance.IntlAutocompletion(intlAutocompletionsWritable, xLangOutput);
+                autocompletes result = apiInstance.autocomplete(autocompletesWritable, xLangOutput);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling IntlAutocompletionsApi.IntlAutocompletion: " + e.Message );
+                Debug.Print("Exception when calling autocompletesApi.autocomplete: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -60,12 +60,12 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **intlAutocompletionsWritable** | [**IntlAutocompletionsWritable**](IntlAutocompletionsWritable.md)|  | 
+ **autocompletesWritable** | [**autocompletesWritable**](autocompletesWritable.md)|  | 
  **xLangOutput** | **string**| * &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  | [optional] 
 
 ### Return type
 
-[**IntlAutocompletions**](IntlAutocompletions.md)
+[**autocompletes**](autocompletes.md)
 
 ### Authorization
 

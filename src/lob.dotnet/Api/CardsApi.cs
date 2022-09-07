@@ -38,7 +38,7 @@ namespace lob.dotnet.Api
         /// <param name="cardEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Card</returns>
-        Card CardCreate(CardEditable cardEditable, int operationIndex = 0);
+        Card create(CardEditable cardEditable, int operationIndex = 0);
 
         /// <summary>
         /// create
@@ -50,7 +50,7 @@ namespace lob.dotnet.Api
         /// <param name="cardEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Card</returns>
-        ApiResponse<Card> CardCreateWithHttpInfo(CardEditable cardEditable, int operationIndex = 0);
+        ApiResponse<Card> createWithHttpInfo(CardEditable cardEditable, int operationIndex = 0);
         /// <summary>
         /// delete
         /// </summary>
@@ -61,7 +61,7 @@ namespace lob.dotnet.Api
         /// <param name="cardId">id of the card</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CardDeletion</returns>
-        CardDeletion CardDelete(string cardId, int operationIndex = 0);
+        CardDeletion delete(string cardId, int operationIndex = 0);
 
         /// <summary>
         /// delete
@@ -73,7 +73,7 @@ namespace lob.dotnet.Api
         /// <param name="cardId">id of the card</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CardDeletion</returns>
-        ApiResponse<CardDeletion> CardDeleteWithHttpInfo(string cardId, int operationIndex = 0);
+        ApiResponse<CardDeletion> deleteWithHttpInfo(string cardId, int operationIndex = 0);
         /// <summary>
         /// get
         /// </summary>
@@ -84,7 +84,7 @@ namespace lob.dotnet.Api
         /// <param name="cardId">id of the card</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Card</returns>
-        Card CardRetrieve(string cardId, int operationIndex = 0);
+        Card get(string cardId, int operationIndex = 0);
 
         /// <summary>
         /// get
@@ -96,7 +96,7 @@ namespace lob.dotnet.Api
         /// <param name="cardId">id of the card</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Card</returns>
-        ApiResponse<Card> CardRetrieveWithHttpInfo(string cardId, int operationIndex = 0);
+        ApiResponse<Card> getWithHttpInfo(string cardId, int operationIndex = 0);
         /// <summary>
         /// update
         /// </summary>
@@ -108,7 +108,7 @@ namespace lob.dotnet.Api
         /// <param name="cardUpdatable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Card</returns>
-        Card CardUpdate(string cardId, CardUpdatable cardUpdatable, int operationIndex = 0);
+        Card update(string cardId, CardUpdatable cardUpdatable, int operationIndex = 0);
 
         /// <summary>
         /// update
@@ -121,7 +121,7 @@ namespace lob.dotnet.Api
         /// <param name="cardUpdatable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Card</returns>
-        ApiResponse<Card> CardUpdateWithHttpInfo(string cardId, CardUpdatable cardUpdatable, int operationIndex = 0);
+        ApiResponse<Card> updateWithHttpInfo(string cardId, CardUpdatable cardUpdatable, int operationIndex = 0);
         /// <summary>
         /// list
         /// </summary>
@@ -135,7 +135,7 @@ namespace lob.dotnet.Api
         /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CardList</returns>
-        CardList CardsList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0);
+        CardList list(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -150,7 +150,7 @@ namespace lob.dotnet.Api
         /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CardList</returns>
-        ApiResponse<CardList> CardsListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0);
+        ApiResponse<CardList> listWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -171,7 +171,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Card</returns>
-        System.Threading.Tasks.Task<Card> CardCreateAsync(CardEditable cardEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Card> createAsync(CardEditable cardEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// create
@@ -184,7 +184,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Card)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Card>> CardCreateWithHttpInfoAsync(CardEditable cardEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Card>> createWithHttpInfoAsync(CardEditable cardEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// delete
         /// </summary>
@@ -196,7 +196,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CardDeletion</returns>
-        System.Threading.Tasks.Task<CardDeletion> CardDeleteAsync(string cardId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CardDeletion> deleteAsync(string cardId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// delete
@@ -209,7 +209,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CardDeletion)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CardDeletion>> CardDeleteWithHttpInfoAsync(string cardId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CardDeletion>> deleteWithHttpInfoAsync(string cardId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// get
         /// </summary>
@@ -221,7 +221,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Card</returns>
-        System.Threading.Tasks.Task<Card> CardRetrieveAsync(string cardId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Card> getAsync(string cardId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// get
@@ -234,7 +234,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Card)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Card>> CardRetrieveWithHttpInfoAsync(string cardId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Card>> getWithHttpInfoAsync(string cardId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// update
         /// </summary>
@@ -247,7 +247,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Card</returns>
-        System.Threading.Tasks.Task<Card> CardUpdateAsync(string cardId, CardUpdatable cardUpdatable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Card> updateAsync(string cardId, CardUpdatable cardUpdatable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// update
@@ -261,7 +261,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Card)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Card>> CardUpdateWithHttpInfoAsync(string cardId, CardUpdatable cardUpdatable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Card>> updateWithHttpInfoAsync(string cardId, CardUpdatable cardUpdatable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// list
         /// </summary>
@@ -276,7 +276,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CardList</returns>
-        System.Threading.Tasks.Task<CardList> CardsListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CardList> listAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -292,7 +292,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CardList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CardList>> CardsListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CardList>> listWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -420,9 +420,9 @@ namespace lob.dotnet.Api
         /// <param name="cardEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Card</returns>
-        public Card CardCreate(CardEditable cardEditable, int operationIndex = 0)
+        public Card create(CardEditable cardEditable, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<Card> localVarResponse = CardCreateWithHttpInfo(cardEditable);
+            lob.dotnet.Client.ApiResponse<Card> localVarResponse = createWithHttpInfo(cardEditable);
             return localVarResponse.Data;
         }
 
@@ -433,12 +433,12 @@ namespace lob.dotnet.Api
         /// <param name="cardEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Card</returns>
-        public lob.dotnet.Client.ApiResponse<Card> CardCreateWithHttpInfo(CardEditable cardEditable, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<Card> createWithHttpInfo(CardEditable cardEditable, int operationIndex = 0)
         {
             // verify the required parameter 'cardEditable' is set
             if (cardEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardEditable' when calling CardsApi->CardCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardEditable' when calling CardsApi->create");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -468,7 +468,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = cardEditable;
 
-            localVarRequestOptions.Operation = "CardsApi.CardCreate";
+            localVarRequestOptions.Operation = "CardsApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -482,7 +482,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<Card>("/cards", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CardCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -500,9 +500,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Card</returns>
-        public async System.Threading.Tasks.Task<Card> CardCreateAsync(CardEditable cardEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Card> createAsync(CardEditable cardEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<Card> localVarResponse = await CardCreateWithHttpInfoAsync(cardEditable, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<Card> localVarResponse = await createWithHttpInfoAsync(cardEditable, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -514,12 +514,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Card)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Card>> CardCreateWithHttpInfoAsync(CardEditable cardEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Card>> createWithHttpInfoAsync(CardEditable cardEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'cardEditable' is set
             if (cardEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardEditable' when calling CardsApi->CardCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardEditable' when calling CardsApi->create");
             }
 
 
@@ -550,7 +550,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = cardEditable;
 
-            localVarRequestOptions.Operation = "CardsApi.CardCreate";
+            localVarRequestOptions.Operation = "CardsApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -565,7 +565,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CardCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -582,9 +582,9 @@ namespace lob.dotnet.Api
         /// <param name="cardId">id of the card</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CardDeletion</returns>
-        public CardDeletion CardDelete(string cardId, int operationIndex = 0)
+        public CardDeletion delete(string cardId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<CardDeletion> localVarResponse = CardDeleteWithHttpInfo(cardId);
+            lob.dotnet.Client.ApiResponse<CardDeletion> localVarResponse = deleteWithHttpInfo(cardId);
             return localVarResponse.Data;
         }
 
@@ -595,12 +595,12 @@ namespace lob.dotnet.Api
         /// <param name="cardId">id of the card</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CardDeletion</returns>
-        public lob.dotnet.Client.ApiResponse<CardDeletion> CardDeleteWithHttpInfo(string cardId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<CardDeletion> deleteWithHttpInfo(string cardId, int operationIndex = 0)
         {
             // verify the required parameter 'cardId' is set
             if (cardId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardsApi->CardDelete");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardsApi->delete");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -627,7 +627,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("card_id", lob.dotnet.Client.ClientUtils.ParameterToString(cardId)); // path parameter
 
-            localVarRequestOptions.Operation = "CardsApi.CardDelete";
+            localVarRequestOptions.Operation = "CardsApi.delete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -641,7 +641,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Delete<CardDeletion>("/cards/{card_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CardDelete", localVarResponse);
+                Exception _exception = this.ExceptionFactory("delete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -659,9 +659,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CardDeletion</returns>
-        public async System.Threading.Tasks.Task<CardDeletion> CardDeleteAsync(string cardId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CardDeletion> deleteAsync(string cardId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<CardDeletion> localVarResponse = await CardDeleteWithHttpInfoAsync(cardId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<CardDeletion> localVarResponse = await deleteWithHttpInfoAsync(cardId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -673,12 +673,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CardDeletion)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<CardDeletion>> CardDeleteWithHttpInfoAsync(string cardId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<CardDeletion>> deleteWithHttpInfoAsync(string cardId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'cardId' is set
             if (cardId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardsApi->CardDelete");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardsApi->delete");
             }
 
 
@@ -706,7 +706,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("card_id", lob.dotnet.Client.ClientUtils.ParameterToString(cardId)); // path parameter
 
-            localVarRequestOptions.Operation = "CardsApi.CardDelete";
+            localVarRequestOptions.Operation = "CardsApi.delete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -721,7 +721,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CardDelete", localVarResponse);
+                Exception _exception = this.ExceptionFactory("delete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -738,9 +738,9 @@ namespace lob.dotnet.Api
         /// <param name="cardId">id of the card</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Card</returns>
-        public Card CardRetrieve(string cardId, int operationIndex = 0)
+        public Card get(string cardId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<Card> localVarResponse = CardRetrieveWithHttpInfo(cardId);
+            lob.dotnet.Client.ApiResponse<Card> localVarResponse = getWithHttpInfo(cardId);
             return localVarResponse.Data;
         }
 
@@ -751,12 +751,12 @@ namespace lob.dotnet.Api
         /// <param name="cardId">id of the card</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Card</returns>
-        public lob.dotnet.Client.ApiResponse<Card> CardRetrieveWithHttpInfo(string cardId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<Card> getWithHttpInfo(string cardId, int operationIndex = 0)
         {
             // verify the required parameter 'cardId' is set
             if (cardId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardsApi->CardRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardsApi->get");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -783,7 +783,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("card_id", lob.dotnet.Client.ClientUtils.ParameterToString(cardId)); // path parameter
 
-            localVarRequestOptions.Operation = "CardsApi.CardRetrieve";
+            localVarRequestOptions.Operation = "CardsApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -797,7 +797,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<Card>("/cards/{card_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CardRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -815,9 +815,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Card</returns>
-        public async System.Threading.Tasks.Task<Card> CardRetrieveAsync(string cardId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Card> getAsync(string cardId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<Card> localVarResponse = await CardRetrieveWithHttpInfoAsync(cardId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<Card> localVarResponse = await getWithHttpInfoAsync(cardId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -829,12 +829,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Card)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Card>> CardRetrieveWithHttpInfoAsync(string cardId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Card>> getWithHttpInfoAsync(string cardId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'cardId' is set
             if (cardId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardsApi->CardRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardsApi->get");
             }
 
 
@@ -862,7 +862,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("card_id", lob.dotnet.Client.ClientUtils.ParameterToString(cardId)); // path parameter
 
-            localVarRequestOptions.Operation = "CardsApi.CardRetrieve";
+            localVarRequestOptions.Operation = "CardsApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -877,7 +877,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CardRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -895,9 +895,9 @@ namespace lob.dotnet.Api
         /// <param name="cardUpdatable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Card</returns>
-        public Card CardUpdate(string cardId, CardUpdatable cardUpdatable, int operationIndex = 0)
+        public Card update(string cardId, CardUpdatable cardUpdatable, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<Card> localVarResponse = CardUpdateWithHttpInfo(cardId, cardUpdatable);
+            lob.dotnet.Client.ApiResponse<Card> localVarResponse = updateWithHttpInfo(cardId, cardUpdatable);
             return localVarResponse.Data;
         }
 
@@ -909,18 +909,18 @@ namespace lob.dotnet.Api
         /// <param name="cardUpdatable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Card</returns>
-        public lob.dotnet.Client.ApiResponse<Card> CardUpdateWithHttpInfo(string cardId, CardUpdatable cardUpdatable, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<Card> updateWithHttpInfo(string cardId, CardUpdatable cardUpdatable, int operationIndex = 0)
         {
             // verify the required parameter 'cardId' is set
             if (cardId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardsApi->CardUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardsApi->update");
             }
 
             // verify the required parameter 'cardUpdatable' is set
             if (cardUpdatable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardUpdatable' when calling CardsApi->CardUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardUpdatable' when calling CardsApi->update");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -951,7 +951,7 @@ namespace lob.dotnet.Api
             localVarRequestOptions.PathParameters.Add("card_id", lob.dotnet.Client.ClientUtils.ParameterToString(cardId)); // path parameter
             localVarRequestOptions.Data = cardUpdatable;
 
-            localVarRequestOptions.Operation = "CardsApi.CardUpdate";
+            localVarRequestOptions.Operation = "CardsApi.update";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -965,7 +965,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<Card>("/cards/{card_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CardUpdate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("update", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -984,9 +984,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Card</returns>
-        public async System.Threading.Tasks.Task<Card> CardUpdateAsync(string cardId, CardUpdatable cardUpdatable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Card> updateAsync(string cardId, CardUpdatable cardUpdatable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<Card> localVarResponse = await CardUpdateWithHttpInfoAsync(cardId, cardUpdatable, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<Card> localVarResponse = await updateWithHttpInfoAsync(cardId, cardUpdatable, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -999,18 +999,18 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Card)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Card>> CardUpdateWithHttpInfoAsync(string cardId, CardUpdatable cardUpdatable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Card>> updateWithHttpInfoAsync(string cardId, CardUpdatable cardUpdatable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'cardId' is set
             if (cardId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardsApi->CardUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardId' when calling CardsApi->update");
             }
 
             // verify the required parameter 'cardUpdatable' is set
             if (cardUpdatable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardUpdatable' when calling CardsApi->CardUpdate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'cardUpdatable' when calling CardsApi->update");
             }
 
 
@@ -1042,7 +1042,7 @@ namespace lob.dotnet.Api
             localVarRequestOptions.PathParameters.Add("card_id", lob.dotnet.Client.ClientUtils.ParameterToString(cardId)); // path parameter
             localVarRequestOptions.Data = cardUpdatable;
 
-            localVarRequestOptions.Operation = "CardsApi.CardUpdate";
+            localVarRequestOptions.Operation = "CardsApi.update";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1057,7 +1057,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CardUpdate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("update", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1077,9 +1077,9 @@ namespace lob.dotnet.Api
         /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CardList</returns>
-        public CardList CardsList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0)
+        public CardList list(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<CardList> localVarResponse = CardsListWithHttpInfo(limit, before, after, include);
+            lob.dotnet.Client.ApiResponse<CardList> localVarResponse = listWithHttpInfo(limit, before, after, include);
             return localVarResponse.Data;
         }
 
@@ -1093,7 +1093,7 @@ namespace lob.dotnet.Api
         /// <param name="include">Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CardList</returns>
-        public lob.dotnet.Client.ApiResponse<CardList> CardsListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<CardList> listWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -1134,7 +1134,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("multi", "include", include));
             }
 
-            localVarRequestOptions.Operation = "CardsApi.CardsList";
+            localVarRequestOptions.Operation = "CardsApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1148,7 +1148,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<CardList>("/cards", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CardsList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1169,9 +1169,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CardList</returns>
-        public async System.Threading.Tasks.Task<CardList> CardsListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CardList> listAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<CardList> localVarResponse = await CardsListWithHttpInfoAsync(limit, before, after, include, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<CardList> localVarResponse = await listWithHttpInfoAsync(limit, before, after, include, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1186,7 +1186,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CardList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<CardList>> CardsListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<CardList>> listWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1228,7 +1228,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("multi", "include", include));
             }
 
-            localVarRequestOptions.Operation = "CardsApi.CardsList";
+            localVarRequestOptions.Operation = "CardsApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1243,7 +1243,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CardsList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

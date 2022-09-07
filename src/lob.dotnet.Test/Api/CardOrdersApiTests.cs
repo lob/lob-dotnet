@@ -56,29 +56,29 @@ namespace lob.dotnet.Test.Api
         }
 
         /// <summary>
-        /// Test CardOrderCreate
+        /// Test create
         /// </summary>
         [Fact]
-        public void CardOrderCreateTest()
+        public void createTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string cardId = null;
             //CardOrderEditable cardOrderEditable = null;
-            //var response = instance.CardOrderCreate(cardId, cardOrderEditable);
+            //var response = instance.create(cardId, cardOrderEditable);
             //Assert.IsType<CardOrder>(response);
         }
 
         /// <summary>
-        /// Test CardOrdersRetrieve
+        /// Test get
         /// </summary>
         [Fact]
-        public void CardOrdersRetrieveTest()
+        public void getTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string cardId = null;
             //int? limit = null;
             //int? offset = null;
-            //var response = instance.CardOrdersRetrieve(cardId, limit, offset);
+            //var response = instance.get(cardId, limit, offset);
             //Assert.IsType<CardOrderList>(response);
         }
     }

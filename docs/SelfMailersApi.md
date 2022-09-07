@@ -4,15 +4,15 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SelfMailerCreate**](SelfMailersApi.md#selfmailercreate) | **POST** /self_mailers | create
-[**SelfMailerDelete**](SelfMailersApi.md#selfmailerdelete) | **DELETE** /self_mailers/{sfm_id} | delete
-[**SelfMailerRetrieve**](SelfMailersApi.md#selfmailerretrieve) | **GET** /self_mailers/{sfm_id} | get
-[**SelfMailersList**](SelfMailersApi.md#selfmailerslist) | **GET** /self_mailers | list
+[**create**](SelfMailersApi.md#create) | **POST** /self_mailers | create
+[**delete**](SelfMailersApi.md#delete) | **DELETE** /self_mailers/{sfm_id} | delete
+[**get**](SelfMailersApi.md#get) | **GET** /self_mailers/{sfm_id} | get
+[**list**](SelfMailersApi.md#list) | **GET** /self_mailers | list
 
 
-<a name="selfmailercreate"></a>
-# **SelfMailerCreate**
-> SelfMailer SelfMailerCreate (SelfMailerEditable selfMailerEditable, string idempotencyKey = null)
+<a name="create"></a>
+# **create**
+> SelfMailer create (SelfMailerEditable selfMailerEditable, string idempotencyKey = null)
 
 create
 
@@ -28,7 +28,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class SelfMailerCreateExample
+    public class createExample
     {
         public static void Main()
         {
@@ -45,12 +45,12 @@ namespace Example
             try
             {
                 // create
-                SelfMailer result = apiInstance.SelfMailerCreate(selfMailerEditable, idempotencyKey);
+                SelfMailer result = apiInstance.create(selfMailerEditable, idempotencyKey);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SelfMailersApi.SelfMailerCreate: " + e.Message );
+                Debug.Print("Exception when calling SelfMailersApi.create: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -88,9 +88,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="selfmailerdelete"></a>
-# **SelfMailerDelete**
-> SelfMailerDeletion SelfMailerDelete (string sfmId)
+<a name="delete"></a>
+# **delete**
+> SelfMailerDeletion delete (string sfmId)
 
 delete
 
@@ -106,7 +106,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class SelfMailerDeleteExample
+    public class deleteExample
     {
         public static void Main()
         {
@@ -122,12 +122,12 @@ namespace Example
             try
             {
                 // delete
-                SelfMailerDeletion result = apiInstance.SelfMailerDelete(sfmId);
+                SelfMailerDeletion result = apiInstance.delete(sfmId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SelfMailersApi.SelfMailerDelete: " + e.Message );
+                Debug.Print("Exception when calling SelfMailersApi.delete: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -164,9 +164,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="selfmailerretrieve"></a>
-# **SelfMailerRetrieve**
-> SelfMailer SelfMailerRetrieve (string sfmId)
+<a name="get"></a>
+# **get**
+> SelfMailer get (string sfmId)
 
 get
 
@@ -182,7 +182,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class SelfMailerRetrieveExample
+    public class getExample
     {
         public static void Main()
         {
@@ -198,12 +198,12 @@ namespace Example
             try
             {
                 // get
-                SelfMailer result = apiInstance.SelfMailerRetrieve(sfmId);
+                SelfMailer result = apiInstance.get(sfmId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SelfMailersApi.SelfMailerRetrieve: " + e.Message );
+                Debug.Print("Exception when calling SelfMailersApi.get: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -240,9 +240,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="selfmailerslist"></a>
-# **SelfMailersList**
-> SelfMailerList SelfMailersList (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null, SelfMailerSize? size = null, bool? scheduled = null, Dictionary<string, string> sendDate = null, MailType? mailType = null, SortBy5 sortBy = null)
+<a name="list"></a>
+# **list**
+> SelfMailerList list (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null, SelfMailerSize? size = null, bool? scheduled = null, Dictionary<string, string> sendDate = null, MailType? mailType = null, SortBy5 sortBy = null)
 
 list
 
@@ -258,7 +258,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class SelfMailersListExample
+    public class listExample
     {
         public static void Main()
         {
@@ -284,12 +284,12 @@ namespace Example
             try
             {
                 // list
-                SelfMailerList result = apiInstance.SelfMailersList(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
+                SelfMailerList result = apiInstance.list(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SelfMailersApi.SelfMailersList: " + e.Message );
+                Debug.Print("Exception when calling SelfMailersApi.list: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }

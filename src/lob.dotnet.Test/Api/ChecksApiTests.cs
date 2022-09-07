@@ -56,47 +56,47 @@ namespace lob.dotnet.Test.Api
         }
 
         /// <summary>
-        /// Test CheckCancel
+        /// Test cancel
         /// </summary>
         [Fact]
-        public void CheckCancelTest()
+        public void cancelTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string chkId = null;
-            //var response = instance.CheckCancel(chkId);
+            //var response = instance.cancel(chkId);
             //Assert.IsType<CheckDeletion>(response);
         }
 
         /// <summary>
-        /// Test CheckCreate
+        /// Test create
         /// </summary>
         [Fact]
-        public void CheckCreateTest()
+        public void createTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //CheckEditable checkEditable = null;
             //string idempotencyKey = null;
-            //var response = instance.CheckCreate(checkEditable, idempotencyKey);
+            //var response = instance.create(checkEditable, idempotencyKey);
             //Assert.IsType<Check>(response);
         }
 
         /// <summary>
-        /// Test CheckRetrieve
+        /// Test get
         /// </summary>
         [Fact]
-        public void CheckRetrieveTest()
+        public void getTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string chkId = null;
-            //var response = instance.CheckRetrieve(chkId);
+            //var response = instance.get(chkId);
             //Assert.IsType<Check>(response);
         }
 
         /// <summary>
-        /// Test ChecksList
+        /// Test list
         /// </summary>
         [Fact]
-        public void ChecksListTest()
+        public void listTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? limit = null;
@@ -109,7 +109,7 @@ namespace lob.dotnet.Test.Api
             //Dictionary<string, string> sendDate = null;
             //MailType? mailType = null;
             //SortBy5 sortBy = null;
-            //var response = instance.ChecksList(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy);
+            //var response = instance.list(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy);
             //Assert.IsType<CheckList>(response);
         }
     }

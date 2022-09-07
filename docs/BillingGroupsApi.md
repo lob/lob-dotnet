@@ -4,15 +4,15 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BillingGroupCreate**](BillingGroupsApi.md#billinggroupcreate) | **POST** /billing_groups | create
-[**BillingGroupRetrieve**](BillingGroupsApi.md#billinggroupretrieve) | **GET** /billing_groups/{bg_id} | get
-[**BillingGroupUpdate**](BillingGroupsApi.md#billinggroupupdate) | **POST** /billing_groups/{bg_id} | update
-[**BillingGroupsList**](BillingGroupsApi.md#billinggroupslist) | **GET** /billing_groups | list
+[**create**](BillingGroupsApi.md#create) | **POST** /billing_groups | create
+[**get**](BillingGroupsApi.md#get) | **GET** /billing_groups/{bg_id} | get
+[**update**](BillingGroupsApi.md#update) | **POST** /billing_groups/{bg_id} | update
+[**list**](BillingGroupsApi.md#list) | **GET** /billing_groups | list
 
 
-<a name="billinggroupcreate"></a>
-# **BillingGroupCreate**
-> BillingGroup BillingGroupCreate (BillingGroupEditable billingGroupEditable)
+<a name="create"></a>
+# **create**
+> BillingGroup create (BillingGroupEditable billingGroupEditable)
 
 create
 
@@ -28,7 +28,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class BillingGroupCreateExample
+    public class createExample
     {
         public static void Main()
         {
@@ -44,12 +44,12 @@ namespace Example
             try
             {
                 // create
-                BillingGroup result = apiInstance.BillingGroupCreate(billingGroupEditable);
+                BillingGroup result = apiInstance.create(billingGroupEditable);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BillingGroupsApi.BillingGroupCreate: " + e.Message );
+                Debug.Print("Exception when calling BillingGroupsApi.create: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -86,9 +86,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="billinggroupretrieve"></a>
-# **BillingGroupRetrieve**
-> BillingGroup BillingGroupRetrieve (string bgId)
+<a name="get"></a>
+# **get**
+> BillingGroup get (string bgId)
 
 get
 
@@ -104,7 +104,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class BillingGroupRetrieveExample
+    public class getExample
     {
         public static void Main()
         {
@@ -120,12 +120,12 @@ namespace Example
             try
             {
                 // get
-                BillingGroup result = apiInstance.BillingGroupRetrieve(bgId);
+                BillingGroup result = apiInstance.get(bgId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BillingGroupsApi.BillingGroupRetrieve: " + e.Message );
+                Debug.Print("Exception when calling BillingGroupsApi.get: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -162,9 +162,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="billinggroupupdate"></a>
-# **BillingGroupUpdate**
-> BillingGroup BillingGroupUpdate (string bgId, BillingGroupEditable billingGroupEditable)
+<a name="update"></a>
+# **update**
+> BillingGroup update (string bgId, BillingGroupEditable billingGroupEditable)
 
 update
 
@@ -180,7 +180,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class BillingGroupUpdateExample
+    public class updateExample
     {
         public static void Main()
         {
@@ -197,12 +197,12 @@ namespace Example
             try
             {
                 // update
-                BillingGroup result = apiInstance.BillingGroupUpdate(bgId, billingGroupEditable);
+                BillingGroup result = apiInstance.update(bgId, billingGroupEditable);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BillingGroupsApi.BillingGroupUpdate: " + e.Message );
+                Debug.Print("Exception when calling BillingGroupsApi.update: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -240,9 +240,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="billinggroupslist"></a>
-# **BillingGroupsList**
-> BillingGroupList BillingGroupsList (int? limit = null, int? offset = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> dateModified = null, SortBy5 sortBy = null)
+<a name="list"></a>
+# **list**
+> BillingGroupList list (int? limit = null, int? offset = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> dateModified = null, SortBy5 sortBy = null)
 
 list
 
@@ -258,7 +258,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class BillingGroupsListExample
+    public class listExample
     {
         public static void Main()
         {
@@ -279,12 +279,12 @@ namespace Example
             try
             {
                 // list
-                BillingGroupList result = apiInstance.BillingGroupsList(limit, offset, include, dateCreated, dateModified, sortBy);
+                BillingGroupList result = apiInstance.list(limit, offset, include, dateCreated, dateModified, sortBy);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BillingGroupsApi.BillingGroupsList: " + e.Message );
+                Debug.Print("Exception when calling BillingGroupsApi.list: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }

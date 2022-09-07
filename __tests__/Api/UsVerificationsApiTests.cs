@@ -95,8 +95,8 @@ namespace __tests__.Api
             );
             fakeUsVerification.Deliverability = UsVerification.DeliverabilityEnum.Deliverable;
 
-            usVerificationsApiMock.Setup(x => x.UsVerification(usVerificationsWritable, null, It.IsAny<int>())).Returns(fakeUsVerification);
-            UsVerification response = usVerificationsApiMock.Object.UsVerification(usVerificationsWritable, null);
+            usVerificationsApiMock.Setup(x => x.verifySingle(usVerificationsWritable, null, It.IsAny<int>())).Returns(fakeUsVerification);
+            UsVerification response = usVerificationsApiMock.Object.verifySingle(usVerificationsWritable, null);
 
             Assert.IsInstanceOf<UsVerification>(response);
             Assert.AreEqual(response.Deliverability, fakeUsVerification.Deliverability);
@@ -119,8 +119,8 @@ namespace __tests__.Api
             );
             fakeUsVerification.Deliverability = UsVerification.DeliverabilityEnum.Deliverable;
 
-            usVerificationsApiMock.Setup(x => x.UsVerification(usVerificationsWritable, "upper", It.IsAny<int>())).Returns(fakeUsVerification);
-            UsVerification response = usVerificationsApiMock.Object.UsVerification(usVerificationsWritable, "upper");
+            usVerificationsApiMock.Setup(x => x.verifySingle(usVerificationsWritable, "upper", It.IsAny<int>())).Returns(fakeUsVerification);
+            UsVerification response = usVerificationsApiMock.Object.verifySingle(usVerificationsWritable, "upper");
 
             Assert.IsInstanceOf<UsVerification>(response);
             Assert.AreEqual(response.Deliverability, fakeUsVerification.Deliverability);
@@ -137,9 +137,9 @@ namespace __tests__.Api
                 "This is an error"
             );
 
-            usVerificationsApiMock.Setup(x => x.UsVerification(null, null, It.IsAny<int>())).Throws(fakeException);
+            usVerificationsApiMock.Setup(x => x.verifySingle(null, null, It.IsAny<int>())).Throws(fakeException);
             try {
-                UsVerification response = usVerificationsApiMock.Object.UsVerification(null, null);
+                UsVerification response = usVerificationsApiMock.Object.verifySingle(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -168,8 +168,8 @@ namespace __tests__.Api
 
             UsVerifications fakeUsVerifications = new UsVerifications(fakeAddresses, true);
 
-            usVerificationsApiMock.Setup(x => x.BulkUsVerifications(addressList, null, It.IsAny<int>())).Returns(fakeUsVerifications);
-            UsVerifications response = usVerificationsApiMock.Object.BulkUsVerifications(addressList, null);
+            usVerificationsApiMock.Setup(x => x.verifyBulk(addressList, null, It.IsAny<int>())).Returns(fakeUsVerifications);
+            UsVerifications response = usVerificationsApiMock.Object.verifyBulk(addressList, null);
 
             Assert.IsInstanceOf<UsVerifications>(response);
             Assert.AreEqual(response.Addresses.Count, addresses.Count);
@@ -196,8 +196,8 @@ namespace __tests__.Api
 
             UsVerifications fakeUsVerifications = new UsVerifications(fakeAddresses, true);
 
-            usVerificationsApiMock.Setup(x => x.BulkUsVerifications(addressList, "upper", It.IsAny<int>())).Returns(fakeUsVerifications);
-            UsVerifications response = usVerificationsApiMock.Object.BulkUsVerifications(addressList, "upper");
+            usVerificationsApiMock.Setup(x => x.verifyBulk(addressList, "upper", It.IsAny<int>())).Returns(fakeUsVerifications);
+            UsVerifications response = usVerificationsApiMock.Object.verifyBulk(addressList, "upper");
 
             Assert.IsInstanceOf<UsVerifications>(response);
             Assert.AreEqual(response.Addresses.Count, addresses.Count);
@@ -214,9 +214,9 @@ namespace __tests__.Api
                 "This is an error"
             );
 
-            usVerificationsApiMock.Setup(x => x.BulkUsVerifications(null, null, It.IsAny<int>())).Throws(fakeException);
+            usVerificationsApiMock.Setup(x => x.verifyBulk(null, null, It.IsAny<int>())).Throws(fakeException);
             try {
-                UsVerifications response = usVerificationsApiMock.Object.BulkUsVerifications(null, null);
+                UsVerifications response = usVerificationsApiMock.Object.verifyBulk(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

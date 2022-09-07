@@ -84,26 +84,26 @@ namespace __tests__.Integration {
 
         [Test]
         public void UsVerificationVerifySingleMultiLineUSAddressTest() {
-            UsVerification response = testValidApi.UsVerification(usVerificationWritable);
+            UsVerification response = testValidApi.verifySingle(usVerificationWritable);
             Assert.NotNull(response.Deliverability);
         }
 
         [Test]
         public void UsVerificationVerifySingleOneLineUSAddressTest() {
-            UsVerification response = testValidApi.UsVerification(new UsVerificationsWritable("1515 CEMETERY LN WESTFIELD NJ 07000"));
+            UsVerification response = testValidApi.verifySingle(new UsVerificationsWritable("1515 CEMETERY LN WESTFIELD NJ 07000"));
             Assert.NotNull(response.Deliverability);
         }
 
         [Test]
         public void UsVerificationVerifySingleTestWithCase() {
-            UsVerification response = testValidApi.UsVerification(new UsVerificationsWritable("1515 CEMETERY LN WESTFIELD NJ 07000"), "proper");
+            UsVerification response = testValidApi.verifySingle(new UsVerificationsWritable("1515 CEMETERY LN WESTFIELD NJ 07000"), "proper");
             Assert.NotNull(response.Deliverability);
         }
 
         [Test]
         public void UsVerificationVerifySingleTestBadParameter() {
             try {
-                UsVerification response = testValidApi.UsVerification(null);
+                UsVerification response = testValidApi.verifySingle(null);
             } catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
                 Assert.That(e.Message, Does.Contain("Missing required parameter 'usVerificationsWritable'"));
@@ -113,7 +113,7 @@ namespace __tests__.Integration {
         [Test]
         public void UsVerificationVerifySingleTestBadUsername() {
             try {
-                UsVerification response = invalidApi.UsVerification(usVerificationWritable);
+                UsVerification response = invalidApi.verifySingle(usVerificationWritable);
             } catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
                 Assert.That(e.Message, Does.Contain("Your API key is not valid"));
@@ -122,7 +122,7 @@ namespace __tests__.Integration {
 
         [Test]
         public void UsVerificationVerifyBulkTest() {
-            UsVerifications response = liveValidApi.BulkUsVerifications(addressList);
+            UsVerifications response = liveValidApi.verifyBulk(addressList);
             Assert.NotNull(response);
 
             int numErrors = 0;
@@ -135,7 +135,7 @@ namespace __tests__.Integration {
 
         [Test]
         public void UsVerificationVerifyBulkTestWithCase() {
-            UsVerifications response = liveValidApi.BulkUsVerifications(addressList, "upper");
+            UsVerifications response = liveValidApi.verifyBulk(addressList, "upper");
             Assert.NotNull(response);
 
             int numErrors = 0;
@@ -149,7 +149,7 @@ namespace __tests__.Integration {
         [Test]
         public void UsVerificationVerifyBulkTestBadParameter() {
             try {
-                UsVerifications response = liveValidApi.BulkUsVerifications(null);
+                UsVerifications response = liveValidApi.verifyBulk(null);
             } catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
                 Assert.That(e.Message, Does.Contain("Missing required parameter 'multipleComponentsList'"));
@@ -159,7 +159,7 @@ namespace __tests__.Integration {
         [Test]
         public void UsVerificationVerifyBulkTestBadUsername() {
             try {
-                UsVerifications response = invalidApi.BulkUsVerifications(addressList);
+                UsVerifications response = invalidApi.verifyBulk(addressList);
             } catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
                 Assert.That(e.Message, Does.Contain("Your API key is not valid"));

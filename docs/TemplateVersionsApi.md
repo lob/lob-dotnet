@@ -4,16 +4,16 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateTemplateVersion**](TemplateVersionsApi.md#createtemplateversion) | **POST** /templates/{tmpl_id}/versions | create
-[**TemplateVersionDelete**](TemplateVersionsApi.md#templateversiondelete) | **DELETE** /templates/{tmpl_id}/versions/{vrsn_id} | delete
-[**TemplateVersionRetrieve**](TemplateVersionsApi.md#templateversionretrieve) | **GET** /templates/{tmpl_id}/versions/{vrsn_id} | get
-[**TemplateVersionUpdate**](TemplateVersionsApi.md#templateversionupdate) | **POST** /templates/{tmpl_id}/versions/{vrsn_id} | update
-[**TemplateVersionsList**](TemplateVersionsApi.md#templateversionslist) | **GET** /templates/{tmpl_id}/versions | list
+[**create**](TemplateVersionsApi.md#create) | **POST** /templates/{tmpl_id}/versions | create
+[**delete**](TemplateVersionsApi.md#delete) | **DELETE** /templates/{tmpl_id}/versions/{vrsn_id} | delete
+[**get**](TemplateVersionsApi.md#get) | **GET** /templates/{tmpl_id}/versions/{vrsn_id} | get
+[**update**](TemplateVersionsApi.md#update) | **POST** /templates/{tmpl_id}/versions/{vrsn_id} | update
+[**list**](TemplateVersionsApi.md#list) | **GET** /templates/{tmpl_id}/versions | list
 
 
-<a name="createtemplateversion"></a>
-# **CreateTemplateVersion**
-> TemplateVersion CreateTemplateVersion (string tmplId, TemplateVersionWritable templateVersionWritable)
+<a name="create"></a>
+# **create**
+> TemplateVersion create (string tmplId, TemplateVersionWritable templateVersionWritable)
 
 create
 
@@ -29,7 +29,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class CreateTemplateVersionExample
+    public class createExample
     {
         public static void Main()
         {
@@ -46,12 +46,12 @@ namespace Example
             try
             {
                 // create
-                TemplateVersion result = apiInstance.CreateTemplateVersion(tmplId, templateVersionWritable);
+                TemplateVersion result = apiInstance.create(tmplId, templateVersionWritable);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TemplateVersionsApi.CreateTemplateVersion: " + e.Message );
+                Debug.Print("Exception when calling TemplateVersionsApi.create: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -89,9 +89,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="templateversiondelete"></a>
-# **TemplateVersionDelete**
-> TemplateVersionDeletion TemplateVersionDelete (string tmplId, string vrsnId)
+<a name="delete"></a>
+# **delete**
+> TemplateVersionDeletion delete (string tmplId, string vrsnId)
 
 delete
 
@@ -107,7 +107,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class TemplateVersionDeleteExample
+    public class deleteExample
     {
         public static void Main()
         {
@@ -124,12 +124,12 @@ namespace Example
             try
             {
                 // delete
-                TemplateVersionDeletion result = apiInstance.TemplateVersionDelete(tmplId, vrsnId);
+                TemplateVersionDeletion result = apiInstance.delete(tmplId, vrsnId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TemplateVersionsApi.TemplateVersionDelete: " + e.Message );
+                Debug.Print("Exception when calling TemplateVersionsApi.delete: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -167,9 +167,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="templateversionretrieve"></a>
-# **TemplateVersionRetrieve**
-> TemplateVersion TemplateVersionRetrieve (string tmplId, string vrsnId)
+<a name="get"></a>
+# **get**
+> TemplateVersion get (string tmplId, string vrsnId)
 
 get
 
@@ -185,7 +185,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class TemplateVersionRetrieveExample
+    public class getExample
     {
         public static void Main()
         {
@@ -202,12 +202,12 @@ namespace Example
             try
             {
                 // get
-                TemplateVersion result = apiInstance.TemplateVersionRetrieve(tmplId, vrsnId);
+                TemplateVersion result = apiInstance.get(tmplId, vrsnId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TemplateVersionsApi.TemplateVersionRetrieve: " + e.Message );
+                Debug.Print("Exception when calling TemplateVersionsApi.get: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -245,9 +245,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="templateversionupdate"></a>
-# **TemplateVersionUpdate**
-> TemplateVersion TemplateVersionUpdate (string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable)
+<a name="update"></a>
+# **update**
+> TemplateVersion update (string tmplId, string vrsnId, TemplateVersionUpdatable templateVersionUpdatable)
 
 update
 
@@ -263,7 +263,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class TemplateVersionUpdateExample
+    public class updateExample
     {
         public static void Main()
         {
@@ -281,12 +281,12 @@ namespace Example
             try
             {
                 // update
-                TemplateVersion result = apiInstance.TemplateVersionUpdate(tmplId, vrsnId, templateVersionUpdatable);
+                TemplateVersion result = apiInstance.update(tmplId, vrsnId, templateVersionUpdatable);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TemplateVersionsApi.TemplateVersionUpdate: " + e.Message );
+                Debug.Print("Exception when calling TemplateVersionsApi.update: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -325,9 +325,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="templateversionslist"></a>
-# **TemplateVersionsList**
-> TemplateVersionList TemplateVersionsList (string tmplId, int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null)
+<a name="list"></a>
+# **list**
+> TemplateVersionList list (string tmplId, int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null)
 
 list
 
@@ -343,7 +343,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class TemplateVersionsListExample
+    public class listExample
     {
         public static void Main()
         {
@@ -364,12 +364,12 @@ namespace Example
             try
             {
                 // list
-                TemplateVersionList result = apiInstance.TemplateVersionsList(tmplId, limit, before, after, include, dateCreated);
+                TemplateVersionList result = apiInstance.list(tmplId, limit, before, after, include, dateCreated);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TemplateVersionsApi.TemplateVersionsList: " + e.Message );
+                Debug.Print("Exception when calling TemplateVersionsApi.list: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }

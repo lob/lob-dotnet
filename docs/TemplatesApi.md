@@ -4,16 +4,16 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateTemplate**](TemplatesApi.md#createtemplate) | **POST** /templates | create
-[**TemplateDelete**](TemplatesApi.md#templatedelete) | **DELETE** /templates/{tmpl_id} | delete
-[**TemplateRetrieve**](TemplatesApi.md#templateretrieve) | **GET** /templates/{tmpl_id} | get
-[**TemplateUpdate**](TemplatesApi.md#templateupdate) | **POST** /templates/{tmpl_id} | update
-[**TemplatesList**](TemplatesApi.md#templateslist) | **GET** /templates | list
+[**create**](TemplatesApi.md#create) | **POST** /templates | create
+[**delete**](TemplatesApi.md#delete) | **DELETE** /templates/{tmpl_id} | delete
+[**get**](TemplatesApi.md#get) | **GET** /templates/{tmpl_id} | get
+[**update**](TemplatesApi.md#update) | **POST** /templates/{tmpl_id} | update
+[**list**](TemplatesApi.md#list) | **GET** /templates | list
 
 
-<a name="createtemplate"></a>
-# **CreateTemplate**
-> Template CreateTemplate (TemplateWritable templateWritable)
+<a name="create"></a>
+# **create**
+> Template create (TemplateWritable templateWritable)
 
 create
 
@@ -29,7 +29,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class CreateTemplateExample
+    public class createExample
     {
         public static void Main()
         {
@@ -45,12 +45,12 @@ namespace Example
             try
             {
                 // create
-                Template result = apiInstance.CreateTemplate(templateWritable);
+                Template result = apiInstance.create(templateWritable);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TemplatesApi.CreateTemplate: " + e.Message );
+                Debug.Print("Exception when calling TemplatesApi.create: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -87,9 +87,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="templatedelete"></a>
-# **TemplateDelete**
-> TemplateDeletion TemplateDelete (string tmplId)
+<a name="delete"></a>
+# **delete**
+> TemplateDeletion delete (string tmplId)
 
 delete
 
@@ -105,7 +105,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class TemplateDeleteExample
+    public class deleteExample
     {
         public static void Main()
         {
@@ -121,12 +121,12 @@ namespace Example
             try
             {
                 // delete
-                TemplateDeletion result = apiInstance.TemplateDelete(tmplId);
+                TemplateDeletion result = apiInstance.delete(tmplId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TemplatesApi.TemplateDelete: " + e.Message );
+                Debug.Print("Exception when calling TemplatesApi.delete: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -163,9 +163,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="templateretrieve"></a>
-# **TemplateRetrieve**
-> Template TemplateRetrieve (string tmplId)
+<a name="get"></a>
+# **get**
+> Template get (string tmplId)
 
 get
 
@@ -181,7 +181,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class TemplateRetrieveExample
+    public class getExample
     {
         public static void Main()
         {
@@ -197,12 +197,12 @@ namespace Example
             try
             {
                 // get
-                Template result = apiInstance.TemplateRetrieve(tmplId);
+                Template result = apiInstance.get(tmplId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TemplatesApi.TemplateRetrieve: " + e.Message );
+                Debug.Print("Exception when calling TemplatesApi.get: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -239,9 +239,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="templateupdate"></a>
-# **TemplateUpdate**
-> Template TemplateUpdate (string tmplId, TemplateUpdate templateUpdate)
+<a name="update"></a>
+# **update**
+> Template update (string tmplId, update update)
 
 update
 
@@ -257,7 +257,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class TemplateUpdateExample
+    public class updateExample
     {
         public static void Main()
         {
@@ -269,17 +269,17 @@ namespace Example
 
             var apiInstance = new TemplatesApi(config);
             var tmplId = tmplId_example;  // string | id of the template
-            var templateUpdate = new TemplateUpdate(); // TemplateUpdate | 
+            var update = new update(); // update | 
 
             try
             {
                 // update
-                Template result = apiInstance.TemplateUpdate(tmplId, templateUpdate);
+                Template result = apiInstance.update(tmplId, update);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TemplatesApi.TemplateUpdate: " + e.Message );
+                Debug.Print("Exception when calling TemplatesApi.update: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -293,7 +293,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tmplId** | **string**| id of the template | 
- **templateUpdate** | [**TemplateUpdate**](TemplateUpdate.md)|  | 
+ **update** | [**update**](update.md)|  | 
 
 ### Return type
 
@@ -317,9 +317,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="templateslist"></a>
-# **TemplatesList**
-> TemplateList TemplatesList (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null)
+<a name="list"></a>
+# **list**
+> TemplateList list (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null)
 
 list
 
@@ -335,7 +335,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class TemplatesListExample
+    public class listExample
     {
         public static void Main()
         {
@@ -356,12 +356,12 @@ namespace Example
             try
             {
                 // list
-                TemplateList result = apiInstance.TemplatesList(limit, before, after, include, dateCreated, metadata);
+                TemplateList result = apiInstance.list(limit, before, after, include, dateCreated, metadata);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TemplatesApi.TemplatesList: " + e.Message );
+                Debug.Print("Exception when calling TemplatesApi.list: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }

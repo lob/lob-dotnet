@@ -41,14 +41,14 @@ namespace __tests__.Integration {
         public void Dispose()
         {
             foreach (string id in createdIds) {
-                validApi.AddressDelete(id);
+                validApi.delete(id);
             }
         }
 
         [Test]
-        public void AddressCreateTest() {
+        public void createTest() {
             AddressEditable addressEditable = new AddressEditable("1313 CEMETERY LN", null, "WESTFIELD", "NJ", "07091", CountryExtended.US, "test description", "Thing T. Addams");
-            Address response = validApi.AddressCreate(addressEditable);
+            Address response = validApi.create(addressEditable);
 
             Assert.NotNull(response.Id);
             Assert.AreEqual(response.AddressLine1, addressEditable.AddressLine1);
@@ -57,9 +57,9 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void AddressCreateTestBadParameter() {
+        public void createTestBadParameter() {
             try {
-                Address response = validApi.AddressCreate(null);
+                Address response = validApi.create(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -68,10 +68,10 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void AddressCreateTestBadUsername() {
+        public void createTestBadUsername() {
             try {
                 AddressEditable addressEditable = new AddressEditable("1313 CEMETERY LN", null, "WESTFIELD", "NJ", "07091", CountryExtended.US, "test description", "Thing T. Addams");
-                Address response = invalidApi.AddressCreate(addressEditable);
+                Address response = invalidApi.create(addressEditable);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -80,17 +80,17 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void AddressRetrieveTest() {
-            Address response = validApi.AddressRetrieve(createdIds.FirstOrDefault());
+        public void getTest() {
+            Address response = validApi.get(createdIds.FirstOrDefault());
 
             Assert.NotNull(response.Id);
             Assert.AreEqual(response.Id, createdIds.FirstOrDefault());
         }
 
         [Test]
-        public void AddressRetrieveTestBadParameter() {
+        public void getTestBadParameter() {
             try {
-                Address response = validApi.AddressRetrieve(null);
+                Address response = validApi.get(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -99,9 +99,9 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void AddressRetrieveTestBadUsername() {
+        public void getTestBadUsername() {
             try {
-                Address response = invalidApi.AddressRetrieve(createdIds.FirstOrDefault());
+                Address response = invalidApi.get(createdIds.FirstOrDefault());
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -111,7 +111,7 @@ namespace __tests__.Integration {
 
                 [Test]
         public void AddressListTest() {
-            AddressList response = validApi.AddressesList(null, null, null, null, null, null);
+            AddressList response = validApi.list(null, null, null, null, null, null);
 
             Assert.Greater(response.Count, 0);
         }
@@ -120,7 +120,7 @@ namespace __tests__.Integration {
         public void AddressListTestWithIncludeParameter() {
             List<string> includeList = new List<string>();
             includeList.Add("total_es");
-            AddressList response = validApi.AddressesList(null, null, null, includeList, null, null);
+            AddressList response = validApi.list(null, null, null, includeList, null, null);
 
             Assert.Greater(response.Count, 0);
         }
@@ -131,7 +131,7 @@ namespace __tests__.Integration {
             DateTime lastMonth = DateTime.Today.AddMonths(-1);
             dateCreated.Add("lt", lastMonth);
 
-            AddressList response = validApi.AddressesList(null, null, null, null, dateCreated, null);
+            AddressList response = validApi.list(null, null, null, null, dateCreated, null);
             Assert.Greater(response.Count, 0);
         }
     }

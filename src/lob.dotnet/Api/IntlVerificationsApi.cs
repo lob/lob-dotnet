@@ -38,7 +38,7 @@ namespace lob.dotnet.Api
         /// <param name="intlVerificationsPayload"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>IntlVerifications</returns>
-        IntlVerifications BulkIntlVerifications(IntlVerificationsPayload intlVerificationsPayload, int operationIndex = 0);
+        IntlVerifications verifyBulk(IntlVerificationsPayload intlVerificationsPayload, int operationIndex = 0);
 
         /// <summary>
         /// verifyBulk
@@ -50,7 +50,7 @@ namespace lob.dotnet.Api
         /// <param name="intlVerificationsPayload"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of IntlVerifications</returns>
-        ApiResponse<IntlVerifications> BulkIntlVerificationsWithHttpInfo(IntlVerificationsPayload intlVerificationsPayload, int operationIndex = 0);
+        ApiResponse<IntlVerifications> verifyBulkWithHttpInfo(IntlVerificationsPayload intlVerificationsPayload, int operationIndex = 0);
         /// <summary>
         /// verifySingle
         /// </summary>
@@ -62,7 +62,7 @@ namespace lob.dotnet.Api
         /// <param name="xLangOutput">* &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>IntlVerification</returns>
-        IntlVerification IntlVerification(IntlVerificationWritable intlVerificationWritable, string xLangOutput = default(string), int operationIndex = 0);
+        IntlVerification verifySingle(IntlVerificationWritable intlVerificationWritable, string xLangOutput = default(string), int operationIndex = 0);
 
         /// <summary>
         /// verifySingle
@@ -75,7 +75,7 @@ namespace lob.dotnet.Api
         /// <param name="xLangOutput">* &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of IntlVerification</returns>
-        ApiResponse<IntlVerification> IntlVerificationWithHttpInfo(IntlVerificationWritable intlVerificationWritable, string xLangOutput = default(string), int operationIndex = 0);
+        ApiResponse<IntlVerification> verifySingleWithHttpInfo(IntlVerificationWritable intlVerificationWritable, string xLangOutput = default(string), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -96,7 +96,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IntlVerifications</returns>
-        System.Threading.Tasks.Task<IntlVerifications> BulkIntlVerificationsAsync(IntlVerificationsPayload intlVerificationsPayload, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<IntlVerifications> verifyBulkAsync(IntlVerificationsPayload intlVerificationsPayload, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// verifyBulk
@@ -109,7 +109,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IntlVerifications)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IntlVerifications>> BulkIntlVerificationsWithHttpInfoAsync(IntlVerificationsPayload intlVerificationsPayload, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<IntlVerifications>> verifyBulkWithHttpInfoAsync(IntlVerificationsPayload intlVerificationsPayload, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// verifySingle
         /// </summary>
@@ -122,7 +122,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IntlVerification</returns>
-        System.Threading.Tasks.Task<IntlVerification> IntlVerificationAsync(IntlVerificationWritable intlVerificationWritable, string xLangOutput = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<IntlVerification> verifySingleAsync(IntlVerificationWritable intlVerificationWritable, string xLangOutput = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// verifySingle
@@ -136,7 +136,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IntlVerification)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IntlVerification>> IntlVerificationWithHttpInfoAsync(IntlVerificationWritable intlVerificationWritable, string xLangOutput = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<IntlVerification>> verifySingleWithHttpInfoAsync(IntlVerificationWritable intlVerificationWritable, string xLangOutput = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -264,9 +264,9 @@ namespace lob.dotnet.Api
         /// <param name="intlVerificationsPayload"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>IntlVerifications</returns>
-        public IntlVerifications BulkIntlVerifications(IntlVerificationsPayload intlVerificationsPayload, int operationIndex = 0)
+        public IntlVerifications verifyBulk(IntlVerificationsPayload intlVerificationsPayload, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<IntlVerifications> localVarResponse = BulkIntlVerificationsWithHttpInfo(intlVerificationsPayload);
+            lob.dotnet.Client.ApiResponse<IntlVerifications> localVarResponse = verifyBulkWithHttpInfo(intlVerificationsPayload);
             return localVarResponse.Data;
         }
 
@@ -277,12 +277,12 @@ namespace lob.dotnet.Api
         /// <param name="intlVerificationsPayload"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of IntlVerifications</returns>
-        public lob.dotnet.Client.ApiResponse<IntlVerifications> BulkIntlVerificationsWithHttpInfo(IntlVerificationsPayload intlVerificationsPayload, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<IntlVerifications> verifyBulkWithHttpInfo(IntlVerificationsPayload intlVerificationsPayload, int operationIndex = 0)
         {
             // verify the required parameter 'intlVerificationsPayload' is set
             if (intlVerificationsPayload == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'intlVerificationsPayload' when calling IntlVerificationsApi->BulkIntlVerifications");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'intlVerificationsPayload' when calling IntlVerificationsApi->verifyBulk");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -311,7 +311,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = intlVerificationsPayload;
 
-            localVarRequestOptions.Operation = "IntlVerificationsApi.BulkIntlVerifications";
+            localVarRequestOptions.Operation = "IntlVerificationsApi.verifyBulk";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -325,7 +325,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<IntlVerifications>("/bulk/intl_verifications", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BulkIntlVerifications", localVarResponse);
+                Exception _exception = this.ExceptionFactory("verifyBulk", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -343,9 +343,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IntlVerifications</returns>
-        public async System.Threading.Tasks.Task<IntlVerifications> BulkIntlVerificationsAsync(IntlVerificationsPayload intlVerificationsPayload, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<IntlVerifications> verifyBulkAsync(IntlVerificationsPayload intlVerificationsPayload, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<IntlVerifications> localVarResponse = await BulkIntlVerificationsWithHttpInfoAsync(intlVerificationsPayload, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<IntlVerifications> localVarResponse = await verifyBulkWithHttpInfoAsync(intlVerificationsPayload, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -357,12 +357,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IntlVerifications)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<IntlVerifications>> BulkIntlVerificationsWithHttpInfoAsync(IntlVerificationsPayload intlVerificationsPayload, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<IntlVerifications>> verifyBulkWithHttpInfoAsync(IntlVerificationsPayload intlVerificationsPayload, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'intlVerificationsPayload' is set
             if (intlVerificationsPayload == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'intlVerificationsPayload' when calling IntlVerificationsApi->BulkIntlVerifications");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'intlVerificationsPayload' when calling IntlVerificationsApi->verifyBulk");
             }
 
 
@@ -392,7 +392,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = intlVerificationsPayload;
 
-            localVarRequestOptions.Operation = "IntlVerificationsApi.BulkIntlVerifications";
+            localVarRequestOptions.Operation = "IntlVerificationsApi.verifyBulk";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -407,7 +407,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BulkIntlVerifications", localVarResponse);
+                Exception _exception = this.ExceptionFactory("verifyBulk", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -425,9 +425,9 @@ namespace lob.dotnet.Api
         /// <param name="xLangOutput">* &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>IntlVerification</returns>
-        public IntlVerification IntlVerification(IntlVerificationWritable intlVerificationWritable, string xLangOutput = default(string), int operationIndex = 0)
+        public IntlVerification verifySingle(IntlVerificationWritable intlVerificationWritable, string xLangOutput = default(string), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<IntlVerification> localVarResponse = IntlVerificationWithHttpInfo(intlVerificationWritable, xLangOutput);
+            lob.dotnet.Client.ApiResponse<IntlVerification> localVarResponse = verifySingleWithHttpInfo(intlVerificationWritable, xLangOutput);
             return localVarResponse.Data;
         }
 
@@ -439,12 +439,12 @@ namespace lob.dotnet.Api
         /// <param name="xLangOutput">* &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of IntlVerification</returns>
-        public lob.dotnet.Client.ApiResponse<IntlVerification> IntlVerificationWithHttpInfo(IntlVerificationWritable intlVerificationWritable, string xLangOutput = default(string), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<IntlVerification> verifySingleWithHttpInfo(IntlVerificationWritable intlVerificationWritable, string xLangOutput = default(string), int operationIndex = 0)
         {
             // verify the required parameter 'intlVerificationWritable' is set
             if (intlVerificationWritable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'intlVerificationWritable' when calling IntlVerificationsApi->IntlVerification");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'intlVerificationWritable' when calling IntlVerificationsApi->verifySingle");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -478,7 +478,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = intlVerificationWritable;
 
-            localVarRequestOptions.Operation = "IntlVerificationsApi.IntlVerification";
+            localVarRequestOptions.Operation = "IntlVerificationsApi.verifySingle";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -492,7 +492,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<IntlVerification>("/intl_verifications", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("IntlVerification", localVarResponse);
+                Exception _exception = this.ExceptionFactory("verifySingle", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -511,9 +511,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IntlVerification</returns>
-        public async System.Threading.Tasks.Task<IntlVerification> IntlVerificationAsync(IntlVerificationWritable intlVerificationWritable, string xLangOutput = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<IntlVerification> verifySingleAsync(IntlVerificationWritable intlVerificationWritable, string xLangOutput = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<IntlVerification> localVarResponse = await IntlVerificationWithHttpInfoAsync(intlVerificationWritable, xLangOutput, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<IntlVerification> localVarResponse = await verifySingleWithHttpInfoAsync(intlVerificationWritable, xLangOutput, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -526,12 +526,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IntlVerification)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<IntlVerification>> IntlVerificationWithHttpInfoAsync(IntlVerificationWritable intlVerificationWritable, string xLangOutput = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<IntlVerification>> verifySingleWithHttpInfoAsync(IntlVerificationWritable intlVerificationWritable, string xLangOutput = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'intlVerificationWritable' is set
             if (intlVerificationWritable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'intlVerificationWritable' when calling IntlVerificationsApi->IntlVerification");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'intlVerificationWritable' when calling IntlVerificationsApi->verifySingle");
             }
 
 
@@ -566,7 +566,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = intlVerificationWritable;
 
-            localVarRequestOptions.Operation = "IntlVerificationsApi.IntlVerification";
+            localVarRequestOptions.Operation = "IntlVerificationsApi.verifySingle";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -581,7 +581,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("IntlVerification", localVarResponse);
+                Exception _exception = this.ExceptionFactory("verifySingle", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

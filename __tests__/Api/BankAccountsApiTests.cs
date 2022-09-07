@@ -102,10 +102,10 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test BankAccountCreate
+        /// Test create
         /// </summary>
         [Test]
-        public void BankAccountCreateTest()
+        public void createTest()
         {
             BankAccountWritable bankAccountWritable = new BankAccountWritable(
                 null,
@@ -116,27 +116,27 @@ namespace __tests__.Api
                 null
             );
 
-            bankAccountsApiMock.Setup(x => x.BankAccountCreate(bankAccountWritable, It.IsAny<int>())).Returns(fakeBankAccount);
-            BankAccount response = bankAccountsApiMock.Object.BankAccountCreate(bankAccountWritable);
+            bankAccountsApiMock.Setup(x => x.create(bankAccountWritable, It.IsAny<int>())).Returns(fakeBankAccount);
+            BankAccount response = bankAccountsApiMock.Object.create(bankAccountWritable);
 
             Assert.IsInstanceOf<BankAccount>(response);
             Assert.AreEqual(response.Id, fakeBankAccount.Id);
         }
 
         /// <summary>
-        /// Test BankAccountCreateHandlesException
+        /// Test createHandlesException
         /// </summary>
         [Test]
-        public void BankAccountCreateTestHandlesException()
+        public void createTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
 
-            bankAccountsApiMock.Setup(x => x.BankAccountCreate(null, It.IsAny<int>())).Throws(fakeException);
+            bankAccountsApiMock.Setup(x => x.create(null, It.IsAny<int>())).Throws(fakeException);
             try {
-                BankAccount response = bankAccountsApiMock.Object.BankAccountCreate(null);
+                BankAccount response = bankAccountsApiMock.Object.create(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -145,19 +145,19 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test BankAccountDelete
+        /// Test delete
         /// </summary>
         [Test]
-        public void BankAccountDeleteTest()
+        public void deleteTest()
         {
             BankAccountDeletion fakeBankAccount = new BankAccountDeletion();
 
             fakeBankAccount.Id = "bank_fakeId";
             fakeBankAccount.Deleted = true;
 
-            bankAccountsApiMock.Setup(x => x.BankAccountDelete(fakeBankAccount.Id, It.IsAny<int>())).Returns(fakeBankAccount);
+            bankAccountsApiMock.Setup(x => x.delete(fakeBankAccount.Id, It.IsAny<int>())).Returns(fakeBankAccount);
 
-            var response = bankAccountsApiMock.Object.BankAccountDelete(fakeBankAccount.Id);
+            var response = bankAccountsApiMock.Object.delete(fakeBankAccount.Id);
 
             Assert.IsInstanceOf<BankAccountDeletion>(response);
             Assert.AreEqual(response.Deleted, fakeBankAccount.Deleted);
@@ -165,19 +165,19 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test BankAccountDeleteHandlesException
+        /// Test deleteHandlesException
         /// </summary>
         [Test]
-        public void BankAccountDeleteHandlesException()
+        public void deleteHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
 
-            bankAccountsApiMock.Setup(x => x.BankAccountDelete(null, It.IsAny<int>())).Throws(fakeException);
+            bankAccountsApiMock.Setup(x => x.delete(null, It.IsAny<int>())).Throws(fakeException);
             try {
-                var response = bankAccountsApiMock.Object.BankAccountDelete(null);
+                var response = bankAccountsApiMock.Object.delete(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -186,33 +186,33 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test BankAccountRetrieve
+        /// Test get
         /// </summary>
         [Test]
-        public void BankAccountRetrieveTest()
+        public void getTest()
         {
             fakeBankAccount.Id = "bank_fakeId";
-            bankAccountsApiMock.Setup(x => x.BankAccountRetrieve(fakeBankAccount.Id, It.IsAny<int>())).Returns(fakeBankAccount);
-            BankAccount response = bankAccountsApiMock.Object.BankAccountRetrieve(fakeBankAccount.Id);
+            bankAccountsApiMock.Setup(x => x.get(fakeBankAccount.Id, It.IsAny<int>())).Returns(fakeBankAccount);
+            BankAccount response = bankAccountsApiMock.Object.get(fakeBankAccount.Id);
 
             Assert.IsInstanceOf<BankAccount>(response);
             Assert.AreEqual(response.Id, fakeBankAccount.Id);
         }
 
         /// <summary>
-        /// Test BankAccountRetrieveHandlesException
+        /// Test getHandlesException
         /// </summary>
         [Test]
-        public void BankAccountRetrieveTestHandlesException()
+        public void getTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
-            bankAccountsApiMock.Setup(x => x.BankAccountRetrieve("bank_fakeId", It.IsAny<int>())).Throws(fakeException);
+            bankAccountsApiMock.Setup(x => x.get("bank_fakeId", It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = bankAccountsApiMock.Object.BankAccountRetrieve("bank_fakeId");
+                var response = bankAccountsApiMock.Object.get("bank_fakeId");
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -226,9 +226,9 @@ namespace __tests__.Api
         [Test]
         public void BankAccountListTest()
         {
-            bankAccountsApiMock.Setup(x => x.BankAccountsList(null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeBankAccountList);
+            bankAccountsApiMock.Setup(x => x.list(null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeBankAccountList);
 
-            var response = bankAccountsApiMock.Object.BankAccountsList(null, null, null, null, null, null);
+            var response = bankAccountsApiMock.Object.list(null, null, null, null, null, null);
 
             Assert.IsInstanceOf<BankAccountList>(response);
             Assert.AreEqual(response.Count, fakeBankAccountList.Count);
@@ -244,10 +244,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            bankAccountsApiMock.Setup(x => x.BankAccountsList(null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
+            bankAccountsApiMock.Setup(x => x.list(null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = bankAccountsApiMock.Object.BankAccountsList(null, null, null, null, null, null);
+                var response = bankAccountsApiMock.Object.list(null, null, null, null, null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -263,9 +263,9 @@ namespace __tests__.Api
         {
             int limit = 2;
 
-            bankAccountsApiMock.Setup(x => x.BankAccountsList(limit, null, null, null, null, null, It.IsAny<int>())).Returns(fakeBankAccountList);
+            bankAccountsApiMock.Setup(x => x.list(limit, null, null, null, null, null, It.IsAny<int>())).Returns(fakeBankAccountList);
 
-            var response = bankAccountsApiMock.Object.BankAccountsList(limit, null, null, null, null, null);
+            var response = bankAccountsApiMock.Object.list(limit, null, null, null, null, null);
 
             Assert.IsInstanceOf<BankAccountList>(response);
             Assert.AreEqual(response.Count, fakeBankAccountList.Count);
@@ -279,9 +279,9 @@ namespace __tests__.Api
         {
             string before = "before";
 
-            bankAccountsApiMock.Setup(x => x.BankAccountsList(null, before, null, null, null, null, It.IsAny<int>())).Returns(fakeBankAccountList);
+            bankAccountsApiMock.Setup(x => x.list(null, before, null, null, null, null, It.IsAny<int>())).Returns(fakeBankAccountList);
 
-            var response = bankAccountsApiMock.Object.BankAccountsList(null, before, null, null, null, null);
+            var response = bankAccountsApiMock.Object.list(null, before, null, null, null, null);
 
             Assert.IsInstanceOf<BankAccountList>(response);
             Assert.AreEqual(response.Count, fakeBankAccountList.Count);
@@ -295,9 +295,9 @@ namespace __tests__.Api
         {
             string after = "after";
 
-            bankAccountsApiMock.Setup(x => x.BankAccountsList(null, null, after, null, null, null, It.IsAny<int>())).Returns(fakeBankAccountList);
+            bankAccountsApiMock.Setup(x => x.list(null, null, after, null, null, null, It.IsAny<int>())).Returns(fakeBankAccountList);
 
-            var response = bankAccountsApiMock.Object.BankAccountsList(null, null, after, null, null, null);
+            var response = bankAccountsApiMock.Object.list(null, null, after, null, null, null);
 
             Assert.IsInstanceOf<BankAccountList>(response);
             Assert.AreEqual(response.Count, fakeBankAccountList.Count);
@@ -312,9 +312,9 @@ namespace __tests__.Api
             List<string> include = new List<string>();
             include.Add("total_count");
 
-            bankAccountsApiMock.Setup(x => x.BankAccountsList(null, null, null, include, null, null, It.IsAny<int>())).Returns(fakeBankAccountList);
+            bankAccountsApiMock.Setup(x => x.list(null, null, null, include, null, null, It.IsAny<int>())).Returns(fakeBankAccountList);
 
-            var response = bankAccountsApiMock.Object.BankAccountsList(null, null, null, include, null, null);
+            var response = bankAccountsApiMock.Object.list(null, null, null, include, null, null);
 
             Assert.IsInstanceOf<BankAccountList>(response);
             Assert.AreEqual(response.Count, fakeBankAccountList.Count);
@@ -330,9 +330,9 @@ namespace __tests__.Api
             DateTime lastMonth = DateTime.Today.AddMonths(-1);
             dateCreated.Add("lt", lastMonth);
 
-            bankAccountsApiMock.Setup(x => x.BankAccountsList(null, null, null, null, dateCreated, null, It.IsAny<int>())).Returns(fakeBankAccountList);
+            bankAccountsApiMock.Setup(x => x.list(null, null, null, null, dateCreated, null, It.IsAny<int>())).Returns(fakeBankAccountList);
 
-            var response = bankAccountsApiMock.Object.BankAccountsList(null, null, null, null, dateCreated, null);
+            var response = bankAccountsApiMock.Object.list(null, null, null, null, dateCreated, null);
 
             Assert.IsInstanceOf<BankAccountList>(response);
             Assert.AreEqual(response.Count, fakeBankAccountList.Count);
@@ -347,48 +347,48 @@ namespace __tests__.Api
             Dictionary<String, String> metadata = new Dictionary<String, String>();
             metadata.Add("name", "Harry");
 
-            bankAccountsApiMock.Setup(x => x.BankAccountsList(null, null, null, null, null, metadata, It.IsAny<int>())).Returns(fakeBankAccountList);
+            bankAccountsApiMock.Setup(x => x.list(null, null, null, null, null, metadata, It.IsAny<int>())).Returns(fakeBankAccountList);
 
-            var response = bankAccountsApiMock.Object.BankAccountsList(null, null, null, null, null, metadata);
+            var response = bankAccountsApiMock.Object.list(null, null, null, null, null, metadata);
 
             Assert.IsInstanceOf<BankAccountList>(response);
             Assert.AreEqual(response.Count, fakeBankAccountList.Count);
         }
 
         /// <summary>
-        /// Test BankAccountVerify
+        /// Test verify
         /// </summary>
         [Test]
-        public void BankAccountVerifyTest()
+        public void verifyTest()
         {
             List<int> amounts = new List<int>();
             amounts.Add(1);
             amounts.Add(2);
 
-            BankAccountVerify bankAccountVerify = new BankAccountVerify(amounts);
+            verify verify = new verify(amounts);
 
-            bankAccountsApiMock.Setup(x => x.BankAccountVerify(fakeBankAccount.Id, bankAccountVerify, It.IsAny<int>())).Returns(fakeBankAccount);
+            bankAccountsApiMock.Setup(x => x.verify(fakeBankAccount.Id, verify, It.IsAny<int>())).Returns(fakeBankAccount);
 
-            BankAccount response = bankAccountsApiMock.Object.BankAccountVerify(fakeBankAccount.Id, bankAccountVerify);
+            BankAccount response = bankAccountsApiMock.Object.verify(fakeBankAccount.Id, verify);
 
             Assert.IsInstanceOf<BankAccount>(response);
             Assert.AreEqual(response.Id, fakeBankAccount.Id);
         }
 
         /// <summary>
-        /// Test BankAccountVerifyHandlesException
+        /// Test verifyHandlesException
         /// </summary>
         [Test]
-        public void BankAccountVerifyTestHandlesException()
+        public void verifyTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
-            bankAccountsApiMock.Setup(x => x.BankAccountVerify("bank_fakeId", null, It.IsAny<int>())).Throws(fakeException);
+            bankAccountsApiMock.Setup(x => x.verify("bank_fakeId", null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = bankAccountsApiMock.Object.BankAccountVerify("bank_fakeId", null);
+                var response = bankAccountsApiMock.Object.verify("bank_fakeId", null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

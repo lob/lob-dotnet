@@ -53,14 +53,14 @@ namespace __tests__.Integration {
             );
 
             validBankAccountsApi = new BankAccountsApi(config);
-            bankAccount = validBankAccountsApi.BankAccountCreate(bankAccountWritable);
+            bankAccount = validBankAccountsApi.create(bankAccountWritable);
 
             List<int> amounts = new List<int>();
             amounts.Add(11);
             amounts.Add(35);
 
-            BankAccountVerify verification = new BankAccountVerify(amounts);
-            validBankAccountsApi.BankAccountVerify(bankAccount.Id, verification);
+            verify verification = new verify(amounts);
+            validBankAccountsApi.verify(bankAccount.Id, verification);
 
             AddressEditable addressEditable1 = new AddressEditable(
                 "1313 CEMETERY LN", // addressLine1
@@ -93,7 +93,7 @@ namespace __tests__.Integration {
             );
 
             validAddressesApi = new AddressesApi(config);
-            address1 = validAddressesApi.AddressCreate(addressEditable1);
+            address1 = validAddressesApi.create(addressEditable1);
             string address2 = addressEditable2.ToJson();
 
             checkEditable = new CheckEditable(
@@ -112,16 +112,16 @@ namespace __tests__.Integration {
 
         public void Dispose()
         {
-            validBankAccountsApi.BankAccountDelete(bankAccount.Id);
-            validAddressesApi.AddressDelete(address1.Id);
-            idsToDelete.ForEach(id => validApi.CheckCancel(id));
+            validBankAccountsApi.delete(bankAccount.Id);
+            validAddressesApi.delete(address1.Id);
+            idsToDelete.ForEach(id => validApi.cancel(id));
         }
 
         [Test]
-        public void CheckCreateTest() {
+        public void createTest() {
             checkEditable.CheckNumber = 2;
             checkEditable.SendDate = DateTime.Now.AddDays(34);
-            Check response = validApi.CheckCreate(checkEditable);
+            Check response = validApi.create(checkEditable);
 
             Assert.NotNull(response.Id);
             idsToDelete.Add(response.Id);
@@ -129,9 +129,9 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void CheckCreateTestBadParameter() {
+        public void createTestBadParameter() {
             try {
-                Check response = validApi.CheckCreate(null);
+                Check response = validApi.create(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -140,9 +140,9 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void CheckCreateTestBadUsername() {
+        public void createTestBadUsername() {
             try {
-                Check response = invalidApi.CheckCreate(checkEditable);
+                Check response = invalidApi.create(checkEditable);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -151,19 +151,19 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void CheckRetrieveTest() {
-            Check check = validApi.CheckCreate(checkEditable);
+        public void getTest() {
+            Check check = validApi.create(checkEditable);
             idsToDelete.Add(check.Id);
-            Check response = validApi.CheckRetrieve(check.Id);
+            Check response = validApi.get(check.Id);
 
             Assert.NotNull(response.Id);
             Assert.AreEqual(response.Id, check.Id);
         }
 
         [Test]
-        public void CheckRetrieveTestBadParameter() {
+        public void getTestBadParameter() {
             try {
-                Check response = validApi.CheckRetrieve(null);
+                Check response = validApi.get(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -172,11 +172,11 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void CheckRetrieveTestBadUsername() {
-            Check check = validApi.CheckCreate(checkEditable);
+        public void getTestBadUsername() {
+            Check check = validApi.create(checkEditable);
             idsToDelete.Add(check.Id);
             try {
-                Check response = invalidApi.CheckRetrieve(check.Id);
+                Check response = invalidApi.get(check.Id);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -186,7 +186,7 @@ namespace __tests__.Integration {
 
         [Test]
         public void CheckListTest() {
-            CheckList response = validApi.ChecksList(null, null, null, null, null, null, null, null, null, null);
+            CheckList response = validApi.list(null, null, null, null, null, null, null, null, null, null);
 
             Assert.Greater(response.Count, 0);
         }
@@ -194,7 +194,7 @@ namespace __tests__.Integration {
         [Test]
         public void CheckListTestWithLimitParameter() {
             int limit = 2;
-            CheckList response = validApi.ChecksList(limit, null, null, null, null, null, null, null, null, null);
+            CheckList response = validApi.list(limit, null, null, null, null, null, null, null, null, null);
 
             Assert.AreEqual(response.Count, 2);
         }
@@ -204,7 +204,7 @@ namespace __tests__.Integration {
             List<string> includeList = new List<string>();
             includeList.Add("total_count");
 
-            CheckList response = validApi.ChecksList(null, null, null, includeList);
+            CheckList response = validApi.list(null, null, null, includeList);
             Assert.Greater(response.Count, 0);
             Assert.NotNull(response.TotalCount);
         }
@@ -215,7 +215,7 @@ namespace __tests__.Integration {
             DateTime lastMonth = DateTime.Today.AddMonths(-1);
             dateCreated.Add("lt", lastMonth);
 
-            CheckList response = validApi.ChecksList(null, null, null, null, dateCreated);
+            CheckList response = validApi.list(null, null, null, null, dateCreated);
             Assert.Greater(response.Count, 0);
         }
 
@@ -224,7 +224,7 @@ namespace __tests__.Integration {
             Dictionary<String, String> metadata = new Dictionary<String, String>();
             metadata.Add("name", "Harry");
 
-            CheckList response = validApi.ChecksList(null, null, null, null, null, metadata);
+            CheckList response = validApi.list(null, null, null, null, null, metadata);
             Assert.Greater(response.Count, 0);
         }
 
@@ -232,7 +232,7 @@ namespace __tests__.Integration {
         public void CheckListTestWithScheduledParameter() {
             Boolean scheduled = true;
 
-            CheckList response = validApi.ChecksList(null, null, null, null, null, null, scheduled);
+            CheckList response = validApi.list(null, null, null, null, null, null, scheduled);
             Assert.Greater(response.Count, 0);
         }
 
@@ -242,7 +242,7 @@ namespace __tests__.Integration {
             DateTime lastMonth = DateTime.Today.AddMonths(-1);
             sendDate.Add("lt", lastMonth.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 
-            CheckList response = validApi.ChecksList(null, null, null, null, null, null, null, sendDate);
+            CheckList response = validApi.list(null, null, null, null, null, null, null, sendDate);
             Assert.Greater(response.Count, 0);
         }
 
@@ -250,14 +250,14 @@ namespace __tests__.Integration {
         public void CheckListTestWithMailTypeParameter() {
             MailType mailType = MailType.FirstClass;
 
-            CheckList response = validApi.ChecksList(null, null, null, null, null, null, null, null, mailType);
+            CheckList response = validApi.list(null, null, null, null, null, null, null, null, mailType);
             Assert.GreaterOrEqual(response.Count, 0);
         }
 
         [Test]
         public void CheckListTestWithSortByParameter() {
             SortBy3 sortBy = new SortBy3(null, SortBy3.SendDateEnum.Asc);
-            CheckList response = validApi.ChecksList(null, null, null, null, null, null, null, null, null, sortBy);
+            CheckList response = validApi.list(null, null, null, null, null, null, null, null, null, sortBy);
             Assert.Greater(response.Count, 0);
         }
     }
