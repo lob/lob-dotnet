@@ -56,66 +56,66 @@ namespace lob.dotnet.Test.Api
         }
 
         /// <summary>
-        /// Test CardCreate
+        /// Test create
         /// </summary>
         [Fact]
-        public void CardCreateTest()
+        public void createTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //CardEditable cardEditable = null;
-            //var response = instance.CardCreate(cardEditable);
+            //var response = instance.create(cardEditable);
             //Assert.IsType<Card>(response);
         }
 
         /// <summary>
-        /// Test CardDelete
+        /// Test delete
         /// </summary>
         [Fact]
-        public void CardDeleteTest()
+        public void deleteTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string cardId = null;
-            //var response = instance.CardDelete(cardId);
+            //var response = instance.delete(cardId);
             //Assert.IsType<CardDeletion>(response);
         }
 
         /// <summary>
-        /// Test CardRetrieve
+        /// Test get
         /// </summary>
         [Fact]
-        public void CardRetrieveTest()
+        public void getTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string cardId = null;
-            //var response = instance.CardRetrieve(cardId);
+            //var response = instance.get(cardId);
             //Assert.IsType<Card>(response);
         }
 
         /// <summary>
-        /// Test CardUpdate
+        /// Test update
         /// </summary>
         [Fact]
-        public void CardUpdateTest()
+        public void updateTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string cardId = null;
             //CardUpdatable cardUpdatable = null;
-            //var response = instance.CardUpdate(cardId, cardUpdatable);
+            //var response = instance.update(cardId, cardUpdatable);
             //Assert.IsType<Card>(response);
         }
 
         /// <summary>
-        /// Test CardsList
+        /// Test list
         /// </summary>
         [Fact]
-        public void CardsListTest()
+        public void listTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? limit = null;
             //string before = null;
             //string after = null;
             //SortBy5 sortBy = null;
-            //var response = instance.CardsList(limit, before, after, sortBy);
+            //var response = instance.list(limit, before, after, sortBy);
             //Assert.IsType<CardList>(response);
         }
     }

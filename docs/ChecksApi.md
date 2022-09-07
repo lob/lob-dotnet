@@ -4,15 +4,15 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CheckCancel**](ChecksApi.md#checkcancel) | **DELETE** /checks/{chk_id} | cancel
-[**CheckCreate**](ChecksApi.md#checkcreate) | **POST** /checks | create
-[**CheckRetrieve**](ChecksApi.md#checkretrieve) | **GET** /checks/{chk_id} | get
-[**ChecksList**](ChecksApi.md#checkslist) | **GET** /checks | list
+[**cancel**](ChecksApi.md#cancel) | **DELETE** /checks/{chk_id} | cancel
+[**create**](ChecksApi.md#create) | **POST** /checks | create
+[**get**](ChecksApi.md#get) | **GET** /checks/{chk_id} | get
+[**list**](ChecksApi.md#list) | **GET** /checks | list
 
 
-<a name="checkcancel"></a>
-# **CheckCancel**
-> CheckDeletion CheckCancel (string chkId)
+<a name="cancel"></a>
+# **cancel**
+> CheckDeletion cancel (string chkId)
 
 cancel
 
@@ -28,7 +28,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class CheckCancelExample
+    public class cancelExample
     {
         public static void Main()
         {
@@ -44,12 +44,12 @@ namespace Example
             try
             {
                 // cancel
-                CheckDeletion result = apiInstance.CheckCancel(chkId);
+                CheckDeletion result = apiInstance.cancel(chkId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ChecksApi.CheckCancel: " + e.Message );
+                Debug.Print("Exception when calling ChecksApi.cancel: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -86,9 +86,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="checkcreate"></a>
-# **CheckCreate**
-> Check CheckCreate (CheckEditable checkEditable, string idempotencyKey = null)
+<a name="create"></a>
+# **create**
+> Check create (CheckEditable checkEditable, string idempotencyKey = null)
 
 create
 
@@ -104,7 +104,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class CheckCreateExample
+    public class createExample
     {
         public static void Main()
         {
@@ -121,12 +121,12 @@ namespace Example
             try
             {
                 // create
-                Check result = apiInstance.CheckCreate(checkEditable, idempotencyKey);
+                Check result = apiInstance.create(checkEditable, idempotencyKey);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ChecksApi.CheckCreate: " + e.Message );
+                Debug.Print("Exception when calling ChecksApi.create: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -164,9 +164,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="checkretrieve"></a>
-# **CheckRetrieve**
-> Check CheckRetrieve (string chkId)
+<a name="get"></a>
+# **get**
+> Check get (string chkId)
 
 get
 
@@ -182,7 +182,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class CheckRetrieveExample
+    public class getExample
     {
         public static void Main()
         {
@@ -198,12 +198,12 @@ namespace Example
             try
             {
                 // get
-                Check result = apiInstance.CheckRetrieve(chkId);
+                Check result = apiInstance.get(chkId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ChecksApi.CheckRetrieve: " + e.Message );
+                Debug.Print("Exception when calling ChecksApi.get: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -240,9 +240,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="checkslist"></a>
-# **ChecksList**
-> CheckList ChecksList (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null, bool? scheduled = null, Dictionary<string, string> sendDate = null, MailType? mailType = null, SortBy5 sortBy = null)
+<a name="list"></a>
+# **list**
+> CheckList list (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null, bool? scheduled = null, Dictionary<string, string> sendDate = null, MailType? mailType = null, SortBy5 sortBy = null)
 
 list
 
@@ -258,7 +258,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class ChecksListExample
+    public class listExample
     {
         public static void Main()
         {
@@ -283,12 +283,12 @@ namespace Example
             try
             {
                 // list
-                CheckList result = apiInstance.ChecksList(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy);
+                CheckList result = apiInstance.list(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ChecksApi.ChecksList: " + e.Message );
+                Debug.Print("Exception when calling ChecksApi.list: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }

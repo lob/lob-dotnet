@@ -105,10 +105,10 @@ namespace lob.dotnet.Api
         /// </remarks>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tmplId">id of the template</param>
-        /// <param name="templateUpdate"></param>
+        /// <param name="update"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Template</returns>
-        Template update(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0);
+        Template update(string tmplId, update update, int operationIndex = 0);
 
         /// <summary>
         /// update
@@ -118,10 +118,10 @@ namespace lob.dotnet.Api
         /// </remarks>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tmplId">id of the template</param>
-        /// <param name="templateUpdate"></param>
+        /// <param name="update"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Template</returns>
-        ApiResponse<Template> updateWithHttpInfo(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0);
+        ApiResponse<Template> updateWithHttpInfo(string tmplId, update update, int operationIndex = 0);
         /// <summary>
         /// list
         /// </summary>
@@ -247,11 +247,11 @@ namespace lob.dotnet.Api
         /// </remarks>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tmplId">id of the template</param>
-        /// <param name="templateUpdate"></param>
+        /// <param name="update"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Template</returns>
-        System.Threading.Tasks.Task<Template> updateAsync(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Template> updateAsync(string tmplId, update update, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// update
@@ -261,11 +261,11 @@ namespace lob.dotnet.Api
         /// </remarks>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tmplId">id of the template</param>
-        /// <param name="templateUpdate"></param>
+        /// <param name="update"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Template)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Template>> updateWithHttpInfoAsync(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Template>> updateWithHttpInfoAsync(string tmplId, update update, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// list
         /// </summary>
@@ -900,12 +900,12 @@ namespace lob.dotnet.Api
         /// </summary>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tmplId">id of the template</param>
-        /// <param name="templateUpdate"></param>
+        /// <param name="update"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Template</returns>
-        public Template update(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0)
+        public Template update(string tmplId, update update, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<Template> localVarResponse = updateWithHttpInfo(tmplId, templateUpdate);
+            lob.dotnet.Client.ApiResponse<Template> localVarResponse = updateWithHttpInfo(tmplId, update);
             return localVarResponse.Data;
         }
 
@@ -914,10 +914,10 @@ namespace lob.dotnet.Api
         /// </summary>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tmplId">id of the template</param>
-        /// <param name="templateUpdate"></param>
+        /// <param name="update"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Template</returns>
-        public lob.dotnet.Client.ApiResponse<Template> updateWithHttpInfo(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<Template> updateWithHttpInfo(string tmplId, update update, int operationIndex = 0)
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
@@ -925,10 +925,10 @@ namespace lob.dotnet.Api
                 throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplatesApi->update");
             }
 
-            // verify the required parameter 'templateUpdate' is set
-            if (templateUpdate == null)
+            // verify the required parameter 'update' is set
+            if (update == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateUpdate' when calling TemplatesApi->update");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'update' when calling TemplatesApi->update");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -957,7 +957,7 @@ namespace lob.dotnet.Api
             }
 
             localVarRequestOptions.PathParameters.Add("tmpl_id", lob.dotnet.Client.ClientUtils.ParameterToString(tmplId)); // path parameter
-            localVarRequestOptions.Data = templateUpdate;
+            localVarRequestOptions.Data = update;
 
             localVarRequestOptions.Operation = "TemplatesApi.update";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -988,13 +988,13 @@ namespace lob.dotnet.Api
         /// </summary>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tmplId">id of the template</param>
-        /// <param name="templateUpdate"></param>
+        /// <param name="update"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Template</returns>
-        public async System.Threading.Tasks.Task<Template> updateAsync(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Template> updateAsync(string tmplId, update update, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<Template> localVarResponse = await updateWithHttpInfoAsync(tmplId, templateUpdate, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<Template> localVarResponse = await updateWithHttpInfoAsync(tmplId, update, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1003,11 +1003,11 @@ namespace lob.dotnet.Api
         /// </summary>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tmplId">id of the template</param>
-        /// <param name="templateUpdate"></param>
+        /// <param name="update"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Template)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Template>> updateWithHttpInfoAsync(string tmplId, TemplateUpdate templateUpdate, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Template>> updateWithHttpInfoAsync(string tmplId, update update, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'tmplId' is set
             if (tmplId == null)
@@ -1015,10 +1015,10 @@ namespace lob.dotnet.Api
                 throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'tmplId' when calling TemplatesApi->update");
             }
 
-            // verify the required parameter 'templateUpdate' is set
-            if (templateUpdate == null)
+            // verify the required parameter 'update' is set
+            if (update == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'templateUpdate' when calling TemplatesApi->update");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'update' when calling TemplatesApi->update");
             }
 
 
@@ -1048,7 +1048,7 @@ namespace lob.dotnet.Api
             }
 
             localVarRequestOptions.PathParameters.Add("tmpl_id", lob.dotnet.Client.ClientUtils.ParameterToString(tmplId)); // path parameter
-            localVarRequestOptions.Data = templateUpdate;
+            localVarRequestOptions.Data = update;
 
             localVarRequestOptions.Operation = "TemplatesApi.update";
             localVarRequestOptions.OperationIndex = operationIndex;

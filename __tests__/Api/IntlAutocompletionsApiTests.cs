@@ -68,8 +68,8 @@ namespace __tests__.Api
 
             IntlAutocompletions fakeIntlAutocompletions = new IntlAutocompletions("intl_auto_fakeId", intlSuggestionsList);
 
-            intlAutocompletionsApiMock.Setup(x => x.IntlAutocompletion(intlAutocompletionsWritable, null, It.IsAny<int>())).Returns(fakeIntlAutocompletions);
-            IntlAutocompletions response = intlAutocompletionsApiMock.Object.IntlAutocompletion(intlAutocompletionsWritable, null);
+            intlAutocompletionsApiMock.Setup(x => x.autocomplete(intlAutocompletionsWritable, null, It.IsAny<int>())).Returns(fakeIntlAutocompletions);
+            IntlAutocompletions response = intlAutocompletionsApiMock.Object.autocomplete(intlAutocompletionsWritable, null);
 
             Assert.IsInstanceOf<IntlAutocompletions>(response);
             Assert.NotNull(response.Suggestions);
@@ -87,9 +87,9 @@ namespace __tests__.Api
                 "This is an error"
             );
 
-            intlAutocompletionsApiMock.Setup(x => x.IntlAutocompletion(null, null, It.IsAny<int>())).Throws(fakeException);
+            intlAutocompletionsApiMock.Setup(x => x.autocomplete(null, null, It.IsAny<int>())).Throws(fakeException);
             try {
-                IntlAutocompletions response = intlAutocompletionsApiMock.Object.IntlAutocompletion(null, null);
+                IntlAutocompletions response = intlAutocompletionsApiMock.Object.autocomplete(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

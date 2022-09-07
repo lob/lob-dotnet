@@ -44,7 +44,7 @@ namespace __tests__.Integration {
 
         [Test]
         public void LookupTest200() {
-            Zip zipObject = validApi.ZipLookup(zipEditable);
+            Zip zipObject = validApi.lookup(zipEditable);
             Assert.That(zipObject.Id, Does.Contain("us_zip_"));
             Assert.GreaterOrEqual(zipObject.Cities.Count, 1);
         }
@@ -52,7 +52,7 @@ namespace __tests__.Integration {
         [Test]
         public void LookupTest0() {
           try {
-            Zip zipObject = validApi.ZipLookup(null);
+            Zip zipObject = validApi.lookup(null);
             Assert.Fail("Zip lookup with invalid number of arguments");
           } catch (Exception e) {
             Assert.IsInstanceOf<ApiException>(e);
@@ -63,7 +63,7 @@ namespace __tests__.Integration {
         [Test]
         public void LookupTest401() {
           try {
-            Zip zipObject = invalidApi.ZipLookup(zipEditable);
+            Zip zipObject = invalidApi.lookup(zipEditable);
             Assert.Fail("Reverse geocode lookup with invalid API key");
           } catch (Exception e) {
             Assert.IsInstanceOf<ApiException>(e);

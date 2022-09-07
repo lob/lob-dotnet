@@ -105,10 +105,10 @@ namespace lob.dotnet.Api
         /// </remarks>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="bankId">id of the bank account to be verified</param>
-        /// <param name="bankAccountVerify"></param>
+        /// <param name="verify"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BankAccount</returns>
-        BankAccount verify(string bankId, BankAccountVerify bankAccountVerify, int operationIndex = 0);
+        BankAccount verify(string bankId, verify verify, int operationIndex = 0);
 
         /// <summary>
         /// verify
@@ -118,10 +118,10 @@ namespace lob.dotnet.Api
         /// </remarks>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="bankId">id of the bank account to be verified</param>
-        /// <param name="bankAccountVerify"></param>
+        /// <param name="verify"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BankAccount</returns>
-        ApiResponse<BankAccount> verifyWithHttpInfo(string bankId, BankAccountVerify bankAccountVerify, int operationIndex = 0);
+        ApiResponse<BankAccount> verifyWithHttpInfo(string bankId, verify verify, int operationIndex = 0);
         /// <summary>
         /// list
         /// </summary>
@@ -247,11 +247,11 @@ namespace lob.dotnet.Api
         /// </remarks>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="bankId">id of the bank account to be verified</param>
-        /// <param name="bankAccountVerify"></param>
+        /// <param name="verify"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BankAccount</returns>
-        System.Threading.Tasks.Task<BankAccount> verifyAsync(string bankId, BankAccountVerify bankAccountVerify, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BankAccount> verifyAsync(string bankId, verify verify, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// verify
@@ -261,11 +261,11 @@ namespace lob.dotnet.Api
         /// </remarks>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="bankId">id of the bank account to be verified</param>
-        /// <param name="bankAccountVerify"></param>
+        /// <param name="verify"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BankAccount)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BankAccount>> verifyWithHttpInfoAsync(string bankId, BankAccountVerify bankAccountVerify, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BankAccount>> verifyWithHttpInfoAsync(string bankId, verify verify, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// list
         /// </summary>
@@ -900,12 +900,12 @@ namespace lob.dotnet.Api
         /// </summary>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="bankId">id of the bank account to be verified</param>
-        /// <param name="bankAccountVerify"></param>
+        /// <param name="verify"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BankAccount</returns>
-        public BankAccount verify(string bankId, BankAccountVerify bankAccountVerify, int operationIndex = 0)
+        public BankAccount verify(string bankId, verify verify, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<BankAccount> localVarResponse = verifyWithHttpInfo(bankId, bankAccountVerify);
+            lob.dotnet.Client.ApiResponse<BankAccount> localVarResponse = verifyWithHttpInfo(bankId, verify);
             return localVarResponse.Data;
         }
 
@@ -914,10 +914,10 @@ namespace lob.dotnet.Api
         /// </summary>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="bankId">id of the bank account to be verified</param>
-        /// <param name="bankAccountVerify"></param>
+        /// <param name="verify"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BankAccount</returns>
-        public lob.dotnet.Client.ApiResponse<BankAccount> verifyWithHttpInfo(string bankId, BankAccountVerify bankAccountVerify, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<BankAccount> verifyWithHttpInfo(string bankId, verify verify, int operationIndex = 0)
         {
             // verify the required parameter 'bankId' is set
             if (bankId == null)
@@ -925,10 +925,10 @@ namespace lob.dotnet.Api
                 throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankId' when calling BankAccountsApi->verify");
             }
 
-            // verify the required parameter 'bankAccountVerify' is set
-            if (bankAccountVerify == null)
+            // verify the required parameter 'verify' is set
+            if (verify == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankAccountVerify' when calling BankAccountsApi->verify");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'verify' when calling BankAccountsApi->verify");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -957,7 +957,7 @@ namespace lob.dotnet.Api
             }
 
             localVarRequestOptions.PathParameters.Add("bank_id", lob.dotnet.Client.ClientUtils.ParameterToString(bankId)); // path parameter
-            localVarRequestOptions.Data = bankAccountVerify;
+            localVarRequestOptions.Data = verify;
 
             localVarRequestOptions.Operation = "BankAccountsApi.verify";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -988,13 +988,13 @@ namespace lob.dotnet.Api
         /// </summary>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="bankId">id of the bank account to be verified</param>
-        /// <param name="bankAccountVerify"></param>
+        /// <param name="verify"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BankAccount</returns>
-        public async System.Threading.Tasks.Task<BankAccount> verifyAsync(string bankId, BankAccountVerify bankAccountVerify, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BankAccount> verifyAsync(string bankId, verify verify, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<BankAccount> localVarResponse = await verifyWithHttpInfoAsync(bankId, bankAccountVerify, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<BankAccount> localVarResponse = await verifyWithHttpInfoAsync(bankId, verify, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1003,11 +1003,11 @@ namespace lob.dotnet.Api
         /// </summary>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="bankId">id of the bank account to be verified</param>
-        /// <param name="bankAccountVerify"></param>
+        /// <param name="verify"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BankAccount)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BankAccount>> verifyWithHttpInfoAsync(string bankId, BankAccountVerify bankAccountVerify, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BankAccount>> verifyWithHttpInfoAsync(string bankId, verify verify, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'bankId' is set
             if (bankId == null)
@@ -1015,10 +1015,10 @@ namespace lob.dotnet.Api
                 throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankId' when calling BankAccountsApi->verify");
             }
 
-            // verify the required parameter 'bankAccountVerify' is set
-            if (bankAccountVerify == null)
+            // verify the required parameter 'verify' is set
+            if (verify == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankAccountVerify' when calling BankAccountsApi->verify");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'verify' when calling BankAccountsApi->verify");
             }
 
 
@@ -1048,7 +1048,7 @@ namespace lob.dotnet.Api
             }
 
             localVarRequestOptions.PathParameters.Add("bank_id", lob.dotnet.Client.ClientUtils.ParameterToString(bankId)); // path parameter
-            localVarRequestOptions.Data = bankAccountVerify;
+            localVarRequestOptions.Data = verify;
 
             localVarRequestOptions.Operation = "BankAccountsApi.verify";
             localVarRequestOptions.OperationIndex = operationIndex;

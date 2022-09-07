@@ -80,34 +80,34 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test CardOrderCreate
+        /// Test create
         /// </summary>
         [Test]
-        public void CardOrderCreateTest()
+        public void createTest()
         {
             CardOrderEditable cardOrderEditable = new CardOrderEditable(10000);
 
-            cardOrdersApiMock.Setup(x => x.CardOrderCreate("card_fakeId", cardOrderEditable, It.IsAny<int>())).Returns(fakeCardOrder);
-            CardOrder response = cardOrdersApiMock.Object.CardOrderCreate("card_fakeId", cardOrderEditable);
+            cardOrdersApiMock.Setup(x => x.create("card_fakeId", cardOrderEditable, It.IsAny<int>())).Returns(fakeCardOrder);
+            CardOrder response = cardOrdersApiMock.Object.create("card_fakeId", cardOrderEditable);
 
             Assert.IsInstanceOf<CardOrder>(response);
             Assert.AreEqual(response.Id, fakeCardOrder.Id);
         }
 
         /// <summary>
-        /// Test CardOrderCreateHandlesException
+        /// Test createHandlesException
         /// </summary>
         [Test]
-        public void CardOrderCreateTestHandlesException()
+        public void createTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
 
-            cardOrdersApiMock.Setup(x => x.CardOrderCreate(null, null, It.IsAny<int>())).Throws(fakeException);
+            cardOrdersApiMock.Setup(x => x.create(null, null, It.IsAny<int>())).Throws(fakeException);
             try {
-                CardOrder response = cardOrdersApiMock.Object.CardOrderCreate(null, null);
+                CardOrder response = cardOrdersApiMock.Object.create(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -116,18 +116,18 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test CardOrdersRetrieve
+        /// Test get
         /// </summary>
         [Test]
-        public void CardOrdersRetrieveTest()
+        public void getTest()
         {
             CardOrderList fakeCardOrderList = new CardOrderList();
             List<CardOrder> cardOrders = new List<CardOrder>();
             cardOrders.Add(fakeCardOrder);
             fakeCardOrderList.Data = cardOrders;
 
-            cardOrdersApiMock.Setup(x => x.CardOrdersRetrieve(fakeCard.Id, null, null, It.IsAny<int>())).Returns(fakeCardOrderList);
-            CardOrderList response = cardOrdersApiMock.Object.CardOrdersRetrieve(fakeCard.Id);
+            cardOrdersApiMock.Setup(x => x.get(fakeCard.Id, null, null, It.IsAny<int>())).Returns(fakeCardOrderList);
+            CardOrderList response = cardOrdersApiMock.Object.get(fakeCard.Id);
 
             Assert.IsInstanceOf<CardOrderList>(response);
 
@@ -140,19 +140,19 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test CardOrdersRetrieveHandlesException
+        /// Test getHandlesException
         /// </summary>
         [Test]
-        public void CardOrdersRetrieveTestHandlesException()
+        public void getTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
-            cardOrdersApiMock.Setup(x => x.CardOrdersRetrieve("fakeId", null, null, It.IsAny<int>())).Throws(fakeException);
+            cardOrdersApiMock.Setup(x => x.get("fakeId", null, null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = cardOrdersApiMock.Object.CardOrdersRetrieve("fakeId");
+                var response = cardOrdersApiMock.Object.get("fakeId");
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

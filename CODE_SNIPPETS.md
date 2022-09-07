@@ -12,7 +12,7 @@ curl https://api.lob.com/v1/addresses/adr_fa85158b26c3eb7c \
 AddressesApi api = new AddressesApi(config);
 
 try {
-  Address response = api.AddressRetrieve("adr_fa85158b26c3eb7c");
+  Address response = api.get("adr_fa85158b26c3eb7c");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -33,7 +33,7 @@ curl -X DELETE "https://api.lob.com/v1/addresses/adr_43769b47aed248c2" \
 AddressesApi api = new AddressesApi(config);
 
 try {
-  AddressDeletion response = api.AddressDelete("adr_43769b47aed248c2");
+  AddressDeletion response = api.delete("adr_43769b47aed248c2");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -77,7 +77,7 @@ AddressEditable addressEditable = new AddressEditable(
 );
 
 try {
-  Address result = api.AddressCreate(addressEditable);
+  Address result = api.create(addressEditable);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -104,7 +104,7 @@ Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
 DateTime dateCreatedDate = DateTime.Today.AddMonths(-1);
 dateCreated.Add("lt", dateCreatedDate);
 try {
-  AddressList response = api.AddressesList(
+  AddressList response = api.list(
     2, // limit
     null, // before
     null, // after
@@ -169,7 +169,7 @@ curl https://api.lob.com/v1/postcards/psc_5c002b86ce47537a \
 PostcardsApi api = new PostcardsApi(config);
 
 try {
-  Postcard response = api.PostcardRetrieve("psc_5c002b86ce47537a");
+  Postcard response = api.get("psc_5c002b86ce47537a");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -190,7 +190,7 @@ curl -X DELETE "https://api.lob.com/v1/postcards/psc_5c002b86ce47537a" \
 PostcardsApi api = new PostcardsApi(config);
 
 try {
-  PostcardDeletion response = api.PostcardDelete("psc_5c002b86ce47537a");
+  PostcardDeletion response = api.delete("psc_5c002b86ce47537a");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -247,7 +247,7 @@ PostcardEditable postcardEditable = new PostcardEditable(
 );
 
 try {
-  Postcard result = api.PostcardCreate(postcardEditable, null);
+  Postcard result = api.create(postcardEditable, null);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -279,7 +279,7 @@ SortBy3 sortBy = new SortBy3(SortBy3.DateCreatedEnum.Asc);
 List<PostcardSize> sizeArray = new List<PostcardSize>();
 sizeArray.Add(PostcardSize._4x6);
 try {
-  PostcardList response = api.PostcardsList(
+  PostcardList response = api.list(
     2, // limit
     null, // before
     null, // after
@@ -309,7 +309,7 @@ curl https://api.lob.com/v1/self_mailers/sfm_8ffbe811dea49dcf \
 SelfMailersApi api = new SelfMailersApi(config);
 
 try {
-  SelfMailer response = api.SelfMailerRetrieve("sfm_8ffbe811dea49dcf");
+  SelfMailer response = api.get("sfm_8ffbe811dea49dcf");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -330,7 +330,7 @@ curl -X DELETE "https://api.lob.com/v1/self_mailers/sfm_8ffbe811dea49dcf" \
 SelfMailersApi api = new SelfMailersApi(config);
 
 try {
-  SelfMailerDeletion response = api.SelfMailerDelete("sfm_8ffbe811dea49dcf");
+  SelfMailerDeletion response = api.delete("sfm_8ffbe811dea49dcf");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -387,7 +387,7 @@ SelfMailerEditable selfMailerEditable = new SelfMailerEditable(
 );
 
 try {
-  SelfMailer result = api.SelfMailerCreate(selfMailerEditable, null);
+  SelfMailer result = api.create(selfMailerEditable, null);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -417,7 +417,7 @@ Dictionary<String, String> sendDate = new Dictionary<String, String>();
 sendDate.Add("lt", DateTime.Now.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 SortBy3 sortBy = new SortBy3(SortBy3.DateCreatedEnum.Asc);
 try {
-  SelfMailerList response = api.SelfMailersList(
+  SelfMailerList response = api.list(
     2, // limit
     null, // before
     null, // after
@@ -447,7 +447,7 @@ curl https://api.lob.com/v1/letters/ltr_4868c3b754655f90 \
 LettersApi api = new LettersApi(config);
 
 try {
-  Letter response = api.LetterRetrieve("ltr_4868c3b754655f90");
+  Letter response = api.get("ltr_4868c3b754655f90");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -468,7 +468,7 @@ curl -X DELETE "https://api.lob.com/v1/letters/ltr_4868c3b754655f90" \
 LettersApi api = new LettersApi(config);
 
 try {
-  LetterDeletion response = api.LetterCancel("ltr_4868c3b754655f90");
+  LetterDeletion response = api.cancel("ltr_4868c3b754655f90");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -535,7 +535,7 @@ LetterEditable letterEditable = new LetterEditable(
 );
 
 try {
-  Letter result = api.LetterCreate(letterEditable, null);
+  Letter result = api.create(letterEditable, null);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -565,7 +565,7 @@ Dictionary<String, String> sendDate = new Dictionary<String, String>();
 sendDate.Add("lt", DateTime.Now.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 SortBy3 sortBy = new SortBy3(SortBy3.DateCreatedEnum.Asc);
 try {
-  LetterList response = api.LettersList(
+  LetterList response = api.list(
     2, // limit
     null, // before
     null, // after
@@ -595,7 +595,7 @@ curl https://api.lob.com/v1/checks/chk_534f10783683daa0 \
 ChecksApi api = new ChecksApi(config);
 
 try {
-  Check response = api.CheckRetrieve("chk_534f10783683daa0");
+  Check response = api.get("chk_534f10783683daa0");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -616,7 +616,7 @@ curl -X DELETE "https://api.lob.com/v1/checks/chk_534f10783683daa0" \
 ChecksApi api = new ChecksApi(config);
 
 try {
-  CheckDeletion response = api.CheckCancel("chk_534f10783683daa0");
+  CheckDeletion response = api.cancel("chk_534f10783683daa0");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -679,7 +679,7 @@ CheckEditable checkEditable = new CheckEditable(
 );
 
 try {
-  Check result = api.CheckCreate(checkEditable, null);
+  Check result = api.create(checkEditable, null);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -709,7 +709,7 @@ Dictionary<String, String> sendDate = new Dictionary<String, String>();
 sendDate.Add("lt", DateTime.Now.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 SortBy3 sortBy = new SortBy3(SortBy3.DateCreatedEnum.Asc);
 try {
-  CheckList response = api.ChecksList(
+  CheckList response = api.list(
     2, // limit
     null, // before
     null, // after
@@ -738,7 +738,7 @@ curl https://api.lob.com/v1/bank_accounts/bank_8cad8df5354d33f \
 BankAccountsApi api = new BankAccountsApi(config);
 
 try {
-  BankAccount response = api.BankAccountRetrieve("bank_8cad8df5354d33f");
+  BankAccount response = api.get("bank_8cad8df5354d33f");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -759,7 +759,7 @@ curl -X DELETE "https://api.lob.com/v1/bank_accounts/bank_3e64d9904356b20" \
 BankAccountsApi api = new BankAccountsApi(config);
 
 try {
-  BankAccountDeletion response = api.BankAccountDelete("bank_3e64d9904356b20");
+  BankAccountDeletion response = api.delete("bank_3e64d9904356b20");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -786,7 +786,7 @@ Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
 DateTime dateCreatedDate = DateTime.Today.AddMonths(-1);
 dateCreated.Add("lt", dateCreatedDate);
 try {
-  BankAccountList response = api.BankAccountsList(
+  BankAccountList response = api.list(
     2, // limit
     null, // before
     null, // after
@@ -814,12 +814,12 @@ List<int> amounts = new List<int>();
 amounts.Add(25);
 amounts.Add(63);
 
-BankAccountVerify verification = new BankAccountVerify(amounts);
+verify verification = new verify(amounts);
 
 BankAccountsApi api = new BankAccountsApi(config);
 
 try {
-  BankAccount verified_account = api.BankAccountVerify("bank_dfceb4a2a05b57e", verification);
+  BankAccount verified_account = api.verify("bank_dfceb4a2a05b57e", verification);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -851,7 +851,7 @@ BankAccountWritable bankAccountWritable = new BankAccountWritable(
 );
 
 try {
-  BankAccount result = api.BankAccountCreate(bankAccountWritable);
+  BankAccount result = api.create(bankAccountWritable);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -871,7 +871,7 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121 \
 TemplatesApi api = new TemplatesApi(config);
 
 try {
-  Template response = api.TemplateRetrieve("tmpl_c94e83ca2cd5121");
+  Template response = api.get("tmpl_c94e83ca2cd5121");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -892,7 +892,7 @@ curl -X DELETE "https://api.lob.com/v1/templates/tmpl_df934eeda694203" \
 TemplatesApi api = new TemplatesApi(config);
 
 try {
-  TemplateDeletion response = api.TemplateDelete("tmpl_df934eeda694203");
+  TemplateDeletion response = api.delete("tmpl_df934eeda694203");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -919,7 +919,7 @@ Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
 DateTime dateCreatedDate = DateTime.Today.AddMonths(-1);
 dateCreated.Add("lt", dateCreatedDate);
 try {
-  TemplateList response = api.TemplatesList(
+  TemplateList response = api.list(
     2, // limit
     null, // before
     null, // after
@@ -944,10 +944,10 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121 \
 
 ```csharp
 TemplatesApi api = new TemplatesApi(config);
-TemplateUpdate update = new TemplateUpdate("update template", "vrsn_362184d96d9b0c9");
+update update = new update("update template", "vrsn_362184d96d9b0c9");
 
 try {
-  api.TemplateUpdate("tmpl_c94e83ca2cd5121", update);
+  api.update("tmpl_c94e83ca2cd5121", update);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -973,7 +973,7 @@ TemplateWritable templateWritable = new TemplateWritable(
 );
 
 try {
-  Template result = api.CreateTemplate(templateWritable);
+  Template result = api.create(templateWritable);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -993,7 +993,7 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121/versions/vrsn_534e339
 TemplateVersionsApi api = new TemplateVersionsApi(config);
 
 try {
-  TemplateVersion response = api.TemplateVersionRetrieve("tmpl_c94e83ca2cd5121", "vrsn_534e339882d2282");
+  TemplateVersion response = api.get("tmpl_c94e83ca2cd5121", "vrsn_534e339882d2282");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -1014,7 +1014,7 @@ curl -X DELETE "https://api.lob.com/v1/templates/tmpl_4aa14648113e45b/versions/v
 TemplateVersionsApi api = new TemplateVersionsApi(config);
 
 try {
-  TemplateVersionDeletion response = api.TemplateVersionDelete("tmpl_4aa14648113e45b", "vrsn_534e339882d2282");
+  TemplateVersionDeletion response = api.delete("tmpl_4aa14648113e45b", "vrsn_534e339882d2282");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -1039,7 +1039,7 @@ Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
 DateTime dateCreatedDate = DateTime.Today.AddMonths(-1);
 dateCreated.Add("lt", dateCreatedDate);
 try {
-  TemplateVersionList response = api.TemplateVersionsList(
+  TemplateVersionList response = api.list(
     "tmpl_dadaaf7b76c9f25", // tmplId
     2, // limit
     null, // before
@@ -1066,7 +1066,7 @@ TemplateVersionsApi api = new TemplateVersionsApi(config);
 TemplateVersionUpdatable update = new TemplateVersionUpdatable("update template", EngineHtml.Handlebars);
 
 try {
-  api.TemplateVersionUpdate("tmpl_c94e83ca2cd5121", "vrsn_534e339882d2282", update);
+  api.update("tmpl_c94e83ca2cd5121", "vrsn_534e339882d2282", update);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -1092,7 +1092,7 @@ TemplateVersionWritable templateVersionWritable = new TemplateVersionWritable(
 );
 
 try {
-  TemplateVersion result = api.CreateTemplateVersion("tmpl_4aa14648113e45b", templateVersionWritable);
+  TemplateVersion result = api.create("tmpl_4aa14648113e45b", templateVersionWritable);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -1112,7 +1112,7 @@ curl https://api.lob.com/v1/billing_groups/bg_4bb02b527a72667d0 \
 BillingGroupsApi api = new BillingGroupsApi(config);
 
 try {
-  BillingGroup response = api.BillingGroupRetrieve("bg_4bb02b527a72667d0");
+  BillingGroup response = api.get("bg_4bb02b527a72667d0");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -1138,7 +1138,7 @@ BillingGroupEditable billingGroupEditable = new BillingGroupEditable(
 );
 
 try {
-  BillingGroup result = api.BillingGroupCreate(billingGroupEditable);
+  BillingGroup result = api.create(billingGroupEditable);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -1155,7 +1155,7 @@ BillingGroupsApi api = new BillingGroupsApi(config);
 BillingGroupEditable update = new BillingGroupEditable("Usage group used for the Marketing Dept resource sends", "Marketing Dept");
 
 try {
-  BillingGroup response = api.BillingGroupUpdate("bg_759954f540a1bfdb5", update);
+  BillingGroup response = api.update("bg_759954f540a1bfdb5", update);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -1181,7 +1181,7 @@ Dictionary<String, String> dateModified = new Dictionary<String, String>();
 dateModified.Add("lt", DateTime.Today.AddMonths(-1).ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 SortByDateModified sortBy = new SortByDateModified(null, SortByDateModified.DateModifiedEnum.Asc);
 try {
-  BillingGroupList response = api.BillingGroupsList(
+  BillingGroupList response = api.list(
     2, // limit
     1, // offset
     includeList, // include
@@ -1206,7 +1206,7 @@ curl https://api.lob.com/v1/cards/card_7a6d73c5c8457fc \
 CardsApi api = new CardsApi(config);
 
 try {
-  Card response = api.CardRetrieve("card_7a6d73c5c8457fc");
+  Card response = api.get("card_7a6d73c5c8457fc");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -1227,7 +1227,7 @@ curl -X DELETE "https://api.lob.com/v1/cards/card_6afffd19045076c" \
 CardsApi api = new CardsApi(config);
 
 try {
-  CardDeletion response = api.CardDelete("card_6afffd19045076c");
+  CardDeletion response = api.delete("card_6afffd19045076c");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -1257,7 +1257,7 @@ CardEditable cardEditable = new CardEditable(
 );
 
 try {
-  Card result = api.CardCreate(cardEditable);
+  Card result = api.create(cardEditable);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -1279,7 +1279,7 @@ CardsApi api = new CardsApi(config);
 List<string> includeList = new List<string>();
 includeList.Add("total_count");
 try {
-  CardList response = api.CardsList(
+  CardList response = api.list(
     2, // limit
     null, // before
     null, // after
@@ -1305,7 +1305,7 @@ CardsApi api = new CardsApi(config);
 CardUpdatable update = new CardUpdatable("Awesome card", true, 15000);
 
 try {
-  api.CardUpdate("card_6afffd19045076c", update);
+  api.update("card_6afffd19045076c", update);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -1325,7 +1325,7 @@ curl https://api.lob.com/v1/cards/card_6afffd19045076c/orders/ \
 CardOrdersApi api = new CardOrdersApi(config);
 
 try {
-  CardOrderList response = api.CardOrdersRetrieve("card_6afffd19045076c", 2, 1);
+  CardOrderList response = api.get("card_6afffd19045076c", 2, 1);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -1348,7 +1348,7 @@ CardOrderEditable cardOrderEditable = new CardOrderEditable(
 );
 
 try {
-  CardOrder result = api.CardOrderCreate("card_6afffd19045076c", cardOrderEditable);
+  CardOrder result = api.create("card_6afffd19045076c", cardOrderEditable);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }

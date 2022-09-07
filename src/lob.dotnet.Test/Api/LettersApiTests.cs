@@ -56,47 +56,47 @@ namespace lob.dotnet.Test.Api
         }
 
         /// <summary>
-        /// Test LetterCancel
+        /// Test cancel
         /// </summary>
         [Fact]
-        public void LetterCancelTest()
+        public void cancelTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string ltrId = null;
-            //var response = instance.LetterCancel(ltrId);
+            //var response = instance.cancel(ltrId);
             //Assert.IsType<LetterDeletion>(response);
         }
 
         /// <summary>
-        /// Test LetterCreate
+        /// Test create
         /// </summary>
         [Fact]
-        public void LetterCreateTest()
+        public void createTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //LetterEditable letterEditable = null;
             //string idempotencyKey = null;
-            //var response = instance.LetterCreate(letterEditable, idempotencyKey);
+            //var response = instance.create(letterEditable, idempotencyKey);
             //Assert.IsType<Letter>(response);
         }
 
         /// <summary>
-        /// Test LetterRetrieve
+        /// Test get
         /// </summary>
         [Fact]
-        public void LetterRetrieveTest()
+        public void getTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string ltrId = null;
-            //var response = instance.LetterRetrieve(ltrId);
+            //var response = instance.get(ltrId);
             //Assert.IsType<Letter>(response);
         }
 
         /// <summary>
-        /// Test LettersList
+        /// Test list
         /// </summary>
         [Fact]
-        public void LettersListTest()
+        public void listTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? limit = null;
@@ -110,7 +110,7 @@ namespace lob.dotnet.Test.Api
             //Dictionary<string, string> sendDate = null;
             //MailType? mailType = null;
             //SortBy5 sortBy = null;
-            //var response = instance.LettersList(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy);
+            //var response = instance.list(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy);
             //Assert.IsType<LetterList>(response);
         }
     }

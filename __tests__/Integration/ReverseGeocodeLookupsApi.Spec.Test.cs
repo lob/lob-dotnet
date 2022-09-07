@@ -46,7 +46,7 @@ namespace __tests__.Integration {
 
         [Test]
         public void LookupTest200() {
-            ReverseGeocode reverseGeocodeObject = validApi.ReverseGeocodeLookup(location, size);
+            ReverseGeocode reverseGeocodeObject = validApi.lookup(location, size);
             Assert.That(reverseGeocodeObject.Id, Does.Contain("us_reverse_geocode_"));
             Assert.GreaterOrEqual(reverseGeocodeObject.Addresses.Count, 1);
         }
@@ -54,7 +54,7 @@ namespace __tests__.Integration {
         [Test]
         public void LookupTest0() {
           try {
-            ReverseGeocode reverseGeocodeObject = validApi.ReverseGeocodeLookup(null);
+            ReverseGeocode reverseGeocodeObject = validApi.lookup(null);
             Assert.Fail("Reverse geocode lookup with invalid number of arguments");
           } catch (Exception e) {
             Assert.IsInstanceOf<ApiException>(e);
@@ -65,7 +65,7 @@ namespace __tests__.Integration {
         [Test]
         public void LookupTest401() {
           try {
-            ReverseGeocode reverseGeocodeObject = invalidApi.ReverseGeocodeLookup(location, size);
+            ReverseGeocode reverseGeocodeObject = invalidApi.lookup(location, size);
             Assert.Fail("Reverse geocode lookup with invalid API key");
           } catch (Exception e) {
             Assert.IsInstanceOf<ApiException>(e);

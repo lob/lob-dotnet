@@ -50,7 +50,7 @@ namespace __tests__.Integration {
 
         [Test]
         public void UsAutocompletionTest() {
-            UsAutocompletions response = validApi.UsAutocompletion(usAutocompletionWritable);
+            UsAutocompletions response = validApi.autocomplete(usAutocompletionWritable);
             Assert.NotNull(response.Suggestions);
             Assert.GreaterOrEqual(response.Suggestions.Count, 0);
         }
@@ -58,7 +58,7 @@ namespace __tests__.Integration {
         [Test]
         public void UsAutocompletionTestBadParameter() {
             try {
-                UsAutocompletions response = validApi.UsAutocompletion(null);
+                UsAutocompletions response = validApi.autocomplete(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -69,7 +69,7 @@ namespace __tests__.Integration {
         [Test]
         public void UsAutocompletionTestBadUsername() {
             try {
-                UsAutocompletions response = invalidApi.UsAutocompletion(usAutocompletionWritable);
+                UsAutocompletions response = invalidApi.autocomplete(usAutocompletionWritable);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

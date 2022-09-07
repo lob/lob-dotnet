@@ -53,8 +53,8 @@ namespace __tests__.Api
             );
 
             ZipEditable zipEditable = new ZipEditable("94107");
-            zipLookupsApiMock.Setup(x => x.ZipLookup(zipEditable, It.IsAny<int>())).Returns(fakeZipObject);
-            Zip response = zipLookupsApiMock.Object.ZipLookup(zipEditable);
+            zipLookupsApiMock.Setup(x => x.lookup(zipEditable, It.IsAny<int>())).Returns(fakeZipObject);
+            Zip response = zipLookupsApiMock.Object.lookup(zipEditable);
 
             Assert.IsInstanceOf<Zip>(response);
             Assert.AreEqual(response.Id, fakeZipObject.Id);
@@ -72,7 +72,7 @@ namespace __tests__.Api
             );
 
             try {
-                zipLookupsApiMock.Setup(x => x.ZipLookup(null, It.IsAny<int>())).Throws(fakeException);
+                zipLookupsApiMock.Setup(x => x.lookup(null, It.IsAny<int>())).Throws(fakeException);
             } catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
                 Assert.AreEqual(e.Message, fakeException.Message);

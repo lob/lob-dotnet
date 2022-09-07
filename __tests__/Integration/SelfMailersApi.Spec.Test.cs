@@ -56,7 +56,7 @@ namespace __tests__.Integration {
             );
 
             validAddressesApi = new AddressesApi(config);
-            address = validAddressesApi.AddressCreate(addressEditable);
+            address = validAddressesApi.create(addressEditable);
 
             selfMailerEditable = new SelfMailerEditable(
                 address.Id, // to
@@ -79,13 +79,13 @@ namespace __tests__.Integration {
 
         public void Dispose()
         {
-            validAddressesApi.AddressDelete(address.Id);
-            idsToDelete.ForEach(id => validApi.SelfMailerDelete(id));
+            validAddressesApi.delete(address.Id);
+            idsToDelete.ForEach(id => validApi.delete(id));
         }
 
         [Test]
-        public void SelfMailerCreateTest() {
-            SelfMailer response = validApi.SelfMailerCreate(selfMailerEditable);
+        public void createTest() {
+            SelfMailer response = validApi.create(selfMailerEditable);
 
             Assert.NotNull(response.Id);
             Assert.AreEqual(response.Metadata, selfMailerEditable.Metadata);
@@ -93,9 +93,9 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void SelfMailerCreateTestBadParameter() {
+        public void createTestBadParameter() {
             try {
-                SelfMailer response = validApi.SelfMailerCreate(null);
+                SelfMailer response = validApi.create(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -104,9 +104,9 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void SelfMailerCreateTestBadUsername() {
+        public void createTestBadUsername() {
             try {
-                SelfMailer response = invalidApi.SelfMailerCreate(selfMailerEditable);
+                SelfMailer response = invalidApi.create(selfMailerEditable);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -115,20 +115,20 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void SelfMailerRetrieveTest() {
-            SelfMailer createdSelfMailer = validApi.SelfMailerCreate(selfMailerEditable);
+        public void getTest() {
+            SelfMailer createdSelfMailer = validApi.create(selfMailerEditable);
             idsToDelete.Add(createdSelfMailer.Id);
 
-            SelfMailer retrievedSelfMailer = validApi.SelfMailerRetrieve(createdSelfMailer.Id);
+            SelfMailer retrievedSelfMailer = validApi.get(createdSelfMailer.Id);
 
             Assert.NotNull(retrievedSelfMailer.Id);
             Assert.AreEqual(retrievedSelfMailer.Id, createdSelfMailer.Id);
         }
 
         [Test]
-        public void SelfMailerRetrieveTestBadParameter() {
+        public void getTestBadParameter() {
             try {
-                SelfMailer response = validApi.SelfMailerRetrieve(null);
+                SelfMailer response = validApi.get(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -137,12 +137,12 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void SelfMailerRetrieveTestBadUsername() {
-            SelfMailer createdSelfMailer = validApi.SelfMailerCreate(selfMailerEditable);
+        public void getTestBadUsername() {
+            SelfMailer createdSelfMailer = validApi.create(selfMailerEditable);
             idsToDelete.Add(createdSelfMailer.Id);
 
             try {
-                SelfMailer response = invalidApi.SelfMailerRetrieve(createdSelfMailer.Id);
+                SelfMailer response = invalidApi.get(createdSelfMailer.Id);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -152,14 +152,14 @@ namespace __tests__.Integration {
 
         [Test]
         public void SelfMailerListTest() {
-            SelfMailerList response = validApi.SelfMailersList(2, null, null, null, null, null, null, null, null, null, null);
+            SelfMailerList response = validApi.list(2, null, null, null, null, null, null, null, null, null, null);
             Assert.Greater(response.Count, 0);
         }
 
         [Test]
         public void SelfMailerListTestWithLimitParameter() {
             int limit = 2;
-            SelfMailerList response = validApi.SelfMailersList(limit, null, null, null, null, null, null, null, null, null, null);
+            SelfMailerList response = validApi.list(limit, null, null, null, null, null, null, null, null, null, null);
 
             Assert.AreEqual(response.Count, 2);
         }
@@ -169,7 +169,7 @@ namespace __tests__.Integration {
             List<string> includeList = new List<string>();
             includeList.Add("total_count");
 
-            SelfMailerList response = validApi.SelfMailersList(null, null, null, includeList, null, null, null, null, null, null, null);
+            SelfMailerList response = validApi.list(null, null, null, includeList, null, null, null, null, null, null, null);
             Assert.Greater(response.Count, 0);
             Assert.NotNull(response.TotalCount);
         }
@@ -180,7 +180,7 @@ namespace __tests__.Integration {
             DateTime lastMonth = DateTime.Today.AddMonths(-1);
             dateCreated.Add("lt", lastMonth);
 
-            SelfMailerList response = validApi.SelfMailersList(null, null, null, null, dateCreated, null, null, null, null, null, null);
+            SelfMailerList response = validApi.list(null, null, null, null, dateCreated, null, null, null, null, null, null);
             Assert.Greater(response.Count, 0);
         }
 
@@ -189,7 +189,7 @@ namespace __tests__.Integration {
             Dictionary<String, String> metadata = new Dictionary<String, String>();
             metadata.Add("name", "Harry");
 
-            SelfMailerList response = validApi.SelfMailersList(null, null, null, null, null, metadata, null, null, null, null, null);
+            SelfMailerList response = validApi.list(null, null, null, null, null, metadata, null, null, null, null, null);
             Assert.GreaterOrEqual(response.Count, 0);
         }
 
@@ -198,7 +198,7 @@ namespace __tests__.Integration {
             List<SelfMailerSize> sizeArray = new List<SelfMailerSize>();
             sizeArray.Add(SelfMailerSize._6x18Bifold);
 
-            SelfMailerList response = validApi.SelfMailersList(null, null, null, null, null, null, sizeArray);
+            SelfMailerList response = validApi.list(null, null, null, null, null, null, sizeArray);
             Assert.Greater(response.Count, 0);
         }
 
@@ -206,7 +206,7 @@ namespace __tests__.Integration {
         public void SelfMailerListTestWithScheduledParameter() {
             Boolean scheduled = true;
 
-            SelfMailerList response = validApi.SelfMailersList(null, null, null, null, null, null, null, scheduled);
+            SelfMailerList response = validApi.list(null, null, null, null, null, null, null, scheduled);
             Assert.Greater(response.Count, 0);
         }
 
@@ -216,7 +216,7 @@ namespace __tests__.Integration {
             DateTime lastMonth = DateTime.Today.AddMonths(-1);
             sendDate.Add("lt", lastMonth.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 
-            SelfMailerList response = validApi.SelfMailersList(null, null, null, null, null, null, null, null, sendDate);
+            SelfMailerList response = validApi.list(null, null, null, null, null, null, null, null, sendDate);
             Assert.Greater(response.Count, 0);
         }
 
@@ -224,7 +224,7 @@ namespace __tests__.Integration {
         public void SelfMailerListTestWithMailTypeParameter() {
             MailType mailType = MailType.FirstClass;
 
-            SelfMailerList response = validApi.SelfMailersList(null, null, null, null, null, null, null, null, null, mailType);
+            SelfMailerList response = validApi.list(null, null, null, null, null, null, null, null, null, mailType);
             Assert.GreaterOrEqual(response.Count, 0);
         }
 
@@ -232,22 +232,22 @@ namespace __tests__.Integration {
         public void SelfMailerListTestWithSortByParameter() {
             SortBy3 sortBy = new SortBy3(null, SortBy3.SendDateEnum.Asc);
 
-            SelfMailerList response = validApi.SelfMailersList(null, null, null, null, null, null, null, null, null, null, sortBy);
+            SelfMailerList response = validApi.list(null, null, null, null, null, null, null, null, null, null, sortBy);
             Assert.Greater(response.Count, 0);
         }
 
         [Test]
-        public void SelfMailerDeleteTest() {
-            SelfMailer createdSelfMailer = validApi.SelfMailerCreate(selfMailerEditable);
+        public void deleteTest() {
+            SelfMailer createdSelfMailer = validApi.create(selfMailerEditable);
 
-            SelfMailerDeletion deletedSelfMailer = validApi.SelfMailerDelete(createdSelfMailer.Id);
+            SelfMailerDeletion deletedSelfMailer = validApi.delete(createdSelfMailer.Id);
             Assert.True(deletedSelfMailer.Deleted);
         }
 
         [Test]
-        public void SelfMailerDeleteTestBadParameter() {
+        public void deleteTestBadParameter() {
             try {
-                SelfMailerDeletion deletedSelfMailer = validApi.SelfMailerDelete(null);
+                SelfMailerDeletion deletedSelfMailer = validApi.delete(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -256,12 +256,12 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void SelfMailerDeleteTestBadUsername() {
-            SelfMailer createdSelfMailer = validApi.SelfMailerCreate(selfMailerEditable);
+        public void deleteTestBadUsername() {
+            SelfMailer createdSelfMailer = validApi.create(selfMailerEditable);
             idsToDelete.Add(createdSelfMailer.Id);
 
             try {
-                SelfMailerDeletion deletedSelfMailer = invalidApi.SelfMailerDelete(createdSelfMailer.Id);
+                SelfMailerDeletion deletedSelfMailer = invalidApi.delete(createdSelfMailer.Id);
             } catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
                 Assert.That(e.Message, Does.Contain("Your API key is not valid"));

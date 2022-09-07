@@ -40,10 +40,10 @@ namespace lob.dotnet.Model
         public enum ObjectEnum
         {
             /// <summary>
-            /// Enum SelfMailerDeleted for value: self_mailer_deleted
+            /// Enum deleted for value: self_mailer_deleted
             /// </summary>
             [EnumMember(Value = "self_mailer_deleted")]
-            SelfMailerDeleted = 1
+            deleted = 1
             
 
         }
@@ -60,8 +60,8 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <param name="id">Unique identifier prefixed with &#x60;sfm_&#x60;..</param>
         /// <param name="deleted">Only returned if the resource has been successfully deleted..</param>
-        /// <param name="_object">Value is type of resource. (default to ObjectEnum.SelfMailerDeleted).</param>
-        public SelfMailerDeletion(string id = default(string), bool deleted = default(bool), ObjectEnum? _object = ObjectEnum.SelfMailerDeleted)
+        /// <param name="_object">Value is type of resource. (default to ObjectEnum.deleted).</param>
+        public SelfMailerDeletion(string id = default(string), bool deleted = default(bool), ObjectEnum? _object = ObjectEnum.deleted)
         {
             this.Id = id;
             this.Deleted = deleted;

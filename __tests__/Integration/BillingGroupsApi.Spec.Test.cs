@@ -55,17 +55,17 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void BillingGroupCreateTest() {
-            BillingGroup response = validApi.BillingGroupCreate(billingGroupEditable);
+        public void createTest() {
+            BillingGroup response = validApi.create(billingGroupEditable);
 
             Assert.NotNull(response.Id);
             Assert.AreEqual(response.Description, billingGroupEditable.Description);
         }
 
         [Test]
-        public void BillingGroupCreateTestBadParameter() {
+        public void createTestBadParameter() {
             try {
-                BillingGroup response = validApi.BillingGroupCreate(null);
+                BillingGroup response = validApi.create(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -74,9 +74,9 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void BillingGroupCreateTestBadUsername() {
+        public void createTestBadUsername() {
             try {
-                BillingGroup response = invalidApi.BillingGroupCreate(billingGroupEditable);
+                BillingGroup response = invalidApi.create(billingGroupEditable);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -85,9 +85,9 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void BillingGroupUpdateTest() {
-            BillingGroup bg = validApi.BillingGroupCreate(billingGroupEditable);
-            BillingGroup response = validApi.BillingGroupUpdate(bg.Id, updatedBillingGroupEditable);
+        public void updateTest() {
+            BillingGroup bg = validApi.create(billingGroupEditable);
+            BillingGroup response = validApi.update(bg.Id, updatedBillingGroupEditable);
 
             Assert.NotNull(response);
             Assert.AreEqual(response.Id, bg.Id);
@@ -95,9 +95,9 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void BillingGroupUpdateTestBadParameter() {
+        public void updateTestBadParameter() {
             try {
-                BillingGroup response = validApi.BillingGroupUpdate(null, null);
+                BillingGroup response = validApi.update(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -106,10 +106,10 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void BillingGroupUpdateTestBadUsername() {
-            BillingGroup bg = validApi.BillingGroupCreate(billingGroupEditable);
+        public void updateTestBadUsername() {
+            BillingGroup bg = validApi.create(billingGroupEditable);
             try {
-                BillingGroup response = invalidApi.BillingGroupUpdate(bg.Id, updatedBillingGroupEditable);
+                BillingGroup response = invalidApi.update(bg.Id, updatedBillingGroupEditable);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -118,18 +118,18 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void BillingGroupRetrieveTest() {
-            BillingGroup bg = validApi.BillingGroupCreate(billingGroupEditable);
-            BillingGroup response = validApi.BillingGroupRetrieve(bg.Id);
+        public void getTest() {
+            BillingGroup bg = validApi.create(billingGroupEditable);
+            BillingGroup response = validApi.get(bg.Id);
 
             Assert.NotNull(response.Id);
             Assert.AreEqual(response.Id, bg.Id);
         }
 
         [Test]
-        public void BillingGroupRetrieveTestBadParameter() {
+        public void getTestBadParameter() {
             try {
-                BillingGroup response = validApi.BillingGroupRetrieve(null);
+                BillingGroup response = validApi.get(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -138,10 +138,10 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void BillingGroupRetrieveTestBadUsername() {
-            BillingGroup bg = validApi.BillingGroupCreate(billingGroupEditable);
+        public void getTestBadUsername() {
+            BillingGroup bg = validApi.create(billingGroupEditable);
             try {
-                BillingGroup response = invalidApi.BillingGroupRetrieve(bg.Id);
+                BillingGroup response = invalidApi.get(bg.Id);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -151,7 +151,7 @@ namespace __tests__.Integration {
 
         [Test]
         public void BillingGroupListTest() {
-            BillingGroupList response = validApi.BillingGroupsList(null, null, null, null, null, null);
+            BillingGroupList response = validApi.list(null, null, null, null, null, null);
 
             Assert.Greater(response.Count, 0);
         }
@@ -159,7 +159,7 @@ namespace __tests__.Integration {
         [Test]
         public void BillingGroupListTestWithLimitParameter() {
             int limit = 2;
-            BillingGroupList response = validApi.BillingGroupsList(limit, null, null, null, null, null);
+            BillingGroupList response = validApi.list(limit, null, null, null, null, null);
 
             Assert.AreEqual(response.Count, 2);
         }
@@ -168,7 +168,7 @@ namespace __tests__.Integration {
         public void BillingGroupListTestWithOffsetParameter() {
             int offset = 2;
 
-            BillingGroupList response = validApi.BillingGroupsList(null, offset, null, null, null, null);
+            BillingGroupList response = validApi.list(null, offset, null, null, null, null);
 
             Assert.Greater(response.Count, 0);
         }
@@ -178,7 +178,7 @@ namespace __tests__.Integration {
             List<string> includeList = new List<string>();
             includeList.Add("total_count");
 
-            BillingGroupList response = validApi.BillingGroupsList(null, null, includeList, null, null, null);
+            BillingGroupList response = validApi.list(null, null, includeList, null, null, null);
             Assert.Greater(response.Count, 0);
             // Assert.NotNull(response.TotalCount);
         }
@@ -189,7 +189,7 @@ namespace __tests__.Integration {
             DateTime lastMonth = DateTime.Today.AddMonths(-1);
             dateCreated.Add("lt", lastMonth);
 
-            BillingGroupList response = validApi.BillingGroupsList(null, null, null, dateCreated, null, null);
+            BillingGroupList response = validApi.list(null, null, null, dateCreated, null, null);
             Assert.Greater(response.Count, 0);
         }
 
@@ -199,14 +199,14 @@ namespace __tests__.Integration {
             DateTime lastMonth = DateTime.Today.AddMonths(-1);
             dateModified.Add("lt", lastMonth.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 
-            BillingGroupList response = validApi.BillingGroupsList(null, null, null, null, dateModified, null);
+            BillingGroupList response = validApi.list(null, null, null, null, dateModified, null);
             Assert.Greater(response.Count, 0);
         }
 
         [Test]
         public void BillingGroupListTestWithSortByParameter() {
             SortByDateModified sortBy = new SortByDateModified(null, SortByDateModified.DateModifiedEnum.Asc);
-            BillingGroupList response = validApi.BillingGroupsList(null, null, null, null, null, sortBy);
+            BillingGroupList response = validApi.list(null, null, null, null, null, sortBy);
             Assert.Greater(response.Count, 0);
         }
     }

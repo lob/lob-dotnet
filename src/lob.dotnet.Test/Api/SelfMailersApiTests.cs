@@ -56,47 +56,47 @@ namespace lob.dotnet.Test.Api
         }
 
         /// <summary>
-        /// Test SelfMailerCreate
+        /// Test create
         /// </summary>
         [Fact]
-        public void SelfMailerCreateTest()
+        public void createTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //SelfMailerEditable selfMailerEditable = null;
             //string idempotencyKey = null;
-            //var response = instance.SelfMailerCreate(selfMailerEditable, idempotencyKey);
+            //var response = instance.create(selfMailerEditable, idempotencyKey);
             //Assert.IsType<SelfMailer>(response);
         }
 
         /// <summary>
-        /// Test SelfMailerDelete
+        /// Test delete
         /// </summary>
         [Fact]
-        public void SelfMailerDeleteTest()
+        public void deleteTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string sfmId = null;
-            //var response = instance.SelfMailerDelete(sfmId);
+            //var response = instance.delete(sfmId);
             //Assert.IsType<SelfMailerDeletion>(response);
         }
 
         /// <summary>
-        /// Test SelfMailerRetrieve
+        /// Test get
         /// </summary>
         [Fact]
-        public void SelfMailerRetrieveTest()
+        public void getTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string sfmId = null;
-            //var response = instance.SelfMailerRetrieve(sfmId);
+            //var response = instance.get(sfmId);
             //Assert.IsType<SelfMailer>(response);
         }
 
         /// <summary>
-        /// Test SelfMailersList
+        /// Test list
         /// </summary>
         [Fact]
-        public void SelfMailersListTest()
+        public void listTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? limit = null;
@@ -110,7 +110,7 @@ namespace lob.dotnet.Test.Api
             //Dictionary<string, string> sendDate = null;
             //MailType? mailType = null;
             //SortBy5 sortBy = null;
-            //var response = instance.SelfMailersList(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
+            //var response = instance.list(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
             //Assert.IsType<SelfMailerList>(response);
         }
     }

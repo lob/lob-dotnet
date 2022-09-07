@@ -56,63 +56,63 @@ namespace lob.dotnet.Test.Api
         }
 
         /// <summary>
-        /// Test CreateTemplateVersion
+        /// Test create
         /// </summary>
         [Fact]
-        public void CreateTemplateVersionTest()
+        public void createTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string tmplId = null;
             //TemplateVersionWritable templateVersionWritable = null;
-            //var response = instance.CreateTemplateVersion(tmplId, templateVersionWritable);
+            //var response = instance.create(tmplId, templateVersionWritable);
             //Assert.IsType<TemplateVersion>(response);
         }
 
         /// <summary>
-        /// Test TemplateVersionDelete
+        /// Test delete
         /// </summary>
         [Fact]
-        public void TemplateVersionDeleteTest()
+        public void deleteTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string tmplId = null;
             //string vrsnId = null;
-            //var response = instance.TemplateVersionDelete(tmplId, vrsnId);
+            //var response = instance.delete(tmplId, vrsnId);
             //Assert.IsType<TemplateVersionDeletion>(response);
         }
 
         /// <summary>
-        /// Test TemplateVersionRetrieve
+        /// Test get
         /// </summary>
         [Fact]
-        public void TemplateVersionRetrieveTest()
+        public void getTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string tmplId = null;
             //string vrsnId = null;
-            //var response = instance.TemplateVersionRetrieve(tmplId, vrsnId);
+            //var response = instance.get(tmplId, vrsnId);
             //Assert.IsType<TemplateVersion>(response);
         }
 
         /// <summary>
-        /// Test TemplateVersionUpdate
+        /// Test update
         /// </summary>
         [Fact]
-        public void TemplateVersionUpdateTest()
+        public void updateTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string tmplId = null;
             //string vrsnId = null;
             //TemplateVersionUpdatable templateVersionUpdatable = null;
-            //var response = instance.TemplateVersionUpdate(tmplId, vrsnId, templateVersionUpdatable);
+            //var response = instance.update(tmplId, vrsnId, templateVersionUpdatable);
             //Assert.IsType<TemplateVersion>(response);
         }
 
         /// <summary>
-        /// Test TemplateVersionsList
+        /// Test list
         /// </summary>
         [Fact]
-        public void TemplateVersionsListTest()
+        public void listTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string tmplId = null;
@@ -121,7 +121,7 @@ namespace lob.dotnet.Test.Api
             //string after = null;
             //List<string> include = null;
             //Dictionary<string, DateTime> dateCreated = null;
-            //var response = instance.TemplateVersionsList(tmplId, limit, before, after, include, dateCreated);
+            //var response = instance.list(tmplId, limit, before, after, include, dateCreated);
             //Assert.IsType<TemplateVersionList>(response);
         }
     }

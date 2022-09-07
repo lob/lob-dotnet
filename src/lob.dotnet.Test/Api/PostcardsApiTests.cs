@@ -56,47 +56,47 @@ namespace lob.dotnet.Test.Api
         }
 
         /// <summary>
-        /// Test PostcardCreate
+        /// Test create
         /// </summary>
         [Fact]
-        public void PostcardCreateTest()
+        public void createTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //PostcardEditable postcardEditable = null;
             //string idempotencyKey = null;
-            //var response = instance.PostcardCreate(postcardEditable, idempotencyKey);
+            //var response = instance.create(postcardEditable, idempotencyKey);
             //Assert.IsType<Postcard>(response);
         }
 
         /// <summary>
-        /// Test PostcardDelete
+        /// Test delete
         /// </summary>
         [Fact]
-        public void PostcardDeleteTest()
+        public void deleteTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string pscId = null;
-            //var response = instance.PostcardDelete(pscId);
+            //var response = instance.delete(pscId);
             //Assert.IsType<PostcardDeletion>(response);
         }
 
         /// <summary>
-        /// Test PostcardRetrieve
+        /// Test get
         /// </summary>
         [Fact]
-        public void PostcardRetrieveTest()
+        public void getTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string pscId = null;
-            //var response = instance.PostcardRetrieve(pscId);
+            //var response = instance.get(pscId);
             //Assert.IsType<Postcard>(response);
         }
 
         /// <summary>
-        /// Test PostcardsList
+        /// Test list
         /// </summary>
         [Fact]
-        public void PostcardsListTest()
+        public void listTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? limit = null;
@@ -110,7 +110,7 @@ namespace lob.dotnet.Test.Api
             //Dictionary<string, string> sendDate = null;
             //MailType? mailType = null;
             //SortBy5 sortBy = null;
-            //var response = instance.PostcardsList(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
+            //var response = instance.list(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
             //Assert.IsType<PostcardList>(response);
         }
     }

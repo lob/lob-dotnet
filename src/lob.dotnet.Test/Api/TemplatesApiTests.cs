@@ -56,59 +56,59 @@ namespace lob.dotnet.Test.Api
         }
 
         /// <summary>
-        /// Test CreateTemplate
+        /// Test create
         /// </summary>
         [Fact]
-        public void CreateTemplateTest()
+        public void createTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //TemplateWritable templateWritable = null;
-            //var response = instance.CreateTemplate(templateWritable);
+            //var response = instance.create(templateWritable);
             //Assert.IsType<Template>(response);
         }
 
         /// <summary>
-        /// Test TemplateDelete
+        /// Test delete
         /// </summary>
         [Fact]
-        public void TemplateDeleteTest()
+        public void deleteTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string tmplId = null;
-            //var response = instance.TemplateDelete(tmplId);
+            //var response = instance.delete(tmplId);
             //Assert.IsType<TemplateDeletion>(response);
         }
 
         /// <summary>
-        /// Test TemplateRetrieve
+        /// Test get
         /// </summary>
         [Fact]
-        public void TemplateRetrieveTest()
+        public void getTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string tmplId = null;
-            //var response = instance.TemplateRetrieve(tmplId);
+            //var response = instance.get(tmplId);
             //Assert.IsType<Template>(response);
         }
 
         /// <summary>
-        /// Test TemplateUpdate
+        /// Test update
         /// </summary>
         [Fact]
-        public void TemplateUpdateTest()
+        public void updateTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string tmplId = null;
-            //TemplateUpdate templateUpdate = null;
-            //var response = instance.TemplateUpdate(tmplId, templateUpdate);
+            //update update = null;
+            //var response = instance.update(tmplId, update);
             //Assert.IsType<Template>(response);
         }
 
         /// <summary>
-        /// Test TemplatesList
+        /// Test list
         /// </summary>
         [Fact]
-        public void TemplatesListTest()
+        public void listTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? limit = null;
@@ -117,7 +117,7 @@ namespace lob.dotnet.Test.Api
             //List<string> include = null;
             //Dictionary<string, DateTime> dateCreated = null;
             //Dictionary<string, string> metadata = null;
-            //var response = instance.TemplatesList(limit, before, after, include, dateCreated, metadata);
+            //var response = instance.list(limit, before, after, include, dateCreated, metadata);
             //Assert.IsType<TemplateList>(response);
         }
     }

@@ -56,47 +56,47 @@ namespace lob.dotnet.Test.Api
         }
 
         /// <summary>
-        /// Test BillingGroupCreate
+        /// Test create
         /// </summary>
         [Fact]
-        public void BillingGroupCreateTest()
+        public void createTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //BillingGroupEditable billingGroupEditable = null;
-            //var response = instance.BillingGroupCreate(billingGroupEditable);
+            //var response = instance.create(billingGroupEditable);
             //Assert.IsType<BillingGroup>(response);
         }
 
         /// <summary>
-        /// Test BillingGroupRetrieve
+        /// Test get
         /// </summary>
         [Fact]
-        public void BillingGroupRetrieveTest()
+        public void getTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string bgId = null;
-            //var response = instance.BillingGroupRetrieve(bgId);
+            //var response = instance.get(bgId);
             //Assert.IsType<BillingGroup>(response);
         }
 
         /// <summary>
-        /// Test BillingGroupUpdate
+        /// Test update
         /// </summary>
         [Fact]
-        public void BillingGroupUpdateTest()
+        public void updateTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string bgId = null;
             //BillingGroupEditable billingGroupEditable = null;
-            //var response = instance.BillingGroupUpdate(bgId, billingGroupEditable);
+            //var response = instance.update(bgId, billingGroupEditable);
             //Assert.IsType<BillingGroup>(response);
         }
 
         /// <summary>
-        /// Test BillingGroupsList
+        /// Test list
         /// </summary>
         [Fact]
-        public void BillingGroupsListTest()
+        public void listTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? limit = null;
@@ -105,7 +105,7 @@ namespace lob.dotnet.Test.Api
             //Dictionary<string, DateTime> dateCreated = null;
             //Dictionary<string, string> dateModified = null;
             //SortBy5 sortBy = null;
-            //var response = instance.BillingGroupsList(limit, offset, include, dateCreated, dateModified, sortBy);
+            //var response = instance.list(limit, offset, include, dateCreated, dateModified, sortBy);
             //Assert.IsType<BillingGroupList>(response);
         }
     }
