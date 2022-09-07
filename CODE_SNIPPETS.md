@@ -814,7 +814,7 @@ List<int> amounts = new List<int>();
 amounts.Add(25);
 amounts.Add(63);
 
-verify verification = new verify(amounts);
+BankAccountVerify verification = new BankAccountVerify(amounts);
 
 BankAccountsApi api = new BankAccountsApi(config);
 
@@ -944,7 +944,7 @@ curl https://api.lob.com/v1/templates/tmpl_c94e83ca2cd5121 \
 
 ```csharp
 TemplatesApi api = new TemplatesApi(config);
-update update = new update("update template", "vrsn_362184d96d9b0c9");
+TemplateUpdate update = new TemplateUpdate("update template", "vrsn_362184d96d9b0c9");
 
 try {
   api.update("tmpl_c94e83ca2cd5121", update);
