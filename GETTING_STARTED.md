@@ -21,8 +21,7 @@ $ dotnet add package lob.dotnet
 using lob.dotnet;
 
 Configuration config = new Configuration();
-DotNetEnv.Env.TraversePath().Load();
-config.Username = System.Environment.GetEnvironmentVariable("LOB_API_TEST_KEY");
+config.Username = "<<YOUR API KEY HERE>>"
 ```
 You then instantiate the specific resource API that you need access to as follows:
 
