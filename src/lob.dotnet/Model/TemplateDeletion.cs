@@ -40,10 +40,10 @@ namespace lob.dotnet.Model
         public enum ObjectEnum
         {
             /// <summary>
-            /// Enum TemplateDeleted for value: template_deleted
+            /// Enum deleted for value: template_deleted
             /// </summary>
             [EnumMember(Value = "template_deleted")]
-            TemplateDeleted = 1
+            deleted = 1
             
 
         }
@@ -60,8 +60,8 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <param name="id">Unique identifier prefixed with &#x60;tmpl_&#x60;. ID of a saved [HTML template](#section/HTML-Templates)..</param>
         /// <param name="deleted">Only returned if the resource has been successfully deleted..</param>
-        /// <param name="_object">Value is type of resource. (default to ObjectEnum.TemplateDeleted).</param>
-        public TemplateDeletion(string id = default(string), bool deleted = default(bool), ObjectEnum? _object = ObjectEnum.TemplateDeleted)
+        /// <param name="_object">Value is type of resource. (default to ObjectEnum.deleted).</param>
+        public TemplateDeletion(string id = default(string), bool deleted = default(bool), ObjectEnum? _object = ObjectEnum.deleted)
         {
             this.Id = id;
             this.Deleted = deleted;

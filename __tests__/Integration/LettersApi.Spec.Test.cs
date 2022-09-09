@@ -57,7 +57,7 @@ namespace __tests__.Integration {
             );
 
             validAddressesApi = new AddressesApi(config);
-            address = validAddressesApi.AddressCreate(addressEditable);
+            address = validAddressesApi.create(addressEditable);
 
             Dictionary<string, string> metadata = new Dictionary<string, string>();
             metadata.Add("name", "Harry");
@@ -73,7 +73,7 @@ namespace __tests__.Integration {
                 LetterEditable.AddressPlacementEnum.TopFirstPage, // addressPlacement
                 default(bool), // returnEnvelope
                 null, // perforatedPage
-                default(LetterEditableCustomEnvelope), // customEnvelope
+                default(string), // customEnvelope
                 address.Id, // to
                 address.Id, // from
                 "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf", // file
@@ -85,13 +85,13 @@ namespace __tests__.Integration {
 
         public void Dispose()
         {
-            validAddressesApi.AddressDelete(address.Id);
-            idsToDelete.ForEach(id => validApi.LetterCancel(id));
+            validAddressesApi.delete(address.Id);
+            idsToDelete.ForEach(id => validApi.cancel(id));
         }
 
         [Test]
-        public void LetterCreateTest() {
-            Letter response = validApi.LetterCreate(letterEditable);
+        public void createTest() {
+            Letter response = validApi.create(letterEditable);
 
             Assert.NotNull(response.Id);
             idsToDelete.Add(response.Id);
@@ -99,9 +99,9 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void LetterCreateTestBadParameter() {
+        public void createTestBadParameter() {
             try {
-                Letter response = validApi.LetterCreate(null);
+                Letter response = validApi.create(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -110,9 +110,9 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void LetterCreateTestBadUsername() {
+        public void createTestBadUsername() {
             try {
-                Letter response = invalidApi.LetterCreate(letterEditable);
+                Letter response = invalidApi.create(letterEditable);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -121,19 +121,19 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void LetterRetrieveTest() {
-            Letter letter = validApi.LetterCreate(letterEditable);
+        public void getTest() {
+            Letter letter = validApi.create(letterEditable);
             idsToDelete.Add(letter.Id);
-            Letter response = validApi.LetterRetrieve(letter.Id);
+            Letter response = validApi.get(letter.Id);
 
             Assert.NotNull(response.Id);
             Assert.AreEqual(response.Id, letter.Id);
         }
 
         [Test]
-        public void LetterRetrieveTestBadParameter() {
+        public void getTestBadParameter() {
             try {
-                Letter response = validApi.LetterRetrieve(null);
+                Letter response = validApi.get(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -142,11 +142,11 @@ namespace __tests__.Integration {
         }
 
         [Test]
-        public void LetterRetrieveTestBadUsername() {
-            Letter letter = validApi.LetterCreate(letterEditable);
+        public void getTestBadUsername() {
+            Letter letter = validApi.create(letterEditable);
             idsToDelete.Add(letter.Id);
             try {
-                Letter response = invalidApi.LetterRetrieve(letter.Id);
+                Letter response = invalidApi.get(letter.Id);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -156,7 +156,7 @@ namespace __tests__.Integration {
 
         [Test]
         public void LetterListTest() {
-            LetterList response = validApi.LettersList(null, null, null, null, null, null, null, null, null, null, null);
+            LetterList response = validApi.list(null, null, null, null, null, null, null, null, null, null, null);
 
             Assert.Greater(response.Count, 0);
         }
@@ -164,7 +164,7 @@ namespace __tests__.Integration {
         [Test]
         public void LetterListTestWithLimitParameter() {
             int limit = 2;
-            LetterList response = validApi.LettersList(limit, null, null, null, null, null, null, null, null, null, null);
+            LetterList response = validApi.list(limit, null, null, null, null, null, null, null, null, null, null);
 
             Assert.AreEqual(response.Count, 2);
         }
@@ -174,7 +174,7 @@ namespace __tests__.Integration {
             List<string> includeList = new List<string>();
             includeList.Add("total_count");
 
-            LetterList response = validApi.LettersList(null, null, null, includeList);
+            LetterList response = validApi.list(null, null, null, includeList);
             Assert.Greater(response.Count, 0);
             Assert.NotNull(response.TotalCount);
         }
@@ -185,19 +185,19 @@ namespace __tests__.Integration {
             DateTime lastMonth = DateTime.Today.AddMonths(-1);
             dateCreated.Add("lt", lastMonth);
 
-            LetterList response = validApi.LettersList(null, null, null, null, dateCreated);
+            LetterList response = validApi.list(null, null, null, null, dateCreated);
             Assert.Greater(response.Count, 0);
         }
 
         [Test]
         public void LetterListTestWithMetadataParameter() {
-            Letter letter = validApi.LetterCreate(letterEditable);
+            Letter letter = validApi.create(letterEditable);
             idsToDelete.Add(letter.Id);
 
             Dictionary<String, String> metadata = new Dictionary<String, String>();
             metadata.Add("name", "Harry");
 
-            LetterList response = validApi.LettersList(null, null, null, null, null, metadata);
+            LetterList response = validApi.list(null, null, null, null, null, metadata);
             Assert.Greater(response.Count, 0);
         }
 
@@ -205,7 +205,7 @@ namespace __tests__.Integration {
         public void LetterListTestWithColorParameter() {
             Boolean color = true;
 
-            LetterList response = validApi.LettersList(null, null, null, null, null, null, color);
+            LetterList response = validApi.list(null, null, null, null, null, null, color);
             Assert.Greater(response.Count, 0);
         }
 
@@ -213,7 +213,7 @@ namespace __tests__.Integration {
         public void LetterListTestWithScheduledParameter() {
             Boolean scheduled = true;
 
-            LetterList response = validApi.LettersList(null, null, null, null, null, null, null, scheduled);
+            LetterList response = validApi.list(null, null, null, null, null, null, null, scheduled);
             Assert.Greater(response.Count, 0);
         }
 
@@ -223,7 +223,7 @@ namespace __tests__.Integration {
             DateTime lastMonth = DateTime.Today.AddMonths(-1);
             sendDate.Add("lt", lastMonth.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 
-            LetterList response = validApi.LettersList(null, null, null, null, null, null, null, null, sendDate);
+            LetterList response = validApi.list(null, null, null, null, null, null, null, null, sendDate);
             Assert.Greater(response.Count, 0);
         }
 
@@ -231,7 +231,7 @@ namespace __tests__.Integration {
         public void LetterListTestWithMailTypeParameter() {
             MailType mailType = MailType.FirstClass;
 
-            LetterList response = validApi.LettersList(null, null, null, null, null, null, null, null, null, mailType);
+            LetterList response = validApi.list(null, null, null, null, null, null, null, null, null, mailType);
             Assert.GreaterOrEqual(response.Count, 0);
         }
 
@@ -239,7 +239,7 @@ namespace __tests__.Integration {
         public void LetterListTestWithSortByParameter() {
             SortBy3 sortBy = new SortBy3(null, SortBy3.SendDateEnum.Asc);
 
-            LetterList response = validApi.LettersList(null, null, null, null, null, null, null, null, null, null, sortBy);
+            LetterList response = validApi.list(null, null, null, null, null, null, null, null, null, null, sortBy);
             Assert.Greater(response.Count, 0);
         }
     }

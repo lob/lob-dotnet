@@ -4,15 +4,15 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**LetterCancel**](LettersApi.md#lettercancel) | **DELETE** /letters/{ltr_id} | cancel
-[**LetterCreate**](LettersApi.md#lettercreate) | **POST** /letters | create
-[**LetterRetrieve**](LettersApi.md#letterretrieve) | **GET** /letters/{ltr_id} | get
-[**LettersList**](LettersApi.md#letterslist) | **GET** /letters | list
+[**cancel**](LettersApi.md#cancel) | **DELETE** /letters/{ltr_id} | cancel
+[**create**](LettersApi.md#create) | **POST** /letters | create
+[**get**](LettersApi.md#get) | **GET** /letters/{ltr_id} | get
+[**list**](LettersApi.md#list) | **GET** /letters | list
 
 
-<a name="lettercancel"></a>
-# **LetterCancel**
-> LetterDeletion LetterCancel (string ltrId)
+<a name="cancel"></a>
+# **cancel**
+> LetterDeletion cancel (string ltrId)
 
 cancel
 
@@ -28,7 +28,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class LetterCancelExample
+    public class cancelExample
     {
         public static void Main()
         {
@@ -44,12 +44,12 @@ namespace Example
             try
             {
                 // cancel
-                LetterDeletion result = apiInstance.LetterCancel(ltrId);
+                LetterDeletion result = apiInstance.cancel(ltrId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LettersApi.LetterCancel: " + e.Message );
+                Debug.Print("Exception when calling LettersApi.cancel: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -86,9 +86,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="lettercreate"></a>
-# **LetterCreate**
-> Letter LetterCreate (LetterEditable letterEditable, string idempotencyKey = null)
+<a name="create"></a>
+# **create**
+> Letter create (LetterEditable letterEditable, string idempotencyKey = null)
 
 create
 
@@ -104,7 +104,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class LetterCreateExample
+    public class createExample
     {
         public static void Main()
         {
@@ -121,12 +121,12 @@ namespace Example
             try
             {
                 // create
-                Letter result = apiInstance.LetterCreate(letterEditable, idempotencyKey);
+                Letter result = apiInstance.create(letterEditable, idempotencyKey);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LettersApi.LetterCreate: " + e.Message );
+                Debug.Print("Exception when calling LettersApi.create: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -164,9 +164,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="letterretrieve"></a>
-# **LetterRetrieve**
-> Letter LetterRetrieve (string ltrId)
+<a name="get"></a>
+# **get**
+> Letter get (string ltrId)
 
 get
 
@@ -182,7 +182,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class LetterRetrieveExample
+    public class getExample
     {
         public static void Main()
         {
@@ -198,12 +198,12 @@ namespace Example
             try
             {
                 // get
-                Letter result = apiInstance.LetterRetrieve(ltrId);
+                Letter result = apiInstance.get(ltrId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LettersApi.LetterRetrieve: " + e.Message );
+                Debug.Print("Exception when calling LettersApi.get: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -240,9 +240,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="letterslist"></a>
-# **LettersList**
-> LetterList LettersList (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null, bool? color = null, bool? scheduled = null, Dictionary<string, string> sendDate = null, MailType? mailType = null, SortBy5 sortBy = null)
+<a name="list"></a>
+# **list**
+> LetterList list (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null, bool? color = null, bool? scheduled = null, Dictionary<string, string> sendDate = null, MailType? mailType = null, SortBy5 sortBy = null)
 
 list
 
@@ -258,7 +258,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class LettersListExample
+    public class listExample
     {
         public static void Main()
         {
@@ -284,12 +284,12 @@ namespace Example
             try
             {
                 // list
-                LetterList result = apiInstance.LettersList(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy);
+                LetterList result = apiInstance.list(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LettersApi.LettersList: " + e.Message );
+                Debug.Print("Exception when calling LettersApi.list: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }

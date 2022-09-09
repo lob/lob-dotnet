@@ -38,7 +38,7 @@ namespace lob.dotnet.Api
         /// <param name="addressEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Address</returns>
-        Address AddressCreate(AddressEditable addressEditable, int operationIndex = 0);
+        Address create(AddressEditable addressEditable, int operationIndex = 0);
 
         /// <summary>
         /// create
@@ -50,7 +50,7 @@ namespace lob.dotnet.Api
         /// <param name="addressEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Address</returns>
-        ApiResponse<Address> AddressCreateWithHttpInfo(AddressEditable addressEditable, int operationIndex = 0);
+        ApiResponse<Address> createWithHttpInfo(AddressEditable addressEditable, int operationIndex = 0);
         /// <summary>
         /// delete
         /// </summary>
@@ -61,7 +61,7 @@ namespace lob.dotnet.Api
         /// <param name="adrId">id of the address</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AddressDeletion</returns>
-        AddressDeletion AddressDelete(string adrId, int operationIndex = 0);
+        AddressDeletion delete(string adrId, int operationIndex = 0);
 
         /// <summary>
         /// delete
@@ -73,7 +73,7 @@ namespace lob.dotnet.Api
         /// <param name="adrId">id of the address</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AddressDeletion</returns>
-        ApiResponse<AddressDeletion> AddressDeleteWithHttpInfo(string adrId, int operationIndex = 0);
+        ApiResponse<AddressDeletion> deleteWithHttpInfo(string adrId, int operationIndex = 0);
         /// <summary>
         /// get
         /// </summary>
@@ -84,7 +84,7 @@ namespace lob.dotnet.Api
         /// <param name="adrId">id of the address</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Address</returns>
-        Address AddressRetrieve(string adrId, int operationIndex = 0);
+        Address get(string adrId, int operationIndex = 0);
 
         /// <summary>
         /// get
@@ -96,7 +96,7 @@ namespace lob.dotnet.Api
         /// <param name="adrId">id of the address</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Address</returns>
-        ApiResponse<Address> AddressRetrieveWithHttpInfo(string adrId, int operationIndex = 0);
+        ApiResponse<Address> getWithHttpInfo(string adrId, int operationIndex = 0);
         /// <summary>
         /// list
         /// </summary>
@@ -112,7 +112,7 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AddressList</returns>
-        AddressList AddressesList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
+        AddressList list(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -129,7 +129,7 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AddressList</returns>
-        ApiResponse<AddressList> AddressesListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
+        ApiResponse<AddressList> listWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -150,7 +150,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Address</returns>
-        System.Threading.Tasks.Task<Address> AddressCreateAsync(AddressEditable addressEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Address> createAsync(AddressEditable addressEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// create
@@ -163,7 +163,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Address)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Address>> AddressCreateWithHttpInfoAsync(AddressEditable addressEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Address>> createWithHttpInfoAsync(AddressEditable addressEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// delete
         /// </summary>
@@ -175,7 +175,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AddressDeletion</returns>
-        System.Threading.Tasks.Task<AddressDeletion> AddressDeleteAsync(string adrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AddressDeletion> deleteAsync(string adrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// delete
@@ -188,7 +188,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AddressDeletion)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AddressDeletion>> AddressDeleteWithHttpInfoAsync(string adrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<AddressDeletion>> deleteWithHttpInfoAsync(string adrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// get
         /// </summary>
@@ -200,7 +200,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Address</returns>
-        System.Threading.Tasks.Task<Address> AddressRetrieveAsync(string adrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Address> getAsync(string adrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// get
@@ -213,7 +213,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Address)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Address>> AddressRetrieveWithHttpInfoAsync(string adrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Address>> getWithHttpInfoAsync(string adrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// list
         /// </summary>
@@ -230,7 +230,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AddressList</returns>
-        System.Threading.Tasks.Task<AddressList> AddressesListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AddressList> listAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -248,7 +248,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AddressList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AddressList>> AddressesListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<AddressList>> listWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -376,9 +376,9 @@ namespace lob.dotnet.Api
         /// <param name="addressEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Address</returns>
-        public Address AddressCreate(AddressEditable addressEditable, int operationIndex = 0)
+        public Address create(AddressEditable addressEditable, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<Address> localVarResponse = AddressCreateWithHttpInfo(addressEditable);
+            lob.dotnet.Client.ApiResponse<Address> localVarResponse = createWithHttpInfo(addressEditable);
             return localVarResponse.Data;
         }
 
@@ -389,12 +389,12 @@ namespace lob.dotnet.Api
         /// <param name="addressEditable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Address</returns>
-        public lob.dotnet.Client.ApiResponse<Address> AddressCreateWithHttpInfo(AddressEditable addressEditable, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<Address> createWithHttpInfo(AddressEditable addressEditable, int operationIndex = 0)
         {
             // verify the required parameter 'addressEditable' is set
             if (addressEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'addressEditable' when calling AddressesApi->AddressCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'addressEditable' when calling AddressesApi->create");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -422,7 +422,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = addressEditable;
 
-            localVarRequestOptions.Operation = "AddressesApi.AddressCreate";
+            localVarRequestOptions.Operation = "AddressesApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -436,7 +436,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<Address>("/addresses", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("AddressCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -454,9 +454,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Address</returns>
-        public async System.Threading.Tasks.Task<Address> AddressCreateAsync(AddressEditable addressEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Address> createAsync(AddressEditable addressEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<Address> localVarResponse = await AddressCreateWithHttpInfoAsync(addressEditable, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<Address> localVarResponse = await createWithHttpInfoAsync(addressEditable, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -468,12 +468,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Address)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Address>> AddressCreateWithHttpInfoAsync(AddressEditable addressEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Address>> createWithHttpInfoAsync(AddressEditable addressEditable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'addressEditable' is set
             if (addressEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'addressEditable' when calling AddressesApi->AddressCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'addressEditable' when calling AddressesApi->create");
             }
 
 
@@ -502,7 +502,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = addressEditable;
 
-            localVarRequestOptions.Operation = "AddressesApi.AddressCreate";
+            localVarRequestOptions.Operation = "AddressesApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -517,7 +517,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("AddressCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -534,9 +534,9 @@ namespace lob.dotnet.Api
         /// <param name="adrId">id of the address</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AddressDeletion</returns>
-        public AddressDeletion AddressDelete(string adrId, int operationIndex = 0)
+        public AddressDeletion delete(string adrId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<AddressDeletion> localVarResponse = AddressDeleteWithHttpInfo(adrId);
+            lob.dotnet.Client.ApiResponse<AddressDeletion> localVarResponse = deleteWithHttpInfo(adrId);
             return localVarResponse.Data;
         }
 
@@ -547,12 +547,12 @@ namespace lob.dotnet.Api
         /// <param name="adrId">id of the address</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AddressDeletion</returns>
-        public lob.dotnet.Client.ApiResponse<AddressDeletion> AddressDeleteWithHttpInfo(string adrId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<AddressDeletion> deleteWithHttpInfo(string adrId, int operationIndex = 0)
         {
             // verify the required parameter 'adrId' is set
             if (adrId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'adrId' when calling AddressesApi->AddressDelete");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'adrId' when calling AddressesApi->delete");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -579,7 +579,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("adr_id", lob.dotnet.Client.ClientUtils.ParameterToString(adrId)); // path parameter
 
-            localVarRequestOptions.Operation = "AddressesApi.AddressDelete";
+            localVarRequestOptions.Operation = "AddressesApi.delete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -593,7 +593,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Delete<AddressDeletion>("/addresses/{adr_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("AddressDelete", localVarResponse);
+                Exception _exception = this.ExceptionFactory("delete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -611,9 +611,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AddressDeletion</returns>
-        public async System.Threading.Tasks.Task<AddressDeletion> AddressDeleteAsync(string adrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<AddressDeletion> deleteAsync(string adrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<AddressDeletion> localVarResponse = await AddressDeleteWithHttpInfoAsync(adrId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<AddressDeletion> localVarResponse = await deleteWithHttpInfoAsync(adrId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -625,12 +625,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AddressDeletion)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<AddressDeletion>> AddressDeleteWithHttpInfoAsync(string adrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<AddressDeletion>> deleteWithHttpInfoAsync(string adrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'adrId' is set
             if (adrId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'adrId' when calling AddressesApi->AddressDelete");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'adrId' when calling AddressesApi->delete");
             }
 
 
@@ -658,7 +658,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("adr_id", lob.dotnet.Client.ClientUtils.ParameterToString(adrId)); // path parameter
 
-            localVarRequestOptions.Operation = "AddressesApi.AddressDelete";
+            localVarRequestOptions.Operation = "AddressesApi.delete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -673,7 +673,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("AddressDelete", localVarResponse);
+                Exception _exception = this.ExceptionFactory("delete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -690,9 +690,9 @@ namespace lob.dotnet.Api
         /// <param name="adrId">id of the address</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Address</returns>
-        public Address AddressRetrieve(string adrId, int operationIndex = 0)
+        public Address get(string adrId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<Address> localVarResponse = AddressRetrieveWithHttpInfo(adrId);
+            lob.dotnet.Client.ApiResponse<Address> localVarResponse = getWithHttpInfo(adrId);
             return localVarResponse.Data;
         }
 
@@ -703,12 +703,12 @@ namespace lob.dotnet.Api
         /// <param name="adrId">id of the address</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Address</returns>
-        public lob.dotnet.Client.ApiResponse<Address> AddressRetrieveWithHttpInfo(string adrId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<Address> getWithHttpInfo(string adrId, int operationIndex = 0)
         {
             // verify the required parameter 'adrId' is set
             if (adrId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'adrId' when calling AddressesApi->AddressRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'adrId' when calling AddressesApi->get");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -735,7 +735,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("adr_id", lob.dotnet.Client.ClientUtils.ParameterToString(adrId)); // path parameter
 
-            localVarRequestOptions.Operation = "AddressesApi.AddressRetrieve";
+            localVarRequestOptions.Operation = "AddressesApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -749,7 +749,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<Address>("/addresses/{adr_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("AddressRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -767,9 +767,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Address</returns>
-        public async System.Threading.Tasks.Task<Address> AddressRetrieveAsync(string adrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Address> getAsync(string adrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<Address> localVarResponse = await AddressRetrieveWithHttpInfoAsync(adrId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<Address> localVarResponse = await getWithHttpInfoAsync(adrId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -781,12 +781,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Address)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Address>> AddressRetrieveWithHttpInfoAsync(string adrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Address>> getWithHttpInfoAsync(string adrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'adrId' is set
             if (adrId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'adrId' when calling AddressesApi->AddressRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'adrId' when calling AddressesApi->get");
             }
 
 
@@ -814,7 +814,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("adr_id", lob.dotnet.Client.ClientUtils.ParameterToString(adrId)); // path parameter
 
-            localVarRequestOptions.Operation = "AddressesApi.AddressRetrieve";
+            localVarRequestOptions.Operation = "AddressesApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -829,7 +829,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("AddressRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -851,9 +851,9 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AddressList</returns>
-        public AddressList AddressesList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
+        public AddressList list(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<AddressList> localVarResponse = AddressesListWithHttpInfo(limit, before, after, include, dateCreated, metadata);
+            lob.dotnet.Client.ApiResponse<AddressList> localVarResponse = listWithHttpInfo(limit, before, after, include, dateCreated, metadata);
             return localVarResponse.Data;
         }
 
@@ -869,7 +869,7 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AddressList</returns>
-        public lob.dotnet.Client.ApiResponse<AddressList> AddressesListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<AddressList> listWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -918,7 +918,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "metadata", metadata));
             }
 
-            localVarRequestOptions.Operation = "AddressesApi.AddressesList";
+            localVarRequestOptions.Operation = "AddressesApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -932,7 +932,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<AddressList>("/addresses", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("AddressesList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -955,9 +955,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AddressList</returns>
-        public async System.Threading.Tasks.Task<AddressList> AddressesListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<AddressList> listAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<AddressList> localVarResponse = await AddressesListWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<AddressList> localVarResponse = await listWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -974,7 +974,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AddressList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<AddressList>> AddressesListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<AddressList>> listWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1024,7 +1024,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "metadata", metadata));
             }
 
-            localVarRequestOptions.Operation = "AddressesApi.AddressesList";
+            localVarRequestOptions.Operation = "AddressesApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1039,7 +1039,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("AddressesList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

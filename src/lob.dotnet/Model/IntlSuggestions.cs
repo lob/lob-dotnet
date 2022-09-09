@@ -40,10 +40,10 @@ namespace lob.dotnet.Model
         public enum ObjectEnum
         {
             /// <summary>
-            /// Enum IntlAutocompletion for value: intl_autocompletion
+            /// Enum autocomplete for value: intl_autocompletion
             /// </summary>
             [EnumMember(Value = "intl_autocompletion")]
-            IntlAutocompletion = 1
+            autocomplete = 1
             
 
         }
@@ -69,8 +69,8 @@ namespace lob.dotnet.Model
         /// <param name="state">The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state.  (required).</param>
         /// <param name="country">country (required).</param>
         /// <param name="zipCode">A 5-digit zip code. Left empty if a test key is used. (required).</param>
-        /// <param name="_object">Value is resource type. (default to ObjectEnum.IntlAutocompletion).</param>
-        public IntlSuggestions(string primaryNumberRange = default(string), string primaryLine = default(string), string city = default(string), string state = default(string), CountryExtendedExpanded country = default(CountryExtendedExpanded), string zipCode = default(string), ObjectEnum? _object = ObjectEnum.IntlAutocompletion)
+        /// <param name="_object">Value is resource type. (default to ObjectEnum.autocomplete).</param>
+        public IntlSuggestions(string primaryNumberRange = default(string), string primaryLine = default(string), string city = default(string), string state = default(string), CountryExtendedExpanded country = default(CountryExtendedExpanded), string zipCode = default(string), ObjectEnum? _object = ObjectEnum.autocomplete)
         {
             // to ensure "primaryNumberRange" is required (not null)
             if (primaryNumberRange == null)

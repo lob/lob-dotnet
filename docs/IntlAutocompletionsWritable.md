@@ -1,4 +1,4 @@
-# lob.dotnet.Model.IntlAutocompletionsWritable
+# lob.dotnet.Model.autocompletesWritable
 
 ## Properties
 

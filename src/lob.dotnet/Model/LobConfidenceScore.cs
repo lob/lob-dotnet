@@ -74,25 +74,15 @@ namespace lob.dotnet.Model
         /// indicates the likelihood that the address is a valid, mail-receiving address. Possible values are:   - &#x60;high&#x60; — Over 70% of mailpieces Lob has sent to this address were delivered successfully and recent mailings were also successful.   - &#x60;medium&#x60; — Between 40% and 70% of mailpieces Lob has sent to this address were delivered successfully.   - &#x60;low&#x60; — Less than 40% of mailpieces Lob has sent to this address were delivered successfully and recent mailings weren&#39;t successful.   - &#x60;\&quot;\&quot;&#x60; — No tracking data exists for this address or lob deliverability was unable to find a corresponding level of mail success. 
         /// </summary>
         /// <value>indicates the likelihood that the address is a valid, mail-receiving address. Possible values are:   - &#x60;high&#x60; — Over 70% of mailpieces Lob has sent to this address were delivered successfully and recent mailings were also successful.   - &#x60;medium&#x60; — Between 40% and 70% of mailpieces Lob has sent to this address were delivered successfully.   - &#x60;low&#x60; — Less than 40% of mailpieces Lob has sent to this address were delivered successfully and recent mailings weren&#39;t successful.   - &#x60;\&quot;\&quot;&#x60; — No tracking data exists for this address or lob deliverability was unable to find a corresponding level of mail success. </value>
-        [DataMember(Name = "level", IsRequired = true, EmitDefaultValue = false)]
-        public LevelEnum Level { get; set; }
+        [DataMember(Name = "level", EmitDefaultValue = false)]
+        public LevelEnum? Level { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="LobConfidenceScore" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected LobConfidenceScore() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LobConfidenceScore" /> class.
-        /// </summary>
-        /// <param name="score">A numerical score between 0 and 100 that represents the percentage of mailpieces Lob has sent to this addresses that have been delivered successfully over the past 2 years. Will be &#x60;null&#x60; if no tracking data exists for this address.  (required).</param>
-        /// <param name="level">indicates the likelihood that the address is a valid, mail-receiving address. Possible values are:   - &#x60;high&#x60; — Over 70% of mailpieces Lob has sent to this address were delivered successfully and recent mailings were also successful.   - &#x60;medium&#x60; — Between 40% and 70% of mailpieces Lob has sent to this address were delivered successfully.   - &#x60;low&#x60; — Less than 40% of mailpieces Lob has sent to this address were delivered successfully and recent mailings weren&#39;t successful.   - &#x60;\&quot;\&quot;&#x60; — No tracking data exists for this address or lob deliverability was unable to find a corresponding level of mail success.  (required).</param>
-        public LobConfidenceScore(float? score = default(float?), LevelEnum level = default(LevelEnum))
+        /// <param name="score">A numerical score between 0 and 100 that represents the percentage of mailpieces Lob has sent to this addresses that have been delivered successfully over the past 2 years. Will be &#x60;null&#x60; if no tracking data exists for this address. .</param>
+        /// <param name="level">indicates the likelihood that the address is a valid, mail-receiving address. Possible values are:   - &#x60;high&#x60; — Over 70% of mailpieces Lob has sent to this address were delivered successfully and recent mailings were also successful.   - &#x60;medium&#x60; — Between 40% and 70% of mailpieces Lob has sent to this address were delivered successfully.   - &#x60;low&#x60; — Less than 40% of mailpieces Lob has sent to this address were delivered successfully and recent mailings weren&#39;t successful.   - &#x60;\&quot;\&quot;&#x60; — No tracking data exists for this address or lob deliverability was unable to find a corresponding level of mail success. .</param>
+        public LobConfidenceScore(float? score = default(float?), LevelEnum? level = default(LevelEnum?))
         {
-            // to ensure "score" is required (not null)
-            if (score == null)
-            {
-                throw new ArgumentNullException("score is a required property for LobConfidenceScore and cannot be null");
-            }
             this.Score = score;
             this.Level = level;
         }
@@ -101,7 +91,7 @@ namespace lob.dotnet.Model
         /// A numerical score between 0 and 100 that represents the percentage of mailpieces Lob has sent to this addresses that have been delivered successfully over the past 2 years. Will be &#x60;null&#x60; if no tracking data exists for this address. 
         /// </summary>
         /// <value>A numerical score between 0 and 100 that represents the percentage of mailpieces Lob has sent to this addresses that have been delivered successfully over the past 2 years. Will be &#x60;null&#x60; if no tracking data exists for this address. </value>
-        [DataMember(Name = "score", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "score", EmitDefaultValue = false)]
         public float? Score { get; set; }
 
         /// <summary>

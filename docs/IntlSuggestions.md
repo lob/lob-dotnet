@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **State** | **string** | The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state.  | [optional] 
 **Country** | [**CountryExtended**](CountryExtended.md) |  | [optional] 
 **ZipCode** | **string** | A 5-digit zip code. Left empty if a test key is used. | [optional] 
-**Object** | **string** | Value is resource type. | [optional] [default to ObjectEnum.IntlAutocompletion]
+**Object** | **string** | Value is resource type. | [optional] [default to ObjectEnum.autocomplete]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

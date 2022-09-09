@@ -73,8 +73,8 @@ namespace __tests__.Api
         [Test]
         public void IntlVerificationVerifySingleTest()
         {
-            intlVerificationsApiMock.Setup(x => x.IntlVerification(mockVerificationWritable, null, It.IsAny<int>())).Returns(mockIntlVerificationResponse);
-            IntlVerification response = intlVerificationsApiMock.Object.IntlVerification(mockVerificationWritable, null);
+            intlVerificationsApiMock.Setup(x => x.verifySingle(mockVerificationWritable, null, It.IsAny<int>())).Returns(mockIntlVerificationResponse);
+            IntlVerification response = intlVerificationsApiMock.Object.verifySingle(mockVerificationWritable, null);
 
             Assert.IsInstanceOf<IntlVerification>(response);
             Assert.AreEqual(response.Id, mockIntlVerificationResponse.Id);
@@ -86,8 +86,8 @@ namespace __tests__.Api
         [Test]
         public void IntlVerificationVerifySingleTestWithXLangOutput()
         {
-            intlVerificationsApiMock.Setup(x => x.IntlVerification(mockVerificationWritable, "native", It.IsAny<int>())).Returns(mockIntlVerificationResponse);
-            IntlVerification response = intlVerificationsApiMock.Object.IntlVerification(mockVerificationWritable, "native");
+            intlVerificationsApiMock.Setup(x => x.verifySingle(mockVerificationWritable, "native", It.IsAny<int>())).Returns(mockIntlVerificationResponse);
+            IntlVerification response = intlVerificationsApiMock.Object.verifySingle(mockVerificationWritable, "native");
 
             Assert.IsInstanceOf<IntlVerification>(response);
             Assert.AreEqual(response.Id, mockIntlVerificationResponse.Id);
@@ -104,9 +104,9 @@ namespace __tests__.Api
                 "This is an error"
             );
 
-            intlVerificationsApiMock.Setup(x => x.IntlVerification(null, null, It.IsAny<int>())).Throws(fakeException);
+            intlVerificationsApiMock.Setup(x => x.verifySingle(null, null, It.IsAny<int>())).Throws(fakeException);
             try {
-                IntlVerification response = intlVerificationsApiMock.Object.IntlVerification(null, null);
+                IntlVerification response = intlVerificationsApiMock.Object.verifySingle(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -120,8 +120,8 @@ namespace __tests__.Api
         [Test]
         public void IntlVerificationVerifyBulkTest()
         {
-            intlVerificationsApiMock.Setup(x => x.BulkIntlVerifications(mockMultipleComponentsList, It.IsAny<int>())).Returns(mockIntlVerificationBulkResponse);
-            IntlVerifications response = intlVerificationsApiMock.Object.BulkIntlVerifications(mockMultipleComponentsList);
+            intlVerificationsApiMock.Setup(x => x.verifyBulk(mockMultipleComponentsList, It.IsAny<int>())).Returns(mockIntlVerificationBulkResponse);
+            IntlVerifications response = intlVerificationsApiMock.Object.verifyBulk(mockMultipleComponentsList);
 
             Assert.IsInstanceOf<IntlVerifications>(response);
             Assert.AreEqual(response.Addresses.Count, addresses.Count);
@@ -141,9 +141,9 @@ namespace __tests__.Api
                 "This is an error"
             );
 
-            intlVerificationsApiMock.Setup(x => x.BulkIntlVerifications(null, It.IsAny<int>())).Throws(fakeException);
+            intlVerificationsApiMock.Setup(x => x.verifyBulk(null, It.IsAny<int>())).Throws(fakeException);
             try {
-                IntlVerifications response = intlVerificationsApiMock.Object.BulkIntlVerifications(null);
+                IntlVerifications response = intlVerificationsApiMock.Object.verifyBulk(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

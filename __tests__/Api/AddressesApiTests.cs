@@ -51,27 +51,27 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test AddressCreate
+        /// Test create
         /// </summary>
         [Test]
-        public void AddressCreateTest()
+        public void createTest()
         {
             Address fakeAddress = new Address();
             AddressEditable addressEditable = new AddressEditable();
 
             fakeAddress.Id = "adr_fakeid";
-            addressesApiMock.Setup(x => x.AddressCreate(addressEditable, It.IsAny<int>())).Returns(fakeAddress);
-            Address response = addressesApiMock.Object.AddressCreate(addressEditable);
+            addressesApiMock.Setup(x => x.create(addressEditable, It.IsAny<int>())).Returns(fakeAddress);
+            Address response = addressesApiMock.Object.create(addressEditable);
 
             Assert.IsInstanceOf<Address>(response);
             Assert.AreEqual(response.Id, "adr_fakeid");
         }
 
         /// <summary>
-        /// Test AddressCreateHandlesException
+        /// Test createHandlesException
         /// </summary>
         [Test]
-        public void AddressCreateTestHandlesException()
+        public void createTestHandlesException()
         {
             Address fakeAddress = new Address();
             ApiException fakeException = new ApiException(
@@ -79,9 +79,9 @@ namespace __tests__.Api
                 "This is an error"
             );
 
-            addressesApiMock.Setup(x => x.AddressCreate(null, It.IsAny<int>())).Throws(fakeException);
+            addressesApiMock.Setup(x => x.create(null, It.IsAny<int>())).Throws(fakeException);
             try {
-                Address response = addressesApiMock.Object.AddressCreate(null);
+                Address response = addressesApiMock.Object.create(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -90,19 +90,19 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test AddressDelete
+        /// Test delete
         /// </summary>
         [Test]
-        public void AddressDeleteTest()
+        public void deleteTest()
         {
             AddressDeletion fakeAddress = new AddressDeletion();
 
             fakeAddress.Id = "adr_fakeid";
             fakeAddress.Deleted = true;
 
-            addressesApiMock.Setup(x => x.AddressDelete(fakeAddress.Id, It.IsAny<int>())).Returns(fakeAddress);
+            addressesApiMock.Setup(x => x.delete(fakeAddress.Id, It.IsAny<int>())).Returns(fakeAddress);
 
-            var response = addressesApiMock.Object.AddressDelete(fakeAddress.Id);
+            var response = addressesApiMock.Object.delete(fakeAddress.Id);
 
             Assert.IsInstanceOf<AddressDeletion>(response);
             Assert.AreEqual(response.Deleted, fakeAddress.Deleted);
@@ -111,19 +111,19 @@ namespace __tests__.Api
 
 
         /// <summary>
-        /// Test AddressDeleteHandlesException
+        /// Test deleteHandlesException
         /// </summary>
         [Test]
-        public void AddressDeleteTestHandlesException()
+        public void deleteTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
-            addressesApiMock.Setup(x => x.AddressDelete(null, It.IsAny<int>())).Throws(fakeException);
+            addressesApiMock.Setup(x => x.delete(null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = addressesApiMock.Object.AddressDelete(null);
+                var response = addressesApiMock.Object.delete(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -132,37 +132,37 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test AddressRetrieve
+        /// Test get
         /// </summary>
         [Test]
-        public void AddressRetrieveTest()
+        public void getTest()
         {
             Address fakeAddress = new Address();
             AddressEditable addressEditable = new AddressEditable();
 
             fakeAddress.Id = "adr_fakeid";
             fakeAddress.AddressLine1 = "607 Blue Spring Dr";
-            addressesApiMock.Setup(x => x.AddressRetrieve(fakeAddress.Id, It.IsAny<int>())).Returns(fakeAddress);
-            Address response = addressesApiMock.Object.AddressRetrieve(fakeAddress.Id);
+            addressesApiMock.Setup(x => x.get(fakeAddress.Id, It.IsAny<int>())).Returns(fakeAddress);
+            Address response = addressesApiMock.Object.get(fakeAddress.Id);
 
             Assert.IsInstanceOf<Address>(response);
             Assert.AreEqual(response.AddressLine1, fakeAddress.AddressLine1);
         }
 
         /// <summary>
-        /// Test AddressRetrieveHandlesException
+        /// Test getHandlesException
         /// </summary>
         [Test]
-        public void AddressRetrieveTestHandlesException()
+        public void getTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
-            addressesApiMock.Setup(x => x.AddressRetrieve("adr_fakeId", It.IsAny<int>())).Throws(fakeException);
+            addressesApiMock.Setup(x => x.get("adr_fakeId", It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = addressesApiMock.Object.AddressRetrieve("adr_fakeId");
+                var response = addressesApiMock.Object.get("adr_fakeId");
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -171,10 +171,10 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test AddressesList
+        /// Test list
         /// </summary>
         [Test]
-        public void AddressesListTest()
+        public void listTest()
         {
             int limit = 2;
             string before = null;
@@ -195,9 +195,9 @@ namespace __tests__.Api
             fakeAddress.Object = "list";
             fakeAddress.Count = data.Count;
 
-            addressesApiMock.Setup(x => x.AddressesList(limit, before, after, include, dateCreated, metadata, It.IsAny<int>())).Returns(fakeAddress);
+            addressesApiMock.Setup(x => x.list(limit, before, after, include, dateCreated, metadata, It.IsAny<int>())).Returns(fakeAddress);
 
-            var response = addressesApiMock.Object.AddressesList(limit, before, after, include, dateCreated, metadata);
+            var response = addressesApiMock.Object.list(limit, before, after, include, dateCreated, metadata);
 
             Assert.IsInstanceOf<AddressList>(response);
             Assert.AreEqual(response.Count, fakeAddress.Count);
@@ -213,10 +213,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            addressesApiMock.Setup(x => x.AddressesList(null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
+            addressesApiMock.Setup(x => x.list(null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = addressesApiMock.Object.AddressesList(null);
+                var response = addressesApiMock.Object.list(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

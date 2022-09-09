@@ -1,4 +1,4 @@
-# lob.dotnet.Model.TemplateUpdate
+# lob.dotnet.Model.update
 
 ## Properties
 

@@ -38,7 +38,7 @@ namespace lob.dotnet.Api
         /// <param name="bankAccountWritable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BankAccount</returns>
-        BankAccount BankAccountCreate(BankAccountWritable bankAccountWritable, int operationIndex = 0);
+        BankAccount create(BankAccountWritable bankAccountWritable, int operationIndex = 0);
 
         /// <summary>
         /// create
@@ -50,7 +50,7 @@ namespace lob.dotnet.Api
         /// <param name="bankAccountWritable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BankAccount</returns>
-        ApiResponse<BankAccount> BankAccountCreateWithHttpInfo(BankAccountWritable bankAccountWritable, int operationIndex = 0);
+        ApiResponse<BankAccount> createWithHttpInfo(BankAccountWritable bankAccountWritable, int operationIndex = 0);
         /// <summary>
         /// delete
         /// </summary>
@@ -61,7 +61,7 @@ namespace lob.dotnet.Api
         /// <param name="bankId">id of the bank account</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BankAccountDeletion</returns>
-        BankAccountDeletion BankAccountDelete(string bankId, int operationIndex = 0);
+        BankAccountDeletion delete(string bankId, int operationIndex = 0);
 
         /// <summary>
         /// delete
@@ -73,7 +73,7 @@ namespace lob.dotnet.Api
         /// <param name="bankId">id of the bank account</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BankAccountDeletion</returns>
-        ApiResponse<BankAccountDeletion> BankAccountDeleteWithHttpInfo(string bankId, int operationIndex = 0);
+        ApiResponse<BankAccountDeletion> deleteWithHttpInfo(string bankId, int operationIndex = 0);
         /// <summary>
         /// get
         /// </summary>
@@ -84,7 +84,7 @@ namespace lob.dotnet.Api
         /// <param name="bankId">id of the bank account</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BankAccount</returns>
-        BankAccount BankAccountRetrieve(string bankId, int operationIndex = 0);
+        BankAccount get(string bankId, int operationIndex = 0);
 
         /// <summary>
         /// get
@@ -96,7 +96,7 @@ namespace lob.dotnet.Api
         /// <param name="bankId">id of the bank account</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BankAccount</returns>
-        ApiResponse<BankAccount> BankAccountRetrieveWithHttpInfo(string bankId, int operationIndex = 0);
+        ApiResponse<BankAccount> getWithHttpInfo(string bankId, int operationIndex = 0);
         /// <summary>
         /// verify
         /// </summary>
@@ -105,10 +105,10 @@ namespace lob.dotnet.Api
         /// </remarks>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="bankId">id of the bank account to be verified</param>
-        /// <param name="bankAccountVerify"></param>
+        /// <param name="verify"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BankAccount</returns>
-        BankAccount BankAccountVerify(string bankId, BankAccountVerify bankAccountVerify, int operationIndex = 0);
+        BankAccount verify(string bankId, verify verify, int operationIndex = 0);
 
         /// <summary>
         /// verify
@@ -118,10 +118,10 @@ namespace lob.dotnet.Api
         /// </remarks>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="bankId">id of the bank account to be verified</param>
-        /// <param name="bankAccountVerify"></param>
+        /// <param name="verify"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BankAccount</returns>
-        ApiResponse<BankAccount> BankAccountVerifyWithHttpInfo(string bankId, BankAccountVerify bankAccountVerify, int operationIndex = 0);
+        ApiResponse<BankAccount> verifyWithHttpInfo(string bankId, verify verify, int operationIndex = 0);
         /// <summary>
         /// list
         /// </summary>
@@ -137,7 +137,7 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BankAccountList</returns>
-        BankAccountList BankAccountsList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
+        BankAccountList list(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -154,7 +154,7 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BankAccountList</returns>
-        ApiResponse<BankAccountList> BankAccountsListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
+        ApiResponse<BankAccountList> listWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -175,7 +175,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BankAccount</returns>
-        System.Threading.Tasks.Task<BankAccount> BankAccountCreateAsync(BankAccountWritable bankAccountWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BankAccount> createAsync(BankAccountWritable bankAccountWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// create
@@ -188,7 +188,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BankAccount)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BankAccount>> BankAccountCreateWithHttpInfoAsync(BankAccountWritable bankAccountWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BankAccount>> createWithHttpInfoAsync(BankAccountWritable bankAccountWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// delete
         /// </summary>
@@ -200,7 +200,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BankAccountDeletion</returns>
-        System.Threading.Tasks.Task<BankAccountDeletion> BankAccountDeleteAsync(string bankId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BankAccountDeletion> deleteAsync(string bankId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// delete
@@ -213,7 +213,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BankAccountDeletion)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BankAccountDeletion>> BankAccountDeleteWithHttpInfoAsync(string bankId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BankAccountDeletion>> deleteWithHttpInfoAsync(string bankId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// get
         /// </summary>
@@ -225,7 +225,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BankAccount</returns>
-        System.Threading.Tasks.Task<BankAccount> BankAccountRetrieveAsync(string bankId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BankAccount> getAsync(string bankId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// get
@@ -238,7 +238,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BankAccount)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BankAccount>> BankAccountRetrieveWithHttpInfoAsync(string bankId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BankAccount>> getWithHttpInfoAsync(string bankId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// verify
         /// </summary>
@@ -247,11 +247,11 @@ namespace lob.dotnet.Api
         /// </remarks>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="bankId">id of the bank account to be verified</param>
-        /// <param name="bankAccountVerify"></param>
+        /// <param name="verify"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BankAccount</returns>
-        System.Threading.Tasks.Task<BankAccount> BankAccountVerifyAsync(string bankId, BankAccountVerify bankAccountVerify, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BankAccount> verifyAsync(string bankId, verify verify, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// verify
@@ -261,11 +261,11 @@ namespace lob.dotnet.Api
         /// </remarks>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="bankId">id of the bank account to be verified</param>
-        /// <param name="bankAccountVerify"></param>
+        /// <param name="verify"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BankAccount)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BankAccount>> BankAccountVerifyWithHttpInfoAsync(string bankId, BankAccountVerify bankAccountVerify, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BankAccount>> verifyWithHttpInfoAsync(string bankId, verify verify, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// list
         /// </summary>
@@ -282,7 +282,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BankAccountList</returns>
-        System.Threading.Tasks.Task<BankAccountList> BankAccountsListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BankAccountList> listAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -300,7 +300,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BankAccountList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BankAccountList>> BankAccountsListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BankAccountList>> listWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -428,9 +428,9 @@ namespace lob.dotnet.Api
         /// <param name="bankAccountWritable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BankAccount</returns>
-        public BankAccount BankAccountCreate(BankAccountWritable bankAccountWritable, int operationIndex = 0)
+        public BankAccount create(BankAccountWritable bankAccountWritable, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<BankAccount> localVarResponse = BankAccountCreateWithHttpInfo(bankAccountWritable);
+            lob.dotnet.Client.ApiResponse<BankAccount> localVarResponse = createWithHttpInfo(bankAccountWritable);
             return localVarResponse.Data;
         }
 
@@ -441,12 +441,12 @@ namespace lob.dotnet.Api
         /// <param name="bankAccountWritable"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BankAccount</returns>
-        public lob.dotnet.Client.ApiResponse<BankAccount> BankAccountCreateWithHttpInfo(BankAccountWritable bankAccountWritable, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<BankAccount> createWithHttpInfo(BankAccountWritable bankAccountWritable, int operationIndex = 0)
         {
             // verify the required parameter 'bankAccountWritable' is set
             if (bankAccountWritable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankAccountWritable' when calling BankAccountsApi->BankAccountCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankAccountWritable' when calling BankAccountsApi->create");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -476,7 +476,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = bankAccountWritable;
 
-            localVarRequestOptions.Operation = "BankAccountsApi.BankAccountCreate";
+            localVarRequestOptions.Operation = "BankAccountsApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -490,7 +490,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<BankAccount>("/bank_accounts", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BankAccountCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -508,9 +508,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BankAccount</returns>
-        public async System.Threading.Tasks.Task<BankAccount> BankAccountCreateAsync(BankAccountWritable bankAccountWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BankAccount> createAsync(BankAccountWritable bankAccountWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<BankAccount> localVarResponse = await BankAccountCreateWithHttpInfoAsync(bankAccountWritable, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<BankAccount> localVarResponse = await createWithHttpInfoAsync(bankAccountWritable, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -522,12 +522,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BankAccount)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BankAccount>> BankAccountCreateWithHttpInfoAsync(BankAccountWritable bankAccountWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BankAccount>> createWithHttpInfoAsync(BankAccountWritable bankAccountWritable, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'bankAccountWritable' is set
             if (bankAccountWritable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankAccountWritable' when calling BankAccountsApi->BankAccountCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankAccountWritable' when calling BankAccountsApi->create");
             }
 
 
@@ -558,7 +558,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.Data = bankAccountWritable;
 
-            localVarRequestOptions.Operation = "BankAccountsApi.BankAccountCreate";
+            localVarRequestOptions.Operation = "BankAccountsApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -573,7 +573,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BankAccountCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -590,9 +590,9 @@ namespace lob.dotnet.Api
         /// <param name="bankId">id of the bank account</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BankAccountDeletion</returns>
-        public BankAccountDeletion BankAccountDelete(string bankId, int operationIndex = 0)
+        public BankAccountDeletion delete(string bankId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<BankAccountDeletion> localVarResponse = BankAccountDeleteWithHttpInfo(bankId);
+            lob.dotnet.Client.ApiResponse<BankAccountDeletion> localVarResponse = deleteWithHttpInfo(bankId);
             return localVarResponse.Data;
         }
 
@@ -603,12 +603,12 @@ namespace lob.dotnet.Api
         /// <param name="bankId">id of the bank account</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BankAccountDeletion</returns>
-        public lob.dotnet.Client.ApiResponse<BankAccountDeletion> BankAccountDeleteWithHttpInfo(string bankId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<BankAccountDeletion> deleteWithHttpInfo(string bankId, int operationIndex = 0)
         {
             // verify the required parameter 'bankId' is set
             if (bankId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankId' when calling BankAccountsApi->BankAccountDelete");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankId' when calling BankAccountsApi->delete");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -635,7 +635,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("bank_id", lob.dotnet.Client.ClientUtils.ParameterToString(bankId)); // path parameter
 
-            localVarRequestOptions.Operation = "BankAccountsApi.BankAccountDelete";
+            localVarRequestOptions.Operation = "BankAccountsApi.delete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -649,7 +649,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Delete<BankAccountDeletion>("/bank_accounts/{bank_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BankAccountDelete", localVarResponse);
+                Exception _exception = this.ExceptionFactory("delete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -667,9 +667,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BankAccountDeletion</returns>
-        public async System.Threading.Tasks.Task<BankAccountDeletion> BankAccountDeleteAsync(string bankId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BankAccountDeletion> deleteAsync(string bankId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<BankAccountDeletion> localVarResponse = await BankAccountDeleteWithHttpInfoAsync(bankId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<BankAccountDeletion> localVarResponse = await deleteWithHttpInfoAsync(bankId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -681,12 +681,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BankAccountDeletion)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BankAccountDeletion>> BankAccountDeleteWithHttpInfoAsync(string bankId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BankAccountDeletion>> deleteWithHttpInfoAsync(string bankId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'bankId' is set
             if (bankId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankId' when calling BankAccountsApi->BankAccountDelete");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankId' when calling BankAccountsApi->delete");
             }
 
 
@@ -714,7 +714,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("bank_id", lob.dotnet.Client.ClientUtils.ParameterToString(bankId)); // path parameter
 
-            localVarRequestOptions.Operation = "BankAccountsApi.BankAccountDelete";
+            localVarRequestOptions.Operation = "BankAccountsApi.delete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -729,7 +729,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BankAccountDelete", localVarResponse);
+                Exception _exception = this.ExceptionFactory("delete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -746,9 +746,9 @@ namespace lob.dotnet.Api
         /// <param name="bankId">id of the bank account</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BankAccount</returns>
-        public BankAccount BankAccountRetrieve(string bankId, int operationIndex = 0)
+        public BankAccount get(string bankId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<BankAccount> localVarResponse = BankAccountRetrieveWithHttpInfo(bankId);
+            lob.dotnet.Client.ApiResponse<BankAccount> localVarResponse = getWithHttpInfo(bankId);
             return localVarResponse.Data;
         }
 
@@ -759,12 +759,12 @@ namespace lob.dotnet.Api
         /// <param name="bankId">id of the bank account</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BankAccount</returns>
-        public lob.dotnet.Client.ApiResponse<BankAccount> BankAccountRetrieveWithHttpInfo(string bankId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<BankAccount> getWithHttpInfo(string bankId, int operationIndex = 0)
         {
             // verify the required parameter 'bankId' is set
             if (bankId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankId' when calling BankAccountsApi->BankAccountRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankId' when calling BankAccountsApi->get");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -791,7 +791,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("bank_id", lob.dotnet.Client.ClientUtils.ParameterToString(bankId)); // path parameter
 
-            localVarRequestOptions.Operation = "BankAccountsApi.BankAccountRetrieve";
+            localVarRequestOptions.Operation = "BankAccountsApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -805,7 +805,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<BankAccount>("/bank_accounts/{bank_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BankAccountRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -823,9 +823,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BankAccount</returns>
-        public async System.Threading.Tasks.Task<BankAccount> BankAccountRetrieveAsync(string bankId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BankAccount> getAsync(string bankId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<BankAccount> localVarResponse = await BankAccountRetrieveWithHttpInfoAsync(bankId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<BankAccount> localVarResponse = await getWithHttpInfoAsync(bankId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -837,12 +837,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BankAccount)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BankAccount>> BankAccountRetrieveWithHttpInfoAsync(string bankId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BankAccount>> getWithHttpInfoAsync(string bankId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'bankId' is set
             if (bankId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankId' when calling BankAccountsApi->BankAccountRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankId' when calling BankAccountsApi->get");
             }
 
 
@@ -870,7 +870,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("bank_id", lob.dotnet.Client.ClientUtils.ParameterToString(bankId)); // path parameter
 
-            localVarRequestOptions.Operation = "BankAccountsApi.BankAccountRetrieve";
+            localVarRequestOptions.Operation = "BankAccountsApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -885,7 +885,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BankAccountRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -900,12 +900,12 @@ namespace lob.dotnet.Api
         /// </summary>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="bankId">id of the bank account to be verified</param>
-        /// <param name="bankAccountVerify"></param>
+        /// <param name="verify"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BankAccount</returns>
-        public BankAccount BankAccountVerify(string bankId, BankAccountVerify bankAccountVerify, int operationIndex = 0)
+        public BankAccount verify(string bankId, verify verify, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<BankAccount> localVarResponse = BankAccountVerifyWithHttpInfo(bankId, bankAccountVerify);
+            lob.dotnet.Client.ApiResponse<BankAccount> localVarResponse = verifyWithHttpInfo(bankId, verify);
             return localVarResponse.Data;
         }
 
@@ -914,21 +914,21 @@ namespace lob.dotnet.Api
         /// </summary>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="bankId">id of the bank account to be verified</param>
-        /// <param name="bankAccountVerify"></param>
+        /// <param name="verify"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BankAccount</returns>
-        public lob.dotnet.Client.ApiResponse<BankAccount> BankAccountVerifyWithHttpInfo(string bankId, BankAccountVerify bankAccountVerify, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<BankAccount> verifyWithHttpInfo(string bankId, verify verify, int operationIndex = 0)
         {
             // verify the required parameter 'bankId' is set
             if (bankId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankId' when calling BankAccountsApi->BankAccountVerify");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankId' when calling BankAccountsApi->verify");
             }
 
-            // verify the required parameter 'bankAccountVerify' is set
-            if (bankAccountVerify == null)
+            // verify the required parameter 'verify' is set
+            if (verify == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankAccountVerify' when calling BankAccountsApi->BankAccountVerify");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'verify' when calling BankAccountsApi->verify");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -957,9 +957,9 @@ namespace lob.dotnet.Api
             }
 
             localVarRequestOptions.PathParameters.Add("bank_id", lob.dotnet.Client.ClientUtils.ParameterToString(bankId)); // path parameter
-            localVarRequestOptions.Data = bankAccountVerify;
+            localVarRequestOptions.Data = verify;
 
-            localVarRequestOptions.Operation = "BankAccountsApi.BankAccountVerify";
+            localVarRequestOptions.Operation = "BankAccountsApi.verify";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -973,7 +973,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<BankAccount>("/bank_accounts/{bank_id}/verify", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BankAccountVerify", localVarResponse);
+                Exception _exception = this.ExceptionFactory("verify", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -988,13 +988,13 @@ namespace lob.dotnet.Api
         /// </summary>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="bankId">id of the bank account to be verified</param>
-        /// <param name="bankAccountVerify"></param>
+        /// <param name="verify"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BankAccount</returns>
-        public async System.Threading.Tasks.Task<BankAccount> BankAccountVerifyAsync(string bankId, BankAccountVerify bankAccountVerify, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BankAccount> verifyAsync(string bankId, verify verify, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<BankAccount> localVarResponse = await BankAccountVerifyWithHttpInfoAsync(bankId, bankAccountVerify, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<BankAccount> localVarResponse = await verifyWithHttpInfoAsync(bankId, verify, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1003,22 +1003,22 @@ namespace lob.dotnet.Api
         /// </summary>
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="bankId">id of the bank account to be verified</param>
-        /// <param name="bankAccountVerify"></param>
+        /// <param name="verify"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BankAccount)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BankAccount>> BankAccountVerifyWithHttpInfoAsync(string bankId, BankAccountVerify bankAccountVerify, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BankAccount>> verifyWithHttpInfoAsync(string bankId, verify verify, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'bankId' is set
             if (bankId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankId' when calling BankAccountsApi->BankAccountVerify");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankId' when calling BankAccountsApi->verify");
             }
 
-            // verify the required parameter 'bankAccountVerify' is set
-            if (bankAccountVerify == null)
+            // verify the required parameter 'verify' is set
+            if (verify == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'bankAccountVerify' when calling BankAccountsApi->BankAccountVerify");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'verify' when calling BankAccountsApi->verify");
             }
 
 
@@ -1048,9 +1048,9 @@ namespace lob.dotnet.Api
             }
 
             localVarRequestOptions.PathParameters.Add("bank_id", lob.dotnet.Client.ClientUtils.ParameterToString(bankId)); // path parameter
-            localVarRequestOptions.Data = bankAccountVerify;
+            localVarRequestOptions.Data = verify;
 
-            localVarRequestOptions.Operation = "BankAccountsApi.BankAccountVerify";
+            localVarRequestOptions.Operation = "BankAccountsApi.verify";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1065,7 +1065,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BankAccountVerify", localVarResponse);
+                Exception _exception = this.ExceptionFactory("verify", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1087,9 +1087,9 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>BankAccountList</returns>
-        public BankAccountList BankAccountsList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
+        public BankAccountList list(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<BankAccountList> localVarResponse = BankAccountsListWithHttpInfo(limit, before, after, include, dateCreated, metadata);
+            lob.dotnet.Client.ApiResponse<BankAccountList> localVarResponse = listWithHttpInfo(limit, before, after, include, dateCreated, metadata);
             return localVarResponse.Data;
         }
 
@@ -1105,7 +1105,7 @@ namespace lob.dotnet.Api
         /// <param name="metadata">Filter by metadata key-value pair&#x60;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of BankAccountList</returns>
-        public lob.dotnet.Client.ApiResponse<BankAccountList> BankAccountsListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<BankAccountList> listWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -1154,7 +1154,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "metadata", metadata));
             }
 
-            localVarRequestOptions.Operation = "BankAccountsApi.BankAccountsList";
+            localVarRequestOptions.Operation = "BankAccountsApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1168,7 +1168,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<BankAccountList>("/bank_accounts", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BankAccountsList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1191,9 +1191,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BankAccountList</returns>
-        public async System.Threading.Tasks.Task<BankAccountList> BankAccountsListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BankAccountList> listAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<BankAccountList> localVarResponse = await BankAccountsListWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<BankAccountList> localVarResponse = await listWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1210,7 +1210,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BankAccountList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BankAccountList>> BankAccountsListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<BankAccountList>> listWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1260,7 +1260,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "metadata", metadata));
             }
 
-            localVarRequestOptions.Operation = "BankAccountsApi.BankAccountsList";
+            localVarRequestOptions.Operation = "BankAccountsApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1275,7 +1275,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("BankAccountsList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

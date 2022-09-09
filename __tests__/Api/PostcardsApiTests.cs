@@ -17,6 +17,7 @@ using Moq;
 using lob.dotnet.Client;
 using lob.dotnet.Api;
 using lob.dotnet.Model;
+using static lob.dotnet.Model.Postcard;
 
 namespace __tests__.Api
 {
@@ -40,7 +41,7 @@ namespace __tests__.Api
                 "psc_fakeId",
                 default(Address),
                 default(AddressDomesticExpanded),
-                Postcard.CarrierEnum.USPS,
+                CarrierEnum.USPS,
                 default(List<Thumbnail>),
                 default(PostcardSize),
                 default(DateTime),
@@ -52,7 +53,7 @@ namespace __tests__.Api
                 default(string),
                 default(string),
                 default(List<TrackingEventNormal>),
-                Postcard.ObjectEnum.Postcard,
+                ObjectEnum.Postcard,
                 "fake url",
                 default(string),
                 default(Dictionary<string, string>),
@@ -64,7 +65,7 @@ namespace __tests__.Api
                 "psc_fakeId1",
                 default(Address),
                 default(AddressDomesticExpanded),
-                Postcard.CarrierEnum.USPS,
+                CarrierEnum.USPS,
                 default(List<Thumbnail>),
                 default(PostcardSize),
                 default(DateTime),
@@ -76,7 +77,7 @@ namespace __tests__.Api
                 default(string),
                 default(string),
                 default(List<TrackingEventNormal>),
-                Postcard.ObjectEnum.Postcard,
+                ObjectEnum.Postcard,
                 "fake url",
                 default(string),
                 default(Dictionary<string, string>),
@@ -88,7 +89,7 @@ namespace __tests__.Api
                 "psc_fakeId2",
                 default(Address),
                 default(AddressDomesticExpanded),
-                Postcard.CarrierEnum.USPS,
+                CarrierEnum.USPS,
                 default(List<Thumbnail>),
                 default(PostcardSize),
                 default(DateTime),
@@ -100,7 +101,7 @@ namespace __tests__.Api
                 default(string),
                 default(string),
                 default(List<TrackingEventNormal>),
-                Postcard.ObjectEnum.Postcard,
+                ObjectEnum.Postcard,
                 "fake url",
                 default(string),
                 default(Dictionary<string, string>),
@@ -125,10 +126,10 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test PostcardCreate
+        /// Test create
         /// </summary>
         [Test]
-        public void PostcardCreateTest()
+        public void createTest()
         {
             PostcardEditable postcardEditable = new PostcardEditable(
                 "adr_fakeId", // to
@@ -144,26 +145,26 @@ namespace __tests__.Api
                 default(string) // billingGroupId
             );
 
-            PostcardsApiMock.Setup(x => x.PostcardCreate(postcardEditable, null, It.IsAny<int>())).Returns(fakePostcard);
-            Postcard response = PostcardsApiMock.Object.PostcardCreate(postcardEditable);
+            PostcardsApiMock.Setup(x => x.create(postcardEditable, null, It.IsAny<int>())).Returns(fakePostcard);
+            Postcard response = PostcardsApiMock.Object.create(postcardEditable);
             Assert.IsInstanceOf<Postcard>(response);
             Assert.AreEqual(response.Id, fakePostcard.Id);
         }
 
         /// <summary>
-        /// Test PostcardCreateHandlesException
+        /// Test createHandlesException
         /// </summary>
         [Test]
-        public void PostcardCreateTestHandlesException()
+        public void createTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
 
-            PostcardsApiMock.Setup(x => x.PostcardCreate(null, null, It.IsAny<int>())).Throws(fakeException);
+            PostcardsApiMock.Setup(x => x.create(null, null, It.IsAny<int>())).Throws(fakeException);
             try {
-                Postcard response = PostcardsApiMock.Object.PostcardCreate(null, null);
+                Postcard response = PostcardsApiMock.Object.create(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -172,19 +173,19 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test PostcardDelete
+        /// Test delete
         /// </summary>
         [Test]
-        public void PostcardDeleteTest()
+        public void deleteTest()
         {
             PostcardDeletion fakePostcard = new PostcardDeletion();
 
             fakePostcard.Id = "psc_fakeId";
             fakePostcard.Deleted = true;
 
-            PostcardsApiMock.Setup(x => x.PostcardDelete(fakePostcard.Id, It.IsAny<int>())).Returns(fakePostcard);
+            PostcardsApiMock.Setup(x => x.cancel(fakePostcard.Id, It.IsAny<int>())).Returns(fakePostcard);
 
-            var response = PostcardsApiMock.Object.PostcardDelete(fakePostcard.Id);
+            var response = PostcardsApiMock.Object.cancel(fakePostcard.Id);
 
             Assert.IsInstanceOf<PostcardDeletion>(response);
             Assert.AreEqual(response.Deleted, fakePostcard.Deleted);
@@ -192,19 +193,19 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test PostcardDeleteHandlesException
+        /// Test deleteHandlesException
         /// </summary>
         [Test]
-        public void PostcardDeleteHandlesException()
+        public void deleteHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
 
-            PostcardsApiMock.Setup(x => x.PostcardDelete(null, It.IsAny<int>())).Throws(fakeException);
+            PostcardsApiMock.Setup(x => x.cancel(null, It.IsAny<int>())).Throws(fakeException);
             try {
-                var response = PostcardsApiMock.Object.PostcardDelete(null);
+                var response = PostcardsApiMock.Object.cancel(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -213,32 +214,32 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test PostcardRetrieve
+        /// Test get
         /// </summary>
         [Test]
-        public void PostcardRetrieveTest()
+        public void getTest()
         {
-            PostcardsApiMock.Setup(x => x.PostcardRetrieve(fakePostcard.Id, It.IsAny<int>())).Returns(fakePostcard);
-            Postcard response = PostcardsApiMock.Object.PostcardRetrieve(fakePostcard.Id);
+            PostcardsApiMock.Setup(x => x.get(fakePostcard.Id, It.IsAny<int>())).Returns(fakePostcard);
+            Postcard response = PostcardsApiMock.Object.get(fakePostcard.Id);
 
             Assert.IsInstanceOf<Postcard>(response);
             Assert.AreEqual(response.Id, fakePostcard.Id);
         }
 
         /// <summary>
-        /// Test PostcardRetrieveHandlesException
+        /// Test getHandlesException
         /// </summary>
         [Test]
-        public void PostcardRetrieveTestHandlesException()
+        public void getTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
-            PostcardsApiMock.Setup(x => x.PostcardRetrieve("psc_fakeId", It.IsAny<int>())).Throws(fakeException);
+            PostcardsApiMock.Setup(x => x.get("psc_fakeId", It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = PostcardsApiMock.Object.PostcardRetrieve("psc_fakeId");
+                var response = PostcardsApiMock.Object.get("psc_fakeId");
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -252,9 +253,9 @@ namespace __tests__.Api
         [Test]
         public void PostcardListTest()
         {
-            PostcardsApiMock.Setup(x => x.PostcardsList(null, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
+            PostcardsApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
 
-            var response = PostcardsApiMock.Object.PostcardsList(null, null, null, null, null, null, null, null, null, null, null);
+            var response = PostcardsApiMock.Object.list(null, null, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
             Assert.AreEqual(response.Count, fakePostcardList.Count);
@@ -270,10 +271,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            PostcardsApiMock.Setup(x => x.PostcardsList(null, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
+            PostcardsApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = PostcardsApiMock.Object.PostcardsList(null, null, null, null, null, null, null, null, null, null, null);
+                var response = PostcardsApiMock.Object.list(null, null, null, null, null, null, null, null, null, null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -289,9 +290,9 @@ namespace __tests__.Api
         {
             int limit = 2;
 
-            PostcardsApiMock.Setup(x => x.PostcardsList(limit, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
+            PostcardsApiMock.Setup(x => x.list(limit, null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
 
-            var response = PostcardsApiMock.Object.PostcardsList(limit, null, null, null, null, null, null, null, null, null, null);
+            var response = PostcardsApiMock.Object.list(limit, null, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
             Assert.AreEqual(response.Count, fakePostcardList.Count);
@@ -305,9 +306,9 @@ namespace __tests__.Api
         {
             string before = "before";
 
-            PostcardsApiMock.Setup(x => x.PostcardsList(null, before, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
+            PostcardsApiMock.Setup(x => x.list(null, before, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
 
-            var response = PostcardsApiMock.Object.PostcardsList(null, before, null, null, null, null, null, null, null, null, null);
+            var response = PostcardsApiMock.Object.list(null, before, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
             Assert.AreEqual(response.Count, fakePostcardList.Count);
@@ -321,9 +322,9 @@ namespace __tests__.Api
         {
             string after = "after";
 
-            PostcardsApiMock.Setup(x => x.PostcardsList(null, null, after, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
+            PostcardsApiMock.Setup(x => x.list(null, null, after, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
 
-            var response = PostcardsApiMock.Object.PostcardsList(null, null, after, null, null, null, null, null, null, null, null);
+            var response = PostcardsApiMock.Object.list(null, null, after, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
             Assert.AreEqual(response.Count, fakePostcardList.Count);
@@ -338,9 +339,9 @@ namespace __tests__.Api
             List<string> include = new List<string>();
             include.Add("total_count");
 
-            PostcardsApiMock.Setup(x => x.PostcardsList(null, null, null, include, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
+            PostcardsApiMock.Setup(x => x.list(null, null, null, include, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
 
-            var response = PostcardsApiMock.Object.PostcardsList(null, null, null, include, null, null, null, null, null, null, null);
+            var response = PostcardsApiMock.Object.list(null, null, null, include, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
             Assert.AreEqual(response.Count, fakePostcardList.Count);
@@ -356,9 +357,9 @@ namespace __tests__.Api
             dateCreated.Add("gt", DateTime.Now);
             dateCreated.Add("lt", DateTime.Now);
 
-            PostcardsApiMock.Setup(x => x.PostcardsList(null, null, null, null, dateCreated, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
+            PostcardsApiMock.Setup(x => x.list(null, null, null, null, dateCreated, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
 
-            var response = PostcardsApiMock.Object.PostcardsList(null, null, null, null, dateCreated, null, null, null, null, null, null);
+            var response = PostcardsApiMock.Object.list(null, null, null, null, dateCreated, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
             Assert.AreEqual(response.Count, fakePostcardList.Count);
@@ -373,9 +374,9 @@ namespace __tests__.Api
             Dictionary<String, String> metadata = new Dictionary<String, String>();
             metadata.Add("name", "Harry");
 
-            PostcardsApiMock.Setup(x => x.PostcardsList(null, null, null, null, null, metadata, null, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
+            PostcardsApiMock.Setup(x => x.list(null, null, null, null, null, metadata, null, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
 
-            var response = PostcardsApiMock.Object.PostcardsList(null, null, null, null, null, metadata, null, null, null, null, null);
+            var response = PostcardsApiMock.Object.list(null, null, null, null, null, metadata, null, null, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
             Assert.AreEqual(response.Count, fakePostcardList.Count);
@@ -389,9 +390,9 @@ namespace __tests__.Api
         {
             List<PostcardSize> size = new List<PostcardSize>{PostcardSize._4x6};
 
-            PostcardsApiMock.Setup(x => x.PostcardsList(null, null, null, null, null, null, size, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
+            PostcardsApiMock.Setup(x => x.list(null, null, null, null, null, null, size, null, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
 
-            var response = PostcardsApiMock.Object.PostcardsList(null, null, null, null, null, null, size, null, null, null, null);
+            var response = PostcardsApiMock.Object.list(null, null, null, null, null, null, size, null, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
             Assert.AreEqual(response.Count, fakePostcardList.Count);
@@ -405,9 +406,9 @@ namespace __tests__.Api
         {
             Boolean scheduled = true;
 
-            PostcardsApiMock.Setup(x => x.PostcardsList(null, null, null, null, null, null, null, scheduled, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
+            PostcardsApiMock.Setup(x => x.list(null, null, null, null, null, null, null, scheduled, null, null, null, It.IsAny<int>())).Returns(fakePostcardList);
 
-            var response = PostcardsApiMock.Object.PostcardsList(null, null, null, null, null, null, null, scheduled, null, null, null);
+            var response = PostcardsApiMock.Object.list(null, null, null, null, null, null, null, scheduled, null, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
             Assert.AreEqual(response.Count, fakePostcardList.Count);
@@ -423,9 +424,9 @@ namespace __tests__.Api
             sendDate.Add("gt", "2020-01-01");
             sendDate.Add("lt", "2020-01-31T12");
 
-            PostcardsApiMock.Setup(x => x.PostcardsList(null, null, null, null, null, null, null, null, sendDate, null, null, It.IsAny<int>())).Returns(fakePostcardList);
+            PostcardsApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, sendDate, null, null, It.IsAny<int>())).Returns(fakePostcardList);
 
-            var response = PostcardsApiMock.Object.PostcardsList(null, null, null, null, null, null, null, null, sendDate, null, null);
+            var response = PostcardsApiMock.Object.list(null, null, null, null, null, null, null, null, sendDate, null, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
             Assert.AreEqual(response.Count, fakePostcardList.Count);
@@ -439,9 +440,9 @@ namespace __tests__.Api
         {
             MailType mailType = MailType.FirstClass;
 
-            PostcardsApiMock.Setup(x => x.PostcardsList(null, null, null, null, null, null, null, null, null, mailType, null, It.IsAny<int>())).Returns(fakePostcardList);
+            PostcardsApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, null, mailType, null, It.IsAny<int>())).Returns(fakePostcardList);
 
-            var response = PostcardsApiMock.Object.PostcardsList(null, null, null, null, null, null, null, null, null, mailType, null);
+            var response = PostcardsApiMock.Object.list(null, null, null, null, null, null, null, null, null, mailType, null);
 
             Assert.IsInstanceOf<PostcardList>(response);
             Assert.AreEqual(response.Count, fakePostcardList.Count);
@@ -455,9 +456,9 @@ namespace __tests__.Api
         {
             SortBy3 sortBy = new SortBy3(null, SortBy3.SendDateEnum.Asc);
 
-            PostcardsApiMock.Setup(x => x.PostcardsList(null, null, null, null, null, null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakePostcardList);
+            PostcardsApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakePostcardList);
 
-            var response = PostcardsApiMock.Object.PostcardsList(null, null, null, null, null, null, null, null, null, null, sortBy);
+            var response = PostcardsApiMock.Object.list(null, null, null, null, null, null, null, null, null, null, sortBy);
 
             Assert.IsInstanceOf<PostcardList>(response);
             Assert.AreEqual(response.Count, fakePostcardList.Count);

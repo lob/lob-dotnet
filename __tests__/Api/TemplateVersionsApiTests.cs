@@ -89,10 +89,10 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test CreateTemplateVersion
+        /// Test create
         /// </summary>
         [Test]
-        public void CreateTemplateVersionTest()
+        public void createTest()
         {
             TemplateVersionWritable templateVersionWritable = new TemplateVersionWritable(
                 "C# templateVersions unit test description", // description
@@ -100,27 +100,27 @@ namespace __tests__.Api
                 default(EngineHtml) // engine
             );
 
-            templateVersionsApiMock.Setup(x => x.CreateTemplateVersion("tmpl_fakeId", templateVersionWritable, It.IsAny<int>())).Returns(fakeTemplateVersion);
-            TemplateVersion response = templateVersionsApiMock.Object.CreateTemplateVersion("tmpl_fakeId", templateVersionWritable);
+            templateVersionsApiMock.Setup(x => x.create("tmpl_fakeId", templateVersionWritable, It.IsAny<int>())).Returns(fakeTemplateVersion);
+            TemplateVersion response = templateVersionsApiMock.Object.create("tmpl_fakeId", templateVersionWritable);
 
             Assert.IsInstanceOf<TemplateVersion>(response);
             Assert.AreEqual(response.Id, "vrsn_fakeId");
         }
 
         /// <summary>
-        /// Test CreateTemplateVersionHandlesException
+        /// Test createHandlesException
         /// </summary>
         [Test]
-        public void CreateTemplateVersionTestHandlesException()
+        public void createTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
 
-            templateVersionsApiMock.Setup(x => x.CreateTemplateVersion(null, null, It.IsAny<int>())).Throws(fakeException);
+            templateVersionsApiMock.Setup(x => x.create(null, null, It.IsAny<int>())).Throws(fakeException);
             try {
-                TemplateVersion response = templateVersionsApiMock.Object.CreateTemplateVersion(null, null);
+                TemplateVersion response = templateVersionsApiMock.Object.create(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -129,19 +129,19 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test TemplateVersionDelete
+        /// Test delete
         /// </summary>
         [Test]
-        public void TemplateVersionDeleteTest()
+        public void deleteTest()
         {
             TemplateVersionDeletion fakeTemplateVersion = new TemplateVersionDeletion();
 
             fakeTemplateVersion.Id = "vrsn_fakeId";
             fakeTemplateVersion.Deleted = true;
 
-            templateVersionsApiMock.Setup(x => x.TemplateVersionDelete("tmpl_fakeId", fakeTemplateVersion.Id, It.IsAny<int>())).Returns(fakeTemplateVersion);
+            templateVersionsApiMock.Setup(x => x.delete("tmpl_fakeId", fakeTemplateVersion.Id, It.IsAny<int>())).Returns(fakeTemplateVersion);
 
-            var response = templateVersionsApiMock.Object.TemplateVersionDelete("tmpl_fakeId", fakeTemplateVersion.Id);
+            var response = templateVersionsApiMock.Object.delete("tmpl_fakeId", fakeTemplateVersion.Id);
 
             Assert.IsInstanceOf<TemplateVersionDeletion>(response);
             Assert.AreEqual(response.Deleted, fakeTemplateVersion.Deleted);
@@ -149,19 +149,19 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test TemplateVersionDeleteHandlesException
+        /// Test deleteHandlesException
         /// </summary>
         [Test]
-        public void TemplateVersionDeleteHandlesException()
+        public void deleteHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
 
-            templateVersionsApiMock.Setup(x => x.TemplateVersionDelete(null, null, It.IsAny<int>())).Throws(fakeException);
+            templateVersionsApiMock.Setup(x => x.delete(null, null, It.IsAny<int>())).Throws(fakeException);
             try {
-                var response = templateVersionsApiMock.Object.TemplateVersionDelete(null, null);
+                var response = templateVersionsApiMock.Object.delete(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -170,32 +170,32 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test TemplateVersionRetrieve
+        /// Test get
         /// </summary>
         [Test]
-        public void TemplateVersionRetrieveTest()
+        public void getTest()
         {
-            templateVersionsApiMock.Setup(x => x.TemplateVersionRetrieve("tmpl_fakeId", fakeTemplateVersion.Id, It.IsAny<int>())).Returns(fakeTemplateVersion);
-            TemplateVersion response = templateVersionsApiMock.Object.TemplateVersionRetrieve("tmpl_fakeId", fakeTemplateVersion.Id);
+            templateVersionsApiMock.Setup(x => x.get("tmpl_fakeId", fakeTemplateVersion.Id, It.IsAny<int>())).Returns(fakeTemplateVersion);
+            TemplateVersion response = templateVersionsApiMock.Object.get("tmpl_fakeId", fakeTemplateVersion.Id);
 
             Assert.IsInstanceOf<TemplateVersion>(response);
             Assert.AreEqual(response.Id, fakeTemplateVersion.Id);
         }
 
         /// <summary>
-        /// Test TemplateVersionRetrieveHandlesException
+        /// Test getHandlesException
         /// </summary>
         [Test]
-        public void TemplateVersionRetrieveTestHandlesException()
+        public void getTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
-            templateVersionsApiMock.Setup(x => x.TemplateVersionRetrieve(null, null, It.IsAny<int>())).Throws(fakeException);
+            templateVersionsApiMock.Setup(x => x.get(null, null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = templateVersionsApiMock.Object.TemplateVersionRetrieve(null, null);
+                var response = templateVersionsApiMock.Object.get(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -209,9 +209,9 @@ namespace __tests__.Api
         [Test]
         public void TemplateVersionListTest()
         {
-            templateVersionsApiMock.Setup(x => x.TemplateVersionsList("tmpl_fakeId", null, null, null, null, null, It.IsAny<int>())).Returns(fakeTemplateVersionList);
+            templateVersionsApiMock.Setup(x => x.list("tmpl_fakeId", null, null, null, null, null, It.IsAny<int>())).Returns(fakeTemplateVersionList);
 
-            var response = templateVersionsApiMock.Object.TemplateVersionsList("tmpl_fakeId", null, null, null, null, null);
+            var response = templateVersionsApiMock.Object.list("tmpl_fakeId", null, null, null, null, null);
 
             Assert.IsInstanceOf<TemplateVersionList>(response);
             Assert.AreEqual(response.Count, fakeTemplateVersionList.Count);
@@ -227,10 +227,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            templateVersionsApiMock.Setup(x => x.TemplateVersionsList(null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
+            templateVersionsApiMock.Setup(x => x.list(null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = templateVersionsApiMock.Object.TemplateVersionsList(null, null, null, null, null, null);
+                var response = templateVersionsApiMock.Object.list(null, null, null, null, null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -246,9 +246,9 @@ namespace __tests__.Api
         {
             int limit = 2;
 
-            templateVersionsApiMock.Setup(x => x.TemplateVersionsList("tmpl_fakeId", limit, null, null, null, null, It.IsAny<int>())).Returns(fakeTemplateVersionList);
+            templateVersionsApiMock.Setup(x => x.list("tmpl_fakeId", limit, null, null, null, null, It.IsAny<int>())).Returns(fakeTemplateVersionList);
 
-            var response = templateVersionsApiMock.Object.TemplateVersionsList("tmpl_fakeId", limit, null, null, null, null);
+            var response = templateVersionsApiMock.Object.list("tmpl_fakeId", limit, null, null, null, null);
 
             Assert.IsInstanceOf<TemplateVersionList>(response);
             Assert.AreEqual(response.Count, fakeTemplateVersionList.Count);
@@ -262,9 +262,9 @@ namespace __tests__.Api
         {
             string before = "before";
 
-            templateVersionsApiMock.Setup(x => x.TemplateVersionsList("tmpl_fakeId", null, before, null, null, null, It.IsAny<int>())).Returns(fakeTemplateVersionList);
+            templateVersionsApiMock.Setup(x => x.list("tmpl_fakeId", null, before, null, null, null, It.IsAny<int>())).Returns(fakeTemplateVersionList);
 
-            var response = templateVersionsApiMock.Object.TemplateVersionsList("tmpl_fakeId", null, before, null, null, null);
+            var response = templateVersionsApiMock.Object.list("tmpl_fakeId", null, before, null, null, null);
 
             Assert.IsInstanceOf<TemplateVersionList>(response);
             Assert.AreEqual(response.Count, fakeTemplateVersionList.Count);
@@ -278,9 +278,9 @@ namespace __tests__.Api
         {
             string after = "after";
 
-            templateVersionsApiMock.Setup(x => x.TemplateVersionsList("tmpl_fakeId", null, null, after, null, null, It.IsAny<int>())).Returns(fakeTemplateVersionList);
+            templateVersionsApiMock.Setup(x => x.list("tmpl_fakeId", null, null, after, null, null, It.IsAny<int>())).Returns(fakeTemplateVersionList);
 
-            var response = templateVersionsApiMock.Object.TemplateVersionsList("tmpl_fakeId", null, null, after, null, null);
+            var response = templateVersionsApiMock.Object.list("tmpl_fakeId", null, null, after, null, null);
 
             Assert.IsInstanceOf<TemplateVersionList>(response);
             Assert.AreEqual(response.Count, fakeTemplateVersionList.Count);
@@ -295,9 +295,9 @@ namespace __tests__.Api
             List<string> include = new List<string>();
             include.Add("total_count");
 
-            templateVersionsApiMock.Setup(x => x.TemplateVersionsList("tmpl_fakeId", null, null, null, include, null, It.IsAny<int>())).Returns(fakeTemplateVersionList);
+            templateVersionsApiMock.Setup(x => x.list("tmpl_fakeId", null, null, null, include, null, It.IsAny<int>())).Returns(fakeTemplateVersionList);
 
-            var response = templateVersionsApiMock.Object.TemplateVersionsList("tmpl_fakeId", null, null, null, include, null);
+            var response = templateVersionsApiMock.Object.list("tmpl_fakeId", null, null, null, include, null);
 
             Assert.IsInstanceOf<TemplateVersionList>(response);
             Assert.AreEqual(response.Count, fakeTemplateVersionList.Count);
@@ -313,44 +313,44 @@ namespace __tests__.Api
             dateCreated.Add("gt", DateTime.Now);
             dateCreated.Add("lt", DateTime.Now);
 
-            templateVersionsApiMock.Setup(x => x.TemplateVersionsList("tmpl_fakeId", null, null, null, null, dateCreated, It.IsAny<int>())).Returns(fakeTemplateVersionList);
+            templateVersionsApiMock.Setup(x => x.list("tmpl_fakeId", null, null, null, null, dateCreated, It.IsAny<int>())).Returns(fakeTemplateVersionList);
 
-            var response = templateVersionsApiMock.Object.TemplateVersionsList("tmpl_fakeId", null, null, null, null, dateCreated);
+            var response = templateVersionsApiMock.Object.list("tmpl_fakeId", null, null, null, null, dateCreated);
 
             Assert.IsInstanceOf<TemplateVersionList>(response);
             Assert.AreEqual(response.Count, fakeTemplateVersionList.Count);
         }
 
         /// <summary>
-        /// Test TemplateVersionUpdate
+        /// Test update
         /// </summary>
         [Test]
-        public void TemplateVersionUpdateTest()
+        public void updateTest()
         {
-            TemplateVersionUpdatable templateVersionUpdate = new TemplateVersionUpdatable("C# unit test templateVersion update description");
+            TemplateVersionUpdatable update = new TemplateVersionUpdatable("C# unit test templateVersion update description");
 
-            templateVersionsApiMock.Setup(x => x.TemplateVersionUpdate("tmpl_fakeId", fakeTemplateVersion.Id, templateVersionUpdate, It.IsAny<int>())).Returns(fakeTemplateVersion);
+            templateVersionsApiMock.Setup(x => x.update("tmpl_fakeId", fakeTemplateVersion.Id, update, It.IsAny<int>())).Returns(fakeTemplateVersion);
 
-            TemplateVersion response = templateVersionsApiMock.Object.TemplateVersionUpdate("tmpl_fakeId", fakeTemplateVersion.Id, templateVersionUpdate);
+            TemplateVersion response = templateVersionsApiMock.Object.update("tmpl_fakeId", fakeTemplateVersion.Id, update);
 
             Assert.IsInstanceOf<TemplateVersion>(response);
             Assert.AreEqual(response.Description, fakeTemplateVersion.Description);
         }
 
         /// <summary>
-        /// Test TemplateVersionUpdateHandlesException
+        /// Test updateHandlesException
         /// </summary>
         [Test]
-        public void TemplateVersionUpdateTestHandlesException()
+        public void updateTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
-            templateVersionsApiMock.Setup(x => x.TemplateVersionUpdate(null, null, null, It.IsAny<int>())).Throws(fakeException);
+            templateVersionsApiMock.Setup(x => x.update(null, null, null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = templateVersionsApiMock.Object.TemplateVersionUpdate(null, null, null);
+                var response = templateVersionsApiMock.Object.update(null, null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);

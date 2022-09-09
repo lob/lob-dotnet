@@ -39,7 +39,7 @@ namespace lob.dotnet.Api
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SelfMailer</returns>
-        SelfMailer SelfMailerCreate(SelfMailerEditable selfMailerEditable, string idempotencyKey = default(string), int operationIndex = 0);
+        SelfMailer create(SelfMailerEditable selfMailerEditable, string idempotencyKey = default(string), int operationIndex = 0);
 
         /// <summary>
         /// create
@@ -52,7 +52,7 @@ namespace lob.dotnet.Api
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SelfMailer</returns>
-        ApiResponse<SelfMailer> SelfMailerCreateWithHttpInfo(SelfMailerEditable selfMailerEditable, string idempotencyKey = default(string), int operationIndex = 0);
+        ApiResponse<SelfMailer> createWithHttpInfo(SelfMailerEditable selfMailerEditable, string idempotencyKey = default(string), int operationIndex = 0);
         /// <summary>
         /// delete
         /// </summary>
@@ -63,7 +63,7 @@ namespace lob.dotnet.Api
         /// <param name="sfmId">id of the self_mailer</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SelfMailerDeletion</returns>
-        SelfMailerDeletion SelfMailerDelete(string sfmId, int operationIndex = 0);
+        SelfMailerDeletion delete(string sfmId, int operationIndex = 0);
 
         /// <summary>
         /// delete
@@ -75,7 +75,7 @@ namespace lob.dotnet.Api
         /// <param name="sfmId">id of the self_mailer</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SelfMailerDeletion</returns>
-        ApiResponse<SelfMailerDeletion> SelfMailerDeleteWithHttpInfo(string sfmId, int operationIndex = 0);
+        ApiResponse<SelfMailerDeletion> deleteWithHttpInfo(string sfmId, int operationIndex = 0);
         /// <summary>
         /// get
         /// </summary>
@@ -86,7 +86,7 @@ namespace lob.dotnet.Api
         /// <param name="sfmId">id of the self_mailer</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SelfMailer</returns>
-        SelfMailer SelfMailerRetrieve(string sfmId, int operationIndex = 0);
+        SelfMailer get(string sfmId, int operationIndex = 0);
 
         /// <summary>
         /// get
@@ -98,7 +98,7 @@ namespace lob.dotnet.Api
         /// <param name="sfmId">id of the self_mailer</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SelfMailer</returns>
-        ApiResponse<SelfMailer> SelfMailerRetrieveWithHttpInfo(string sfmId, int operationIndex = 0);
+        ApiResponse<SelfMailer> getWithHttpInfo(string sfmId, int operationIndex = 0);
         /// <summary>
         /// list
         /// </summary>
@@ -119,7 +119,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SelfMailerList</returns>
-        SelfMailerList SelfMailersList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<SelfMailerSize> size = default(List<SelfMailerSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
+        SelfMailerList list(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<SelfMailerSize> size = default(List<SelfMailerSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -141,7 +141,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SelfMailerList</returns>
-        ApiResponse<SelfMailerList> SelfMailersListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<SelfMailerSize> size = default(List<SelfMailerSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
+        ApiResponse<SelfMailerList> listWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<SelfMailerSize> size = default(List<SelfMailerSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -163,7 +163,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SelfMailer</returns>
-        System.Threading.Tasks.Task<SelfMailer> SelfMailerCreateAsync(SelfMailerEditable selfMailerEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<SelfMailer> createAsync(SelfMailerEditable selfMailerEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// create
@@ -177,7 +177,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SelfMailer)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SelfMailer>> SelfMailerCreateWithHttpInfoAsync(SelfMailerEditable selfMailerEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<SelfMailer>> createWithHttpInfoAsync(SelfMailerEditable selfMailerEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// delete
         /// </summary>
@@ -189,7 +189,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SelfMailerDeletion</returns>
-        System.Threading.Tasks.Task<SelfMailerDeletion> SelfMailerDeleteAsync(string sfmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<SelfMailerDeletion> deleteAsync(string sfmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// delete
@@ -202,7 +202,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SelfMailerDeletion)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SelfMailerDeletion>> SelfMailerDeleteWithHttpInfoAsync(string sfmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<SelfMailerDeletion>> deleteWithHttpInfoAsync(string sfmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// get
         /// </summary>
@@ -214,7 +214,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SelfMailer</returns>
-        System.Threading.Tasks.Task<SelfMailer> SelfMailerRetrieveAsync(string sfmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<SelfMailer> getAsync(string sfmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// get
@@ -227,7 +227,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SelfMailer)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SelfMailer>> SelfMailerRetrieveWithHttpInfoAsync(string sfmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<SelfMailer>> getWithHttpInfoAsync(string sfmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// list
         /// </summary>
@@ -249,7 +249,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SelfMailerList</returns>
-        System.Threading.Tasks.Task<SelfMailerList> SelfMailersListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<SelfMailerSize> size = default(List<SelfMailerSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<SelfMailerList> listAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<SelfMailerSize> size = default(List<SelfMailerSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -272,7 +272,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SelfMailerList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SelfMailerList>> SelfMailersListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<SelfMailerSize> size = default(List<SelfMailerSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<SelfMailerList>> listWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<SelfMailerSize> size = default(List<SelfMailerSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -401,9 +401,9 @@ namespace lob.dotnet.Api
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SelfMailer</returns>
-        public SelfMailer SelfMailerCreate(SelfMailerEditable selfMailerEditable, string idempotencyKey = default(string), int operationIndex = 0)
+        public SelfMailer create(SelfMailerEditable selfMailerEditable, string idempotencyKey = default(string), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<SelfMailer> localVarResponse = SelfMailerCreateWithHttpInfo(selfMailerEditable, idempotencyKey);
+            lob.dotnet.Client.ApiResponse<SelfMailer> localVarResponse = createWithHttpInfo(selfMailerEditable, idempotencyKey);
             return localVarResponse.Data;
         }
 
@@ -415,12 +415,12 @@ namespace lob.dotnet.Api
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SelfMailer</returns>
-        public lob.dotnet.Client.ApiResponse<SelfMailer> SelfMailerCreateWithHttpInfo(SelfMailerEditable selfMailerEditable, string idempotencyKey = default(string), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<SelfMailer> createWithHttpInfo(SelfMailerEditable selfMailerEditable, string idempotencyKey = default(string), int operationIndex = 0)
         {
             // verify the required parameter 'selfMailerEditable' is set
             if (selfMailerEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'selfMailerEditable' when calling SelfMailersApi->SelfMailerCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'selfMailerEditable' when calling SelfMailersApi->create");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -454,7 +454,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = selfMailerEditable;
 
-            localVarRequestOptions.Operation = "SelfMailersApi.SelfMailerCreate";
+            localVarRequestOptions.Operation = "SelfMailersApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -468,7 +468,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<SelfMailer>("/self_mailers", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("SelfMailerCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -487,9 +487,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SelfMailer</returns>
-        public async System.Threading.Tasks.Task<SelfMailer> SelfMailerCreateAsync(SelfMailerEditable selfMailerEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<SelfMailer> createAsync(SelfMailerEditable selfMailerEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<SelfMailer> localVarResponse = await SelfMailerCreateWithHttpInfoAsync(selfMailerEditable, idempotencyKey, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<SelfMailer> localVarResponse = await createWithHttpInfoAsync(selfMailerEditable, idempotencyKey, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -502,12 +502,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SelfMailer)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<SelfMailer>> SelfMailerCreateWithHttpInfoAsync(SelfMailerEditable selfMailerEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<SelfMailer>> createWithHttpInfoAsync(SelfMailerEditable selfMailerEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'selfMailerEditable' is set
             if (selfMailerEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'selfMailerEditable' when calling SelfMailersApi->SelfMailerCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'selfMailerEditable' when calling SelfMailersApi->create");
             }
 
 
@@ -542,7 +542,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = selfMailerEditable;
 
-            localVarRequestOptions.Operation = "SelfMailersApi.SelfMailerCreate";
+            localVarRequestOptions.Operation = "SelfMailersApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -557,7 +557,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("SelfMailerCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -574,9 +574,9 @@ namespace lob.dotnet.Api
         /// <param name="sfmId">id of the self_mailer</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SelfMailerDeletion</returns>
-        public SelfMailerDeletion SelfMailerDelete(string sfmId, int operationIndex = 0)
+        public SelfMailerDeletion delete(string sfmId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<SelfMailerDeletion> localVarResponse = SelfMailerDeleteWithHttpInfo(sfmId);
+            lob.dotnet.Client.ApiResponse<SelfMailerDeletion> localVarResponse = deleteWithHttpInfo(sfmId);
             return localVarResponse.Data;
         }
 
@@ -587,12 +587,12 @@ namespace lob.dotnet.Api
         /// <param name="sfmId">id of the self_mailer</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SelfMailerDeletion</returns>
-        public lob.dotnet.Client.ApiResponse<SelfMailerDeletion> SelfMailerDeleteWithHttpInfo(string sfmId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<SelfMailerDeletion> deleteWithHttpInfo(string sfmId, int operationIndex = 0)
         {
             // verify the required parameter 'sfmId' is set
             if (sfmId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'sfmId' when calling SelfMailersApi->SelfMailerDelete");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'sfmId' when calling SelfMailersApi->delete");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -619,7 +619,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("sfm_id", lob.dotnet.Client.ClientUtils.ParameterToString(sfmId)); // path parameter
 
-            localVarRequestOptions.Operation = "SelfMailersApi.SelfMailerDelete";
+            localVarRequestOptions.Operation = "SelfMailersApi.delete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -633,7 +633,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Delete<SelfMailerDeletion>("/self_mailers/{sfm_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("SelfMailerDelete", localVarResponse);
+                Exception _exception = this.ExceptionFactory("delete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -651,9 +651,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SelfMailerDeletion</returns>
-        public async System.Threading.Tasks.Task<SelfMailerDeletion> SelfMailerDeleteAsync(string sfmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<SelfMailerDeletion> deleteAsync(string sfmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<SelfMailerDeletion> localVarResponse = await SelfMailerDeleteWithHttpInfoAsync(sfmId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<SelfMailerDeletion> localVarResponse = await deleteWithHttpInfoAsync(sfmId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -665,12 +665,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SelfMailerDeletion)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<SelfMailerDeletion>> SelfMailerDeleteWithHttpInfoAsync(string sfmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<SelfMailerDeletion>> deleteWithHttpInfoAsync(string sfmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'sfmId' is set
             if (sfmId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'sfmId' when calling SelfMailersApi->SelfMailerDelete");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'sfmId' when calling SelfMailersApi->delete");
             }
 
 
@@ -698,7 +698,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("sfm_id", lob.dotnet.Client.ClientUtils.ParameterToString(sfmId)); // path parameter
 
-            localVarRequestOptions.Operation = "SelfMailersApi.SelfMailerDelete";
+            localVarRequestOptions.Operation = "SelfMailersApi.delete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -713,7 +713,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("SelfMailerDelete", localVarResponse);
+                Exception _exception = this.ExceptionFactory("delete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -730,9 +730,9 @@ namespace lob.dotnet.Api
         /// <param name="sfmId">id of the self_mailer</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SelfMailer</returns>
-        public SelfMailer SelfMailerRetrieve(string sfmId, int operationIndex = 0)
+        public SelfMailer get(string sfmId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<SelfMailer> localVarResponse = SelfMailerRetrieveWithHttpInfo(sfmId);
+            lob.dotnet.Client.ApiResponse<SelfMailer> localVarResponse = getWithHttpInfo(sfmId);
             return localVarResponse.Data;
         }
 
@@ -743,12 +743,12 @@ namespace lob.dotnet.Api
         /// <param name="sfmId">id of the self_mailer</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SelfMailer</returns>
-        public lob.dotnet.Client.ApiResponse<SelfMailer> SelfMailerRetrieveWithHttpInfo(string sfmId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<SelfMailer> getWithHttpInfo(string sfmId, int operationIndex = 0)
         {
             // verify the required parameter 'sfmId' is set
             if (sfmId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'sfmId' when calling SelfMailersApi->SelfMailerRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'sfmId' when calling SelfMailersApi->get");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -775,7 +775,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("sfm_id", lob.dotnet.Client.ClientUtils.ParameterToString(sfmId)); // path parameter
 
-            localVarRequestOptions.Operation = "SelfMailersApi.SelfMailerRetrieve";
+            localVarRequestOptions.Operation = "SelfMailersApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -789,7 +789,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<SelfMailer>("/self_mailers/{sfm_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("SelfMailerRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -807,9 +807,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SelfMailer</returns>
-        public async System.Threading.Tasks.Task<SelfMailer> SelfMailerRetrieveAsync(string sfmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<SelfMailer> getAsync(string sfmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<SelfMailer> localVarResponse = await SelfMailerRetrieveWithHttpInfoAsync(sfmId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<SelfMailer> localVarResponse = await getWithHttpInfoAsync(sfmId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -821,12 +821,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SelfMailer)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<SelfMailer>> SelfMailerRetrieveWithHttpInfoAsync(string sfmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<SelfMailer>> getWithHttpInfoAsync(string sfmId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'sfmId' is set
             if (sfmId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'sfmId' when calling SelfMailersApi->SelfMailerRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'sfmId' when calling SelfMailersApi->get");
             }
 
 
@@ -854,7 +854,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("sfm_id", lob.dotnet.Client.ClientUtils.ParameterToString(sfmId)); // path parameter
 
-            localVarRequestOptions.Operation = "SelfMailersApi.SelfMailerRetrieve";
+            localVarRequestOptions.Operation = "SelfMailersApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -869,7 +869,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("SelfMailerRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -896,9 +896,9 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SelfMailerList</returns>
-        public SelfMailerList SelfMailersList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<SelfMailerSize> size = default(List<SelfMailerSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
+        public SelfMailerList list(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<SelfMailerSize> size = default(List<SelfMailerSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<SelfMailerList> localVarResponse = SelfMailersListWithHttpInfo(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
+            lob.dotnet.Client.ApiResponse<SelfMailerList> localVarResponse = listWithHttpInfo(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
             return localVarResponse.Data;
         }
 
@@ -919,7 +919,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SelfMailerList</returns>
-        public lob.dotnet.Client.ApiResponse<SelfMailerList> SelfMailersListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<SelfMailerSize> size = default(List<SelfMailerSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<SelfMailerList> listWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<SelfMailerSize> size = default(List<SelfMailerSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -996,7 +996,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "sort_by", sortBy.ToJson()));
             }
 
-            localVarRequestOptions.Operation = "SelfMailersApi.SelfMailersList";
+            localVarRequestOptions.Operation = "SelfMailersApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1010,7 +1010,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<SelfMailerList>("/self_mailers", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("SelfMailersList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1038,9 +1038,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SelfMailerList</returns>
-        public async System.Threading.Tasks.Task<SelfMailerList> SelfMailersListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<SelfMailerSize> size = default(List<SelfMailerSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<SelfMailerList> listAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<SelfMailerSize> size = default(List<SelfMailerSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<SelfMailerList> localVarResponse = await SelfMailersListWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<SelfMailerList> localVarResponse = await listWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1062,7 +1062,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SelfMailerList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<SelfMailerList>> SelfMailersListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<SelfMailerSize> size = default(List<SelfMailerSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<SelfMailerList>> listWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), List<SelfMailerSize> size = default(List<SelfMailerSize>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1132,7 +1132,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
             }
 
-            localVarRequestOptions.Operation = "SelfMailersApi.SelfMailersList";
+            localVarRequestOptions.Operation = "SelfMailersApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1147,7 +1147,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("SelfMailersList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

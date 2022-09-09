@@ -56,46 +56,46 @@ namespace lob.dotnet.Test.Api
         }
 
         /// <summary>
-        /// Test AddressCreate
+        /// Test create
         /// </summary>
         [Fact]
-        public void AddressCreateTest()
+        public void createTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //AddressEditable addressEditable = null;
-            //var response = instance.AddressCreate(addressEditable);
+            //var response = instance.create(addressEditable);
             //Assert.IsType<Address>(response);
         }
 
         /// <summary>
-        /// Test AddressDelete
+        /// Test delete
         /// </summary>
         [Fact]
-        public void AddressDeleteTest()
+        public void deleteTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string adrId = null;
-            //var response = instance.AddressDelete(adrId);
+            //var response = instance.delete(adrId);
             //Assert.IsType<AddressDeletion>(response);
         }
 
         /// <summary>
-        /// Test AddressRetrieve
+        /// Test get
         /// </summary>
         [Fact]
-        public void AddressRetrieveTest()
+        public void getTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string adrId = null;
-            //var response = instance.AddressRetrieve(adrId);
+            //var response = instance.get(adrId);
             //Assert.IsType<Address>(response);
         }
 
         /// <summary>
-        /// Test AddressesList
+        /// Test list
         /// </summary>
         [Fact]
-        public void AddressesListTest()
+        public void listTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? limit = null;
@@ -104,7 +104,7 @@ namespace lob.dotnet.Test.Api
             //List<string> include = null;
             //Dictionary<string, DateTime> dateCreated = null;
             //Dictionary<string, string> metadata = null;
-            //var response = instance.AddressesList(limit, before, after, include, dateCreated, metadata);
+            //var response = instance.list(limit, before, after, include, dateCreated, metadata);
             //Assert.IsType<AddressList>(response);
         }
     }

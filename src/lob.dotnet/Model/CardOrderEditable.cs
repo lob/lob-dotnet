@@ -130,9 +130,9 @@ namespace lob.dotnet.Model
             }
 
             // Quantity (int) minimum
-            if (this.Quantity < (int)0)
+            if (this.Quantity < (int)10000)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Quantity, must be a value greater than or equal to 0.", new [] { "Quantity" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Quantity, must be a value greater than or equal to 10000.", new [] { "Quantity" });
             }
 
             yield break;

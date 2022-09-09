@@ -1,4 +1,4 @@
-# lob.dotnet.Model.BankAccountVerify
+# lob.dotnet.Model.verify
 
 ## Properties
 

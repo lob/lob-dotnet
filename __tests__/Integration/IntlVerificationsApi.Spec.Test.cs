@@ -93,26 +93,26 @@ namespace __tests__.Integration {
 
         [Test]
         public void IntlVerificationVerifySingleTest() {
-            IntlVerification response = validApi.IntlVerification(intlVerificationWritable);
+            IntlVerification response = validApi.verifySingle(intlVerificationWritable);
             Assert.AreEqual(IntlVerification.DeliverabilityEnum.Deliverable, response.Deliverability);
         }
 
         [Test]
         public void IntlVerificationVerifySingleTestWithXLangOutput() {
-            IntlVerification response = validApi.IntlVerification(intlVerificationWritable, "match");
+            IntlVerification response = validApi.verifySingle(intlVerificationWritable, "match");
             Assert.AreEqual(IntlVerification.DeliverabilityEnum.Deliverable, response.Deliverability);
         }
 
         [Test]
         public void IntlVerificationVerifySingleUndeliverableTest() {
-            IntlVerification response = validApi.IntlVerification(undeliverableIntlVerificationWritable);
+            IntlVerification response = validApi.verifySingle(undeliverableIntlVerificationWritable);
             Assert.AreEqual(IntlVerification.DeliverabilityEnum.Undeliverable, response.Deliverability);
         }
 
         [Test]
         public void IntlVerificationVerifySingleTestBadParameter() {
             try {
-                IntlVerification response = validApi.IntlVerification(null);
+                IntlVerification response = validApi.verifySingle(null);
             } catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
                 Assert.That(e.Message, Does.Contain("Missing required parameter 'intlVerificationWritable'"));
@@ -122,7 +122,7 @@ namespace __tests__.Integration {
         [Test]
         public void IntlVerificationVerifySingleTestBadUsername() {
             try {
-                IntlVerification response = invalidApi.IntlVerification(intlVerificationWritable);
+                IntlVerification response = invalidApi.verifySingle(intlVerificationWritable);
             } catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
                 Assert.That(e.Message, Does.Contain("Your API key is not valid"));
@@ -131,7 +131,7 @@ namespace __tests__.Integration {
 
         [Test]
         public void IntlVerificationVerifyBulkTest() {
-            IntlVerifications response = validApi.BulkIntlVerifications(addressList);
+            IntlVerifications response = validApi.verifyBulk(addressList);
             Assert.NotNull(response);
             Assert.AreEqual(IntlVerificationOrError.DeliverabilityEnum.Deliverable, response.Addresses[0].Deliverability);
             Assert.AreEqual(IntlVerificationOrError.DeliverabilityEnum.Undeliverable, response.Addresses[1].Deliverability);
@@ -140,7 +140,7 @@ namespace __tests__.Integration {
         [Test]
         public void IntlVerificationVerifyBulkTestBadParameter() {
             try {
-                IntlVerifications response = validApi.BulkIntlVerifications(null);
+                IntlVerifications response = validApi.verifyBulk(null);
             } catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
                 Assert.That(e.Message, Does.Contain("Missing required parameter 'intlVerificationsPayload'"));
@@ -150,7 +150,7 @@ namespace __tests__.Integration {
         [Test]
         public void IntlVerificationVerifyBulkTestBadUsername() {
             try {
-                IntlVerifications response = invalidApi.BulkIntlVerifications(addressList);
+                IntlVerifications response = invalidApi.verifyBulk(addressList);
             } catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
                 Assert.That(e.Message, Does.Contain("Your API key is not valid"));

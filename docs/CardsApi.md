@@ -4,16 +4,16 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CardCreate**](CardsApi.md#cardcreate) | **POST** /cards | create
-[**CardDelete**](CardsApi.md#carddelete) | **DELETE** /cards/{card_id} | delete
-[**CardRetrieve**](CardsApi.md#cardretrieve) | **GET** /cards/{card_id} | get
-[**CardUpdate**](CardsApi.md#cardupdate) | **POST** /cards/{card_id} | update
-[**CardsList**](CardsApi.md#cardslist) | **GET** /cards | list
+[**create**](CardsApi.md#create) | **POST** /cards | create
+[**delete**](CardsApi.md#delete) | **DELETE** /cards/{card_id} | delete
+[**get**](CardsApi.md#get) | **GET** /cards/{card_id} | get
+[**update**](CardsApi.md#update) | **POST** /cards/{card_id} | update
+[**list**](CardsApi.md#list) | **GET** /cards | list
 
 
-<a name="cardcreate"></a>
-# **CardCreate**
-> Card CardCreate (CardEditable cardEditable)
+<a name="create"></a>
+# **create**
+> Card create (CardEditable cardEditable)
 
 create
 
@@ -29,7 +29,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class CardCreateExample
+    public class createExample
     {
         public static void Main()
         {
@@ -45,12 +45,12 @@ namespace Example
             try
             {
                 // create
-                Card result = apiInstance.CardCreate(cardEditable);
+                Card result = apiInstance.create(cardEditable);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CardsApi.CardCreate: " + e.Message );
+                Debug.Print("Exception when calling CardsApi.create: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -87,9 +87,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="carddelete"></a>
-# **CardDelete**
-> CardDeletion CardDelete (string cardId)
+<a name="delete"></a>
+# **delete**
+> CardDeletion delete (string cardId)
 
 delete
 
@@ -105,7 +105,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class CardDeleteExample
+    public class deleteExample
     {
         public static void Main()
         {
@@ -121,12 +121,12 @@ namespace Example
             try
             {
                 // delete
-                CardDeletion result = apiInstance.CardDelete(cardId);
+                CardDeletion result = apiInstance.delete(cardId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CardsApi.CardDelete: " + e.Message );
+                Debug.Print("Exception when calling CardsApi.delete: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -163,9 +163,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="cardretrieve"></a>
-# **CardRetrieve**
-> Card CardRetrieve (string cardId)
+<a name="get"></a>
+# **get**
+> Card get (string cardId)
 
 get
 
@@ -181,7 +181,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class CardRetrieveExample
+    public class getExample
     {
         public static void Main()
         {
@@ -197,12 +197,12 @@ namespace Example
             try
             {
                 // get
-                Card result = apiInstance.CardRetrieve(cardId);
+                Card result = apiInstance.get(cardId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CardsApi.CardRetrieve: " + e.Message );
+                Debug.Print("Exception when calling CardsApi.get: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -239,9 +239,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="cardupdate"></a>
-# **CardUpdate**
-> Card CardUpdate (string cardId, CardUpdatable cardUpdatable)
+<a name="update"></a>
+# **update**
+> Card update (string cardId, CardUpdatable cardUpdatable)
 
 update
 
@@ -257,7 +257,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class CardUpdateExample
+    public class updateExample
     {
         public static void Main()
         {
@@ -274,12 +274,12 @@ namespace Example
             try
             {
                 // update
-                Card result = apiInstance.CardUpdate(cardId, cardUpdatable);
+                Card result = apiInstance.update(cardId, cardUpdatable);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CardsApi.CardUpdate: " + e.Message );
+                Debug.Print("Exception when calling CardsApi.update: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -317,9 +317,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="cardslist"></a>
-# **CardsList**
-> CardList CardsList (int? limit = null, string before = null, string after = null, SortBy5 sortBy = null)
+<a name="list"></a>
+# **list**
+> CardList list (int? limit = null, string before = null, string after = null, SortBy5 sortBy = null)
 
 list
 
@@ -335,7 +335,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class CardsListExample
+    public class listExample
     {
         public static void Main()
         {
@@ -354,12 +354,12 @@ namespace Example
             try
             {
                 // list
-                CardList result = apiInstance.CardsList(limit, before, after, sortBy);
+                CardList result = apiInstance.list(limit, before, after, sortBy);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CardsApi.CardsList: " + e.Message );
+                Debug.Print("Exception when calling CardsApi.list: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }

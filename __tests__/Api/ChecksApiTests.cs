@@ -154,10 +154,10 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test CheckCreate
+        /// Test create
         /// </summary>
         [Test]
-        public void CheckCreateTest()
+        public void createTest()
         {
             CheckEditable checkEditable = new CheckEditable(
                 "adr_fakeId1", // from
@@ -177,27 +177,27 @@ namespace __tests__.Api
                 "fake message" // message
             );
 
-            ChecksApiMock.Setup(x => x.CheckCreate(checkEditable, null, It.IsAny<int>())).Returns(fakeCheck);
-            Check response = ChecksApiMock.Object.CheckCreate(checkEditable);
+            ChecksApiMock.Setup(x => x.create(checkEditable, null, It.IsAny<int>())).Returns(fakeCheck);
+            Check response = ChecksApiMock.Object.create(checkEditable);
 
             Assert.IsInstanceOf<Check>(response);
             Assert.AreEqual(response.Id, "chk_fakeId");
         }
 
         /// <summary>
-        /// Test CheckCreateHandlesException
+        /// Test createHandlesException
         /// </summary>
         [Test]
-        public void CheckCreateTestHandlesException()
+        public void createTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
 
-            ChecksApiMock.Setup(x => x.CheckCreate(null, null, It.IsAny<int>())).Throws(fakeException);
+            ChecksApiMock.Setup(x => x.create(null, null, It.IsAny<int>())).Throws(fakeException);
             try {
-                Check response = ChecksApiMock.Object.CheckCreate(null, null);
+                Check response = ChecksApiMock.Object.create(null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -206,19 +206,19 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test CheckCancel
+        /// Test cancel
         /// </summary>
         [Test]
-        public void CheckCancelTest()
+        public void cancelTest()
         {
             CheckDeletion fakeCheck = new CheckDeletion();
 
             fakeCheck.Id = "chk_fakeId";
             fakeCheck.Deleted = true;
 
-            ChecksApiMock.Setup(x => x.CheckCancel(fakeCheck.Id, It.IsAny<int>())).Returns(fakeCheck);
+            ChecksApiMock.Setup(x => x.cancel(fakeCheck.Id, It.IsAny<int>())).Returns(fakeCheck);
 
-            var response = ChecksApiMock.Object.CheckCancel(fakeCheck.Id);
+            var response = ChecksApiMock.Object.cancel(fakeCheck.Id);
 
             Assert.IsInstanceOf<CheckDeletion>(response);
             Assert.AreEqual(response.Deleted, fakeCheck.Deleted);
@@ -226,19 +226,19 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test CheckCancelHandlesException
+        /// Test cancelHandlesException
         /// </summary>
         [Test]
-        public void CheckCancelHandlesException()
+        public void cancelHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
 
-            ChecksApiMock.Setup(x => x.CheckCancel(null, It.IsAny<int>())).Throws(fakeException);
+            ChecksApiMock.Setup(x => x.cancel(null, It.IsAny<int>())).Throws(fakeException);
             try {
-                var response = ChecksApiMock.Object.CheckCancel(null);
+                var response = ChecksApiMock.Object.cancel(null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -247,32 +247,32 @@ namespace __tests__.Api
         }
 
         /// <summary>
-        /// Test CheckRetrieve
+        /// Test get
         /// </summary>
         [Test]
-        public void CheckRetrieveTest()
+        public void getTest()
         {
-            ChecksApiMock.Setup(x => x.CheckRetrieve(fakeCheck.Id, It.IsAny<int>())).Returns(fakeCheck);
-            Check response = ChecksApiMock.Object.CheckRetrieve(fakeCheck.Id);
+            ChecksApiMock.Setup(x => x.get(fakeCheck.Id, It.IsAny<int>())).Returns(fakeCheck);
+            Check response = ChecksApiMock.Object.get(fakeCheck.Id);
 
             Assert.IsInstanceOf<Check>(response);
             Assert.AreEqual(response.Id, fakeCheck.Id);
         }
 
         /// <summary>
-        /// Test CheckRetrieveHandlesException
+        /// Test getHandlesException
         /// </summary>
         [Test]
-        public void CheckRetrieveTestHandlesException()
+        public void getTestHandlesException()
         {
             ApiException fakeException = new ApiException(
                 402,
                 "This is an error"
             );
-            ChecksApiMock.Setup(x => x.CheckRetrieve("fakeId", It.IsAny<int>())).Throws(fakeException);
+            ChecksApiMock.Setup(x => x.get("fakeId", It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = ChecksApiMock.Object.CheckRetrieve("fakeId");
+                var response = ChecksApiMock.Object.get("fakeId");
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -286,9 +286,9 @@ namespace __tests__.Api
         [Test]
         public void CheckListTest()
         {
-            ChecksApiMock.Setup(x => x.ChecksList(null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeCheckList);
+            ChecksApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeCheckList);
 
-            var response = ChecksApiMock.Object.ChecksList(null, null, null, null, null, null, null, null, null, null);
+            var response = ChecksApiMock.Object.list(null, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
             Assert.AreEqual(response.Count, fakeCheckList.Count);
@@ -304,10 +304,10 @@ namespace __tests__.Api
                 402,
                 "This is an error"
             );
-            ChecksApiMock.Setup(x => x.ChecksList(null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
+            ChecksApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Throws(fakeException);
 
             try {
-                var response = ChecksApiMock.Object.ChecksList(null, null, null, null, null, null, null, null, null, null);
+                var response = ChecksApiMock.Object.list(null, null, null, null, null, null, null, null, null, null);
             }
             catch (Exception e) {
                 Assert.IsInstanceOf<ApiException>(e);
@@ -323,9 +323,9 @@ namespace __tests__.Api
         {
             int limit = 2;
 
-            ChecksApiMock.Setup(x => x.ChecksList(limit, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeCheckList);
+            ChecksApiMock.Setup(x => x.list(limit, null, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeCheckList);
 
-            var response = ChecksApiMock.Object.ChecksList(limit, null, null, null, null, null, null, null, null, null);
+            var response = ChecksApiMock.Object.list(limit, null, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
             Assert.AreEqual(response.Count, fakeCheckList.Count);
@@ -339,9 +339,9 @@ namespace __tests__.Api
         {
             string before = "before";
 
-            ChecksApiMock.Setup(x => x.ChecksList(null, before, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeCheckList);
+            ChecksApiMock.Setup(x => x.list(null, before, null, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeCheckList);
 
-            var response = ChecksApiMock.Object.ChecksList(null, before, null, null, null, null, null, null, null, null);
+            var response = ChecksApiMock.Object.list(null, before, null, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
             Assert.AreEqual(response.Count, fakeCheckList.Count);
@@ -355,9 +355,9 @@ namespace __tests__.Api
         {
             string after = "after";
 
-            ChecksApiMock.Setup(x => x.ChecksList(null, null, after, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeCheckList);
+            ChecksApiMock.Setup(x => x.list(null, null, after, null, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeCheckList);
 
-            var response = ChecksApiMock.Object.ChecksList(null, null, after, null, null, null, null, null, null, null);
+            var response = ChecksApiMock.Object.list(null, null, after, null, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
             Assert.AreEqual(response.Count, fakeCheckList.Count);
@@ -372,9 +372,9 @@ namespace __tests__.Api
             List<string> include = new List<string>();
             include.Add("total_count");
 
-            ChecksApiMock.Setup(x => x.ChecksList(null, null, null, include, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeCheckList);
+            ChecksApiMock.Setup(x => x.list(null, null, null, include, null, null, null, null, null, null, It.IsAny<int>())).Returns(fakeCheckList);
 
-            var response = ChecksApiMock.Object.ChecksList(null, null, null, include, null, null, null, null, null, null);
+            var response = ChecksApiMock.Object.list(null, null, null, include, null, null, null, null, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
             Assert.AreEqual(response.Count, fakeCheckList.Count);
@@ -390,9 +390,9 @@ namespace __tests__.Api
             DateTime lastMonth = DateTime.Today.AddMonths(-1);
             dateCreated.Add("lt", lastMonth);
 
-            ChecksApiMock.Setup(x => x.ChecksList(null, null, null, null, dateCreated, null, null, null, null, null, It.IsAny<int>())).Returns(fakeCheckList);
+            ChecksApiMock.Setup(x => x.list(null, null, null, null, dateCreated, null, null, null, null, null, It.IsAny<int>())).Returns(fakeCheckList);
 
-            var response = ChecksApiMock.Object.ChecksList(null, null, null, null, dateCreated, null, null, null, null, null);
+            var response = ChecksApiMock.Object.list(null, null, null, null, dateCreated, null, null, null, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
             Assert.AreEqual(response.Count, fakeCheckList.Count);
@@ -407,9 +407,9 @@ namespace __tests__.Api
             Dictionary<String, String> metadata = new Dictionary<String, String>();
             metadata.Add("name", "Harry");
 
-            ChecksApiMock.Setup(x => x.ChecksList(null, null, null, null, null, metadata, null, null, null, null, It.IsAny<int>())).Returns(fakeCheckList);
+            ChecksApiMock.Setup(x => x.list(null, null, null, null, null, metadata, null, null, null, null, It.IsAny<int>())).Returns(fakeCheckList);
 
-            var response = ChecksApiMock.Object.ChecksList(null, null, null, null, null, metadata, null, null, null, null);
+            var response = ChecksApiMock.Object.list(null, null, null, null, null, metadata, null, null, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
             Assert.AreEqual(response.Count, fakeCheckList.Count);
@@ -423,9 +423,9 @@ namespace __tests__.Api
         {
             Boolean scheduled = true;
 
-            ChecksApiMock.Setup(x => x.ChecksList(null, null, null, null, null, null, scheduled, null, null, null, It.IsAny<int>())).Returns(fakeCheckList);
+            ChecksApiMock.Setup(x => x.list(null, null, null, null, null, null, scheduled, null, null, null, It.IsAny<int>())).Returns(fakeCheckList);
 
-            var response = ChecksApiMock.Object.ChecksList(null, null, null, null, null, null, scheduled, null, null, null);
+            var response = ChecksApiMock.Object.list(null, null, null, null, null, null, scheduled, null, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
             Assert.AreEqual(response.Count, fakeCheckList.Count);
@@ -441,9 +441,9 @@ namespace __tests__.Api
             sendDate.Add("gt", "2020-01-01");
             sendDate.Add("lt", "2020-01-31T12");
 
-            ChecksApiMock.Setup(x => x.ChecksList(null, null, null, null, null, null, null, sendDate, null, null, It.IsAny<int>())).Returns(fakeCheckList);
+            ChecksApiMock.Setup(x => x.list(null, null, null, null, null, null, null, sendDate, null, null, It.IsAny<int>())).Returns(fakeCheckList);
 
-            var response = ChecksApiMock.Object.ChecksList(null, null, null, null, null, null, null, sendDate, null, null);
+            var response = ChecksApiMock.Object.list(null, null, null, null, null, null, null, sendDate, null, null);
 
             Assert.IsInstanceOf<CheckList>(response);
             Assert.AreEqual(response.Count, fakeCheckList.Count);
@@ -457,9 +457,9 @@ namespace __tests__.Api
         {
             MailType mailType = MailType.FirstClass;
 
-            ChecksApiMock.Setup(x => x.ChecksList(null, null, null, null, null, null, null, null, mailType, null, It.IsAny<int>())).Returns(fakeCheckList);
+            ChecksApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, mailType, null, It.IsAny<int>())).Returns(fakeCheckList);
 
-            var response = ChecksApiMock.Object.ChecksList(null, null, null, null, null, null, null, null, mailType, null);
+            var response = ChecksApiMock.Object.list(null, null, null, null, null, null, null, null, mailType, null);
 
             Assert.IsInstanceOf<CheckList>(response);
             Assert.AreEqual(response.Count, fakeCheckList.Count);
@@ -473,9 +473,9 @@ namespace __tests__.Api
         {
             SortBy3 sortBy = new SortBy3(null, SortBy3.SendDateEnum.Asc);
 
-            ChecksApiMock.Setup(x => x.ChecksList(null, null, null, null, null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakeCheckList);
+            ChecksApiMock.Setup(x => x.list(null, null, null, null, null, null, null, null, null, sortBy, It.IsAny<int>())).Returns(fakeCheckList);
 
-            var response = ChecksApiMock.Object.ChecksList(null, null, null, null, null, null, null, null, null, sortBy);
+            var response = ChecksApiMock.Object.list(null, null, null, null, null, null, null, null, null, sortBy);
 
             Assert.IsInstanceOf<CheckList>(response);
             Assert.AreEqual(response.Count, fakeCheckList.Count);

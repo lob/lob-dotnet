@@ -38,7 +38,7 @@ namespace lob.dotnet.Api
         /// <param name="ltrId">id of the letter</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LetterDeletion</returns>
-        LetterDeletion LetterCancel(string ltrId, int operationIndex = 0);
+        LetterDeletion cancel(string ltrId, int operationIndex = 0);
 
         /// <summary>
         /// cancel
@@ -50,7 +50,7 @@ namespace lob.dotnet.Api
         /// <param name="ltrId">id of the letter</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LetterDeletion</returns>
-        ApiResponse<LetterDeletion> LetterCancelWithHttpInfo(string ltrId, int operationIndex = 0);
+        ApiResponse<LetterDeletion> cancelWithHttpInfo(string ltrId, int operationIndex = 0);
         /// <summary>
         /// create
         /// </summary>
@@ -62,7 +62,7 @@ namespace lob.dotnet.Api
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Letter</returns>
-        Letter LetterCreate(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0);
+        Letter create(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0);
 
         /// <summary>
         /// create
@@ -75,7 +75,7 @@ namespace lob.dotnet.Api
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Letter</returns>
-        ApiResponse<Letter> LetterCreateWithHttpInfo(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0);
+        ApiResponse<Letter> createWithHttpInfo(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0);
         /// <summary>
         /// get
         /// </summary>
@@ -86,7 +86,7 @@ namespace lob.dotnet.Api
         /// <param name="ltrId">id of the letter</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Letter</returns>
-        Letter LetterRetrieve(string ltrId, int operationIndex = 0);
+        Letter get(string ltrId, int operationIndex = 0);
 
         /// <summary>
         /// get
@@ -98,7 +98,7 @@ namespace lob.dotnet.Api
         /// <param name="ltrId">id of the letter</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Letter</returns>
-        ApiResponse<Letter> LetterRetrieveWithHttpInfo(string ltrId, int operationIndex = 0);
+        ApiResponse<Letter> getWithHttpInfo(string ltrId, int operationIndex = 0);
         /// <summary>
         /// list
         /// </summary>
@@ -119,7 +119,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LetterList</returns>
-        LetterList LettersList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
+        LetterList list(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -141,7 +141,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LetterList</returns>
-        ApiResponse<LetterList> LettersListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
+        ApiResponse<LetterList> listWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -162,7 +162,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LetterDeletion</returns>
-        System.Threading.Tasks.Task<LetterDeletion> LetterCancelAsync(string ltrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<LetterDeletion> cancelAsync(string ltrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// cancel
@@ -175,7 +175,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LetterDeletion)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LetterDeletion>> LetterCancelWithHttpInfoAsync(string ltrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<LetterDeletion>> cancelWithHttpInfoAsync(string ltrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// create
         /// </summary>
@@ -188,7 +188,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Letter</returns>
-        System.Threading.Tasks.Task<Letter> LetterCreateAsync(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Letter> createAsync(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// create
@@ -202,7 +202,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Letter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Letter>> LetterCreateWithHttpInfoAsync(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Letter>> createWithHttpInfoAsync(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// get
         /// </summary>
@@ -214,7 +214,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Letter</returns>
-        System.Threading.Tasks.Task<Letter> LetterRetrieveAsync(string ltrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Letter> getAsync(string ltrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// get
@@ -227,7 +227,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Letter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Letter>> LetterRetrieveWithHttpInfoAsync(string ltrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Letter>> getWithHttpInfoAsync(string ltrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// list
         /// </summary>
@@ -249,7 +249,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LetterList</returns>
-        System.Threading.Tasks.Task<LetterList> LettersListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<LetterList> listAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -272,7 +272,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LetterList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LetterList>> LettersListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<LetterList>> listWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -400,9 +400,9 @@ namespace lob.dotnet.Api
         /// <param name="ltrId">id of the letter</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LetterDeletion</returns>
-        public LetterDeletion LetterCancel(string ltrId, int operationIndex = 0)
+        public LetterDeletion cancel(string ltrId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<LetterDeletion> localVarResponse = LetterCancelWithHttpInfo(ltrId);
+            lob.dotnet.Client.ApiResponse<LetterDeletion> localVarResponse = cancelWithHttpInfo(ltrId);
             return localVarResponse.Data;
         }
 
@@ -413,12 +413,12 @@ namespace lob.dotnet.Api
         /// <param name="ltrId">id of the letter</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LetterDeletion</returns>
-        public lob.dotnet.Client.ApiResponse<LetterDeletion> LetterCancelWithHttpInfo(string ltrId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<LetterDeletion> cancelWithHttpInfo(string ltrId, int operationIndex = 0)
         {
             // verify the required parameter 'ltrId' is set
             if (ltrId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'ltrId' when calling LettersApi->LetterCancel");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'ltrId' when calling LettersApi->cancel");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -445,7 +445,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("ltr_id", lob.dotnet.Client.ClientUtils.ParameterToString(ltrId)); // path parameter
 
-            localVarRequestOptions.Operation = "LettersApi.LetterCancel";
+            localVarRequestOptions.Operation = "LettersApi.cancel";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -459,7 +459,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Delete<LetterDeletion>("/letters/{ltr_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("LetterCancel", localVarResponse);
+                Exception _exception = this.ExceptionFactory("cancel", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -477,9 +477,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LetterDeletion</returns>
-        public async System.Threading.Tasks.Task<LetterDeletion> LetterCancelAsync(string ltrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<LetterDeletion> cancelAsync(string ltrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<LetterDeletion> localVarResponse = await LetterCancelWithHttpInfoAsync(ltrId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<LetterDeletion> localVarResponse = await cancelWithHttpInfoAsync(ltrId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -491,12 +491,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LetterDeletion)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<LetterDeletion>> LetterCancelWithHttpInfoAsync(string ltrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<LetterDeletion>> cancelWithHttpInfoAsync(string ltrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'ltrId' is set
             if (ltrId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'ltrId' when calling LettersApi->LetterCancel");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'ltrId' when calling LettersApi->cancel");
             }
 
 
@@ -524,7 +524,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("ltr_id", lob.dotnet.Client.ClientUtils.ParameterToString(ltrId)); // path parameter
 
-            localVarRequestOptions.Operation = "LettersApi.LetterCancel";
+            localVarRequestOptions.Operation = "LettersApi.cancel";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -539,7 +539,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("LetterCancel", localVarResponse);
+                Exception _exception = this.ExceptionFactory("cancel", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -557,9 +557,9 @@ namespace lob.dotnet.Api
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Letter</returns>
-        public Letter LetterCreate(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0)
+        public Letter create(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<Letter> localVarResponse = LetterCreateWithHttpInfo(letterEditable, idempotencyKey);
+            lob.dotnet.Client.ApiResponse<Letter> localVarResponse = createWithHttpInfo(letterEditable, idempotencyKey);
             return localVarResponse.Data;
         }
 
@@ -571,12 +571,12 @@ namespace lob.dotnet.Api
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Letter</returns>
-        public lob.dotnet.Client.ApiResponse<Letter> LetterCreateWithHttpInfo(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<Letter> createWithHttpInfo(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0)
         {
             // verify the required parameter 'letterEditable' is set
             if (letterEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'letterEditable' when calling LettersApi->LetterCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'letterEditable' when calling LettersApi->create");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -610,7 +610,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = letterEditable;
 
-            localVarRequestOptions.Operation = "LettersApi.LetterCreate";
+            localVarRequestOptions.Operation = "LettersApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -624,7 +624,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<Letter>("/letters", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("LetterCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -643,9 +643,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Letter</returns>
-        public async System.Threading.Tasks.Task<Letter> LetterCreateAsync(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Letter> createAsync(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<Letter> localVarResponse = await LetterCreateWithHttpInfoAsync(letterEditable, idempotencyKey, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<Letter> localVarResponse = await createWithHttpInfoAsync(letterEditable, idempotencyKey, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -658,12 +658,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Letter)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Letter>> LetterCreateWithHttpInfoAsync(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Letter>> createWithHttpInfoAsync(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'letterEditable' is set
             if (letterEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'letterEditable' when calling LettersApi->LetterCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'letterEditable' when calling LettersApi->create");
             }
 
 
@@ -698,7 +698,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = letterEditable;
 
-            localVarRequestOptions.Operation = "LettersApi.LetterCreate";
+            localVarRequestOptions.Operation = "LettersApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -713,7 +713,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("LetterCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -730,9 +730,9 @@ namespace lob.dotnet.Api
         /// <param name="ltrId">id of the letter</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Letter</returns>
-        public Letter LetterRetrieve(string ltrId, int operationIndex = 0)
+        public Letter get(string ltrId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<Letter> localVarResponse = LetterRetrieveWithHttpInfo(ltrId);
+            lob.dotnet.Client.ApiResponse<Letter> localVarResponse = getWithHttpInfo(ltrId);
             return localVarResponse.Data;
         }
 
@@ -743,12 +743,12 @@ namespace lob.dotnet.Api
         /// <param name="ltrId">id of the letter</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Letter</returns>
-        public lob.dotnet.Client.ApiResponse<Letter> LetterRetrieveWithHttpInfo(string ltrId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<Letter> getWithHttpInfo(string ltrId, int operationIndex = 0)
         {
             // verify the required parameter 'ltrId' is set
             if (ltrId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'ltrId' when calling LettersApi->LetterRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'ltrId' when calling LettersApi->get");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -775,7 +775,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("ltr_id", lob.dotnet.Client.ClientUtils.ParameterToString(ltrId)); // path parameter
 
-            localVarRequestOptions.Operation = "LettersApi.LetterRetrieve";
+            localVarRequestOptions.Operation = "LettersApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -789,7 +789,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<Letter>("/letters/{ltr_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("LetterRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -807,9 +807,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Letter</returns>
-        public async System.Threading.Tasks.Task<Letter> LetterRetrieveAsync(string ltrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Letter> getAsync(string ltrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<Letter> localVarResponse = await LetterRetrieveWithHttpInfoAsync(ltrId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<Letter> localVarResponse = await getWithHttpInfoAsync(ltrId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -821,12 +821,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Letter)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Letter>> LetterRetrieveWithHttpInfoAsync(string ltrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Letter>> getWithHttpInfoAsync(string ltrId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'ltrId' is set
             if (ltrId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'ltrId' when calling LettersApi->LetterRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'ltrId' when calling LettersApi->get");
             }
 
 
@@ -854,7 +854,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("ltr_id", lob.dotnet.Client.ClientUtils.ParameterToString(ltrId)); // path parameter
 
-            localVarRequestOptions.Operation = "LettersApi.LetterRetrieve";
+            localVarRequestOptions.Operation = "LettersApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -869,7 +869,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("LetterRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -896,9 +896,9 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LetterList</returns>
-        public LetterList LettersList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
+        public LetterList list(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<LetterList> localVarResponse = LettersListWithHttpInfo(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy);
+            lob.dotnet.Client.ApiResponse<LetterList> localVarResponse = listWithHttpInfo(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy);
             return localVarResponse.Data;
         }
 
@@ -919,7 +919,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LetterList</returns>
-        public lob.dotnet.Client.ApiResponse<LetterList> LettersListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<LetterList> listWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -988,7 +988,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "sort_by", sortBy.ToJson()));
             }
 
-            localVarRequestOptions.Operation = "LettersApi.LettersList";
+            localVarRequestOptions.Operation = "LettersApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1002,7 +1002,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<LetterList>("/letters", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("LettersList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1030,9 +1030,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LetterList</returns>
-        public async System.Threading.Tasks.Task<LetterList> LettersListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<LetterList> listAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<LetterList> localVarResponse = await LettersListWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<LetterList> localVarResponse = await listWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, color, scheduled, sendDate, mailType, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1054,7 +1054,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LetterList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<LetterList>> LettersListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<LetterList>> listWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? color = default(bool?), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1124,7 +1124,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
             }
 
-            localVarRequestOptions.Operation = "LettersApi.LettersList";
+            localVarRequestOptions.Operation = "LettersApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1139,7 +1139,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("LettersList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

@@ -38,7 +38,7 @@ namespace lob.dotnet.Api
         /// <param name="chkId">id of the check</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CheckDeletion</returns>
-        CheckDeletion CheckCancel(string chkId, int operationIndex = 0);
+        CheckDeletion cancel(string chkId, int operationIndex = 0);
 
         /// <summary>
         /// cancel
@@ -50,7 +50,7 @@ namespace lob.dotnet.Api
         /// <param name="chkId">id of the check</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CheckDeletion</returns>
-        ApiResponse<CheckDeletion> CheckCancelWithHttpInfo(string chkId, int operationIndex = 0);
+        ApiResponse<CheckDeletion> cancelWithHttpInfo(string chkId, int operationIndex = 0);
         /// <summary>
         /// create
         /// </summary>
@@ -62,7 +62,7 @@ namespace lob.dotnet.Api
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Check</returns>
-        Check CheckCreate(CheckEditable checkEditable, string idempotencyKey = default(string), int operationIndex = 0);
+        Check create(CheckEditable checkEditable, string idempotencyKey = default(string), int operationIndex = 0);
 
         /// <summary>
         /// create
@@ -75,7 +75,7 @@ namespace lob.dotnet.Api
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Check</returns>
-        ApiResponse<Check> CheckCreateWithHttpInfo(CheckEditable checkEditable, string idempotencyKey = default(string), int operationIndex = 0);
+        ApiResponse<Check> createWithHttpInfo(CheckEditable checkEditable, string idempotencyKey = default(string), int operationIndex = 0);
         /// <summary>
         /// get
         /// </summary>
@@ -86,7 +86,7 @@ namespace lob.dotnet.Api
         /// <param name="chkId">id of the check</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Check</returns>
-        Check CheckRetrieve(string chkId, int operationIndex = 0);
+        Check get(string chkId, int operationIndex = 0);
 
         /// <summary>
         /// get
@@ -98,7 +98,7 @@ namespace lob.dotnet.Api
         /// <param name="chkId">id of the check</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Check</returns>
-        ApiResponse<Check> CheckRetrieveWithHttpInfo(string chkId, int operationIndex = 0);
+        ApiResponse<Check> getWithHttpInfo(string chkId, int operationIndex = 0);
         /// <summary>
         /// list
         /// </summary>
@@ -118,7 +118,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CheckList</returns>
-        CheckList ChecksList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
+        CheckList list(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
 
         /// <summary>
         /// list
@@ -139,7 +139,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CheckList</returns>
-        ApiResponse<CheckList> ChecksListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
+        ApiResponse<CheckList> listWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -160,7 +160,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CheckDeletion</returns>
-        System.Threading.Tasks.Task<CheckDeletion> CheckCancelAsync(string chkId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CheckDeletion> cancelAsync(string chkId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// cancel
@@ -173,7 +173,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CheckDeletion)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CheckDeletion>> CheckCancelWithHttpInfoAsync(string chkId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CheckDeletion>> cancelWithHttpInfoAsync(string chkId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// create
         /// </summary>
@@ -186,7 +186,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Check</returns>
-        System.Threading.Tasks.Task<Check> CheckCreateAsync(CheckEditable checkEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Check> createAsync(CheckEditable checkEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// create
@@ -200,7 +200,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Check)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Check>> CheckCreateWithHttpInfoAsync(CheckEditable checkEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Check>> createWithHttpInfoAsync(CheckEditable checkEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// get
         /// </summary>
@@ -212,7 +212,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Check</returns>
-        System.Threading.Tasks.Task<Check> CheckRetrieveAsync(string chkId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Check> getAsync(string chkId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// get
@@ -225,7 +225,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Check)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Check>> CheckRetrieveWithHttpInfoAsync(string chkId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Check>> getWithHttpInfoAsync(string chkId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// list
         /// </summary>
@@ -246,7 +246,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CheckList</returns>
-        System.Threading.Tasks.Task<CheckList> ChecksListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CheckList> listAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// list
@@ -268,7 +268,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CheckList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CheckList>> ChecksListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CheckList>> listWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -396,9 +396,9 @@ namespace lob.dotnet.Api
         /// <param name="chkId">id of the check</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CheckDeletion</returns>
-        public CheckDeletion CheckCancel(string chkId, int operationIndex = 0)
+        public CheckDeletion cancel(string chkId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<CheckDeletion> localVarResponse = CheckCancelWithHttpInfo(chkId);
+            lob.dotnet.Client.ApiResponse<CheckDeletion> localVarResponse = cancelWithHttpInfo(chkId);
             return localVarResponse.Data;
         }
 
@@ -409,12 +409,12 @@ namespace lob.dotnet.Api
         /// <param name="chkId">id of the check</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CheckDeletion</returns>
-        public lob.dotnet.Client.ApiResponse<CheckDeletion> CheckCancelWithHttpInfo(string chkId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<CheckDeletion> cancelWithHttpInfo(string chkId, int operationIndex = 0)
         {
             // verify the required parameter 'chkId' is set
             if (chkId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'chkId' when calling ChecksApi->CheckCancel");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'chkId' when calling ChecksApi->cancel");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -441,7 +441,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("chk_id", lob.dotnet.Client.ClientUtils.ParameterToString(chkId)); // path parameter
 
-            localVarRequestOptions.Operation = "ChecksApi.CheckCancel";
+            localVarRequestOptions.Operation = "ChecksApi.cancel";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -455,7 +455,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Delete<CheckDeletion>("/checks/{chk_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CheckCancel", localVarResponse);
+                Exception _exception = this.ExceptionFactory("cancel", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -473,9 +473,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CheckDeletion</returns>
-        public async System.Threading.Tasks.Task<CheckDeletion> CheckCancelAsync(string chkId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CheckDeletion> cancelAsync(string chkId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<CheckDeletion> localVarResponse = await CheckCancelWithHttpInfoAsync(chkId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<CheckDeletion> localVarResponse = await cancelWithHttpInfoAsync(chkId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -487,12 +487,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CheckDeletion)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<CheckDeletion>> CheckCancelWithHttpInfoAsync(string chkId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<CheckDeletion>> cancelWithHttpInfoAsync(string chkId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'chkId' is set
             if (chkId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'chkId' when calling ChecksApi->CheckCancel");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'chkId' when calling ChecksApi->cancel");
             }
 
 
@@ -520,7 +520,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("chk_id", lob.dotnet.Client.ClientUtils.ParameterToString(chkId)); // path parameter
 
-            localVarRequestOptions.Operation = "ChecksApi.CheckCancel";
+            localVarRequestOptions.Operation = "ChecksApi.cancel";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -535,7 +535,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CheckCancel", localVarResponse);
+                Exception _exception = this.ExceptionFactory("cancel", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -553,9 +553,9 @@ namespace lob.dotnet.Api
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Check</returns>
-        public Check CheckCreate(CheckEditable checkEditable, string idempotencyKey = default(string), int operationIndex = 0)
+        public Check create(CheckEditable checkEditable, string idempotencyKey = default(string), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<Check> localVarResponse = CheckCreateWithHttpInfo(checkEditable, idempotencyKey);
+            lob.dotnet.Client.ApiResponse<Check> localVarResponse = createWithHttpInfo(checkEditable, idempotencyKey);
             return localVarResponse.Data;
         }
 
@@ -567,12 +567,12 @@ namespace lob.dotnet.Api
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Check</returns>
-        public lob.dotnet.Client.ApiResponse<Check> CheckCreateWithHttpInfo(CheckEditable checkEditable, string idempotencyKey = default(string), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<Check> createWithHttpInfo(CheckEditable checkEditable, string idempotencyKey = default(string), int operationIndex = 0)
         {
             // verify the required parameter 'checkEditable' is set
             if (checkEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'checkEditable' when calling ChecksApi->CheckCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'checkEditable' when calling ChecksApi->create");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -606,7 +606,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = checkEditable;
 
-            localVarRequestOptions.Operation = "ChecksApi.CheckCreate";
+            localVarRequestOptions.Operation = "ChecksApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -620,7 +620,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<Check>("/checks", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CheckCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -639,9 +639,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Check</returns>
-        public async System.Threading.Tasks.Task<Check> CheckCreateAsync(CheckEditable checkEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Check> createAsync(CheckEditable checkEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<Check> localVarResponse = await CheckCreateWithHttpInfoAsync(checkEditable, idempotencyKey, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<Check> localVarResponse = await createWithHttpInfoAsync(checkEditable, idempotencyKey, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -654,12 +654,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Check)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Check>> CheckCreateWithHttpInfoAsync(CheckEditable checkEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Check>> createWithHttpInfoAsync(CheckEditable checkEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'checkEditable' is set
             if (checkEditable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'checkEditable' when calling ChecksApi->CheckCreate");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'checkEditable' when calling ChecksApi->create");
             }
 
 
@@ -694,7 +694,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = checkEditable;
 
-            localVarRequestOptions.Operation = "ChecksApi.CheckCreate";
+            localVarRequestOptions.Operation = "ChecksApi.create";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -709,7 +709,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CheckCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("create", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -726,9 +726,9 @@ namespace lob.dotnet.Api
         /// <param name="chkId">id of the check</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Check</returns>
-        public Check CheckRetrieve(string chkId, int operationIndex = 0)
+        public Check get(string chkId, int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<Check> localVarResponse = CheckRetrieveWithHttpInfo(chkId);
+            lob.dotnet.Client.ApiResponse<Check> localVarResponse = getWithHttpInfo(chkId);
             return localVarResponse.Data;
         }
 
@@ -739,12 +739,12 @@ namespace lob.dotnet.Api
         /// <param name="chkId">id of the check</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Check</returns>
-        public lob.dotnet.Client.ApiResponse<Check> CheckRetrieveWithHttpInfo(string chkId, int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<Check> getWithHttpInfo(string chkId, int operationIndex = 0)
         {
             // verify the required parameter 'chkId' is set
             if (chkId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'chkId' when calling ChecksApi->CheckRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'chkId' when calling ChecksApi->get");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -771,7 +771,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("chk_id", lob.dotnet.Client.ClientUtils.ParameterToString(chkId)); // path parameter
 
-            localVarRequestOptions.Operation = "ChecksApi.CheckRetrieve";
+            localVarRequestOptions.Operation = "ChecksApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -785,7 +785,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<Check>("/checks/{chk_id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CheckRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -803,9 +803,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Check</returns>
-        public async System.Threading.Tasks.Task<Check> CheckRetrieveAsync(string chkId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Check> getAsync(string chkId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<Check> localVarResponse = await CheckRetrieveWithHttpInfoAsync(chkId, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<Check> localVarResponse = await getWithHttpInfoAsync(chkId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -817,12 +817,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Check)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Check>> CheckRetrieveWithHttpInfoAsync(string chkId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Check>> getWithHttpInfoAsync(string chkId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'chkId' is set
             if (chkId == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'chkId' when calling ChecksApi->CheckRetrieve");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'chkId' when calling ChecksApi->get");
             }
 
 
@@ -850,7 +850,7 @@ namespace lob.dotnet.Api
 
             localVarRequestOptions.PathParameters.Add("chk_id", lob.dotnet.Client.ClientUtils.ParameterToString(chkId)); // path parameter
 
-            localVarRequestOptions.Operation = "ChecksApi.CheckRetrieve";
+            localVarRequestOptions.Operation = "ChecksApi.get";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -865,7 +865,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CheckRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("get", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -891,9 +891,9 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CheckList</returns>
-        public CheckList ChecksList(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
+        public CheckList list(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<CheckList> localVarResponse = ChecksListWithHttpInfo(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy);
+            lob.dotnet.Client.ApiResponse<CheckList> localVarResponse = listWithHttpInfo(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy);
             return localVarResponse.Data;
         }
 
@@ -913,7 +913,7 @@ namespace lob.dotnet.Api
         /// <param name="sortBy">Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CheckList</returns>
-        public lob.dotnet.Client.ApiResponse<CheckList> ChecksListWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<CheckList> listWithHttpInfo(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0)
         {
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
 
@@ -978,7 +978,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("deepObject", "sort_by", sortBy.ToJson()));
             }
 
-            localVarRequestOptions.Operation = "ChecksApi.ChecksList";
+            localVarRequestOptions.Operation = "ChecksApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -992,7 +992,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Get<CheckList>("/checks", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ChecksList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1019,9 +1019,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CheckList</returns>
-        public async System.Threading.Tasks.Task<CheckList> ChecksListAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CheckList> listAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<CheckList> localVarResponse = await ChecksListWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<CheckList> localVarResponse = await listWithHttpInfoAsync(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1042,7 +1042,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CheckList)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<CheckList>> ChecksListWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<CheckList>> listWithHttpInfoAsync(int? limit = default(int?), string before = default(string), string after = default(string), List<string> include = default(List<string>), Dictionary<string, DateTime> dateCreated = default(Dictionary<string, DateTime>), Dictionary<string, string> metadata = default(Dictionary<string, string>), bool? scheduled = default(bool?), Dictionary<string, string> sendDate = default(Dictionary<string, string>), MailType? mailType = default(MailType?), SortBy3 sortBy = default(SortBy3), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -1108,7 +1108,7 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "sort_by", sortBy));
             }
 
-            localVarRequestOptions.Operation = "ChecksApi.ChecksList";
+            localVarRequestOptions.Operation = "ChecksApi.list";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -1123,7 +1123,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ChecksList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("list", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

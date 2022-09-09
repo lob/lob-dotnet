@@ -4,15 +4,15 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddressCreate**](AddressesApi.md#addresscreate) | **POST** /addresses | create
-[**AddressDelete**](AddressesApi.md#addressdelete) | **DELETE** /addresses/{adr_id} | delete
-[**AddressRetrieve**](AddressesApi.md#addressretrieve) | **GET** /addresses/{adr_id} | get
-[**AddressesList**](AddressesApi.md#addresseslist) | **GET** /addresses | list
+[**create**](AddressesApi.md#create) | **POST** /addresses | create
+[**delete**](AddressesApi.md#delete) | **DELETE** /addresses/{adr_id} | delete
+[**get**](AddressesApi.md#get) | **GET** /addresses/{adr_id} | get
+[**list**](AddressesApi.md#list) | **GET** /addresses | list
 
 
-<a name="addresscreate"></a>
-# **AddressCreate**
-> Address AddressCreate (AddressEditable addressEditable)
+<a name="create"></a>
+# **create**
+> Address create (AddressEditable addressEditable)
 
 create
 
@@ -28,7 +28,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class AddressCreateExample
+    public class createExample
     {
         public static void Main()
         {
@@ -44,12 +44,12 @@ namespace Example
             try
             {
                 // create
-                Address result = apiInstance.AddressCreate(addressEditable);
+                Address result = apiInstance.create(addressEditable);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AddressesApi.AddressCreate: " + e.Message );
+                Debug.Print("Exception when calling AddressesApi.create: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -86,9 +86,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="addressdelete"></a>
-# **AddressDelete**
-> AddressDeletion AddressDelete (string adrId)
+<a name="delete"></a>
+# **delete**
+> AddressDeletion delete (string adrId)
 
 delete
 
@@ -104,7 +104,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class AddressDeleteExample
+    public class deleteExample
     {
         public static void Main()
         {
@@ -120,12 +120,12 @@ namespace Example
             try
             {
                 // delete
-                AddressDeletion result = apiInstance.AddressDelete(adrId);
+                AddressDeletion result = apiInstance.delete(adrId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AddressesApi.AddressDelete: " + e.Message );
+                Debug.Print("Exception when calling AddressesApi.delete: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -162,9 +162,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="addressretrieve"></a>
-# **AddressRetrieve**
-> Address AddressRetrieve (string adrId)
+<a name="get"></a>
+# **get**
+> Address get (string adrId)
 
 get
 
@@ -180,7 +180,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class AddressRetrieveExample
+    public class getExample
     {
         public static void Main()
         {
@@ -196,12 +196,12 @@ namespace Example
             try
             {
                 // get
-                Address result = apiInstance.AddressRetrieve(adrId);
+                Address result = apiInstance.get(adrId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AddressesApi.AddressRetrieve: " + e.Message );
+                Debug.Print("Exception when calling AddressesApi.get: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -238,9 +238,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="addresseslist"></a>
-# **AddressesList**
-> AddressList AddressesList (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null)
+<a name="list"></a>
+# **list**
+> AddressList list (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null)
 
 list
 
@@ -256,7 +256,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class AddressesListExample
+    public class listExample
     {
         public static void Main()
         {
@@ -277,12 +277,12 @@ namespace Example
             try
             {
                 // list
-                AddressList result = apiInstance.AddressesList(limit, before, after, include, dateCreated, metadata);
+                AddressList result = apiInstance.list(limit, before, after, include, dateCreated, metadata);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AddressesApi.AddressesList: " + e.Message );
+                Debug.Print("Exception when calling AddressesApi.list: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }

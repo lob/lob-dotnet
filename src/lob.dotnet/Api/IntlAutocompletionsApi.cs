@@ -39,7 +39,7 @@ namespace lob.dotnet.Api
         /// <param name="xLangOutput">* &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>IntlAutocompletions</returns>
-        IntlAutocompletions IntlAutocompletion(IntlAutocompletionsWritable intlAutocompletionsWritable, string xLangOutput = default(string), int operationIndex = 0);
+        IntlAutocompletions autocomplete(IntlAutocompletionsWritable intlAutocompletionsWritable, string xLangOutput = default(string), int operationIndex = 0);
 
         /// <summary>
         /// autocomplete
@@ -52,7 +52,7 @@ namespace lob.dotnet.Api
         /// <param name="xLangOutput">* &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of IntlAutocompletions</returns>
-        ApiResponse<IntlAutocompletions> IntlAutocompletionWithHttpInfo(IntlAutocompletionsWritable intlAutocompletionsWritable, string xLangOutput = default(string), int operationIndex = 0);
+        ApiResponse<IntlAutocompletions> autocompleteWithHttpInfo(IntlAutocompletionsWritable intlAutocompletionsWritable, string xLangOutput = default(string), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -74,7 +74,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IntlAutocompletions</returns>
-        System.Threading.Tasks.Task<IntlAutocompletions> IntlAutocompletionAsync(IntlAutocompletionsWritable intlAutocompletionsWritable, string xLangOutput = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<IntlAutocompletions> autocompleteAsync(IntlAutocompletionsWritable intlAutocompletionsWritable, string xLangOutput = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// autocomplete
@@ -88,7 +88,7 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IntlAutocompletions)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IntlAutocompletions>> IntlAutocompletionWithHttpInfoAsync(IntlAutocompletionsWritable intlAutocompletionsWritable, string xLangOutput = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<IntlAutocompletions>> autocompleteWithHttpInfoAsync(IntlAutocompletionsWritable intlAutocompletionsWritable, string xLangOutput = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -217,9 +217,9 @@ namespace lob.dotnet.Api
         /// <param name="xLangOutput">* &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>IntlAutocompletions</returns>
-        public IntlAutocompletions IntlAutocompletion(IntlAutocompletionsWritable intlAutocompletionsWritable, string xLangOutput = default(string), int operationIndex = 0)
+        public IntlAutocompletions autocomplete(IntlAutocompletionsWritable intlAutocompletionsWritable, string xLangOutput = default(string), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<IntlAutocompletions> localVarResponse = IntlAutocompletionWithHttpInfo(intlAutocompletionsWritable, xLangOutput);
+            lob.dotnet.Client.ApiResponse<IntlAutocompletions> localVarResponse = autocompleteWithHttpInfo(intlAutocompletionsWritable, xLangOutput);
             return localVarResponse.Data;
         }
 
@@ -231,12 +231,12 @@ namespace lob.dotnet.Api
         /// <param name="xLangOutput">* &#x60;native&#x60; - Translate response to the native language of the country in the request * &#x60;match&#x60; - match the response to the language in the request  Default response is in English.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of IntlAutocompletions</returns>
-        public lob.dotnet.Client.ApiResponse<IntlAutocompletions> IntlAutocompletionWithHttpInfo(IntlAutocompletionsWritable intlAutocompletionsWritable, string xLangOutput = default(string), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<IntlAutocompletions> autocompleteWithHttpInfo(IntlAutocompletionsWritable intlAutocompletionsWritable, string xLangOutput = default(string), int operationIndex = 0)
         {
             // verify the required parameter 'intlAutocompletionsWritable' is set
             if (intlAutocompletionsWritable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'intlAutocompletionsWritable' when calling IntlAutocompletionsApi->IntlAutocompletion");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'intlAutocompletionsWritable' when calling IntlAutocompletionsApi->autocomplete");
             }
 
             lob.dotnet.Client.RequestOptions localVarRequestOptions = new lob.dotnet.Client.RequestOptions();
@@ -270,7 +270,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = intlAutocompletionsWritable;
 
-            localVarRequestOptions.Operation = "IntlAutocompletionsApi.IntlAutocompletion";
+            localVarRequestOptions.Operation = "IntlAutocompletionsApi.autocomplete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -284,7 +284,7 @@ namespace lob.dotnet.Api
             var localVarResponse = this.Client.Post<IntlAutocompletions>("/intl_autocompletions", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("IntlAutocompletion", localVarResponse);
+                Exception _exception = this.ExceptionFactory("autocomplete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -303,9 +303,9 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IntlAutocompletions</returns>
-        public async System.Threading.Tasks.Task<IntlAutocompletions> IntlAutocompletionAsync(IntlAutocompletionsWritable intlAutocompletionsWritable, string xLangOutput = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<IntlAutocompletions> autocompleteAsync(IntlAutocompletionsWritable intlAutocompletionsWritable, string xLangOutput = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<IntlAutocompletions> localVarResponse = await IntlAutocompletionWithHttpInfoAsync(intlAutocompletionsWritable, xLangOutput, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<IntlAutocompletions> localVarResponse = await autocompleteWithHttpInfoAsync(intlAutocompletionsWritable, xLangOutput, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -318,12 +318,12 @@ namespace lob.dotnet.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IntlAutocompletions)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<IntlAutocompletions>> IntlAutocompletionWithHttpInfoAsync(IntlAutocompletionsWritable intlAutocompletionsWritable, string xLangOutput = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<IntlAutocompletions>> autocompleteWithHttpInfoAsync(IntlAutocompletionsWritable intlAutocompletionsWritable, string xLangOutput = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'intlAutocompletionsWritable' is set
             if (intlAutocompletionsWritable == null)
             {
-                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'intlAutocompletionsWritable' when calling IntlAutocompletionsApi->IntlAutocompletion");
+                throw new lob.dotnet.Client.ApiException(400, "Missing required parameter 'intlAutocompletionsWritable' when calling IntlAutocompletionsApi->autocomplete");
             }
 
 
@@ -358,7 +358,7 @@ namespace lob.dotnet.Api
             }
             localVarRequestOptions.Data = intlAutocompletionsWritable;
 
-            localVarRequestOptions.Operation = "IntlAutocompletionsApi.IntlAutocompletion";
+            localVarRequestOptions.Operation = "IntlAutocompletionsApi.autocomplete";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (basicAuth) required
@@ -373,7 +373,7 @@ namespace lob.dotnet.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("IntlAutocompletion", localVarResponse);
+                Exception _exception = this.ExceptionFactory("autocomplete", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
