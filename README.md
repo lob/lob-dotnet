@@ -88,8 +88,7 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.lob.com/v1";
             // Configure HTTP basic authorization: basicAuth
-            config.Username = "YOUR_USERNAME";
-            config.Password = "YOUR_PASSWORD";
+            config.Username = "<<YOUR_LOB_API_KEY>>";
 
             var apiInstance = new AddressesApi(config);
             var addressEditable = new AddressEditable(); // AddressEditable | 
