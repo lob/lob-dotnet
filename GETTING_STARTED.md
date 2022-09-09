@@ -53,7 +53,7 @@ AddressEditable addressEditable = new AddressEditable(
 );
 
 try {
-  Address result = api.AddressCreate(addressEditable);
+  Address result = api.create(addressEditable);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -71,8 +71,9 @@ metadata.Add("name", "Harry");
 Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
 DateTime dateCreatedDate = DateTime.Today.AddMonths(-1);
 dateCreated.Add("lt", dateCreatedDate);
+
 try {
-  AddressList response = api.AddressesList(
+  AddressList response = api.list(
     2, // limit
     null, // before
     null, // after
@@ -91,7 +92,7 @@ Here is a sample of the GET method:
 
 ```csharp
 try {
-  Address response = api.AddressRetrieve("adr_fa85158b26c3eb7c");
+  Address response = api.get("adr_fa85158b26c3eb7c");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -103,7 +104,7 @@ Here is a sample of the DELETE method:
 
 ```csharp
 try {
-  AddressDeletion response = api.AddressDelete("adr_43769b47aed248c2");
+  AddressDeletion response = api.delete("adr_43769b47aed248c2");
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -121,7 +122,7 @@ amounts.Add(63);
 BankAccountVerify verification = new BankAccountVerify(amounts);
 
 try {
-  BankAccount verified_account = api.BankAccountVerify("bank_dfceb4a2a05b57e", verification);
+  BankAccount verified_account = api.verify("bank_dfceb4a2a05b57e", verification);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
@@ -135,7 +136,7 @@ Here is a sample of the UPDATE method:
 TemplateUpdate update = new TemplateUpdate("update template", "vrsn_362184d96d9b0c9");
 
 try {
-  api.TemplateUpdate("tmpl_c94e83ca2cd5121", update);
+  api.update("tmpl_c94e83ca2cd5121", update);
 } catch (ApiException e) {
   Console.WriteLine(e.ToString());
 }
