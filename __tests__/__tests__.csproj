@@ -4,6 +4,7 @@
     <AssemblyName>__tests__</AssemblyName>
     <RootNamespace>__tests__</RootNamespace>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
