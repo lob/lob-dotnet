@@ -25,6 +25,7 @@ namespace __tests__.Api
     ///  Class for testing PostcardsApi
     /// </summary>
     [TestFixture]
+    [Category("Unit")]
     [Parallelizable(scope: ParallelScope.Self)]
     public class PostcardsApiTests : IDisposable
     {

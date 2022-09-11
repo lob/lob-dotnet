@@ -24,6 +24,7 @@ namespace __tests__.Api
     ///  Class for testing ZipLookupsApi
     /// </summary>
     [TestFixture]
+    [Category("Unit")]
     [Parallelizable(scope: ParallelScope.All)]
     public class ZipLookupsApiTests : IDisposable
     {

@@ -18,6 +18,7 @@ using System.Linq;
 
 namespace __tests__.Integration {
     [TestFixture]
+    [Category("Integration")]
     [Parallelizable(scope: ParallelScope.Self)]
     public class BillingGroupsApiTests : IDisposable
     {

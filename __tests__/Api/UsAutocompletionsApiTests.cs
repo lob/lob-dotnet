@@ -24,6 +24,7 @@ namespace __tests__.Api
     ///  Class for testing UsAutocompletionsApi
     /// </summary>
     [TestFixture]
+    [Category("Unit")]
     [Parallelizable(scope: ParallelScope.Self)]
     public class UsAutocompletionsApiTests : IDisposable
     {
