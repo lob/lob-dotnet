@@ -19,7 +19,8 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/lob/lob-dotnet</PackageProjectUrl>
     <PackageTags>address verification;address validation;address autocomplete;lob;lob.com</PackageTags>
-    <Summary>This is an API wrapper for the lob api written using an OpenAPI spec.</Summary>
+    <Summary>This is the official api wrapper for csharp. Made using OpenAPI generation.</Summary>
+    <PackageIconUrl>https://assets-global.website-files.com/5e1e5c62fa3d4447af417098/5e3a2c100e42b0337dd413c3_Logo.svg</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
