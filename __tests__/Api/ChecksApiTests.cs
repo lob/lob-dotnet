@@ -24,6 +24,8 @@ namespace __tests__.Api
     ///  Class for testing ChecksApi
     /// </summary>
     [TestFixture]
+    [Category("Unit")]
+    [Parallelizable(scope: ParallelScope.Self)]
     public class ChecksApiTests : IDisposable
     {
         private Mock<IChecksApi> ChecksApiMock;

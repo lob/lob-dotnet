@@ -24,6 +24,7 @@ namespace __tests__.Api
     ///  Class for testing TemplateVersionsApi
     /// </summary>
     [TestFixture]
+    [Category("Unit")]
     [Parallelizable(scope: ParallelScope.Self)]
     public class TemplateVersionsApiTests : IDisposable
     {
