@@ -24,6 +24,7 @@ namespace __tests__.Api
     ///  Class for testing BillingGroupsApi
     /// </summary>
     [TestFixture]
+    [Category("Unit")]
     [Parallelizable(scope: ParallelScope.Self)]
     public class BillingGroupsApiTests : IDisposable
     {
