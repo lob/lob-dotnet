@@ -27,26 +27,26 @@ using OpenAPIDateConverter = lob.dotnet.Client.OpenAPIDateConverter;
 namespace lob.dotnet.Model
 {
     /// <summary>
-    /// verify
+    /// BankAccountVerify
     /// </summary>
     [DataContract(Name = "bank_account_verify")]
-    public partial class verify : IEquatable<verify>, IValidatableObject
+    public partial class BankAccountVerify : IEquatable<BankAccountVerify>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="verify" /> class.
+        /// Initializes a new instance of the <see cref="BankAccountVerify" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected verify() { }
+        protected BankAccountVerify() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="verify" /> class.
+        /// Initializes a new instance of the <see cref="BankAccountVerify" /> class.
         /// </summary>
         /// <param name="amounts">In live mode, an array containing the two micro deposits (in cents) placed in the bank account. In test mode, no micro deposits will be placed, so any two integers between &#x60;1&#x60; and &#x60;100&#x60; will work. (required).</param>
-        public verify(List<int> amounts = default(List<int>))
+        public BankAccountVerify(List<int> amounts = default(List<int>))
         {
             // to ensure "amounts" is required (not null)
             if (amounts == null)
             {
-                throw new ArgumentNullException("amounts is a required property for verify and cannot be null");
+                throw new ArgumentNullException("amounts is a required property for BankAccountVerify and cannot be null");
             }
             this.Amounts = amounts;
         }
@@ -65,7 +65,7 @@ namespace lob.dotnet.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class verify {\n");
+            sb.Append("class BankAccountVerify {\n");
             sb.Append("  Amounts: ").Append(Amounts).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -87,15 +87,15 @@ namespace lob.dotnet.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as verify);
+            return this.Equals(input as BankAccountVerify);
         }
 
         /// <summary>
-        /// Returns true if verify instances are equal
+        /// Returns true if BankAccountVerify instances are equal
         /// </summary>
-        /// <param name="input">Instance of verify to be compared</param>
+        /// <param name="input">Instance of BankAccountVerify to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(verify input)
+        public bool Equals(BankAccountVerify input)
         {
             if (input == null)
             {

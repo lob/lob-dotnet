@@ -25,7 +25,7 @@ namespace __tests__.Integration {
         private BankAccountsApi validApi;
         private BankAccountsApi invalidApi;
         private BankAccountWritable bankAccountWritable;
-        private verify verification;
+        private BankAccountVerify verification;
         private List<string> idsToDelete;
 
         public BankAccountsApiTests()
@@ -53,7 +53,7 @@ namespace __tests__.Integration {
             amounts.Add(11);
             amounts.Add(35);
 
-            verification = new verify(amounts);
+            verification = new BankAccountVerify(amounts);
 
             idsToDelete = new List<string>();
         }

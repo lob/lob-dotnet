@@ -164,7 +164,7 @@ namespace lob.dotnet.Model
             }
 
             // ZipCodePlus4 (string) pattern
-            Regex regexZipCodePlus4 = new Regex(@"^\\d{4}$", RegexOptions.CultureInvariant);
+            Regex regexZipCodePlus4 = new Regex(@"^(\\d{4})?$", RegexOptions.CultureInvariant);
             if (false == regexZipCodePlus4.Match(this.ZipCodePlus4).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ZipCodePlus4, must match a pattern of " + regexZipCodePlus4, new [] { "ZipCodePlus4" });

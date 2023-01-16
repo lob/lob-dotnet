@@ -70,7 +70,8 @@ namespace __tests__.Integration {
                 default(DateTime), // sendDate
                 "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf", // front
                 "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf", // back
-                default(string) // billingGroupId
+                default(string), // billingGroupId,
+                SfmUseType.Marketing // useType
             );
             selfMailerEditable.Metadata = new Dictionary<string, string>();
             selfMailerEditable.Metadata.Add("fake campaign", "fakeid");

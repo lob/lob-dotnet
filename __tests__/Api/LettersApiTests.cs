@@ -45,6 +45,7 @@ namespace __tests__.Api
               default(DateTime), // dateModified
               default(bool), // deleted
               "ltr_fakeId", // id
+              "",//url
               default(string), // templateId
               default(string), // templateVersionId
               Letter.ObjectEnum.Letter, // _object
@@ -78,6 +79,7 @@ namespace __tests__.Api
               "ltr_fakeId1", // id
               default(string), // templateId
               default(string), // templateVersionId
+              "", // url
               Letter.ObjectEnum.Letter, // _object
               default(string), // description
               default(Dictionary<string, string>), // metadata
@@ -106,7 +108,8 @@ namespace __tests__.Api
               default(bool), // deleted
               "ltr_fakeId2", // id
               default(string), // templateId
-              default(string), // templateVersionId
+              default(string), // templateVersionId,
+              "", // url
               Letter.ObjectEnum.Letter, // _object
               default(string), // description
               default(Dictionary<string, string>), // metadata

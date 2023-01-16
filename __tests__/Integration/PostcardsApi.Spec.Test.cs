@@ -66,13 +66,16 @@ namespace __tests__.Integration {
                 address2, // from
                 default(PostcardSize), // size
                 "C# integration test postcard", // description
-                default(Dictionary<string, string>), // metadata
+                default(Dictionary<string, string>), // metadata,
                 default(MailType), // mailType
                 default(Object), // mergeVariables
                 default(DateTime), // sendDate
                 "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf", // front
                 "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf", // back
-                default(string) // billingGroupId
+                default(string), // billingGroupId,
+                default(QrCode), // qrCode
+                PscUseType.Marketing // useType
+
             );
             postcardEditable.Metadata = new Dictionary<string, string>();
             postcardEditable.Metadata.Add("name", "Harry");

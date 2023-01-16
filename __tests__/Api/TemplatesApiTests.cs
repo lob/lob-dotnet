@@ -357,7 +357,7 @@ namespace __tests__.Api
         [Test]
         public void updateTest()
         {
-            update update = new update("C# unit test template update description", "vrsn_fakeId");
+            TemplateUpdate update = new TemplateUpdate("C# unit test template update description", "vrsn_fakeId");
 
             templatesApiMock.Setup(x => x.update(fakeTemplate.Id, update, It.IsAny<int>())).Returns(fakeTemplate);
 

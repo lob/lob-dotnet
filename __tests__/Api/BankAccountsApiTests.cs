@@ -366,7 +366,7 @@ namespace __tests__.Api
             amounts.Add(1);
             amounts.Add(2);
 
-            verify verify = new verify(amounts);
+            BankAccountVerify verify = new BankAccountVerify(amounts);
 
             bankAccountsApiMock.Setup(x => x.verify(fakeBankAccount.Id, verify, It.IsAny<int>())).Returns(fakeBankAccount);
 

@@ -51,7 +51,8 @@ namespace lob.dotnet.Model
         /// <param name="inside">The artwork to use as the inside of your self mailer.  (required).</param>
         /// <param name="outside">The artwork to use as the outside of your self mailer.  (required).</param>
         /// <param name="billingGroupId">An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information..</param>
-        public SelfMailerEditable(string to = default(string), string from = default(string), SelfMailerSize size = default(SelfMailerSize), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string inside = default(string), string outside = default(string), string billingGroupId = default(string))
+        /// <param name="useType">useType (required).</param>
+        public SelfMailerEditable(Object to = default(Object), Object from = default(Object), SelfMailerSize size = default(SelfMailerSize), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string inside = default(string), string outside = default(string), string billingGroupId = default(string), SfmUseType useType = default(SfmUseType))
         {
             // to ensure "to" is required (not null)
             if (to == null)
@@ -71,6 +72,12 @@ namespace lob.dotnet.Model
                 throw new ArgumentNullException("outside is a required property for SelfMailerEditable and cannot be null");
             }
             this.Outside = outside;
+            // to ensure "useType" is required (not null)
+            if (useType == null)
+            {
+                throw new ArgumentNullException("useType is a required property for SelfMailerEditable and cannot be null");
+            }
+            this.UseType = useType;
             this.From = from;
             this.Size = size;
             this.Description = description;
@@ -86,14 +93,14 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Must either be an address ID or an inline object with correct address parameters.</value>
         [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = false)]
-        public string To { get; set; }
+        public Object To { get; set; }
 
         /// <summary>
         /// Must either be an address ID or an inline object with correct address parameters.
         /// </summary>
         /// <value>Must either be an address ID or an inline object with correct address parameters.</value>
         [DataMember(Name = "from", EmitDefaultValue = false)]
-        public string From { get; set; }
+        public Object From { get; set; }
 
         /// <summary>
         /// Gets or Sets Size
@@ -157,6 +164,12 @@ namespace lob.dotnet.Model
         public string BillingGroupId { get; set; }
 
         /// <summary>
+        /// Gets or Sets UseType
+        /// </summary>
+        [DataMember(Name = "use_type", IsRequired = true, EmitDefaultValue = false)]
+        public SfmUseType UseType { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -175,6 +188,7 @@ namespace lob.dotnet.Model
             sb.Append("  Inside: ").Append(Inside).Append("\n");
             sb.Append("  Outside: ").Append(Outside).Append("\n");
             sb.Append("  BillingGroupId: ").Append(BillingGroupId).Append("\n");
+            sb.Append("  UseType: ").Append(UseType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -265,6 +279,11 @@ namespace lob.dotnet.Model
                     this.BillingGroupId == input.BillingGroupId ||
                     (this.BillingGroupId != null &&
                     this.BillingGroupId.Equals(input.BillingGroupId))
+                ) && 
+                (
+                    this.UseType == input.UseType ||
+                    (this.UseType != null &&
+                    this.UseType.Equals(input.UseType))
                 );
         }
 
@@ -320,6 +339,10 @@ namespace lob.dotnet.Model
                 if (this.BillingGroupId != null)
                 {
                     hashCode = (hashCode * 59) + this.BillingGroupId.GetHashCode();
+                }
+                if (this.UseType != null)
+                {
+                    hashCode = (hashCode * 59) + this.UseType.GetHashCode();
                 }
                 return hashCode;
             }

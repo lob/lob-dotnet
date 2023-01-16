@@ -60,7 +60,7 @@ namespace __tests__.Integration {
             amounts.Add(11);
             amounts.Add(35);
 
-            verify verification = new verify(amounts);
+            BankAccountVerify verification = new BankAccountVerify(amounts);
             validBankAccountsApi.verify(bankAccount.Id, verification);
 
             AddressEditable addressEditable1 = new AddressEditable(
@@ -105,7 +105,16 @@ namespace __tests__.Integration {
                 null, // logo
                 null, // checkBottom
                 null, // attachment
-                "check 1" // description
+                "check 1", // description
+                default(Dictionary<string, string>), // metadata
+                default(object), // mergeVariables
+                default(DateTime),  // sendDate
+                CheckEditable.MailTypeEnum.UspsFirstClass, // mailType
+                default(string), // memo
+                default(int), // checkNumber
+                default(string), // message
+                default(string), //billingGroupId
+                ChkUseType.Marketing // useType
             );
 
             idsToDelete = new List<string>();
@@ -217,15 +226,6 @@ namespace __tests__.Integration {
             dateCreated.Add("lt", lastMonth);
 
             CheckList response = validApi.list(null, null, null, null, dateCreated);
-            Assert.Greater(response.Count, 0);
-        }
-
-        [Test]
-        public void CheckListTestWithMetadataParameter() {
-            Dictionary<String, String> metadata = new Dictionary<String, String>();
-            metadata.Add("name", "Harry");
-
-            CheckList response = validApi.list(null, null, null, null, null, metadata);
             Assert.Greater(response.Count, 0);
         }
 

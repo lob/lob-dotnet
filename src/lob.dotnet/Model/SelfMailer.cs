@@ -79,7 +79,8 @@ namespace lob.dotnet.Model
         /// <param name="_object">Value is resource type. (default to ObjectEnum.SelfMailer).</param>
         /// <param name="trackingEvents">An array of certified tracking events ordered by ascending &#x60;time&#x60;. Not populated in test mode..</param>
         /// <param name="url">A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated. (required).</param>
-        public SelfMailer(string id = default(string), Object to = default(Object), Object from = default(Object), SelfMailerSize size = default(SelfMailerSize), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string outsideTemplateId = default(string), string insideTemplateId = default(string), string outsideTemplateVersionId = default(string), string insideTemplateVersionId = default(string), ObjectEnum? _object = ObjectEnum.SelfMailer, List<TrackingEventCertified> trackingEvents = default(List<TrackingEventCertified>), string url = default(string))
+        /// <param name="useType">useType (required).</param>
+        public SelfMailer(string id = default(string), Object to = default(Object), Object from = default(Object), SelfMailerSize size = default(SelfMailerSize), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string outsideTemplateId = default(string), string insideTemplateId = default(string), string outsideTemplateVersionId = default(string), string insideTemplateVersionId = default(string), ObjectEnum? _object = ObjectEnum.SelfMailer, List<TrackingEventCertified> trackingEvents = default(List<TrackingEventCertified>), string url = default(string), SfmUseType useType = default(SfmUseType))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -99,6 +100,12 @@ namespace lob.dotnet.Model
                 throw new ArgumentNullException("url is a required property for SelfMailer and cannot be null");
             }
             this.Url = url;
+            // to ensure "useType" is required (not null)
+            if (useType == null)
+            {
+                throw new ArgumentNullException("useType is a required property for SelfMailer and cannot be null");
+            }
+            this.UseType = useType;
             this.From = from;
             this.Size = size;
             this.Description = description;
@@ -216,6 +223,12 @@ namespace lob.dotnet.Model
         public string Url { get; set; }
 
         /// <summary>
+        /// Gets or Sets UseType
+        /// </summary>
+        [DataMember(Name = "use_type", IsRequired = true, EmitDefaultValue = false)]
+        public SfmUseType UseType { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -239,6 +252,7 @@ namespace lob.dotnet.Model
             sb.Append("  Object: ").Append(Object).Append("\n");
             sb.Append("  TrackingEvents: ").Append(TrackingEvents).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
+            sb.Append("  UseType: ").Append(UseType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -354,6 +368,11 @@ namespace lob.dotnet.Model
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
+                ) && 
+                (
+                    this.UseType == input.UseType ||
+                    (this.UseType != null &&
+                    this.UseType.Equals(input.UseType))
                 );
         }
 
@@ -426,6 +445,10 @@ namespace lob.dotnet.Model
                 if (this.Url != null)
                 {
                     hashCode = (hashCode * 59) + this.Url.GetHashCode();
+                }
+                if (this.UseType != null)
+                {
+                    hashCode = (hashCode * 59) + this.UseType.GetHashCode();
                 }
                 return hashCode;
             }

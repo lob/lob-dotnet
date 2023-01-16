@@ -40,10 +40,10 @@ namespace lob.dotnet.Model
         public enum ObjectEnum
         {
             /// <summary>
-            /// Enum deleted for value: bank_account_deleted
+            /// Enum BankAccountDeleted for value: bank_account_deleted
             /// </summary>
             [EnumMember(Value = "bank_account_deleted")]
-            deleted = 1
+            BankAccountDeleted = 1
             
 
         }
@@ -60,8 +60,8 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <param name="id">Unique identifier prefixed with &#x60;bank_&#x60;..</param>
         /// <param name="deleted">Only returned if the resource has been successfully deleted..</param>
-        /// <param name="_object">Value is type of resource. (default to ObjectEnum.deleted).</param>
-        public BankAccountDeletion(string id = default(string), bool deleted = default(bool), ObjectEnum? _object = ObjectEnum.deleted)
+        /// <param name="_object">Value is type of resource. (default to ObjectEnum.BankAccountDeleted).</param>
+        public BankAccountDeletion(string id = default(string), bool deleted = default(bool), ObjectEnum? _object = ObjectEnum.BankAccountDeleted)
         {
             this.Id = id;
             this.Deleted = deleted;

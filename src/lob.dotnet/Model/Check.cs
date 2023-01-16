@@ -131,7 +131,8 @@ namespace lob.dotnet.Model
         /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created. (required).</param>
         /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified. (required).</param>
         /// <param name="deleted">Only returned if the resource has been successfully deleted..</param>
-        public Check(string id = default(string), Address to = default(Address), Address from = default(Address), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), MailTypeEnum? mailType = MailTypeEnum.UspsFirstClass, string memo = default(string), int checkNumber = default(int), string message = default(string), float amount = default(float), BankAccount bankAccount = default(BankAccount), string checkBottomTemplateId = default(string), string attachmentTemplateId = default(string), string checkBottomTemplateVersionId = default(string), string attachmentTemplateVersionId = default(string), string url = default(string), CarrierEnum carrier = CarrierEnum.USPS, List<Thumbnail> thumbnails = default(List<Thumbnail>), DateTime expectedDeliveryDate = default(DateTime), List<TrackingEventNormal> trackingEvents = default(List<TrackingEventNormal>), ObjectEnum _object = ObjectEnum.Check, DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool))
+        /// <param name="useType">useType (required).</param>
+        public Check(string id = default(string), Address to = default(Address), Address from = default(Address), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), MailTypeEnum? mailType = MailTypeEnum.UspsFirstClass, string memo = default(string), int checkNumber = default(int), string message = default(string), float amount = default(float), BankAccount bankAccount = default(BankAccount), string checkBottomTemplateId = default(string), string attachmentTemplateId = default(string), string checkBottomTemplateVersionId = default(string), string attachmentTemplateVersionId = default(string), string url = default(string), CarrierEnum carrier = CarrierEnum.USPS, List<Thumbnail> thumbnails = default(List<Thumbnail>), DateTime expectedDeliveryDate = default(DateTime), List<TrackingEventNormal> trackingEvents = default(List<TrackingEventNormal>), ObjectEnum _object = ObjectEnum.Check, DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), ChkUseType useType = default(ChkUseType))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -162,6 +163,12 @@ namespace lob.dotnet.Model
             this.Object = _object;
             this.DateCreated = dateCreated;
             this.DateModified = dateModified;
+            // to ensure "useType" is required (not null)
+            if (useType == null)
+            {
+                throw new ArgumentNullException("useType is a required property for Check and cannot be null");
+            }
+            this.UseType = useType;
             this.From = from;
             this.Description = description;
             this.Metadata = metadata;
@@ -340,6 +347,12 @@ namespace lob.dotnet.Model
         public bool Deleted { get; set; }
 
         /// <summary>
+        /// Gets or Sets UseType
+        /// </summary>
+        [DataMember(Name = "use_type", IsRequired = true, EmitDefaultValue = false)]
+        public ChkUseType UseType { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -373,6 +386,7 @@ namespace lob.dotnet.Model
             sb.Append("  DateCreated: ").Append(DateCreated).Append("\n");
             sb.Append("  DateModified: ").Append(DateModified).Append("\n");
             sb.Append("  Deleted: ").Append(Deleted).Append("\n");
+            sb.Append("  UseType: ").Append(UseType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -534,6 +548,11 @@ namespace lob.dotnet.Model
                 (
                     this.Deleted == input.Deleted ||
                     this.Deleted.Equals(input.Deleted)
+                ) && 
+                (
+                    this.UseType == input.UseType ||
+                    (this.UseType != null &&
+                    this.UseType.Equals(input.UseType))
                 );
         }
 
@@ -632,6 +651,10 @@ namespace lob.dotnet.Model
                     hashCode = (hashCode * 59) + this.DateModified.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Deleted.GetHashCode();
+                if (this.UseType != null)
+                {
+                    hashCode = (hashCode * 59) + this.UseType.GetHashCode();
+                }
                 return hashCode;
             }
         }

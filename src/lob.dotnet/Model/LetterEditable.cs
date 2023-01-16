@@ -145,7 +145,9 @@ namespace lob.dotnet.Model
         /// <param name="extraService">Add an extra service to your letter:   * &#x60;certified&#x60; - track and confirm delivery for domestic destinations. An extra sheet (1 PDF page single-sided or 2 PDF pages double-sided) is added to the beginning of your letter for address and barcode information. See here for templates: [#10 envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_template.pdf) and [flat envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_flat_template.pdf) (used for letters over 6 pages single-sided or 12 pages double-sided). You will not be charged for this extra sheet.   * &#x60;certified_return_receipt&#x60; - request an electronic copy of the recipient&#39;s signature to prove delivery of your certified letter   * &#x60;registered&#x60; - provides tracking and confirmation for international addresses .</param>
         /// <param name="cards">A single-element array containing an existing card id in a string format. See [cards](#tag/Cards) for more information..</param>
         /// <param name="billingGroupId">An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information..</param>
-        public LetterEditable(string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), bool color = default(bool), bool doubleSided = true, AddressPlacementEnum? addressPlacement = AddressPlacementEnum.TopFirstPage, Object returnEnvelope = default(Object), int? perforatedPage = default(int?), string customEnvelope = default(string), string to = default(string), string from = default(string), string file = default(string), ExtraServiceEnum? extraService = default(ExtraServiceEnum?), List<string> cards = default(List<string>), string billingGroupId = default(string))
+        /// <param name="qrCode">qrCode.</param>
+        /// <param name="useType">useType (required).</param>
+        public LetterEditable(string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), bool color = default(bool), bool doubleSided = true, AddressPlacementEnum? addressPlacement = AddressPlacementEnum.TopFirstPage, Object returnEnvelope = default(Object), int? perforatedPage = default(int?), string customEnvelope = default(string), Object to = default(Object), Object from = default(Object), string file = default(string), ExtraServiceEnum? extraService = default(ExtraServiceEnum?), List<string> cards = default(List<string>), string billingGroupId = default(string), QrCode qrCode = default(QrCode), LtrUseType useType = default(LtrUseType))
         {
             this.Color = color;
             // to ensure "to" is required (not null)
@@ -166,6 +168,12 @@ namespace lob.dotnet.Model
                 throw new ArgumentNullException("file is a required property for LetterEditable and cannot be null");
             }
             this.File = file;
+            // to ensure "useType" is required (not null)
+            if (useType == null)
+            {
+                throw new ArgumentNullException("useType is a required property for LetterEditable and cannot be null");
+            }
+            this.UseType = useType;
             this.Description = description;
             this.Metadata = metadata;
             this.MailType = mailType;
@@ -179,6 +187,7 @@ namespace lob.dotnet.Model
             this.ExtraService = extraService;
             this.Cards = cards;
             this.BillingGroupId = billingGroupId;
+            this.QrCode = qrCode;
         }
 
         /// <summary>
@@ -254,14 +263,14 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Must either be an address ID or an inline object with correct address parameters.</value>
         [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = false)]
-        public string To { get; set; }
+        public Object To { get; set; }
 
         /// <summary>
         /// Must either be an address ID or an inline object with correct address parameters.
         /// </summary>
         /// <value>Must either be an address ID or an inline object with correct address parameters.</value>
         [DataMember(Name = "from", IsRequired = true, EmitDefaultValue = false)]
-        public string From { get; set; }
+        public Object From { get; set; }
 
         /// <summary>
         /// PDF file containing the letter&#39;s formatting.
@@ -283,6 +292,18 @@ namespace lob.dotnet.Model
         /// <value>An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information.</value>
         [DataMember(Name = "billing_group_id", EmitDefaultValue = false)]
         public string BillingGroupId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets QrCode
+        /// </summary>
+        [DataMember(Name = "qr_code", EmitDefaultValue = false)]
+        public QrCode QrCode { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UseType
+        /// </summary>
+        [DataMember(Name = "use_type", IsRequired = true, EmitDefaultValue = false)]
+        public LtrUseType UseType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -309,6 +330,8 @@ namespace lob.dotnet.Model
             sb.Append("  ExtraService: ").Append(ExtraService).Append("\n");
             sb.Append("  Cards: ").Append(Cards).Append("\n");
             sb.Append("  BillingGroupId: ").Append(BillingGroupId).Append("\n");
+            sb.Append("  QrCode: ").Append(QrCode).Append("\n");
+            sb.Append("  UseType: ").Append(UseType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -426,6 +449,16 @@ namespace lob.dotnet.Model
                     this.BillingGroupId == input.BillingGroupId ||
                     (this.BillingGroupId != null &&
                     this.BillingGroupId.Equals(input.BillingGroupId))
+                ) && 
+                (
+                    this.QrCode == input.QrCode ||
+                    (this.QrCode != null &&
+                    this.QrCode.Equals(input.QrCode))
+                ) && 
+                (
+                    this.UseType == input.UseType ||
+                    (this.UseType != null &&
+                    this.UseType.Equals(input.UseType))
                 );
         }
 
@@ -493,6 +526,14 @@ namespace lob.dotnet.Model
                 if (this.BillingGroupId != null)
                 {
                     hashCode = (hashCode * 59) + this.BillingGroupId.GetHashCode();
+                }
+                if (this.QrCode != null)
+                {
+                    hashCode = (hashCode * 59) + this.QrCode.GetHashCode();
+                }
+                if (this.UseType != null)
+                {
+                    hashCode = (hashCode * 59) + this.UseType.GetHashCode();
                 }
                 return hashCode;
             }

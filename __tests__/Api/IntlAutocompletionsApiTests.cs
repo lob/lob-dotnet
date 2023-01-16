@@ -48,7 +48,7 @@ namespace __tests__.Api
                 "fake primaryLine", // primaryLine
                 "fake city", // city
                 "XX", // state
-                CountryExtendedExpanded.CANADA, // country
+                CountryExtended.CA, // country
                 "12345" // zipCode
             );
         }

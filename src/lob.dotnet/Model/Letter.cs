@@ -137,6 +137,7 @@ namespace lob.dotnet.Model
         /// <param name="id">Unique identifier prefixed with &#x60;ltr_&#x60;. (required).</param>
         /// <param name="templateId">Unique identifier prefixed with &#x60;tmpl_&#x60;. ID of a saved [HTML template](#section/HTML-Templates)..</param>
         /// <param name="templateVersionId">Unique identifier prefixed with &#x60;vrsn_&#x60;..</param>
+        /// <param name="url">A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated..</param>
         /// <param name="_object">_object (required) (default to ObjectEnum.Letter).</param>
         /// <param name="description">An internal description that identifies this resource. Must be no longer than 255 characters. .</param>
         /// <param name="metadata">Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information..</param>
@@ -153,7 +154,9 @@ namespace lob.dotnet.Model
         /// <param name="returnEnvelope">returnEnvelope (required).</param>
         /// <param name="perforatedPage">Required if &#x60;return_envelope&#x60; is &#x60;true&#x60;. The number of the page that should be perforated for use with the return envelope. Must be greater than or equal to &#x60;1&#x60;. The blank page added by &#x60;address_placement&#x3D;insert_blank_page&#x60; will be ignored when considering the perforated page number. To see how perforation will impact your letter design, view our [perforation guide](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_perf_template.pdf)..</param>
         /// <param name="customEnvelope">customEnvelope.</param>
-        public Letter(Address to = default(Address), Address from = default(Address), CarrierEnum? carrier = CarrierEnum.USPS, List<Thumbnail> thumbnails = default(List<Thumbnail>), DateTime expectedDeliveryDate = default(DateTime), DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), string id = default(string), string templateId = default(string), string templateVersionId = default(string), ObjectEnum _object = ObjectEnum.Letter, string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string extraService = default(string), string trackingNumber = default(string), List<TrackingEventNormal> trackingEvents = default(List<TrackingEventNormal>), string returnAddress = default(string), MailType mailType = default(MailType), bool color = default(bool), bool doubleSided = true, AddressPlacementEnum? addressPlacement = AddressPlacementEnum.TopFirstPage, Object returnEnvelope = default(Object), int? perforatedPage = default(int?), LetterCustomEnvelope customEnvelope = default(LetterCustomEnvelope))
+        /// <param name="campaignId">The unique ID of the associated campaign if the resource was generated from a campaign..</param>
+        /// <param name="useType">useType (required).</param>
+        public Letter(Address to = default(Address), Address from = default(Address), CarrierEnum? carrier = CarrierEnum.USPS, List<Thumbnail> thumbnails = default(List<Thumbnail>), DateTime expectedDeliveryDate = default(DateTime), DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), string id = default(string), string templateId = default(string), string templateVersionId = default(string), string url = default(string), ObjectEnum _object = ObjectEnum.Letter, string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string extraService = default(string), string trackingNumber = default(string), List<TrackingEventNormal> trackingEvents = default(List<TrackingEventNormal>), Object returnAddress = default(Object), MailType mailType = default(MailType), bool color = default(bool), bool doubleSided = true, AddressPlacementEnum? addressPlacement = AddressPlacementEnum.TopFirstPage, Object returnEnvelope = default(Object), int? perforatedPage = default(int?), LetterCustomEnvelope customEnvelope = default(LetterCustomEnvelope), string campaignId = default(string), LtrUseType useType = default(LtrUseType))
         {
             // to ensure "to" is required (not null)
             if (to == null)
@@ -182,12 +185,19 @@ namespace lob.dotnet.Model
                 throw new ArgumentNullException("returnEnvelope is a required property for Letter and cannot be null");
             }
             this.ReturnEnvelope = returnEnvelope;
+            // to ensure "useType" is required (not null)
+            if (useType == null)
+            {
+                throw new ArgumentNullException("useType is a required property for Letter and cannot be null");
+            }
+            this.UseType = useType;
             this.Carrier = carrier;
             this.Thumbnails = thumbnails;
             this.ExpectedDeliveryDate = expectedDeliveryDate;
             this.Deleted = deleted;
             this.TemplateId = templateId;
             this.TemplateVersionId = templateVersionId;
+            this.Url = url;
             this.Description = description;
             this.Metadata = metadata;
             this.MergeVariables = mergeVariables;
@@ -202,6 +212,7 @@ namespace lob.dotnet.Model
             this.AddressPlacement = addressPlacement;
             this.PerforatedPage = perforatedPage;
             this.CustomEnvelope = customEnvelope;
+            this.CampaignId = campaignId;
         }
 
         /// <summary>
@@ -273,6 +284,13 @@ namespace lob.dotnet.Model
         public string TemplateVersionId { get; set; }
 
         /// <summary>
+        /// A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.
+        /// </summary>
+        /// <value>A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated.</value>
+        [DataMember(Name = "url", EmitDefaultValue = false)]
+        public string Url { get; set; }
+
+        /// <summary>
         /// An internal description that identifies this resource. Must be no longer than 255 characters. 
         /// </summary>
         /// <value>An internal description that identifies this resource. Must be no longer than 255 characters. </value>
@@ -326,7 +344,7 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Specifies the address the return envelope will be sent back to. This is an optional argument that is available if an account is signed up for the return envelope tracking beta, and has &#x60;return_envelope&#x60;, and &#x60;perforated_page&#x60; fields populated in the API request.</value>
         [DataMember(Name = "return_address", EmitDefaultValue = false)]
-        public string ReturnAddress { get; set; }
+        public Object ReturnAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets MailType
@@ -368,6 +386,19 @@ namespace lob.dotnet.Model
         public LetterCustomEnvelope CustomEnvelope { get; set; }
 
         /// <summary>
+        /// The unique ID of the associated campaign if the resource was generated from a campaign.
+        /// </summary>
+        /// <value>The unique ID of the associated campaign if the resource was generated from a campaign.</value>
+        [DataMember(Name = "campaign_id", EmitDefaultValue = false)]
+        public string CampaignId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UseType
+        /// </summary>
+        [DataMember(Name = "use_type", IsRequired = true, EmitDefaultValue = false)]
+        public LtrUseType UseType { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -386,6 +417,7 @@ namespace lob.dotnet.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  TemplateId: ").Append(TemplateId).Append("\n");
             sb.Append("  TemplateVersionId: ").Append(TemplateVersionId).Append("\n");
+            sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  Object: ").Append(Object).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
@@ -402,6 +434,8 @@ namespace lob.dotnet.Model
             sb.Append("  ReturnEnvelope: ").Append(ReturnEnvelope).Append("\n");
             sb.Append("  PerforatedPage: ").Append(PerforatedPage).Append("\n");
             sb.Append("  CustomEnvelope: ").Append(CustomEnvelope).Append("\n");
+            sb.Append("  CampaignId: ").Append(CampaignId).Append("\n");
+            sb.Append("  UseType: ").Append(UseType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -492,6 +526,11 @@ namespace lob.dotnet.Model
                     this.TemplateVersionId.Equals(input.TemplateVersionId))
                 ) && 
                 (
+                    this.Url == input.Url ||
+                    (this.Url != null &&
+                    this.Url.Equals(input.Url))
+                ) && 
+                (
                     this.Object == input.Object ||
                     this.Object.Equals(input.Object)
                 ) && 
@@ -568,6 +607,16 @@ namespace lob.dotnet.Model
                     this.CustomEnvelope == input.CustomEnvelope ||
                     (this.CustomEnvelope != null &&
                     this.CustomEnvelope.Equals(input.CustomEnvelope))
+                ) && 
+                (
+                    this.CampaignId == input.CampaignId ||
+                    (this.CampaignId != null &&
+                    this.CampaignId.Equals(input.CampaignId))
+                ) && 
+                (
+                    this.UseType == input.UseType ||
+                    (this.UseType != null &&
+                    this.UseType.Equals(input.UseType))
                 );
         }
 
@@ -617,6 +666,10 @@ namespace lob.dotnet.Model
                 if (this.TemplateVersionId != null)
                 {
                     hashCode = (hashCode * 59) + this.TemplateVersionId.GetHashCode();
+                }
+                if (this.Url != null)
+                {
+                    hashCode = (hashCode * 59) + this.Url.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Object.GetHashCode();
                 if (this.Description != null)
@@ -670,6 +723,14 @@ namespace lob.dotnet.Model
                 {
                     hashCode = (hashCode * 59) + this.CustomEnvelope.GetHashCode();
                 }
+                if (this.CampaignId != null)
+                {
+                    hashCode = (hashCode * 59) + this.CampaignId.GetHashCode();
+                }
+                if (this.UseType != null)
+                {
+                    hashCode = (hashCode * 59) + this.UseType.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -700,6 +761,13 @@ namespace lob.dotnet.Model
             if (false == regexTemplateVersionId.Match(this.TemplateVersionId).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TemplateVersionId, must match a pattern of " + regexTemplateVersionId, new [] { "TemplateVersionId" });
+            }
+
+            // Url (string) pattern
+            Regex regexUrl = new Regex(@"^https:\/\/(lob-assets|lob-assets-staging)\\.com\/(letters|postcards|bank-accounts|checks|self-mailers|cards)\/[a-z]{3,4}_[a-z0-9]{15,16}(\\.pdf|_thumb_[a-z]+_[0-9]+\\.png)\\?(version=[a-z0-9-]*&)?expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+$", RegexOptions.CultureInvariant);
+            if (false == regexUrl.Match(this.Url).Success)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Url, must match a pattern of " + regexUrl, new [] { "Url" });
             }
 
             // Description (string) maxLength

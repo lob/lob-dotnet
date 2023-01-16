@@ -79,7 +79,8 @@ namespace lob.dotnet.Model
         /// <param name="checkNumber">An integer that designates the check number..</param>
         /// <param name="message">Max of 400 characters to be included at the bottom of the check page..</param>
         /// <param name="billingGroupId">An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information..</param>
-        public CheckEditable(string from = default(string), string to = default(string), string bankAccount = default(string), float amount = default(float), string logo = default(string), string checkBottom = default(string), string attachment = default(string), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), MailTypeEnum? mailType = MailTypeEnum.UspsFirstClass, string memo = default(string), int checkNumber = default(int), string message = default(string), string billingGroupId = default(string))
+        /// <param name="useType">useType (required).</param>
+        public CheckEditable(Object from = default(Object), Object to = default(Object), string bankAccount = default(string), float amount = default(float), string logo = default(string), string checkBottom = default(string), string attachment = default(string), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), MailTypeEnum? mailType = MailTypeEnum.UspsFirstClass, string memo = default(string), int checkNumber = default(int), string message = default(string), string billingGroupId = default(string), ChkUseType useType = default(ChkUseType))
         {
             // to ensure "from" is required (not null)
             if (from == null)
@@ -100,6 +101,12 @@ namespace lob.dotnet.Model
             }
             this.BankAccount = bankAccount;
             this.Amount = amount;
+            // to ensure "useType" is required (not null)
+            if (useType == null)
+            {
+                throw new ArgumentNullException("useType is a required property for CheckEditable and cannot be null");
+            }
+            this.UseType = useType;
             this.Logo = logo;
             this.CheckBottom = checkBottom;
             this.Attachment = attachment;
@@ -119,14 +126,14 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Must either be an address ID or an inline object with correct address parameters.</value>
         [DataMember(Name = "from", IsRequired = true, EmitDefaultValue = false)]
-        public string From { get; set; }
+        public Object From { get; set; }
 
         /// <summary>
         /// Must either be an address ID or an inline object with correct address parameters.
         /// </summary>
         /// <value>Must either be an address ID or an inline object with correct address parameters.</value>
         [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = false)]
-        public string To { get; set; }
+        public Object To { get; set; }
 
         /// <summary>
         /// Gets or Sets BankAccount
@@ -219,6 +226,12 @@ namespace lob.dotnet.Model
         public string BillingGroupId { get; set; }
 
         /// <summary>
+        /// Gets or Sets UseType
+        /// </summary>
+        [DataMember(Name = "use_type", IsRequired = true, EmitDefaultValue = false)]
+        public ChkUseType UseType { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -242,6 +255,7 @@ namespace lob.dotnet.Model
             sb.Append("  CheckNumber: ").Append(CheckNumber).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("  BillingGroupId: ").Append(BillingGroupId).Append("\n");
+            sb.Append("  UseType: ").Append(UseType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -354,6 +368,11 @@ namespace lob.dotnet.Model
                     this.BillingGroupId == input.BillingGroupId ||
                     (this.BillingGroupId != null &&
                     this.BillingGroupId.Equals(input.BillingGroupId))
+                ) && 
+                (
+                    this.UseType == input.UseType ||
+                    (this.UseType != null &&
+                    this.UseType.Equals(input.UseType))
                 );
         }
 
@@ -420,6 +439,10 @@ namespace lob.dotnet.Model
                 if (this.BillingGroupId != null)
                 {
                     hashCode = (hashCode * 59) + this.BillingGroupId.GetHashCode();
+                }
+                if (this.UseType != null)
+                {
+                    hashCode = (hashCode * 59) + this.UseType.GetHashCode();
                 }
                 return hashCode;
             }

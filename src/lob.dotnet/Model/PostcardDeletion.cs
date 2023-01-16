@@ -40,10 +40,10 @@ namespace lob.dotnet.Model
         public enum ObjectEnum
         {
             /// <summary>
-            /// Enum deleted for value: postcard_deleted
+            /// Enum PostcardDeleted for value: postcard_deleted
             /// </summary>
             [EnumMember(Value = "postcard_deleted")]
-            deleted = 1
+            PostcardDeleted = 1
             
 
         }
@@ -60,8 +60,8 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <param name="id">Unique identifier prefixed with &#x60;psc_&#x60;..</param>
         /// <param name="deleted">Only returned if the resource has been successfully deleted..</param>
-        /// <param name="_object">Value is type of resource. (default to ObjectEnum.deleted).</param>
-        public PostcardDeletion(string id = default(string), bool deleted = default(bool), ObjectEnum? _object = ObjectEnum.deleted)
+        /// <param name="_object">Value is type of resource. (default to ObjectEnum.PostcardDeleted).</param>
+        public PostcardDeletion(string id = default(string), bool deleted = default(bool), ObjectEnum? _object = ObjectEnum.PostcardDeleted)
         {
             this.Id = id;
             this.Deleted = deleted;

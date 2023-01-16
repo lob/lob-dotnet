@@ -27,17 +27,17 @@ using OpenAPIDateConverter = lob.dotnet.Client.OpenAPIDateConverter;
 namespace lob.dotnet.Model
 {
     /// <summary>
-    /// update
+    /// TemplateUpdate
     /// </summary>
     [DataContract(Name = "template_update")]
-    public partial class update : IEquatable<update>, IValidatableObject
+    public partial class TemplateUpdate : IEquatable<TemplateUpdate>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="update" /> class.
+        /// Initializes a new instance of the <see cref="TemplateUpdate" /> class.
         /// </summary>
         /// <param name="description">An internal description that identifies this resource. Must be no longer than 255 characters. .</param>
         /// <param name="publishedVersion">Unique identifier prefixed with &#x60;vrsn_&#x60;..</param>
-        public update(string description = default(string), string publishedVersion = default(string))
+        public TemplateUpdate(string description = default(string), string publishedVersion = default(string))
         {
             this.Description = description;
             this.PublishedVersion = publishedVersion;
@@ -64,7 +64,7 @@ namespace lob.dotnet.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class update {\n");
+            sb.Append("class TemplateUpdate {\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  PublishedVersion: ").Append(PublishedVersion).Append("\n");
             sb.Append("}\n");
@@ -87,15 +87,15 @@ namespace lob.dotnet.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as update);
+            return this.Equals(input as TemplateUpdate);
         }
 
         /// <summary>
-        /// Returns true if update instances are equal
+        /// Returns true if TemplateUpdate instances are equal
         /// </summary>
-        /// <param name="input">Instance of update to be compared</param>
+        /// <param name="input">Instance of TemplateUpdate to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(update input)
+        public bool Equals(TemplateUpdate input)
         {
             if (input == null)
             {

@@ -962,14 +962,14 @@ namespace lob.dotnet.Model
             }
 
             // ZipCode (string) pattern
-            Regex regexZipCode = new Regex(@"^\\d{5}$", RegexOptions.CultureInvariant);
+            Regex regexZipCode = new Regex(@"(^$)|(^\\d{5}$)", RegexOptions.CultureInvariant);
             if (false == regexZipCode.Match(this.ZipCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ZipCode, must match a pattern of " + regexZipCode, new [] { "ZipCode" });
             }
 
             // ZipCodePlus4 (string) pattern
-            Regex regexZipCodePlus4 = new Regex(@"^\\d{4}$", RegexOptions.CultureInvariant);
+            Regex regexZipCodePlus4 = new Regex(@"^(\\d{4})?$", RegexOptions.CultureInvariant);
             if (false == regexZipCodePlus4.Match(this.ZipCodePlus4).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ZipCodePlus4, must match a pattern of " + regexZipCodePlus4, new [] { "ZipCodePlus4" });

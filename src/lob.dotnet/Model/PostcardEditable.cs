@@ -51,7 +51,9 @@ namespace lob.dotnet.Model
         /// <param name="front">The artwork to use as the front of your postcard.  (required).</param>
         /// <param name="back">The artwork to use as the back of your postcard.  (required).</param>
         /// <param name="billingGroupId">An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information..</param>
-        public PostcardEditable(string to = default(string), string from = default(string), PostcardSize size = default(PostcardSize), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string front = default(string), string back = default(string), string billingGroupId = default(string))
+        /// <param name="qrCode">qrCode.</param>
+        /// <param name="useType">useType (required).</param>
+        public PostcardEditable(Object to = default(Object), Object from = default(Object), PostcardSize size = default(PostcardSize), string description = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), MailType mailType = default(MailType), Object mergeVariables = default(Object), DateTime sendDate = default(DateTime), string front = default(string), string back = default(string), string billingGroupId = default(string), QrCode qrCode = default(QrCode), PscUseType useType = default(PscUseType))
         {
             // to ensure "to" is required (not null)
             if (to == null)
@@ -71,6 +73,12 @@ namespace lob.dotnet.Model
                 throw new ArgumentNullException("back is a required property for PostcardEditable and cannot be null");
             }
             this.Back = back;
+            // to ensure "useType" is required (not null)
+            if (useType == null)
+            {
+                throw new ArgumentNullException("useType is a required property for PostcardEditable and cannot be null");
+            }
+            this.UseType = useType;
             this.From = from;
             this.Size = size;
             this.Description = description;
@@ -79,6 +87,7 @@ namespace lob.dotnet.Model
             this.MergeVariables = mergeVariables;
             this.SendDate = sendDate;
             this.BillingGroupId = billingGroupId;
+            this.QrCode = qrCode;
         }
 
         /// <summary>
@@ -86,14 +95,14 @@ namespace lob.dotnet.Model
         /// </summary>
         /// <value>Must either be an address ID or an inline object with correct address parameters.</value>
         [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = false)]
-        public string To { get; set; }
+        public Object To { get; set; }
 
         /// <summary>
         /// Required if &#x60;to&#x60; address is international. Must either be an address ID or an inline object with correct address parameters.
         /// </summary>
         /// <value>Required if &#x60;to&#x60; address is international. Must either be an address ID or an inline object with correct address parameters.</value>
         [DataMember(Name = "from", EmitDefaultValue = false)]
-        public string From { get; set; }
+        public Object From { get; set; }
 
         /// <summary>
         /// Gets or Sets Size
@@ -157,6 +166,18 @@ namespace lob.dotnet.Model
         public string BillingGroupId { get; set; }
 
         /// <summary>
+        /// Gets or Sets QrCode
+        /// </summary>
+        [DataMember(Name = "qr_code", EmitDefaultValue = false)]
+        public QrCode QrCode { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UseType
+        /// </summary>
+        [DataMember(Name = "use_type", IsRequired = true, EmitDefaultValue = false)]
+        public PscUseType UseType { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -175,6 +196,8 @@ namespace lob.dotnet.Model
             sb.Append("  Front: ").Append(Front).Append("\n");
             sb.Append("  Back: ").Append(Back).Append("\n");
             sb.Append("  BillingGroupId: ").Append(BillingGroupId).Append("\n");
+            sb.Append("  QrCode: ").Append(QrCode).Append("\n");
+            sb.Append("  UseType: ").Append(UseType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -265,6 +288,16 @@ namespace lob.dotnet.Model
                     this.BillingGroupId == input.BillingGroupId ||
                     (this.BillingGroupId != null &&
                     this.BillingGroupId.Equals(input.BillingGroupId))
+                ) && 
+                (
+                    this.QrCode == input.QrCode ||
+                    (this.QrCode != null &&
+                    this.QrCode.Equals(input.QrCode))
+                ) && 
+                (
+                    this.UseType == input.UseType ||
+                    (this.UseType != null &&
+                    this.UseType.Equals(input.UseType))
                 );
         }
 
@@ -320,6 +353,14 @@ namespace lob.dotnet.Model
                 if (this.BillingGroupId != null)
                 {
                     hashCode = (hashCode * 59) + this.BillingGroupId.GetHashCode();
+                }
+                if (this.QrCode != null)
+                {
+                    hashCode = (hashCode * 59) + this.QrCode.GetHashCode();
+                }
+                if (this.UseType != null)
+                {
+                    hashCode = (hashCode * 59) + this.UseType.GetHashCode();
                 }
                 return hashCode;
             }

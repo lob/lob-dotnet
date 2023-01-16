@@ -92,7 +92,7 @@ namespace __tests__.Integration {
             Template ogTemplate = validApi.create(templateWritable);
             idsToDelete.Add(ogTemplate.Id);
 
-            update updatedTmpl = new update("C# integration test Updated template description", ogTemplate.PublishedVersion.Id);
+            TemplateUpdate updatedTmpl = new TemplateUpdate("C# integration test Updated template description", ogTemplate.PublishedVersion.Id);
             Template response = validApi.update(ogTemplate.Id, updatedTmpl);
 
             Assert.NotNull(response);
@@ -115,7 +115,7 @@ namespace __tests__.Integration {
             Template ogTemplate = validApi.create(templateWritable);
             idsToDelete.Add(ogTemplate.Id);
 
-            update updatedTmpl = new update("C# integration test Updated template description", ogTemplate.PublishedVersion.Id);
+            TemplateUpdate updatedTmpl = new TemplateUpdate("C# integration test Updated template description", ogTemplate.PublishedVersion.Id);
 
             try {
                 Template response = invalidApi.update(ogTemplate.Id, updatedTmpl);
