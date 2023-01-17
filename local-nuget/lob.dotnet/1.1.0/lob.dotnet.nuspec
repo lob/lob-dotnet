@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>lob.dotnet</id>
+    <version>1.1.0</version>
+    <authors>lob</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/lob/lob-dotnet</projectUrl>
+    <iconUrl>https://assets-global.website-files.com/5e1e5c62fa3d4447af417098/5e3a2c100e42b0337dd413c3_Logo.svg</iconUrl>
+    <description>A library generated from a OpenAPI spec for the Csharp language</description>
+    <releaseNotes>Beta Release</releaseNotes>
+    <tags>address verification address validation address autocomplete lob lob.com</tags>
+    <repository type="git" url="https://github.com/lob/lob-dotnet" />
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="JsonSubTypes" version="1.8.0" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+        <dependency id="Polly" version="7.2.3" exclude="Build,Analyzers" />
+        <dependency id="RestSharp" version="106.13.0" exclude="Build,Analyzers" />
+        <dependency id="System.ComponentModel.Annotations" version="5.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
