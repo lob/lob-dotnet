@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AddressPrefix** | **string** | Only accepts numbers and street names in an alphanumeric format.  | [optional] 
+**AddressPrefix** | **string** | Only accepts numbers and street names in an alphanumeric format.  | 
 **City** | **string** | An optional city input used to filter suggestions. Case insensitive and does not match partial abbreviations.  | [optional] 
 **State** | **string** | An optional state input used to filter suggestions. Case insensitive and does not match partial abbreviations.  | [optional] 
 **ZipCode** | **string** | An optional ZIP Code input used to filter suggestions. Matches partial entries.  | [optional] 

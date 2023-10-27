@@ -4,15 +4,15 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](BillingGroupsApi.md#create) | **POST** /billing_groups | create
-[**get**](BillingGroupsApi.md#get) | **GET** /billing_groups/{bg_id} | get
-[**update**](BillingGroupsApi.md#update) | **POST** /billing_groups/{bg_id} | update
-[**list**](BillingGroupsApi.md#list) | **GET** /billing_groups | list
+[**BillingGroupCreate**](BillingGroupsApi.md#billinggroupcreate) | **POST** /billing_groups | create
+[**BillingGroupRetrieve**](BillingGroupsApi.md#billinggroupretrieve) | **GET** /billing_groups/{bg_id} | get
+[**BillingGroupUpdate**](BillingGroupsApi.md#billinggroupupdate) | **POST** /billing_groups/{bg_id} | update
+[**BillingGroupsList**](BillingGroupsApi.md#billinggroupslist) | **GET** /billing_groups | list
 
 
-<a name="create"></a>
-# **create**
-> BillingGroup create (BillingGroupEditable billingGroupEditable)
+<a name="billinggroupcreate"></a>
+# **BillingGroupCreate**
+> BillingGroup BillingGroupCreate (BillingGroupEditable billingGroupEditable)
 
 create
 
@@ -28,7 +28,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class createExample
+    public class BillingGroupCreateExample
     {
         public static void Main()
         {
@@ -44,12 +44,12 @@ namespace Example
             try
             {
                 // create
-                BillingGroup result = apiInstance.create(billingGroupEditable);
+                BillingGroup result = apiInstance.BillingGroupCreate(billingGroupEditable);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BillingGroupsApi.create: " + e.Message );
+                Debug.Print("Exception when calling BillingGroupsApi.BillingGroupCreate: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -86,9 +86,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="get"></a>
-# **get**
-> BillingGroup get (string bgId)
+<a name="billinggroupretrieve"></a>
+# **BillingGroupRetrieve**
+> BillingGroup BillingGroupRetrieve (string bgId)
 
 get
 
@@ -104,7 +104,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class getExample
+    public class BillingGroupRetrieveExample
     {
         public static void Main()
         {
@@ -120,12 +120,12 @@ namespace Example
             try
             {
                 // get
-                BillingGroup result = apiInstance.get(bgId);
+                BillingGroup result = apiInstance.BillingGroupRetrieve(bgId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BillingGroupsApi.get: " + e.Message );
+                Debug.Print("Exception when calling BillingGroupsApi.BillingGroupRetrieve: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -162,9 +162,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="update"></a>
-# **update**
-> BillingGroup update (string bgId, BillingGroupEditable billingGroupEditable)
+<a name="billinggroupupdate"></a>
+# **BillingGroupUpdate**
+> BillingGroup BillingGroupUpdate (string bgId, BillingGroupEditable billingGroupEditable)
 
 update
 
@@ -180,7 +180,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class updateExample
+    public class BillingGroupUpdateExample
     {
         public static void Main()
         {
@@ -197,12 +197,12 @@ namespace Example
             try
             {
                 // update
-                BillingGroup result = apiInstance.update(bgId, billingGroupEditable);
+                BillingGroup result = apiInstance.BillingGroupUpdate(bgId, billingGroupEditable);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BillingGroupsApi.update: " + e.Message );
+                Debug.Print("Exception when calling BillingGroupsApi.BillingGroupUpdate: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -240,9 +240,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="list"></a>
-# **list**
-> BillingGroupList list (int? limit = null, int? offset = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> dateModified = null, SortBy5 sortBy = null)
+<a name="billinggroupslist"></a>
+# **BillingGroupsList**
+> BillingGroupList BillingGroupsList (int? limit = null, int? offset = null, List<string> include = null, Dictionary<string, DateTime> dateCreated = null, Dictionary<string, string> dateModified = null, SortByDateModified sortByDateModified = null)
 
 list
 
@@ -258,7 +258,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class listExample
+    public class BillingGroupsListExample
     {
         public static void Main()
         {
@@ -272,19 +272,19 @@ namespace Example
             var limit = 56;  // int? | How many results to return. (optional)  (default to 10)
             var offset = 56;  // int? | An integer that designates the offset at which to begin returning results. Defaults to 0. (optional)  (default to 0)
             var include = new List<string>(); // List<string> | Request that the response include the total count by specifying `include[]=total_count`.  (optional) 
-            var dateCreated = new Dictionary<string, string>(); // Dictionary<string, string> | Filter by date created. (optional) 
+            var dateCreated = new Dictionary<string, DateTime>(); // Dictionary<string, DateTime> | Filter by date created. (optional) 
             var dateModified = new Dictionary<string, string>(); // Dictionary<string, string> | Filter by date modified. (optional) 
-            var sortBy = new SortBy5(); // SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.  (optional) 
+            var sortByDateModified = new SortByDateModified(); // SortByDateModified | Sorts items by ascending or descending dates. Use either `date_created` or `date_modfied`, not both.  (optional) 
 
             try
             {
                 // list
-                BillingGroupList result = apiInstance.list(limit, offset, include, dateCreated, dateModified, sortBy);
+                BillingGroupList result = apiInstance.BillingGroupsList(limit, offset, include, dateCreated, dateModified, sortByDateModified);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BillingGroupsApi.list: " + e.Message );
+                Debug.Print("Exception when calling BillingGroupsApi.BillingGroupsList: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -300,9 +300,9 @@ Name | Type | Description  | Notes
  **limit** | **int?**| How many results to return. | [optional] [default to 10]
  **offset** | **int?**| An integer that designates the offset at which to begin returning results. Defaults to 0. | [optional] [default to 0]
  **include** | [**List&lt;string&gt;**](string.md)| Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  | [optional] 
- **dateCreated** | [**Dictionary&lt;string, string&gt;**](string.md)| Filter by date created. | [optional] 
+ **dateCreated** | [**Dictionary&lt;string, DateTime&gt;**](DateTime.md)| Filter by date created. | [optional] 
  **dateModified** | [**Dictionary&lt;string, string&gt;**](string.md)| Filter by date modified. | [optional] 
- **sortBy** | [**SortBy5**](SortBy5.md)| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional] 
+ **sortByDateModified** | [**SortByDateModified**](SortByDateModified.md)| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  | [optional] 
 
 ### Return type
 

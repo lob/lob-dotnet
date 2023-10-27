@@ -1,4 +1,4 @@
-# lob.dotnet.Model.autocompletes
+# lob.dotnet.Model.IntlAutocompletions
 
 ## Properties
 

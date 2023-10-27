@@ -4,15 +4,15 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](PostcardsApi.md#create) | **POST** /postcards | create
-[**delete**](PostcardsApi.md#delete) | **DELETE** /postcards/{psc_id} | cancel
-[**get**](PostcardsApi.md#get) | **GET** /postcards/{psc_id} | get
-[**list**](PostcardsApi.md#list) | **GET** /postcards | list
+[**PostcardCreate**](PostcardsApi.md#postcardcreate) | **POST** /postcards | create
+[**PostcardDelete**](PostcardsApi.md#postcarddelete) | **DELETE** /postcards/{psc_id} | cancel
+[**PostcardRetrieve**](PostcardsApi.md#postcardretrieve) | **GET** /postcards/{psc_id} | get
+[**PostcardsList**](PostcardsApi.md#postcardslist) | **GET** /postcards | list
 
 
-<a name="create"></a>
-# **create**
-> Postcard create (PostcardEditable postcardEditable, string idempotencyKey = null)
+<a name="postcardcreate"></a>
+# **PostcardCreate**
+> Postcard PostcardCreate (PostcardEditable postcardEditable, string idempotencyKey = null)
 
 create
 
@@ -28,7 +28,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class createExample
+    public class PostcardCreateExample
     {
         public static void Main()
         {
@@ -45,12 +45,12 @@ namespace Example
             try
             {
                 // create
-                Postcard result = apiInstance.create(postcardEditable, idempotencyKey);
+                Postcard result = apiInstance.PostcardCreate(postcardEditable, idempotencyKey);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling PostcardsApi.create: " + e.Message );
+                Debug.Print("Exception when calling PostcardsApi.PostcardCreate: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -88,9 +88,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="delete"></a>
-# **delete**
-> PostcardDeletion delete (string pscId)
+<a name="postcarddelete"></a>
+# **PostcardDelete**
+> PostcardDeletion PostcardDelete (string pscId)
 
 cancel
 
@@ -106,7 +106,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class deleteExample
+    public class PostcardDeleteExample
     {
         public static void Main()
         {
@@ -122,12 +122,12 @@ namespace Example
             try
             {
                 // cancel
-                PostcardDeletion result = apiInstance.delete(pscId);
+                PostcardDeletion result = apiInstance.PostcardDelete(pscId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling PostcardsApi.delete: " + e.Message );
+                Debug.Print("Exception when calling PostcardsApi.PostcardDelete: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -164,9 +164,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="get"></a>
-# **get**
-> Postcard get (string pscId)
+<a name="postcardretrieve"></a>
+# **PostcardRetrieve**
+> Postcard PostcardRetrieve (string pscId)
 
 get
 
@@ -182,7 +182,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class getExample
+    public class PostcardRetrieveExample
     {
         public static void Main()
         {
@@ -198,12 +198,12 @@ namespace Example
             try
             {
                 // get
-                Postcard result = apiInstance.get(pscId);
+                Postcard result = apiInstance.PostcardRetrieve(pscId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling PostcardsApi.get: " + e.Message );
+                Debug.Print("Exception when calling PostcardsApi.PostcardRetrieve: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -240,9 +240,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="list"></a>
-# **list**
-> PostcardList list (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null, PostcardSize? size = null, bool? scheduled = null, Dictionary<string, string> sendDate = null, MailType? mailType = null, SortBy5 sortBy = null)
+<a name="postcardslist"></a>
+# **PostcardsList**
+> PostcardList PostcardsList (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, DateTime> dateCreated = null, Dictionary<string, string> metadata = null, List<PostcardSize> size = null, bool? scheduled = null, Dictionary<string, string> sendDate = null, MailType? mailType = null, SortBy3 sortBy = null)
 
 list
 
@@ -258,7 +258,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class listExample
+    public class PostcardsListExample
     {
         public static void Main()
         {
@@ -273,23 +273,23 @@ namespace Example
             var before = before_example;  // string | A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the `previous_url` field in the return response.  (optional) 
             var after = after_example;  // string | A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the `next_url` field in the return response.  (optional) 
             var include = new List<string>(); // List<string> | Request that the response include the total count by specifying `include[]=total_count`.  (optional) 
-            var dateCreated = new Dictionary<string, string>(); // Dictionary<string, string> | Filter by date created. (optional) 
+            var dateCreated = new Dictionary<string, DateTime>(); // Dictionary<string, DateTime> | Filter by date created. (optional) 
             var metadata = new Dictionary<string, string>(); // Dictionary<string, string> | Filter by metadata key-value pair`. (optional) 
-            var size = ;  // PostcardSize? | Specifies the size of the postcard. Only `4x6` postcards can be sent to international destinations. (optional) 
+            var size = new List<PostcardSize>(); // List<PostcardSize> | Specifies the size of the postcard. Only `4x6` postcards can be sent to international destinations. (optional) 
             var scheduled = true;  // bool? | * `true` - only return orders (past or future) where `send_date` is greater than `date_created` * `false` - only return orders where `send_date` is equal to `date_created`  (optional) 
             var sendDate = new Dictionary<string, string>(); // Dictionary<string, string> | Filter by date sent. (optional) 
             var mailType = ;  // MailType? | A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.  (optional) 
-            var sortBy = new SortBy5(); // SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.  (optional) 
+            var sortBy = new SortBy3(); // SortBy3 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.  (optional) 
 
             try
             {
                 // list
-                PostcardList result = apiInstance.list(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
+                PostcardList result = apiInstance.PostcardsList(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling PostcardsApi.list: " + e.Message );
+                Debug.Print("Exception when calling PostcardsApi.PostcardsList: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -306,13 +306,13 @@ Name | Type | Description  | Notes
  **before** | **string**| A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  | [optional] 
  **after** | **string**| A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  | [optional] 
  **include** | [**List&lt;string&gt;**](string.md)| Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  | [optional] 
- **dateCreated** | [**Dictionary&lt;string, string&gt;**](string.md)| Filter by date created. | [optional] 
+ **dateCreated** | [**Dictionary&lt;string, DateTime&gt;**](DateTime.md)| Filter by date created. | [optional] 
  **metadata** | [**Dictionary&lt;string, string&gt;**](string.md)| Filter by metadata key-value pair&#x60;. | [optional] 
- **size** | **PostcardSize?**| Specifies the size of the postcard. Only &#x60;4x6&#x60; postcards can be sent to international destinations. | [optional] 
+ **size** | [**List&lt;PostcardSize&gt;**](PostcardSize.md)| Specifies the size of the postcard. Only &#x60;4x6&#x60; postcards can be sent to international destinations. | [optional] 
  **scheduled** | **bool?**| * &#x60;true&#x60; - only return orders (past or future) where &#x60;send_date&#x60; is greater than &#x60;date_created&#x60; * &#x60;false&#x60; - only return orders where &#x60;send_date&#x60; is equal to &#x60;date_created&#x60;  | [optional] 
  **sendDate** | [**Dictionary&lt;string, string&gt;**](string.md)| Filter by date sent. | [optional] 
  **mailType** | **MailType?**| A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  | [optional] 
- **sortBy** | [**SortBy5**](SortBy5.md)| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional] 
+ **sortBy** | [**SortBy3**](SortBy3.md)| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional] 
 
 ### Return type
 

@@ -13,10 +13,10 @@ Name | Type | Description | Notes
 **CancelledReason** | **string** | The reason for cancellation. | [optional] 
 **AvailabilityDate** | **DateTime** | A timestamp in ISO 8601 format of the date the resource was created. | [optional] 
 **ExpectedAvailabilityDate** | **DateTime** | The fixed deadline for the cards to be printed. | [optional] 
-**DateCreated** | **DateTime** | A timestamp in ISO 8601 format of the date the resource was created. | [optional] 
-**DateModified** | **DateTime** | A timestamp in ISO 8601 format of the date the resource was last modified. | [optional] 
+**DateCreated** | **DateTime** | A timestamp in ISO 8601 format of the date the resource was created. | 
+**DateModified** | **DateTime** | A timestamp in ISO 8601 format of the date the resource was last modified. | 
 **Deleted** | **bool** | Only returned if the resource has been successfully deleted. | [optional] 
-**Object** | **string** | Value is type of resource. | [optional] 
+**Object** | **string** | Value is type of resource. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

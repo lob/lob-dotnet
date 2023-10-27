@@ -4,16 +4,16 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](BankAccountsApi.md#create) | **POST** /bank_accounts | create
-[**delete**](BankAccountsApi.md#delete) | **DELETE** /bank_accounts/{bank_id} | delete
-[**get**](BankAccountsApi.md#get) | **GET** /bank_accounts/{bank_id} | get
-[**verify**](BankAccountsApi.md#verify) | **POST** /bank_accounts/{bank_id}/verify | verify
-[**list**](BankAccountsApi.md#list) | **GET** /bank_accounts | list
+[**BankAccountCreate**](BankAccountsApi.md#bankaccountcreate) | **POST** /bank_accounts | create
+[**BankAccountDelete**](BankAccountsApi.md#bankaccountdelete) | **DELETE** /bank_accounts/{bank_id} | delete
+[**BankAccountRetrieve**](BankAccountsApi.md#bankaccountretrieve) | **GET** /bank_accounts/{bank_id} | get
+[**BankAccountVerify**](BankAccountsApi.md#bankaccountverify) | **POST** /bank_accounts/{bank_id}/verify | verify
+[**BankAccountsList**](BankAccountsApi.md#bankaccountslist) | **GET** /bank_accounts | list
 
 
-<a name="create"></a>
-# **create**
-> BankAccount create (BankAccountWritable bankAccountWritable)
+<a name="bankaccountcreate"></a>
+# **BankAccountCreate**
+> BankAccount BankAccountCreate (BankAccountWritable bankAccountWritable)
 
 create
 
@@ -29,7 +29,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class createExample
+    public class BankAccountCreateExample
     {
         public static void Main()
         {
@@ -45,12 +45,12 @@ namespace Example
             try
             {
                 // create
-                BankAccount result = apiInstance.create(bankAccountWritable);
+                BankAccount result = apiInstance.BankAccountCreate(bankAccountWritable);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BankAccountsApi.create: " + e.Message );
+                Debug.Print("Exception when calling BankAccountsApi.BankAccountCreate: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -87,9 +87,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="delete"></a>
-# **delete**
-> BankAccountDeletion delete (string bankId)
+<a name="bankaccountdelete"></a>
+# **BankAccountDelete**
+> BankAccountDeletion BankAccountDelete (string bankId)
 
 delete
 
@@ -105,7 +105,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class deleteExample
+    public class BankAccountDeleteExample
     {
         public static void Main()
         {
@@ -121,12 +121,12 @@ namespace Example
             try
             {
                 // delete
-                BankAccountDeletion result = apiInstance.delete(bankId);
+                BankAccountDeletion result = apiInstance.BankAccountDelete(bankId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BankAccountsApi.delete: " + e.Message );
+                Debug.Print("Exception when calling BankAccountsApi.BankAccountDelete: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -163,9 +163,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="get"></a>
-# **get**
-> BankAccount get (string bankId)
+<a name="bankaccountretrieve"></a>
+# **BankAccountRetrieve**
+> BankAccount BankAccountRetrieve (string bankId)
 
 get
 
@@ -181,7 +181,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class getExample
+    public class BankAccountRetrieveExample
     {
         public static void Main()
         {
@@ -197,12 +197,12 @@ namespace Example
             try
             {
                 // get
-                BankAccount result = apiInstance.get(bankId);
+                BankAccount result = apiInstance.BankAccountRetrieve(bankId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BankAccountsApi.get: " + e.Message );
+                Debug.Print("Exception when calling BankAccountsApi.BankAccountRetrieve: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -239,9 +239,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="verify"></a>
-# **verify**
-> BankAccount verify (string bankId, verify verify)
+<a name="bankaccountverify"></a>
+# **BankAccountVerify**
+> BankAccount BankAccountVerify (string bankId, BankAccountVerify bankAccountVerify)
 
 verify
 
@@ -257,7 +257,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class verifyExample
+    public class BankAccountVerifyExample
     {
         public static void Main()
         {
@@ -269,17 +269,17 @@ namespace Example
 
             var apiInstance = new BankAccountsApi(config);
             var bankId = bankId_example;  // string | id of the bank account to be verified
-            var verify = new verify(); // verify | 
+            var bankAccountVerify = new BankAccountVerify(); // BankAccountVerify | 
 
             try
             {
                 // verify
-                BankAccount result = apiInstance.verify(bankId, verify);
+                BankAccount result = apiInstance.BankAccountVerify(bankId, bankAccountVerify);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BankAccountsApi.verify: " + e.Message );
+                Debug.Print("Exception when calling BankAccountsApi.BankAccountVerify: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -293,7 +293,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bankId** | **string**| id of the bank account to be verified | 
- **verify** | [**verify**](verify.md)|  | 
+ **bankAccountVerify** | [**BankAccountVerify**](BankAccountVerify.md)|  | 
 
 ### Return type
 
@@ -317,9 +317,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="list"></a>
-# **list**
-> BankAccountList list (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null)
+<a name="bankaccountslist"></a>
+# **BankAccountsList**
+> BankAccountList BankAccountsList (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, DateTime> dateCreated = null, Dictionary<string, string> metadata = null)
 
 list
 
@@ -335,7 +335,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class listExample
+    public class BankAccountsListExample
     {
         public static void Main()
         {
@@ -350,18 +350,18 @@ namespace Example
             var before = before_example;  // string | A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the `previous_url` field in the return response.  (optional) 
             var after = after_example;  // string | A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the `next_url` field in the return response.  (optional) 
             var include = new List<string>(); // List<string> | Request that the response include the total count by specifying `include[]=total_count`.  (optional) 
-            var dateCreated = new Dictionary<string, string>(); // Dictionary<string, string> | Filter by date created. (optional) 
+            var dateCreated = new Dictionary<string, DateTime>(); // Dictionary<string, DateTime> | Filter by date created. (optional) 
             var metadata = new Dictionary<string, string>(); // Dictionary<string, string> | Filter by metadata key-value pair`. (optional) 
 
             try
             {
                 // list
-                BankAccountList result = apiInstance.list(limit, before, after, include, dateCreated, metadata);
+                BankAccountList result = apiInstance.BankAccountsList(limit, before, after, include, dateCreated, metadata);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BankAccountsApi.list: " + e.Message );
+                Debug.Print("Exception when calling BankAccountsApi.BankAccountsList: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -378,7 +378,7 @@ Name | Type | Description  | Notes
  **before** | **string**| A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  | [optional] 
  **after** | **string**| A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  | [optional] 
  **include** | [**List&lt;string&gt;**](string.md)| Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  | [optional] 
- **dateCreated** | [**Dictionary&lt;string, string&gt;**](string.md)| Filter by date created. | [optional] 
+ **dateCreated** | [**Dictionary&lt;string, DateTime&gt;**](DateTime.md)| Filter by date created. | [optional] 
  **metadata** | [**Dictionary&lt;string, string&gt;**](string.md)| Filter by metadata key-value pair&#x60;. | [optional] 
 
 ### Return type

@@ -4,15 +4,15 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancel**](ChecksApi.md#cancel) | **DELETE** /checks/{chk_id} | cancel
-[**create**](ChecksApi.md#create) | **POST** /checks | create
-[**get**](ChecksApi.md#get) | **GET** /checks/{chk_id} | get
-[**list**](ChecksApi.md#list) | **GET** /checks | list
+[**CheckCancel**](ChecksApi.md#checkcancel) | **DELETE** /checks/{chk_id} | cancel
+[**CheckCreate**](ChecksApi.md#checkcreate) | **POST** /checks | create
+[**CheckRetrieve**](ChecksApi.md#checkretrieve) | **GET** /checks/{chk_id} | get
+[**ChecksList**](ChecksApi.md#checkslist) | **GET** /checks | list
 
 
-<a name="cancel"></a>
-# **cancel**
-> CheckDeletion cancel (string chkId)
+<a name="checkcancel"></a>
+# **CheckCancel**
+> CheckDeletion CheckCancel (string chkId)
 
 cancel
 
@@ -28,7 +28,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class cancelExample
+    public class CheckCancelExample
     {
         public static void Main()
         {
@@ -44,12 +44,12 @@ namespace Example
             try
             {
                 // cancel
-                CheckDeletion result = apiInstance.cancel(chkId);
+                CheckDeletion result = apiInstance.CheckCancel(chkId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ChecksApi.cancel: " + e.Message );
+                Debug.Print("Exception when calling ChecksApi.CheckCancel: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -86,9 +86,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="create"></a>
-# **create**
-> Check create (CheckEditable checkEditable, string idempotencyKey = null)
+<a name="checkcreate"></a>
+# **CheckCreate**
+> Check CheckCreate (CheckEditable checkEditable, string idempotencyKey = null)
 
 create
 
@@ -104,7 +104,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class createExample
+    public class CheckCreateExample
     {
         public static void Main()
         {
@@ -121,12 +121,12 @@ namespace Example
             try
             {
                 // create
-                Check result = apiInstance.create(checkEditable, idempotencyKey);
+                Check result = apiInstance.CheckCreate(checkEditable, idempotencyKey);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ChecksApi.create: " + e.Message );
+                Debug.Print("Exception when calling ChecksApi.CheckCreate: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -164,9 +164,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="get"></a>
-# **get**
-> Check get (string chkId)
+<a name="checkretrieve"></a>
+# **CheckRetrieve**
+> Check CheckRetrieve (string chkId)
 
 get
 
@@ -182,7 +182,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class getExample
+    public class CheckRetrieveExample
     {
         public static void Main()
         {
@@ -198,12 +198,12 @@ namespace Example
             try
             {
                 // get
-                Check result = apiInstance.get(chkId);
+                Check result = apiInstance.CheckRetrieve(chkId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ChecksApi.get: " + e.Message );
+                Debug.Print("Exception when calling ChecksApi.CheckRetrieve: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -240,9 +240,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="list"></a>
-# **list**
-> CheckList list (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null, bool? scheduled = null, Dictionary<string, string> sendDate = null, MailType? mailType = null, SortBy5 sortBy = null)
+<a name="checkslist"></a>
+# **ChecksList**
+> CheckList ChecksList (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, DateTime> dateCreated = null, Dictionary<string, string> metadata = null, bool? scheduled = null, Dictionary<string, string> sendDate = null, MailType? mailType = null, SortBy3 sortBy = null)
 
 list
 
@@ -258,7 +258,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class listExample
+    public class ChecksListExample
     {
         public static void Main()
         {
@@ -273,22 +273,22 @@ namespace Example
             var before = before_example;  // string | A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the `previous_url` field in the return response.  (optional) 
             var after = after_example;  // string | A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the `next_url` field in the return response.  (optional) 
             var include = new List<string>(); // List<string> | Request that the response include the total count by specifying `include[]=total_count`.  (optional) 
-            var dateCreated = new Dictionary<string, string>(); // Dictionary<string, string> | Filter by date created. (optional) 
+            var dateCreated = new Dictionary<string, DateTime>(); // Dictionary<string, DateTime> | Filter by date created. (optional) 
             var metadata = new Dictionary<string, string>(); // Dictionary<string, string> | Filter by metadata key-value pair`. (optional) 
             var scheduled = true;  // bool? | * `true` - only return orders (past or future) where `send_date` is greater than `date_created` * `false` - only return orders where `send_date` is equal to `date_created`  (optional) 
             var sendDate = new Dictionary<string, string>(); // Dictionary<string, string> | Filter by date sent. (optional) 
             var mailType = ;  // MailType? | A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.  (optional) 
-            var sortBy = new SortBy5(); // SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.  (optional) 
+            var sortBy = new SortBy3(); // SortBy3 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.  (optional) 
 
             try
             {
                 // list
-                CheckList result = apiInstance.list(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy);
+                CheckList result = apiInstance.ChecksList(limit, before, after, include, dateCreated, metadata, scheduled, sendDate, mailType, sortBy);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ChecksApi.list: " + e.Message );
+                Debug.Print("Exception when calling ChecksApi.ChecksList: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -305,12 +305,12 @@ Name | Type | Description  | Notes
  **before** | **string**| A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  | [optional] 
  **after** | **string**| A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  | [optional] 
  **include** | [**List&lt;string&gt;**](string.md)| Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  | [optional] 
- **dateCreated** | [**Dictionary&lt;string, string&gt;**](string.md)| Filter by date created. | [optional] 
+ **dateCreated** | [**Dictionary&lt;string, DateTime&gt;**](DateTime.md)| Filter by date created. | [optional] 
  **metadata** | [**Dictionary&lt;string, string&gt;**](string.md)| Filter by metadata key-value pair&#x60;. | [optional] 
  **scheduled** | **bool?**| * &#x60;true&#x60; - only return orders (past or future) where &#x60;send_date&#x60; is greater than &#x60;date_created&#x60; * &#x60;false&#x60; - only return orders where &#x60;send_date&#x60; is equal to &#x60;date_created&#x60;  | [optional] 
  **sendDate** | [**Dictionary&lt;string, string&gt;**](string.md)| Filter by date sent. | [optional] 
  **mailType** | **MailType?**| A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  | [optional] 
- **sortBy** | [**SortBy5**](SortBy5.md)| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional] 
+ **sortBy** | [**SortBy3**](SortBy3.md)| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional] 
 
 ### Return type
 

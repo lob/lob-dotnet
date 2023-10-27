@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Front** | **string** | A PDF template for the front of the card | [optional] 
+**Front** | **string** | A PDF template for the front of the card | 
 **Back** | **string** | A PDF template for the back of the card | [optional] [default to "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/card_blank_horizontal.pdf"]
 **Size** | **string** | The size of the card | [optional] [default to SizeEnum._2125x3375]
 **Description** | **string** | Description of the card. | [optional] 

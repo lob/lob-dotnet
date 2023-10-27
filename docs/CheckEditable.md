@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**From** | **string** | Required if &#x60;to&#x60; address is international. Must either be an address ID or an inline object with correct address parameters. | [optional] 
-**To** | **string** | Required if &#x60;to&#x60; address is international. Must either be an address ID or an inline object with correct address parameters. | [optional] 
-**BankAccount** | **string** |  | [optional] 
-**Amount** | **float** | The payment amount to be sent in US dollars. | [optional] 
-**Logo** | **Object** | Accepts a remote URL or local file upload to an image to print (in grayscale) in the upper-left corner of your check. | [optional] 
+**From** | **Object** | Must either be an address ID or an inline object with correct address parameters. | 
+**To** | **Object** | Must either be an address ID or an inline object with correct address parameters. | 
+**BankAccount** | **string** |  | 
+**Amount** | **float** | The payment amount to be sent in US dollars. | 
+**Logo** | **string** | Accepts a remote URL or local file upload to an image to print (in grayscale) in the upper-left corner of your check. | [optional] 
 **CheckBottom** | **string** | The artwork to use on the bottom of the check page.  Notes: - HTML merge variables should not include delimiting whitespace. - PDF, PNG, and JPGs must be sized at 8.5\&quot;x11\&quot; at 300 DPI, while supplied HTML will be rendered and trimmed to fit on a 8.5\&quot;x11\&quot; page. - The check bottom will always be printed in black &amp; white. - Must conform to [this template](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/check_bottom_template.pdf).  Need more help? Consult our [HTML examples](#section/HTML-Examples). | [optional] 
 **Attachment** | **string** | A document to include with the check. | [optional] 
 **Description** | **string** | An internal description that identifies this resource. Must be no longer than 255 characters.  | [optional] 
@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **CheckNumber** | **int** | An integer that designates the check number. | [optional] 
 **Message** | **string** | Max of 400 characters to be included at the bottom of the check page. | [optional] 
 **BillingGroupId** | **string** | An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information. | [optional] 
+**UseType** | [**ChkUseType**](ChkUseType.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

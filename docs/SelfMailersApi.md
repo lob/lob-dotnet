@@ -4,15 +4,15 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](SelfMailersApi.md#create) | **POST** /self_mailers | create
-[**delete**](SelfMailersApi.md#delete) | **DELETE** /self_mailers/{sfm_id} | delete
-[**get**](SelfMailersApi.md#get) | **GET** /self_mailers/{sfm_id} | get
-[**list**](SelfMailersApi.md#list) | **GET** /self_mailers | list
+[**SelfMailerCreate**](SelfMailersApi.md#selfmailercreate) | **POST** /self_mailers | create
+[**SelfMailerDelete**](SelfMailersApi.md#selfmailerdelete) | **DELETE** /self_mailers/{sfm_id} | delete
+[**SelfMailerRetrieve**](SelfMailersApi.md#selfmailerretrieve) | **GET** /self_mailers/{sfm_id} | get
+[**SelfMailersList**](SelfMailersApi.md#selfmailerslist) | **GET** /self_mailers | list
 
 
-<a name="create"></a>
-# **create**
-> SelfMailer create (SelfMailerEditable selfMailerEditable, string idempotencyKey = null)
+<a name="selfmailercreate"></a>
+# **SelfMailerCreate**
+> SelfMailer SelfMailerCreate (SelfMailerEditable selfMailerEditable, string idempotencyKey = null)
 
 create
 
@@ -28,7 +28,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class createExample
+    public class SelfMailerCreateExample
     {
         public static void Main()
         {
@@ -45,12 +45,12 @@ namespace Example
             try
             {
                 // create
-                SelfMailer result = apiInstance.create(selfMailerEditable, idempotencyKey);
+                SelfMailer result = apiInstance.SelfMailerCreate(selfMailerEditable, idempotencyKey);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SelfMailersApi.create: " + e.Message );
+                Debug.Print("Exception when calling SelfMailersApi.SelfMailerCreate: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -88,9 +88,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="delete"></a>
-# **delete**
-> SelfMailerDeletion delete (string sfmId)
+<a name="selfmailerdelete"></a>
+# **SelfMailerDelete**
+> SelfMailerDeletion SelfMailerDelete (string sfmId)
 
 delete
 
@@ -106,7 +106,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class deleteExample
+    public class SelfMailerDeleteExample
     {
         public static void Main()
         {
@@ -122,12 +122,12 @@ namespace Example
             try
             {
                 // delete
-                SelfMailerDeletion result = apiInstance.delete(sfmId);
+                SelfMailerDeletion result = apiInstance.SelfMailerDelete(sfmId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SelfMailersApi.delete: " + e.Message );
+                Debug.Print("Exception when calling SelfMailersApi.SelfMailerDelete: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -164,9 +164,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="get"></a>
-# **get**
-> SelfMailer get (string sfmId)
+<a name="selfmailerretrieve"></a>
+# **SelfMailerRetrieve**
+> SelfMailer SelfMailerRetrieve (string sfmId)
 
 get
 
@@ -182,7 +182,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class getExample
+    public class SelfMailerRetrieveExample
     {
         public static void Main()
         {
@@ -198,12 +198,12 @@ namespace Example
             try
             {
                 // get
-                SelfMailer result = apiInstance.get(sfmId);
+                SelfMailer result = apiInstance.SelfMailerRetrieve(sfmId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SelfMailersApi.get: " + e.Message );
+                Debug.Print("Exception when calling SelfMailersApi.SelfMailerRetrieve: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -240,9 +240,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="list"></a>
-# **list**
-> SelfMailerList list (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, string> dateCreated = null, Dictionary<string, string> metadata = null, SelfMailerSize? size = null, bool? scheduled = null, Dictionary<string, string> sendDate = null, MailType? mailType = null, SortBy5 sortBy = null)
+<a name="selfmailerslist"></a>
+# **SelfMailersList**
+> SelfMailerList SelfMailersList (int? limit = null, string before = null, string after = null, List<string> include = null, Dictionary<string, DateTime> dateCreated = null, Dictionary<string, string> metadata = null, List<SelfMailerSize> size = null, bool? scheduled = null, Dictionary<string, string> sendDate = null, MailType? mailType = null, SortBy3 sortBy = null)
 
 list
 
@@ -258,7 +258,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class listExample
+    public class SelfMailersListExample
     {
         public static void Main()
         {
@@ -273,23 +273,23 @@ namespace Example
             var before = before_example;  // string | A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the `previous_url` field in the return response.  (optional) 
             var after = after_example;  // string | A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the `next_url` field in the return response.  (optional) 
             var include = new List<string>(); // List<string> | Request that the response include the total count by specifying `include[]=total_count`.  (optional) 
-            var dateCreated = new Dictionary<string, string>(); // Dictionary<string, string> | Filter by date created. (optional) 
+            var dateCreated = new Dictionary<string, DateTime>(); // Dictionary<string, DateTime> | Filter by date created. (optional) 
             var metadata = new Dictionary<string, string>(); // Dictionary<string, string> | Filter by metadata key-value pair`. (optional) 
-            var size = ;  // SelfMailerSize? | The self mailer sizes to be returned. (optional) 
+            var size = new List<SelfMailerSize>(); // List<SelfMailerSize> | The self mailer sizes to be returned. (optional) 
             var scheduled = true;  // bool? | * `true` - only return orders (past or future) where `send_date` is greater than `date_created` * `false` - only return orders where `send_date` is equal to `date_created`  (optional) 
             var sendDate = new Dictionary<string, string>(); // Dictionary<string, string> | Filter by date sent. (optional) 
             var mailType = ;  // MailType? | A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.  (optional) 
-            var sortBy = new SortBy5(); // SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.  (optional) 
+            var sortBy = new SortBy3(); // SortBy3 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.  (optional) 
 
             try
             {
                 // list
-                SelfMailerList result = apiInstance.list(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
+                SelfMailerList result = apiInstance.SelfMailersList(limit, before, after, include, dateCreated, metadata, size, scheduled, sendDate, mailType, sortBy);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SelfMailersApi.list: " + e.Message );
+                Debug.Print("Exception when calling SelfMailersApi.SelfMailersList: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -306,13 +306,13 @@ Name | Type | Description  | Notes
  **before** | **string**| A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  | [optional] 
  **after** | **string**| A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  | [optional] 
  **include** | [**List&lt;string&gt;**](string.md)| Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  | [optional] 
- **dateCreated** | [**Dictionary&lt;string, string&gt;**](string.md)| Filter by date created. | [optional] 
+ **dateCreated** | [**Dictionary&lt;string, DateTime&gt;**](DateTime.md)| Filter by date created. | [optional] 
  **metadata** | [**Dictionary&lt;string, string&gt;**](string.md)| Filter by metadata key-value pair&#x60;. | [optional] 
- **size** | **SelfMailerSize?**| The self mailer sizes to be returned. | [optional] 
+ **size** | [**List&lt;SelfMailerSize&gt;**](SelfMailerSize.md)| The self mailer sizes to be returned. | [optional] 
  **scheduled** | **bool?**| * &#x60;true&#x60; - only return orders (past or future) where &#x60;send_date&#x60; is greater than &#x60;date_created&#x60; * &#x60;false&#x60; - only return orders where &#x60;send_date&#x60; is equal to &#x60;date_created&#x60;  | [optional] 
  **sendDate** | [**Dictionary&lt;string, string&gt;**](string.md)| Filter by date sent. | [optional] 
  **mailType** | **MailType?**| A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  | [optional] 
- **sortBy** | [**SortBy5**](SortBy5.md)| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional] 
+ **sortBy** | [**SortBy3**](SortBy3.md)| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional] 
 
 ### Return type
 

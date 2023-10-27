@@ -4,16 +4,16 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](CardsApi.md#create) | **POST** /cards | create
-[**delete**](CardsApi.md#delete) | **DELETE** /cards/{card_id} | delete
-[**get**](CardsApi.md#get) | **GET** /cards/{card_id} | get
-[**update**](CardsApi.md#update) | **POST** /cards/{card_id} | update
-[**list**](CardsApi.md#list) | **GET** /cards | list
+[**CardCreate**](CardsApi.md#cardcreate) | **POST** /cards | create
+[**CardDelete**](CardsApi.md#carddelete) | **DELETE** /cards/{card_id} | delete
+[**CardRetrieve**](CardsApi.md#cardretrieve) | **GET** /cards/{card_id} | get
+[**CardUpdate**](CardsApi.md#cardupdate) | **POST** /cards/{card_id} | update
+[**CardsList**](CardsApi.md#cardslist) | **GET** /cards | list
 
 
-<a name="create"></a>
-# **create**
-> Card create (CardEditable cardEditable)
+<a name="cardcreate"></a>
+# **CardCreate**
+> Card CardCreate (CardEditable cardEditable)
 
 create
 
@@ -29,7 +29,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class createExample
+    public class CardCreateExample
     {
         public static void Main()
         {
@@ -45,12 +45,12 @@ namespace Example
             try
             {
                 // create
-                Card result = apiInstance.create(cardEditable);
+                Card result = apiInstance.CardCreate(cardEditable);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CardsApi.create: " + e.Message );
+                Debug.Print("Exception when calling CardsApi.CardCreate: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -87,9 +87,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="delete"></a>
-# **delete**
-> CardDeletion delete (string cardId)
+<a name="carddelete"></a>
+# **CardDelete**
+> CardDeletion CardDelete (string cardId)
 
 delete
 
@@ -105,7 +105,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class deleteExample
+    public class CardDeleteExample
     {
         public static void Main()
         {
@@ -121,12 +121,12 @@ namespace Example
             try
             {
                 // delete
-                CardDeletion result = apiInstance.delete(cardId);
+                CardDeletion result = apiInstance.CardDelete(cardId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CardsApi.delete: " + e.Message );
+                Debug.Print("Exception when calling CardsApi.CardDelete: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -163,9 +163,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="get"></a>
-# **get**
-> Card get (string cardId)
+<a name="cardretrieve"></a>
+# **CardRetrieve**
+> Card CardRetrieve (string cardId)
 
 get
 
@@ -181,7 +181,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class getExample
+    public class CardRetrieveExample
     {
         public static void Main()
         {
@@ -197,12 +197,12 @@ namespace Example
             try
             {
                 // get
-                Card result = apiInstance.get(cardId);
+                Card result = apiInstance.CardRetrieve(cardId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CardsApi.get: " + e.Message );
+                Debug.Print("Exception when calling CardsApi.CardRetrieve: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -239,9 +239,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="update"></a>
-# **update**
-> Card update (string cardId, CardUpdatable cardUpdatable)
+<a name="cardupdate"></a>
+# **CardUpdate**
+> Card CardUpdate (string cardId, CardUpdatable cardUpdatable)
 
 update
 
@@ -257,7 +257,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class updateExample
+    public class CardUpdateExample
     {
         public static void Main()
         {
@@ -274,12 +274,12 @@ namespace Example
             try
             {
                 // update
-                Card result = apiInstance.update(cardId, cardUpdatable);
+                Card result = apiInstance.CardUpdate(cardId, cardUpdatable);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CardsApi.update: " + e.Message );
+                Debug.Print("Exception when calling CardsApi.CardUpdate: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -317,9 +317,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="list"></a>
-# **list**
-> CardList list (int? limit = null, string before = null, string after = null, SortBy5 sortBy = null)
+<a name="cardslist"></a>
+# **CardsList**
+> CardList CardsList (int? limit = null, string before = null, string after = null, List<string> include = null)
 
 list
 
@@ -335,7 +335,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class listExample
+    public class CardsListExample
     {
         public static void Main()
         {
@@ -349,17 +349,17 @@ namespace Example
             var limit = 56;  // int? | How many results to return. (optional)  (default to 10)
             var before = before_example;  // string | A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the `previous_url` field in the return response.  (optional) 
             var after = after_example;  // string | A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the `next_url` field in the return response.  (optional) 
-            var sortBy = new SortBy5(); // SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.  (optional) 
+            var include = new List<string>(); // List<string> | Request that the response include the total count by specifying `include[]=total_count`.  (optional) 
 
             try
             {
                 // list
-                CardList result = apiInstance.list(limit, before, after, sortBy);
+                CardList result = apiInstance.CardsList(limit, before, after, include);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CardsApi.list: " + e.Message );
+                Debug.Print("Exception when calling CardsApi.CardsList: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
  **limit** | **int?**| How many results to return. | [optional] [default to 10]
  **before** | **string**| A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  | [optional] 
  **after** | **string**| A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  | [optional] 
- **sortBy** | [**SortBy5**](SortBy5.md)| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional] 
+ **include** | [**List&lt;string&gt;**](string.md)| Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  | [optional] 
 
 ### Return type
 

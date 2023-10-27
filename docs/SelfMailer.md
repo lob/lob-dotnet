@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique identifier prefixed with &#x60;sfm_&#x60;. | [optional] 
-**To** | **string** | Must either be an address ID or an inline object with correct address parameters. | [optional] 
-**From** | **string** | Must either be an address ID or an inline object with correct address parameters. | [optional] 
+**Id** | **string** | Unique identifier prefixed with &#x60;sfm_&#x60;. | 
+**To** | **Object** |  | 
+**From** | **Object** |  | [optional] 
 **Size** | [**SelfMailerSize**](SelfMailerSize.md) |  | [optional] 
 **Description** | **string** | An internal description that identifies this resource. Must be no longer than 255 characters.  | [optional] 
 **Metadata** | **Dictionary&lt;string, string&gt;** | Use metadata to store custom information for tagging and labeling back to your internal systems. Must be an object with up to 20 key-value pairs. Keys must be at most 40 characters and values must be at most 500 characters. Neither can contain the characters &#x60;\&quot;&#x60; and &#x60;\\&#x60;. i.e. &#39;{\&quot;customer_id\&quot; : \&quot;NEWYORK2015\&quot;}&#39; Nested objects are not supported.  See [Metadata](#section/Metadata) for more information. | [optional] 
@@ -19,7 +19,8 @@ Name | Type | Description | Notes
 **InsideTemplateVersionId** | **string** | The unique ID of the specific version of the HTML template used for the inside of the self mailer. | [optional] 
 **Object** | **string** | Value is resource type. | [optional] [default to ObjectEnum.SelfMailer]
 **TrackingEvents** | [**List&lt;TrackingEventCertified&gt;**](TrackingEventCertified.md) | An array of certified tracking events ordered by ascending &#x60;time&#x60;. Not populated in test mode. | [optional] 
-**Url** | **string** | A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated. | [optional] 
+**Url** | **string** | A [signed link](#section/Asset-URLs) served over HTTPS. The link returned will expire in 30 days to prevent mis-sharing. Each time a GET request is initiated, a new signed URL will be generated. | 
+**UseType** | [**SfmUseType**](SfmUseType.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

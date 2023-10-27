@@ -4,13 +4,13 @@ All URIs are relative to *https://api.lob.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](CardOrdersApi.md#create) | **POST** /cards/{card_id}/orders | create
-[**get**](CardOrdersApi.md#get) | **GET** /cards/{card_id}/orders | get
+[**CardOrderCreate**](CardOrdersApi.md#cardordercreate) | **POST** /cards/{card_id}/orders | create
+[**CardOrdersRetrieve**](CardOrdersApi.md#cardordersretrieve) | **GET** /cards/{card_id}/orders | get
 
 
-<a name="create"></a>
-# **create**
-> CardOrder create (string cardId, CardOrderEditable cardOrderEditable)
+<a name="cardordercreate"></a>
+# **CardOrderCreate**
+> CardOrder CardOrderCreate (string cardId, CardOrderEditable cardOrderEditable)
 
 create
 
@@ -26,7 +26,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class createExample
+    public class CardOrderCreateExample
     {
         public static void Main()
         {
@@ -43,12 +43,12 @@ namespace Example
             try
             {
                 // create
-                CardOrder result = apiInstance.create(cardId, cardOrderEditable);
+                CardOrder result = apiInstance.CardOrderCreate(cardId, cardOrderEditable);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CardOrdersApi.create: " + e.Message );
+                Debug.Print("Exception when calling CardOrdersApi.CardOrderCreate: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -86,9 +86,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="get"></a>
-# **get**
-> CardOrderList get (string cardId, int? limit = null, int? offset = null)
+<a name="cardordersretrieve"></a>
+# **CardOrdersRetrieve**
+> CardOrderList CardOrdersRetrieve (string cardId, int? limit = null, int? offset = null)
 
 get
 
@@ -104,7 +104,7 @@ using lob.dotnet.Model;
 
 namespace Example
 {
-    public class getExample
+    public class CardOrdersRetrieveExample
     {
         public static void Main()
         {
@@ -122,12 +122,12 @@ namespace Example
             try
             {
                 // get
-                CardOrderList result = apiInstance.get(cardId, limit, offset);
+                CardOrderList result = apiInstance.CardOrdersRetrieve(cardId, limit, offset);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CardOrdersApi.get: " + e.Message );
+                Debug.Print("Exception when calling CardOrdersApi.CardOrdersRetrieve: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
