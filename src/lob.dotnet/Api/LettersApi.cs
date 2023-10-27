@@ -60,9 +60,10 @@ namespace lob.dotnet.Api
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="letterEditable"></param>
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
+        /// <param name="file">An optional file upload as either a byte array or file type.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Letter</returns>
-        Letter create(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0);
+        Letter create(LetterEditable letterEditable, string idempotencyKey = default(string), Object file = default(Object), int operationIndex = 0);
 
         /// <summary>
         /// create
@@ -73,9 +74,10 @@ namespace lob.dotnet.Api
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="letterEditable"></param>
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
+        /// <param name="file">An optional file upload as either a byte array or file type.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Letter</returns>
-        ApiResponse<Letter> createWithHttpInfo(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0);
+        ApiResponse<Letter> createWithHttpInfo(LetterEditable letterEditable, string idempotencyKey = default(string), Object file = default(Object), int operationIndex = 0);
         /// <summary>
         /// get
         /// </summary>
@@ -185,10 +187,11 @@ namespace lob.dotnet.Api
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="letterEditable"></param>
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
+        /// <param name="file">An optional file upload as either a byte array or file type.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Letter</returns>
-        System.Threading.Tasks.Task<Letter> createAsync(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Letter> createAsync(LetterEditable letterEditable, string idempotencyKey = default(string), Object file = default(Object), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// create
@@ -199,10 +202,11 @@ namespace lob.dotnet.Api
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="letterEditable"></param>
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
+        /// <param name="file">An optional file upload as either a byte array or file type.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Letter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Letter>> createWithHttpInfoAsync(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Letter>> createWithHttpInfoAsync(LetterEditable letterEditable, string idempotencyKey = default(string), Object file = default(Object), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// get
         /// </summary>
@@ -555,11 +559,12 @@ namespace lob.dotnet.Api
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="letterEditable"></param>
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
+        /// <param name="file">An optional file upload as either a byte array or file type.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Letter</returns>
-        public Letter create(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0)
+        public Letter create(LetterEditable letterEditable, string idempotencyKey = default(string), Object file = default(Object), int operationIndex = 0)
         {
-            lob.dotnet.Client.ApiResponse<Letter> localVarResponse = createWithHttpInfo(letterEditable, idempotencyKey);
+            lob.dotnet.Client.ApiResponse<Letter> localVarResponse = createWithHttpInfo(letterEditable, idempotencyKey, file);
             return localVarResponse.Data;
         }
 
@@ -569,9 +574,10 @@ namespace lob.dotnet.Api
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="letterEditable"></param>
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
+        /// <param name="file">An optional file upload as either a byte array or file type.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Letter</returns>
-        public lob.dotnet.Client.ApiResponse<Letter> createWithHttpInfo(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0)
+        public lob.dotnet.Client.ApiResponse<Letter> createWithHttpInfo(LetterEditable letterEditable, string idempotencyKey = default(string), Object file = default(Object), int operationIndex = 0)
         {
             // verify the required parameter 'letterEditable' is set
             if (letterEditable == null)
@@ -604,6 +610,10 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (file != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "file", file));
+            }
             if (idempotencyKey != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", lob.dotnet.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
@@ -640,12 +650,13 @@ namespace lob.dotnet.Api
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="letterEditable"></param>
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
+        /// <param name="file">An optional file upload as either a byte array or file type.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Letter</returns>
-        public async System.Threading.Tasks.Task<Letter> createAsync(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Letter> createAsync(LetterEditable letterEditable, string idempotencyKey = default(string), Object file = default(Object), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            lob.dotnet.Client.ApiResponse<Letter> localVarResponse = await createWithHttpInfoAsync(letterEditable, idempotencyKey, operationIndex, cancellationToken).ConfigureAwait(false);
+            lob.dotnet.Client.ApiResponse<Letter> localVarResponse = await createWithHttpInfoAsync(letterEditable, idempotencyKey, file, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -655,10 +666,11 @@ namespace lob.dotnet.Api
         /// <exception cref="lob.dotnet.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="letterEditable"></param>
         /// <param name="idempotencyKey">A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)</param>
+        /// <param name="file">An optional file upload as either a byte array or file type.  (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Letter)</returns>
-        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Letter>> createWithHttpInfoAsync(LetterEditable letterEditable, string idempotencyKey = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<lob.dotnet.Client.ApiResponse<Letter>> createWithHttpInfoAsync(LetterEditable letterEditable, string idempotencyKey = default(string), Object file = default(Object), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'letterEditable' is set
             if (letterEditable == null)
@@ -692,6 +704,10 @@ namespace lob.dotnet.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (file != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(lob.dotnet.Client.ClientUtils.ParameterToMultiMap("", "file", file));
+            }
             if (idempotencyKey != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", lob.dotnet.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter

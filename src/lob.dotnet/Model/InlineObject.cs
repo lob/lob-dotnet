@@ -27,77 +27,35 @@ using OpenAPIDateConverter = lob.dotnet.Client.OpenAPIDateConverter;
 namespace lob.dotnet.Model
 {
     /// <summary>
-    /// SortBy5
+    /// InlineObject
     /// </summary>
-    [DataContract(Name = "sort_by_5")]
-    public partial class SortBy5 : IEquatable<SortBy5>, IValidatableObject
+    [DataContract(Name = "inline_object")]
+    public partial class InlineObject : IEquatable<InlineObject>, IValidatableObject
     {
         /// <summary>
-        /// Defines DateCreated
+        /// Initializes a new instance of the <see cref="InlineObject" /> class.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum DateCreatedEnum
+        [JsonConstructorAttribute]
+        protected InlineObject() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InlineObject" /> class.
+        /// </summary>
+        /// <param name="file">file (required).</param>
+        public InlineObject(Object file = default(Object))
         {
-            /// <summary>
-            /// Enum Asc for value: asc
-            /// </summary>
-            [EnumMember(Value = "asc")]
-            Asc = 1,
-            
-
-            /// <summary>
-            /// Enum Desc for value: desc
-            /// </summary>
-            [EnumMember(Value = "desc")]
-            Desc = 2
-            
-
+            // to ensure "file" is required (not null)
+            if (file == null)
+            {
+                throw new ArgumentNullException("file is a required property for InlineObject and cannot be null");
+            }
+            this.File = file;
         }
 
-
         /// <summary>
-        /// Gets or Sets DateCreated
+        /// Gets or Sets File
         /// </summary>
-        [DataMember(Name = "date_created", EmitDefaultValue = false)]
-        public DateCreatedEnum? DateCreated { get; set; }
-        /// <summary>
-        /// Defines SendDate
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum SendDateEnum
-        {
-            /// <summary>
-            /// Enum Asc for value: asc
-            /// </summary>
-            [EnumMember(Value = "asc")]
-            Asc = 1,
-            
-
-            /// <summary>
-            /// Enum Desc for value: desc
-            /// </summary>
-            [EnumMember(Value = "desc")]
-            Desc = 2
-            
-
-        }
-
-
-        /// <summary>
-        /// Gets or Sets SendDate
-        /// </summary>
-        [DataMember(Name = "send_date", EmitDefaultValue = false)]
-        public SendDateEnum? SendDate { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SortBy5" /> class.
-        /// </summary>
-        /// <param name="dateCreated">dateCreated.</param>
-        /// <param name="sendDate">sendDate.</param>
-        public SortBy5(DateCreatedEnum? dateCreated = default(DateCreatedEnum?), SendDateEnum? sendDate = default(SendDateEnum?))
-        {
-            this.DateCreated = dateCreated;
-            this.SendDate = sendDate;
-        }
+        [DataMember(Name = "file", IsRequired = true, EmitDefaultValue = false)]
+        public Object File { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -106,9 +64,8 @@ namespace lob.dotnet.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class SortBy5 {\n");
-            sb.Append("  DateCreated: ").Append(DateCreated).Append("\n");
-            sb.Append("  SendDate: ").Append(SendDate).Append("\n");
+            sb.Append("class InlineObject {\n");
+            sb.Append("  File: ").Append(File).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -129,15 +86,15 @@ namespace lob.dotnet.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SortBy5);
+            return this.Equals(input as InlineObject);
         }
 
         /// <summary>
-        /// Returns true if SortBy5 instances are equal
+        /// Returns true if InlineObject instances are equal
         /// </summary>
-        /// <param name="input">Instance of SortBy5 to be compared</param>
+        /// <param name="input">Instance of InlineObject to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SortBy5 input)
+        public bool Equals(InlineObject input)
         {
             if (input == null)
             {
@@ -145,12 +102,9 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.DateCreated == input.DateCreated ||
-                    this.DateCreated.Equals(input.DateCreated)
-                ) && 
-                (
-                    this.SendDate == input.SendDate ||
-                    this.SendDate.Equals(input.SendDate)
+                    this.File == input.File ||
+                    (this.File != null &&
+                    this.File.Equals(input.File))
                 );
         }
 
@@ -163,8 +117,10 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.DateCreated.GetHashCode();
-                hashCode = (hashCode * 59) + this.SendDate.GetHashCode();
+                if (this.File != null)
+                {
+                    hashCode = (hashCode * 59) + this.File.GetHashCode();
+                }
                 return hashCode;
             }
         }

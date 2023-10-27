@@ -27,77 +27,25 @@ using OpenAPIDateConverter = lob.dotnet.Client.OpenAPIDateConverter;
 namespace lob.dotnet.Model
 {
     /// <summary>
-    /// SortBy4
+    /// HTTPValidationError
     /// </summary>
-    [DataContract(Name = "sort_by_4")]
-    public partial class SortBy4 : IEquatable<SortBy4>, IValidatableObject
+    [DataContract(Name = "HTTPValidationError")]
+    public partial class HTTPValidationError : IEquatable<HTTPValidationError>, IValidatableObject
     {
         /// <summary>
-        /// Defines DateCreated
+        /// Initializes a new instance of the <see cref="HTTPValidationError" /> class.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum DateCreatedEnum
+        /// <param name="detail">detail.</param>
+        public HTTPValidationError(List<ValidationError> detail = default(List<ValidationError>))
         {
-            /// <summary>
-            /// Enum Asc for value: asc
-            /// </summary>
-            [EnumMember(Value = "asc")]
-            Asc = 1,
-            
-
-            /// <summary>
-            /// Enum Desc for value: desc
-            /// </summary>
-            [EnumMember(Value = "desc")]
-            Desc = 2
-            
-
+            this.Detail = detail;
         }
 
-
         /// <summary>
-        /// Gets or Sets DateCreated
+        /// Gets or Sets Detail
         /// </summary>
-        [DataMember(Name = "date_created", EmitDefaultValue = false)]
-        public DateCreatedEnum? DateCreated { get; set; }
-        /// <summary>
-        /// Defines SendDate
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum SendDateEnum
-        {
-            /// <summary>
-            /// Enum Asc for value: asc
-            /// </summary>
-            [EnumMember(Value = "asc")]
-            Asc = 1,
-            
-
-            /// <summary>
-            /// Enum Desc for value: desc
-            /// </summary>
-            [EnumMember(Value = "desc")]
-            Desc = 2
-            
-
-        }
-
-
-        /// <summary>
-        /// Gets or Sets SendDate
-        /// </summary>
-        [DataMember(Name = "send_date", EmitDefaultValue = false)]
-        public SendDateEnum? SendDate { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SortBy4" /> class.
-        /// </summary>
-        /// <param name="dateCreated">dateCreated.</param>
-        /// <param name="sendDate">sendDate.</param>
-        public SortBy4(DateCreatedEnum? dateCreated = default(DateCreatedEnum?), SendDateEnum? sendDate = default(SendDateEnum?))
-        {
-            this.DateCreated = dateCreated;
-            this.SendDate = sendDate;
-        }
+        [DataMember(Name = "detail", EmitDefaultValue = false)]
+        public List<ValidationError> Detail { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -106,9 +54,8 @@ namespace lob.dotnet.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class SortBy4 {\n");
-            sb.Append("  DateCreated: ").Append(DateCreated).Append("\n");
-            sb.Append("  SendDate: ").Append(SendDate).Append("\n");
+            sb.Append("class HTTPValidationError {\n");
+            sb.Append("  Detail: ").Append(Detail).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -129,15 +76,15 @@ namespace lob.dotnet.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SortBy4);
+            return this.Equals(input as HTTPValidationError);
         }
 
         /// <summary>
-        /// Returns true if SortBy4 instances are equal
+        /// Returns true if HTTPValidationError instances are equal
         /// </summary>
-        /// <param name="input">Instance of SortBy4 to be compared</param>
+        /// <param name="input">Instance of HTTPValidationError to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SortBy4 input)
+        public bool Equals(HTTPValidationError input)
         {
             if (input == null)
             {
@@ -145,12 +92,10 @@ namespace lob.dotnet.Model
             }
             return 
                 (
-                    this.DateCreated == input.DateCreated ||
-                    this.DateCreated.Equals(input.DateCreated)
-                ) && 
-                (
-                    this.SendDate == input.SendDate ||
-                    this.SendDate.Equals(input.SendDate)
+                    this.Detail == input.Detail ||
+                    this.Detail != null &&
+                    input.Detail != null &&
+                    this.Detail.SequenceEqual(input.Detail)
                 );
         }
 
@@ -163,8 +108,10 @@ namespace lob.dotnet.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.DateCreated.GetHashCode();
-                hashCode = (hashCode * 59) + this.SendDate.GetHashCode();
+                if (this.Detail != null)
+                {
+                    hashCode = (hashCode * 59) + this.Detail.GetHashCode();
+                }
                 return hashCode;
             }
         }

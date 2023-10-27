@@ -454,7 +454,7 @@ namespace lob.dotnet.Model
             }
 
             // SignatureUrl (string) pattern
-            Regex regexSignatureUrl = new Regex(@"^https:\/\/lob-assets\\.com\/(letters|postcards|bank-accounts|checks|self-mailers|cards)\/[a-z]{3,4}_[a-z0-9]{15,16}(\\.pdf|_thumb_[a-z]+_[0-9]+\\.png)\\?(version=[a-z0-9-]*&)?expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+$", RegexOptions.CultureInvariant);
+            Regex regexSignatureUrl = new Regex(@"^https:\/\/lob-assets.com\/(letters|postcards|bank-accounts|checks|self-mailers|cards)\/[a-z]{3,4}_[a-z0-9]{15,16}('|_signature)(.pdf|_thumb_[a-z]+_[0-9]+.png|.png)?(version=[a-z0-9]*&)expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+", RegexOptions.CultureInvariant);
             if (false == regexSignatureUrl.Match(this.SignatureUrl).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SignatureUrl, must match a pattern of " + regexSignatureUrl, new [] { "SignatureUrl" });

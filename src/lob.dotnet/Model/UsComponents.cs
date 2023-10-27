@@ -351,6 +351,43 @@ namespace lob.dotnet.Model
         [DataMember(Name = "carrier_route_type", IsRequired = true, EmitDefaultValue = false)]
         public CarrierRouteTypeEnum CarrierRouteType { get; set; }
         /// <summary>
+        /// Indicates the mailing facility for an address only supports PO Box deliveries and other forms of mail delivery are not available. 
+        /// </summary>
+        /// <value>Indicates the mailing facility for an address only supports PO Box deliveries and other forms of mail delivery are not available. </value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum PoBoxOnlyFlagEnum
+        {
+            /// <summary>
+            /// Enum Y for value: Y
+            /// </summary>
+            [EnumMember(Value = "Y")]
+            Y = 1,
+            
+
+            /// <summary>
+            /// Enum N for value: N
+            /// </summary>
+            [EnumMember(Value = "N")]
+            N = 2,
+            
+
+            /// <summary>
+            /// Enum Empty for value: 
+            /// </summary>
+            [EnumMember(Value = "")]
+            Empty = 3
+            
+
+        }
+
+
+        /// <summary>
+        /// Indicates the mailing facility for an address only supports PO Box deliveries and other forms of mail delivery are not available. 
+        /// </summary>
+        /// <value>Indicates the mailing facility for an address only supports PO Box deliveries and other forms of mail delivery are not available. </value>
+        [DataMember(Name = "po_box_only_flag", IsRequired = true, EmitDefaultValue = false)]
+        public PoBoxOnlyFlagEnum PoBoxOnlyFlag { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="UsComponents" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -382,9 +419,10 @@ namespace lob.dotnet.Model
         /// <param name="countyFips">A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies &#x60;components[county]&#x60;. It consists of a 2-digit state code and a 3-digit county code.  (required).</param>
         /// <param name="carrierRoute">A 4-character code assigned to a mail delivery route within a ZIP code.  (required).</param>
         /// <param name="carrierRouteType">The type of &#x60;components[carrier_route]&#x60;. For more detailed information about each carrier route type, see [US Verification Details](#tag/US-Verification-Types).  (required).</param>
+        /// <param name="poBoxOnlyFlag">Indicates the mailing facility for an address only supports PO Box deliveries and other forms of mail delivery are not available.  (required).</param>
         /// <param name="latitude">A positive or negative decimal indicating the geographic latitude of the address, specifying the north-to-south position of a location. This should be used with &#x60;longitude&#x60; to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is &#x60;AA&#x60;, &#x60;AE&#x60;, or &#x60;AP&#x60;). .</param>
         /// <param name="longitude">A positive or negative decimal indicating the geographic longitude of the address, specifying the north-to-south position of a location. This should be used with &#x60;latitude&#x60; to pinpoint locations on a map. Will not be returned for undeliverable addresses or military addresses (state is &#x60;AA&#x60;, &#x60;AE&#x60;, or &#x60;AP&#x60;). .</param>
-        public UsComponents(string primaryNumber = default(string), StreetPredirectionEnum streetPredirection = default(StreetPredirectionEnum), string streetName = default(string), string streetSuffix = default(string), StreetPostdirectionEnum streetPostdirection = default(StreetPostdirectionEnum), string secondaryDesignator = default(string), string secondaryNumber = default(string), string pmbDesignator = default(string), string pmbNumber = default(string), string extraSecondaryDesignator = default(string), string extraSecondaryNumber = default(string), string city = default(string), string state = default(string), string zipCode = default(string), string zipCodePlus4 = default(string), ZipCodeType zipCodeType = default(ZipCodeType), string deliveryPointBarcode = default(string), AddressTypeEnum addressType = default(AddressTypeEnum), RecordTypeEnum recordType = default(RecordTypeEnum), bool defaultBuildingAddress = default(bool), string county = default(string), string countyFips = default(string), string carrierRoute = default(string), CarrierRouteTypeEnum carrierRouteType = default(CarrierRouteTypeEnum), float? latitude = default(float?), float? longitude = default(float?))
+        public UsComponents(string primaryNumber = default(string), StreetPredirectionEnum streetPredirection = default(StreetPredirectionEnum), string streetName = default(string), string streetSuffix = default(string), StreetPostdirectionEnum streetPostdirection = default(StreetPostdirectionEnum), string secondaryDesignator = default(string), string secondaryNumber = default(string), string pmbDesignator = default(string), string pmbNumber = default(string), string extraSecondaryDesignator = default(string), string extraSecondaryNumber = default(string), string city = default(string), string state = default(string), string zipCode = default(string), string zipCodePlus4 = default(string), ZipCodeType zipCodeType = default(ZipCodeType), string deliveryPointBarcode = default(string), AddressTypeEnum addressType = default(AddressTypeEnum), RecordTypeEnum recordType = default(RecordTypeEnum), bool defaultBuildingAddress = default(bool), string county = default(string), string countyFips = default(string), string carrierRoute = default(string), CarrierRouteTypeEnum carrierRouteType = default(CarrierRouteTypeEnum), PoBoxOnlyFlagEnum poBoxOnlyFlag = default(PoBoxOnlyFlagEnum), float? latitude = default(float?), float? longitude = default(float?))
         {
             // to ensure "primaryNumber" is required (not null)
             if (primaryNumber == null)
@@ -500,6 +538,7 @@ namespace lob.dotnet.Model
             }
             this.CarrierRoute = carrierRoute;
             this.CarrierRouteType = carrierRouteType;
+            this.PoBoxOnlyFlag = poBoxOnlyFlag;
             this.Latitude = latitude;
             this.Longitude = longitude;
         }
@@ -680,6 +719,7 @@ namespace lob.dotnet.Model
             sb.Append("  CountyFips: ").Append(CountyFips).Append("\n");
             sb.Append("  CarrierRoute: ").Append(CarrierRoute).Append("\n");
             sb.Append("  CarrierRouteType: ").Append(CarrierRouteType).Append("\n");
+            sb.Append("  PoBoxOnlyFlag: ").Append(PoBoxOnlyFlag).Append("\n");
             sb.Append("  Latitude: ").Append(Latitude).Append("\n");
             sb.Append("  Longitude: ").Append(Longitude).Append("\n");
             sb.Append("}\n");
@@ -832,6 +872,10 @@ namespace lob.dotnet.Model
                     this.CarrierRouteType.Equals(input.CarrierRouteType)
                 ) && 
                 (
+                    this.PoBoxOnlyFlag == input.PoBoxOnlyFlag ||
+                    this.PoBoxOnlyFlag.Equals(input.PoBoxOnlyFlag)
+                ) && 
+                (
                     this.Latitude == input.Latitude ||
                     (this.Latitude != null &&
                     this.Latitude.Equals(input.Latitude))
@@ -930,6 +974,7 @@ namespace lob.dotnet.Model
                     hashCode = (hashCode * 59) + this.CarrierRoute.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.CarrierRouteType.GetHashCode();
+                hashCode = (hashCode * 59) + this.PoBoxOnlyFlag.GetHashCode();
                 if (this.Latitude != null)
                 {
                     hashCode = (hashCode * 59) + this.Latitude.GetHashCode();

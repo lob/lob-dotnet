@@ -469,10 +469,7 @@ namespace lob.dotnet.Client
                 client.Proxy = configuration.Proxy;
             }
 
-            if (configuration.UserAgent != null)
-            {
-                client.UserAgent = configuration.UserAgent;
-            }
+            client.UserAgent = "lob.dotnet/1.0.0";
 
             if (configuration.ClientCertificates != null)
             {

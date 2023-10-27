@@ -57,10 +57,10 @@ namespace lob.dotnet.Model
         CC = 4,
 
         /// <summary>
-        /// Enum N1 for value: N1
+        /// Enum C1 for value: C1
         /// </summary>
-        [EnumMember(Value = "N1")]
-        N1 = 5,
+        [EnumMember(Value = "C1")]
+        C1 = 5,
 
         /// <summary>
         /// Enum F1 for value: F1
@@ -75,10 +75,10 @@ namespace lob.dotnet.Model
         G1 = 7,
 
         /// <summary>
-        /// Enum U1 for value: U1
+        /// Enum IA for value: IA
         /// </summary>
-        [EnumMember(Value = "U1")]
-        U1 = 8,
+        [EnumMember(Value = "IA")]
+        IA = 8,
 
         /// <summary>
         /// Enum M1 for value: M1
@@ -93,34 +93,58 @@ namespace lob.dotnet.Model
         M3 = 10,
 
         /// <summary>
+        /// Enum N1 for value: N1
+        /// </summary>
+        [EnumMember(Value = "N1")]
+        N1 = 11,
+
+        /// <summary>
+        /// Enum PB for value: PB
+        /// </summary>
+        [EnumMember(Value = "PB")]
+        PB = 12,
+
+        /// <summary>
         /// Enum P1 for value: P1
         /// </summary>
         [EnumMember(Value = "P1")]
-        P1 = 11,
+        P1 = 13,
 
         /// <summary>
         /// Enum P3 for value: P3
         /// </summary>
         [EnumMember(Value = "P3")]
-        P3 = 12,
+        P3 = 14,
 
         /// <summary>
         /// Enum R1 for value: R1
         /// </summary>
         [EnumMember(Value = "R1")]
-        R1 = 13,
+        R1 = 15,
 
         /// <summary>
         /// Enum R7 for value: R7
         /// </summary>
         [EnumMember(Value = "R7")]
-        R7 = 14,
+        R7 = 16,
 
         /// <summary>
         /// Enum RR for value: RR
         /// </summary>
         [EnumMember(Value = "RR")]
-        RR = 15
+        RR = 17,
+
+        /// <summary>
+        /// Enum TA for value: TA
+        /// </summary>
+        [EnumMember(Value = "TA")]
+        TA = 18,
+
+        /// <summary>
+        /// Enum U1 for value: U1
+        /// </summary>
+        [EnumMember(Value = "U1")]
+        U1 = 19
 
     }
 

@@ -30,7 +30,7 @@ namespace lob.dotnet.Model
     /// Must be a 2 letter country short-name code (ISO 3166).
     /// </summary>
     /// <value>Must be a 2 letter country short-name code (ISO 3166).</value>
-    [JsonConverter(typeof(TolerantEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum CountryExtended
     {
         /// <summary>
