@@ -195,6 +195,219 @@ namespace lob.dotnet.Model
         [DataMember(Name = "dpv_active", IsRequired = true, EmitDefaultValue = false)]
         public DpvActiveEnum DpvActive { get; set; }
         /// <summary>
+        /// Indicates the reason why an address is vacant or no longer receiving deliveries. Possible values are: * &#x60;01&#x60; –– Address does not receive mail from the USPS directly, but is serviced by a drop address. * &#x60;02&#x60; –– Address not yet deliverable. * &#x60;03&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). * &#x60;04&#x60; –– Address is a College, Military Zone, or other type. * &#x60;05&#x60; –– Address no longer receives deliveries. * &#x60;06&#x60; –– Address is missing required secondary information. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made or the address is active. 
+        /// </summary>
+        /// <value>Indicates the reason why an address is vacant or no longer receiving deliveries. Possible values are: * &#x60;01&#x60; –– Address does not receive mail from the USPS directly, but is serviced by a drop address. * &#x60;02&#x60; –– Address not yet deliverable. * &#x60;03&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). * &#x60;04&#x60; –– Address is a College, Military Zone, or other type. * &#x60;05&#x60; –– Address no longer receives deliveries. * &#x60;06&#x60; –– Address is missing required secondary information. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made or the address is active. </value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum DpvInactiveReasonEnum
+        {
+            /// <summary>
+            /// Enum _01 for value: 01
+            /// </summary>
+            [EnumMember(Value = "01")]
+            _01 = 1,
+            
+
+            /// <summary>
+            /// Enum _02 for value: 02
+            /// </summary>
+            [EnumMember(Value = "02")]
+            _02 = 2,
+            
+
+            /// <summary>
+            /// Enum _03 for value: 03
+            /// </summary>
+            [EnumMember(Value = "03")]
+            _03 = 3,
+            
+
+            /// <summary>
+            /// Enum _04 for value: 04
+            /// </summary>
+            [EnumMember(Value = "04")]
+            _04 = 4,
+            
+
+            /// <summary>
+            /// Enum _05 for value: 05
+            /// </summary>
+            [EnumMember(Value = "05")]
+            _05 = 5,
+            
+
+            /// <summary>
+            /// Enum _06 for value: 06
+            /// </summary>
+            [EnumMember(Value = "06")]
+            _06 = 6,
+            
+
+            /// <summary>
+            /// Enum Empty for value: 
+            /// </summary>
+            [EnumMember(Value = "")]
+            Empty = 7
+            
+
+        }
+
+
+        /// <summary>
+        /// Indicates the reason why an address is vacant or no longer receiving deliveries. Possible values are: * &#x60;01&#x60; –– Address does not receive mail from the USPS directly, but is serviced by a drop address. * &#x60;02&#x60; –– Address not yet deliverable. * &#x60;03&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). * &#x60;04&#x60; –– Address is a College, Military Zone, or other type. * &#x60;05&#x60; –– Address no longer receives deliveries. * &#x60;06&#x60; –– Address is missing required secondary information. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made or the address is active. 
+        /// </summary>
+        /// <value>Indicates the reason why an address is vacant or no longer receiving deliveries. Possible values are: * &#x60;01&#x60; –– Address does not receive mail from the USPS directly, but is serviced by a drop address. * &#x60;02&#x60; –– Address not yet deliverable. * &#x60;03&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). * &#x60;04&#x60; –– Address is a College, Military Zone, or other type. * &#x60;05&#x60; –– Address no longer receives deliveries. * &#x60;06&#x60; –– Address is missing required secondary information. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made or the address is active. </value>
+        [DataMember(Name = "dpv_inactive_reason", IsRequired = true, EmitDefaultValue = false)]
+        public DpvInactiveReasonEnum DpvInactiveReason { get; set; }
+        /// <summary>
+        /// Indicates a street address for which mail is delivered to a PO Box. Possible values are: * &#x60;Y&#x60; –– Address is a PO Box throwback delivery point. * &#x60;N&#x60; –– Address is not a PO Box throwback delivery point. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
+        /// </summary>
+        /// <value>Indicates a street address for which mail is delivered to a PO Box. Possible values are: * &#x60;Y&#x60; –– Address is a PO Box throwback delivery point. * &#x60;N&#x60; –– Address is not a PO Box throwback delivery point. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). </value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum DpvThrowbackEnum
+        {
+            /// <summary>
+            /// Enum Y for value: Y
+            /// </summary>
+            [EnumMember(Value = "Y")]
+            Y = 1,
+            
+
+            /// <summary>
+            /// Enum N for value: N
+            /// </summary>
+            [EnumMember(Value = "N")]
+            N = 2,
+            
+
+            /// <summary>
+            /// Enum Empty for value: 
+            /// </summary>
+            [EnumMember(Value = "")]
+            Empty = 3
+            
+
+        }
+
+
+        /// <summary>
+        /// Indicates a street address for which mail is delivered to a PO Box. Possible values are: * &#x60;Y&#x60; –– Address is a PO Box throwback delivery point. * &#x60;N&#x60; –– Address is not a PO Box throwback delivery point. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
+        /// </summary>
+        /// <value>Indicates a street address for which mail is delivered to a PO Box. Possible values are: * &#x60;Y&#x60; –– Address is a PO Box throwback delivery point. * &#x60;N&#x60; –– Address is not a PO Box throwback delivery point. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). </value>
+        [DataMember(Name = "dpv_throwback", IsRequired = true, EmitDefaultValue = false)]
+        public DpvThrowbackEnum DpvThrowback { get; set; }
+        /// <summary>
+        /// Indicates whether deliveries are not performed on one or more days of the week at an address. Possible values are: * &#x60;Y&#x60; –– Mail delivery does not occur on some days of the week. * &#x60;N&#x60; –– Mail delivery occurs every day of the week. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
+        /// </summary>
+        /// <value>Indicates whether deliveries are not performed on one or more days of the week at an address. Possible values are: * &#x60;Y&#x60; –– Mail delivery does not occur on some days of the week. * &#x60;N&#x60; –– Mail delivery occurs every day of the week. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). </value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum DpvNonDeliveryDayFlagEnum
+        {
+            /// <summary>
+            /// Enum Y for value: Y
+            /// </summary>
+            [EnumMember(Value = "Y")]
+            Y = 1,
+            
+
+            /// <summary>
+            /// Enum N for value: N
+            /// </summary>
+            [EnumMember(Value = "N")]
+            N = 2,
+            
+
+            /// <summary>
+            /// Enum Empty for value: 
+            /// </summary>
+            [EnumMember(Value = "")]
+            Empty = 3
+            
+
+        }
+
+
+        /// <summary>
+        /// Indicates whether deliveries are not performed on one or more days of the week at an address. Possible values are: * &#x60;Y&#x60; –– Mail delivery does not occur on some days of the week. * &#x60;N&#x60; –– Mail delivery occurs every day of the week. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
+        /// </summary>
+        /// <value>Indicates whether deliveries are not performed on one or more days of the week at an address. Possible values are: * &#x60;Y&#x60; –– Mail delivery does not occur on some days of the week. * &#x60;N&#x60; –– Mail delivery occurs every day of the week. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). </value>
+        [DataMember(Name = "dpv_non_delivery_day_flag", IsRequired = true, EmitDefaultValue = false)]
+        public DpvNonDeliveryDayFlagEnum DpvNonDeliveryDayFlag { get; set; }
+        /// <summary>
+        /// Indicates packages to this address will not be left due to security concerns. Possible values are: * &#x60;Y&#x60; –– Address does not have a secure mailbox. * &#x60;N&#x60; –– Address has a secure mailbox. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
+        /// </summary>
+        /// <value>Indicates packages to this address will not be left due to security concerns. Possible values are: * &#x60;Y&#x60; –– Address does not have a secure mailbox. * &#x60;N&#x60; –– Address has a secure mailbox. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). </value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum DpvNoSecureLocationEnum
+        {
+            /// <summary>
+            /// Enum Y for value: Y
+            /// </summary>
+            [EnumMember(Value = "Y")]
+            Y = 1,
+            
+
+            /// <summary>
+            /// Enum N for value: N
+            /// </summary>
+            [EnumMember(Value = "N")]
+            N = 2,
+            
+
+            /// <summary>
+            /// Enum Empty for value: 
+            /// </summary>
+            [EnumMember(Value = "")]
+            Empty = 3
+            
+
+        }
+
+
+        /// <summary>
+        /// Indicates packages to this address will not be left due to security concerns. Possible values are: * &#x60;Y&#x60; –– Address does not have a secure mailbox. * &#x60;N&#x60; –– Address has a secure mailbox. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
+        /// </summary>
+        /// <value>Indicates packages to this address will not be left due to security concerns. Possible values are: * &#x60;Y&#x60; –– Address does not have a secure mailbox. * &#x60;N&#x60; –– Address has a secure mailbox. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). </value>
+        [DataMember(Name = "dpv_no_secure_location", IsRequired = true, EmitDefaultValue = false)]
+        public DpvNoSecureLocationEnum DpvNoSecureLocation { get; set; }
+        /// <summary>
+        /// Indicates the door of the address is not accessible for mail delivery. Possible values are: * &#x60;Y&#x60; –– Door is not accessible. * &#x60;N&#x60; –– Door is accessible. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
+        /// </summary>
+        /// <value>Indicates the door of the address is not accessible for mail delivery. Possible values are: * &#x60;Y&#x60; –– Door is not accessible. * &#x60;N&#x60; –– Door is accessible. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). </value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum DpvDoorNotAccessibleEnum
+        {
+            /// <summary>
+            /// Enum Y for value: Y
+            /// </summary>
+            [EnumMember(Value = "Y")]
+            Y = 1,
+            
+
+            /// <summary>
+            /// Enum N for value: N
+            /// </summary>
+            [EnumMember(Value = "N")]
+            N = 2,
+            
+
+            /// <summary>
+            /// Enum Empty for value: 
+            /// </summary>
+            [EnumMember(Value = "")]
+            Empty = 3
+            
+
+        }
+
+
+        /// <summary>
+        /// Indicates the door of the address is not accessible for mail delivery. Possible values are: * &#x60;Y&#x60; –– Door is not accessible. * &#x60;N&#x60; –– Door is accessible. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
+        /// </summary>
+        /// <value>Indicates the door of the address is not accessible for mail delivery. Possible values are: * &#x60;Y&#x60; –– Door is not accessible. * &#x60;N&#x60; –– Door is accessible. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). </value>
+        [DataMember(Name = "dpv_door_not_accessible", IsRequired = true, EmitDefaultValue = false)]
+        public DpvDoorNotAccessibleEnum DpvDoorNotAccessible { get; set; }
+        /// <summary>
         /// indicates whether this address has been converted by [LACS&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality/lacslink). LACS&lt;sup&gt;Link&lt;/sup&gt; corrects outdated addresses into their modern counterparts. Possible values are: * &#x60;Y&#x60; –– New address produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;N&#x60; –– New address could not be produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). 
         /// </summary>
         /// <value>indicates whether this address has been converted by [LACS&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality/lacslink). LACS&lt;sup&gt;Link&lt;/sup&gt; corrects outdated addresses into their modern counterparts. Possible values are: * &#x60;Y&#x60; –– New address produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;N&#x60; –– New address could not be produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). </value>
@@ -280,17 +493,34 @@ namespace lob.dotnet.Model
         /// <param name="dpvCmra">indicates whether or not the address is [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency). Possible values are: * &#x60;Y&#x60; –– Address is CMRA-authorized. * &#x60;N&#x60; –– Address is not CMRA-authorized. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  (required).</param>
         /// <param name="dpvVacant">indicates that an address was once deliverable, but has become vacant and is no longer receiving deliveries. Possible values are: * &#x60;Y&#x60; –– Address is vacant. * &#x60;N&#x60; –– Address is not vacant. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  (required).</param>
         /// <param name="dpvActive">Corresponds to the USPS field &#x60;dpv_no_stat&#x60;. Indicates that an address has been vacated in the recent past, and is no longer receiving deliveries. If it&#39;s been unoccupied for 90+ days, or temporarily vacant, this will be flagged. Possible values are: * &#x60;Y&#x60; –– Address is active. * &#x60;N&#x60; –– Address is not active. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  (required).</param>
+        /// <param name="dpvInactiveReason">Indicates the reason why an address is vacant or no longer receiving deliveries. Possible values are: * &#x60;01&#x60; –– Address does not receive mail from the USPS directly, but is serviced by a drop address. * &#x60;02&#x60; –– Address not yet deliverable. * &#x60;03&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string). * &#x60;04&#x60; –– Address is a College, Military Zone, or other type. * &#x60;05&#x60; –– Address no longer receives deliveries. * &#x60;06&#x60; –– Address is missing required secondary information. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made or the address is active.  (required).</param>
+        /// <param name="dpvThrowback">Indicates a street address for which mail is delivered to a PO Box. Possible values are: * &#x60;Y&#x60; –– Address is a PO Box throwback delivery point. * &#x60;N&#x60; –– Address is not a PO Box throwback delivery point. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  (required).</param>
+        /// <param name="dpvNonDeliveryDayFlag">Indicates whether deliveries are not performed on one or more days of the week at an address. Possible values are: * &#x60;Y&#x60; –– Mail delivery does not occur on some days of the week. * &#x60;N&#x60; –– Mail delivery occurs every day of the week. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  (required).</param>
+        /// <param name="dpvNonDeliveryDayValues">Indicates days of the week (starting on Sunday) deliveries are not performed at an address. For example: * &#x60;YNNNNNN&#x60; –– Mail delivery does not occur on Sunday&#39;s. * &#x60;NYNNNYN&#x60; –– Mail delivery does not occur on Monday&#39;s or Friday&#39;s. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string) or address receives mail every day of the week (&#x60;deliverability_analysis[dpv_non_delivery_day_flag]&#x60; is &#x60;N&#x60; or an empty string).  (required).</param>
+        /// <param name="dpvNoSecureLocation">Indicates packages to this address will not be left due to security concerns. Possible values are: * &#x60;Y&#x60; –– Address does not have a secure mailbox. * &#x60;N&#x60; –– Address has a secure mailbox. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  (required).</param>
+        /// <param name="dpvDoorNotAccessible">Indicates the door of the address is not accessible for mail delivery. Possible values are: * &#x60;Y&#x60; –– Door is not accessible. * &#x60;N&#x60; –– Door is accessible. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  (required).</param>
         /// <param name="dpvFootnotes">An array of 2-character strings that gives more insight into how &#x60;deliverability_analysis[dpv_confirmation]&#x60; was determined. Will always include at least 1 string, and can include up to 3. For details, see [US Verification Details](#tag/US-Verification-Types).  (required).</param>
         /// <param name="ewsMatch">indicates whether or not an address has been flagged in the [Early Warning System](https://docs.informatica.com/data-engineering/data-engineering-quality/10-4-0/address-validator-port-reference/postal-carrier-certification-data-ports/early-warning-system-return-code.html), meaning the address is under development and not yet ready to receive mail. However, it should become available in a few months.  (required).</param>
         /// <param name="lacsIndicator">indicates whether this address has been converted by [LACS&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality/lacslink). LACS&lt;sup&gt;Link&lt;/sup&gt; corrects outdated addresses into their modern counterparts. Possible values are: * &#x60;Y&#x60; –– New address produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;N&#x60; –– New address could not be produced with a matching record in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string).  (required).</param>
         /// <param name="lacsReturnCode">A code indicating how &#x60;deliverability_analysis[lacs_indicator]&#x60; was determined. Possible values are: * &#x60;A&#x60; — A new address was produced because a match was found in LACS&lt;sup&gt;Link&lt;/sup&gt;. * &#x60;92&#x60; — A LACS&lt;sup&gt;Link&lt;/sup&gt; record was matched after dropping secondary information. * &#x60;14&#x60; — A match was found in LACS&lt;sup&gt;Link&lt;/sup&gt;, but could not be converted to a deliverable address. * &#x60;00&#x60; — A match was not found in LACS&lt;sup&gt;Link&lt;/sup&gt;, and no new address was produced. * &#x60;&#39;&#39;&#x60; — LACS&lt;sup&gt;Link&lt;/sup&gt; was not attempted.  (required).</param>
         /// <param name="suiteReturnCode">A return code that indicates whether the address was matched and corrected by [Suite&lt;sup&gt;Link&lt;/sup&gt;](https://postalpro.usps.com/address-quality-solutions/suitelink). Suite&lt;sup&gt;Link&lt;/sup&gt; attempts to provide secondary information to business addresses. Possible values are: * &#x60;A&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match was found and secondary information was added. * &#x60;00&#x60; –– A Suite&lt;sup&gt;Link&lt;/sup&gt; match could not be found and no secondary information was added. * &#x60;&#39;&#39;&#x60; –– Suite&lt;sup&gt;Link&lt;/sup&gt; lookup was not attempted.  (required).</param>
-        public DeliverabilityAnalysis(DpvConfirmationEnum dpvConfirmation = default(DpvConfirmationEnum), DpvCmraEnum dpvCmra = default(DpvCmraEnum), DpvVacantEnum dpvVacant = default(DpvVacantEnum), DpvActiveEnum dpvActive = default(DpvActiveEnum), List<DpvFootnote> dpvFootnotes = default(List<DpvFootnote>), bool ewsMatch = default(bool), LacsIndicatorEnum lacsIndicator = default(LacsIndicatorEnum), string lacsReturnCode = default(string), SuiteReturnCodeEnum suiteReturnCode = default(SuiteReturnCodeEnum))
+        public DeliverabilityAnalysis(DpvConfirmationEnum dpvConfirmation = default(DpvConfirmationEnum), DpvCmraEnum dpvCmra = default(DpvCmraEnum), DpvVacantEnum dpvVacant = default(DpvVacantEnum), DpvActiveEnum dpvActive = default(DpvActiveEnum), DpvInactiveReasonEnum dpvInactiveReason = default(DpvInactiveReasonEnum), DpvThrowbackEnum dpvThrowback = default(DpvThrowbackEnum), DpvNonDeliveryDayFlagEnum dpvNonDeliveryDayFlag = default(DpvNonDeliveryDayFlagEnum), string dpvNonDeliveryDayValues = default(string), DpvNoSecureLocationEnum dpvNoSecureLocation = default(DpvNoSecureLocationEnum), DpvDoorNotAccessibleEnum dpvDoorNotAccessible = default(DpvDoorNotAccessibleEnum), List<DpvFootnote> dpvFootnotes = default(List<DpvFootnote>), bool ewsMatch = default(bool), LacsIndicatorEnum lacsIndicator = default(LacsIndicatorEnum), string lacsReturnCode = default(string), SuiteReturnCodeEnum suiteReturnCode = default(SuiteReturnCodeEnum))
         {
             this.DpvConfirmation = dpvConfirmation;
             this.DpvCmra = dpvCmra;
             this.DpvVacant = dpvVacant;
             this.DpvActive = dpvActive;
+            this.DpvInactiveReason = dpvInactiveReason;
+            this.DpvThrowback = dpvThrowback;
+            this.DpvNonDeliveryDayFlag = dpvNonDeliveryDayFlag;
+            // to ensure "dpvNonDeliveryDayValues" is required (not null)
+            if (dpvNonDeliveryDayValues == null)
+            {
+                throw new ArgumentNullException("dpvNonDeliveryDayValues is a required property for DeliverabilityAnalysis and cannot be null");
+            }
+            this.DpvNonDeliveryDayValues = dpvNonDeliveryDayValues;
+            this.DpvNoSecureLocation = dpvNoSecureLocation;
+            this.DpvDoorNotAccessible = dpvDoorNotAccessible;
             // to ensure "dpvFootnotes" is required (not null)
             if (dpvFootnotes == null)
             {
@@ -307,6 +537,13 @@ namespace lob.dotnet.Model
             this.LacsReturnCode = lacsReturnCode;
             this.SuiteReturnCode = suiteReturnCode;
         }
+
+        /// <summary>
+        /// Indicates days of the week (starting on Sunday) deliveries are not performed at an address. For example: * &#x60;YNNNNNN&#x60; –– Mail delivery does not occur on Sunday&#39;s. * &#x60;NYNNNYN&#x60; –– Mail delivery does not occur on Monday&#39;s or Friday&#39;s. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string) or address receives mail every day of the week (&#x60;deliverability_analysis[dpv_non_delivery_day_flag]&#x60; is &#x60;N&#x60; or an empty string). 
+        /// </summary>
+        /// <value>Indicates days of the week (starting on Sunday) deliveries are not performed at an address. For example: * &#x60;YNNNNNN&#x60; –– Mail delivery does not occur on Sunday&#39;s. * &#x60;NYNNNYN&#x60; –– Mail delivery does not occur on Monday&#39;s or Friday&#39;s. * &#x60;&#39;&#39;&#x60; –– A DPV match is not made (&#x60;deliverability_analysis[dpv_confirmation]&#x60; is &#x60;N&#x60; or an empty string) or address receives mail every day of the week (&#x60;deliverability_analysis[dpv_non_delivery_day_flag]&#x60; is &#x60;N&#x60; or an empty string). </value>
+        [DataMember(Name = "dpv_non_delivery_day_values", IsRequired = true, EmitDefaultValue = false)]
+        public string DpvNonDeliveryDayValues { get; set; }
 
         /// <summary>
         /// An array of 2-character strings that gives more insight into how &#x60;deliverability_analysis[dpv_confirmation]&#x60; was determined. Will always include at least 1 string, and can include up to 3. For details, see [US Verification Details](#tag/US-Verification-Types). 
@@ -341,6 +578,12 @@ namespace lob.dotnet.Model
             sb.Append("  DpvCmra: ").Append(DpvCmra).Append("\n");
             sb.Append("  DpvVacant: ").Append(DpvVacant).Append("\n");
             sb.Append("  DpvActive: ").Append(DpvActive).Append("\n");
+            sb.Append("  DpvInactiveReason: ").Append(DpvInactiveReason).Append("\n");
+            sb.Append("  DpvThrowback: ").Append(DpvThrowback).Append("\n");
+            sb.Append("  DpvNonDeliveryDayFlag: ").Append(DpvNonDeliveryDayFlag).Append("\n");
+            sb.Append("  DpvNonDeliveryDayValues: ").Append(DpvNonDeliveryDayValues).Append("\n");
+            sb.Append("  DpvNoSecureLocation: ").Append(DpvNoSecureLocation).Append("\n");
+            sb.Append("  DpvDoorNotAccessible: ").Append(DpvDoorNotAccessible).Append("\n");
             sb.Append("  DpvFootnotes: ").Append(DpvFootnotes).Append("\n");
             sb.Append("  EwsMatch: ").Append(EwsMatch).Append("\n");
             sb.Append("  LacsIndicator: ").Append(LacsIndicator).Append("\n");
@@ -398,6 +641,31 @@ namespace lob.dotnet.Model
                     this.DpvActive.Equals(input.DpvActive)
                 ) && 
                 (
+                    this.DpvInactiveReason == input.DpvInactiveReason ||
+                    this.DpvInactiveReason.Equals(input.DpvInactiveReason)
+                ) && 
+                (
+                    this.DpvThrowback == input.DpvThrowback ||
+                    this.DpvThrowback.Equals(input.DpvThrowback)
+                ) && 
+                (
+                    this.DpvNonDeliveryDayFlag == input.DpvNonDeliveryDayFlag ||
+                    this.DpvNonDeliveryDayFlag.Equals(input.DpvNonDeliveryDayFlag)
+                ) && 
+                (
+                    this.DpvNonDeliveryDayValues == input.DpvNonDeliveryDayValues ||
+                    (this.DpvNonDeliveryDayValues != null &&
+                    this.DpvNonDeliveryDayValues.Equals(input.DpvNonDeliveryDayValues))
+                ) && 
+                (
+                    this.DpvNoSecureLocation == input.DpvNoSecureLocation ||
+                    this.DpvNoSecureLocation.Equals(input.DpvNoSecureLocation)
+                ) && 
+                (
+                    this.DpvDoorNotAccessible == input.DpvDoorNotAccessible ||
+                    this.DpvDoorNotAccessible.Equals(input.DpvDoorNotAccessible)
+                ) && 
+                (
                     this.DpvFootnotes == input.DpvFootnotes ||
                     this.DpvFootnotes != null &&
                     input.DpvFootnotes != null &&
@@ -435,6 +703,15 @@ namespace lob.dotnet.Model
                 hashCode = (hashCode * 59) + this.DpvCmra.GetHashCode();
                 hashCode = (hashCode * 59) + this.DpvVacant.GetHashCode();
                 hashCode = (hashCode * 59) + this.DpvActive.GetHashCode();
+                hashCode = (hashCode * 59) + this.DpvInactiveReason.GetHashCode();
+                hashCode = (hashCode * 59) + this.DpvThrowback.GetHashCode();
+                hashCode = (hashCode * 59) + this.DpvNonDeliveryDayFlag.GetHashCode();
+                if (this.DpvNonDeliveryDayValues != null)
+                {
+                    hashCode = (hashCode * 59) + this.DpvNonDeliveryDayValues.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.DpvNoSecureLocation.GetHashCode();
+                hashCode = (hashCode * 59) + this.DpvDoorNotAccessible.GetHashCode();
                 if (this.DpvFootnotes != null)
                 {
                     hashCode = (hashCode * 59) + this.DpvFootnotes.GetHashCode();
