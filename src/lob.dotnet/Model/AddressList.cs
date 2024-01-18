@@ -83,14 +83,14 @@ namespace lob.dotnet.Model
         /// number of resources in a set
         /// </summary>
         /// <value>number of resources in a set</value>
-        [DataMember(Name = "count", EmitDefaultValue = false)]
+        [DataMember(Name = "count", EmitDefaultValue = true)]
         public int Count { get; set; }
 
         /// <summary>
         /// indicates the total number of records. Provided when the request specifies an \&quot;include\&quot; query parameter
         /// </summary>
         /// <value>indicates the total number of records. Provided when the request specifies an \&quot;include\&quot; query parameter</value>
-        [DataMember(Name = "total_count", EmitDefaultValue = false)]
+        [DataMember(Name = "total_count", EmitDefaultValue = true)]
         public int TotalCount { get; set; }
 
         /// <summary>

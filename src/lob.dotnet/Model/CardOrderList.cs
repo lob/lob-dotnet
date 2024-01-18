@@ -81,7 +81,7 @@ namespace lob.dotnet.Model
         /// number of resources in a set
         /// </summary>
         /// <value>number of resources in a set</value>
-        [DataMember(Name = "count", EmitDefaultValue = false)]
+        [DataMember(Name = "count", EmitDefaultValue = true)]
         public int Count { get; set; }
 
         /// <summary>

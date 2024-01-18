@@ -56,14 +56,14 @@ namespace lob.dotnet.Model
         /// Allows for auto reordering
         /// </summary>
         /// <value>Allows for auto reordering</value>
-        [DataMember(Name = "auto_reorder", EmitDefaultValue = false)]
+        [DataMember(Name = "auto_reorder", EmitDefaultValue = true)]
         public bool AutoReorder { get; set; }
 
         /// <summary>
         /// The quantity of items to be reordered (only required when auto_reorder is true).
         /// </summary>
         /// <value>The quantity of items to be reordered (only required when auto_reorder is true).</value>
-        [DataMember(Name = "reorder_quantity", EmitDefaultValue = false)]
+        [DataMember(Name = "reorder_quantity", EmitDefaultValue = true)]
         public decimal ReorderQuantity { get; set; }
 
         /// <summary>

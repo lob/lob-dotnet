@@ -145,7 +145,7 @@ namespace lob.dotnet.Model
         /// The payment amount to be sent in US dollars.
         /// </summary>
         /// <value>The payment amount to be sent in US dollars.</value>
-        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = true)]
         public float Amount { get; set; }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace lob.dotnet.Model
         /// An integer that designates the check number.
         /// </summary>
         /// <value>An integer that designates the check number.</value>
-        [DataMember(Name = "check_number", EmitDefaultValue = false)]
+        [DataMember(Name = "check_number", EmitDefaultValue = true)]
         public int CheckNumber { get; set; }
 
         /// <summary>

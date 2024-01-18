@@ -105,7 +105,7 @@ namespace lob.dotnet.Model
         /// Indicates whether or not the city is the [USPS default city](https://en.wikipedia.org/wiki/ZIP_Code#ZIP_Codes_and_previous_zoning_lines) (preferred city) of a ZIP code. There is only one preferred city per ZIP code, which will always be in position 0 in the array of cities. 
         /// </summary>
         /// <value>Indicates whether or not the city is the [USPS default city](https://en.wikipedia.org/wiki/ZIP_Code#ZIP_Codes_and_previous_zoning_lines) (preferred city) of a ZIP code. There is only one preferred city per ZIP code, which will always be in position 0 in the array of cities. </value>
-        [DataMember(Name = "preferred", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "preferred", IsRequired = true, EmitDefaultValue = true)]
         public bool Preferred { get; set; }
 
         /// <summary>

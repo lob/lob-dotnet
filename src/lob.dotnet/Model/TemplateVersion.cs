@@ -128,7 +128,7 @@ namespace lob.dotnet.Model
         /// Used by frontend, true if the template uses advanced features. 
         /// </summary>
         /// <value>Used by frontend, true if the template uses advanced features. </value>
-        [DataMember(Name = "suggest_json_editor", EmitDefaultValue = false)]
+        [DataMember(Name = "suggest_json_editor", EmitDefaultValue = true)]
         public bool SuggestJsonEditor { get; set; }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace lob.dotnet.Model
         /// Only returned if the resource has been successfully deleted.
         /// </summary>
         /// <value>Only returned if the resource has been successfully deleted.</value>
-        [DataMember(Name = "deleted", EmitDefaultValue = false)]
+        [DataMember(Name = "deleted", EmitDefaultValue = true)]
         public bool Deleted { get; set; }
 
         /// <summary>

@@ -78,7 +78,7 @@ namespace lob.dotnet.Model
         /// The distance from the input location to this exact zip code in miles.
         /// </summary>
         /// <value>The distance from the input location to this exact zip code in miles.</value>
-        [DataMember(Name = "distance", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "distance", IsRequired = true, EmitDefaultValue = true)]
         public float Distance { get; set; }
 
         /// <summary>

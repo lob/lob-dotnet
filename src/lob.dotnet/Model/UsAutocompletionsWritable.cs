@@ -91,7 +91,7 @@ namespace lob.dotnet.Model
         /// If &#x60;true&#x60;, sort suggestions by proximity to the IP set in the &#x60;X-Forwarded-For&#x60; header. 
         /// </summary>
         /// <value>If &#x60;true&#x60;, sort suggestions by proximity to the IP set in the &#x60;X-Forwarded-For&#x60; header. </value>
-        [DataMember(Name = "geo_ip_sort", EmitDefaultValue = false)]
+        [DataMember(Name = "geo_ip_sort", EmitDefaultValue = true)]
         public bool GeoIpSort { get; set; }
 
         /// <summary>

@@ -117,7 +117,7 @@ namespace lob.dotnet.Model
         /// Set this key to &#x60;true&#x60; if you would like to print in color, false for black and white.
         /// </summary>
         /// <value>Set this key to &#x60;true&#x60; if you would like to print in color, false for black and white.</value>
-        [DataMember(Name = "color", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "color", IsRequired = true, EmitDefaultValue = true)]
         public bool Color { get; set; }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace lob.dotnet.Model
         /// Set this attribute to &#x60;true&#x60; for double sided printing,  &#x60;false&#x60; for for single sided printing.
         /// </summary>
         /// <value>Set this attribute to &#x60;true&#x60; for double sided printing,  &#x60;false&#x60; for for single sided printing.</value>
-        [DataMember(Name = "double_sided", EmitDefaultValue = false)]
+        [DataMember(Name = "double_sided", EmitDefaultValue = true)]
         public bool DoubleSided { get; set; }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace lob.dotnet.Model
         /// Allows for letter bleed. Enabled only with specific feature flags.
         /// </summary>
         /// <value>Allows for letter bleed. Enabled only with specific feature flags.</value>
-        [DataMember(Name = "bleed", EmitDefaultValue = false)]
+        [DataMember(Name = "bleed", EmitDefaultValue = true)]
         public bool Bleed { get; set; }
 
         /// <summary>

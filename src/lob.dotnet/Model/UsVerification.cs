@@ -181,7 +181,7 @@ namespace lob.dotnet.Model
         /// This field indicates whether an address was found in a more comprehensive address dataset that includes sources from the USPS, open source mapping data, and our proprietary mail delivery data. This field can be interpreted as a representation of whether an address is a real location or not. Additionally a valid address may contradict the deliverability field since an address can be a real valid location but the USPS may not deliver to that address. 
         /// </summary>
         /// <value>This field indicates whether an address was found in a more comprehensive address dataset that includes sources from the USPS, open source mapping data, and our proprietary mail delivery data. This field can be interpreted as a representation of whether an address is a real location or not. Additionally a valid address may contradict the deliverability field since an address can be a real valid location but the USPS may not deliver to that address. </value>
-        [DataMember(Name = "valid_address", EmitDefaultValue = false)]
+        [DataMember(Name = "valid_address", EmitDefaultValue = true)]
         public bool ValidAddress { get; set; }
 
         /// <summary>
