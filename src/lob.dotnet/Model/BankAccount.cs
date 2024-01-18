@@ -202,7 +202,7 @@ namespace lob.dotnet.Model
         /// A bank account must be verified before a check can be created.
         /// </summary>
         /// <value>A bank account must be verified before a check can be created.</value>
-        [DataMember(Name = "verified", EmitDefaultValue = false)]
+        [DataMember(Name = "verified", EmitDefaultValue = true)]
         public bool Verified { get; set; }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace lob.dotnet.Model
         /// Only returned if the resource has been successfully deleted.
         /// </summary>
         /// <value>Only returned if the resource has been successfully deleted.</value>
-        [DataMember(Name = "deleted", EmitDefaultValue = false)]
+        [DataMember(Name = "deleted", EmitDefaultValue = true)]
         public bool Deleted { get; set; }
 
         /// <summary>

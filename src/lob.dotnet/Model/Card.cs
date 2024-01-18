@@ -226,7 +226,7 @@ namespace lob.dotnet.Model
         /// True if the cards should be auto-reordered.
         /// </summary>
         /// <value>True if the cards should be auto-reordered.</value>
-        [DataMember(Name = "auto_reorder", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "auto_reorder", IsRequired = true, EmitDefaultValue = true)]
         public bool AutoReorder { get; set; }
 
         /// <summary>
@@ -267,21 +267,21 @@ namespace lob.dotnet.Model
         /// The available quantity of cards.
         /// </summary>
         /// <value>The available quantity of cards.</value>
-        [DataMember(Name = "available_quantity", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "available_quantity", IsRequired = true, EmitDefaultValue = true)]
         public int AvailableQuantity { get; set; }
 
         /// <summary>
         /// The pending quantity of cards.
         /// </summary>
         /// <value>The pending quantity of cards.</value>
-        [DataMember(Name = "pending_quantity", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "pending_quantity", IsRequired = true, EmitDefaultValue = true)]
         public int PendingQuantity { get; set; }
 
         /// <summary>
         /// The threshold amount of the card
         /// </summary>
         /// <value>The threshold amount of the card</value>
-        [DataMember(Name = "threshold_amount", EmitDefaultValue = false)]
+        [DataMember(Name = "threshold_amount", EmitDefaultValue = true)]
         public int ThresholdAmount { get; set; }
 
         /// <summary>
@@ -302,7 +302,7 @@ namespace lob.dotnet.Model
         /// Only returned if the resource has been successfully deleted.
         /// </summary>
         /// <value>Only returned if the resource has been successfully deleted.</value>
-        [DataMember(Name = "deleted", EmitDefaultValue = false)]
+        [DataMember(Name = "deleted", EmitDefaultValue = true)]
         public bool Deleted { get; set; }
 
         /// <summary>

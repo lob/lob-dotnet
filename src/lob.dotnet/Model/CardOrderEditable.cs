@@ -49,7 +49,7 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets Quantity
         /// </summary>
-        [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
         public int Quantity { get; set; }
 
         /// <summary>

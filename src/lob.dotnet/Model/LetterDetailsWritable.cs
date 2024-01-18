@@ -120,14 +120,14 @@ namespace lob.dotnet.Model
         /// Set this key to &#x60;true&#x60; if you would like to print in color. Set to &#x60;false&#x60; if you would like to print in black and white.
         /// </summary>
         /// <value>Set this key to &#x60;true&#x60; if you would like to print in color. Set to &#x60;false&#x60; if you would like to print in black and white.</value>
-        [DataMember(Name = "color", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "color", IsRequired = true, EmitDefaultValue = true)]
         public bool Color { get; set; }
 
         /// <summary>
         /// Set this attribute to &#x60;true&#x60; for double sided printing, or &#x60;false&#x60; for for single sided printing. Defaults to &#x60;true&#x60;.
         /// </summary>
         /// <value>Set this attribute to &#x60;true&#x60; for double sided printing, or &#x60;false&#x60; for for single sided printing. Defaults to &#x60;true&#x60;.</value>
-        [DataMember(Name = "double_sided", EmitDefaultValue = false)]
+        [DataMember(Name = "double_sided", EmitDefaultValue = true)]
         public bool DoubleSided { get; set; }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets ReturnEnvelope
         /// </summary>
-        [DataMember(Name = "return_envelope", EmitDefaultValue = false)]
+        [DataMember(Name = "return_envelope", EmitDefaultValue = true)]
         public bool ReturnEnvelope { get; set; }
 
         /// <summary>

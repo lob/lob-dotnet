@@ -64,7 +64,7 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Gets or Sets Setting
         /// </summary>
-        [DataMember(Name = "setting", EmitDefaultValue = false)]
+        [DataMember(Name = "setting", EmitDefaultValue = true)]
         public int Setting { get; set; }
 
         /// <summary>

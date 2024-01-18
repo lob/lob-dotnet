@@ -365,3 +365,6 @@ FodyWeavers.xsd
 
 .env
 LOCAL.env
+
+# Rider
+.idea/

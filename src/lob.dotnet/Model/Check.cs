@@ -246,7 +246,7 @@ namespace lob.dotnet.Model
         /// An integer that designates the check number. If &#x60;check_number&#x60; is not provided, checks created from a new &#x60;bank_account&#x60; will start at &#x60;10000&#x60; and increment with each check created with the &#x60;bank_account&#x60;. A provided &#x60;check_number&#x60; overrides the defaults. Subsequent checks created with the same &#x60;bank_account&#x60; will increment from the provided check number.
         /// </summary>
         /// <value>An integer that designates the check number. If &#x60;check_number&#x60; is not provided, checks created from a new &#x60;bank_account&#x60; will start at &#x60;10000&#x60; and increment with each check created with the &#x60;bank_account&#x60;. A provided &#x60;check_number&#x60; overrides the defaults. Subsequent checks created with the same &#x60;bank_account&#x60; will increment from the provided check number.</value>
-        [DataMember(Name = "check_number", EmitDefaultValue = false)]
+        [DataMember(Name = "check_number", EmitDefaultValue = true)]
         public int CheckNumber { get; set; }
 
         /// <summary>
@@ -260,7 +260,7 @@ namespace lob.dotnet.Model
         /// The payment amount to be sent in US dollars.
         /// </summary>
         /// <value>The payment amount to be sent in US dollars.</value>
-        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = true)]
         public float Amount { get; set; }
 
         /// <summary>
@@ -343,7 +343,7 @@ namespace lob.dotnet.Model
         /// Only returned if the resource has been successfully deleted.
         /// </summary>
         /// <value>Only returned if the resource has been successfully deleted.</value>
-        [DataMember(Name = "deleted", EmitDefaultValue = false)]
+        [DataMember(Name = "deleted", EmitDefaultValue = true)]
         public bool Deleted { get; set; }
 
         /// <summary>

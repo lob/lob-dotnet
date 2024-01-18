@@ -63,7 +63,7 @@ namespace lob.dotnet.Model
         /// Indicates whether any errors occurred during the verification process.
         /// </summary>
         /// <value>Indicates whether any errors occurred during the verification process.</value>
-        [DataMember(Name = "errors", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "errors", IsRequired = true, EmitDefaultValue = true)]
         public bool Errors { get; set; }
 
         /// <summary>

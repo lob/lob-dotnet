@@ -649,7 +649,7 @@ namespace lob.dotnet.Model
         /// Designates whether or not the address is the default address for a building containing multiple delivery points. 
         /// </summary>
         /// <value>Designates whether or not the address is the default address for a building containing multiple delivery points. </value>
-        [DataMember(Name = "default_building_address", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "default_building_address", IsRequired = true, EmitDefaultValue = true)]
         public bool DefaultBuildingAddress { get; set; }
 
         /// <summary>

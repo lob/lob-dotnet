@@ -144,21 +144,21 @@ namespace lob.dotnet.Model
         /// The inventory of the card order.
         /// </summary>
         /// <value>The inventory of the card order.</value>
-        [DataMember(Name = "inventory", EmitDefaultValue = false)]
+        [DataMember(Name = "inventory", EmitDefaultValue = true)]
         public decimal Inventory { get; set; }
 
         /// <summary>
         /// The quantity of cards ordered
         /// </summary>
         /// <value>The quantity of cards ordered</value>
-        [DataMember(Name = "quantity_ordered", EmitDefaultValue = false)]
+        [DataMember(Name = "quantity_ordered", EmitDefaultValue = true)]
         public decimal QuantityOrdered { get; set; }
 
         /// <summary>
         /// The unit price for the card order.
         /// </summary>
         /// <value>The unit price for the card order.</value>
-        [DataMember(Name = "unit_price", EmitDefaultValue = false)]
+        [DataMember(Name = "unit_price", EmitDefaultValue = true)]
         public decimal UnitPrice { get; set; }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace lob.dotnet.Model
         /// Only returned if the resource has been successfully deleted.
         /// </summary>
         /// <value>Only returned if the resource has been successfully deleted.</value>
-        [DataMember(Name = "deleted", EmitDefaultValue = false)]
+        [DataMember(Name = "deleted", EmitDefaultValue = true)]
         public bool Deleted { get; set; }
 
         /// <summary>
