@@ -47,7 +47,8 @@ namespace lob.dotnet.Model
         /// <param name="city">city.</param>
         /// <param name="state">The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2:US) two letter code or subdivision name for the state. &#x60;city&#x60; and &#x60;state&#x60; are required if no &#x60;zip_code&#x60; is passed..</param>
         /// <param name="zipCode">Required if &#x60;city&#x60; and &#x60;state&#x60; are not passed in. If included, must be formatted as a US ZIP or ZIP+4 (e.g. &#x60;94107&#x60;, &#x60;941072282&#x60;, &#x60;94107-2282&#x60;)..</param>
-        public MultipleComponents(string recipient = default(string), string primaryLine = default(string), string secondaryLine = default(string), string urbanization = default(string), string city = default(string), string state = default(string), string zipCode = default(string))
+        /// <param name="transientId">ID that is returned in the response body for the verification .</param>
+        public MultipleComponents(string recipient = default(string), string primaryLine = default(string), string secondaryLine = default(string), string urbanization = default(string), string city = default(string), string state = default(string), string zipCode = default(string), string transientId = default(string))
         {
             // to ensure "primaryLine" is required (not null)
             if (primaryLine == null)
@@ -61,6 +62,7 @@ namespace lob.dotnet.Model
             this.City = city;
             this.State = state;
             this.ZipCode = zipCode;
+            this.TransientId = transientId;
         }
 
         /// <summary>
@@ -112,6 +114,13 @@ namespace lob.dotnet.Model
         public string ZipCode { get; set; }
 
         /// <summary>
+        /// ID that is returned in the response body for the verification 
+        /// </summary>
+        /// <value>ID that is returned in the response body for the verification </value>
+        [DataMember(Name = "transient_id", EmitDefaultValue = false)]
+        public string TransientId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -126,6 +135,7 @@ namespace lob.dotnet.Model
             sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  ZipCode: ").Append(ZipCode).Append("\n");
+            sb.Append("  TransientId: ").Append(TransientId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -195,6 +205,11 @@ namespace lob.dotnet.Model
                     this.ZipCode == input.ZipCode ||
                     (this.ZipCode != null &&
                     this.ZipCode.Equals(input.ZipCode))
+                ) && 
+                (
+                    this.TransientId == input.TransientId ||
+                    (this.TransientId != null &&
+                    this.TransientId.Equals(input.TransientId))
                 );
         }
 
@@ -234,6 +249,10 @@ namespace lob.dotnet.Model
                 if (this.ZipCode != null)
                 {
                     hashCode = (hashCode * 59) + this.ZipCode.GetHashCode();
+                }
+                if (this.TransientId != null)
+                {
+                    hashCode = (hashCode * 59) + this.TransientId.GetHashCode();
                 }
                 return hashCode;
             }

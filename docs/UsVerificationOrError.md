@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **DeliverabilityAnalysis** | [**DeliverabilityAnalysis**](DeliverabilityAnalysis.md) |  | [optional] 
 **LobConfidenceScore** | [**LobConfidenceScore**](LobConfidenceScore.md) |  | [optional] 
 **Object** | **string** |  | [optional] [default to ObjectEnum.UsVerification]
+**TransientId** | **string** | ID that is returned in the response body for the verification  | [optional] 
 **Error** | [**BulkError**](BulkError.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
