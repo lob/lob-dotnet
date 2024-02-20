@@ -35,7 +35,7 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UsVerificationsWritable" /> class.
         /// </summary>
-        /// <param name="address">The entire address in one string (e.g., \&quot;210 King Street 94107\&quot;). _Does not support a recipient and will error when other payload parameters are provided._ .</param>
+        /// <param name="address">The entire address in one string (e.g., \&quot;2261 Market Street 94114\&quot;). _Does not support a recipient and will error when other payload parameters are provided._ .</param>
         /// <param name="recipient">The intended recipient, typically a person&#39;s or firm&#39;s name..</param>
         /// <param name="primaryLine">The primary delivery line (usually the street address) of the address. Combination of the following applicable &#x60;components&#x60;: * &#x60;primary_number&#x60; * &#x60;street_predirection&#x60; * &#x60;street_name&#x60; * &#x60;street_suffix&#x60; * &#x60;street_postdirection&#x60; * &#x60;secondary_designator&#x60; * &#x60;secondary_number&#x60; * &#x60;pmb_designator&#x60; * &#x60;pmb_number&#x60; .</param>
         /// <param name="secondaryLine">The secondary delivery line of the address. This field is typically empty but may contain information if &#x60;primary_line&#x60; is too long. .</param>
@@ -43,7 +43,8 @@ namespace lob.dotnet.Model
         /// <param name="city">city.</param>
         /// <param name="state">The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2:US) two letter code or subdivision name for the state. &#x60;city&#x60; and &#x60;state&#x60; are required if no &#x60;zip_code&#x60; is passed..</param>
         /// <param name="zipCode">Required if &#x60;city&#x60; and &#x60;state&#x60; are not passed in. If included, must be formatted as a US ZIP or ZIP+4 (e.g. &#x60;94107&#x60;, &#x60;941072282&#x60;, &#x60;94107-2282&#x60;)..</param>
-        public UsVerificationsWritable(string address = default(string), string recipient = default(string), string primaryLine = default(string), string secondaryLine = default(string), string urbanization = default(string), string city = default(string), string state = default(string), string zipCode = default(string))
+        /// <param name="transientId">ID that is returned in the response body for the verification .</param>
+        public UsVerificationsWritable(string address = default(string), string recipient = default(string), string primaryLine = default(string), string secondaryLine = default(string), string urbanization = default(string), string city = default(string), string state = default(string), string zipCode = default(string), string transientId = default(string))
         {
             this.Address = address;
             this.Recipient = recipient;
@@ -53,12 +54,13 @@ namespace lob.dotnet.Model
             this.City = city;
             this.State = state;
             this.ZipCode = zipCode;
+            this.TransientId = transientId;
         }
 
         /// <summary>
-        /// The entire address in one string (e.g., \&quot;210 King Street 94107\&quot;). _Does not support a recipient and will error when other payload parameters are provided._ 
+        /// The entire address in one string (e.g., \&quot;2261 Market Street 94114\&quot;). _Does not support a recipient and will error when other payload parameters are provided._ 
         /// </summary>
-        /// <value>The entire address in one string (e.g., \&quot;210 King Street 94107\&quot;). _Does not support a recipient and will error when other payload parameters are provided._ </value>
+        /// <value>The entire address in one string (e.g., \&quot;2261 Market Street 94114\&quot;). _Does not support a recipient and will error when other payload parameters are provided._ </value>
         [DataMember(Name = "address", EmitDefaultValue = false)]
         public string Address { get; set; }
 
@@ -111,6 +113,13 @@ namespace lob.dotnet.Model
         public string ZipCode { get; set; }
 
         /// <summary>
+        /// ID that is returned in the response body for the verification 
+        /// </summary>
+        /// <value>ID that is returned in the response body for the verification </value>
+        [DataMember(Name = "transient_id", EmitDefaultValue = false)]
+        public string TransientId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -126,6 +135,7 @@ namespace lob.dotnet.Model
             sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  ZipCode: ").Append(ZipCode).Append("\n");
+            sb.Append("  TransientId: ").Append(TransientId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -200,6 +210,11 @@ namespace lob.dotnet.Model
                     this.ZipCode == input.ZipCode ||
                     (this.ZipCode != null &&
                     this.ZipCode.Equals(input.ZipCode))
+                ) && 
+                (
+                    this.TransientId == input.TransientId ||
+                    (this.TransientId != null &&
+                    this.TransientId.Equals(input.TransientId))
                 );
         }
 
@@ -243,6 +258,10 @@ namespace lob.dotnet.Model
                 if (this.ZipCode != null)
                 {
                     hashCode = (hashCode * 59) + this.ZipCode.GetHashCode();
+                }
+                if (this.TransientId != null)
+                {
+                    hashCode = (hashCode * 59) + this.TransientId.GetHashCode();
                 }
                 return hashCode;
             }

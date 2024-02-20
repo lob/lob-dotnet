@@ -119,7 +119,8 @@ namespace lob.dotnet.Model
         /// <param name="deliverabilityAnalysis">deliverabilityAnalysis.</param>
         /// <param name="lobConfidenceScore">lobConfidenceScore.</param>
         /// <param name="_object">_object (default to ObjectEnum.UsVerification).</param>
-        public UsVerification(string id = default(string), string recipient = default(string), string primaryLine = default(string), string secondaryLine = default(string), string urbanization = default(string), string lastLine = default(string), DeliverabilityEnum? deliverability = default(DeliverabilityEnum?), bool validAddress = default(bool), UsComponents components = default(UsComponents), DeliverabilityAnalysis deliverabilityAnalysis = default(DeliverabilityAnalysis), LobConfidenceScore lobConfidenceScore = default(LobConfidenceScore), ObjectEnum? _object = ObjectEnum.UsVerification)
+        /// <param name="transientId">ID that is returned in the response body for the verification .</param>
+        public UsVerification(string id = default(string), string recipient = default(string), string primaryLine = default(string), string secondaryLine = default(string), string urbanization = default(string), string lastLine = default(string), DeliverabilityEnum? deliverability = default(DeliverabilityEnum?), bool validAddress = default(bool), UsComponents components = default(UsComponents), DeliverabilityAnalysis deliverabilityAnalysis = default(DeliverabilityAnalysis), LobConfidenceScore lobConfidenceScore = default(LobConfidenceScore), ObjectEnum? _object = ObjectEnum.UsVerification, string transientId = default(string))
         {
             this.Id = id;
             this.Recipient = recipient;
@@ -133,6 +134,7 @@ namespace lob.dotnet.Model
             this.DeliverabilityAnalysis = deliverabilityAnalysis;
             this.LobConfidenceScore = lobConfidenceScore;
             this.Object = _object;
+            this.TransientId = transientId;
         }
 
         /// <summary>
@@ -203,6 +205,13 @@ namespace lob.dotnet.Model
         public LobConfidenceScore LobConfidenceScore { get; set; }
 
         /// <summary>
+        /// ID that is returned in the response body for the verification 
+        /// </summary>
+        /// <value>ID that is returned in the response body for the verification </value>
+        [DataMember(Name = "transient_id", EmitDefaultValue = false)]
+        public string TransientId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -222,6 +231,7 @@ namespace lob.dotnet.Model
             sb.Append("  DeliverabilityAnalysis: ").Append(DeliverabilityAnalysis).Append("\n");
             sb.Append("  LobConfidenceScore: ").Append(LobConfidenceScore).Append("\n");
             sb.Append("  Object: ").Append(Object).Append("\n");
+            sb.Append("  TransientId: ").Append(TransientId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -313,6 +323,11 @@ namespace lob.dotnet.Model
                 (
                     this.Object == input.Object ||
                     this.Object.Equals(input.Object)
+                ) && 
+                (
+                    this.TransientId == input.TransientId ||
+                    (this.TransientId != null &&
+                    this.TransientId.Equals(input.TransientId))
                 );
         }
 
@@ -364,6 +379,10 @@ namespace lob.dotnet.Model
                     hashCode = (hashCode * 59) + this.LobConfidenceScore.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Object.GetHashCode();
+                if (this.TransientId != null)
+                {
+                    hashCode = (hashCode * 59) + this.TransientId.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -116,8 +116,9 @@ namespace lob.dotnet.Model
         /// <param name="deliverabilityAnalysis">deliverabilityAnalysis.</param>
         /// <param name="lobConfidenceScore">lobConfidenceScore.</param>
         /// <param name="_object">_object (default to ObjectEnum.UsVerification).</param>
+        /// <param name="transientId">ID that is returned in the response body for the verification .</param>
         /// <param name="error">error.</param>
-        public UsVerificationOrError(string id = default(string), string recipient = default(string), string primaryLine = default(string), string secondaryLine = default(string), string urbanization = default(string), string lastLine = default(string), DeliverabilityEnum? deliverability = default(DeliverabilityEnum?), UsComponents components = default(UsComponents), DeliverabilityAnalysis deliverabilityAnalysis = default(DeliverabilityAnalysis), LobConfidenceScore lobConfidenceScore = default(LobConfidenceScore), ObjectEnum? _object = ObjectEnum.UsVerification, BulkError error = default(BulkError))
+        public UsVerificationOrError(string id = default(string), string recipient = default(string), string primaryLine = default(string), string secondaryLine = default(string), string urbanization = default(string), string lastLine = default(string), DeliverabilityEnum? deliverability = default(DeliverabilityEnum?), UsComponents components = default(UsComponents), DeliverabilityAnalysis deliverabilityAnalysis = default(DeliverabilityAnalysis), LobConfidenceScore lobConfidenceScore = default(LobConfidenceScore), ObjectEnum? _object = ObjectEnum.UsVerification, string transientId = default(string), BulkError error = default(BulkError))
         {
             this.Id = id;
             this.Recipient = recipient;
@@ -130,6 +131,7 @@ namespace lob.dotnet.Model
             this.DeliverabilityAnalysis = deliverabilityAnalysis;
             this.LobConfidenceScore = lobConfidenceScore;
             this.Object = _object;
+            this.TransientId = transientId;
             this.Error = error;
         }
 
@@ -193,6 +195,13 @@ namespace lob.dotnet.Model
         public LobConfidenceScore LobConfidenceScore { get; set; }
 
         /// <summary>
+        /// ID that is returned in the response body for the verification 
+        /// </summary>
+        /// <value>ID that is returned in the response body for the verification </value>
+        [DataMember(Name = "transient_id", EmitDefaultValue = false)]
+        public string TransientId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Error
         /// </summary>
         [DataMember(Name = "error", EmitDefaultValue = false)]
@@ -217,6 +226,7 @@ namespace lob.dotnet.Model
             sb.Append("  DeliverabilityAnalysis: ").Append(DeliverabilityAnalysis).Append("\n");
             sb.Append("  LobConfidenceScore: ").Append(LobConfidenceScore).Append("\n");
             sb.Append("  Object: ").Append(Object).Append("\n");
+            sb.Append("  TransientId: ").Append(TransientId).Append("\n");
             sb.Append("  Error: ").Append(Error).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -307,6 +317,11 @@ namespace lob.dotnet.Model
                     this.Object.Equals(input.Object)
                 ) && 
                 (
+                    this.TransientId == input.TransientId ||
+                    (this.TransientId != null &&
+                    this.TransientId.Equals(input.TransientId))
+                ) && 
+                (
                     this.Error == input.Error ||
                     (this.Error != null &&
                     this.Error.Equals(input.Error))
@@ -360,6 +375,10 @@ namespace lob.dotnet.Model
                     hashCode = (hashCode * 59) + this.LobConfidenceScore.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Object.GetHashCode();
+                if (this.TransientId != null)
+                {
+                    hashCode = (hashCode * 59) + this.TransientId.GetHashCode();
+                }
                 if (this.Error != null)
                 {
                     hashCode = (hashCode * 59) + this.Error.GetHashCode();
