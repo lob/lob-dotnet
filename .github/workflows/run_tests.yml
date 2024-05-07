@@ -2,9 +2,9 @@ name: Run Tests
 
 on:
   pull_request:
-    types: [opened, reopened, edited]
+    types: [opened, reopened, edited, ready_for_review]
     branches:
-      - '*'
+      - main
 jobs:
   build:
 
