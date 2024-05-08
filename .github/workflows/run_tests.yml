@@ -2,7 +2,7 @@ name: Run Tests
 
 on:
   pull_request:
-    types: [opened, reopened, edited]
+    types: [opened, reopened, edited, ready_for_review]
     branches:
       - main
 jobs:
@@ -14,11 +14,9 @@ jobs:
         dotnet-version: ['3.1.x']
 
     steps:
-      - uses: actions/checkout@v3
-        with:
-          dotnet-version: ${{ matrix.dotnet-version }}
+      - uses: actions/checkout@v4
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
-        uses: actions/setup-dotnet@v2
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
@@ -30,4 +28,3 @@ jobs:
         env:
           LOB_API_TEST_KEY: ${{ secrets.LOB_API_TEST_KEY }}
           LOB_API_LIVE_KEY: ${{ secrets.LOB_API_LIVE_KEY }}
-
