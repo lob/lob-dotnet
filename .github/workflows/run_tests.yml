@@ -1,6 +1,7 @@
 name: Run Tests
 
 on:
+  workflow_dispatch:
   pull_request:
     types: [opened, reopened, edited, ready_for_review]
     branches:
