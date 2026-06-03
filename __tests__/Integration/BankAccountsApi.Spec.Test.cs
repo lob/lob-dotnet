@@ -106,6 +106,34 @@ namespace __tests__.Integration {
         }
 
         [Test]
+        public void verifyWithDescriptorCodeTest() {
+            BankAccount bankAccount = validApi.create(bankAccountWritable);
+            idsToDelete.Add(bankAccount.Id);
+
+            BankAccountVerify descriptorVerification = new BankAccountVerify(descriptorCode: "SM11AA");
+            BankAccount response = validApi.verify(bankAccount.Id, descriptorVerification);
+
+            Assert.NotNull(response);
+            Assert.AreEqual(response.Id, bankAccount.Id);
+            Assert.True(response.Verified);
+        }
+
+        [Test]
+        public void getReturnsMicrodepositTypeTest() {
+            BankAccount bankAccount = validApi.create(bankAccountWritable);
+            idsToDelete.Add(bankAccount.Id);
+            BankAccount response = validApi.get(bankAccount.Id);
+
+            Assert.NotNull(response.Id);
+            // microdeposit_type is either a known enum value or null (once verified)
+            Assert.That(
+                response.MicrodepositType == null ||
+                response.MicrodepositType == BankAccount.MicrodepositTypeEnum.Amounts ||
+                response.MicrodepositType == BankAccount.MicrodepositTypeEnum.DescriptorCode
+            );
+        }
+
+        [Test]
         public void verifyTestBadParameter() {
             try {
                 BankAccount response = validApi.verify(null, null);

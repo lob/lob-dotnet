@@ -40,23 +40,27 @@ namespace lob.dotnet.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="BankAccountVerify" /> class.
         /// </summary>
-        /// <param name="amounts">In live mode, an array containing the two micro deposits (in cents) placed in the bank account. In test mode, no micro deposits will be placed, so any two integers between &#x60;1&#x60; and &#x60;100&#x60; will work. (required).</param>
-        public BankAccountVerify(List<int> amounts = default(List<int>))
+        /// <param name="amounts">In live mode, an array containing the two micro deposits (in cents) placed in the bank account. In test mode, no micro deposits will be placed, so any two integers between &#x60;1&#x60; and &#x60;100&#x60; will work.</param>
+        /// <param name="descriptorCode">The 6-character descriptor code that appears on the bank statement for accounts using the Stripe Financial Connections verification path. Exactly one of amounts or descriptor_code must be provided.</param>
+        public BankAccountVerify(List<int> amounts = default(List<int>), string descriptorCode = default(string))
         {
-            // to ensure "amounts" is required (not null)
-            if (amounts == null)
-            {
-                throw new ArgumentNullException("amounts is a required property for BankAccountVerify and cannot be null");
-            }
             this.Amounts = amounts;
+            this.DescriptorCode = descriptorCode;
         }
 
         /// <summary>
         /// In live mode, an array containing the two micro deposits (in cents) placed in the bank account. In test mode, no micro deposits will be placed, so any two integers between &#x60;1&#x60; and &#x60;100&#x60; will work.
         /// </summary>
         /// <value>In live mode, an array containing the two micro deposits (in cents) placed in the bank account. In test mode, no micro deposits will be placed, so any two integers between &#x60;1&#x60; and &#x60;100&#x60; will work.</value>
-        [DataMember(Name = "amounts", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "amounts", EmitDefaultValue = false)]
         public List<int> Amounts { get; set; }
+
+        /// <summary>
+        /// The 6-character descriptor code that appears on the bank statement for accounts using the Stripe Financial Connections verification path. Exactly one of amounts or descriptor_code must be provided.
+        /// </summary>
+        /// <value>The 6-character descriptor code that appears on the bank statement for accounts using the Stripe Financial Connections verification path.</value>
+        [DataMember(Name = "descriptor_code", EmitDefaultValue = false)]
+        public string DescriptorCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -67,6 +71,7 @@ namespace lob.dotnet.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class BankAccountVerify {\n");
             sb.Append("  Amounts: ").Append(Amounts).Append("\n");
+            sb.Append("  DescriptorCode: ").Append(DescriptorCode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -101,12 +106,17 @@ namespace lob.dotnet.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Amounts == input.Amounts ||
                     this.Amounts != null &&
                     input.Amounts != null &&
                     this.Amounts.SequenceEqual(input.Amounts)
+                ) &&
+                (
+                    this.DescriptorCode == input.DescriptorCode ||
+                    (this.DescriptorCode != null &&
+                    this.DescriptorCode.Equals(input.DescriptorCode))
                 );
         }
 
@@ -123,6 +133,10 @@ namespace lob.dotnet.Model
                 {
                     hashCode = (hashCode * 59) + this.Amounts.GetHashCode();
                 }
+                if (this.DescriptorCode != null)
+                {
+                    hashCode = (hashCode * 59) + this.DescriptorCode.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -134,6 +148,28 @@ namespace lob.dotnet.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
+            bool hasAmounts = this.Amounts != null && this.Amounts.Count > 0;
+            bool hasDescriptorCode = !string.IsNullOrEmpty(this.DescriptorCode);
+
+            if (!hasAmounts && !hasDescriptorCode)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Either amounts or descriptor_code must be provided.", new[] { "Amounts", "DescriptorCode" });
+            }
+
+            if (hasAmounts && hasDescriptorCode)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Only one of amounts or descriptor_code may be provided, not both.", new[] { "Amounts", "DescriptorCode" });
+            }
+
+            if (hasDescriptorCode)
+            {
+                Regex regexDescriptorCode = new Regex(@"^[a-zA-Z0-9]{6}$", RegexOptions.CultureInvariant);
+                if (!regexDescriptorCode.Match(this.DescriptorCode).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DescriptorCode, must be a 6-character alphanumeric string.", new[] { "DescriptorCode" });
+                }
+            }
+
             yield break;
         }
     }
