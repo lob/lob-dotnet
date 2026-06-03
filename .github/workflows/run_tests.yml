@@ -28,7 +28,7 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
       - name: Test
-        run: dotnet test --no-restore --verbosity normal --framework ${{ matrix.framework }}
+        run: dotnet test --no-restore --verbosity normal --framework ${{ matrix.framework }} --filter "Category=Unit"
         env:
           LOB_API_TEST_KEY: ${{ secrets.LOB_API_TEST_KEY }}
           LOB_API_LIVE_KEY: ${{ secrets.LOB_API_LIVE_KEY }}

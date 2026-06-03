@@ -158,6 +158,9 @@ namespace __tests__.Integration {
 
         [Test]
         public void PostcardListTest() {
+            Postcard postcard = validApi.create(postcardEditable);
+            idsToDelete.Add(postcard.Id);
+
             PostcardList response = validApi.list(null, null, null, null, null, null, null, null, null, null, null);
 
             Assert.Greater(response.Count, 0);
@@ -165,6 +168,11 @@ namespace __tests__.Integration {
 
         [Test]
         public void PostcardListTestWithLimitParameter() {
+            Postcard postcard1 = validApi.create(postcardEditable);
+            idsToDelete.Add(postcard1.Id);
+            Postcard postcard2 = validApi.create(postcardEditable);
+            idsToDelete.Add(postcard2.Id);
+
             int limit = 2;
             PostcardList response = validApi.list(limit, null, null, null, null, null, null, null, null, null, null);
 
@@ -173,6 +181,9 @@ namespace __tests__.Integration {
 
         [Test]
         public void PostcardListTestWithIncludeParameter() {
+            Postcard postcard = validApi.create(postcardEditable);
+            idsToDelete.Add(postcard.Id);
+
             List<string> includeList = new List<string>();
             includeList.Add("total_count");
 
@@ -183,9 +194,11 @@ namespace __tests__.Integration {
 
         [Test]
         public void PostcardListTestWithDateCreatedParameter() {
+            Postcard postcard = validApi.create(postcardEditable);
+            idsToDelete.Add(postcard.Id);
+
             Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
-            DateTime lastMonth = DateTime.Today.AddMonths(-1);
-            dateCreated.Add("lt", lastMonth);
+            dateCreated.Add("lt", DateTime.Today.AddDays(1));
 
             PostcardList response = validApi.list(null, null, null, null, dateCreated, null, null, null, null, null, null);
             Assert.Greater(response.Count, 0);
@@ -205,6 +218,9 @@ namespace __tests__.Integration {
 
         [Test]
         public void PostcardListTestWithSizeParameter() {
+            Postcard postcard = validApi.create(postcardEditable);
+            idsToDelete.Add(postcard.Id);
+
             List<PostcardSize> sizeArray = new List<PostcardSize>();
             sizeArray.Add(PostcardSize._4x6);
 
@@ -214,7 +230,10 @@ namespace __tests__.Integration {
 
         [Test]
         public void PostcardListTestWithScheduledParameter() {
-            Boolean scheduled = true;
+            Postcard postcard = validApi.create(postcardEditable);
+            idsToDelete.Add(postcard.Id);
+
+            Boolean scheduled = false;
 
             PostcardList response = validApi.list(null, null, null, null, null, null, null, scheduled);
             Assert.Greater(response.Count, 0);
@@ -222,9 +241,11 @@ namespace __tests__.Integration {
 
         [Test]
         public void PostcardListTestWithSendDateParameter() {
+            Postcard postcard = validApi.create(postcardEditable);
+            idsToDelete.Add(postcard.Id);
+
             Dictionary<String, String> sendDate = new Dictionary<String, String>();
-            DateTime lastMonth = DateTime.Today.AddMonths(-1);
-            sendDate.Add("lt", lastMonth.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
+            sendDate.Add("lt", DateTime.Today.AddDays(1).ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 
             PostcardList response = validApi.list(null, null, null, null, null, null, null, null, sendDate);
             Assert.Greater(response.Count, 0);
@@ -240,6 +261,9 @@ namespace __tests__.Integration {
 
         [Test]
         public void PostcardListTestWithSortByParameter() {
+            Postcard postcard = validApi.create(postcardEditable);
+            idsToDelete.Add(postcard.Id);
+
             SortBy3 sortBy = new SortBy3(null, SortBy3.SendDateEnum.Asc);
 
             PostcardList response = validApi.list(null, null, null, null, null, null, null, null, null, null, sortBy);

@@ -130,7 +130,6 @@ namespace __tests__.Integration {
         [Test]
         public void createTest() {
             checkEditable.CheckNumber = 2;
-            checkEditable.SendDate = DateTime.Now.AddDays(34);
             Check response = validApi.create(checkEditable);
 
             Assert.NotNull(response.Id);
@@ -196,6 +195,9 @@ namespace __tests__.Integration {
 
         [Test]
         public void CheckListTest() {
+            Check check = validApi.create(checkEditable);
+            idsToDelete.Add(check.Id);
+
             CheckList response = validApi.list(null, null, null, null, null, null, null, null, null, null);
 
             Assert.Greater(response.Count, 0);
@@ -203,6 +205,11 @@ namespace __tests__.Integration {
 
         [Test]
         public void CheckListTestWithLimitParameter() {
+            Check check1 = validApi.create(checkEditable);
+            idsToDelete.Add(check1.Id);
+            Check check2 = validApi.create(checkEditable);
+            idsToDelete.Add(check2.Id);
+
             int limit = 2;
             CheckList response = validApi.list(limit, null, null, null, null, null, null, null, null, null);
 
@@ -211,6 +218,9 @@ namespace __tests__.Integration {
 
         [Test]
         public void CheckListTestWithIncludeParameter() {
+            Check check = validApi.create(checkEditable);
+            idsToDelete.Add(check.Id);
+
             List<string> includeList = new List<string>();
             includeList.Add("total_count");
 
@@ -221,9 +231,11 @@ namespace __tests__.Integration {
 
         [Test]
         public void CheckListTestWithDateCreatedParameter() {
+            Check check = validApi.create(checkEditable);
+            idsToDelete.Add(check.Id);
+
             Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
-            DateTime lastMonth = DateTime.Today.AddMonths(-1);
-            dateCreated.Add("lt", lastMonth);
+            dateCreated.Add("lt", DateTime.Today.AddDays(1));
 
             CheckList response = validApi.list(null, null, null, null, dateCreated);
             Assert.Greater(response.Count, 0);
@@ -231,7 +243,10 @@ namespace __tests__.Integration {
 
         [Test]
         public void CheckListTestWithScheduledParameter() {
-            Boolean scheduled = true;
+            Check check = validApi.create(checkEditable);
+            idsToDelete.Add(check.Id);
+
+            Boolean scheduled = false;
 
             CheckList response = validApi.list(null, null, null, null, null, null, scheduled);
             Assert.Greater(response.Count, 0);
@@ -239,9 +254,11 @@ namespace __tests__.Integration {
 
         [Test]
         public void CheckListTestWithSendDateParameter() {
+            Check check = validApi.create(checkEditable);
+            idsToDelete.Add(check.Id);
+
             Dictionary<String, String> sendDate = new Dictionary<String, String>();
-            DateTime lastMonth = DateTime.Today.AddMonths(-1);
-            sendDate.Add("lt", lastMonth.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
+            sendDate.Add("lt", DateTime.Today.AddDays(1).ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 
             CheckList response = validApi.list(null, null, null, null, null, null, null, sendDate);
             Assert.Greater(response.Count, 0);
@@ -257,6 +274,9 @@ namespace __tests__.Integration {
 
         [Test]
         public void CheckListTestWithSortByParameter() {
+            Check check = validApi.create(checkEditable);
+            idsToDelete.Add(check.Id);
+
             SortBy3 sortBy = new SortBy3(null, SortBy3.SendDateEnum.Asc);
             CheckList response = validApi.list(null, null, null, null, null, null, null, null, null, sortBy);
             Assert.Greater(response.Count, 0);

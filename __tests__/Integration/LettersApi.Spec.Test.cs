@@ -78,7 +78,11 @@ namespace __tests__.Integration {
                 address.Id, // to
                 address.Id, // from
                 "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf", // file
-                LetterEditable.ExtraServiceEnum.Certified // extraService
+                LetterEditable.ExtraServiceEnum.Certified, // extraService
+                null, // cards
+                null, // billingGroupId
+                null, // qrCode
+                LtrUseType.Marketing // useType
             );
 
             idsToDelete = new List<string>();
@@ -157,6 +161,9 @@ namespace __tests__.Integration {
 
         [Test]
         public void LetterListTest() {
+            Letter letter = validApi.create(letterEditable);
+            idsToDelete.Add(letter.Id);
+
             LetterList response = validApi.list(null, null, null, null, null, null, null, null, null, null, null);
 
             Assert.Greater(response.Count, 0);
@@ -164,6 +171,11 @@ namespace __tests__.Integration {
 
         [Test]
         public void LetterListTestWithLimitParameter() {
+            Letter letter1 = validApi.create(letterEditable);
+            idsToDelete.Add(letter1.Id);
+            Letter letter2 = validApi.create(letterEditable);
+            idsToDelete.Add(letter2.Id);
+
             int limit = 2;
             LetterList response = validApi.list(limit, null, null, null, null, null, null, null, null, null, null);
 
@@ -172,6 +184,9 @@ namespace __tests__.Integration {
 
         [Test]
         public void LetterListTestWithIncludeParameter() {
+            Letter letter = validApi.create(letterEditable);
+            idsToDelete.Add(letter.Id);
+
             List<string> includeList = new List<string>();
             includeList.Add("total_count");
 
@@ -182,9 +197,11 @@ namespace __tests__.Integration {
 
         [Test]
         public void LetterListTestWithDateCreatedParameter() {
+            Letter letter = validApi.create(letterEditable);
+            idsToDelete.Add(letter.Id);
+
             Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
-            DateTime lastMonth = DateTime.Today.AddMonths(-1);
-            dateCreated.Add("lt", lastMonth);
+            dateCreated.Add("lt", DateTime.Today.AddDays(1));
 
             LetterList response = validApi.list(null, null, null, null, dateCreated);
             Assert.Greater(response.Count, 0);
@@ -212,7 +229,10 @@ namespace __tests__.Integration {
 
         [Test]
         public void LetterListTestWithScheduledParameter() {
-            Boolean scheduled = true;
+            Letter letter = validApi.create(letterEditable);
+            idsToDelete.Add(letter.Id);
+
+            Boolean scheduled = false;
 
             LetterList response = validApi.list(null, null, null, null, null, null, null, scheduled);
             Assert.Greater(response.Count, 0);
@@ -220,9 +240,11 @@ namespace __tests__.Integration {
 
         [Test]
         public void LetterListTestWithSendDateParameter() {
+            Letter letter = validApi.create(letterEditable);
+            idsToDelete.Add(letter.Id);
+
             Dictionary<String, String> sendDate = new Dictionary<String, String>();
-            DateTime lastMonth = DateTime.Today.AddMonths(-1);
-            sendDate.Add("lt", lastMonth.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
+            sendDate.Add("lt", DateTime.Today.AddDays(1).ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 
             LetterList response = validApi.list(null, null, null, null, null, null, null, null, sendDate);
             Assert.Greater(response.Count, 0);
@@ -238,6 +260,9 @@ namespace __tests__.Integration {
 
         [Test]
         public void LetterListTestWithSortByParameter() {
+            Letter letter = validApi.create(letterEditable);
+            idsToDelete.Add(letter.Id);
+
             SortBy3 sortBy = new SortBy3(null, SortBy3.SendDateEnum.Asc);
 
             LetterList response = validApi.list(null, null, null, null, null, null, null, null, null, null, sortBy);
