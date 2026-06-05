@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>__tests__</AssemblyName>
     <RootNamespace>__tests__</RootNamespace>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <IsPackable>false</IsPackable>
   </PropertyGroup>

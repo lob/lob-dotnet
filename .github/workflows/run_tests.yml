@@ -2,7 +2,7 @@ name: Run Tests
 
 on:
   pull_request:
-    types: [opened, reopened, edited, ready_for_review]
+    types: [opened, reopened, edited, ready_for_review, synchronize]
     branches:
       - main
 jobs:
@@ -11,11 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dotnet-version: ['3.1.x']
+        include:
+          - dotnet-version: '8.0.x'
+            framework: 'net8.0'
+          - dotnet-version: '10.0.x'
+            framework: 'net10.0'
 
     steps:
       - uses: actions/checkout@v4
-      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+      - name: Setup .NET SDK ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
@@ -24,7 +28,7 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
       - name: Test
-        run: dotnet test --no-restore --verbosity normal
+        run: dotnet test --no-restore --verbosity normal --framework ${{ matrix.framework }} --filter "Category=Unit"
         env:
           LOB_API_TEST_KEY: ${{ secrets.LOB_API_TEST_KEY }}
           LOB_API_LIVE_KEY: ${{ secrets.LOB_API_LIVE_KEY }}

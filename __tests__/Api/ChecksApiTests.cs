@@ -50,6 +50,7 @@ namespace __tests__.Api
                 default(DateTime), // dateCreated
                 default(DateTime), // dateModified
                 default(bool), // deleted
+                default(BankAccount.MicrodepositTypeEnum?), // microdepositType
                 BankAccount.ObjectEnum.BankAccount // _object
             );
 

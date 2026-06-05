@@ -50,6 +50,7 @@ namespace __tests__.Api
                 default(DateTime), // dateCreated
                 default(DateTime), // dateModified
                 default(bool), // deleted
+                default(BankAccount.MicrodepositTypeEnum?), // microdepositType
                 BankAccount.ObjectEnum.BankAccount // _object
             );
 
@@ -68,6 +69,7 @@ namespace __tests__.Api
                 default(DateTime), // dateCreated
                 default(DateTime), // dateModified
                 default(bool), // deleted
+                default(BankAccount.MicrodepositTypeEnum?), // microdepositType
                 BankAccount.ObjectEnum.BankAccount // _object
             );
             BankAccount data2 = new BankAccount(
@@ -84,6 +86,7 @@ namespace __tests__.Api
                 default(DateTime), // dateCreated
                 default(DateTime), // dateModified
                 default(bool), // deleted
+                default(BankAccount.MicrodepositTypeEnum?), // microdepositType
                 BankAccount.ObjectEnum.BankAccount // _object
             );
 
@@ -374,6 +377,49 @@ namespace __tests__.Api
 
             Assert.IsInstanceOf<BankAccount>(response);
             Assert.AreEqual(response.Id, fakeBankAccount.Id);
+        }
+
+        /// <summary>
+        /// Test verify with descriptor_code
+        /// </summary>
+        [Test]
+        public void verifyWithDescriptorCodeTest()
+        {
+            BankAccountVerify verify = new BankAccountVerify(descriptorCode: "SM1234");
+
+            bankAccountsApiMock.Setup(x => x.verify(fakeBankAccount.Id, verify, It.IsAny<int>())).Returns(fakeBankAccount);
+
+            BankAccount response = bankAccountsApiMock.Object.verify(fakeBankAccount.Id, verify);
+
+            Assert.IsInstanceOf<BankAccount>(response);
+            Assert.AreEqual(response.Id, fakeBankAccount.Id);
+        }
+
+        /// <summary>
+        /// Test BankAccount has MicrodepositType field
+        /// </summary>
+        [Test]
+        public void bankAccountMicrodepositTypeTest()
+        {
+            BankAccount account = new BankAccount(
+                default(string),
+                "fake routing number",
+                "fake account number",
+                default(BankAccount.AccountTypeEnum),
+                "fake signatory",
+                default(Dictionary<string, string>),
+                "bank_fakeId",
+                default(string),
+                default(string),
+                false,
+                default(DateTime),
+                default(DateTime),
+                default(bool),
+                BankAccount.MicrodepositTypeEnum.DescriptorCode,
+                BankAccount.ObjectEnum.BankAccount
+            );
+
+            Assert.AreEqual(BankAccount.MicrodepositTypeEnum.DescriptorCode, account.MicrodepositType);
         }
 
         /// <summary>

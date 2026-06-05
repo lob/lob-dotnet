@@ -38,7 +38,7 @@ namespace lob.dotnet.Model
         /// <param name="description">Description of the card..</param>
         /// <param name="autoReorder">Allows for auto reordering.</param>
         /// <param name="reorderQuantity">The quantity of items to be reordered (only required when auto_reorder is true)..</param>
-        public CardUpdatable(string description = default(string), bool autoReorder = default(bool), decimal reorderQuantity = default(decimal))
+        public CardUpdatable(string description = default(string), bool autoReorder = default(bool), decimal? reorderQuantity = default(decimal?))
         {
             this.Description = description;
             this.AutoReorder = autoReorder;
@@ -63,8 +63,8 @@ namespace lob.dotnet.Model
         /// The quantity of items to be reordered (only required when auto_reorder is true).
         /// </summary>
         /// <value>The quantity of items to be reordered (only required when auto_reorder is true).</value>
-        [DataMember(Name = "reorder_quantity", EmitDefaultValue = true)]
-        public decimal ReorderQuantity { get; set; }
+        [DataMember(Name = "reorder_quantity", EmitDefaultValue = false)]
+        public decimal? ReorderQuantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -123,7 +123,8 @@ namespace lob.dotnet.Model
                 ) && 
                 (
                     this.ReorderQuantity == input.ReorderQuantity ||
-                    this.ReorderQuantity.Equals(input.ReorderQuantity)
+                    (this.ReorderQuantity != null &&
+                    this.ReorderQuantity.Equals(input.ReorderQuantity))
                 );
         }
 
@@ -141,7 +142,10 @@ namespace lob.dotnet.Model
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.AutoReorder.GetHashCode();
-                hashCode = (hashCode * 59) + this.ReorderQuantity.GetHashCode();
+                if (this.ReorderQuantity != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReorderQuantity.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -159,16 +163,17 @@ namespace lob.dotnet.Model
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 255.", new [] { "Description" });
             }
 
-            // ReorderQuantity (decimal) maximum
-            if (this.ReorderQuantity > (decimal)10000000)
+            if (this.ReorderQuantity != null)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ReorderQuantity, must be a value less than or equal to 10000000.", new [] { "ReorderQuantity" });
-            }
+                if (this.ReorderQuantity > (decimal)10000000)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ReorderQuantity, must be a value less than or equal to 10000000.", new [] { "ReorderQuantity" });
+                }
 
-            // ReorderQuantity (decimal) minimum
-            if (this.ReorderQuantity < (decimal)10000)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ReorderQuantity, must be a value greater than or equal to 10000.", new [] { "ReorderQuantity" });
+                if (this.ReorderQuantity < (decimal)10000)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ReorderQuantity, must be a value greater than or equal to 10000.", new [] { "ReorderQuantity" });
+                }
             }
 
             yield break;

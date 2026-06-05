@@ -63,6 +63,33 @@ namespace lob.dotnet.Model
         [DataMember(Name = "account_type", IsRequired = true, EmitDefaultValue = false)]
         public AccountTypeEnum AccountType { get; set; }
         /// <summary>
+        /// Indicates which microdeposit verification path applies to this bank account. Null once verified.
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum MicrodepositTypeEnum
+        {
+            /// <summary>
+            /// Enum Amounts for value: amounts
+            /// </summary>
+            [EnumMember(Value = "amounts")]
+            Amounts = 1,
+
+            /// <summary>
+            /// Enum DescriptorCode for value: descriptor_code
+            /// </summary>
+            [EnumMember(Value = "descriptor_code")]
+            DescriptorCode = 2
+
+        }
+
+        /// <summary>
+        /// Indicates which microdeposit verification path applies to this bank account. Null once verified.
+        /// </summary>
+        /// <value>Indicates which microdeposit verification path applies to this bank account. Null once verified.</value>
+        [DataMember(Name = "microdeposit_type", EmitDefaultValue = false)]
+        public MicrodepositTypeEnum? MicrodepositType { get; set; }
+
+        /// <summary>
         /// Defines Object
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
@@ -104,8 +131,9 @@ namespace lob.dotnet.Model
         /// <param name="dateCreated">A timestamp in ISO 8601 format of the date the resource was created. (required).</param>
         /// <param name="dateModified">A timestamp in ISO 8601 format of the date the resource was last modified. (required).</param>
         /// <param name="deleted">Only returned if the resource has been successfully deleted..</param>
+        /// <param name="microdepositType">Indicates which microdeposit verification path applies to this bank account. Null once verified.</param>
         /// <param name="_object">_object (required) (default to ObjectEnum.BankAccount).</param>
-        public BankAccount(string description = default(string), string routingNumber = default(string), string accountNumber = default(string), AccountTypeEnum accountType = default(AccountTypeEnum), string signatory = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), string id = default(string), string signatureUrl = default(string), string bankName = default(string), bool verified = false, DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), ObjectEnum _object = ObjectEnum.BankAccount)
+        public BankAccount(string description = default(string), string routingNumber = default(string), string accountNumber = default(string), AccountTypeEnum accountType = default(AccountTypeEnum), string signatory = default(string), Dictionary<string, string> metadata = default(Dictionary<string, string>), string id = default(string), string signatureUrl = default(string), string bankName = default(string), bool verified = false, DateTime dateCreated = default(DateTime), DateTime dateModified = default(DateTime), bool deleted = default(bool), MicrodepositTypeEnum? microdepositType = default(MicrodepositTypeEnum?), ObjectEnum _object = ObjectEnum.BankAccount)
         {
             // to ensure "routingNumber" is required (not null)
             if (routingNumber == null)
@@ -141,6 +169,7 @@ namespace lob.dotnet.Model
             this.BankName = bankName;
             this.Verified = verified;
             this.Deleted = deleted;
+            this.MicrodepositType = microdepositType;
         }
 
         /// <summary>
@@ -247,6 +276,7 @@ namespace lob.dotnet.Model
             sb.Append("  DateCreated: ").Append(DateCreated).Append("\n");
             sb.Append("  DateModified: ").Append(DateModified).Append("\n");
             sb.Append("  Deleted: ").Append(Deleted).Append("\n");
+            sb.Append("  MicrodepositType: ").Append(MicrodepositType).Append("\n");
             sb.Append("  Object: ").Append(Object).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -347,6 +377,10 @@ namespace lob.dotnet.Model
                     this.Deleted.Equals(input.Deleted)
                 ) && 
                 (
+                    this.MicrodepositType == input.MicrodepositType ||
+                    this.MicrodepositType.Equals(input.MicrodepositType)
+                ) &&
+                (
                     this.Object == input.Object ||
                     this.Object.Equals(input.Object)
                 );
@@ -404,6 +438,7 @@ namespace lob.dotnet.Model
                     hashCode = (hashCode * 59) + this.DateModified.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Deleted.GetHashCode();
+                hashCode = (hashCode * 59) + this.MicrodepositType.GetHashCode();
                 hashCode = (hashCode * 59) + this.Object.GetHashCode();
                 return hashCode;
             }

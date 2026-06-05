@@ -154,12 +154,20 @@ namespace __tests__.Integration {
 
         [Test]
         public void SelfMailerListTest() {
+            SelfMailer selfMailer = validApi.create(selfMailerEditable);
+            idsToDelete.Add(selfMailer.Id);
+
             SelfMailerList response = validApi.list(2, null, null, null, null, null, null, null, null, null, null);
             Assert.Greater(response.Count, 0);
         }
 
         [Test]
         public void SelfMailerListTestWithLimitParameter() {
+            SelfMailer selfMailer1 = validApi.create(selfMailerEditable);
+            idsToDelete.Add(selfMailer1.Id);
+            SelfMailer selfMailer2 = validApi.create(selfMailerEditable);
+            idsToDelete.Add(selfMailer2.Id);
+
             int limit = 2;
             SelfMailerList response = validApi.list(limit, null, null, null, null, null, null, null, null, null, null);
 
@@ -168,6 +176,9 @@ namespace __tests__.Integration {
 
         [Test]
         public void SelfMailerListTestWithIncludeParameter() {
+            SelfMailer selfMailer = validApi.create(selfMailerEditable);
+            idsToDelete.Add(selfMailer.Id);
+
             List<string> includeList = new List<string>();
             includeList.Add("total_count");
 
@@ -178,9 +189,11 @@ namespace __tests__.Integration {
 
         [Test]
         public void SelfMailerListTestWithDateCreatedParameter() {
+            SelfMailer selfMailer = validApi.create(selfMailerEditable);
+            idsToDelete.Add(selfMailer.Id);
+
             Dictionary<String, DateTime> dateCreated = new Dictionary<String, DateTime>();
-            DateTime lastMonth = DateTime.Today.AddMonths(-1);
-            dateCreated.Add("lt", lastMonth);
+            dateCreated.Add("lt", DateTime.Today.AddDays(1));
 
             SelfMailerList response = validApi.list(null, null, null, null, dateCreated, null, null, null, null, null, null);
             Assert.Greater(response.Count, 0);
@@ -197,6 +210,9 @@ namespace __tests__.Integration {
 
         [Test]
         public void SelfMailerListTestWithSizeParameter() {
+            SelfMailer selfMailer = validApi.create(selfMailerEditable);
+            idsToDelete.Add(selfMailer.Id);
+
             List<SelfMailerSize> sizeArray = new List<SelfMailerSize>();
             sizeArray.Add(SelfMailerSize._6x18Bifold);
 
@@ -206,7 +222,10 @@ namespace __tests__.Integration {
 
         [Test]
         public void SelfMailerListTestWithScheduledParameter() {
-            Boolean scheduled = true;
+            SelfMailer selfMailer = validApi.create(selfMailerEditable);
+            idsToDelete.Add(selfMailer.Id);
+
+            Boolean scheduled = false;
 
             SelfMailerList response = validApi.list(null, null, null, null, null, null, null, scheduled);
             Assert.Greater(response.Count, 0);
@@ -214,9 +233,11 @@ namespace __tests__.Integration {
 
         [Test]
         public void SelfMailerListTestWithSendDateParameter() {
+            SelfMailer selfMailer = validApi.create(selfMailerEditable);
+            idsToDelete.Add(selfMailer.Id);
+
             Dictionary<String, String> sendDate = new Dictionary<String, String>();
-            DateTime lastMonth = DateTime.Today.AddMonths(-1);
-            sendDate.Add("lt", lastMonth.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
+            sendDate.Add("lt", DateTime.Today.AddDays(1).ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"));
 
             SelfMailerList response = validApi.list(null, null, null, null, null, null, null, null, sendDate);
             Assert.Greater(response.Count, 0);
@@ -232,6 +253,9 @@ namespace __tests__.Integration {
 
         [Test]
         public void SelfMailerListTestWithSortByParameter() {
+            SelfMailer selfMailer = validApi.create(selfMailerEditable);
+            idsToDelete.Add(selfMailer.Id);
+
             SortBy3 sortBy = new SortBy3(null, SortBy3.SendDateEnum.Asc);
 
             SelfMailerList response = validApi.list(null, null, null, null, null, null, null, null, null, null, sortBy);
